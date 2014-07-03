@@ -1,0 +1,7 @@
+[colab]
+checkout = git clone https://github.com/colab-community/colab.git
+  --branch dev_gitlab
+
+[redmine]
+checkout = git clone https://github.com/redmine/redmine.git
+  --branch 2.5-stable
