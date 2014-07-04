@@ -1,3 +1,5 @@
+[.]
+
 [colab]
 checkout = git clone https://github.com/colab-community/colab.git
   --branch dev_gitlab
