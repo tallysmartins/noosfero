@@ -38,3 +38,4 @@ cat > $fs/etc/sudoers.d/vagrant <<EOF
 vagrant ALL=(ALL) NOPASSWD:ALL
 EOF
 chmod 0440 $fs/etc/sudoers.d/vagrant
+sed -i -e '/Defaults\s*requiretty/ d' $fs/etc/sudoers
