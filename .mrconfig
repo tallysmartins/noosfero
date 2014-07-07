@@ -4,6 +4,9 @@
 checkout = git clone https://github.com/colab-community/colab.git
   --branch dev_gitlab
 
+[doc/colabdocumentation]
+checkout = git clone https://gitlab.com/softwarepublico/colabdocumentation.git
+
 [redmine]
 checkout = git clone https://github.com/redmine/redmine.git
   --branch 2.5-stable
