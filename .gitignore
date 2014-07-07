@@ -2,3 +2,5 @@
 /redmine
 /.vagrant
 /doc
+/build
+/rpm/*.spec
