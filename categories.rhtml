@@ -1,0 +1,7 @@
+<ul id="cat_menu">
+  <% @environment.top_level_categories.find(:all, :conditions => {:display_in_menu => true}).each do |item| %>
+    <li id="category category_<%= item.path %>" >
+      <%= link_to(item.name, {:controller => :search, :action => 'category_index', :category_path => item.path }, :title => item.name, :style=>"color: ##{item.display_color || '000000'}" ) %>
+    </li>
+  <% end %>
+</ul><!-- fim id="cat_menu" -->
