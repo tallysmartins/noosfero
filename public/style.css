@@ -1,0 +1,115 @@
+.mpog_hidden_field{
+	display: none;
+}
+
+#signup-form small#secondary-email-balloon ,
+#signup-form small#role-balloon,
+#signup-form small#area-interest-balloon
+{
+  display: none;
+  width: 142px;
+  height: 69px;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 11px;
+  padding: 5px 10px 45px 10px;
+  margin: 0;
+  line-height: 1.5em;
+  background: transparent url(/images/gray-balloon.png) bottom center no-repeat;
+  position: absolute;
+  z-index: 2;
+  right: -150px;
+}
+
+#signup-form #signup-secondary-email,
+#signup-form #signup-role,
+#signup-form #signup-area-interest
+{
+  position: relative;
+}
+
+#signup-form small#secondary-email-balloon,
+#signup-form small#role-balloon,
+#signup-form small#area-interest-balloon
+{
+  top: -80px;
+}
+
+.dynamic-table {
+  border: solid 1px #000;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.dynamic-table td, .dynamic-table tr {
+  border: none;
+}
+
+.expand-field {
+  height: 80px;
+}
+
+.expand-field-focus {
+ height: 300px;
+}
+
+.mpog-incomplete-percentage img {
+  margin-left: 5px;
+}
+
+.mpog-incomplete-percentage img:hover {
+  cursor: pointer;
+}
+
+#institution_dialog {
+  display: none;
+}
+
+.errorExplanation {
+  color: red;
+  margin-left: 10px;
+}
+
+.hide-field {
+  display: none !important;
+}
+
+.show-field {
+  display: block !important;
+}
+
+#user_filter_content {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.user_filter_options {
+  width: 80%;
+  height: auto;
+  position: relative;
+  float: left;
+}
+
+.user_filter_options input[type='text'] {
+  width: 78%;
+
+}
+
+.user_filter_actions {
+  width: 18 %;
+  height: auto;
+  position: relative;
+  float: right;
+  text-align: right;
+}
+
+.search-table tr td:first-child {
+  width: 40px;
+}
+
+.formfieldline {
+  margin-top: 10px;
+}
+.formfieldline input[type="text"] {
+  width: 180px;
+}

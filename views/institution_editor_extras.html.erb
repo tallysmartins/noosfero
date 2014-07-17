@@ -1,0 +1,31 @@
+<h2><%= _('Institution Information') %></h2>
+
+<div class="formfield type-text">
+  <%= labelled_text_field(_("CNPJ"), 'institution[cnpj]', context.profile.institution.cnpj, :class=>"formlabel") %>
+</div>
+
+<span class='required-field'>
+<div class="formfield type-text">
+  <% if context.profile.institution.type == "PublicInstitution" %>
+    <%= labelled_text_field(_("Acronym"), "institution[acronym]", context.profile.institution.acronym, :class=>"formlabel") %>
+  <% else %>
+    <%= labelled_text_field(_("Fantasy name"), "institution[acronym]", context.profile.institution.acronym, :class=>"formlabel") %>
+  <% end %>
+</div>
+</span>
+
+<% if context.profile.institution.type == "PublicInstitution" %>
+  <span class='public-institutions-fields'>
+  <div class="formfield type-select">
+    <%= label_tag('governmental_power', _("Governmental Power")) %>
+    <%= select_tag(:governmental_power, options_for_select(GovernmentalPower.all.map {|g| [g.name, g.id]}, :selected => context.profile.institution.governmental_power_id), :class=>"formlabel") %>
+  </div>
+  </span>
+
+  <span class= 'public-institutions-fields'>
+  <div class="formfield type-select">
+    <%= label_tag('governmental_sphere', _("Governmental Sphere")) %>
+    <%= select_tag(:governmental_sphere, options_for_select(GovernmentalSphere.all.map {|s| [s.name, s.id]}, :selected => context.profile.institution.governmental_sphere_id), :class=>"formlabel") %>
+  </div>
+  </span>
+<% end %>

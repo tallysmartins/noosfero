@@ -1,0 +1,3 @@
+executivo
+legislativo
+judiciario

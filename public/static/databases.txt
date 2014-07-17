@@ -1,0 +1,176 @@
+4th Dimension
+Adabas D
+Aerospike
+AllegroGraph
+Alpha Five
+Altibase
+Amazon DynamoDB
+Apache Accumulo
+Apache Cassandra
+Apache CouchDB
+Apache Derby
+Apache Hbase
+Apache JENA
+Apache River
+Aster Data
+BaseX
+Berkeley DB
+BigTable
+BlackRay
+CA-Datacom
+CDB
+CSQL
+CUBRID
+Clarion
+Cloudant
+Cloudant Data Layer (CouchDB)
+Clusterpoint
+Clusterpoint XML database
+Clustrix
+Coherence
+CoreFoundation Property list
+Couchbase Server
+D3 Pick database
+DEX/Sparksee
+Daffodil database
+DataEase
+Database Management Library
+Dataphor
+Datastore on Google Appengine
+Derby aka Java DB
+Dynamo
+EXASolution
+ElasticSearch
+Empress Embedded Database
+EnterpriseDB
+Extensible Storage Engine (ESE/NT)
+FileMaker Pro
+Firebird
+FlockDB
+FoundationDB
+Freebase
+GT.M
+GemStone/S
+GigaSpaces
+Greenplum
+GroveSite
+H2
+HSQLDB
+Hazelcast
+Helix database
+Hibari
+Hypertable
+IBM DB2
+IBM DB2 Express-C
+IBM Informix C-ISAM
+IBM Lotus Approach
+IBM Notes and IBM Domino
+InfiniteGraph
+InfinityDB
+Infobright
+Informix
+Ingres
+InterBase
+InterSystems Caché
+JADE
+Jackrabbit
+Keyspace
+LevelDB
+Linter
+MariaDB
+MarkLogic
+MarkLogic Server
+MaxDB
+MemSQL
+MemcacheDB
+Microsoft Access
+Microsoft Jet Database Engine
+Microsoft SQL Server
+Microsoft SQL Server Express
+Microsoft Visual FoxPro
+Mimer SQL
+Mnesia
+MonetDB
+MongoDB
+MySQL
+NDBM
+Neo4j
+NeoDatis ODB
+Netezza
+NexusDB
+NonStop SQL
+ODABA
+OWLIM
+Object database
+ObjectDB
+ObjectDatabase++
+ObjectStore
+Objectivity/DB
+Ontotext-OWLIM
+OpenLink Virtuoso
+OpenLink Virtuoso Universal Server
+OpenOffice.org Base
+OpenQM
+Openbase
+Oracle
+Oracle NoSQL Database
+Oracle Rdb for OpenVMS
+OrientDB
+Panorama
+Perst
+Pervasive PSQL
+Polyhedra
+PostgreSQL
+Postgres Plus Advanced Server
+Progress Software
+R:Base
+RDM Embedded
+RDM Server
+Revelation Software's OpenInsight
+Riak
+Rocket U2
+SAND CDBMS
+SAP HANA
+SAP Sybase Adaptive Server Enterprise
+SAP Sybase IQ
+SQL Anywhere
+SQLBase
+SQLite
+ScimoreDB
+Sedna
+SimpleDB
+SmallSQL
+Solr
+Sones GraphDB
+SparkleDB
+Sqrrl Enterprise
+Sybase Advantage Database Server
+Tarantool
+Teradata
+The SAS system
+TimesTen
+TokuMX
+Tokyo Cabinet
+Tuple space
+UniData
+UniVerse
+Unisys RDMS 2200
+VMDS
+Vectorwise
+Versant Object Database
+Vertica
+Virtuoso Universal Server
+WakandaDB
+XAP
+ZODB
+dBase
+db4o
+djondb
+eXist
+eXtremeDB
+mSQL
+memcached
+mizanSQL
+redis
+solidDB
+txtSQL

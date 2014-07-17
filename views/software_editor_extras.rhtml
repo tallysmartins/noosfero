@@ -1,0 +1,35 @@
+<h2><%= _('Software Information') %></h2>
+
+<div class="formfieldline">
+  <%= _("Adherent to e-PING?") %>
+  <%= labelled_radio_button(_('Sim'), 'software_info[e_ping]', 'sim', context.profile.software_info.e_ping == 'sim')%>
+  <%= labelled_radio_button(_('Não'), 'software_info[e_ping]', 'nao', context.profile.software_info.e_ping == 'nao')%>
+</div>
+<div class="formfieldline">
+  <%= _("Adherent to e-MAG?") %>
+  <%= labelled_radio_button(_('Sim'), 'software_info[e_mag]', 'sim', context.profile.software_info.e_mag == 'sim')%>
+  <%= labelled_radio_button(_('Não'), 'software_info[e_mag]', 'nao', context.profile.software_info.e_mag == 'nao')%>
+</div>
+<div class="formfieldline">
+  <%= _("Adherent to ICP-Brasil?") %>
+  <%= labelled_radio_button(_('Sim'), 'software_info[icp_brasil]', 'sim', context.profile.software_info.icp_brasil == 'sim')%>
+  <%= labelled_radio_button(_('Não'), 'software_info[icp_brasil]', 'nao', context.profile.software_info.icp_brasil == 'nao')%>
+</div>
+<div class="formfieldline">
+  <%= _("Adherent to e-ARQ?") %>
+  <%= labelled_radio_button(_('Sim'), 'software_info[e_arq]', 'sim', context.profile.software_info.e_arq == 'sim')%>
+  <%= labelled_radio_button(_('Não'), 'software_info[e_arq]', 'nao', context.profile.software_info.e_arq == 'nao')%>
+</div>
+<div class="formfieldline">
+  <%= _("Internacionalizable") %>
+  <%= labelled_radio_button(_('Sim'), 'software_info[intern]', 'sim', context.profile.software_info.intern == 'sim')%>
+  <%= labelled_radio_button(_('Não'), 'software_info[intern]', 'nao', context.profile.software_info.intern == 'nao')%>
+</div>
+
+<div class="formfieldline">
+  <%= label_tag('software_info[operating_platform]', 'Operating Platform:') %>
+  <%= text_area_tag('software_info[operating_platform]', context.profile.software_info.operating_platform, :size => '40x20') %>
+</div>
+<div class="formfieldline formfield type-text">
+  <%= labelled_text_field('Demonstration URL', 'software_info[demonstration_url]', context.profile.software_info.demonstration_url) %>
+</div>

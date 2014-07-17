@@ -1,0 +1,10 @@
+<table>
+  <tr>
+    <th colspan='2'><%= _('Mpog Profile Information')%></th>
+  </tr>
+
+  <%= display_field(_('Secondary E-mail:'), profile, :secondary_email, true) %>
+  <%= display_field(_('Role:'), profile, :role, true) %>
+  <%= display_field(_('Areas of Interest:'), profile, :area_interest, true) %>
+  <%= display_field(_('Institution:'), profile, :institution, true) %>
+</table>

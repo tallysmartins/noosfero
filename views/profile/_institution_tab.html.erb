@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th colspan='2'><%= _('Institution Information')%></th>
+  </tr>
+
+  <%= display_field(_('Type:'), profile.institution, :type, true) %>
+  <%= display_field(_('CNPJ:'), profile.institution, :cnpj, true) %>
+  <% if profile.institution.type == "PrivateInstitution"%>
+    <%= display_field(_('Fantasy Name:'), profile.institution, :acronym, true) %>
+  <% else %>
+    <%= display_field(_('Acronym:'), profile.institution, :acronym, true) %>
+    <%= display_field(_('Governmental Power:'), profile.institution.governmental_power, :name, true) %>
+    <%= display_field(_('Governmental Sphere:'), profile.institution.governmental_sphere, :name, true) %>
+  <% end %>
+</table>
