@@ -151,10 +151,17 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def incomplete_registration params
-    person = User.find(params[:user]).person
-    percentege = calc_percentage_registration(person)
-    if percentege >= 0 and percentege <= 100
-      return _("Registration "+percentege.to_s+"% incomplete ")
+    return if params.nil? or params[:user].nil?
+
+    person = if params[:user].kind_of? User
+      User.find(params[:user]).person
+    else
+      params[:user]
+    end
+
+    @percentege = calc_percentage_registration(person)
+    if @percentege >= 0 and @percentege <= 100
+      expanded_template('mpog_software_plugin_myprofile/_incomplete_registration.html.erb')
     end
   end
 
