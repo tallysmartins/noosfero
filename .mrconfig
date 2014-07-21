@@ -1,12 +1,11 @@
-[.]
+[solr]
+checkout = utils/downloadsource.sh http://archive.apache.org/dist/lucene/solr/4.6.1/solr-4.6.1.tgz solr http://archive.apache.org/dist/lucene/solr/4.6.1/solr-4.6.1.tgz.md5
 
 [colab]
-checkout = git clone https://github.com/colab-community/colab.git
-  --branch dev_gitlab
+checkout = git clone https://github.com/colab-community/colab.git --branch stable_spb
 
 [doc/colabdocumentation]
 checkout = git clone https://gitlab.com/softwarepublico/colabdocumentation.git
 
 [redmine]
-checkout = git clone https://github.com/redmine/redmine.git
-  --branch 2.5-stable
+checkout = git clone https://github.com/redmine/redmine.git --branch 2.5-stable

@@ -9,7 +9,7 @@ Source: %{name}-%{version}.tar.gz
 %description
 
 %prep
-%autosetup
+%setup
 
 %build
 # nothing really

@@ -1,13 +1,13 @@
 PROJECT = softwarepublico
 VERSION = 2014.07
-COMPONENTS = colab
+COMPONENTS = solr
+ARCH = $(shell uname -i)
 
 TARBALL_FORMAT = tar.gz
 TARBALLS = $(patsubst %,build/$(PROJECT)-%-$(VERSION).$(TARBALL_FORMAT),$(COMPONENTS))
 RPMS = $(patsubst %.$(TARBALL_FORMAT),%-1.$(ARCH).rpm, $(TARBALLS))
 GENERATED += $(TARBALLS) $(RPMS)
 
-ARCH = $(shell uname -m)
 
 ifeq ("$(V)", "1")
 	Q :=
@@ -38,7 +38,7 @@ $(RPMS): build/$(PROJECT)-%-$(VERSION)-1.$(ARCH).rpm: rpm/%.spec
 	$(Q)component=$$(basename $< .spec) && \
 		ln -f build/$(PROJECT)-$$component-$(VERSION).$(TARBALL_FORMAT) ~/rpmbuild/SOURCES/ && \
 		rpmbuild -bb $(RPMBUILD_FLAGS) $< && \
-		ln -f ~/rpmbuild/RPMS/$(ARCH)/$(PROJECT)-$$component-$(VERSION)-1.$(ARCH).rpm $@
+		ln -f ~/rpmbuild/RPMS/$(ARCH)/$(PROJECT)-$$component-$(VERSION)-1.el6.$(ARCH).rpm $@
 
 %.spec: %.spec.in
 	$(qecho) "SPEC\t$@"
