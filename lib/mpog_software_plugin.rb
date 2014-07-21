@@ -89,7 +89,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       if context.params.has_key?(:language)
         language_transaction
       end
-      
+
       if context.params.has_key?(:database)
         databases_transaction
       end
@@ -139,36 +139,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     ["mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js"]
   end
 
-  def alternative_exclusion
-    if context.profile.person?
-      if context.profile.disable
-        context.session[:notice] = _('The profile was deactivated.')
-        context.profile.user.forget_me
-        context.session.delete(:user)
-
-        true
-      end
-    elsif context.profile.community?
-      context.profile.software_info.software_languages.delete_all
-      context.profile.destroy
-
-      mensage = context.profile.software_info.nil? ? "community" : "software"
-      context.session[:notice] = _("The #{mensage} was deleted.")
-    else
-      false
-    end
-  end
-
   def add_new_organization_button
     Proc::new do
       button(:add, _('Create a new software'), :controller => 'mpog_software_plugin_myprofile', :action => 'new_software')
     end
-  end
-
-  def alternative_reactive_account(person)
-    person.visible = true
-    person.save
-    true
   end
 
   # FIXME - if in error log apears has_permission?, try to use this method
@@ -179,11 +153,11 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def incomplete_registration params
     person = User.find(params[:user]).person
     percentege = calc_percentage_registration(person)
-    if percentege >= 0 and percentege <= 100 
+    if percentege >= 0 and percentege <= 100
       return _("Registration "+percentege.to_s+"% incomplete ")
     end
   end
-    
+
   def calc_percentage_registration person
     empty_fields = 0
     required_list = ["cell_phone","contact_phone","institution","comercial_phone","country","city","state","organization_website","role","area_interest","image"]
