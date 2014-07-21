@@ -3,7 +3,8 @@ require File.dirname(__FILE__) + '/../../../../test/test_helper'
 class SoftwareInfoValidationTest < ActiveSupport::TestCase
 
   def setup
-    @community = fast_create(Community)
+    @community = fast_create(Community, :identifier => 'new-software', :name => 'New Software')
+
     @language = ProgrammingLanguage.new(:name => 'C++')
     @language.save
     @software_language = SoftwareLanguage.new(:version => '1', :operating_system => 'os')
@@ -15,10 +16,19 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     @software_database = SoftwareDatabase.new(:version => '2', :operating_system => 'os2')
     @software_database.database_description = @database
     @software_database.save
-     @software_info = SoftwareInfo.new(:community_id=>1, :acronym => "SFTW", :e_mag => true,:icp_brasil => true,:intern => true,:e_ping => true,
-     :e_arq => true,:name => true,:operating_platform => true,:objectives => "",:features => "")
-     @software_info.software_languages << @software_language
-     @software_info.software_databases << @software_database
+
+    @operating_system_name = OperatingSystemName.new(:name => 'Debian')
+    @operating_system_name.save
+    @operating_system = OperatingSystem.new(:version => '1.0')
+    @operating_system.operating_system_name = @operating_system_name
+    @operating_system.save
+
+    @software_info = SoftwareInfo.new(:acronym => "SFTW", :e_mag => true,:icp_brasil => true,:intern => true,:e_ping => true,
+     :e_arq => true, :operating_platform => true, :objectives => "", :features => "")
+    @software_info.software_languages << @software_language
+    @software_info.software_databases << @software_database
+    @software_info.operating_systems << @operating_system
+
   end
 
   should 'Save SoftwareInfo if all fields are filled' do

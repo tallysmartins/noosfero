@@ -44,13 +44,13 @@ class SoftwareLanguageValidationTest < ActiveSupport::TestCase
   def create_software_info
     software_info = SoftwareInfo.new
     software_info.community_id = fast_create(Community).id
+    software_info.community.name = 'Noosfero'
     software_info.e_mag = true
     software_info.icp_brasil = true
     software_info.intern = true
     software_info.e_ping = true
     software_info.e_arq = true
-    software_info.name = true
-    software_info.operating_platform = true
+    software_info.operating_platform = 'GNU/Linux' 
     software_info
   end
 
