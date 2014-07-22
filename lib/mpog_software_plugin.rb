@@ -189,7 +189,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
  end
 
   def manage_software
-      [{:title => _('Manage Software'), :url => {:controller => 'mpog_software_plugin', :action => 'archive_software'}}]
+    [{:title => _('Manage Software'), :url => {:controller => 'mpog_software_plugin', :action => 'archive_software'}}]
   end
 
   protected
@@ -277,10 +277,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     license = LicenseInfo.find(context.params[:version])
     context.profile.software_info.license_info = license
     context.profile.software_info.save!
-  end
-
-  def manage_software
-    [{:title => _('Manage Software'), :url => {:controller => 'mpog_software_plugin_myprofile', :action => 'new_software'}}]
   end
 
   def language_transaction
