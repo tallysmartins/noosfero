@@ -150,6 +150,13 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     person.has_permission_without_plugins?(permission, target)
   end
 
+ def create_url_to_edit_profile person
+    new_url = person.public_profile_url
+    new_url[:controller] = 'profile_editor'
+    new_url[:action] = 'edit'
+    new_url
+ end
+
   def incomplete_registration params
     return if params.nil? or params[:user].nil?
 
@@ -159,21 +166,20 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       params[:user]
     end
 
+    @profile_edit_link = link_to _("Complete your registration"), "/myprofile/#{person.identifier}/profile_editor/edit"
+    @profile_empty_fields =  profile_required_empty_list person
     @percentege = calc_percentage_registration(person)
+
     if @percentege >= 0 and @percentege <= 100
       expanded_template('mpog_software_plugin_myprofile/_incomplete_registration.html.erb')
     end
   end
 
   def calc_percentage_registration person
-    empty_fields = 0
-    required_list = ["cell_phone","contact_phone","institution","comercial_phone","country","city","state","organization_website","role","area_interest","image"]
-    required_list.each do |field|
-      if person.send(field).blank?
-        empty_fields = empty_fields + 1
-      end
-    end
-    percentege = (empty_fields*100)/required_list.count
+    required_list = profile_required_list
+    empty_fields = profile_required_empty_list person
+
+    percentege = (empty_fields.count*100)/required_list.count
     person.percentage_incomplete = percentege
     person.save(validate: false)
     percentege
@@ -182,13 +188,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
  def add_link_to_complete_registration person
   #find a better way to do it
   if context.session[:hide_incomplete_percentage] != true
-    new_url = person.public_profile_url
-    new_url[:controller] = 'profile_editor'
-    new_url[:action] = 'edit'
-
+    _new_url = create_url_to_edit_profile(person)
     Proc::new do
        content_tag(:div,
-         link_to( _("Percentage incomplete: #{person.percentage_incomplete.to_s} %" ), new_url) +
+         link_to( _("Percentage incomplete: #{person.percentage_incomplete.to_s} %" ), _new_url) +
          link_to(image_tag("/images/icon_filter_exclude.png"), "#", :class => "hide-incomplete-percentage", :alt => "Hide Incomplete Percentage"), :class=>"mpog-incomplete-percentage"
        )
     end
@@ -200,6 +203,22 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   protected
+
+  def profile_required_list
+    required_list = ["cell_phone","contact_phone","institution","comercial_phone","country","city","state","organization_website","role","area_interest","image"]
+  end
+
+  def profile_required_empty_list person
+    empty_fields = []
+    required_list = profile_required_list
+
+    required_list.each do |field|
+      if person.send(field).blank?
+        empty_fields << field.sub("_"," ") 
+      end
+    end
+    empty_fields
+  end
 
   def operating_system_transaction
     OperatingSystem.transaction do

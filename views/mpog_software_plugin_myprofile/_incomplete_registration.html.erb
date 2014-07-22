@@ -1,3 +1,16 @@
 <div id='incomplete_registration'>
-	<%= 'Teste' %>
+<span> <%= _("Incomplete registration percentage") %>: <%= @percentege %>%</span>
+
+<div id="profile_empty_fields">
+  List with fields to be filled:
+  <ul>
+    <% @profile_empty_fields.each do |field|%>
+    <li>
+      <%= field %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= @profile_edit_link %>
 </div>
