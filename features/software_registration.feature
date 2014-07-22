@@ -52,7 +52,7 @@ Feature:
     Then I should not see "Operating platform can't be blank"
 
   @selenium
-  Scenario: Show software_langue errors if this Version is blank
+  Scenario: Show software_language errors if version is blank
   Given I go to admin_user's control panel
     And I follow "Manage my groups"
     And I follow "Create a new software"
