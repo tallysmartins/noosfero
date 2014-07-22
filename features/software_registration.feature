@@ -1,6 +1,7 @@
-Feature:
+Feature: software registration
   As a user
   I want to create a new software
+  So that I can have software communities on my network
 
   Background:
     Given "MpogSoftwarePlugin" plugin is enabled

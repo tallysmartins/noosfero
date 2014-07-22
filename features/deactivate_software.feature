@@ -1,6 +1,7 @@
-Feature:
+Feature: deactivate software
   As a administrator of a software
-  I want to manage it
+  I want to be able to deactivate
+  So that, if needed, I can reactivate it without loosing it's data
 
   Background:
     Given "MpogSoftwarePlugin" plugin is enabled
