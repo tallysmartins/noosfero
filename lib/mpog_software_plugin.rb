@@ -136,7 +136,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def js_files
-    ["mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js"]
+    ["mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js", "mpog-incomplete-registration.js"]
   end
 
   def add_new_organization_button
@@ -150,12 +150,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     person.has_permission_without_plugins?(permission, target)
   end
 
- def create_url_to_edit_profile person
-    new_url = person.public_profile_url
-    new_url[:controller] = 'profile_editor'
-    new_url[:action] = 'edit'
-    new_url
- end
 
   def incomplete_registration params
     return if params.nil? or params[:user].nil?
@@ -170,10 +164,17 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     @profile_empty_fields =  profile_required_empty_list person
     @percentege = calc_percentage_registration(person)
 
-    if @percentege >= 0 and @percentege <= 100
+    if @percentege >= 0 and @percentege <= 100 and context.session[:hide_incomplete_percentage] != true
       expanded_template('mpog_software_plugin_myprofile/_incomplete_registration.html.erb')
     end
   end
+
+
+  def manage_software
+    [{:title => _('Manage Software'), :url => {:controller => 'mpog_software_plugin', :action => 'archive_software'}}]
+  end
+
+  protected
 
   def calc_percentage_registration person
     required_list = profile_required_list
@@ -185,24 +186,12 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     percentege
   end
 
- def add_link_to_complete_registration person
-  #find a better way to do it
-  if context.session[:hide_incomplete_percentage] != true
-    _new_url = create_url_to_edit_profile(person)
-    Proc::new do
-       content_tag(:div,
-         link_to( _("Percentage incomplete: #{person.percentage_incomplete.to_s} %" ), _new_url) +
-         link_to(image_tag("/images/icon_filter_exclude.png"), "#", :class => "hide-incomplete-percentage", :alt => "Hide Incomplete Percentage"), :class=>"mpog-incomplete-percentage"
-       )
-    end
-  end
+ def create_url_to_edit_profile person
+    new_url = person.public_profile_url
+    new_url[:controller] = 'profile_editor'
+    new_url[:action] = 'edit'
+    new_url
  end
-
-  def manage_software
-    [{:title => _('Manage Software'), :url => {:controller => 'mpog_software_plugin', :action => 'archive_software'}}]
-  end
-
-  protected
 
   def profile_required_list
     required_list = ["cell_phone","contact_phone","institution","comercial_phone","country","city","state","organization_website","role","area_interest","image"]

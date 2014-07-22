@@ -73,16 +73,6 @@ function institution_autocomplete() {
 }
 
 
-function hide_incomplete_percentage(evt) {
-  evt.preventDefault();
-  var link_div = jQuery(this).parent();
-
-  jQuery.get("/plugin/mpog_software/hide_registration_incomplete_percentage", {hide:true}, function(response){
-    if( response == true )
-      link_div.hide();
-  });
-}
-
 jQuery(document).ready(function(){
   jQuery('#secondary_email_field').blur(
     validate_email_format
@@ -91,8 +81,6 @@ jQuery(document).ready(function(){
   jQuery("#user_email").blur(
     put_brazil_based_on_email
   );
-
-  jQuery(".hide-incomplete-percentage").click(hide_incomplete_percentage);
 
   jQuery('#secondary_email_field').focus(function() { jQuery('#secondary-email-balloon').fadeIn('slow'); });
   jQuery('#secondary_email_field').blur(function() { jQuery('#secondary-email-balloon').fadeOut('slow'); });
