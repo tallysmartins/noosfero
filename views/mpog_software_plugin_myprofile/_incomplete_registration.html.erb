@@ -1,16 +1,29 @@
 <div id='incomplete_registration'>
-<span> <%= _("Incomplete registration percentage") %>: <%= @percentege %>%</span>
+  <div id="incomplete_percentage">
+    <%= _("Incomplete registration percentage")+":#{@percentege}%" %>
+  </div>
 
-<div id="profile_empty_fields">
-  List with fields to be filled:
-  <ul>
-    <% @profile_empty_fields.each do |field|%>
-    <li>
-      <%= field %>
-    </li>
-    <% end %>
-  </ul>
-</div>
+  <div id="profile_empty_fields">
+   <span><%= _("List with fields to be filled")+":" %></span>
+    <ul>
+      <% @profile_empty_fields.each do |field|%>
+      <li>
+        <%= field %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 
-<%= @profile_edit_link %>
+  <div id="profile_links">
+    <table>
+      <tr>
+        <td>
+          <%= @profile_edit_link %>
+        </td>
+        <td>
+          <a href="#"><%= _("Hide this message") %></a>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>

@@ -113,3 +113,23 @@
 .formfieldline input[type="text"] {
   width: 180px;
 }
+
+#incomplete_registration {
+  position: relative;
+  border: solid 2px #000;
+  padding: 5px;
+}
+
+#incomplete_percentage {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+#profile_empty_fields span {
+  margin-left: 15px;
+}
+
+#profile_links table tr td {
+  text-align: center;
+}
