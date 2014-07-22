@@ -1,7 +1,7 @@
 Feature: deactivate user
-  As a user
-  I want to deactivate my account
-  So I can reactivate my account later
+  As a environment admin
+  I want to be able  deactivate my account
+  So that user data remains persisted and allows the reactivation of the account
 
   Background:
     Given "MpogSoftwarePlugin" plugin is enabled
@@ -15,7 +15,8 @@ Feature: deactivate user
       | joaosilva  | Joao Silva  | joaosilva@example.com  |
     And I am logged in as "joaosilva"
 
-@selenium
+
+  @selenium-fixme
   Scenario: successfull deactivation
     Given I go to joaosilva's control panel
     And I follow "Edit Profile"
@@ -25,7 +26,7 @@ Feature: deactivate user
     When I go to /profile/joaosilva
     Then I should see "This profile is inaccessible."
 
-@selenium
+  @selenium-fixme
   Scenario: successfull reactivation of account
     Given I go to joaosilva's control panel
     And I follow "Edit Profile"
