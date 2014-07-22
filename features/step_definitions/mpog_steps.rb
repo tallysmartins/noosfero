@@ -13,7 +13,7 @@ Given /^SoftwareInfo has initial default values on database$/ do
   DatabaseDescription.create(:name => "Apache")
   DatabaseDescription.create(:name => "PostgreSQL")
 
-  OperatingSystemName.create(:name=>"Debina")
+  OperatingSystemName.create(:name=>"Debian")
   OperatingSystemName.create(:name=>"Fedora")
   OperatingSystemName.create(:name=>"CentOS")
 end
@@ -70,6 +70,19 @@ Given /^the following software databases$/ do |table|
   end
 end
 
+
+Given /^the following operating systems$/ do |table|
+  table.hashes.each do |item|
+    operating_system_name = OperatingSystemName.where(:name=>item[:operating_system_name]).first
+    operating_system = OperatingSystem::new
+
+    operating_system.operating_system_name = operating_system_name
+    operating_system.version = item[:version]
+
+    operating_system.save!
+  end
+end
+
 Given /^the following softwares$/ do |table|
   table.hashes.each do |item|
     community = Community.create :name=>item[:name]
@@ -79,10 +92,14 @@ Given /^the following softwares$/ do |table|
     software_language = SoftwareLanguage.where(:programming_language_id=>programming_language).first
     software_database = SoftwareDatabase.where(:database_description_id=>database_description).first
 
+    operating_system_name = OperatingSystemName.where(:name => item[:operating_system]).first
+    operating_system = OperatingSystem.where(:operating_system_name_id => operating_system_name).first
+    
     software_info = SoftwareInfo::new(:acronym=>item[:acronym], :operating_platform=>item[:operating_platform])
     software_info.community = community
     software_info.software_languages << software_language
     software_info.software_databases << software_database
+    software_info.operating_systems << operating_system
     software_info.save!
   end
 end
