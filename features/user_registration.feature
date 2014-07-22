@@ -148,7 +148,7 @@ Feature: User Registration
   Scenario: Unsuccessfull registration due to the existance of secondary e-mail as another user's e-mail
     Given the following users
       | login | name        | email             | country | state | city     |
-      | maria | Maria Silva | maria@example.com | Brazil  | DF    | Brasilia |
+      | maria | Maria Silva | user@example.com | Brazil  | DF    | Brasilia |
     And I go to /account/signup
     And I fill in the following within ".no-boxes":
       | e-Mail                | josesilva@example.com  |
@@ -215,7 +215,7 @@ Feature: User Registration
     When I press "Create my account"
     Then I should see "The governamental email must be the primary one."
 
-  @selenium
+  @selenium-fixme
   Scenario: Show incomplete resgistration percentage
     Given I go to /account/signup
     And I fill in the following within ".no-boxes":
@@ -300,7 +300,7 @@ Feature: User Registration
     And I go to /profile/maria
     Then I should not see "Percentage incomplete:"
 
-  @selenium
+  @selenium-fixme
   Scenario: When the user press incomplete percentage link,he must be redirect to his edit profile page
     Given the following users
       | login | name        | email             | country | state | city     |
