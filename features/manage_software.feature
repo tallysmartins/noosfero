@@ -18,9 +18,12 @@ Feature:
     And the following software databases
     | database_name | version | operating_system |
     | PostgreSQL    | 1.0     | Linux            |
+    And the following operating systems
+    | operating_system_name | version | 
+    | Debian                | 1.0     |                 
     And the following softwares
-    | name  | acronym | operating_platform | software_language | software_database |
-    | teste | ts      | I dont know        | Python            | PostgreSQL        |
+    | name  | acronym | operating_platform | software_language | software_database | operating_system|
+    | teste | ts      | I dont know        | Python            | PostgreSQL        | Debian |
     And I go to /plugin/mpog_software/archive_software
     And I should see "teste"
     And I follow "Deactivate software"
@@ -38,10 +41,13 @@ Feature:
     And the following software databases
     | database_name | version | operating_system |
     | PostgreSQL    | 1.0     | Linux            |
+    And the following operating systems
+    | operating_system_name | version | 
+    | Debian                | 1.0     |                 
     And the following softwares
-    | name  | acronym | operating_platform | software_language | software_database |
-    | teste | ts      | I dont know        | Python            | PostgreSQL        |
-    And I go to /plugin/mpog_software/archive_software
+    | name  | acronym | operating_platform | software_language | software_database | operating_system|
+    | teste | ts      | I dont know        | Python            | PostgreSQL        | Debian |
+   And I go to /plugin/mpog_software/archive_software
     And I should see "teste"
     And I follow "Deactivate software"
     And I confirm the "Do you want to deactivate this software?" dialog
@@ -53,7 +59,7 @@ Feature:
     And I should see "teste"
     And I follow "Activate Software"
     And I confirm the "Do you want to activate this software?" dialog
-    And I follow "Communities"
+    And I go to /search/communities 
     And I fill in "search-input" with "teste"
     And I press "Search"
     Then I should see "teste" within "search-profile-item"
