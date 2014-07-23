@@ -151,21 +151,19 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
 
-  def incomplete_registration params
-    return if params.nil? or params[:user].nil?
+  def body_middle
+    return if context.session[:user].nil? or context.session[:hide_incomplete_percentage] == true
 
-    person = if params[:user].kind_of? User
-      User.find(params[:user]).person
-    else
-      params[:user]
-    end
+    person = Person.where(:user_id=>context.session[:user]).first
 
-    @profile_edit_link = link_to _("Complete your registration"), "/myprofile/#{person.identifier}/profile_editor/edit"
-    @profile_empty_fields =  profile_required_empty_list person
-    @percentege = calc_percentage_registration(person)
+    unless person.nil?
+      @profile_edit_link = link_to _("Complete your registration"), "/myprofile/#{person.identifier}/profile_editor/edit"
+      @profile_empty_fields =  profile_required_empty_list person
+      @percentege = calc_percentage_registration(person)
 
-    if @percentege >= 0 and @percentege <= 100 and context.session[:hide_incomplete_percentage] != true
-      expanded_template('mpog_software_plugin_myprofile/_incomplete_registration.html.erb')
+      if @percentege >= 0 and @percentege <= 100
+        expanded_template('incomplete_registration.html.erb')
+      end
     end
   end
 
