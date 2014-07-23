@@ -236,7 +236,7 @@ Feature: User Registration
     And I fill in "Username" with "josesilva"
     And I fill in "Password" with "secret"
     And I press "Log in"
-    Then I should see "Percentage incomplete: 63 %"
+    Then I should see "Complete Profile: 37%"
 
   @selenium
   Scenario: Remove the incomplete resgistration percentage message
@@ -260,7 +260,7 @@ Feature: User Registration
     And I fill in "Password" with "secret"
     And I press "Log in"
     And I click on anything with selector ".hide-incomplete-percentage"
-    Then I should not see "Percentage incomplete: 63 %"
+    Then I should not see "Complete Profile: 37%"
 
   @selenium
   Scenario: When the user log out and log in again, the percentage registration message must appear
@@ -268,9 +268,10 @@ Feature: User Registration
       | login | name        | email             | country | state | city     |
       | maria | Maria Silva | maria@example.com | Brazil  | DF    | Brasilia |
     When I am logged in as "maria"
+    And I should see "Complete Profile:"
     And I follow "Logout"
     And I am logged in as "maria"
-    Then I should see "Percentage incomplete:"
+    Then I should see "Complete Profile:"
 
   @selenium
   Scenario: When the user logged in and hide link of imcomplete percentage and user log out and log in again, the percentage registration link must appear
@@ -279,12 +280,13 @@ Feature: User Registration
       | maria | Maria Silva | maria@example.com | Brazil  | DF    | Brasilia |
     When I am logged in as "maria"
     And I go to /profile/maria
-    And I should see "Percentage incomplete:"
+    And I should see "Complete Profile:"
     And I click on anything with selector ".hide-incomplete-percentage"
+    And I should not see "Complete Profile"
     And I follow "Logout"
     And I am logged in as "maria"
     And I go to /profile/maria
-    Then I should see "Percentage incomplete:"
+    Then I should see "Complete Profile:"
 
   @selenium
   Scenario: When the user logged in and hide link of imcomplete percentage and user update page, the percentage registration link must not appear
@@ -293,12 +295,13 @@ Feature: User Registration
       | maria | Maria Silva | maria@example.com | Brazil  | DF    | Brasilia |
     When I am logged in as "maria"
     And I go to /profile/maria
-    And I should see "Percentage incomplete:"
+    And I should see "Complete Profile"
     And I click on anything with selector ".hide-incomplete-percentage"
-    And I should not see "Percentage incomplete:"
+    And I should not see "Complete Profile"
     And I go to /myprofile/maria/profile_editor/edit
+    And I should not see "Complete Profile"
     And I go to /profile/maria
-    Then I should not see "Percentage incomplete:"
+    Then I should not see "Complete Profile"
 
   @selenium-fixme
   Scenario: When the user press incomplete percentage link,he must be redirect to his edit profile page
@@ -306,5 +309,5 @@ Feature: User Registration
       | login | name        | email             | country | state | city     |
       | maria | Maria Silva | maria@example.com | Brazil  | DF    | Brasilia |
     When I am logged in as "maria"
-    And I follow "Percentage incomplete: 72 %"
+    And I follow "Complete your profile"
     Then I should see "Profile settings"
