@@ -15,3 +15,6 @@ checkout = git clone https://github.com/redmine/redmine.git --branch 2.5-stable
 
 [noosfero]
 checkout = git clone https://gitlab.com/softwarepublico/noosfero.git
+
+[utils/gitlab-irc]
+checkout = git clone https://gitlab.com/softwarepublico/gitlab-irc.git
