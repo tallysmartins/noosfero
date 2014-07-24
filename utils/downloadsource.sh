@@ -1,39 +1,41 @@
-# !/bin/bash
-if [ $# -lt 3 ];
+# !/bin/sh
+
+set -eu
+
+if [ $# -ne 3 ];
 then
 	echo "Usage: $0 {link} {destdir} {md5sum}"
-	exit -1
+	exit 1
 fi
 
-link=$1
-dest=$2
-checksum=$3
-packdir=packages
+tarball=$1
+destdir=$2
+md5sum=$3
 
-fname=`basename $link`
-cname=`basename $checksum`
+srcdir=$(dirname $0)/../src
+mkdir -p $srcdir
 
-if [ ! -f $packdir/$fname ];
+fname=`basename $tarball`
+md5sum_file=/tmp/${fname}.md5sum
+echo "$md5sum $fname" > $md5sum_file
+
+trap cleanup INT TERM EXIT
+cleanup() {
+	rm -f $md5sum_file
+}
+
+if [ ! -f $srcdir/$fname ];
 then
-	wget $link -O $dest/$fname
-fi
-
-if [ ! -f $packdir/$cname ];
-then
-	wget $checksum -O $packdir/$cname
+	wget $tarball -O $srcdir/$fname
 fi
 
 
-cd $packdir
-
-if ! md5sum -c $cname;
+if ! (cd $srcdir && md5sum -c $md5sum_file);
 then
 	echo "$fname is corrupted!"
 	exit -2
 fi
 
-cd ..
-
-mkdir -p $dest
-tar vxzf $packdir/$fname -C $dest --strip-components=1
-
+rm -rf $destdir
+mkdir -p $destdir
+tar xaf $srcdir/$fname -C $destdir --strip-components=1
