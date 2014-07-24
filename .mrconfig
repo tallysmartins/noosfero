@@ -12,3 +12,6 @@ checkout = git clone https://gitlab.com/softwarepublico/colabdocumentation.git
 
 [redmine]
 checkout = git clone https://github.com/redmine/redmine.git --branch 2.5-stable
+
+[noosfero]
+checkout = git clone https://gitlab.com/softwarepublico/noosfero.git
