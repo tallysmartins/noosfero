@@ -28,6 +28,10 @@
     height: auto;
 }
 
+#user #homepage-link {
+  top: -11px;
+}
+
 #wrap-2 {
     margin-top: 0;
 }
@@ -52,7 +56,7 @@ div#wrapper-barra-brasil {
 /****************** Estilos basicos ******************/
 
 /******* itens do gov-plone.css *******/
-/* 
+/*
 * { margin: 0; padding: 0; }*/
 * :link,:visited { text-decoration:none }
 * ul,ol { list-style:none; }
@@ -295,11 +299,11 @@ p {
 }
 
 #TB_window .login-box .button-bar .icon-help{
-    
+
 }
 
 #TB_window .login-box form .button-bar {
-    float: none; 
+    float: none;
     width: 100%
 }
 
@@ -307,10 +311,10 @@ p {
     width: 375px;
 }
 
-#signup-form small#signup-balloon, 
-#signup-form small#password-balloon, 
-#signup-form small#password-confirmation-balloon, 
-#signup-form small#email-balloon, 
+#signup-form small#signup-balloon,
+#signup-form small#password-balloon,
+#signup-form small#password-confirmation-balloon,
+#signup-form small#email-balloon,
 #signup-form small#name-balloon {
     right: 0;
 }
@@ -431,7 +435,7 @@ p {
     width: auto;
      font-size: 12px;
     padding-left: 30px;
-    padding-right: 5px;  
+    padding-right: 5px;
      background-position: 7px 50%;
 }
 
@@ -500,7 +504,7 @@ p {
     margin-left: 0px;
 }
 
-#content .profile-info-options input.button.with-text, 
+#content .profile-info-options input.button.with-text,
 #content .profile-info-options a.button.with-text {
     background-color: #fff;
     border-radius: 0 0 0 0;
@@ -508,14 +512,14 @@ p {
     padding-bottom: 5px;
     padding-left: 30px;
     padding-top: 5px;
-    text-align: left;    
+    text-align: left;
 }
 #content .profile-info-options a.button.with-text{
     border: 0px solid #CCCCCC;
     border-bottom: 2px solid #CCCCCC !important;
 }
 
-#content .profile-info-options input.button:hover, 
+#content .profile-info-options input.button:hover,
 #content .profile-info-options a.button:hover {
      background-color: #ccc;
     border: 1pxpx solid #CCC;
@@ -576,7 +580,7 @@ p {
 }
 
 .display-content-block .image {
-    
+
 }
 
 .block.display-content-block .tags span {
@@ -597,10 +601,10 @@ p {
      color: #000;
 }
 
-#content .main-block h1, 
-#not-found h1, 
+#content .main-block h1,
+#not-found h1,
 #access-denied h1 {
-    
+
 }
 
 /*tamanho da fonte dentro dos artigos*/
@@ -626,8 +630,8 @@ p {
     padding: 14px;
      color: #999;
 }
-#article .article-comments-list, 
-#article .article-comments-list ul, 
+#article .article-comments-list,
+#article .article-comments-list ul,
 #article .article-comments-list li {
     list-style: none outside none;
     margin: 5px 0 10px;
@@ -676,7 +680,7 @@ p {
 }
 
 #content .comment-picture {
-    max-width: 50px;    
+    max-width: 50px;
      word-wrap: break-word;
 }
 
@@ -800,13 +804,13 @@ p {
 
 /*borda dos wrappers*/
 /**/
-#main-content-wrapper-1, 
-#main-content-wrapper-2, 
-#main-content-wrapper-3, 
-#main-content-wrapper-4, 
-#main-content-wrapper-5, 
-#main-content-wrapper-6, 
-#main-content-wrapper-7, 
+#main-content-wrapper-1,
+#main-content-wrapper-2,
+#main-content-wrapper-3,
+#main-content-wrapper-4,
+#main-content-wrapper-5,
+#main-content-wrapper-6,
+#main-content-wrapper-7,
 #main-content-wrapper-8 {
     background: none repeat scroll 0 0 transparent;
 }
@@ -857,7 +861,7 @@ ul.profile-list .common-profile-list-block {
     width: 100%;
 }
 
-/*.box-2 .common-profile-list-block .vcard a.profile_link, 
+/*.box-2 .common-profile-list-block .vcard a.profile_link,
 .box-3 .common-profile-list-block .vcard a.profile_link,*/
 .common-profile-list-block .vcard a.profile_link {
     margin-bottom: 5px;
@@ -865,7 +869,7 @@ ul.profile-list .common-profile-list-block {
 }
 
 
-.box-2 .common-profile-list-block .vcard a.profile_link, 
+.box-2 .common-profile-list-block .vcard a.profile_link,
 .box-3 .common-profile-list-block .vcard a.profile_link {
     height: auto;
     max-height: 100%;
@@ -916,7 +920,7 @@ ul.profile-list .common-profile-list-block {
 
 li.event-dates {
     background: url("/images/icons-mime/event.png") no-repeat scroll 100% 50% white;
-     
+
     float: none;
     padding: 5px 32px 5px 5px;
      text-align: right;
@@ -1005,7 +1009,7 @@ div#article-parent {
 /*paginação*/
 
 .pagination {
-    
+
 }
 .pagination {
     font-size: 120%;
@@ -1071,7 +1075,7 @@ input.button.with-text {
      max-height: 28px;
 }
 
-#content a.button.with-text, 
+#content a.button.with-text,
 #content a.button.with-text {
     height: 28px;
     max-height: 28px;
@@ -1087,13 +1091,13 @@ input.button.with-text {
     text-decoration: none;
 }
 
-#content #article-actions input.button, 
+#content #article-actions input.button,
 #content #article-actions a.button,
 #content a.button,
 #content input.button {
     background-color: transparent;
      border: 1px solid #CCCCCC;
-     vertical-align: middle;    
+     vertical-align: middle;
 }
 
 #content a.button.with-text {
@@ -1107,7 +1111,7 @@ input.button.with-text {
      margin-right: 5px;
 }
 
-#content #article-actions input.button:hover, 
+#content #article-actions input.button:hover,
 #content #article-actions a.button:hover {
     background-color: #ccc;
      border: 1px solid #CCCCCC;
@@ -1170,7 +1174,7 @@ input.button.with-text {
 }
 
 #search-page .map-or-list-search-results list {
-    
+
 }
 
 .search-results-innerbox {
@@ -1181,8 +1185,8 @@ input.button.with-text {
     height: 100%;
 }
 
-.search-results-type-article li.article-item, 
-.search-tagged-items li.article-item, 
+.search-results-type-article li.article-item,
+.search-tagged-items li.article-item,
 .only-one-result-box li.search-product-item {
     border-bottom: 0px solid #fff;
 }
@@ -1400,7 +1404,7 @@ input.button.with-text {
   background: url("images/comentarios.png") no-repeat left center #fffafa;
 }
 .track_list .item_card .track_stats .hits .counter {
-  background: url("images/visualizacoes.png") no-repeat left center #fffafa;    
+  background: url("images/visualizacoes.png") no-repeat left center #fffafa;
 }
 
 .track_list .item_card .track_stats {
@@ -1455,7 +1459,7 @@ input.button.with-text {
 
 .track_list .item .track_content .steps h3{
     font-size: 13px !important;
-    text-transform: uppercase;  
+    text-transform: uppercase;
     font-weight: normal;
 }
 
@@ -1483,7 +1487,7 @@ input.button.with-text {
 
 .step a:link, #content .step a:link, dl.portlet .step a:link {
     color: #999; /*cinza escuro*/
-    /*teste*/    
+    /*teste*/
     display: inline-block;
    max-width: 80%;
    vertical-align: middle;
@@ -1515,7 +1519,7 @@ input.button.with-text {
 
 #track .step_list .step .content .name {}
 
-#track .step .name, 
+#track .step .name,
 #track .step .name a {
     color: #999;
 }
@@ -1706,7 +1710,7 @@ input.button.with-text {
 /*  margin-top: 5px;*/
 }
 
-.box-2 .common-profile-list-block .profile-image, 
+.box-2 .common-profile-list-block .profile-image,
 .box-3 .common-profile-list-block .profile-image{
     height: 56px;
 /*   border: 1px solid #CCCCCC;
@@ -1859,18 +1863,18 @@ input.button.with-text {
 }
 
 #pairwise_main .skip_vote a {
-     background: url("images/btn_duvida_pairwise.png") no-repeat center center #fff !important; 
+     background: url("images/btn_duvida_pairwise.png") no-repeat center center #fff !important;
     color: transparent !important;
      display: inline-block;
     height: 1px;
     line-height: 0;
     padding: 1em 0;
     text-decoration: none;
-    width: 200px;   
+    width: 200px;
 }
 
 #pairwise_main .skip_vote a:hover {
-     background: url("images/btn_duvida_pairwise_hover.png") no-repeat center center #fff !important;   
+     background: url("images/btn_duvida_pairwise_hover.png") no-repeat center center #fff !important;
 }
 
 #pairwise_main .skip_vote_reasons {background-color: #7D8874;padding-top: 0 !important;}
@@ -1909,7 +1913,7 @@ input.button.with-text {
     width: 80%;
 }
 
-#pairwise_main .div_text_input_container .div_text_input textarea {    
+#pairwise_main .div_text_input_container .div_text_input textarea {
      border: 1px solid #CCCCCC;
     border-radius: 0 0 0 0 !important;
 }
@@ -1979,16 +1983,16 @@ body.contraste #user a strong{
     color: #ffff00;
 }
 
-body.contraste #content .box-2 .tags-block .block-footer-content a, 
-body.contraste #content .box-2 .people-block .block-footer-content a, 
-body.contraste #content .box-2 .profile-list-block .block-footer-content a, 
-body.contraste #content .box-2 .enterprises-block .block-footer-content a, 
-body.contraste #content .box-2 .members-block .block-footer-content a, 
-body.contraste #content .box-2 .communities-block .block-footer-content a, 
+body.contraste #content .box-2 .tags-block .block-footer-content a,
+body.contraste #content .box-2 .people-block .block-footer-content a,
+body.contraste #content .box-2 .profile-list-block .block-footer-content a,
+body.contraste #content .box-2 .enterprises-block .block-footer-content a,
+body.contraste #content .box-2 .members-block .block-footer-content a,
+body.contraste #content .box-2 .communities-block .block-footer-content a,
 body.contraste #content .box-2 .friends-block .block-footer-content a,
-body.contraste #content .more_button .view_all a, 
+body.contraste #content .more_button .view_all a,
 body.contraste #content .read_more a,
-body.contraste .more_button .view_all a, 
+body.contraste .more_button .view_all a,
 body.contraste .read_more a
 {
     background-image: none;
@@ -1997,16 +2001,16 @@ body.contraste .read_more a
 }
 
 body.contraste.action-home-index #content .article-block .short-post .read-more a,
-body.contraste #content .box-1 .tags-block .block-footer-content a, 
-body.contraste #content .box-1 .people-block .block-footer-content a, 
-body.contraste #content .box-1 .profile-list-block .block-footer-content a, 
-body.contraste #content .box-1 .enterprises-block .block-footer-content a, 
-body.contraste #content .box-1 .members-block .block-footer-content a, 
-body.contraste #content .box-1 .communities-block .block-footer-content a, 
+body.contraste #content .box-1 .tags-block .block-footer-content a,
+body.contraste #content .box-1 .people-block .block-footer-content a,
+body.contraste #content .box-1 .profile-list-block .block-footer-content a,
+body.contraste #content .box-1 .enterprises-block .block-footer-content a,
+body.contraste #content .box-1 .members-block .block-footer-content a,
+body.contraste #content .box-1 .communities-block .block-footer-content a,
 body.contraste #content .box-1 .friends-block .block-footer-content a,
-body.contraste #content .more_button .view_all a, 
+body.contraste #content .more_button .view_all a,
 body.contraste #content .read_more a,
-body.contraste .more_button .view_all a, 
+body.contraste .more_button .view_all a,
 body.contraste .read_more a
 {
     background: url("images/button-read-more-vazio-contraste.png") no-repeat scroll left 50% #333;
@@ -2018,7 +2022,7 @@ body.contraste .read_more a
 body.contraste a,
 body.contraste #accessibility a,
 body.contraste #portal-siteactions a,
-body.contraste #logo a, 
+body.contraste #logo a,
 body.contraste #logo #portal-title,
 body.contraste #sobre a,
 body.contraste h1,
@@ -2033,18 +2037,18 @@ body.contraste #content .documentDescription,
 body.contraste #content #description,
 body.contraste .nitfByline,
 body.contraste p.section,
-body.contraste .track_list .item_card .track_stats .hits .label, 
+body.contraste .track_list .item_card .track_stats .hits .label,
 body.contraste .track_list .item_card .track_stats .comments .label,
 body.contraste.action-home-index #content .display-content-block .lead p,
 body.contraste.action-environment_design-index #content .display-content-block .lead p,
-body.contraste.action-home-index #content .display-content-block .published-at, 
+body.contraste.action-home-index #content .display-content-block .published-at,
 body.contraste.action-environment_design-index #content .display-content-block .published-at {
     color: #fff;
 }
 
-body.contraste #content .breadcrumbs-plugin_content-breadcrumbs-block a, 
+body.contraste #content .breadcrumbs-plugin_content-breadcrumbs-block a,
 body.contraste #content .breadcrumbs-plugin_content-breadcrumbs-block a:visited,
-body.contraste #content a:link, 
+body.contraste #content a:link,
 body.contraste #content a:link,
 body.contraste #content a:visited,
 body.contraste #content a {
@@ -2052,7 +2056,7 @@ body.contraste #content a {
 }
 
 
-body.contraste.action-home-index #content .container-block-plugin_container-block .display-content-block .title a, 
+body.contraste.action-home-index #content .container-block-plugin_container-block .display-content-block .title a,
 body.contraste.action-environment_design-index #content .container-block-plugin_container-block .display-content-block .title a,
 
 body.contraste #content .display-content-block .title a,
@@ -2069,9 +2073,9 @@ body.contraste.action-environment_design-index #wrap-2  {
     background-image: none;
 }
 
-body.contraste.action-home-index .block .block-inner-2, 
+body.contraste.action-home-index .block .block-inner-2,
 body.contraste.action-environment_design-index .block .block-inner-2,
-body.contraste.action-home-index #content .tags-block .block-inner-2, 
+body.contraste.action-home-index #content .tags-block .block-inner-2,
 body.contraste.action-environment_design-index #content .tags-block .block-inner-2 {
     background-color: #333;
 }
@@ -2100,7 +2104,7 @@ body.contraste #content .box .block-title {
     background-color: #333;
 }
 
-body.contraste.action-home-index .container-block-plugin_container-block .container-block-plugin_container-block, 
+body.contraste.action-home-index .container-block-plugin_container-block .container-block-plugin_container-block,
 body.contraste.action-environment_design-index .container-block-plugin_container-block .container-block-plugin_container-block,
 body.contraste.action-home-index #content .box .block-title,
 body.contraste.action-environment_design-index #content .box .block-title,
@@ -2121,7 +2125,7 @@ body.contraste #content .link-list-block li a:hover {
      color: #ffff00;
 }
 
-body.contraste #content .profile-info-options input.button.with-text, 
+body.contraste #content .profile-info-options input.button.with-text,
 body.contraste #content .profile-info-options a.button.with-text{
     background-color: #333;
      color: #ffff00;
@@ -2136,7 +2140,7 @@ body.contraste #content .article-comment {
     background: none repeat scroll 0 0 #000;
 }
 
-body.contraste #comments_list .comment-info, 
+body.contraste #comments_list .comment-info,
 body.contraste #comments_list .comment-created-at,
 body.contraste #footer-license a,
 body.contraste #footer-license p{
@@ -2173,8 +2177,8 @@ body.contraste .ui-widget-content {
     color: #fff;
 }
 
-body.contraste .ui-state-active, 
-body.contraste .ui-widget-content .ui-state-active, 
+body.contraste .ui-state-active,
+body.contraste .ui-widget-content .ui-state-active,
 body.contraste .ui-widget-header .ui-state-active {
      background-image: none;
      background-color: #000;
@@ -2320,7 +2324,7 @@ body.action-embed-index {
 
 .action-embed-index #boxes,
 .action-embed-index .box-1 .blocks,
-.action-embed-index .block-outer, 
+.action-embed-index .block-outer,
 .action-embed-index #content .block {
   margin: 0px;
 }
@@ -2465,7 +2469,7 @@ body.action-embed-index {
      height: auto;
 }
 
-.hub ul.settings li.twitter label{    
+.hub ul.settings li.twitter label{
      color: white;
     display: block;
     font-style: oblique;
