@@ -114,7 +114,7 @@
   text-decoration: none;
   padding: 4px 0 4px 10px;
   text-transform: uppercase;
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif; 
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
 #portal-siteactions a:hover {
@@ -169,7 +169,7 @@
 #theme-header #sobre {
     line-height: 20px;
    font-size: 12px;
-} 
+}
 /* */
 
 /* Sobre o brasil */
@@ -321,31 +321,31 @@ background-size: 100% 100%;
 }
 
 #social-icons #sb_face {
-background-image: url(images/icone-verde-facebook.png);
+background: url(images/icone-branco-facebook.png) 0 20px;
 }
 #social-icons #sb_face:hover {
-background: url(images/icone-verde-facebook.png) 0 20px;
+background: url(images/icone-branco-facebook.png);
 }
 
 #social-icons #sb_tweet {
-background-image: url(images/icone-verde-twitter.png);
+background: url(images/icone-branco-twitter.png) 0 20px;
 }
 #social-icons #sb_tweet:hover {
-background: url(images/icone-verde-twitter.png) 0 20px;
+background: url(images/icone-branco-twitter.png);
 }
 
 #social-icons #sb_youtb {
-background-image: url(images/icone-verde-youtube.png);
+background: url(images/icone-branco-youtube.png) 0 20px;
 }
 #social-icons #sb_youtb:hover {
-background: url(images/icone-verde-youtube.png) 0 20px;
+background: url(images/icone-branco-youtube.png);
 }
 
 #social-icons #sb_flickr {
-background-image: url(images/icone-verde-flickr.png);
+background: url(images/icone-branco-flickr.png) 0 20px;
 }
 #social-icons #sb_flickr:hover {
-background: url(images/icone-verde-flickr.png) 0 20px;
+background: url(images/icone-branco-flickr.png);
 }
 
 #social-icons span { display: none; }
