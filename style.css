@@ -1978,6 +1978,10 @@ body.contraste #barra-psocial #cat_menu {
     background-image: url("images/logo-PS-barra-pb.png");
 }
 
+#cat_menu {
+  display: none;
+}
+
 body.contraste #user a,
 body.contraste #user a strong{
     color: #ffff00;
