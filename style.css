@@ -183,8 +183,8 @@ p {
 
 .action-account-signup #signup-form-header,
 .action-account-signup #signup-form-profile {
-    display: inline-block;
-    float: right;
+    float: center;
+    margin: 1px auto 5px;
     width: 60%;
 }
 
@@ -2513,3 +2513,10 @@ body.action-embed-index {
 .flag-pt { background-image: url(images/flag-pt_br.png) }
 
 #participa-languages a span{ display: none }
+
+#dynamic_recaptcha{
+  line-height: 1em;
+  width: 400px;
+  margin: 1px auto 5px;
+  padding-right: 150px;
+}
