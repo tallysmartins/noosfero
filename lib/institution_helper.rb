@@ -59,6 +59,14 @@ module InstitutionHelper
   end
 
   def self.set_institution_data institution, unit
+
+    community = if Community.where(:name=>unit["nome"]).length != 0
+      Community.where(:name=>unit["nome"]).first
+    else
+      Community.new :name=>unit["nome"]
+    end
+
+    institution.community = community
     institution.name = unit["nome"]
     institution.acronym  = unit["sigla"]
     institution.unit_code = self.retrieve_code(unit,"codigoUnidade")
