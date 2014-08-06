@@ -16,10 +16,10 @@ module InstitutionHelper
         units = json["unidades"]
 
         units.each do |unit|
-          institution = Institution.where(:name=>unit["nome"])
+          institution = PublicInstitution.where(:name=>unit["nome"])
 
           institution = if institution.count == 0
-            Institution::new
+            PublicInstitution::new
           else
             institution.first
           end
@@ -68,7 +68,6 @@ module InstitutionHelper
     institution.sub_juridical_nature = self.retrieve_code(unit,"codigoSubNaturezaJuridica")
     institution.normalization_level = unit["nivelNormatizacao"]
     institution.version = unit["versaoConsulta"]
-    institution.type = "PublicInstitution"
     institution.governmental_power = GovernmentalPower.where(:name=>self.retrieve_code(unit,"codigoPoder")).first
     institution.governmental_sphere = GovernmentalSphere.where(:name=>self.retrieve_code(unit,"codigoEsfera")).first
     institution
