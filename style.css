@@ -5,6 +5,9 @@
 /******************** cabecalho azul ********************/
 @import url(cabecalho-azul-theme.css);
 /****************** FIM cabecalho azul ******************/
+
+@import url(../../icons/tango/style.css);
+
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
