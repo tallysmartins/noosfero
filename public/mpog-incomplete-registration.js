@@ -10,14 +10,17 @@ function hide_incomplete_percentage(evt) {
 function show_complete_progressbar() {
   var percentage = jQuery("#complete_registration_message span").html();
   var canvas_tag = document.getElementById("complete_registration_percentage");
-  var context = canvas_tag.getContext("2d");
 
-  percentage = canvas_tag.width*(percentage/100.0);
+  if( canvas_tag != null ) {
+    var context = canvas_tag.getContext("2d");
 
-  context.beginPath();
-  context.rect(0, 0, percentage, canvas_tag.height);
-  context.fillStyle = '#00FF00';
-  context.fill();
+    percentage = canvas_tag.width*(percentage/100.0);
+
+    context.beginPath();
+    context.rect(0, 0, percentage, canvas_tag.height);
+    context.fillStyle = '#00FF00';
+    context.fill();
+  }
 }
 
 jQuery(document).ready(function(){
