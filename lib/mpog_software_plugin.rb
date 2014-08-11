@@ -169,6 +169,14 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     [{:title => _('Manage Software'), :url => {:controller => 'mpog_software_plugin', :action => 'archive_software'}}]
   end
 
+
+  def custom_user_registration_attributes user
+    if user.institution
+      community = user.institution.community
+      community.add_member user.person
+    end
+  end
+
   protected
 
   def calc_percentage_registration person
