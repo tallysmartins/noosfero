@@ -229,8 +229,17 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def user_transaction
+    old_community = Institution.find(context.profile.user.institution_id).community
+    
     User.transaction do
       context.profile.user.update_attributes!(context.params[:user])
+    end
+    
+    new_community = Institution.find(context.params[:user][:institution_id]).community
+    if old_community != new_community
+      person = context.profile.user.person
+      old_community.remove_member(person)
+      new_community.add_member(person)
     end
   end
 
