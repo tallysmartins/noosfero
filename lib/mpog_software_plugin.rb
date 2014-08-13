@@ -31,14 +31,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
       content_tag(:div,
         labelled_form_field(
-          _('Role'), text_field(:user, :role, :id => 'role_field') +
-          content_tag(
-          :small,_('If your primary email has one of those sufix: gov.br, jus.br, leg.br or mp.br, dont forget to fill your role in the organization'),:class => 'signup-form',:id =>'role-balloon')),
-          :id => 'signup-role'
-      ) +
-
-      content_tag(:div,
-        labelled_form_field(
           _('Areas of Interest'),
           text_field(:profile_data, :area_interest, :id => 'area_interest_field')+
           content_tag(
@@ -198,7 +190,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
  end
 
   def profile_required_list
-    required_list = ["cell_phone","contact_phone","institution","comercial_phone","country","city","state","organization_website","role","area_interest","image"]
+    required_list = ["cell_phone","contact_phone","institution","comercial_phone","country","city","state","organization_website","area_interest","image"]
   end
 
   def profile_required_empty_list person

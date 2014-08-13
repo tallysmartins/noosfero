@@ -85,25 +85,11 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     user = fast_create(User)
 
     user.email = "test@gov.br"
-    user.role = "Developer"
 
     user.institution = nil
     assert !user.save
 
     user.institution = Institution::new(:name=>"Test Other institution")
-    assert user.save
-  end
-
-  should 'have role if email is governmental' do
-    user = fast_create(User)
-
-    user.email = "test@gov.br"
-    user.institution = Institution::new(:name=>"Test Other institution")
-
-    user.role = nil
-    assert !user.save
-
-    user.role = "Developer"
     assert user.save
   end
 

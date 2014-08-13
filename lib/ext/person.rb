@@ -63,14 +63,6 @@ class Person
     end
   end
 
-  def role
-    self.user.role unless self.user.nil?
-  end
-
-  def role= value
-    self.user.role = value unless self.user.nil?
-  end
-
   def software?
     false
   end

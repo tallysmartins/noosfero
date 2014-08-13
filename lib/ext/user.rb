@@ -5,7 +5,7 @@ class User
   belongs_to :institution
 
   validate :email_different_secondary?, :email_has_already_been_used?,
-           :secondary_email_format, :email_suffix_is_gov?, :validate_role?
+           :secondary_email_format, :email_suffix_is_gov?
 
   scope :primary_or_secondary_email_already_used?, lambda { |email|
     where("email=? OR secondary_email=?", email, email)
@@ -52,16 +52,6 @@ class User
     end
 
     self.errors.add(:base, _("Institution is obligatory if user has a government email.")) if primary_email_has_gov_suffix and self.institution.nil?
-  end
-
-  def validate_role?
-      valid_sufix = ['gov.br','jus.br','leg.br','mp.br']
-      valid_sufix.each do |sufix|
-        if (self.secondary_email =~ /#{sufix}(.*)/ || self.email =~ /#{sufix}(.*)/) and self.role.blank?
-          errors.add(:role, _("can't be blank if e-mail has governamental sulfixes."))
-          break
-        end
-      end
   end
 
 end

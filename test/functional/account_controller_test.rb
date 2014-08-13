@@ -27,7 +27,6 @@ class AccountControllerTest < ActionController::TestCase
       :password_confirmation=>"nova_senha",
       :email=>"um@novo.usuario",
       :secondary_email=>"outro@email.com",
-      :role=>"um role ai",
       :institution_id=>@institution_list.last.id
     }
 
@@ -99,7 +98,6 @@ class AccountControllerTest < ActionController::TestCase
       :password_confirmation=>"nova_senha",
       :email=>"um@novo.usuario",
       :secondary_email=>"outro@email.com",
-      :role=>"um role ai",
       :institution_id=>@institution_list.last.id
     }
 
