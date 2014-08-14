@@ -57,10 +57,13 @@
           power : jQuery("#institutions_governmental_power").selected().val(),
           sphere : jQuery("#institutions_governmental_sphere").selected().val()
         },
+        juridical : {
+          nature : jQuery("#institutions_juridical_nature").selected().val()
+        },
         institution : {
           cnpj: jQuery("#institutions_cnpj").val(),
           type: get_selected_institution_type(),
-          acronym : jQuery("#institutions_acronym").val()
+          acronym : jQuery("#institutions_acronym").val(),
         },
         authenticity_token : jQuery("input[name='authenticity_token']").val(),
         recaptcha_response_field : jQuery('#recaptcha_response_field').val(),
