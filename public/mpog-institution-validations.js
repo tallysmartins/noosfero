@@ -48,11 +48,15 @@
 
   function get_post_data() {
     return {
-        community : { name : jQuery("#community_name").val()},
+        community : { name : jQuery("#community_name").val(),
+          country : jQuery("#community_country").val(),
+          state : jQuery("#community_state").val(),
+          city : jQuery("#community_city").val()
+        },
         governmental : {
           power : jQuery("#institutions_governmental_power").selected().val(),
           sphere : jQuery("#institutions_governmental_sphere").selected().val()
-        } ,
+        },
         institution : {
           cnpj: jQuery("#institutions_cnpj").val(),
           type: get_selected_institution_type(),

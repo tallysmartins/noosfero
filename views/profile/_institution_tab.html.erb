@@ -6,6 +6,9 @@
   <%= display_field(_('Type:'), profile.institution, :type, true) %>
   <%= display_field(_('CNPJ:'), profile.institution, :cnpj, true) %>
   <%= display_field(_('Last modification:'), profile.institution, :date_modification, true) %>
+  <%= display_field(_('Country:'), profile.institution.community, :country, true) %>
+  <%= display_field(_('State:'), profile.institution.community, :state, true) %>
+  <%= display_field(_('City:'), profile.institution.community, :city, true) %>  
   <% if profile.institution.type == "PrivateInstitution"%>
     <%= display_field(_('Fantasy Name:'), profile.institution, :acronym, true) %>
   <% else %>
