@@ -1,3 +1,4 @@
-executivo
-legislativo
-judiciario
+Executivo
+Legislativo
+Judiciário
+Não se aplica
