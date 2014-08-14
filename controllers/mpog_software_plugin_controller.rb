@@ -163,7 +163,9 @@ class MpogSoftwarePluginController < ApplicationController
       begin
         govPower = GovernmentalPower.find params[:governmental][:power]
         govSphere = GovernmentalSphere.find params[:governmental][:sphere]
+        jur_nature = JuridicalNature.find params[:juridical][:nature]
 
+        institution.juridical_nature = jur_nature
         institution.governmental_power = govPower
         institution.governmental_sphere = govSphere
       rescue
