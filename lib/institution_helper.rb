@@ -9,6 +9,20 @@ module InstitutionHelper
   def self.mass_update
     @web_service_info = self.web_service_info
 
+    environment = Environment.find_by_name(@web_service_info["environment_name"])
+
+    if environment.nil?
+      puts "\n", "="*80, "Could not find the informed environment: #{@web_service_info["environment_name"]}", "="*80, "\n"
+      return
+    end
+
+    admin = environment.people.find_by_name(@web_service_info["default_community_admin"])
+
+    if admin.nil?
+      puts "\n", "="*80, "Could not find the informed admin: #{@web_service_info["default_community_admin"]}", "="*80, "\n"
+      return
+    end
+
     POWERS.each do |power|
       SPHERES.each do |sphere|
         json = self.get_json power, sphere
@@ -26,6 +40,8 @@ module InstitutionHelper
 
           institution = self.set_institution_data institution, unit
           institution.save
+
+          institution.community.add_admin(admin)
         end
       end
     end

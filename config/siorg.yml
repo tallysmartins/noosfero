@@ -7,3 +7,5 @@ web_service:
     legislative: 2
     judiciary: 3
   additional_params: retornarOrgaoEntidadeVinculados=NAO
+  environment_name: Noosfero
+  default_community_admin: adminuser

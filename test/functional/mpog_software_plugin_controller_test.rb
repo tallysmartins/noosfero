@@ -7,9 +7,18 @@ class MpogSoftwarePluginController; def rescue_action(e) raise e end; end
 class MpogSoftwarePluginControllerTest < ActionController::TestCase
 
   def setup
+    admin = create_user("adminuser").person
+    admin.stubs(:has_permission?).returns("true")
+
+    @environment = Environment.default
+    @environment.enabled_plugins = ['MpogSoftwarePlugin']
+    @environment.add_admin(admin)
+    @environment.save
+
     @govPower = GovernmentalPower.create(:name=>"Some Gov Power")
     @govSphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
     @response = ActionController::TestResponse.new
+
     @institution_list = []
     @institution_list << create_public_institution("Ministerio Publico da Uniao", "MPU", @govPower, @govSphere)
     @institution_list << create_public_institution("Tribunal Regional da Uniao", "TRU", @govPower, @govSphere)
@@ -73,6 +82,24 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
     json_response = ActiveSupport::JSON.decode(@response.body)
 
     assert !json_response["success"]
+  end
+
+  should "set the environment admin as institution community admin" do
+    @controller.stubs(:verify_recaptcha).returns(true)
+
+    xhr :get, :new_institution,
+      :authenticity_token=>"dsa45a6das52sd",
+      :community=>{:name=>"Another instituon community"},
+      :institution => {:cnpj=>"10.254.577/8910-12", :acronym=>"aic", :type=>"PublicInstitution"},
+      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
+      :recaptcha_response_field=>''
+
+    json_response = ActiveSupport::JSON.decode(@response.body)
+
+    assert json_response["success"]
+
+    assert Community.last.admins.include?(@environment.admins.first)
+    assert_equal Community.last.name, "Another instituon community"
   end
 
   should "verify if institution name already exists" do
