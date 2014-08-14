@@ -1,11 +1,14 @@
 class Institution < ActiveRecord::Base
   belongs_to :governmental_power
   belongs_to :governmental_sphere
+  belongs_to :juridical_nature
+
+  has_and_belongs_to_many :users
 
   attr_accessible :name, :acronym, :unit_code, :parent_code, :unit_type, 
-                  :juridical_nature, :sub_juridical_nature, :normalization_level, 
-                  :version, :cnpj, :type, :governmental_power, :governmental_sphere
-  has_and_belongs_to_many :users
+                  :sub_juridical_nature, :normalization_level, 
+                  :version, :cnpj, :type, :governmental_power, :governmental_sphere,
+                  :sisp, :juridical_nature
 
   validates :name, :presence=>true, :uniqueness=>true
 

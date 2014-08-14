@@ -69,6 +69,12 @@
         </div>
       </span>
 
+      <span class='required-field public-institutions-fields'>
+        <div class="formfield type-text">
+          <%= inst.label("juridical_nature_id" ,_("Juridical Nature:"), :class=>"formlabel") %>
+          <%= inst.select(:juridical_nature, [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}, {:selected=>0})%>
+        </div>
+      </span>
       <br />
 
       <div>
