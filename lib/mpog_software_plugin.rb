@@ -256,6 +256,11 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       context.profile.institution.save!
     end
 
+    if context.params.has_key?(:juridical_nature)
+      context.profile.institution.juridical_nature_id = context.params[:juridical_nature]
+      context.profile.institution.save!
+    end
+
     if context.params.has_key?(:institution)
       Institution.transaction do
         context.profile.institution.update_attributes!(context.params[:institution])
