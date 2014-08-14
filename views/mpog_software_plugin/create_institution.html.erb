@@ -24,6 +24,10 @@
     <%= required f.text_field(:name) %>
     <%= content_tag :span, _("Institution name already exists"), :id=>"already_exists_text", :class=>"errorExplanation hide-field" %>
 
+    <%= required select_country(_('Country'), f, 'country', {:class => 'type-select', :id => "community_country"}) %>
+    <%= required f.text_field(:state) %>
+    <%= required f.text_field(:city) %>
+
     <%= fields_for :institutions do |inst| %>
 
       <span class='required-field'>
