@@ -72,7 +72,7 @@ class MpogSoftwarePluginController < ApplicationController
     if request.xhr? and !params[:community].nil? and !params[:institution].nil? and !params[:recaptcha_response_field].nil?
       response_message = {}
 
-      institution = create_institution
+      institution = private_create_institution
 
       response_message = if verify_recaptcha(:model=> institution, :message => _('Please type the word correctly'))
         if institution.errors.full_messages.empty? and institution.valid? and institution.save
@@ -145,7 +145,7 @@ class MpogSoftwarePluginController < ApplicationController
 
   protected
 
-  def create_institution
+  def private_create_institution
     community = Community.new(params[:community])
     community.environment = environment
 
