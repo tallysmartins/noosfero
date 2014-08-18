@@ -245,9 +245,9 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def institution_transaction
+    InstitutionHelper.register_institution_modification context.profile.institution
     if context.params.has_key?(:governmental_power)
       context.profile.institution.governmental_power_id = context.params[:governmental_power]
-      InstitutionHelper.register_institution_modification context.profile.institution
       context.profile.institution.save!
     end
 

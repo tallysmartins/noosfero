@@ -3,7 +3,6 @@ require File.dirname(__FILE__) + '/../../controllers/mpog_software_plugin_contro
 
 class MpogSoftwarePluginController; def rescue_action(e) raise e end; end
 
-
 class MpogSoftwarePluginControllerTest < ActionController::TestCase
 
   def setup
@@ -110,7 +109,6 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
     assert_equal "false", @response.body
   end
 
-
   should "response as XML to export softwares" do
     get :download, :format => 'xml'
     assert_equal 'text/xml', @response.content_type
@@ -130,6 +128,20 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
   should "not hide registration incomplete message" do
     xhr :get, :hide_registration_incomplete_percentage, :hide=>false
     assert_equal "false", @response.body
+  end
+
+  should "update institution date_modification in your creation" do
+    @controller.stubs(:verify_recaptcha).returns(true)
+
+    xhr :get, :new_institution,
+      :authenticity_token=>"dsa45a6das52sd",
+      :community=>{:name=>"foo bar"},
+      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"fb", :type=>"PublicInstitution"},
+      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
+      :recaptcha_response_field=>''
+
+    date = Time.now.day.to_s + "/" + Time.now.month.to_s + "/" + Time.now.year.to_s
+    assert_equal date, Institution.last.date_modification
   end
 
 
