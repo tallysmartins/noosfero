@@ -67,10 +67,16 @@
   function success_ajax_response(response) {
     close_loading();
     if(response.success){
+      var institution_name  = response.institution_data.name;
+      var institution_id = response.institution_data.id;
+
       jQuery("#institution_dialog").html("<div class='errorExplanation'><h2>"+response.message+"</h2></div>");
-      jQuery("#input_institution").val(response.institution_data.name);
-      jQuery("#user_institution_id").val(response.institution_data.id);
       jQuery("#create_institution_errors").switchClass("show-field", "hide-field");
+
+      jQuery(".institution_container").append(get_clone_institution_data(institution_id));
+      add_selected_institution_to_list(institution_id, institution_name);
+
+      jQuery(".remove-institution").click(remove_institution);
     } else {
       var errors = "<ul>";
 
@@ -146,7 +152,6 @@
 
       select : function (event, selected) {
         jQuery("#institution_selected").val(selected.item.id).attr("data-name", selected.item.label);
-
       }
     });
   }
