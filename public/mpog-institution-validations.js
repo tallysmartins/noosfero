@@ -113,6 +113,50 @@
       }
     }
 
+
+  function institution_autocomplete() {
+    jQuery(".input_institution").autocomplete({
+      source : function(request, response){
+        jQuery.ajax({
+          type: "GET",
+          url: "/plugin/mpog_software/get_institutions",
+          data: {query: request.term},
+          success: function(result){
+            response(result);
+
+            if( result.length == 0 ) {
+              jQuery('#institution_empty_ajax_message').switchClass("hide-field", "show-field");
+            } else {
+              jQuery('#institution_empty_ajax_message').switchClass("show-field", "hide-field");
+            }
+          },
+          error: function(ajax, stat, errorThrown) {
+            console.log('Link not found : ' + errorThrown);
+          }
+        });
+      },
+
+      minLength: 2,
+
+      select : function (event, selected) {
+        var user_institutions = jQuery(".user_institutions").first().clone();
+        user_institutions.val(selected.item.id);
+
+        jQuery(".institution_container").append(user_institutions);
+      }
+    });
+  }
+
+  function add_new_institution(evt) {
+    evt.preventDefault();
+    var institution_input_field = jQuery(".institution_container .input_institution").first().clone();
+
+    institution_input_field.val("");
+
+    jQuery(".institution_container").append(institution_input_field);
+    institution_autocomplete();
+  }
+
   function set_events() {
     jQuery("#create_institution_link").click(open_create_institution_modal);
 
@@ -123,6 +167,15 @@
     jQuery('#save_institution_button').click(save_institution);
 
     jQuery("#community_name").keyup(institution_already_exists);
+
+    jQuery(".add_new_institution").click(add_new_institution);
+
+    institution_autocomplete();
+
+    jQuery(".input_institution").blur(function(){
+      if( this.value == "" )
+        jQuery("#user_institution_id").val("");
+    });
   }
 
   jQuery(document).ready(set_events);

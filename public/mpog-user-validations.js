@@ -42,36 +42,6 @@ function validate_email_format(){
     this.className = "";
 }
 
-function institution_autocomplete() {
-  jQuery("#input_institution").autocomplete({
-    source : function(request, response){
-      jQuery.ajax({
-        type: "GET",
-        url: "/plugin/mpog_software/get_institutions",
-        data: {query: request.term},
-        success: function(result){
-          response(result);
-
-          if( result.length == 0 ) {
-            jQuery('#institution_empty_ajax_message').switchClass("hide-field", "show-field");
-          } else {
-            jQuery('#institution_empty_ajax_message').switchClass("show-field", "hide-field");
-          }
-        },
-        error: function(ajax, stat, errorThrown) {
-          console.log('Link not found : ' + errorThrown);
-        }
-      });
-    },
-
-    minLength: 2,
-
-    select : function (event, selected) {
-      jQuery("#user_institution_id").val(selected.item.id);
-    }
-  });
-}
-
 
 jQuery(document).ready(function(){
   jQuery('#secondary_email_field').blur(
@@ -90,11 +60,4 @@ jQuery(document).ready(function(){
 
   jQuery('#area_interest_field').focus(function() { jQuery('#area-interest-balloon').fadeIn('slow'); });
   jQuery('#area_interest_field').blur(function() { jQuery('#area-interest-balloon').fadeOut('slow'); });
-
-  institution_autocomplete();
-
-  jQuery("#input_institution").blur(function(){
-    if( this.value == "" )
-      jQuery("#user_institution_id").val("");
-  });
 });
