@@ -113,9 +113,15 @@
       }
     }
 
+  function get_clone_institution_data(value) {
+    var user_institutions = jQuery(".user_institutions").first().clone();
+    user_institutions.val(value);
+
+    return user_institutions;
+  }
 
   function institution_autocomplete() {
-    jQuery(".input_institution").autocomplete({
+    jQuery("#input_institution").autocomplete({
       source : function(request, response){
         jQuery.ajax({
           type: "GET",
@@ -139,22 +145,43 @@
       minLength: 2,
 
       select : function (event, selected) {
-        var user_institutions = jQuery(".user_institutions").first().clone();
-        user_institutions.val(selected.item.id);
+        jQuery("#institution_selected").val(selected.item.id).attr("data-name", selected.item.label);
 
-        jQuery(".institution_container").append(user_institutions);
       }
     });
   }
 
+  function add_selected_institution_to_list(id, name) {
+    var selected_institution = "<li data-institution='"+id+"'>"+name;
+        selected_institution += "<a href='#' class='button without-text icon-remove remove-institution'></a></li>";
+
+    jQuery(".institutions_added").append(selected_institution);
+  }
+
   function add_new_institution(evt) {
     evt.preventDefault();
-    var institution_input_field = jQuery(".institution_container .input_institution").first().clone();
+    var selected = jQuery("#institution_selected");
+    var institution_already_added = jQuery(".institutions_added li[data-institution='"+selected.val()+"']").length;
 
-    institution_input_field.val("");
+    if(selected.val().length > 0 && institution_already_added == 0) {
+      //field that send the institutions to the server
+      jQuery(".institution_container").append(get_clone_institution_data(selected.val()));
 
-    jQuery(".institution_container").append(institution_input_field);
-    institution_autocomplete();
+      // Visualy add the selected institution to the list
+      add_selected_institution_to_list(selected.val(), selected.attr("data-name"));
+
+      // clean the institution flag
+      selected.val("").attr("data-name", "");
+      jQuery("#input_institution").val("");
+
+      jQuery(".remove-institution").click(remove_institution);
+    }
+  }
+
+  function remove_institution(evt) {
+    evt.preventDefault();
+
+    jQuery(this).parent().remove();
   }
 
   function set_events() {
@@ -168,14 +195,11 @@
 
     jQuery("#community_name").keyup(institution_already_exists);
 
-    jQuery(".add_new_institution").click(add_new_institution);
+    jQuery("#add_new_institution").click(add_new_institution);
+
+    jQuery(".remove-institution").click(remove_institution);
 
     institution_autocomplete();
-
-    jQuery(".input_institution").blur(function(){
-      if( this.value == "" )
-        jQuery("#user_institution_id").val("");
-    });
   }
 
   jQuery(document).ready(set_events);

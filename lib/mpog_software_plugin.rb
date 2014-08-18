@@ -42,15 +42,17 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         labelled_form_field(
           _('Institution'),
           content_tag(:div,
-            text_field(:institution, :name, :class=>"input_institution"),
+            text_field(:institution, :name, :id=>"input_institution"),
           :class => 'institution_container')+
           content_tag(
             :small, _('Fill with your institution') ,:class => 'signup-form', :id =>'institution-balloon'
           ) +
-          content_tag(:div, _("The searched institution does not exist"), :id=>"institution_empty_ajax_message", :class=>"errorExplanation hide-field") +
-          link_to(_("Add new institution"), "#", :class=>'button with-text icon-add add_new_institution') +
+          content_tag(:div, _("The searched institution does not exist"), :id=>"institution_empty_ajax_message", :class=>"errorExplanation hide-field")+
+          link_to(_("Add new institution"), "#", :class=>'button with-text icon-add', :id => 'add_new_institution') +
           link_to(_("Create new institution"), "#", :id=>"create_institution_link", :class=>'button with-text icon-add')+
           hidden_field_tag("user[institutions][]", "", :class => 'user_institutions')+
+          hidden_field_tag("institution_selected", "")+
+          content_tag("ul", "",:class=>"institutions_added")+
           content_tag(:div, "", :id=>"institution_dialog")
         ),
        :id => 'signup-institution'
