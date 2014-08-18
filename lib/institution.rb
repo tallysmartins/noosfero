@@ -5,7 +5,7 @@ class Institution < ActiveRecord::Base
   attr_accessible :name, :acronym, :unit_code, :parent_code, :unit_type, 
                   :juridical_nature, :sub_juridical_nature, :normalization_level, 
                   :version, :cnpj, :type, :governmental_power, :governmental_sphere
-  has_many :users
+  has_and_belongs_to_many :users
 
   validates :name, :presence=>true, :uniqueness=>true
 
