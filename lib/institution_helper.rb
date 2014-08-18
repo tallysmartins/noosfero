@@ -40,7 +40,6 @@ module InstitutionHelper
 
           institution = self.set_institution_data institution, unit
           institution.save
-
           institution.community.add_admin(admin)
         end
       end
@@ -93,12 +92,12 @@ module InstitutionHelper
     institution.unit_code = self.retrieve_code(unit,"codigoUnidade")
     institution.parent_code = self.retrieve_code(unit,"codigoUnidadePai")
     institution.unit_type = self.retrieve_code(unit,"codigoTipoUnidade")
-    institution.juridical_nature = self.retrieve_code(unit,"codigoNaturezaJuridica")
+    institution.juridical_nature = JuridicalNature.where(:name=>self.retrieve_code(unit,"codigoNaturezaJuridica").titleize).first
     institution.sub_juridical_nature = self.retrieve_code(unit,"codigoSubNaturezaJuridica")
     institution.normalization_level = unit["nivelNormatizacao"]
     institution.version = unit["versaoConsulta"]
-    institution.governmental_power = GovernmentalPower.where(:name=>self.retrieve_code(unit,"codigoPoder")).first
-    institution.governmental_sphere = GovernmentalSphere.where(:name=>self.retrieve_code(unit,"codigoEsfera")).first
+    institution.governmental_power = GovernmentalPower.where(:name=>self.retrieve_code(unit,"codigoPoder").capitalize).first
+    institution.governmental_sphere = GovernmentalSphere.where(:name=>self.retrieve_code(unit,"codigoEsfera").capitalize).first
     institution
   end
 

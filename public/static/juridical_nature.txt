@@ -1,8 +1,8 @@
-Administração Direta
+Administracao Direta
 Autarquia
-Empresa Pública
-Fundação
-Órgão Autônomo
+Empresa Publica
+Fundacao
+Orgao Autonomo
 Sociedade
 Sociedade Civil
 Sociedade de Economia Mista
