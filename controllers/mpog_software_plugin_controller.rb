@@ -1,5 +1,6 @@
 require 'csv'
 class MpogSoftwarePluginController < ApplicationController
+  include InstitutionHelper
 
   def archive_software
     per_page = 10
@@ -157,6 +158,8 @@ class MpogSoftwarePluginController < ApplicationController
 
     institution.name = community[:name]
     institution.community = community
+
+    InstitutionHelper.register_institution_modification institution
 
     if institution.type == "PublicInstitution"
       begin

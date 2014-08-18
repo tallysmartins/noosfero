@@ -47,6 +47,10 @@ module InstitutionHelper
     end
   end
 
+  def self.register_institution_modification institution
+    institution.date_modification = current_date
+  end
+
   protected
 
   def self.web_service_info
@@ -95,5 +99,10 @@ module InstitutionHelper
     institution.governmental_power = GovernmentalPower.where(:name=>self.retrieve_code(unit,"codigoPoder")).first
     institution.governmental_sphere = GovernmentalSphere.where(:name=>self.retrieve_code(unit,"codigoEsfera")).first
     institution
+  end
+
+  def self.current_date
+    date = Time.now.day.to_s + "/" + Time.now.month.to_s + "/" + Time.now.year.to_s
+    date
   end
 end

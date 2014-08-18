@@ -6,6 +6,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   include ActionView::Helpers::AssetTagHelper
   include FormsHelper
   include LibraryHelper
+  include InstitutionHelper
 
   def self.plugin_name
     "MpogSoftwarePlugin"
@@ -246,6 +247,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def institution_transaction
     if context.params.has_key?(:governmental_power)
       context.profile.institution.governmental_power_id = context.params[:governmental_power]
+      InstitutionHelper.register_institution_modification context.profile.institution
       context.profile.institution.save!
     end
 
