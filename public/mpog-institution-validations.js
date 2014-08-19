@@ -185,7 +185,9 @@
 
   function remove_institution(evt) {
     evt.preventDefault();
+    var code = jQuery(this).parent().attr("data-institution");
 
+    jQuery(".user_institutions[value="+code+"]").remove();
     jQuery(this).parent().remove();
   }
 
