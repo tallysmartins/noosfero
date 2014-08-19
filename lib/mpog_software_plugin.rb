@@ -16,6 +16,11 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     _("Add Public Software and MPOG features.")
   end
 
+  def show_sisp_field current_user
+    @show_sisp_field = current_user.login == "adminuser"
+    @show_sisp_field
+  end
+
   def signup_extra_contents
     institutions = Institution.all
 
@@ -60,7 +65,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
-  def profile_editor_extras
+  def profile_editor_extras show_sisp_field
+    @show_sisp_field = show_sisp_field
     if context.profile.person?
       expanded_template('person_editor_extras.html.erb')
     elsif context.profile.respond_to? :software_info and !context.profile.software_info.nil?
