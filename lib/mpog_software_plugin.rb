@@ -168,9 +168,13 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
 
-  def custom_user_registration_attributes user
-    if user.institution
-      community = user.institution.community
+  def custom_user_registration_attributes user, ids
+    ids.each do |id|
+      user.institutions << Institution.find(id) if !id.empty?
+    end
+
+    user.institutions.each do |institution|
+      community = institution.community
       community.add_member user.person
     end
   end
@@ -195,7 +199,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
  end
 
   def profile_required_list
-    required_list = ["cell_phone","contact_phone","institution","comercial_phone","country","city","state","organization_website","area_interest","image"]
+    required_list = ["cell_phone","contact_phone","institutions","comercial_phone","country","city","state","organization_website","area_interest","image"]
   end
 
   def profile_required_empty_list person

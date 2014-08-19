@@ -39,28 +39,22 @@ class Person
     }
   }
 
+  def institutions
+    institutions = []
+    unless self.user.institutions.nil?
+      self.user.institutions.each do |institution|
+        institutions << institution.name
+      end
+    end
+    institutions
+  end
+
   def secondary_email
     self.user.secondary_email unless self.user.nil?
   end
 
   def secondary_email= value
     self.user.secondary_email = value unless self.user.nil?
-  end
-
-  def institution
-    self.user.institution.name if self.user and self.user.institution
-  end
-
-  def institution_id
-    self.user.institution.id unless self.user.institution.nil?
-  end
-
-  def institution_id= value
-    institution = Institution.find(:first, :conditions=>"id = #{value}")
-
-    unless institution.nil?
-      self.user.institution = institution
-    end
   end
 
   def software?
