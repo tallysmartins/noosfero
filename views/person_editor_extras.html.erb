@@ -15,15 +15,28 @@
 </div>
 
 <div class="formfieldline" id="select_institution">
-  <%= label_tag "user[institution_id]", _('Institution'), :class=>"formlabel" %>
+  <%= label_tag "user[institution_ids]", _('Institutions'), :class=>"formlabel" %>
 
-  <div class="formfield type-text">
-    <%= select_tag "user[institution_id]", options_for_select(Institution.all.map {|i| [i.name, i.id]}, context.profile.institution_id) %>
+  <div class="institution_container">
+    <%= text_field_tag(:institution, "", :id=>"input_institution") %>
+
+    <% context.profile.user.institutions.each do |institution| %>
+      <%= hidden_field_tag("user[institution_ids][]", institution.id, :class => 'user_institutions') %>
+    <% end %>
   </div>
-<script type="text/javascript">
-jQuery(document).ready(function(){
-  var select = jQuery("#select_institution select");
-  select.append("<option value='-1'><%=_('Other')%></option>");
-});
-</script>
+
+  <%= content_tag(:div, _("The searched institution does not exist"), :id=>"institution_empty_ajax_message", :class=>"errorExplanation hide-field") %>
+  <%= link_to(_("Add new institution"), "#", :class=>'button with-text icon-add', :id => 'add_new_institution') %>
+
+  <%= hidden_field_tag("user[institution_ids][]", "", :class => 'user_institutions') %>
+  <%= hidden_field_tag("institution_selected", "") %>
+
+  <ul class="institutions_added">
+    <% context.profile.user.institutions.each do |institution| %>
+      <li data-institution="<%= institution.id %>">
+        <%= institution.name %>
+        <%= link_to("", "#", :class => "button without-text icon-remove remove-institution") %>
+      </li>
+    <% end %>
+  </ul>
 </div>

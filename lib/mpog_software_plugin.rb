@@ -237,17 +237,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def user_transaction
-    old_community = Institution.find(context.profile.user.institution_id).community
-    
+    user_editor_institution_actions
+
     User.transaction do
       context.profile.user.update_attributes!(context.params[:user])
-    end
-    
-    new_community = Institution.find(context.params[:user][:institution_id]).community
-    if old_community != new_community
-      person = context.profile.user.person
-      old_community.remove_member(person)
-      new_community.add_member(person)
     end
   end
 
@@ -347,6 +340,40 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def controlled_vocabulary_transaction
     ControlledVocabulary.transaction do
       context.profile.software_info.controlled_vocabulary.update_attributes!(context.params[:controlled_vocabulary])
+    end
+  end
+
+  private
+
+  # Add and remove the user from it's institutions communities
+  def user_editor_institution_actions
+    user = context.profile.user
+
+    old_communities = []
+    context.profile.user.institutions.each do |institution|
+      old_communities << institution.community
+    end
+
+    new_communities = []
+    unless context.params[:user][:institution_ids].nil?
+      context.params[:user][:institution_ids].delete("")
+
+      context.params[:user][:institution_ids].each do |id|
+        new_communities << Institution.find(id).community
+      end
+    end
+
+    leave_communities = (old_communities - new_communities)
+    enter_communities = (new_communities - old_communities)
+
+    leave_communities.each do |community|
+      community.remove_member(user.person)
+      user.institutions.delete(community.institution)
+    end
+
+    enter_communities.each do |community|
+      community.add_member(user.person)
+      user.institutions << community.institution
     end
   end
 end
