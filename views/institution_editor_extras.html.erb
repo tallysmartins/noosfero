@@ -36,12 +36,13 @@
   </div>
 </span>
 
+<% if @show_sisp_field[0]  %>
   <span class= 'public-institutions-fields'>
-    <div class="formfieldline">
-      <%= _("SISP?") %>
-      <%= labelled_radio_button(_('Yes'), 'institution[sisp]', 'true', context.profile.institution.sisp)%>
-      <%= labelled_radio_button(_('No'), 'institution[sisp]', 'false', !context.profile.institution.sisp)%>
-    </div>
-  </span>
-
+  <div class="formfieldline">
+    <%= _("SISP?") %>
+    <%= labelled_radio_button(_('Yes'), 'institution[sisp]', 'true', context.profile.institution.sisp)%>
+    <%= labelled_radio_button(_('No'), 'institution[sisp]', 'false', !context.profile.institution.sisp)%>
+  </div>
+</span>
+<% end %>
 <% end %>
