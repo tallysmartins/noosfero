@@ -65,7 +65,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
-  def profile_editor_extras show_sisp_field
+  def profile_editor_extras show_sisp_field=true
     @show_sisp_field = show_sisp_field
     if context.profile.person?
       expanded_template('person_editor_extras.html.erb')
