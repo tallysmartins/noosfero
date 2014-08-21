@@ -77,6 +77,18 @@ class AccountControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+
+  should "user can become a member of more than one institution" do
+    @user_info[:institution_ids] = [@institution_list.first.id, @institution_list.last.id]
+
+    post :signup, :user => @user_info, :profile_data => @profile_data_info
+
+    last_user = User.last
+
+    assert last_user.institutions.include?(@institution_list.first)
+    assert last_user.institutions.include?(@institution_list.last)
+  end
+
   private
 
   def create_institution name, acronym
