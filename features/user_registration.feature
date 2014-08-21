@@ -61,10 +61,10 @@ Feature: User Registration
       | State                 | Bahia                  |
       | City                  | Salvador               |
       | Secondary e-Mail      | josesilva@example.com  |
-      | Role                  | TI analist             |
     And I select "Brazil" from "profile_data[country]"
     And I type in "Minis" into autocomplete list "input_institution" and I choose "Ministerio do Planejamento"
     And wait for the captcha signup time
+    And I follow "Add new institution"
     And I press "Create my account"
     When José da Silva's account is activated
     And I go to login page

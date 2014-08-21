@@ -51,7 +51,7 @@ class User
       self.errors.add(:base, _("The governamental email must be the primary one.")) if secondary_email_has_gov_suffix
     end
 
-    self.errors.add(:base, _("Institution is obligatory if user has a government email.")) if primary_email_has_gov_suffix and self.institution.nil?
+    self.errors.add(:base, _("Institution is obligatory if user has a government email.")) if primary_email_has_gov_suffix and self.institutions.blank?
   end
 
 end

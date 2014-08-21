@@ -159,8 +159,6 @@ class MpogSoftwarePluginController < ApplicationController
     institution.name = community[:name]
     institution.community = community
 
-    InstitutionHelper.register_institution_modification institution
-
     if institution.type == "PublicInstitution"
       begin
         govPower = GovernmentalPower.find params[:governmental][:power]
@@ -177,6 +175,8 @@ class MpogSoftwarePluginController < ApplicationController
       institution.errors.add(:cnpj, _("can't be blank"))
     end
 
+    InstitutionHelper.register_institution_modification institution
+    
     institution
   end
 

@@ -49,7 +49,7 @@ module InstitutionHelper
 
   def self.register_institution_modification institution
     institution.date_modification = current_date
-    institution.save!
+    institution.save
   end
 
   protected
