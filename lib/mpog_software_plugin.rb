@@ -16,11 +16,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     _("Add Public Software and MPOG features.")
   end
 
-  def show_sisp_field current_user
-    @show_sisp_field = current_user.login == "adminuser"
-    @show_sisp_field
-  end
-
   def signup_extra_contents
     institutions = Institution.all
 
@@ -65,13 +60,13 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
-  def profile_editor_extras show_sisp_field=true
-    @show_sisp_field = show_sisp_field
+  def profile_editor_extras
     if context.profile.person?
       expanded_template('person_editor_extras.html.erb')
     elsif context.profile.respond_to? :software_info and !context.profile.software_info.nil?
       expanded_template('software_editor_extras.html.erb')
     elsif context.profile.respond_to? :institution and !context.profile.institution.nil?
+      @show_sisp_field = show_sisp_field
       expanded_template('institution_editor_extras.html.erb')
     end
   end
@@ -113,6 +108,26 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         user_transaction
       end
     end
+  end
+
+  def profile_editor_controller_filters
+    block = proc do
+      if request.post? && params[:institution]
+        is_admin = environment.admins.include?(current_user.person)
+
+        unless is_admin
+          institution = profile.institution
+          params[:institution][:sisp] = institution.sisp if params[:institution][:sisp] != institution.sisp
+        end
+      end
+    end
+
+    [{
+      :type => "before_filter",
+      :method_name => "validate_institution_sisp_field_access",
+      :options => { :only=>:edit },
+      :block => block
+    }]
   end
 
   def profile_tabs
@@ -386,5 +401,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       community.add_member(user.person)
       user.institutions << community.institution
     end
+  end
+
+  def show_sisp_field
+    current_person = User.find(context.session[:user]).person
+    context.environment.admins.include?(current_person)
   end
 end
