@@ -91,7 +91,6 @@ Feature: User Registration
       | State                 | Bahia                  |
       | City                  | Salvador               |
       | Secondary e-Mail      | josesilva@example.com  |
-      | Role                  | TI analist             |
     And I select "Brazil" from "profile_data[country]"
     And I type in "MP" into autocomplete list "input_institution" and I choose "Ministerio do Planejamento"
     And wait for the captcha signup time
@@ -194,7 +193,6 @@ Feature: User Registration
     And I select "Brazil" from "profile_data[country]"
     And wait for the captcha signup time
     When I press "Create my account"
-    Then I should see "Role can't be blank if e-mail has governamental sulfixes."
     And I should see "Institution is obligatory if user has a government email."
     And I should see "State can't be blank"
     And I should see "City can't be blank"
@@ -226,7 +224,6 @@ Feature: User Registration
       | State                 | Bahia                  |
       | City                  | Salvador               |
       | Secondary e-Mail      | josesilva@example.com  |
-      | Role                  | TI analist             |
     And I select "Brazil" from "profile_data[country]"
     And I fill in "Username" with "josesilva"
     And wait for the captcha signup time
@@ -249,7 +246,6 @@ Feature: User Registration
       | State                 | Bahia                  |
       | City                  | Salvador               |
       | Secondary e-Mail      | josesilva@example.com  |
-      | Role                  | TI analist             |
     And I select "Brazil" from "profile_data[country]"
     And I fill in "Username" with "josesilva"
     And wait for the captcha signup time

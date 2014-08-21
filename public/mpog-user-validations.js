@@ -55,9 +55,6 @@ jQuery(document).ready(function(){
   jQuery('#secondary_email_field').focus(function() { jQuery('#secondary-email-balloon').fadeIn('slow'); });
   jQuery('#secondary_email_field').blur(function() { jQuery('#secondary-email-balloon').fadeOut('slow'); });
 
-  jQuery('#role_field').focus(function() { jQuery('#role-balloon').fadeIn('slow'); });
-  jQuery('#role_field').blur(function() { jQuery('#role-balloon').fadeOut('slow'); });
-
   jQuery('#area_interest_field').focus(function() { jQuery('#area-interest-balloon').fadeIn('slow'); });
   jQuery('#area_interest_field').blur(function() { jQuery('#area-interest-balloon').fadeOut('slow'); });
 });

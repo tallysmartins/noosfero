@@ -22,7 +22,7 @@ class MpogSoftwarePluginTest < ActiveSupport::TestCase
     @person.name = "Person Name"
     @person.cell_phone = "76888919"
 
-    required_list = ["cell_phone","contact_phone","institution","comercial_phone","country","city","state","organization_website","role","area_interest","image"]
+    required_list = ["cell_phone","contact_phone","institution","comercial_phone","country","city","state","organization_website","area_interest","image"]
 
     empty_fields = required_list.count - 1
     test_percentege = (empty_fields * 100) / required_list.count

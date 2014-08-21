@@ -3,9 +3,7 @@
 }
 
 #signup-form small#secondary-email-balloon ,
-#signup-form small#role-balloon,
-#signup-form small#area-interest-balloon
-{
+#signup-form small#area-interest-balloon {
   display: none;
   width: 142px;
   height: 69px;
@@ -22,16 +20,12 @@
 }
 
 #signup-form #signup-secondary-email,
-#signup-form #signup-role,
-#signup-form #signup-area-interest
-{
+#signup-form #signup-area-interest {
   position: relative;
 }
 
 #signup-form small#secondary-email-balloon,
-#signup-form small#role-balloon,
-#signup-form small#area-interest-balloon
-{
+#signup-form small#area-interest-balloon {
   top: -80px;
 }
 
