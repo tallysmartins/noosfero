@@ -27,7 +27,7 @@ class AccountControllerTest < ActionController::TestCase
       :password_confirmation=>"nova_senha",
       :email=>"um@novo.usuario",
       :secondary_email=>"outro@email.com",
-      :institution_id=>@institution_list.last.id
+      :institution_ids=>[@institution_list.last.id]
     }
 
     @profile_data_info = {
@@ -39,7 +39,7 @@ class AccountControllerTest < ActionController::TestCase
   end
 
   should "Create a user without gov email and institution" do
-    @user_info[:institution_id] = nil
+    @user_info[:institution_ids] = nil
 
     post :signup, :user => @user_info, :profile_data => @profile_data_info
 
@@ -58,7 +58,7 @@ class AccountControllerTest < ActionController::TestCase
 
   should "Do not create a user with gov email without institution" do
     @user_info[:email] = "email@gov.br"
-    @user_info[:institution_id] = nil
+    @user_info[:institution_ids] = nil
 
     post :signup, :user => @user_info, :profile_data => @profile_data_info
 
@@ -98,7 +98,7 @@ class AccountControllerTest < ActionController::TestCase
       :password_confirmation=>"nova_senha",
       :email=>"um@novo.usuario",
       :secondary_email=>"outro@email.com",
-      :institution_id=>@institution_list.last.id
+      :institution_ids=>[@institution_list.last.id]
     }
 
     profile_data = {
