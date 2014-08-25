@@ -48,10 +48,10 @@ Feature: User Registration
     Given I go to /account/signup
     And Institutions has initial default values on database
     And the following public institutions
-      | name                       | acronym | cnpj               | governmental_power | governmental_sphere |
-      | Ministerio das Cidades     | MC      | 58.745.189/0001-21 | Executivo          | Federal             |
-      | Governo do DF              | GDF     | 12.645.166/0001-44 | Legislativo        | Federal             |
-      | Ministerio do Planejamento | MP      | 41.769.591/0001-43 | Judiciario         | Federal             |
+      | name                       | acronym | country | state | city       | cnpj               | juridical_nature | governmental_power | governmental_sphere |
+      | Ministerio das Cidades     | MC      | BR      | DF    | Gama       | 58.745.189/0001-21 | Autarquia        | Executivo          | Federal             |
+      | Governo do DF              | GDF     | BR      | DF    | Taguatinga | 12.645.166/0001-44 | Autarquia        | Legislativo        | Federal             |
+      | Ministerio do Planejamento | MP      | BR      | DF    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             |
     And I fill in the following within ".no-boxes":
       | e-Mail                | josesilva@serpro.gov.br|
       | Username              | josesilva              |
@@ -78,10 +78,10 @@ Feature: User Registration
     Given I go to /account/signup
     And Institutions has initial default values on database
     And the following public institutions
-      | name                       | acronym | cnpj               | governmental_power | governmental_sphere |
-      | Ministerio das Cidades     | MC      | 58.745.189/0001-21 | Executivo          | Federal             |
-      | Governo do DF              | GDF     | 12.645.166/0001-44 | Legislativo        | Federal             |
-      | Ministerio do Planejamento | MP      | 41.769.591/0001-43 | Judiciario         | Federal             |
+      | name                       | acronym | country | state | city       | cnpj               | juridical_nature | governmental_power | governmental_sphere |
+      | Ministerio das Cidades     | MC      | BR      | DF    | Gama       | 58.745.189/0001-21 | Autarquia        | Executivo          | Federal             |
+      | Governo do DF              | GDF     | BR      | DF    | Taguatinga | 12.645.166/0001-44 | Autarquia        | Legislativo        | Federal             |
+      | Ministerio do Planejamento | MP      | BR      | DF    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             |
     And I fill in the following within ".no-boxes":
       | e-Mail                | josesilva@serpro.gov.br|
       | Username              | josesilva              |
@@ -94,6 +94,7 @@ Feature: User Registration
     And I select "Brazil" from "profile_data[country]"
     And I type in "MP" into autocomplete list "input_institution" and I choose "Ministerio do Planejamento"
     And wait for the captcha signup time
+    And I follow "Add new institution"
     And I press "Create my account"
     When José da Silva's account is activated
     And I go to login page
