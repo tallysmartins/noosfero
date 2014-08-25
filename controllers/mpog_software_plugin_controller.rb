@@ -77,8 +77,6 @@ class MpogSoftwarePluginController < ApplicationController
 
       response_message = if verify_recaptcha(:model=> institution, :message => _('Please type the word correctly'))
         if institution.errors.full_messages.empty? and institution.valid? and institution.save
-          institution.community.add_admin(environment.admins.first) unless environment.admins.empty?
-
           {:success => true, :message => _("Institution successful created!"), :institution_data=>{:name=>institution.name, :id=>institution.id}}
         else
           {:success => false, :message => _("Institution could not be created!"), :errors => institution.errors.full_messages}
