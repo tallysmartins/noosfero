@@ -13,10 +13,10 @@ Feature: Institution Field
     And I go to /account/logout
     And Institutions has initial default values on database
     And the following public institutions
-      | name                       | acronym | cnpj               | governmental_power | governmental_sphere |
-      | Ministerio das Cidades     | MC      | 58.745.189/0001-21 | Executivo          | Federal             |
-      | Governo do DF              | GDF     | 12.645.166/0001-44 | Legislativo        | Federal             |
-      | Ministerio do Planejamento | MP      | 41.769.591/0001-43 | Judiciario         | Federal             |
+      | name                       | acronym | country | state | city       | cnpj               | juridical_nature | governmental_power | governmental_sphere |
+      | Ministerio das Cidades     | MC      | BR      | DF    | Gama       | 58.745.189/0001-21 | Autarquia        | Executivo          | Federal             |
+      | Governo do DF              | GDF     | BR      | DF    | Taguatinga | 12.645.166/0001-44 | Autarquia        | Legislativo        | Federal             |
+      | Ministerio do Planejamento | MP      | BR      | DF    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             |
     And I go to /account/signup
     And Institutions has initial default values on database
     And I fill in the following within ".no-boxes":

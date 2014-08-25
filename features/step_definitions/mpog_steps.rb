@@ -37,9 +37,20 @@ end
 Given /^the following public institutions?$/ do |table|
   # table is a Cucumber::Ast::Table
   table.hashes.each do |item|
+    community = Community.new
+    community.name = item[:name]
+    community.country = item[:country]
+    community.state = item[:state]
+    community.city = item[:city]
+    community.save!
+
     governmental_power = GovernmentalPower.where(:name => item[:governmental_power]).first
     governmental_sphere = GovernmentalSphere.where(:name => item[:governmental_sphere]).first
-    institution = PublicInstitution.create!(:name => item[:name], :type => "PublicInstitution", :acronym => item[:acronym], :cnpj => item[:cnpj], :governmental_power => governmental_power, :governmental_sphere => governmental_sphere)
+
+    juridical_nature = JuridicalNature.create(:name => item[:juridical_nature])
+
+    institution = PublicInstitution.new(:name => item[:name], :type => "PublicInstitution", :acronym => item[:acronym], :cnpj => item[:cnpj], :juridical_nature => juridical_nature, :governmental_power => governmental_power, :governmental_sphere => governmental_sphere)
+    institution.community = community
     institution.save!
   end
 end

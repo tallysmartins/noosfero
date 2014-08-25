@@ -76,7 +76,7 @@ class ProfileEditorControllerTest < ActionController::TestCase
 
   private
 
-  def create_public_institution name, acronym, country, state, city, juridical_nature,   gov_p, gov_s
+  def create_public_institution name, acronym, country, state, city, juridical_nature, gov_p, gov_s
     institution_community = fast_create(Community)
     institution_community.name = name
     institution_community.country = country

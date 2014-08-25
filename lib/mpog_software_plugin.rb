@@ -196,6 +196,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       context.params[:user][:institution_ids].each do |institution_id|
         institution = Institution.find institution_id
         user.institutions << institution
+        institution.community.add_admin(user.person) if institution.community.admins.blank?
       end
     end
     user.save unless user.institution_ids.empty?
