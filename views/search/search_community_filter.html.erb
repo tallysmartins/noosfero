@@ -2,15 +2,15 @@
   <div id="search_content">
 
     <div class="search_options">
-      <table class="mpog_search_form_table formfield type-radio">
+      <table class="mpog_search_form_table formfield type-radio search_type">
         <tr>
           <td> 
             <%= label_tag("type_Community", _("Community")) %>
-            <%= radio_button_tag(:type, "Community", true) %> 
+            <%= radio_button_tag(:type, "Community", (true if @active_type == "community")) %>
             <%= label_tag("type_Software", _("Software")) %>
-            <%= radio_button_tag(:type, "Software") %> 
+            <%= radio_button_tag(:type, "Software", (true if @active_type == "software")) %>
             <%= label_tag("type_Institution", _("Institution")) %>
-            <%= radio_button_tag(:type, "Institution") %> 
+            <%= radio_button_tag(:type, "Institution", (true if @active_type == "institution")) %>
           </td>
         </tr>
       </table>

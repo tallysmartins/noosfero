@@ -329,28 +329,34 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     if context.params[:action] == "people"
       expanded_template('search/search_user_filter.html.erb')
     else context.params[:action] == "communities"
+      @active_type = if context.params[:type] == "Software"
+        "software"
+      elsif context.params[:type] == "Institution"
+        "institution"
+      else
+        "community"
+      end
+
       expanded_template('search/search_community_filter.html.erb')
     end
   end
 
-  def custom_people_search params
-    Person.search(params[:name],
-      params[:state],
-      params[:city],
-      params[:email]
-    )
-  end
+  def custom_search params
+    #:params => {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>"1", "programming_language"=>"1", "operating_system"=>"1", "controlled_vocabulary"=>"Administration", "license_info"=>{"id"=>""}, "e_ping"=>"any", "e_mag"=>"any", "icp_brasil"=>"any", "e_arq"=>"any", "internacionalizable"=>"any", "commit"=>"Search", "controller"=>"search", "action"=>"communities"}
 
-  def custom_community_search params
-   if params[:type] == "Community"
-      Community.search(params[:name])
-   elsif params[:type] == "Software"
+    if params[:action] == "people"
+      Person.search(params[:name],
+        params[:state],
+        params[:city],
+        params[:email]
+      )
+    elsif params[:action] == "communities" and params[:type] == "Institution"
 
-   elsif params[:type] == "Institution"
+    elsif params[:action] == "communities" and params[:type] == "Software"
 
-   else
-
-   end
+    else
+      [] # An empty list will trigger noosfero's default communities search
+    end
   end
 
   def controlled_vocabulary_transaction

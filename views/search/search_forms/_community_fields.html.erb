@@ -1,8 +1,7 @@
 <table class="mpog_search_form_table">
   <tr>
     <td>
-      <%= label_tag("name", _("Name"))%>
-      <%= text_field_tag(:name) %>
+      <input id="search-input" name="query" size="50" type="text" value="" title="<%= _('Type words about the community you are looking for') %>">
     </td>
   </tr>
 </table>
