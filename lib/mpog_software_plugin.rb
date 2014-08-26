@@ -341,6 +341,18 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     )
   end
 
+  def custom_community_search params
+   if params[:type] == "Community"
+      Community.search(params[:name])
+   elsif params[:type] == "Software"
+
+   elsif params[:type] == "Institution"
+
+   else
+
+   end
+  end
+
   def controlled_vocabulary_transaction
     ControlledVocabulary.transaction do
       context.profile.software_info.controlled_vocabulary.update_attributes!(context.params[:controlled_vocabulary])
