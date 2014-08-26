@@ -1,8 +1,8 @@
 <form action="/search/people" name="user_filter" method="POST" class="search_form">
   <div id="user_filter_content">
-    <div class="user_filter_options">
+    <div class="mpog_search_form_fields">
 
-      <table class="search-table">
+      <table class="mpog_search_form_table">
         <tr>
           <td> <%= label_tag :name, _("Name") %> </td>
           <td> <%= text_field_tag :name %> </td>
@@ -24,12 +24,6 @@
           <td> <%= submit_button(:search, _('Search')) %> </td>
         </tr>
       </table>
-    </div>
-
-    </br>
-
-    <div class="user_filter_actions">
-      
     </div>
   </div>
 </form>

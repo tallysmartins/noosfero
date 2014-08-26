@@ -325,10 +325,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
-  def add_new_search_filter type
-    if type == "People"
+  def add_new_search_filter
+    if context.params[:action] == "people"
       expanded_template('search/search_user_filter.html.erb')
-    else type == "Community"
+    else context.params[:action] == "communities"
       expanded_template('search/search_community_filter.html.erb')
     end
   end
