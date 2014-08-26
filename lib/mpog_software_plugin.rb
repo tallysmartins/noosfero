@@ -134,7 +134,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def js_files
-    ["mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js", "mpog-incomplete-registration.js"]
+    ["mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js", "mpog-incomplete-registration.js", "mpog-search.js"]
   end
 
   def add_new_organization_button
@@ -325,8 +325,12 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
-  def add_new_user_search_filter
-    expanded_template('user_search/search_filter.html.erb')
+  def add_new_search_filter type
+    if type == "People"
+      expanded_template('search/search_user_filter.html.erb')
+    else type == "Community"
+      expanded_template('search/search_community_filter.html.erb')
+    end
   end
 
   def custom_people_search params

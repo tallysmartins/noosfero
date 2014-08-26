@@ -1,0 +1,127 @@
+<form action="/search/community" name="user_filter" method="POST" class="search_form">
+  <div id="search_content">
+    <div class="search_options">
+
+      <table class="search-table formfield type-radio">
+        <tr>
+          <td> 
+            <%= label_tag("type_Community", _("Community")) %>
+            <%= radio_button_tag(:type, "Community", true) %> 
+            <%= label_tag("type_Software", _("Software")) %>
+            <%= radio_button_tag(:type, "Software") %> 
+            <%= label_tag("type_Institution", _("Institution")) %>
+            <%= radio_button_tag(:type, "Institution") %> 
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    </br>
+
+    <span class="community_fields">
+      <table>
+        <tr>
+          <td>
+            <%= label_tag("name", _("Name"))%>
+            <%= text_field_tag(:name) %>
+          </td>
+        </tr>
+      </table>
+    </span>
+
+    <span class="software_fields">
+      <table>
+        <tr>
+          <td>
+            <%= label_tag("name", _("Name"))%>
+            <%= text_field_tag(:name) %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <%= select_tag("database[][database_description_id]", SoftwareHelper.select_options(DatabaseDescription.all)) %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <%= select_tag("language[][programming_language_id]", SoftwareHelper.select_options(ProgrammingLanguage.all)) %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <%= select_tag("operating_system[][operating_system_name_id]", SoftwareHelper.select_options(OperatingSystemName.all)) %>
+          </td>
+        </tr>
+
+
+        <% category = [] %>
+        <% ControlledVocabulary.attribute_names.each do |attribute| %>
+          <% if attribute.to_s != "id" && attribute.to_s != "software_info_id" %>
+            <% category << "<option>#{attribute.titleize}</option>".html_safe %>
+          <% end %>
+        <% end %>
+        
+        <tr>
+          <td>
+            <%= select_tag("controlled_vocabulary[][controlled_vocabulary]", category) %>
+          </td>
+        </tr>
+          
+        <% licenses = [] %>
+        <% LicenseInfo.all.map do |license| %>
+          <% licenses <<  "<option>#{license.version}</option>".html_safe %>
+        <% end %>
+        
+        <tr>
+          <td>
+            <%= select_tag("license_select", licenses) %>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            <%= labelled_check_box _("Adherent to e-PING ?"), "e-ping" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <%= labelled_check_box  _("Adherent to e-MAG ?"), "e-mag" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <%= labelled_check_box  _("Adherent to ICP-Brasil ?"), "icp-brasil" %>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <%= labelled_check_box _("Adherent to e-ARQ ?"), "e-arq" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <%= labelled_check_box _("Internacionalizable ?"), "internacionalizable"%>
+          </td>
+        </tr>
+
+      </table>
+    </span>
+
+    <span class="institution_fields">
+    </span>
+
+
+    <tr>
+      <td> <%= submit_button(:search, _('Search')) %> </td>
+    </tr>
+  </div>
+
+</form>
