@@ -7,28 +7,28 @@
   <tr>
     <td> <%= _("Database") %> </td>
     <td>
-      <%= select_tag("database_description", SoftwareHelper.select_options(DatabaseDescription.all)) %>
+      <%= collection_select(:database_description, :id, DatabaseDescription.all, :id, :name, :prompt=>_("Any")) %>
     </td>
   </tr>
 
   <tr>
     <td> <%= _("Programming Language") %> </td>
     <td>
-      <%= select_tag("programming_language", SoftwareHelper.select_options(ProgrammingLanguage.all)) %>
+      <%= collection_select(:programming_language, :id, ProgrammingLanguage.all, :id, :name, :prompt=>_("Any")) %>
     </td>
   </tr>
 
   <tr>
     <td> <%= _("Operating System") %> </td>
     <td>
-      <%= select_tag("operating_system", SoftwareHelper.select_options(OperatingSystemName.all)) %>
+      <%= collection_select(:operating_system, :id, OperatingSystemName.all, :id, :name, :prompt=>_("Any")) %>
     </td>
   </tr>
 
   <tr>
     <td> <%= _("Controlled Vocabulary") %> </td>
     <td>
-      <%= select_tag("controlled_vocabulary", ControlledVocabularyHelper.get_categories_as_options) %>
+      <%= select_tag("controlled_vocabulary", (ControlledVocabularyHelper.get_categories_as_options)) %>
     </td>
   </tr>
 
