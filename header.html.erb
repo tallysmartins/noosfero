@@ -1,6 +1,12 @@
-<div id="barra-brasil">
-    <a href="http://brasil.gov.br" style="background:#455ede; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">Participa.gov</a>
-</div>
+<!-- barra do governo -->
+   <div id="barra-brasil">
+      <a href="http://brasil.gov.br" title="Acesse para conhecer todos os serviços e informações do Governo Brasileiro na Internet.">Portal do Governo Brasileiro</a>
+    </div>
+<!--fim barra do governo -->
+
+<!--<div id="barra-brasil">
+    <a href="http://brasil.gov.br" style="background:#455ede; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">SPB</a>
+</div> -->
 
 
 <div class="header-content">
@@ -32,6 +38,16 @@
           </a>
         </li>
       </ul>
+	<!--<div class="span6 language-and-actions-container"> -->
+              <!-- <ul id="language" class="pull-left">
+                  <li class="language-en">
+                  <a href="#">ENGLISH</a>
+                  </li>
+                  <li class="language-es">
+                  <a href="#">ESPAÑOL</a>
+                  </li>
+               </ul> -->
+
       <ul id="portal-siteactions">
         <li id="siteaction-accessibility">
           <a href="#">Acessibilidade</a>
@@ -43,10 +59,21 @@
           <a href="/search">Mapa do Site</a>
         </li>
       </ul>
-
+	
+<!--<div class="language-and-actions-container">
+               <ul id="language" class="pull-left">
+                  <li class="language-en">
+                  <a href="#">ENGLISH</a>
+                  </li>
+                  <li class="language-es">
+                  <a href="#">ESPAÑOL</a>
+                  </li>
+               </ul>
+</div> -->
       <div id="logo">
-        <a title="Participa.gov" href="/">
-          <span id="portal-title">Participa.gov</span>
+ 
+	<a title="Software Público" href="/">
+          <span id="portal-title"></span>
         </a>
       </div>
 
@@ -62,20 +89,20 @@
             <a id="sb_flickr" title="Flickr" href="#"><span>Flickr</span></a>
           </li>
           <li>
-            <a id="sb_face" title="Facebook" href="http://facebook.com/participabr"><span>Facebook</span></a>
+            <a id="sb_face" title="Facebook" href="#"><span>Facebook</span></a>
           </li>
           <li>
             <a id="sb_youtb" title="Youtube" href="#"><span>Youtube</span></a>
           </li>
           <li>
-            <a id="sb_tweet" title="Twitter" href="http://twitter.com/participabr"><span>Twitter</span></a>
+            <a id="sb_tweet" title="Twitter" href="#"><span>Twitter</span></a>
           </li>
         </ul>
       </div>
     </div>
 
-    <div id="sobre">
-      <ul>
+  <div id="sobre">	
+	<ul>
         <li id="link-faq">
           <a href="/ajuda/ajuda/duvidas-frequentes">Perguntas frequentes</a>
         </li>
@@ -88,11 +115,21 @@
 </div>
 
 <div id="barra-psocial">
+	<div id="navbar">
+	<nav id="navigation-colab"class="menu-servicos pull-right" role="navigation">
+	<ul class="nav navbar-nav">
+	<li class="portalservicos-item"><a href="/">Software Público</a></li>
+	<li class="portalservicos-item"><a href="/">Mercado Público</a></li>
+	<li class="portalservicos-item"><a href="/" >Comunidades</a></li>
+	<li class="portalservicos-item"><a href="/">Usuário</a></li>
+	</ul>
+	</nav>
+	</div>
   <div id="categories_menu">
     <%= theme_include 'categories' %>
   </div>
-  <div id="participa-languages">
+  <!--<div id="participa-languages">
     <a href="?lang=pt" class="flag-pt" title="Português"><span>Português</span></a>
     <a href="?lang=en" class="flag-en" title="English"><span>English</span></a>
-  </div>
+  </div> -->
 </div>

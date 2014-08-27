@@ -3,7 +3,10 @@
 /*@import url(cabecalho-verde-theme.css);*/
 /****************** FIM cabecalho verde ******************/
 /******************** cabecalho azul ********************/
-@import url(cabecalho-azul-theme.css);
+/*@import url(cabecalho-azul-theme.css);*/
+/****************** FIM cabecalho azul ******************/
+/****************** cabecalho azul ********************/
+@import url(cabecalho-cinza-theme.css);
 /****************** FIM cabecalho azul ******************/
 
 @import url(../../icons/tango/style.css);
