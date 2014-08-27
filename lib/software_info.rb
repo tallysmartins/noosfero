@@ -21,6 +21,73 @@ class SoftwareInfo < ActiveRecord::Base
     joins(:community).where("name ilike ?", "%#{name}%")
   }
 
+  scope :search, lambda { |name="", database_description="", programming_language="", operating_system="",
+    controlled_vocabulary="", license_info="", e_ping="", e_mag="",
+    icp_brasil="", e_arq="", internacionalizable=""|
+
+    like_sql = ""
+    values = []
+
+    unless name.nil? and name.blank?
+      like_sql << "name ILIKE ? AND "
+      values << "%#{name}%"
+    end
+
+    unless database_description.nil? and database_description.blank?
+      software_databases = SoftwareDatabase.where(:database_description_id => database_description)
+      like_sql << "software_databases ILIKE ? AND "
+      values << "%#{software_databases}%"
+    end
+
+    unless programming_language.nil? and programming_language.blank?
+      like_sql << "programming_language_id ILIKE ? AND "
+      values << "%#{programming_language}%"
+    end
+
+    unless operating_system.nil? and operating_system.blank?
+      like_sql << "operating_system_id ILIKE ? AND "
+      values << "%#{operating_system}%"
+    end
+
+    unless license_info.nil? and license_info.blank?
+      like_sql << "license_info_id ILIKE ? AND "
+      values << "%#{license_info}%"
+    end
+
+    unless e_ping.nil? and e_ping.blank? and e_ping == "Any"
+      like_sql << "e_ping ILIKE ? AND "
+      values << "%#{e_ping}%"
+    end
+
+    unless e_mag.nil? and e_mag.blank? and e_mag == "Any"
+      like_sql << "e_mag ILIKE ? AND "
+      values << "%#{e_mag}%"
+    end
+
+    unless icp_brasil.nil? and icp_brasil.blank? and icp_brasil == "Any"
+      like_sql << "icp_brasil ILIKE ? AND "
+      values << "%#{icp_brasil}%"
+    end
+
+    unless e_arq.nil? and e_arq.blank? and e_arq == "Any"
+      like_sql << "e_arq ILIKE ? AND "
+      values << "%#{e_arq}%"
+    end
+
+    unless internacionalizable.nil? and internacionalizable.blank? and internacionalizable == "Any"
+      like_sql << "internacionalizable ILIKE ? AND "
+      values << "%#{internacionalizable}%"
+    end
+
+    like_sql = like_sql[0..like_sql.length-5]
+
+    {
+      :joins => :community,
+      :conditions=>[like_sql, *values]
+    }
+  }
+
+
   def validate_operating_platform
     self.errors.add(:operating_platform, _("can't be blank")) if self.operating_platform.blank? && self.errors.messages[:operating_platform].nil?
   end
