@@ -19,7 +19,7 @@
   }
 
   function display_search_fields_on_page_load() {
-    var active_search = jQuery(".search_type input[checked='checked'").val();
+    var active_search = jQuery(".search_type input[checked='checked']").val();
 
     switch(active_search) {
       case "Community": show_community_fields(); break;

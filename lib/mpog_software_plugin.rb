@@ -353,11 +353,16 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     elsif params[:action] == "communities" and params[:type] == "Institution"
 
     elsif params[:action] == "communities" and params[:type] == "Software"
-      SoftwareInfo.search(params[:name], params[:database_description][:id],
-        params[:programming_language][:id], params[:operating_system][:id], 
-        params[:controlled_vocabulary], params[:license_info][:id], params[:e_ping], params[:e_mag], 
-        params[:icp_brasil], params[:e_arq], params[:internacionalizable])
+      softwares = SoftwareInfo.search(params[:name], params[:database_description][:id],
+        params[:programming_language][:id], params[:operating_system][:id],
+        params[:license_info][:id], params[:e_ping], params[:e_mag], params[:internacionalizable],
+        params[:icp_brasil], params[:e_arq], params[:controlled_vocabulary])
+      communities = []
 
+      softwares.each do |s|
+        communities << s.community
+      end
+      communities
     else
       [] # An empty list will trigger noosfero's default communities search
     end
