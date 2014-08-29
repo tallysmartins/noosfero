@@ -130,6 +130,37 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     }]
   end
 
+  def search_controller_filters
+    block = proc do
+      results = []
+      if params[:action] == "communities" and params[:type] == "Software"
+        softwares = SoftwareInfo.search(params[:name], params[:database_description][:id],
+          params[:programming_language][:id], params[:operating_system][:id],
+          params[:license_info][:id], params[:e_ping], params[:e_mag], params[:internacionalizable],
+          params[:icp_brasil], params[:e_arq], params[:controlled_vocabulary])
+        communities = []
+
+        softwares.each do |s|
+          communities << s.community
+        end
+        results = communities
+      end
+
+      results = results.paginate(:per_page => 24, :page => params[:page])
+      @searches[@asset] = {:results => results}
+      @search = results
+
+      render :action => :communities
+    end
+
+    [{
+      :type => "before_filter",
+      :method_name => "search_software_filters",
+      :options => { :only=>:communities },
+      :block => block
+    }]
+  end
+
   def profile_tabs
     if context.profile.person?
       { :title => _("Mpog"),
@@ -380,16 +411,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     elsif params[:action] == "communities" and params[:type] == "Institution"
 
     elsif params[:action] == "communities" and params[:type] == "Software"
-      softwares = SoftwareInfo.search(params[:name], params[:database_description][:id],
-        params[:programming_language][:id], params[:operating_system][:id],
-        params[:license_info][:id], params[:e_ping], params[:e_mag], params[:internacionalizable],
-        params[:icp_brasil], params[:e_arq], params[:controlled_vocabulary])
-      communities = []
-
-      softwares.each do |s|
-        communities << s.community
-      end
-      communities
+      # Replaced by noosfero before_filter instead of hotspot
     else
       [] # An empty list will trigger noosfero's default communities search
     end
