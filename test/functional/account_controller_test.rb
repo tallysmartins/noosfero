@@ -12,14 +12,15 @@ class AccountControllerTest < ActionController::TestCase
 
     @govPower = GovernmentalPower.create(:name=>"Some Gov Power")
     @govSphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
+    @juridical_nature = JuridicalNature.create(:name => "Autarquia")
 
     @controller = AccountController.new
     @request = ActionController::TestRequest.new
     @response = ActionController::TestResponse.new
 
     @institution_list = []
-    @institution_list << create_institution("Ministerio Publico da Uniao", "MPU")
-    @institution_list << create_institution("Tribunal Regional da Uniao", "TRU")
+    @institution_list << create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @govPower, @govSphere)
+    @institution_list << create_public_institution("Tribunal Regional da Uniao", "TRU", "BR", "DF", "Brasilia", @juridical_nature, @govPower, @govSphere)
 
     @user_info = {
       :login=>"novo_usuario",
@@ -91,15 +92,22 @@ class AccountControllerTest < ActionController::TestCase
 
   private
 
-  def create_institution name, acronym
-    institution_community = Community::create :name=>name
+  def create_public_institution name, acronym, country, state, city, juridical_nature, gov_p, gov_s
+    institution_community = fast_create(Community)
+    institution_community.name = name
+    institution_community.country = country
+    institution_community.state = state
+    institution_community.city = city
+    institution_community.save!
+
     institution = PublicInstitution.new
     institution.community = institution_community
     institution.name = name
-    institution.acronym  = acronym
-    institution.governmental_power = @govPower
-    institution.governmental_sphere = @govSphere
-    institution.save
+    institution.juridical_nature = juridical_nature
+    institution.acronym = acronym
+    institution.governmental_power = gov_p
+    institution.governmental_sphere = gov_s
+    institution.save!
     institution
   end
 
