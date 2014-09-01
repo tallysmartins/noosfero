@@ -29,57 +29,57 @@ class SoftwareInfo < ActiveRecord::Base
     like_sql = ""
     values = []
 
-    unless name.nil? and name.blank?
+    unless name.blank?
       like_sql << "name ILIKE ? AND "
       values << "%#{name}%"
     end
 
-    if (not database_description_id.nil?) and (not database_description_id.blank?)
+    unless database_description_id.blank?
       like_sql << "software_databases.database_description_id = ? AND "
       values << "#{database_description_id}"
     end
 
-    if (not programming_language_id.nil?) and (not programming_language_id.blank?)
+    unless programming_language_id.blank?
       like_sql << "software_languages.programming_language_id = ? AND "
       values << "#{programming_language_id}"
     end
 
-    if (not operating_system_name_id.nil?) and (not operating_system_name_id.blank?)
+    unless operating_system_name_id.blank?
       like_sql << "operating_systems.operating_system_name_id = ? AND "
       values << "#{operating_system_name_id}"
     end
 
-    if (not license_info_id.nil?) and (not license_info_id.blank?)
+    unless license_info_id.blank?
       like_sql << "license_info_id = ? AND "
       values << "#{license_info_id}"
     end
 
-    if (not internacionalizable.nil?) and (not internacionalizable.blank?)
+    unless internacionalizable.blank?
       like_sql << "internacionalizable = ? AND "
       values << "#{internacionalizable}"
     end
 
-    if (not icp_brasil.nil?) and (not icp_brasil.blank?)
+    unless icp_brasil.blank?
       like_sql << "icp_brasil = ? AND "
       values << "#{icp_brasil}"
     end
 
-    if (not e_ping.nil?) and (not e_ping.blank?)
+    unless e_ping.blank?
       like_sql << "e_ping = ? AND "
       values << "#{e_ping}"
     end
 
-    if (not e_mag.nil?) and (not e_mag.blank?)
+    unless e_mag.blank?
       like_sql << "e_mag = ? AND "
       values << "#{e_mag}"
     end
 
-    if (not e_arq.nil?) and (not e_arq.blank?)
+    unless e_arq.blank?
       like_sql << "e_arq = ? AND "
       values << "#{e_arq}"
     end
 
-    if (not controlled_vocabulary.nil?) and (not controlled_vocabulary.blank?)
+    unless controlled_vocabulary.blank?
       controlled_vocabulary = controlled_vocabulary.gsub(' ', '').underscore
       like_sql << "controlled_vocabulary.#{controlled_vocabulary} = ? AND "
       values << "true"

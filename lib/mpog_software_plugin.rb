@@ -144,11 +144,11 @@ class MpogSoftwarePlugin < Noosfero::Plugin
           communities << s.community
         end
         results = communities
-      results = results.paginate(:per_page => 24, :page => params[:page])
-      @searches[@asset] = {:results => results}
-      @search = results
+        results = results.paginate(:per_page => 24, :page => params[:page])
+        @searches[@asset] = {:results => results}
+        @search = results
 
-      render :action => :communities
+        render :action => :communities
       end
     end
 
