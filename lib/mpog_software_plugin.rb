@@ -131,9 +131,9 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def search_controller_filters
-    block = proc do
+    community_block = proc do
       results = []
-      if params[:action] == "communities" and params[:type] == "Software"
+      if params[:type] == "Software"
         softwares = SoftwareInfo.search(params[:name], params[:database_description][:id],
           params[:programming_language][:id], params[:operating_system][:id],
           params[:license_info][:id], params[:e_ping], params[:e_mag], params[:internacionalizable],
@@ -144,20 +144,42 @@ class MpogSoftwarePlugin < Noosfero::Plugin
           communities << s.community
         end
         results = communities
-      end
-
       results = results.paginate(:per_page => 24, :page => params[:page])
       @searches[@asset] = {:results => results}
       @search = results
 
       render :action => :communities
+      end
     end
+
+    people_block = proc do
+      results = []
+
+      results = environment.people.search(name = params[:name],
+        state = params[:state],
+        city = params[:city],
+        email = params[:email]
+      )
+
+      results = results.paginate(:per_page => 24, :page => params[:page])
+      @searches[@asset] = {:results => results}
+      @search = results
+
+      render :action => :people
+    end
+
 
     [{
       :type => "before_filter",
+      :method_name => "search_person_filters",
+      :options => { :only=>:people },
+      :block => people_block
+    },
+    {
+      :type => "before_filter",
       :method_name => "search_software_filters",
       :options => { :only=>:communities },
-      :block => block
+      :block => community_block
     }]
   end
 
@@ -396,24 +418,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       end
 
       expanded_template('search/search_community_filter.html.erb')
-    end
-  end
-
-  def custom_search params
-    #:params => {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>"1", "programming_language"=>"1", "operating_system"=>"1", "controlled_vocabulary"=>"Administration", "license_info"=>{"id"=>""}, "e_ping"=>"any", "e_mag"=>"any", "icp_brasil"=>"any", "e_arq"=>"any", "internacionalizable"=>"any", "commit"=>"Search", "controller"=>"search", "action"=>"communities"}
-
-    if params[:action] == "people"
-      Person.search(params[:name],
-        params[:state],
-        params[:city],
-        params[:email]
-      )
-    elsif params[:action] == "communities" and params[:type] == "Institution"
-
-    elsif params[:action] == "communities" and params[:type] == "Software"
-      # Replaced by noosfero before_filter instead of hotspot
-    else
-      [] # An empty list will trigger noosfero's default communities search
     end
   end
 
