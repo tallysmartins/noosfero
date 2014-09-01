@@ -21,7 +21,6 @@ class AccountControllerTest < ActionController::TestCase
     @institution_list = []
     @institution_list << create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @govPower, @govSphere)
     @institution_list << create_public_institution("Tribunal Regional da Uniao", "TRU", "BR", "DF", "Brasilia", @juridical_nature, @govPower, @govSphere)
-
     @user_info = {
       :login=>"novo_usuario",
       :password=>"nova_senha",
