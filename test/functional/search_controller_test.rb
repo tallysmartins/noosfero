@@ -241,6 +241,21 @@ class SearchControllerTest < ActionController::TestCase
     assert_includes assigns(:searches)[:communities][:results], software.community
   end
 
+  should "search for software by internacionalizable" do
+    software = create_software("beautiful")
+    software.intern = true
+    software.save!
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
+      "programming_language"=>{"id"=>""},
+      "operating_system"=>{"id"=>""},
+      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"true",
+      "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
+
   should "search by e_arq and e_ping" do
     software = create_software("beautiful")
     software.e_arq = true

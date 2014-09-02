@@ -55,7 +55,7 @@ class SoftwareInfo < ActiveRecord::Base
     end
 
     unless internacionalizable.blank?
-      like_sql << "internacionalizable = ? AND "
+      like_sql << "intern = ? AND "
       values << "#{internacionalizable}"
     end
 
