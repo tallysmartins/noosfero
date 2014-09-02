@@ -34,6 +34,14 @@ class SearchControllerTest < ActionController::TestCase
 
   end
 
+  should "search for people by identifier" do
+    p1 = create_user("user 1", "DF", "Gama", "user_1@user.com").person
+
+    get :people, :query => "user-1"
+
+    assert_includes assigns(:searches)[:people][:results], p1
+  end
+
   should "search for people by name" do
     p1 = create_user("user_1", "DF", "Gama", "user_1@user.com").person
 
@@ -66,6 +74,22 @@ class SearchControllerTest < ActionController::TestCase
     assert_includes assigns(:searches)[:people][:results], p1
   end
 
+  should "search for people by email and state" do
+    p1 = create_user("user_1", "DF", "Gama", "user_1@user.com").person
+
+    get :people, :email => "user_1@user.com", :state => "DF"
+
+    assert_includes assigns(:searches)[:people][:results], p1
+  end
+
+  should "search for software by identifier" do
+    software = create_software("beautiful os")
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"beautiful-os", "database_description"=>{"id"=>""}, "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"", "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
 
   should "search for software by name" do
     software = create_software("beautiful")
@@ -216,6 +240,23 @@ class SearchControllerTest < ActionController::TestCase
 
     assert_includes assigns(:searches)[:communities][:results], software.community
   end
+
+  should "search by e_arq and e_ping" do
+    software = create_software("beautiful")
+    software.e_arq = true
+    software.e_ping = true
+    software.save!
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
+      "programming_language"=>{"id"=>""},
+      "operating_system"=>{"id"=>""},
+      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"true", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"true", "internacionalizable"=>"",
+      "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
+
   protected
 
   def create_user name, state, city, email

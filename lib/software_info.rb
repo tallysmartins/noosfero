@@ -30,8 +30,8 @@ class SoftwareInfo < ActiveRecord::Base
     values = []
 
     unless name.blank?
-      like_sql << "name ILIKE ? AND "
-      values << "%#{name}%"
+      like_sql << "name ILIKE ? OR identifier ILIKE ? AND "
+      values << "%#{name}%" << "%#{name}%"
     end
 
     unless database_description_id.blank?
