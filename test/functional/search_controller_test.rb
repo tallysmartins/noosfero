@@ -31,49 +31,191 @@ class SearchControllerTest < ActionController::TestCase
     software_database = SoftwareDatabase.new(version: "1.0", operating_system: "windows")
     software_database.database_description = DatabaseDescription.last
     software_database.save!
+
   end
 
   should "search for people by name" do
-  	p1 = create_user("user_1", "DF", "Gama", "user_1@user.com").person
+    p1 = create_user("user_1", "DF", "Gama", "user_1@user.com").person
 
-  	get :people, :query => "user_1" 
+    get :people, :query => "user_1"
 
-  	assert_includes assigns(:searches)[:people][:results], p1
+    assert_includes assigns(:searches)[:people][:results], p1
   end
 
   should "search for people by state" do
-  	p1 = create_user("user_1", "DF", "Gama", "user_1@user.com").person
+    p1 = create_user("user_1", "DF", "Gama", "user_1@user.com").person
 
-  	get :people, :state => "DF" 
+    get :people, :state => "DF"
 
-  	assert_includes assigns(:searches)[:people][:results], p1
+    assert_includes assigns(:searches)[:people][:results], p1
   end
 
   should "search for people by city" do
-  	p1 = create_user("user_1", "DF", "Gama", "user_1@user.com").person
+    p1 = create_user("user_1", "DF", "Gama", "user_1@user.com").person
 
-  	get :people, :city => "Gama" 
+    get :people, :city => "Gama"
 
-  	assert_includes assigns(:searches)[:people][:results], p1
+    assert_includes assigns(:searches)[:people][:results], p1
   end
 
   should "search for people by email" do
-  	p1 = create_user("user_1", "DF", "Gama", "user_1@user.com").person
+    p1 = create_user("user_1", "DF", "Gama", "user_1@user.com").person
 
-  	get :people, :email => "user_1@user.com" 
+    get :people, :email => "user_1@user.com"
 
-  	assert_includes assigns(:searches)[:people][:results], p1
+    assert_includes assigns(:searches)[:people][:results], p1
   end
 
 
-  # should "search for software by name" do
-  #   software = create_software("software")
+  should "search for software by name" do
+    software = create_software("beautiful")
 
-  #   get :communities, :type => "Software", :query => "", :name => "software", :database_description => {:id => ""}, :programming_language => {:id=>""}, :operating_system => {:id => ""}, :controlled_vocabulary => "", :license_info => {:id => ""}, :e_ping => "", :e_mag => "", :icp_brasil => "", :e_arq => "", :internacionalizable => ""
+    params = {"type"=>"Software", "query"=>"", "name"=>"beautiful", "database_description"=>{"id"=>""}, "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"", "commit"=>"Search"}
+    get :communities, params
 
-  #   assert_includes assigns(:searches)[:communities][:results], software.community
-  # end
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
 
+  should "search for software by database" do
+    software = create_software("beautiful")
+    software.software_databases.clear()
+    software.software_databases << SoftwareDatabase.last
+    software.save!
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"",
+          "database_description"=>{"id"=>SoftwareDatabase.last.database_description.id},
+      "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "controlled_vocabulary"=>"",
+      "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
+
+  should "search for software by programming language" do
+    software = create_software("beautiful")
+    software.software_languages.clear()
+    software.software_languages << SoftwareLanguage.last
+    software.save!
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
+      "programming_language"=>{"id"=>SoftwareLanguage.last.programming_language.id},
+      "operating_system"=>{"id"=>""}, "controlled_vocabulary"=>"",
+      "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
+
+  should "search for software by operating system" do
+    software = create_software("beautiful")
+    software.operating_systems.clear()
+    software.operating_systems << OperatingSystem.last
+    software.save!
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
+      "programming_language"=>{"id"=>""},
+      "operating_system"=>{"id"=>OperatingSystem.last.id},
+      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
+
+  should "search for software by controlled vocabulary" do
+    software = create_software("beautiful")
+    software.controlled_vocabulary.habitation = true
+    software.controlled_vocabulary.save!
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
+      "programming_language"=>{"id"=>""},
+      "operating_system"=>{"id"=>""},
+      "controlled_vocabulary"=>"habitation", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
+
+  should "search for software by license info" do
+    software = create_software("beautiful")
+    software.license_info = LicenseInfo.last
+    software.save!
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
+      "programming_language"=>{"id"=>""},
+      "operating_system"=>{"id"=>""},
+      "controlled_vocabulary"=>"", "license_info"=>{"id"=>LicenseInfo.last.id}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
+
+
+  should "search for software by e_mag" do
+    software = create_software("beautiful")
+    software.e_mag = true
+    software.save!
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
+      "programming_language"=>{"id"=>""},
+      "operating_system"=>{"id"=>""},
+      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"true", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
+
+
+  should "search for software by e_ping" do
+    software = create_software("beautiful")
+    software.e_ping = true
+    software.save!
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
+      "programming_language"=>{"id"=>""},
+      "operating_system"=>{"id"=>""},
+      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"true", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
+
+
+  should "search for software by icp_brasil" do
+    software = create_software("beautiful")
+    software.icp_brasil = true
+    software.save!
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
+      "programming_language"=>{"id"=>""},
+      "operating_system"=>{"id"=>""},
+      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"true", "e_arq"=>"", "internacionalizable"=>"",
+      "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
+
+  should "search for software by e_arq" do
+    software = create_software("beautiful")
+    software.e_arq = true
+    software.save!
+
+    params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
+      "programming_language"=>{"id"=>""},
+      "operating_system"=>{"id"=>""},
+      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"true", "internacionalizable"=>"",
+      "commit"=>"Search"}
+    get :communities, params
+
+    assert_includes assigns(:searches)[:communities][:results], software.community
+  end
   protected
 
   def create_user name, state, city, email
@@ -94,6 +236,20 @@ class SearchControllerTest < ActionController::TestCase
     software_info.software_languages << SoftwareLanguage.last
     software_info.software_databases << SoftwareDatabase.last
     software_info.operating_systems << OperatingSystem.last
+    software_info.license_info = LicenseInfo.last
+
+
+    cv = ControlledVocabulary.new()
+    cv.attributes.each do |key|
+      if(key.first == 'id' || key.first == 'software_info_id')
+        next
+      end
+      cv.update_attribute(key.first, false)
+    end
+    cv.save!
+
+    software_info.controlled_vocabulary = cv
+
     software_info.save!
 
     community.save!
