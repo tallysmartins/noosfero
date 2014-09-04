@@ -30,9 +30,8 @@ Feature: Institution Field
     And I follow "Add new institution"
     And I press "Create my account"
     Then José da Silva's account is activated
-
-
-  @selenium-fixme
+    
+  @selenium
   Scenario: Add more then one instituion on profile editor
     Given I am on josesilva's control panel
     And I follow "Edit Profile"
@@ -41,7 +40,6 @@ Feature: Institution Field
     And I follow "Add new institution"
     And I type in "Gover" into autocomplete list "input_institution" and I choose "Governo do DF"
     And I follow "Add new institution"
-    And I press "Save"
-    And I follow "Edit Profile"
-    And I should see "Ministerio do Planejamento"
-    Then I should see "Governo do DF"
+    Then I should see "Ministerio do Planejamento" within ".institutions_added"
+    And I should see "Governo do DF" within ".institutions_added"
+
