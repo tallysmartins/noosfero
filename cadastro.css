@@ -1,6 +1,6 @@
 /*cadastro de usuario e instituicao*/
 
-#signup-form {
+#signup-form{
 	display:block;
 	background-color:#F0F0F0;
 	border-left:solid 3px;
@@ -50,7 +50,7 @@ float: left;
 	margin:3px 2px 3px 0px;
 }
 
-.formlabel{
+#signup-form .formlabel{
 	float:left;
 	padding:0px 15px 0px 0px;
 	width:237px;
@@ -58,34 +58,38 @@ float: left;
 	margin:3px 2px 10px 0px;
 }
 
-.formfieldline {
+#signup-form .formfieldline{
 	/*background-color:#E7E7E7;*/ /*colorir linhas especificas*/
 	width:100%;
 	background: url(images/hdot2.gif) repeat-x bottom #ECECEC;
 	margin:0px 10px 10px 0px;
 	
 }
-.formfieldline:hover {
+#signup-form .formlabel.login-box-content{
+	background:none;
+}
+#signup-form.formfieldline:hover {
 	background: url(../images/hdot2.gif) repeat-x bottom #f1e5dc;
 }
 
-.formfield input, .formfield textarea{
+.formfield input,.formfield textarea {
 	background-color:#fff;
 	width:50%;
 }
 
-#content a.button.with-text {
+/*#content a.button.with-text {
 	line-height: 50px !important;
-}
+} Pensar outra solucao*/
 
 #status-identifier{
 	width:50%;
 	height:30px;
 }
 
-#content form input.button.submit{
+/*#content form input.button.submit{
 	margin:13px;
 }
+*/
 #errorExplanation{
 	width:720px;
 }
@@ -109,18 +113,50 @@ margin: 3px;
 border-radius: 8px;
 } *****/
 
-/****modal***/
+/****modal Instituicao***/
+
+
 #institutions_cnpj, #community_country, #type_PublicInstitution, #institutions_acronym {
 	width:200px;
 
 }
 
-.formfield .type-radio{
-	width:200px;
+#institution_dialog .type-radio{
+	width:500px; 
 	float:left;
+	margin:10px 20px;
 }
 
-#institution_dialog{
-	background-color:#F0F0F0;
+#institution_dialog .formlabel{
+	float:left;
+	padding:0px 15px 0px 0px;
+	width:237px;
+	height:30px;
+	margin:3px 2px 10px 0px;
 }
+
+#institution_dialog .formfieldline{
+	/*background-color:#E7E7E7;*/ /*colorir linhas especificas*/
+	width:100%;
+	background: url(images/hdot2.gif) repeat-x bottom #ECECEC;
+	margin:0px 10px 10px 0px;
+
+}
+
+#institution_dialog .formfieldline:hover {
+	background: url(../images/hdot2.gif) repeat-x bottom #f1e5dc;
+}
+
+
+type_PublicInstitution{
+	#fff;
+	float:left;
+
+
+}
+
+#institution_dialog {
+	background-color:#F0F0F0 !important;
+}
+
 
