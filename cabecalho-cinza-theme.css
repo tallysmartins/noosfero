@@ -10,6 +10,7 @@
 
 #header>div {
   max-width: 960px;
+  min-width: 960px;
   margin: 0 auto;
 }
 
@@ -55,6 +56,11 @@ background-image: url(images/logotipo_contraste.png);
 background-repeat: no-repeat;
 }*/
 
+/* Barra do Brasil */
+
+#barra-brasil, #wrapper-barra-brasil, #wrap-1 {
+	min-width: 960px;
+}
 
 /* logo */
 #logo {
@@ -177,7 +183,6 @@ background-repeat: no-repeat;
 #theme-header #sobre {
    line-height: 20px;
    font-size: 12px;
-   margin:0px 83px; /*incluido*/
 }
 
 
@@ -387,14 +392,23 @@ color:#000000;
 
 /*Fim menu principal SPB*/
 
+
+#wrap-2 {
+	width: 960px;
+	margin: 0 auto;
+	border: none;
+	padding: 0px;
+}
+
+
+
 /****************** FIM cabecalho ******************/
 
 /************* Bar Psocial Style - Menu Horizontal**************/
 #user{
-  padding: 0px 2em;
-  top: -30px;
+  top: -45px;
   font-size: 12px;
-  right: 4em;
+  /*right: 10px;*/
 }
 
 .logged-in #user{
@@ -499,7 +513,8 @@ color:#000000;
 
 /******************Footer-Rodapé**********************************/
 #theme-footer {
-    width: 100%;
+	width: 100%;
+	min-width: 960px;
 }
 
 #footer-content {
@@ -645,7 +660,7 @@ line-height:1em
 @media(min-width:980px) {
 
 footer .container2{
-	width:1040px
+	width: 100%;
 }
 
 footer .footer-atalhos a {
