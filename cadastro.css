@@ -1,0 +1,126 @@
+/*cadastro de usuario e instituicao*/
+
+#signup-form {
+	display:block;
+	background-color:#F0F0F0;
+	border-left:solid 3px;
+	border-top:solid 1px;
+	width: 720px;
+}
+
+#signup-form-header {
+	width:90% !important;
+}
+
+#signup-form-profile{
+	width:90% !important;
+}
+
+#signup-formfield-group {
+	background: url(images/hdot2.gif) repeat-x bottom #ECECEC;
+
+}
+#signup-formfield-group:hover {
+	background: url(../images/hdot2.gif) repeat-x bottom #f1e5dc;
+}
+
+/*#signup-form .formlabel {
+	color: #4A4A4A;
+	font-size: 20px;
+	font-weight: normal;
+	text-align: left;
+	float: left;
+
+}*/
+.action-account-signup #content {
+	text-align: left;
+}
+
+.required-field label.formlabel {
+font-weight: bold;
+color: #c00;
+float: left;
+}
+
+#signup-form select, #signup-form textarea, #signup-form input {
+/*padding: 7px 7% 10px 3%; */
+	height: 30px !important;
+	width: 50%;
+	float:center;
+	margin:3px 2px 3px 0px;
+}
+
+.formlabel{
+	float:left;
+	padding:0px 15px 0px 0px;
+	width:237px;
+	height:30px;
+	margin:3px 2px 10px 0px;
+}
+
+.formfieldline {
+	/*background-color:#E7E7E7;*/ /*colorir linhas especificas*/
+	width:100%;
+	background: url(images/hdot2.gif) repeat-x bottom #ECECEC;
+	margin:0px 10px 10px 0px;
+	
+}
+.formfieldline:hover {
+	background: url(../images/hdot2.gif) repeat-x bottom #f1e5dc;
+}
+
+.formfield input, .formfield textarea{
+	background-color:#fff;
+	width:50%;
+}
+
+#content a.button.with-text {
+	line-height: 50px !important;
+}
+
+#status-identifier{
+	width:50%;
+	height:30px;
+}
+
+#content form input.button.submit{
+	margin:13px;
+}
+#errorExplanation{
+	width:720px;
+}
+
+
+/**** mudar para a cor do icone e link da imagem passado pela suzete
+
+#signup-form .invalid {
+border-color: #7f0000;
+background-image: url(images/alerta-cadastro16.jpg);
+box-shadow: 0 0 7px red;
+
+} */
+
+/**** talvez para os botoes****
+#content a.button.with-text {
+line-height: 30px !important;
+border: none;
+float: right;
+margin: 3px;
+border-radius: 8px;
+} *****/
+
+/****modal***/
+#institutions_cnpj, #community_country, #type_PublicInstitution, #institutions_acronym {
+	width:200px;
+
+}
+
+.formfield .type-radio{
+	width:200px;
+	float:left;
+}
+
+#institution_dialog{
+	background-color:#F0F0F0;
+}
+

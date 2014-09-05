@@ -8,6 +8,9 @@
 /****************** cabecalho azul ********************/
 @import url(cabecalho-cinza-theme.css);
 /****************** FIM cabecalho azul ******************/
+/****************** cadastro ********************/
+@import url(cadastro.css);
+/****************** FIM cabecalho azul ****************/
 
 @import url(../../icons/tango/style.css);
 
