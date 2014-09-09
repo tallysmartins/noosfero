@@ -24,6 +24,18 @@ class SoftwareLanguageValidationTest < ActiveSupport::TestCase
     assert_equal true, !@software_language.save
   end
 
+  should "Don't save SoftwareLanguage if version is too long" do
+    @software_language = create_software_language
+    @software_language.version = "A too long version to be considered valid as a version"
+    assert_equal true, !@software_language.save
+  end
+
+  should "Don't save SoftwareLanguage if operating system is too long" do
+    @software_language = create_software_language
+    @software_language.operating_system = "A too long operating system to be considered valid as a operating system"
+    assert_equal true, !@software_language.save
+  end
+
   should "Save SoftwareLanguage if operating_system is not filed" do
     @software_language = create_software_language
     @software_language.operating_system = ""
