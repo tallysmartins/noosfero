@@ -23,4 +23,9 @@ class OperatingSystemValidationTest < ActiveSupport::TestCase
    assert !@operating_system.save
   end
 
+  should "not save if OperatingSystem have a version too long" do
+    @operating_system.version = "A too long version to be a valid operating system version"
+    assert !@operating_system.save
+  end
+
 end
