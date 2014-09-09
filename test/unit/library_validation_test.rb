@@ -31,4 +31,19 @@ class LibraryValidationTest < ActiveSupport::TestCase
     @library.license = ""
     assert !@library.save
   end
+
+  should "Don't save Library if name is too long" do
+    @library.name = "A too long name to be a valid name for library"
+    assert !@library.save
+  end
+
+  should "Don't save Library if version is too long" do
+    @library.version = "A too long version to be a valid version for library"
+    assert !@library.save
+  end
+
+  should "Don't save Library if license is too long" do
+    @library.license = "A too long license to be a valid license for library"
+    assert !@library.save
+  end
 end
