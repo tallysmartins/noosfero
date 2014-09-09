@@ -211,7 +211,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     ["mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js", "mpog-incomplete-registration.js", "mpog-search.js"]
   end
 
-  def add_new_organization_button
+  def add_new_organization_buttons
     Proc::new do
       button(:add, _('Create a new software'), :controller => 'mpog_software_plugin_myprofile', :action => 'new_software')
     end
@@ -222,7 +222,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     person.has_permission_without_plugins?(permission, target)
   end
 
-  def incomplete_registration
+  def profile_blocks_extra_content
     return if context.session[:user].nil? or context.session[:hide_incomplete_percentage] == true
 
     person = Person.where(:user_id=>context.session[:user]).first
@@ -235,12 +235,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       end
     end
   end
-
-
-  def manage_software
-    [{:title => _('Manage Software'), :url => {:controller => 'mpog_software_plugin', :action => 'archive_software'}}]
-  end
-
 
   def custom_user_registration_attributes user
     unless context.params[:user][:institution_ids].nil?
@@ -408,7 +402,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def add_new_search_filter
     if context.params[:action] == "people"
       expanded_template('search/search_user_filter.html.erb')
-    else context.params[:action] == "communities"
+    elsif context.params[:action] == "communities"
       @active_type = if context.params[:type] == "Software"
         "software"
       elsif context.params[:type] == "Institution"
@@ -416,7 +410,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       else
         "community"
       end
-
+      puts 
       expanded_template('search/search_community_filter.html.erb')
     end
   end
