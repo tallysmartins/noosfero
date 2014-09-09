@@ -45,13 +45,18 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     assert_equal true, @software_info.save
   end
 
-  should "Not save SoftwareInfo if acronym is blank" do
+  should "Save SoftwareInfo if acronym is blank" do
     @software_info.acronym = ""
-    assert_equal false, @software_info.save
+    assert_equal true, @software_info.save
   end
 
   should "Not save SoftwareInfo if acronym has more than 8 characters" do
-    @software_info.acronym = "123456789"
+    @software_info.acronym = "12345678901"
+    assert_equal false, @software_info.save
+  end
+
+  should "Not save SoftwareInfo if acronym has whitespaces" do
+    @software_info.acronym = "AC DC"
     assert_equal false, @software_info.save
   end
 end

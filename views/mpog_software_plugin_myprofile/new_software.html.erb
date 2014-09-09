@@ -27,12 +27,10 @@
     <%= required f.text_field(:name) %>
 
     <%= fields_for @software_info do |swf| %>
-      <span class='required-field'>
-        <div class="formfield type-text">
+      <div class="formfield type-text">
         <%= swf.label("acronym" ,_("Acronym"), :class=>"formlabel") %>
-        <%= required swf.text_field(:acronym) %>
-        </div>
-      </span>
+        <%= swf.text_field(:acronym) %>
+      </div>
 
       <div class="formfieldline">
         <%= swf.label _("Adherent to e-PING ?") %>

@@ -99,10 +99,10 @@ class SoftwareInfo < ActiveRecord::Base
   end
 
   def validate_acronym
-    if self.acronym.blank? && self.errors.messages[:acronym].nil?
-      self.errors.add(:acronym, _("can't be blank"))
-    elsif self.acronym.length > 8 && self.errors.messages[:acronym].nil?
-      self.errors.add(:acronym, _("can't have more than 8 characteres"))
+    if self.acronym.length > 10 && self.errors.messages[:acronym].nil?
+      self.errors.add(:acronym, _("can't have more than 10 characteres"))
+    elsif self.acronym.match(/\s+/)
+      self.errors.add(:acronym, _("can't have whitespaces"))
     end
   end
 
