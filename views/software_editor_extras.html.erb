@@ -95,52 +95,52 @@
 <div id='table_structure_databases' style="display:none"><%= DatabaseHelper.add_dynamic_table %></div>
 <%= link_to _('New Database'), "#", :class=>"button icon-add with-text new-dynamic-table dynamic-databases"%>
 
-<div id="controlled_vocabulary_fields">
-<h4> <%= _("Controlled Vocabulary of E-government") %> </h4>
+<div id="software_categories_fields">
+<h4> <%= _("Software Categories") %> </h4>
 
-    <%= labelled_check_box _("Administration"), "controlled_vocabulary[administration]", "1", context.profile.software_info.controlled_vocabulary.administration %> <br />
+    <%= labelled_check_box _("Administration"), "software_categories[administration]", "1", context.profile.software_info.software_categories.administration %> <br />
 
-    <%= labelled_check_box _("Agriculture"), "controlled_vocabulary[agriculture]", "1", context.profile.software_info.controlled_vocabulary.agriculture %> <br />
+    <%= labelled_check_box _("Agriculture"), "software_categories[agriculture]", "1", context.profile.software_info.software_categories.agriculture %> <br />
 
-    <%= labelled_check_box _("Business_and Services"), "controlled_vocabulary[business_and_services]", "1", context.profile.software_info.controlled_vocabulary.business_and_services %> <br />
+    <%= labelled_check_box _("Business_and Services"), "software_categories[business_and_services]", "1", context.profile.software_info.software_categories.business_and_services %> <br />
 
-    <%= labelled_check_box  _("Communication"), "controlled_vocabulary[communication]", "1", context.profile.software_info.controlled_vocabulary.communication %> <br />
+    <%= labelled_check_box  _("Communication"), "software_categories[communication]", "1", context.profile.software_info.software_categories.communication %> <br />
 
-    <%= labelled_check_box _("Culture"), "controlled_vocabulary[culture]", "1", context.profile.software_info.controlled_vocabulary.culture %> <br />
+    <%= labelled_check_box _("Culture"), "software_categories[culture]", "1", context.profile.software_info.software_categories.culture %> <br />
 
-    <%= labelled_check_box _("National Defense"), "controlled_vocabulary[national_defense]", "1", context.profile.software_info.controlled_vocabulary.national_defense %> <br />
+    <%= labelled_check_box _("National Defense"), "software_categories[national_defense]", "1", context.profile.software_info.software_categories.national_defense %> <br />
 
-    <%= labelled_check_box _("Economy and Finances"), "controlled_vocabulary[economy_and_finances]", "1", context.profile.software_info.controlled_vocabulary.economy_and_finances %> <br />
+    <%= labelled_check_box _("Economy and Finances"), "software_categories[economy_and_finances]", "1", context.profile.software_info.software_categories.economy_and_finances %> <br />
 
-    <%= labelled_check_box _("Education"), "controlled_vocabulary[education]", "1", context.profile.software_info.controlled_vocabulary.education %> <br />
+    <%= labelled_check_box _("Education"), "software_categories[education]", "1", context.profile.software_info.software_categories.education %> <br />
 
-    <%= labelled_check_box _("Energy"), "controlled_vocabulary[energy]", "1", context.profile.software_info.controlled_vocabulary.energy %> <br />
+    <%= labelled_check_box _("Energy"), "software_categories[energy]", "1", context.profile.software_info.software_categories.energy %> <br />
 
-    <%= labelled_check_box _("Sports"), "controlled_vocabulary[sports]", "1", context.profile.software_info.controlled_vocabulary.sports %> <br />
+    <%= labelled_check_box _("Sports"), "software_categories[sports]", "1", context.profile.software_info.software_categories.sports %> <br />
 
-    <%= labelled_check_box _("Habitation"), "controlled_vocabulary[habitation]", "1", context.profile.software_info.controlled_vocabulary.habitation %> <br />
+    <%= labelled_check_box _("Habitation"), "software_categories[habitation]", "1", context.profile.software_info.software_categories.habitation %> <br />
 
-    <%= labelled_check_box  _("Industry"), "controlled_vocabulary[industry]", "1", context.profile.software_info.controlled_vocabulary.industry %> <br />
+    <%= labelled_check_box  _("Industry"), "software_categories[industry]", "1", context.profile.software_info.software_categories.industry %> <br />
 
-    <%= labelled_check_box _("Environment"), "controlled_vocabulary[environment]", "1", context.profile.software_info.controlled_vocabulary.environment %> <br />
+    <%= labelled_check_box _("Environment"), "software_categories[environment]", "1", context.profile.software_info.software_categories.environment %> <br />
 
-    <%= labelled_check_box _("Research and Development"), "controlled_vocabulary[research_and_development]", "1", context.profile.software_info.controlled_vocabulary.research_and_development %> <br />
+    <%= labelled_check_box _("Research and Development"), "software_categories[research_and_development]", "1", context.profile.software_info.software_categories.research_and_development %> <br />
 
-    <%= labelled_check_box _("Social Security"), "controlled_vocabulary[social_security]", "1", context.profile.software_info.controlled_vocabulary.social_security %> <br />
+    <%= labelled_check_box _("Social Security"), "software_categories[social_security]", "1", context.profile.software_info.software_categories.social_security %> <br />
 
-    <%= labelled_check_box _("Social Protection"), "controlled_vocabulary[social_protection]", "1", context.profile.software_info.controlled_vocabulary.social_protection %> <br />
+    <%= labelled_check_box _("Social Protection"), "software_categories[social_protection]", "1", context.profile.software_info.software_categories.social_protection %> <br />
 
-    <%= labelled_check_box _("Sanitation"), "controlled_vocabulary[sanitation]", "1", context.profile.software_info.controlled_vocabulary.sanitation %> <br />
+    <%= labelled_check_box _("Sanitation"), "software_categories[sanitation]", "1", context.profile.software_info.software_categories.sanitation %> <br />
 
-    <%= labelled_check_box _("Health"), "controlled_vocabulary[health]", "1", context.profile.software_info.controlled_vocabulary.health %> <br />
+    <%= labelled_check_box _("Health"), "software_categories[health]", "1", context.profile.software_info.software_categories.health %> <br />
 
-    <%= labelled_check_box _("Security and Public Order"), "controlled_vocabulary[security_public_order]", "1", context.profile.software_info.controlled_vocabulary.security_public_order %> <br />
+    <%= labelled_check_box _("Security and Public Order"), "software_categories[security_public_order]", "1", context.profile.software_info.software_categories.security_public_order %> <br />
 
-    <%= labelled_check_box _("Work"), "controlled_vocabulary[work]", "1", context.profile.software_info.controlled_vocabulary.work %> <br />
+    <%= labelled_check_box _("Work"), "software_categories[work]", "1", context.profile.software_info.software_categories.work %> <br />
 
-    <%= labelled_check_box _("Transportation"), "controlled_vocabulary[transportation]", "1", context.profile.software_info.controlled_vocabulary.transportation %> <br />
+    <%= labelled_check_box _("Transportation"), "software_categories[transportation]", "1", context.profile.software_info.software_categories.transportation %> <br />
 
-    <%= labelled_check_box _("Urbanism"), "controlled_vocabulary[urbanism]", "1", context.profile.software_info.controlled_vocabulary.urbanism %> <br />
+    <%= labelled_check_box _("Urbanism"), "software_categories[urbanism]", "1", context.profile.software_info.software_categories.urbanism %> <br />
 </div>
 
 <h3> <%= _("Operating System") %> </h3>

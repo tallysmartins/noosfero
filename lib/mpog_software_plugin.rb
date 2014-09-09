@@ -100,8 +100,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         institution_transaction
       end
 
-      if context.params.has_key?(:controlled_vocabulary)
-        controlled_vocabulary_transaction
+      if context.params.has_key?(:software_categories)
+        software_categories_transaction
       end
     elsif context.profile.respond_to?(:user)
       if context.params.has_key?(:user)
@@ -137,7 +137,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         softwares = SoftwareInfo.search(params[:name], params[:database_description][:id],
           params[:programming_language][:id], params[:operating_system][:id],
           params[:license_info][:id], params[:e_ping], params[:e_mag], params[:internacionalizable],
-          params[:icp_brasil], params[:e_arq], params[:controlled_vocabulary])
+          params[:icp_brasil], params[:e_arq], params[:software_categories])
         communities = []
 
         softwares.each do |s|
@@ -416,9 +416,9 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
-  def controlled_vocabulary_transaction
+  def software_categories_transaction
     ControlledVocabulary.transaction do
-      context.profile.software_info.controlled_vocabulary.update_attributes!(context.params[:controlled_vocabulary])
+      context.profile.software_info.software_categories.update_attributes!(context.params[:software_categories])
     end
   end
 

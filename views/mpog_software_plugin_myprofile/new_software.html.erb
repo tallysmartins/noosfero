@@ -151,9 +151,9 @@ offerers'), :pre_populate => @tokenized_children}) %>
     <%= render :partial => 'database_fields', :locals => { :f => f, :object_name => 'community', :profile => @community, :database => @list_databases } %>
   </div>
 
-  <%= fields_for @controlled_vocabulary do |cv| %>
-  <div id="controlled_vocabulary_fields">
-    <h4> <%= _("Controlled Vocabulary of E-government") %> </h4>
+  <%= fields_for @software_categories do |cv| %>
+  <div id="software_categories_fields">
+    <h4> <%= _("Software Categories:") %> </h4>
 
     <%= cv.check_box :administration %>
     <%= cv.label :administration, _("Administration") %><br />

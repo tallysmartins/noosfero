@@ -17,7 +17,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @list_libraries = LibraryHelper.list_libraries(params[:library])
     @list_languages = SoftwareLanguageHelper.list_language(params[:language])
     @list_databases = DatabaseHelper.list_database(params[:database])
-    @controlled_vocabulary = ControlledVocabulary::new params[:controlled_vocabulary]
+    @software_categories = SoftwareCategories::new params[:software_categories]
     @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
     @license_info = if params[:license_info].nil?
       LicenseInfo::new
@@ -58,7 +58,8 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     valid_operating_system = OperatingSystemHelper.valid_list_operating_system?(@list_operating_systems)
 
     if valid_software_info && valid_community && valid_libraries && valid_license && valid_language && valid_database && valid_operating_system
-      @community = Community.create_after_moderation(user, {:environment => environment}.merge(params[:community]), @software_info, @license_info, @controlled_vocabulary)
+
+      @community = Community.create_after_moderation(user, {:environment => environment}.merge(params[:community]), @software_info, @license_info, @software_categories)
 
       unless params[:q].nil?
         admins = params[:q].split(/,/).map{|n| environment.people.find n.to_i}

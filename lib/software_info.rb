@@ -12,7 +12,9 @@ class SoftwareInfo < ActiveRecord::Base
   belongs_to :community
   belongs_to :license_info
 
-  has_one :controlled_vocabulary
+  has_one :software_categories
+
+  validates :software_categories, :presence=>true
 
   validates :features, :objectives,
     :presence=>true,
@@ -31,7 +33,7 @@ class SoftwareInfo < ActiveRecord::Base
   scope :search, lambda { |name="", database_description_id = "",
     programming_language_id = "", operating_system_name_id = "",
     license_info_id = "", e_ping = "", e_mag = "", internacionalizable = "",
-    icp_brasil = "", e_arq = "", controlled_vocabulary = "" |
+    icp_brasil = "", e_arq = "", software_categories = "" |
 
     like_sql = ""
     values = []
@@ -86,9 +88,9 @@ class SoftwareInfo < ActiveRecord::Base
       values << "#{e_arq}"
     end
 
-    unless controlled_vocabulary.blank?
-      controlled_vocabulary = controlled_vocabulary.gsub(' ', '').underscore
-      like_sql << "controlled_vocabulary.#{controlled_vocabulary} = ? AND "
+    unless software_categories.blank?
+      software_categories = software_categories.gsub(' ', '').underscore
+      like_sql << "software_categories.#{software_categories} = ? AND "
       values << "true"
     end
 
@@ -96,7 +98,7 @@ class SoftwareInfo < ActiveRecord::Base
 
     {
       :joins => [:community, :software_databases, :software_languages, 
-        :operating_systems, :controlled_vocabulary],
+        :operating_systems, :software_categories],
       :conditions=>[like_sql, *values]
     }
   }

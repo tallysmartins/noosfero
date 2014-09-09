@@ -1,6 +1,4 @@
-class ControlledVocabulary < ActiveRecord::Base
-  self.table_name = "controlled_vocabulary"
-
+class SoftwareCategories < ActiveRecord::Base
   attr_accessible :administration , :agriculture ,  :business_and_services , :communication ,
                   :culture , :national_defense , :economy_and_finances , :education ,
                   :energy , :sports , :habitation , :industry , :environment ,
