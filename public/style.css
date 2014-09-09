@@ -77,28 +77,25 @@
   height: auto;
 }
 
-.user_filter_options {
+.mpog_search_form_fields {
+  margin-top: 10px;
   width: 80%;
   height: auto;
   position: relative;
   float: left;
 }
 
-.user_filter_options input[type='text'] {
-  width: 78%;
+.mpog_search_form_button {
+  margin-top: 10px;
+}
+
+.mpog_search_form_fields input[type='text'] {
+  width: 90%;
 
 }
 
-.user_filter_actions {
-  width: 18 %;
-  height: auto;
-  position: relative;
-  float: right;
-  text-align: right;
-}
-
-.search-table tr td:first-child {
-  width: 40px;
+.mpog_search_form_table tr td:first-child {
+  width: 22%;
 }
 
 .formfieldline {

@@ -1,0 +1,74 @@
+<table class="mpog_search_form_table">
+  <tr>
+    <td> <%= label_tag("intitution_name", _("Name"))%> </td>
+    <td> <%= text_field_tag(:intitution_name) %> </td>
+  </tr>
+
+  <tr>
+    <td> <%= _("Country") %> </td>
+    <td>
+      <%= select_tag(:intitution_country, options_for_select(CountriesHelper.countries)) %>
+    </td>
+  </tr>
+
+  <tr>
+   <td> <%= label_tag("intitution_state", _("Stage"))%> </td>
+    <td> <%= text_field_tag(:intitution_state) %> </td>
+  </tr>
+
+  <tr>
+    <td> <%= label_tag("intitution_city", _("City"))%> </td>
+    <td> <%= text_field_tag(:intitution_city) %> </td>
+  </tr>
+
+  <tr>
+    <td> <%= label_tag("intitution_cnpj", _("cnpj"))%> </td>
+    <td> <%= text_field_tag(:intitution_cnpj, nil, :placeholder=>"99.999.999/9999-99") %> </td>
+  </tr>
+
+  <tr>
+    <td> <%= label_tag("intitution_acronym", _("Acronym"))%> </td>
+    <td> <%= text_field_tag(:intitution_acronym, nil) %> </td>
+  </tr>
+
+  <tr>
+    <td> <%= _("Institution type ?") %> </td>
+    <td>
+      <label>
+        <%= radio_button_tag(:institution_type, "", true) %>
+        <%= _("Any") %>
+      </label>
+
+      <label>
+        <%= radio_button_tag(:institution_type, "public") %>
+        <%= _("Public") %>
+      </label>
+
+      <label>
+        <%= radio_button_tag(:institution_type, "private") %>
+        <%= _("Private") %>
+      </label>
+    </td>
+  </tr>
+
+  <tr>
+    <td> <%= _("Governmental Power") %> </td>
+    <td>
+    <%= collection_select(:institution_gov_power, :id, GovernmentalPower.all, :id, :name, :prompt=>_("Any")) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td> <%= _("Governmental Sphere") %> </td>
+    <td>
+    <%= collection_select(:institution_gov_sphere, :id, GovernmentalSphere.all, :id, :name, :prompt=>_("Any")) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td> <%= _("Juridical Nature") %> </td>
+    <td>
+    <%= collection_select(:institution_juridical_nature, :id, JuridicalNature.all, :id, :name, :prompt=>_("Any")) %>
+    </td>
+  </tr>
+</table>

@@ -12,22 +12,22 @@ class Person
     like_sql = ""
     values = []
 
-    unless name.nil? and name.blank?
-      like_sql << "name ILIKE ? AND "
-      values << "%#{name}%"
+    unless name.blank?
+      like_sql << "name ILIKE ? OR identifier ILIKE ? AND "
+      values << "%#{name}%" << "%#{name}%"
     end
 
-    unless state.nil? and state.blank?
+    unless state.blank?
       like_sql << "data ILIKE ? AND "
       values << "%:state: %#{state}%"
     end
 
-    unless city.nil? and city.blank?
+    unless city.blank?
       like_sql << "data ILIKE ? AND "
       values << "%:city: %#{city}%"
     end
 
-    unless email.nil? and email.blank?
+    unless email.blank?
       like_sql << "email ILIKE ? AND "
       values << "%#{email}%"
     end

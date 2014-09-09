@@ -1,0 +1,36 @@
+<form action="/search/communities" name="community_filter" method="POST" class="search_form">
+  <div id="search_content">
+
+    <div class="search_options">
+      <table class="mpog_search_form_table formfield type-radio search_type">
+        <tr>
+          <td> 
+            <%= label_tag("type_Community", _("Community")) %>
+            <%= radio_button_tag(:type, "Community", (true if @active_type == "community")) %>
+            <%= label_tag("type_Software", _("Software")) %>
+            <%= radio_button_tag(:type, "Software", (true if @active_type == "software")) %>
+            <%= label_tag("type_Institution", _("Institution")) %>
+            <%= radio_button_tag(:type, "Institution", (true if @active_type == "institution")) %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="community_fields mpog_search_form_fields">
+      <%= expanded_template "search/search_forms/_community_fields.html.erb" %>
+    </div>
+
+    <div class="software_fields mpog_search_form_fields">
+      <%= expanded_template "search/search_forms/_software_fields.html.erb" %>
+    </div>
+
+    <div class="institution_fields mpog_search_form_fields">
+      <%= expanded_template "search/search_forms/_institution_fields.html.erb" %>
+    </div>
+
+    <div class="mpog_search_form_button">
+      <%= submit_button(:search, _('Search')) %>
+    </div>
+  </div>
+
+</form>

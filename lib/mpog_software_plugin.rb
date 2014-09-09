@@ -130,6 +130,59 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     }]
   end
 
+  def search_controller_filters
+    community_block = proc do
+      results = []
+      if params[:type] == "Software"
+        softwares = SoftwareInfo.search(params[:name], params[:database_description][:id],
+          params[:programming_language][:id], params[:operating_system][:id],
+          params[:license_info][:id], params[:e_ping], params[:e_mag], params[:internacionalizable],
+          params[:icp_brasil], params[:e_arq], params[:controlled_vocabulary])
+        communities = []
+
+        softwares.each do |s|
+          communities << s.community
+        end
+        results = communities
+        results = results.paginate(:per_page => 24, :page => params[:page])
+        @searches[@asset] = {:results => results}
+        @search = results
+
+        render :action => :communities
+      end
+    end
+
+    people_block = proc do
+      results = []
+
+      results = environment.people.search(name = params[:name],
+        state = params[:state],
+        city = params[:city],
+        email = params[:email]
+      )
+
+      results = results.paginate(:per_page => 24, :page => params[:page])
+      @searches[@asset] = {:results => results}
+      @search = results
+
+      render :action => :people
+    end
+
+
+    [{
+      :type => "before_filter",
+      :method_name => "search_person_filters",
+      :options => { :only=>:people },
+      :block => people_block
+    },
+    {
+      :type => "before_filter",
+      :method_name => "search_software_filters",
+      :options => { :only=>:communities },
+      :block => community_block
+    }]
+  end
+
   def profile_tabs
     if context.profile.person?
       { :title => _("Mpog"),
@@ -155,7 +208,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def js_files
-    ["mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js", "mpog-incomplete-registration.js"]
+    ["mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js", "mpog-incomplete-registration.js", "mpog-search.js"]
   end
 
   def add_new_organization_button
@@ -352,16 +405,20 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
-  def add_new_user_search_filter
-    expanded_template('user_search/search_filter.html.erb')
-  end
+  def add_new_search_filter
+    if context.params[:action] == "people"
+      expanded_template('search/search_user_filter.html.erb')
+    else context.params[:action] == "communities"
+      @active_type = if context.params[:type] == "Software"
+        "software"
+      elsif context.params[:type] == "Institution"
+        "institution"
+      else
+        "community"
+      end
 
-  def custom_people_search params
-    Person.search(params[:name],
-      params[:state],
-      params[:city],
-      params[:email]
-    )
+      expanded_template('search/search_community_filter.html.erb')
+    end
   end
 
   def controlled_vocabulary_transaction

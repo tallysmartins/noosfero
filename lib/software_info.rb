@@ -21,6 +21,79 @@ class SoftwareInfo < ActiveRecord::Base
     joins(:community).where("name ilike ?", "%#{name}%")
   }
 
+  scope :search, lambda { |name="", database_description_id = "",
+    programming_language_id = "", operating_system_name_id = "",
+    license_info_id = "", e_ping = "", e_mag = "", internacionalizable = "",
+    icp_brasil = "", e_arq = "", controlled_vocabulary = "" |
+
+    like_sql = ""
+    values = []
+
+    unless name.blank?
+      like_sql << "name ILIKE ? OR identifier ILIKE ? AND "
+      values << "%#{name}%" << "%#{name}%"
+    end
+
+    unless database_description_id.blank?
+      like_sql << "software_databases.database_description_id = ? AND "
+      values << "#{database_description_id}"
+    end
+
+    unless programming_language_id.blank?
+      like_sql << "software_languages.programming_language_id = ? AND "
+      values << "#{programming_language_id}"
+    end
+
+    unless operating_system_name_id.blank?
+      like_sql << "operating_systems.operating_system_name_id = ? AND "
+      values << "#{operating_system_name_id}"
+    end
+
+    unless license_info_id.blank?
+      like_sql << "license_info_id = ? AND "
+      values << "#{license_info_id}"
+    end
+
+    unless internacionalizable.blank?
+      like_sql << "intern = ? AND "
+      values << "#{internacionalizable}"
+    end
+
+    unless icp_brasil.blank?
+      like_sql << "icp_brasil = ? AND "
+      values << "#{icp_brasil}"
+    end
+
+    unless e_ping.blank?
+      like_sql << "e_ping = ? AND "
+      values << "#{e_ping}"
+    end
+
+    unless e_mag.blank?
+      like_sql << "e_mag = ? AND "
+      values << "#{e_mag}"
+    end
+
+    unless e_arq.blank?
+      like_sql << "e_arq = ? AND "
+      values << "#{e_arq}"
+    end
+
+    unless controlled_vocabulary.blank?
+      controlled_vocabulary = controlled_vocabulary.gsub(' ', '').underscore
+      like_sql << "controlled_vocabulary.#{controlled_vocabulary} = ? AND "
+      values << "true"
+    end
+
+    like_sql = like_sql[0..like_sql.length-5]
+
+    {
+      :joins => [:community, :software_databases, :software_languages, 
+        :operating_systems, :controlled_vocabulary],
+      :conditions=>[like_sql, *values]
+    }
+  }
+
   def validate_operating_platform
     self.errors.add(:operating_platform, _("can't be blank")) if self.operating_platform.blank? && self.errors.messages[:operating_platform].nil?
   end
