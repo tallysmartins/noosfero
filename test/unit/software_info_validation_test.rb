@@ -31,6 +31,12 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
 
     @software_info.features = "Do a lot of things"
     @software_info.objectives = "All tests should pass !"
+
+    software_categories = SoftwareCategories::new
+    software_categories.administration = true
+    software_categories.save
+
+    @software_info.software_categories = software_categories
   end
 
   should 'Save SoftwareInfo if all fields are filled' do
@@ -49,6 +55,7 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
 
   should "Save SoftwareInfo if acronym is blank" do
     @software_info.acronym = ""
+
     assert_equal true, @software_info.save
   end
 

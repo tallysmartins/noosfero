@@ -86,10 +86,13 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
 
     user.email = "test@gov.br"
 
-    user.institution = nil
+    user.institutions = []
     assert !user.save
 
-    user.institution = Institution::new(:name=>"Test Other institution")
+    institution = build_institution "Test simple institution"
+    institution.save
+
+    user.institutions << institution
     assert user.save
   end
 
@@ -103,5 +106,23 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     user.save
 
     return user
+  end
+
+  def build_institution name, type="PublicInstitution", cnpj=nil
+    institution = Institution::new
+    institution.name = name
+    institution.type = type
+    institution.cnpj = cnpj
+
+    institution.community = Community.create(:name => "Simple Public Institution")
+    institution.community.country = "BR"
+    institution.community.state = "DF"
+    institution.community.city = "Gama"
+
+    if type == "PublicInstitution"
+      institution.juridical_nature = JuridicalNature.first
+    end
+
+    institution
   end
 end

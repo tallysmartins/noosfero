@@ -35,6 +35,11 @@ class GovernmentalPowerTest < ActiveSupport::TestCase
     institution.type = type
     institution.cnpj = cnpj
 
+    institution.community = Community.create(:name => "Simple Public Institution")
+    institution.community.country = "BR"
+    institution.community.state = "DF"
+    institution.community.city = "Gama"
+
     if type == "PublicInstitution"
       institution.governmental_power = GovernmentalPower.first
       institution.governmental_sphere = GovernmentalSphere.first

@@ -18,8 +18,26 @@ class JuridicalNatureTest < ActiveSupport::TestCase
     juridical_nature = JuridicalNature.create(:name => "Autarquia")
     create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", juridical_nature, @govPower, @govSphere)
     create_public_institution("Tribunal Regional da Uniao", "TRU", "BR", "DF", "Brasilia", juridical_nature, @govPower, @govSphere)
-
     assert juridical_nature.public_institutions.count == PublicInstitution.count
+  end
+  
+  private
+
+  def build_institution name, type="PublicInstitution", cnpj=nil
+    institution = Institution::new
+    institution.name = name
+    institution.type = type
+    institution.cnpj = cnpj
+
+    institution.community = Community.create(:name => "Simple Public Institution")
+    institution.community.country = "BR"
+    institution.community.state = "DF"
+    institution.community.city = "Gama"
+
+    if type == "PublicInstitution"
+      institution.juridical_nature = JuridicalNature.first
+    end
+
   end
 
 end

@@ -85,7 +85,7 @@ class SearchControllerTest < ActionController::TestCase
   should "search for software by identifier" do
     software = create_software("beautiful os")
 
-    params = {"type"=>"Software", "query"=>"", "name"=>"beautiful-os", "database_description"=>{"id"=>""}, "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"", "commit"=>"Search"}
+    params = {"type"=>"Software", "query"=>"", "name"=>"beautiful-os", "database_description"=>{"id"=>""}, "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"", "commit"=>"Search"}
     get :communities, params
 
     assert_includes assigns(:searches)[:communities][:results], software.community
@@ -94,7 +94,7 @@ class SearchControllerTest < ActionController::TestCase
   should "search for software by name" do
     software = create_software("beautiful")
 
-    params = {"type"=>"Software", "query"=>"", "name"=>"beautiful", "database_description"=>{"id"=>""}, "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"", "commit"=>"Search"}
+    params = {"type"=>"Software", "query"=>"", "name"=>"beautiful", "database_description"=>{"id"=>""}, "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"", "commit"=>"Search"}
     get :communities, params
 
     assert_includes assigns(:searches)[:communities][:results], software.community
@@ -108,7 +108,7 @@ class SearchControllerTest < ActionController::TestCase
 
     params = {"type"=>"Software", "query"=>"", "name"=>"",
           "database_description"=>{"id"=>SoftwareDatabase.last.database_description.id},
-      "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "controlled_vocabulary"=>"",
+      "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "software_categories"=>"",
       "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
       "commit"=>"Search"}
     get :communities, params
@@ -124,7 +124,7 @@ class SearchControllerTest < ActionController::TestCase
 
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>SoftwareLanguage.last.programming_language.id},
-      "operating_system"=>{"id"=>""}, "controlled_vocabulary"=>"",
+      "operating_system"=>{"id"=>""}, "software_categories"=>"",
       "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
       "commit"=>"Search"}
     get :communities, params
@@ -141,7 +141,7 @@ class SearchControllerTest < ActionController::TestCase
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>""},
       "operating_system"=>{"id"=>OperatingSystem.last.id},
-      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
       "commit"=>"Search"}
     get :communities, params
 
@@ -150,13 +150,13 @@ class SearchControllerTest < ActionController::TestCase
 
   should "search for software by controlled vocabulary" do
     software = create_software("beautiful")
-    software.controlled_vocabulary.habitation = true
-    software.controlled_vocabulary.save!
+    software.software_categories.habitation = true
+    software.software_categories.save!
 
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>""},
       "operating_system"=>{"id"=>""},
-      "controlled_vocabulary"=>"habitation", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "software_categories"=>"habitation", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
       "commit"=>"Search"}
     get :communities, params
 
@@ -171,7 +171,7 @@ class SearchControllerTest < ActionController::TestCase
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>""},
       "operating_system"=>{"id"=>""},
-      "controlled_vocabulary"=>"", "license_info"=>{"id"=>LicenseInfo.last.id}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "software_categories"=>"", "license_info"=>{"id"=>LicenseInfo.last.id}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
       "commit"=>"Search"}
     get :communities, params
 
@@ -187,7 +187,7 @@ class SearchControllerTest < ActionController::TestCase
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>""},
       "operating_system"=>{"id"=>""},
-      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"true", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"true", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
       "commit"=>"Search"}
     get :communities, params
 
@@ -203,7 +203,7 @@ class SearchControllerTest < ActionController::TestCase
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>""},
       "operating_system"=>{"id"=>""},
-      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"true", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
+      "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"true", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
       "commit"=>"Search"}
     get :communities, params
 
@@ -219,7 +219,7 @@ class SearchControllerTest < ActionController::TestCase
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>""},
       "operating_system"=>{"id"=>""},
-      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"true", "e_arq"=>"", "internacionalizable"=>"",
+      "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"true", "e_arq"=>"", "internacionalizable"=>"",
       "commit"=>"Search"}
     get :communities, params
 
@@ -234,7 +234,7 @@ class SearchControllerTest < ActionController::TestCase
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>""},
       "operating_system"=>{"id"=>""},
-      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"true", "internacionalizable"=>"",
+      "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"true", "internacionalizable"=>"",
       "commit"=>"Search"}
     get :communities, params
 
@@ -249,7 +249,7 @@ class SearchControllerTest < ActionController::TestCase
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>""},
       "operating_system"=>{"id"=>""},
-      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"true",
+      "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"true",
       "commit"=>"Search"}
     get :communities, params
 
@@ -265,7 +265,7 @@ class SearchControllerTest < ActionController::TestCase
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>""},
       "operating_system"=>{"id"=>""},
-      "controlled_vocabulary"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"true", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"true", "internacionalizable"=>"",
+      "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"true", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"true", "internacionalizable"=>"",
       "commit"=>"Search"}
     get :communities, params
 
@@ -295,16 +295,16 @@ class SearchControllerTest < ActionController::TestCase
     software_info.license_info = LicenseInfo.last
 
 
-    cv = ControlledVocabulary.new()
-    cv.attributes.each do |key|
+    sc = SoftwareCategories.new()
+    sc.attributes.each do |key|
       if(key.first == 'id' || key.first == 'software_info_id')
         next
       end
-      cv.update_attribute(key.first, false)
+      sc.update_attribute(key.first, false)
     end
-    cv.save!
+    sc.save!
 
-    software_info.controlled_vocabulary = cv
+    software_info.software_categories = sc
 
     software_info.save!
 

@@ -266,13 +266,12 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   protected
 
-
- def create_url_to_edit_profile person
+  def create_url_to_edit_profile person
     new_url = person.public_profile_url
     new_url[:controller] = 'profile_editor'
     new_url[:action] = 'edit'
     new_url
- end
+  end
 
   def profile_required_list
     required_list = ["cell_phone","contact_phone","institutions","comercial_phone","country","city","state","organization_website","area_interest","image"]
