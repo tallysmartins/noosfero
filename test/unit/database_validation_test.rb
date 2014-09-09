@@ -33,4 +33,14 @@ class DatabaseValidationTest < ActiveSupport::TestCase
     @database.version = " "
     assert_equal true, !@database.save
   end
+
+  should "Don't save database if version is too long" do
+    @database.version = "A too long version to be a valid version for database"
+    assert !@database.save
+  end
+
+  should "Don't save database if operating system is too long" do
+    @database.operating_system = "A too long operating system to be a valid operating system for library"
+    assert !@database.save
+  end
 end
