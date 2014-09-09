@@ -29,6 +29,8 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     @software_info.software_databases << @software_database
     @software_info.operating_systems << @operating_system
 
+    @software_info.features = "Do a lot of things"
+    @software_info.objectives = "All tests should pass !"
   end
 
   should 'Save SoftwareInfo if all fields are filled' do
@@ -58,5 +60,33 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
   should "Not save SoftwareInfo if acronym has whitespaces" do
     @software_info.acronym = "AC DC"
     assert_equal false, @software_info.save
+  end
+
+  should "Not save if objectives are empty" do
+    @software_info.objectives = ""
+
+    assert_equal false, @software_info.save
+    assert_equal true, @software_info.errors.full_messages.include?(_("Objectives can't be blank"))
+  end
+
+  should "Not save if features are empty" do
+    @software_info.features = ""
+
+    assert_equal false, @software_info.save
+    assert_equal true, @software_info.errors.full_messages.include?(_("Features can't be blank"))
+  end
+
+  should "Not save if features are longer than 4000" do
+    @software_info.features = "a"*4001
+
+    assert_equal false, @software_info.save
+    assert_equal true, @software_info.errors.full_messages.include?(_("Features Software features is too long (maximum is 4000 characters)"))
+  end
+
+  should "Not save if objectives are longer than  4000" do
+    @software_info.objectives = "a"*4001
+
+    assert_equal false, @software_info.save
+    assert_equal true, @software_info.errors.full_messages.include?(_("Objectives Software features is too long (maximum is 4000 characters)"))
   end
 end

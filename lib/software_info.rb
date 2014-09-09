@@ -14,6 +14,13 @@ class SoftwareInfo < ActiveRecord::Base
 
   has_one :controlled_vocabulary
 
+  validates :features, :objectives,
+    :presence=>true,
+    :length => {
+      :maximum => 4000,
+      :too_long => _("Software features is too long (maximum is 4000 characters)")
+    }
+
   validate :validate_operating_platform, :validate_acronym, :valid_software_info, :valid_databases, :valid_operating_systems
 
   # used on find_by_contents
@@ -99,6 +106,8 @@ class SoftwareInfo < ActiveRecord::Base
   end
 
   def validate_acronym
+    self.acronym = "" if self.acronym.nil?
+
     if self.acronym.length > 10 && self.errors.messages[:acronym].nil?
       self.errors.add(:acronym, _("can't have more than 10 characteres"))
     elsif self.acronym.match(/\s+/)
