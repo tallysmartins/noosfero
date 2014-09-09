@@ -75,8 +75,22 @@
           <%= inst.select(:juridical_nature, [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}, {:selected=>0})%>
         </div>
       </span>
+      
+      <span class='required-field public-institutions-fields'>
+        <div class="formfield type-text">
+          <%= _("SISP?") %>
+          <% if @show_sisp_field %>
+            <%= inst.label("sisp" ,_("Yes")) %>
+            <%= inst.radio_button(:sisp, true) %>
+            <%= inst.label("sisp" ,_("No")) %>
+            <%= inst.radio_button(:sisp, false) %>
+          <% else %>
+            <%= inst.label("sisp", _("No")) %>
+          <% end %>
+          </div>
+      </span>
       <br />
-
+      
       <div>
         <p><%= recaptcha_tags :ajax => true, :display => {:theme => 'clean'} %> </p>
         <%= link_to(_('Save'), '#', :id=>'save_institution_button', :class=>'button with-text icon-add') %>

@@ -34,15 +34,18 @@
     <%= label_tag('juridical_nature', _("Juridical Nature")) %>
     <%= select_tag(:juridical_nature, options_for_select(JuridicalNature.all.map {|j| [j.name, j.id]}, :selected => context.profile.institution.juridical_nature_id), :class=>"formlabel") %>
   </div>
-</span>
-
+  </span>
+  
+  <span class= 'public-institutions-fields'>
+  <div class="formfieldline">
   <% if @show_sisp_field  %>
-    <span class= 'public-institutions-fields'>
-      <div class="formfieldline">
-        <%= _("SISP?") %>
-        <%= labelled_radio_button(_('Yes'), 'institution[sisp]', 'true', context.profile.institution.sisp)%>
-        <%= labelled_radio_button(_('No'), 'institution[sisp]', 'false', !context.profile.institution.sisp)%>
-      </div>
-    </span>
+    <%= _("SISP?") %>
+    <%= labelled_radio_button(_('Yes'), 'institution[sisp]', 'true', context.profile.institution.sisp)%>
+    <%= labelled_radio_button(_('No'), 'institution[sisp]', 'false', !context.profile.institution.sisp)%>
+  <% else %>
+    <%= _("SISP?") %>
+    <%= label_tag('SISP', context.profile.institution.sisp ? "YES" : "NO") %>
   <% end %>
+  </div>
+  </span>
 <% end %>

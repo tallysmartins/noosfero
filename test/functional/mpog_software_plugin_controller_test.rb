@@ -16,11 +16,12 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
 
     @govPower = GovernmentalPower.create(:name=>"Some Gov Power")
     @govSphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
+    @juridical_nature = JuridicalNature.create(:name => "Autarquia")
     @response = ActionController::TestResponse.new
 
     @institution_list = []
-    @institution_list << create_public_institution("Ministerio Publico da Uniao", "MPU", @govPower, @govSphere)
-    @institution_list << create_public_institution("Tribunal Regional da Uniao", "TRU", @govPower, @govSphere)
+    @institution_list << create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @govPower, @govSphere)
+    @institution_list << create_public_institution("Tribunal Regional da Uniao", "TRU", "BR", "DF", "Brasilia", @juridical_nature, @govPower, @govSphere)
   end
 
   should "Search for institution with acronym" do
@@ -58,10 +59,13 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
 
     xhr :get, :new_institution,
       :authenticity_token=>"dsa45a6das52sd",
-      :community=>{:name=>"foo bar"},
-      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"fb", :type=>"PublicInstitution"},
+      :name => "foo bar",
+      :community=>{:name=>"foo bar", :country => "BR", :state => "DF", :city => "Brasilia"},
       :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
+      :juridical => {:nature => @juridical_nature.id},
+      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"fb", :type=>"PublicInstitution"},
       :recaptcha_response_field=>''
+
 
     json_response = ActiveSupport::JSON.decode(@response.body)
 
@@ -73,32 +77,16 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
 
     xhr :get, :new_institution,
       :authenticity_token=>"dsa45a6das52sd",
-      :community=>{:name=>"Ministerio Publico da Uniao"},
-      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"fb", :type=>"PublicInstitution"},
+      :name => "Ministerio Publico da Uniao",
+      :community=>{:name=>"Ministerio Publico da Uniao", :country => "BR", :state => "DF", :city => "Brasilia"},
       :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
+      :juridical => {:nature => @juridical_nature.id},
+      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"fb", :type=>"PublicInstitution"},
       :recaptcha_response_field=>''
 
     json_response = ActiveSupport::JSON.decode(@response.body)
 
     assert !json_response["success"]
-  end
-
-  should "set the environment admin as institution community admin" do
-    @controller.stubs(:verify_recaptcha).returns(true)
-
-    xhr :get, :new_institution,
-      :authenticity_token=>"dsa45a6das52sd",
-      :community=>{:name=>"Another instituon community"},
-      :institution => {:cnpj=>"10.254.577/8910-12", :acronym=>"aic", :type=>"PublicInstitution"},
-      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
-      :recaptcha_response_field=>''
-
-    json_response = ActiveSupport::JSON.decode(@response.body)
-
-    assert json_response["success"]
-
-    assert Community.last.admins.include?(@environment.admins.first)
-    assert_equal Community.last.name, "Another instituon community"
   end
 
   should "verify if institution name already exists" do
@@ -135,9 +123,11 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
 
     xhr :get, :new_institution,
       :authenticity_token=>"dsa45a6das52sd",
-      :community=>{:name=>"foo bar"},
-      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"fb", :type=>"PublicInstitution"},
+      :name => "foo bar",
+      :community=>{:name=>"foo bar", :country => "BR", :state => "DF", :city => "Brasilia"},
       :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
+      :juridical => {:nature => @juridical_nature.id},
+      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"fb", :type=>"PublicInstitution"},
       :recaptcha_response_field=>''
 
     date = Time.now.day.to_s + "/" + Time.now.month.to_s + "/" + Time.now.year.to_s
@@ -147,15 +137,23 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
 
   private
 
-  def create_public_institution name, acronym, gov_p, gov_s
-    institution_community = Community::new :name=>name
+  def create_public_institution name, acronym, country, state, city, juridical_nature, gov_p, gov_s
+    institution_community = fast_create(Community)
+    institution_community.name = name
+    institution_community.country = country
+    institution_community.state = state
+    institution_community.city = city
+    institution_community.save!
+
     institution = PublicInstitution.new
     institution.community = institution_community
     institution.name = name
-    institution.acronym  = acronym
+    institution.juridical_nature = juridical_nature
+    institution.acronym = acronym
     institution.governmental_power = gov_p
     institution.governmental_sphere = gov_s
-    institution.save
+    institution.save!
     institution
   end
+
 end
