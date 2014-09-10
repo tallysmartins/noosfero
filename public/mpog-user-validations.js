@@ -19,13 +19,18 @@ function put_brazil_based_on_email(){
   var suffixes = ['gov.br', 'jus.br', 'leg.br', 'mp.br'];
   var value = this.value;
   var input_object = this;
+  var gov_suffix = false;
 
   suffixes.each(function(suffix){
     var has_suffix = new RegExp("(.*)"+suffix+"$", "i");
 
-    if( has_suffix.test(value) )
+    if( has_suffix.test(value) ) {
+      gov_suffix = true;
       jQuery("#profile_data_country").val("BR");
+    }
   });
+
+  jQuery("#profile_data_country").prop('disabled', gov_suffix);
 
   check_reactivate_account(value, input_object)
 }
@@ -47,6 +52,8 @@ jQuery(document).ready(function(){
   jQuery('#secondary_email_field').blur(
     validate_email_format
   );
+
+  jQuery('#profile_data_country').val("BR");
 
   jQuery("#user_email").blur(
     put_brazil_based_on_email

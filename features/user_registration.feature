@@ -103,3 +103,26 @@ Feature: User Registration
     And I go to /profile/maria
     Then I should not see "Complete Profile"
 
+  @selenium-fixme
+  Scenario: When the user press incomplete percentage link,he must be redirect to his edit profile page
+    Given the following users
+      | login | name        | email             | country | state | city     |
+      | maria | Maria Silva | maria@example.com | Brazil  | DF    | Brasilia |
+    When I am logged in as "maria"
+    And I follow "Complete your profile"
+    Then I should see "Profile settings"
+
+  @selenium 
+  Scenario: The country select box from the registration form should be selected Brazil by default
+    Given I go to /account/signup
+    Then I should see "Brazil" within "#profile_data_country"
+
+  @selenium
+  Scenario: The country select box should enable/disable if the email has/hasnt gov suffix
+    Given I go to /account/signup
+    And I select "Barbados" from "profile_data[country]"
+    And I fill in "e-Mail" with "maria@tse.gov.br"
+    And I should see "Brazil" within "#profile_data_country"
+    And I fill in "e-Mail" with "maria@tse.com.br"
+    And I select "Barbados" from "profile_data[country]"
+    Then I should see "Barbados" within "#profile_data_country"
