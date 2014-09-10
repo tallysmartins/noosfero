@@ -12,14 +12,12 @@ module InstitutionHelper
     environment = Environment.find_by_name(@web_service_info["environment_name"])
 
     if environment.nil?
-      puts "\n", "="*80, "Could not find the informed environment: #{@web_service_info["environment_name"]}", "="*80, "\n"
       return
     end
 
     admin = environment.people.find_by_name(@web_service_info["default_community_admin"])
 
     if admin.nil?
-      puts "\n", "="*80, "Could not find the informed admin: #{@web_service_info["default_community_admin"]}", "="*80, "\n"
       return
     end
 

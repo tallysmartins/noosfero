@@ -14,13 +14,12 @@ class InstitutionHelperTest < ActionController::IntegrationTest
   end
 
   should "not proceed with SIORG script if environment name isn't the informed" do
-    assert !InstitutionHelper.mass_update
+    assert !InstitutionHelper.mass_update, "Should not find the environment."
   end
-
   should "not proceed with SIORG script if admin name isn't the informed" do
     @environment.name = "Noosfero"
     @environment.save
 
-    assert !InstitutionHelper.mass_update
+    assert !InstitutionHelper.mass_update, "Could not find the admin."
   end
 end
