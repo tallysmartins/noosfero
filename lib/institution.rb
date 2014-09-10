@@ -25,23 +25,23 @@ class Institution < ActiveRecord::Base
   protected
 
   def verify_institution_type
-    valid_institutions_type = ["PublicInstitution", "PrivateInstitution"]
+    # valid_institutions_type = ["PublicInstitution", "PrivateInstitution"]
 
-    unless valid_institutions_type.include? self.type
-      self.errors.add(:type, _("invalid, only public and private institutions are allowed."))
-      false
-    end
+    # unless valid_institutions_type.include? self.type
+    #   self.errors.add(:type, _("invalid, only public and private institutions are allowed."))
+    #   false
+    # end
   end
 
   def validate_country
-    self.errors.add(:country, _("can't be blank")) if self.community.country.blank?  && self.errors[:country].blank?
+    # self.errors.add(:country, _("can't be blank")) if self.community.country.blank?  && self.errors[:country].blank?
   end
 
   def validate_state
-    self.errors.add(:state, _("can't be blank")) if self.community.state.blank?  && self.errors[:state].blank?
+    # self.errors.add(:state, _("can't be blank")) if self.community.state.blank?  && self.errors[:state].blank?
   end
 
   def validate_city
-    self.errors.add(:city, _("can't be blank")) if self.community.city.blank?  && self.errors[:city].blank?
+    # self.errors.add(:city, _("can't be blank")) if self.community.city.blank?  && self.errors[:city].blank?
   end
 end
