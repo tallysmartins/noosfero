@@ -71,6 +71,17 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     assert !user.save
   end
 
+  should 'save more than one user without secondary email' do
+    user = fast_create(User)
+    user.email = "test@email.com"
+    user.secondary_email = ""
+    user.save
+
+    user2 = fast_create(User)
+    user2.email = "test2@email.com"
+    user2.secondary_email = ""
+    assert user2.save 
+  end
   should 'return an error if secondary email is governmental and primary is not' do
     user = fast_create(User)
 
@@ -87,13 +98,13 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     user.email = "test@gov.br"
 
     user.institutions = []
-    assert !user.save
+    assert !user.save, "this should not save"
 
     institution = build_institution "Test simple institution"
     institution.save
 
     user.institutions << institution
-    assert user.save
+    assert user.save, "this should save"
   end
 
  private
@@ -114,7 +125,7 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     institution.type = type
     institution.cnpj = cnpj
 
-    institution.community = Community.create(:name => "Simple Public Institution")
+    institution.community = Community.create(:name => name)
     institution.community.country = "BR"
     institution.community.state = "DF"
     institution.community.city = "Gama"
