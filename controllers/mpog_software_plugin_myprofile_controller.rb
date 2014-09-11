@@ -56,9 +56,9 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     valid_database = DatabaseHelper.valid_list_database?(@list_databases)
     valid_language = SoftwareLanguageHelper.valid_list_language?(@list_languages)
     valid_operating_system = OperatingSystemHelper.valid_list_operating_system?(@list_operating_systems)
+    valid_software_categories = request.post? && @software_categories.valid?
 
-    if valid_software_info && valid_community && valid_libraries && valid_license && valid_language && valid_database && valid_operating_system
-
+    if valid_software_info && valid_community && valid_libraries && valid_license && valid_language && valid_database && valid_operating_system && valid_software_categories
       @community = Community.create_after_moderation(user, {:environment => environment}.merge(params[:community]), @software_info, @license_info, @software_categories)
 
       unless params[:q].nil?
@@ -87,9 +87,11 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
       @list_operating_systems.each do |os|
         @errors |= os.errors.full_messages
       end
+
       @errors |= @community.errors.full_messages
       @errors |= @software_info.errors.full_messages
       @errors |= @license_info.errors.full_messages
+      @errors |= @software_categories.errors.full_messages
     end
   end
 

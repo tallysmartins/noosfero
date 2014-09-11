@@ -14,8 +14,6 @@ class SoftwareInfo < ActiveRecord::Base
 
   has_one :software_categories
 
-  validates :software_categories, :presence=>true
-
   validates :features, :objectives,
     :presence=>true,
     :length => {
