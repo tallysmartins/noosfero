@@ -32,6 +32,15 @@ Feature: User Registration
       | Ministerio das Cidades     | MC      | BR      | DF    | Gama       | 58.745.189/0001-21 | Autarquia        | Executivo          | Federal             |
       | Governo do DF              | GDF     | BR      | DF    | Taguatinga | 12.645.166/0001-44 | Autarquia        | Legislativo        | Federal             |
       | Ministerio do Planejamento | MP      | BR      | DF    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             |
+    And I fill in the following within ".no-boxes":
+      | e-Mail                | josesilva@serpro.gov.br|
+      | Username              | josesilva              |
+      | Password              | secret                 |
+      | Password confirmation | secret                 |
+      | Full name             | José da Silva          |
+      | State                 | Bahia                  |
+      | City                  | Salvador               |
+      | Secondary e-Mail      | josesilva@example.com  |
     And I type in "Minis" into autocomplete list "input_institution" and I choose "Ministerio do Planejamento"
     And I follow "Add new institution"
     Then I should see "Ministerio do Planejamento" within ".institutions_added"
@@ -45,10 +54,157 @@ Feature: User Registration
       | Ministerio das Cidades     | MC      | BR      | DF    | Gama       | 58.745.189/0001-21 | Autarquia        | Executivo          | Federal             |
       | Governo do DF              | GDF     | BR      | DF    | Taguatinga | 12.645.166/0001-44 | Autarquia        | Legislativo        | Federal             |
       | Ministerio do Planejamento | MP      | BR      | DF    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             |
+    And I fill in the following within ".no-boxes":
+      | e-Mail                | josesilva@serpro.gov.br|
+      | Username              | josesilva              |
+      | Password              | secret                 |
+      | Password confirmation | secret                 |
+      | Full name             | José da Silva          |
+      | State                 | Bahia                  |
+      | City                  | Salvador               |
+      | Secondary e-Mail      | josesilva@example.com  |
     And I type in "MP" into autocomplete list "input_institution" and I choose "Ministerio do Planejamento"
     And I follow "Add new institution"
-    Then I should see "Ministerio do Planejamento" within ".institutions_added"
-    
+    And I press "Create my account"
+    When José da Silva's account is activated
+    And I go to login page
+    And I fill in "Username" with "josesilva"
+    And I fill in "Password" with "secret"
+    And I press "Log in"
+    Then I should be logged in as "josesilva"
+
+  @selenium
+  Scenario: Unsuccessfull registration due to the existance of e-mail as secondary another user's e-mail
+    Given the following users
+      | login | name        | email             | country | state | city     |
+      | maria | Maria Silva | maria@example.com | Brazil  | DF    | Brasilia |
+    And the user "maria" has "user@example.com" as secondary e-mail
+    And I go to /account/signup
+    And I fill in the following within ".no-boxes":
+      | e-Mail                | user@example.com       |
+      | Username              | josesilva              |
+      | Password              | secret                 |
+      | Password confirmation | secret                 |
+      | Full name             | José da Silva          |
+      | State                 | Bahia                  |
+      | City                  | Salvador               |
+    And wait for the captcha signup time
+    And I select "Brazil" from "profile_data[country]"
+    When I press "Create my account"
+    Then I should see "E-mail or secondary e-mail already taken."
+
+  @selenium
+  Scenario: Unsuccessfull registration due to the existance of secondary e-mail as another user's secondary e-mail
+    Given the following users
+      | login | name        | email             | country | state | city     |
+      | maria | Maria Silva | maria@example.com | Brazil  | DF    | Brasilia |
+    And the user "maria" has "user@example.com" as secondary e-mail
+    And I go to /account/signup
+    And I fill in the following within ".no-boxes":
+      | e-Mail                | josesilva@example.com  |
+      | Username              | josesilva              |
+      | Password              | secret                 |
+      | Password confirmation | secret                 |
+      | Full name             | José da Silva          |
+      | State                 | Bahia                  |
+      | City                  | Salvador               |
+      | Secondary e-Mail      | user@example.com       |
+    And I select "Brazil" from "profile_data[country]"
+    And wait for the captcha signup time
+    When I press "Create my account"
+    Then I should see "E-mail or secondary e-mail already taken."
+
+  @selenium
+  Scenario: Unsuccessfull registration due to the existance of secondary e-mail as another user's e-mail
+    Given the following users
+      | login | name        | email             | country | state | city     |
+      | maria | Maria Silva | user@example.com | Brazil  | DF    | Brasilia |
+    And I go to /account/signup
+    And I fill in the following within ".no-boxes":
+      | e-Mail                | josesilva@example.com  |
+      | Username              | josesilva              |
+      | Password              | secret                 |
+      | Password confirmation | secret                 |
+      | Full name             | José da Silva          |
+      | State                 | Bahia                  |
+      | City                  | Salvador               |
+      | Secondary e-Mail      | user@example.com       |
+    And I select "Brazil" from "profile_data[country]"
+    And wait for the captcha signup time
+    When I press "Create my account"
+    Then I should see "E-mail or secondary e-mail already taken."
+
+  @selenium
+  Scenario: Unsuccessfull registration due to both primary e-mail and secondary e-mail being equal
+    Given I go to /account/signup
+    And I fill in the following within ".no-boxes":
+      | Username              | josesilva              |
+      | e-Mail                | josesilva@example.com  |
+      | Password              | secret                 |
+      | Password confirmation | secret                 |
+      | Full name             | José da Silva          |
+      | State                 | Bahia                  |
+      | City                  | Salvador               |
+      | Secondary e-Mail      | josesilva@example.com  |
+    And I select "Brazil" from "profile_data[country]"
+    And wait for the captcha signup time
+    When I press "Create my account"
+    Then I should see "Email must be different from secondary email."
+
+  @selenium
+  Scenario: Unsuccessfull registration due to government fields being blank
+    Given I go to /account/signup
+    And I fill in the following within ".no-boxes":
+      | Username              | josesilva              |
+      | e-Mail                | josesilva@serpro.gov.br|
+      | Password              | secret                 |
+      | Password confirmation | secret                 |
+      | Full name             | José da Silva          |
+      | Secondary e-Mail      | josesilva@example.com  |
+    And wait for the captcha signup time
+    When I press "Create my account"
+    And I should see "Institution is obligatory if user has a government email."
+    And I should see "State can't be blank"
+    And I should see "City can't be blank"
+
+  @selenium
+  Scenario: Unsuccessfull registration due to secondary email is governmental and primary is not
+    Given I go to /account/signup
+    And I fill in the following within ".no-boxes":
+      | Username              | josesilva              |
+      | e-Mail                | josesilva@example.com  |
+      | Password              | secret                 |
+      | Password confirmation | secret                 |
+      | Full name             | José da Silva          |
+      | State                 | Bahia                  |
+      | City                  | Salvador               |
+      | Secondary e-Mail      | josesilva@serpro.gov.br|
+    And wait for the captcha signup time
+    When I press "Create my account"
+    Then I should see "The governamental email must be the primary one."
+
+  @selenium-fixme
+  Scenario: Show incomplete resgistration percentage
+    Given I go to /account/signup
+    And I fill in the following within ".no-boxes":
+      | e-Mail                | josesilva@gmail.com    |
+      | Password              | secret                 |
+      | Password confirmation | secret                 |
+      | Full name             | José da Silva          |
+      | State                 | Bahia                  |
+      | City                  | Salvador               |
+      | Secondary e-Mail      | josesilva@example.com  |
+    And I select "Brazil" from "profile_data[country]"
+    And I fill in "Username" with "josesilva"
+    And wait for the captcha signup time
+    And I press "Create my account"
+    When José da Silva's account is activated
+    And I go to login page
+    And I fill in "Username" with "josesilva"
+    And I fill in "Password" with "secret"
+    And I press "Log in"
+    Then I should see "Complete Profile: 37%"
+>>>>>>> a8e75c7... corrections: remove area of interest from forms.
 
   @selenium
   Scenario: Remove the incomplete resgistration percentage message

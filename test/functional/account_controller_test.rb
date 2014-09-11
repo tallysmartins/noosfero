@@ -41,7 +41,6 @@ class AccountControllerTest < ActionController::TestCase
 
     @profile_data_info = {
       :name=>"Um novo usuario",
-      :area_interest=>"uma area ai"
     }
 
     @second_profile_data_info = {
@@ -161,24 +160,23 @@ class AccountControllerTest < ActionController::TestCase
     institution
   end
 
-  # def form_params
-  #   user = {
-  #     :login=>"novo_usuario",
-  #     :password=>"nova_senha",
-  #     :password_confirmation=>"nova_senha",
-  #     :email=>"um@novo.usuario",
-  #     :secondary_email=>"outro@email.com",
-  #     :institution_ids=>[@institution_list.last.id]
-  #   }
+  def form_params
+    user = {
+      :login=>"novo_usuario",
+      :password=>"nova_senha",
+      :password_confirmation=>"nova_senha",
+      :email=>"um@novo.usuario",
+      :secondary_email=>"outro@email.com",
+      :institution_ids=>[@institution_list.last.id]
+    }
 
-  #   profile_data = {
-  #     :name=>"Um novo usuario",
-  #     :area_interest=>"uma area ai"
-  #   }
+    profile_data = {
+      :name=>"Um novo usuario",
+    }
 
-  #   user["profile_data"] = profile_data
-  #   user
-  # end
+    user["profile_data"] = profile_data
+    user
+  end
 
   def disable_signup_bot_check(environment = Environment.default)
     environment.min_signup_delay = 0

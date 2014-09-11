@@ -2,10 +2,8 @@ require_dependency 'person'
 
 class Person
 
-  settings_items :area_interest, :type => :string, :default => ""
   settings_items :percentage_incomplete, :type => :string, :default => ""
 
-  attr_accessible :area_interest
   attr_accessible :percentage_incomplete
 
   scope :search, lambda { |name="", state="", city="", email=""|
