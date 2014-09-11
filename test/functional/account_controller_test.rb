@@ -130,6 +130,14 @@ class AccountControllerTest < ActionController::TestCase
 
     post :signup, :user => @user_info, :profile_data => @profile_data_info
     assert !assigns(:user).save, "This should not have been saved."
+  
+  should "user can register without secondary_email" do
+    @user_info[:secondary_email] = ""
+
+    post :signup, :user => @user_info, :profile_data => @profile_data_info
+
+    assert_equal assigns(:user).login, @user_info[:login]
+    assert assigns(:user).save
   end
 
   private
