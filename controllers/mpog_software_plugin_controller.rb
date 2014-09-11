@@ -173,6 +173,7 @@ class MpogSoftwarePluginController < ApplicationController
 
     if institution.cnpj.nil? or institution.cnpj.blank?
       institution.errors.add(:cnpj, _("can't be blank"))
+      return institution
     end
 
     InstitutionHelper.register_institution_modification institution

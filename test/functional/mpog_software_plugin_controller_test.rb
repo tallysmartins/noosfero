@@ -72,6 +72,36 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
     assert json_response["success"]
   end
 
+  should "create more than one institution without acronym" do
+    @controller.stubs(:verify_recaptcha).returns(true)
+
+    xhr :get, :new_institution,
+      :authenticity_token=>"dsa45a6das52sd",
+      :name => "foo bar",
+      :community=>{:name=>"foo bar", :country => "BR", :state => "DF", :city => "Brasilia"},
+      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
+      :juridical => {:nature => @juridical_nature.id},
+      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"", :type=>"PublicInstitution"},
+      :recaptcha_response_field=>''
+
+    json_response = ActiveSupport::JSON.decode(@response.body)
+
+    assert json_response["success"]
+
+    xhr :get, :new_institution,
+      :authenticity_token=>"dsa45a6das52sd",
+      :name => "foo bar 2",
+      :community=>{:name=>"foo bar 2", :country => "BR", :state => "DF", :city => "Brasilia"},
+      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
+      :juridical => {:nature => @juridical_nature.id},
+      :institution => {:cnpj=>"12.224.567/8900-10", :acronym=>"", :type=>"PublicInstitution"},
+      :recaptcha_response_field=>''
+
+    json_response = ActiveSupport::JSON.decode(@response.body)
+
+    assert json_response["success"]
+  end
+
   should "not create a institution that already exists" do
     @controller.stubs(:verify_recaptcha).returns(true)
 
@@ -82,6 +112,23 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
       :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
       :juridical => {:nature => @juridical_nature.id},
       :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"fb", :type=>"PublicInstitution"},
+      :recaptcha_response_field=>''
+
+    json_response = ActiveSupport::JSON.decode(@response.body)
+
+    assert !json_response["success"]
+  end
+
+  should "not create a institution without cnpj" do
+    @controller.stubs(:verify_recaptcha).returns(true)
+
+    xhr :get, :new_institution,
+      :authenticity_token=>"dsa45a6das52sd",
+      :name => "Ministerio Publico da Uniao",
+      :community=>{:name=>"Ministerio Publico da Uniao", :country => "BR", :state => "DF", :city => "Brasilia"},
+      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
+      :juridical => {:nature => @juridical_nature.id},
+      :institution => {:cnpj=> "", :acronym=>"fb", :type=>"PublicInstitution"},
       :recaptcha_response_field=>''
 
     json_response = ActiveSupport::JSON.decode(@response.body)
