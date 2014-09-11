@@ -116,7 +116,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         is_admin = environment.admins.include?(current_user.person)
 
         unless is_admin
-          institution = profile.institution
+          institution = profile.user.institutions
           params[:institution][:sisp] = institution.sisp if params[:institution][:sisp] != institution.sisp
         end
       end
