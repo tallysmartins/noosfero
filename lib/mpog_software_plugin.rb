@@ -21,6 +21,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
     Proc::new do
       content_tag(:div,
+        hidden_field_tag("user_password_menssage", _("Choose a password that you can remember easily. It must have at least 6 characters.")) +
         required(labelled_form_field(
           _('Secondary e-Mail'),
           text_field(:user, :secondary_email, :id => 'secondary_email_field') +
