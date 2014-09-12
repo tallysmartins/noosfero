@@ -401,12 +401,78 @@ color:#000000;
 }
 
 
+.action-account-signup .no-boxes {
+    margin-top: 20px;
+}
+
+
+
+.portalservicos-item div {
+    display: none;
+    position: absolute;
+     background-color: red;
+}
+
+.portalservicos-item:hover div {
+    display: inline-block;
+    float: left;
+    width: 960px;
+    top: 25px;
+    left: 0;
+    background-color: blue;
+}
+
+.portalservicos-submenu:hover {
+    display: inline-block;
+    float: left;
+    width: 960px;
+    top: 25px;
+    left: 0;
+    background-color: green;
+}
+
+/* Bubble Float Bottom */
+.bubble-float-bottom {
+  display: inline-block;
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.bubble-float-bottom:before {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  left: calc(50% - 10px);
+  bottom: 0;
+  border-style: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: #e1e1e1 transparent transparent transparent;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: bottom;
+  transition-property: bottom;
+}
+.bubble-float-bottom:hover, .bubble-float-bottom:focus, .bubble-float-bottom:active {
+  -webkit-transform: translateY(-5px) translateZ(0);
+  transform: translateY(-5px) translateZ(0);
+}
+.bubble-float-bottom:hover:before, .bubble-float-bottom:focus:before, .bubble-float-bottom:active:before {
+  bottom: -10px;
+}
+
+
+
 
 /****************** FIM cabecalho ******************/
 
 /************* Bar Psocial Style - Menu Horizontal**************/
 #user{
-  top: -45px;
+  top: -53px;
   font-size: 12px;
   /*right: 10px;*/
 }

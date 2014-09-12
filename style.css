@@ -10,7 +10,12 @@
 /****************** FIM cabecalho azul ******************/
 /****************** cadastro ********************/
 @import url(cadastro.css);
+
+/****************** Dropline Menu ********************/
+@import url(dropline_menu.css);
+
 /****************** FIM cabecalho azul ****************/
+
 
 @import url(../../icons/tango/style.css);
 
@@ -913,6 +918,14 @@ ul.profile-list .common-profile-list-block {
 }
 
 
+#site-title {
+position: absolute;
+left: 8px;
+top: -160px;
+height: 78px;
+width: 480px;
+display: none;
+}
 
 /****************** FIM Estilos basicos ******************/
 
@@ -920,7 +933,7 @@ ul.profile-list .common-profile-list-block {
 #content {
     left: -480px;
     margin-left: 50%;
-    margin-top: 0;
+    margin-top: 30px;
     position: relative;
     width: 960px;
 }

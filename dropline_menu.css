@@ -1,0 +1,163 @@
+/*
+Techonolgy Quest;
+
+creating a horizontal Dropline menu is simple.
+Following id will define the dimensions for the menu, margin, padding width, height.
+For the drop line menu the position is added in this class.
+Its not necessary to add position
+*/
+ #menucontainer {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 30px;
+    position: relative;
+    
+    background-color: rgb(236,237,241);
+    
+}
+#menucontainer ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    width: 980px;
+    height:30px;
+    margin: 0 auto;
+}
+/* Following selector will define the style for individual parent menu. The following style gives them a look when the menus are not selected.
+note that the position proerty is not set.
+*/
+ #menucontainer ul li.parent_menu {
+    list-style: none;
+    margin: 0px;
+    padding: 6px;
+    /*background-color:#69A9B1;*/
+    display: inline;
+    width: 100%;
+    height: 100%;
+    /*border-right: 1px solid #03316f;*/
+    
+    background-color: rgb(236,237,241);
+}
+/* 
+Style for the anchor tag defined in the parent. 
+*/
+ #menucontainer ul li.parent_menu a {
+    margin-left: 10px;
+    padding-left: 0px;
+    margin-right: 15px;
+    padding-right: 10px;
+    background-color:transparent;
+    display: inline;
+    text-decoration: none;
+    /*font-family:"Times New Roman", "Arabic";*/
+    
+    
+    line-height: 30px;
+    
+    /*border-right: 1px solid #03316f;*/
+    color: rgb(96,96,96);
+    font-size: 12px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+/* The hover effect is defined using the below selectors
+For the background-color opacity is used to create a semi-transperant look as a hover effect
+*/
+ #menucontainer ul li.parent_menu:hover {
+    list-style: none;
+    /*margin: 0px;
+    padding: 0px;*/
+    opacity: 0.8;
+    background-color:#4E5155;
+    display: inline;
+    /*border-right:3px solid #6A91A8;*/
+}
+/*
+The following class will define the style for anchor tag in the 
+
+*/
+ #menucontainer ul li.parent_menu:hover a {
+    list-style: none;
+    /*margin-left: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+    padding-right: 10px;*/
+    background-color:transparent;
+    display: inline;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    line-height: 30px;
+}
+/***************SUB MENU***********************/
+
+/*
+Following class will hide the sub menu when the mouse is not hovering.
+*/
+ #menucontainer ul li.parent_menu ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display:none;
+    position: absolute;
+    height: 0;
+}
+/*
+Following class display hide the sub menu when the mouse is not hovering.
+Note: for this style of the menu position is set to 'absolute'
+
+*/
+ #menucontainer ul li.parent_menu:hover ul {
+    margin: -5px 0 0 0;
+    padding: 0px;
+    list-style: none;
+    display:block;
+    position: absolute;
+    height: auto;
+    width:100%;
+    left: 0px;
+    
+    background-color:#2e2e2e;
+}
+/* Following selector will define the style for individual sub menu. The following style gives them a look when the menus are not selected.
+note that the position proerty is not set and dispaly is block.
+Also the float property is set left; This will keep the menu in a single line.
+*/
+ #menucontainer ul li.parent_menu:hover ul li.child_menu {
+    list-style: none;
+    margin-left: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+    padding-right: 10px;
+    display: block;
+    float: left;
+}
+/*
+Following class will define the style for the anchor tag of the submenu/child menu
+*/
+ #menucontainer ul li.parent_menu:hover li.child_menu a {
+    padding-left: 10px;
+    margin-right: 10px;
+    padding-right: 10px;
+    background-color:transparent;
+    display: inline;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    line-height: 33px;
+}
+#menucontainer ul li.parent_menu:hover li.child_menu a:hover {
+    margin-left: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+    padding-right: 10px;
+    background-color:transparent;
+    display: inline;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    line-height: 33px;
+}

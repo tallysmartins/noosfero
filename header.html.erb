@@ -117,22 +117,45 @@
   </div>
 </div>
 
-<div id="barra-psocial">
-	<div id="navbar">
-	<nav id="navigation-colab"class="menu-servicos pull-right" role="navigation">
-	<ul class="nav navbar-nav">
-	<li class="portalservicos-item"><a href="/">Software Público</a></li>
-	<li class="portalservicos-item"><a href="/">Mercado Público</a></li>
-	<li class="portalservicos-item"><a href="/" >Comunidades</a></li>
-	<li class="portalservicos-item"><a href="/">Usuário</a></li>
-	</ul>
-	</nav>
-	</div>
-  <div id="categories_menu">
+
+<div id="menucontainer">
+    <ul id="hmenu">
+        <li class="parent_menu"><a href="#">Software Público</a>
+
+        </li>
+        <li class="parent_menu"><a href="#">Mercado Público</a>
+
+        </li>
+        <li class="parent_menu"><a href="#">Comunidades</a>
+
+            <ul>
+                <li class="child_menu"><a href="#">Comunidades de Software</a>
+
+                </li>
+              <li class="child_menu"><a href="#">Universidades</a>
+                </li>
+            </ul>
+        </li>
+        <li class="parent_menu"><a href="#">Usuário</a>
+
+        </li>
+
+    </ul>
+    
+
+</div>
+
+   <div id="categories_menu">
     <%= theme_include 'categories' %>
   </div>
-  <!--<div id="participa-languages">
+
+  <!--
+<div id="barra-psocial">
+
+
+<div id="participa-languages">
     <a href="?lang=pt" class="flag-pt" title="Português"><span>Português</span></a>
     <a href="?lang=en" class="flag-en" title="English"><span>English</span></a>
-  </div> -->
-</div>
+  </div> 
+</div>-->
+
