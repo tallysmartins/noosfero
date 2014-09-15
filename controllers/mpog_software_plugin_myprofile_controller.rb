@@ -59,6 +59,16 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
     if valid_software_info && valid_community && valid_libraries && valid_license && valid_language && valid_database && valid_operating_system
       @community = Community.create_after_moderation(user, {:environment => environment}.merge(params[:community]), @software_info, @license_info, @controlled_vocabulary)
+
+      unless params[:q].nil?
+        admins = params[:q].split(/,/).map{|n| environment.people.find n.to_i}
+
+        admins.each do |admin|
+          @community.add_member(admin)
+          @community.add_admin(admin)
+        end
+      end
+
       redirect_to :controller => 'memberships', :action => 'index'
     else
       @list_libraries.each do |lib|
@@ -82,4 +92,9 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     end
   end
 
+  def search_offerers
+    arg = params[:q].downcase
+    result = environment.people.find(:all, :conditions => ['LOWER(name) LIKE ?', "%#{arg}%"])
+    render :text => prepare_to_token_input(result).to_json
+  end
 end

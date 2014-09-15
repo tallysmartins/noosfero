@@ -97,7 +97,13 @@
         <%= swf.text_field(:demonstration_url) %>
       </div>
     <% end %>
-
+   
+   <div class="formfieldline">
+      <%= content_tag('label', _('Fill in the search field to add offerers for this Software'), :id => "text-input-search-offerers") %>
+      <%= token_input_field_tag(:q, 'search-offerers', {:action => 'search_offerers'}, { :focus => true, :hint_text => _('Type in a search term for a person to be added as
+offerers'), :pre_populate => @tokenized_children}) %>
+    </div>
+  
   <div id='libraries_fields'>
     <h4> <%= _("Libraries") %> </h4>
     <%= render :partial => 'library_fields', :locals => { :f => f, :object_name => 'community', :profile => @community, :libraries => @list_libraries } %>
