@@ -10,7 +10,9 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     @person = create_user('person').person
-    @offer = create_user('angela')
+    @offer = create_user('Angela Silva')
+    @offer_1 = create_user('Ana de Souza')
+    @offer_2 = create_user('Angelo Roberto')
 
     LicenseInfo.create(:version=>"CC-GPL-V2", :link=>"http://creativecommons.org/licenses/GPL/2.0/legalcode.pt")
     ProgramLanguage.create(:name =>"language")
@@ -65,9 +67,11 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
   end
 
   should 'search new offers while creating a new software' do
-    candidate_offers = "Angela"
-    post :search_offerers, :profile => person.identifier,:q => candidate_offers
+    offer_token = "An"
+    post :search_offerers, :profile => person.identifier,:q => offer_token
     response = JSON.parse(@response.body)
-    assert_equal "angela",response[0]["name"]
+    assert_equal "Angelo Roberto",response[0]["name"]
+    assert_equal "Ana de Souza",response[1]["name"]
+    assert_equal "Angela Silva",response[2]["name"]
   end
 end
