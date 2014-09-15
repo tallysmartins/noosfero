@@ -10,9 +10,12 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     @person = create_user('person').person
-    @offer = create_user('angela').person
+    @offer = create_user('angela')
 
     LicenseInfo.create(:version=>"CC-GPL-V2", :link=>"http://creativecommons.org/licenses/GPL/2.0/legalcode.pt")
+    ProgramLanguage.create(:name =>"language")
+    DatabaseDescription.create(:name => "database")
+
     login_as(@person.user.login)
     e = Environment.default
     e.enable_plugin('MpogSoftwarePlugin')
@@ -21,7 +24,7 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
 
   attr_accessor :person, :offer
 
-  should 'myprofile controller works properly' do
+  should 'Add offer to admin in new software' do
     community = {
       :name => 'debian'
     }
@@ -44,17 +47,21 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
        :license=> 'test'
     },{}]
     database = [{
-      :name => 'mysql'
+      :database_description_id => DatabaseDescription.last.id,
+      :version => 'database version',
+      :operating_system => 'database operating_system'
     },{}]
     language = [{
-      :version => 'test',
-      :operating_system => 'test'
+      :program_languages_id => ProgramLanguage.last.id,
+      :version => 'language version',
+      :operating_system => 'language operating_system'
     },{}]
 
     license_info = {:version => "CC-GPL-V2",:link => "http://creativecommons.org/licenses/GPL/2.0/legalcode.pt"}
     post :new_software, :profile => person.identifier, :community => community, :license_info => license_info,
-         :software_info => software_info, :library => library, :database => database, :language => language
-    #  assert_equals "operating_plataform_test",SoftwareInfo.last.operating_platform
+         :software_info => software_info, :library => library, :database => database, :language => language, :q => @offer.id
+
+    assert_equal @offer.id, Community.last.admins.last.id
   end
 
   should 'search new offers while creating a new software' do
