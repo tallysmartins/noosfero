@@ -15,8 +15,9 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     @offer_2 = create_user('Angelo Roberto')
 
     LicenseInfo.create(:version=>"CC-GPL-V2", :link=>"http://creativecommons.org/licenses/GPL/2.0/legalcode.pt")
-    ProgramLanguage.create(:name =>"language")
+    ProgrammingLanguage.create(:name =>"language")
     DatabaseDescription.create(:name => "database")
+    OperatingSystemName.create(:name=>"Debian")
 
     login_as(@person.user.login)
     e = Environment.default
@@ -36,7 +37,6 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
       :intern => false ,
       :e_ping => false ,
       :e_arq => false,
-      :name =>'test',
       :operating_platform =>'operating_plataform_test',
       :demonstration_url => 'test',
       :acronym => 'test',
@@ -48,20 +48,25 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
        :version => 'test',
        :license=> 'test'
     },{}]
+    operating_system = [{
+      :operating_system_name_id => OperatingSystemName.last.id,
+      :version => "stable"
+    }, {}]
     database = [{
       :database_description_id => DatabaseDescription.last.id,
       :version => 'database version',
       :operating_system => 'database operating_system'
     },{}]
     language = [{
-      :program_languages_id => ProgramLanguage.last.id,
+      :programming_language_id => ProgrammingLanguage.last.id,
       :version => 'language version',
       :operating_system => 'language operating_system'
     },{}]
 
     license_info = {:version => "CC-GPL-V2",:link => "http://creativecommons.org/licenses/GPL/2.0/legalcode.pt"}
     post :new_software, :profile => person.identifier, :community => community, :license_info => license_info,
-         :software_info => software_info, :library => library, :database => database, :language => language, :q => @offer.id
+         :software_info => software_info, :library => library, :database => database,
+         :language => language, :operating_system=>operating_system, :q => @offer.id
 
     assert_equal @offer.id, Community.last.admins.last.id
   end
