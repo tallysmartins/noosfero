@@ -1,12 +1,13 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
+require File.dirname(__FILE__) + '/plugin_test_helper'
 
 class MpogSoftwarePluginValidationTest < ActiveSupport::TestCase
+  include PluginTestHelper
+
   def setup
     @plugin = MpogSoftwarePlugin.new
-    institution = Institution::new(:name => "Test institution")
-    institution.save
-    @user = fast_create(User)
-    @user.institution = institution
+    @user = create_user 'login', 'test@email.com', '1234', '1234', 'test2@email.com'
+
   end
 
   def teardown

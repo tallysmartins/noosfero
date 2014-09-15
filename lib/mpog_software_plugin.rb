@@ -254,8 +254,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
-  protected
-
   def calc_percentage_registration person
     required_list = profile_required_list
     empty_fields = profile_required_empty_list person
@@ -265,6 +263,9 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     person.save(validate: false)
     percentege
   end
+
+  protected
+
 
  def create_url_to_edit_profile person
     new_url = person.public_profile_url
