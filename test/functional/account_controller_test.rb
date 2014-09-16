@@ -10,8 +10,8 @@ class AccountControllerTest < ActionController::TestCase
     environment.enabled_plugins = ['MpogSoftwarePlugin']
     environment.save
 
-    @govPower = GovernmentalPower.create(:name=>"Some Gov Power")
-    @govSphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
+    @gov_power = GovernmentalPower.create(:name=>"Some Gov Power")
+    @gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
     @juridical_nature = JuridicalNature.create(:name => "Autarquia")
 
     @controller = AccountController.new
@@ -19,8 +19,8 @@ class AccountControllerTest < ActionController::TestCase
     @response = ActionController::TestResponse.new
 
     @institution_list = []
-    @institution_list << create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @govPower, @govSphere)
-    @institution_list << create_public_institution("Tribunal Regional da Uniao", "TRU", "BR", "DF", "Brasilia", @juridical_nature, @govPower, @govSphere)
+    @institution_list << create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere)
+    @institution_list << create_public_institution("Tribunal Regional da Uniao", "TRU", "BR", "DF", "Brasilia", @juridical_nature, @gov_power, @gov_sphere)
     @user_info = {
       :login=>"novo_usuario",
       :password=>"nova_senha",
@@ -30,11 +30,24 @@ class AccountControllerTest < ActionController::TestCase
       :institution_ids=>[@institution_list.last.id]
     }
 
+    @second_user_info = {
+      :login=>"outro_usuario",
+      :password=>"nova_senha",
+      :password_confirmation=>"nova_senha",
+      :email=>"um_outro@novo.usuario",
+      :secondary_email=>"outro2@email.com",
+      :institution_ids=>[@institution_list.last.id]
+    }
+
     @profile_data_info = {
       :name=>"Um novo usuario",
       :area_interest=>"uma area ai"
     }
 
+    @second_profile_data_info = {
+      :name=>"Um outro usuario",
+      :area_interest=>"uma area ai"
+    }
     disable_signup_bot_check
   end
 
@@ -89,6 +102,36 @@ class AccountControllerTest < ActionController::TestCase
     assert last_user.institutions.include?(@institution_list.last)
   end
 
+  should "not create a user with secondary email as someone's primary email" do
+    @second_user_info[:secondary_email] = @user_info[:email]
+
+    post :signup, :user => @user_info, :profile_data => @profile_data_info
+    post :signup, :user => @second_user_info, :profile_data => @second_profile_data_info
+    assert !assigns(:user).save, "This should not have been saved."
+  end
+
+  should "not create a user with secondary email as someone's secondary email" do
+    @second_user_info[:secondary_email] = @user_info[:secondary_email]
+
+    post :signup, :user => @user_info, :profile_data => @profile_data_info
+    post :signup, :user => @second_user_info, :profile_data => @second_profile_data_info
+    assert !assigns(:user).save, "This should not have been saved."
+  end
+
+  should "not create a user with equal emails" do
+    @user_info[:email] = @user_info[:secondary_email]
+
+    post :signup, :user => @user_info, :profile_data => @profile_data_info
+    assert !assigns(:user).save, "This should not have been saved."
+  end
+
+  should "not create a user with governmental secondary email" do
+    @user_info[:secondary_email] = "email@gov.br"
+
+    post :signup, :user => @user_info, :profile_data => @profile_data_info
+    assert !assigns(:user).save, "This should not have been saved."
+  end
+
   private
 
   def create_public_institution name, acronym, country, state, city, juridical_nature, gov_p, gov_s
@@ -110,24 +153,24 @@ class AccountControllerTest < ActionController::TestCase
     institution
   end
 
-  def form_params
-    user = {
-      :login=>"novo_usuario",
-      :password=>"nova_senha",
-      :password_confirmation=>"nova_senha",
-      :email=>"um@novo.usuario",
-      :secondary_email=>"outro@email.com",
-      :institution_ids=>[@institution_list.last.id]
-    }
+  # def form_params
+  #   user = {
+  #     :login=>"novo_usuario",
+  #     :password=>"nova_senha",
+  #     :password_confirmation=>"nova_senha",
+  #     :email=>"um@novo.usuario",
+  #     :secondary_email=>"outro@email.com",
+  #     :institution_ids=>[@institution_list.last.id]
+  #   }
 
-    profile_data = {
-      :name=>"Um novo usuario",
-      :area_interest=>"uma area ai"
-    }
+  #   profile_data = {
+  #     :name=>"Um novo usuario",
+  #     :area_interest=>"uma area ai"
+  #   }
 
-    user["profile_data"] = profile_data
-    user
-  end
+  #   user["profile_data"] = profile_data
+  #   user
+  # end
 
   def disable_signup_bot_check(environment = Environment.default)
     environment.min_signup_delay = 0
