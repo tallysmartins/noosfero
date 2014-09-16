@@ -2,6 +2,8 @@ BOX = centos6
 TEMPLATE_ARGS = -t centos -- --release 6.5
 LXC_PATH := $(shell sudo lxc-config lxc.lxcpath)
 
+all: $(BOX).box
+
 $(BOX).box: metadata.json lxc.conf lxc-template rootfs.tar.gz
 	$(RM) $@
 	tar czf $@ $^
@@ -30,7 +32,7 @@ metadata.json: metadata.json.in
 	./metadata.json.in > $@
 
 uninstall:
-	vagrant box remove $(BOX)
+	vagrant box remove $(BOX) || true
 
 install: $(BOX).box
 	vagrant box add $(BOX) $^
@@ -45,3 +47,6 @@ fullclean: clean
 	$(RM) lxc.conf
 	$(RM) metadata.json
 	sudo lxc-destroy -n $(BOX)-base
+
+retry: clean uninstall all install
+	vagrant up
