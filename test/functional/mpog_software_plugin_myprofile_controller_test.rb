@@ -79,4 +79,20 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     assert_equal "Ana de Souza",response[1]["name"]
     assert_equal "Angela Silva",response[2]["name"]
   end
+
+  should 'make search for Ang for offerer in software creation' do
+    offer_token = "Ang"
+    post :search_offerers, :profile => person.identifier,:q => offer_token
+    response = JSON.parse(@response.body)
+    assert_equal "Angelo Roberto",response[0]["name"]
+    assert_equal "Angela Silva",response[1]["name"]
+  end
+
+  should 'not find any offerer for software creation' do
+    offer_token = "Jos"
+    post :search_offerers, :profile => person.identifier,:q => offer_token
+    response = JSON.parse(@response.body)
+    assert response.count == 0
+  end
+
 end
