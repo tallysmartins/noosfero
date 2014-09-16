@@ -36,10 +36,12 @@ install: $(BOX).box
 	vagrant box add $(BOX) $^
 
 clean:
+	$(RM) $(BOX).box
+
+fullclean: clean
 	sudo $(RM) -r rootfs
 	sudo $(RM) rootfs.tar.gz
 	$(RM) .$(BOX)-base
-	$(RM) $(BOX).box
 	$(RM) lxc.conf
 	$(RM) metadata.json
 	sudo lxc-destroy -n $(BOX)-base
