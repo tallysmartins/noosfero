@@ -5,7 +5,7 @@ checkout = utils/downloadsource.sh http://archive.apache.org/dist/lucene/solr/4.
 skip = true
 
 [colab]
-checkout = git clone https://github.com/colab-community/colab.git --branch stable_spb
+checkout = git clone https://github.com/colab-community/colab.git --branch softwarepublico
 
 [doc/colabdocumentation]
 checkout = git clone https://gitlab.com/softwarepublico/colabdocumentation.git
