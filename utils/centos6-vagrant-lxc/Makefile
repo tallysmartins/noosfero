@@ -20,7 +20,7 @@ rootfs: .$(BOX)-base
 	sudo ./vagrant-setup rootfs
 
 lxc.conf: .$(BOX)-base
-	sed -e '/^lxc.rootfs\s*=/d' $(LXC_PATH)/$(BOX)-base/config > $@ || ($(RM) $@; false)
+	sed -e '/^lxc.rootfs\s*=/d; s/lxc.autodev\s*=.*/lxc.autodev = 1/' $(LXC_PATH)/$(BOX)-base/config > $@ || ($(RM) $@; false)
 
 .$(BOX)-base:
 	sudo lxc-create -n $(BOX)-base $(TEMPLATE_ARGS)
