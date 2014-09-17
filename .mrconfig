@@ -1,20 +1,8 @@
 [.]
 
-[solr]
-checkout = utils/downloadsource.sh http://archive.apache.org/dist/lucene/solr/4.6.1/solr-4.6.1.tgz solr 41bacb8f7033f1448cdf0f923e034a7f
-skip = true
-
 [colab]
 checkout = git clone https://github.com/colab-community/colab.git --branch softwarepublico
 
-[doc/colabdocumentation]
-checkout = git clone https://gitlab.com/softwarepublico/colabdocumentation.git
-
-[redmine]
-checkout = git clone https://github.com/redmine/redmine.git --branch 2.5-stable
-
-[noosfero]
-checkout = git clone https://gitlab.com/softwarepublico/noosfero.git
-
 [utils/gitlab-irc]
 checkout = git clone https://gitlab.com/softwarepublico/gitlab-irc.git
+skip = true
