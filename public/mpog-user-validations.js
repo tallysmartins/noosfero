@@ -62,6 +62,33 @@
     }
   }
 
+  function show_or_hide_phone_mask() {
+    if(jQuery("#profile_data_country").val() == "BR") {
+      if( (typeof jQuery("#profile_data_cell_phone").data("rawMaskFn") === 'undefined') ) {
+        jQuery("#profile_data_cell_phone").mask("(99) 9999?9-9999");
+        jQuery("#profile_data_comercial_phone").mask("(99) 9999?9-9999");
+      }
+    } else {
+      jQuery("#profile_data_cell_phone").unmask();
+      jQuery("#profile_data_comercial_phone").unmask();
+    }
+  }
+
+  function fix_phone_mask_format(id) {
+    jQuery(id).blur(function() {
+      var last = jQuery(this).val().substr( jQuery(this).val().indexOf("-") + 1 );
+
+      if( last.length == 3 ) {
+          var move = jQuery(this).val().substr( jQuery(this).val().indexOf("-") - 1, 1 );
+          var lastfour = move + last;
+
+          var first = jQuery(this).val().substr( 0, 9 );
+
+          jQuery(this).val( first + '-' + lastfour );
+      }
+    });
+  }
+
   jQuery(document).ready(function(){
     set_initial_form_custom_data();
 
@@ -75,5 +102,11 @@
     jQuery('#secondary_email_field').blur(function() { jQuery('#secondary-email-balloon').fadeOut('slow'); });
 
     jQuery("#user_pw").blur(verify_user_password_size);
+
+    jQuery("#profile_data_country").blur(show_or_hide_phone_mask);
+    show_or_hide_phone_mask();
+
+    fix_phone_mask_format("#profile_data_cell_phone");
+    fix_phone_mask_format("#profile_data_comercial_phone");
   });
 })();
