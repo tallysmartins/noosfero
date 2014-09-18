@@ -8,7 +8,7 @@ if [ -z "$fs" ]; then
   exit 1
 fi
 
-chroot $fs useradd vagrant || true
+chroot $fs useradd --uid 1000 vagrant
 mkdir -p $fs/home/vagrant
 chroot $fs chown vagrant:vagrant /home/vagrant
 
