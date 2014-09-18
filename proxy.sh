@@ -23,7 +23,9 @@ if test -f /etc/yum.conf; then
   sed -i -s '/\[main\]/ a http_caching=packages' /etc/yum.conf
   sed -i -s '/\[main\]/ a proxy='$http_proxy /etc/yum.conf
 
-  sed -i -e 's/^enabled=.*/enabled=0/' /etc/yum/pluginconf.d/fastestmirror.conf
+  rm -f /etc/yum/pluginconf.d/fastestmirror.conf
+
+  sed -i -e 's/^#baseurl/baseurl/; s/^mirrorlist=/#mirrorlist-/' /etc/yum.repos.d/CentOS-*.repo
 
   if [ ! -f /var/tmp/yum-clean.stamp ]; then
     pgrep -f yum || yum clean all || true
