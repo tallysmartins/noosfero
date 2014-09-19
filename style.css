@@ -361,7 +361,7 @@ p {
     font-size: 12px;
     text-align: left;
     border-top: 4px solid #757575;
-    background: #eeefff;
+    background: #eee; /*#eeefff;*/
     border-bottom: none;
     color: #757575;
     padding: 8px 8px 24px 10px;
@@ -406,7 +406,7 @@ p {
 }
 
 #content .recent-documents-block li {
-    background: none repeat scroll 0 0 #EEEFFF;
+    background: none repeat scroll 0 0 #FFF;
     border-bottom: 1px solid #CCCCCC;
     display: block;
     margin: 0;
@@ -933,7 +933,7 @@ display: none;
 #content {
     left: -480px;
     margin-left: 50%;
-    margin-top: 30px;
+    margin-top: 38px; /*30px;*/
     position: relative;
     width: 960px;
 }

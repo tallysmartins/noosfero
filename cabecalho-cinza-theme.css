@@ -477,7 +477,7 @@ color:#000000;
 
 /************* Bar Psocial Style - Menu Horizontal**************/
 #user{
-  top: -53px;
+  top: -60px; /*-53px;*/
   font-size: 12px;
   /*right: 10px;*/
 }
@@ -495,10 +495,11 @@ color:#000000;
    display: block;
     background:url("images/barra-menu-user-bg.png") repeat-x bottom center #FEFEFE;
     display: block;
-    padding: 1em;
+    padding-top:1em;
     text-align: left;
     width: 130px;
    border-radius: 10px
+
 }
 
 #user .logged-in:hover {
