@@ -47,7 +47,7 @@ color: #4A4A4A;
 /*padding: 7px 7% 10px 3%; */
 /*height: 30px !important;*/
 	width: 50%;
-	float:center;
+	/*center:float;*/
 	margin:3px 2px 3px 0px;
 }
 
@@ -64,8 +64,8 @@ color: #4A4A4A;
 }
 
 #signup-login {
-  width:188px;
-  margin-bottom:5px;
+    width:188px;
+    margin-bottom:5px;
 }
 
 #signup-form .formfield input,
@@ -77,8 +77,13 @@ color: #4A4A4A;
 #signup-form small#password-confirmation-balloon,
 #signup-form small#email-balloon,
 #signup-form small#name-balloon{
-  left:90%;
+    left:100%;
 }
+/*
+#signup-form a#add_new_institution {
+    margin-left: 252px;
+}
+*/
 
 /*#content a.button.with-text {
 	line-height: 50px !important;

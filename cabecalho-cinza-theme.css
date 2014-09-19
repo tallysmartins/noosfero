@@ -136,6 +136,7 @@ background-repeat: no-repeat;
 
 #portal-siteactions li {
   display: inline;
+  margin: 0 5px 0 0;
 }
 
 #portal-siteactions li a:hover {
@@ -165,9 +166,11 @@ background-repeat: no-repeat;
 }
 
 #siteaction-accessibility,
-#siteaction-contraste {
+#siteaction-contraste,
+li#siteaction-mapadosite {
   margin: 0px 15px 0px 0px;
 }
+
 /* */
 
 /* Top links */
@@ -282,11 +285,13 @@ width: 13em;
 }
 
 #content input.searchField {
-margin-bottom: 1em;
+  margin-bottom: 1em;
 }
+
+/* Removendo css de campo de busca especifico do firefox
 input.searchField {
--moz-appearance: searchfield;
-}
+ -moz-appearance: searchfield;
+}*/
 
 #header input.searchButton {
   background-image: url("images/search-button.png");
@@ -633,7 +638,7 @@ color:#000000;
    max-width: 960px;
    margin: 0 auto;
    text-align: left;
-   padding: 19px;
+   padding: 5px;
 }
 
 #footer-license p {
