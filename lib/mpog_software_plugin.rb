@@ -131,7 +131,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
           params[:license_info][:id], params[:e_ping], params[:e_mag], params[:internacionalizable],
           params[:icp_brasil], params[:e_arq], params[:software_categories])
         communities = []
-
         softwares.each do |s|
           communities << s.community
         end
@@ -139,7 +138,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         results = results.paginate(:per_page => 24, :page => params[:page])
         @searches[@asset] = {:results => results}
         @search = results
-
         render :action => :communities
       end
     end
@@ -402,7 +400,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       else
         "community"
       end
-      puts 
       expanded_template('search/search_community_filter.html.erb')
     end
   end

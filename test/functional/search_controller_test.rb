@@ -1,10 +1,11 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
 require File.dirname(__FILE__) + '/../../../../app/controllers/public/search_controller'
+require File.dirname(__FILE__) + '/software_test_helper'
 
 class SearchController; def rescue_action(e) raise e end; end
 
 class SearchControllerTest < ActionController::TestCase
-
+  include SoftwareTestHelper
   def setup
     environment = Environment.default
     environment.enabled_plugins = ['MpogSoftwarePlugin']
@@ -83,25 +84,30 @@ class SearchControllerTest < ActionController::TestCase
   end
 
   should "search for software by identifier" do
-    software = create_software("beautiful os")
+    fields = software_fields
+    software = create_software fields
+    software.save
 
-    params = {"type"=>"Software", "query"=>"", "name"=>"beautiful-os", "database_description"=>{"id"=>""}, "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"", "commit"=>"Search"}
+    params = {"type"=>"Software", "query"=>"", "name"=>"debian", "database_description"=>{"id"=>""}, "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"", "commit"=>"Search"}
     get :communities, params
 
     assert_includes assigns(:searches)[:communities][:results], software.community
   end
 
   should "search for software by name" do
-    software = create_software("beautiful")
+    fields = software_fields
+    software = create_software fields
+    software.save
 
-    params = {"type"=>"Software", "query"=>"", "name"=>"beautiful", "database_description"=>{"id"=>""}, "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"", "commit"=>"Search"}
+    params = {"type"=>"Software", "query"=>"", "name"=>"debian", "database_description"=>{"id"=>""}, "programming_language"=>{"id"=>""}, "operating_system"=>{"id"=>""}, "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"", "commit"=>"Search"}
     get :communities, params
 
     assert_includes assigns(:searches)[:communities][:results], software.community
   end
 
   should "search for software by database" do
-    software = create_software("beautiful")
+    fields = software_fields
+    software = create_software fields
     software.software_databases.clear()
     software.software_databases << SoftwareDatabase.last
     software.save!
@@ -117,7 +123,8 @@ class SearchControllerTest < ActionController::TestCase
   end
 
   should "search for software by programming language" do
-    software = create_software("beautiful")
+    fields = software_fields
+    software = create_software fields
     software.software_languages.clear()
     software.software_languages << SoftwareLanguage.last
     software.save!
@@ -133,14 +140,16 @@ class SearchControllerTest < ActionController::TestCase
   end
 
   should "search for software by operating system" do
-    software = create_software("beautiful")
+    fields = software_fields
+    software = create_software fields
+    software.save!
     software.operating_systems.clear()
     software.operating_systems << OperatingSystem.last
     software.save!
 
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>""},
-      "operating_system"=>{"id"=>OperatingSystem.last.id},
+      "operating_system"=>{"id"=>OperatingSystemName.last.id},
       "software_categories"=>"", "license_info"=>{"id"=>""}, "e_ping"=>"", "e_mag"=>"", "icp_brasil"=>"", "e_arq"=>"", "internacionalizable"=>"",
       "commit"=>"Search"}
     get :communities, params
@@ -148,11 +157,12 @@ class SearchControllerTest < ActionController::TestCase
     assert_includes assigns(:searches)[:communities][:results], software.community
   end
 
-  should "search for software by controlled vocabulary" do
-    software = create_software("beautiful")
+  should "search for software by software categories" do
+    fields = software_fields
+    software = create_software fields
     software.software_categories.habitation = true
     software.software_categories.save!
-
+    software.save
     params = {"type"=>"Software", "query"=>"", "name"=>"", "database_description"=>{"id"=>""},
       "programming_language"=>{"id"=>""},
       "operating_system"=>{"id"=>""},
@@ -164,7 +174,8 @@ class SearchControllerTest < ActionController::TestCase
   end
 
   should "search for software by license info" do
-    software = create_software("beautiful")
+    fields = software_fields
+    software = create_software fields
     software.license_info = LicenseInfo.last
     software.save!
 
@@ -180,7 +191,8 @@ class SearchControllerTest < ActionController::TestCase
 
 
   should "search for software by e_mag" do
-    software = create_software("beautiful")
+    fields = software_fields
+    software = create_software fields
     software.e_mag = true
     software.save!
 
@@ -196,7 +208,8 @@ class SearchControllerTest < ActionController::TestCase
 
 
   should "search for software by e_ping" do
-    software = create_software("beautiful")
+    fields = software_fields
+    software = create_software fields
     software.e_ping = true
     software.save!
 
@@ -212,7 +225,8 @@ class SearchControllerTest < ActionController::TestCase
 
 
   should "search for software by icp_brasil" do
-    software = create_software("beautiful")
+    fields = software_fields
+    software = create_software fields
     software.icp_brasil = true
     software.save!
 
@@ -227,7 +241,8 @@ class SearchControllerTest < ActionController::TestCase
   end
 
   should "search for software by e_arq" do
-    software = create_software("beautiful")
+    fields = software_fields
+    software = create_software fields
     software.e_arq = true
     software.save!
 
@@ -242,7 +257,8 @@ class SearchControllerTest < ActionController::TestCase
   end
 
   should "search for software by internacionalizable" do
-    software = create_software("beautiful")
+    fields = software_fields
+    software = create_software fields
     software.intern = true
     software.save!
 
@@ -257,7 +273,8 @@ class SearchControllerTest < ActionController::TestCase
   end
 
   should "search by e_arq and e_ping" do
-    software = create_software("beautiful")
+    fields = software_fields
+    software = create_software fields
     software.e_arq = true
     software.e_ping = true
     software.save!
@@ -285,32 +302,4 @@ class SearchControllerTest < ActionController::TestCase
   	user
   end
 
-  def create_software name
-  	community = Community.create(:name => name)    
-    software_info = SoftwareInfo::new(:acronym=>"SFT", :operating_platform=>"windows")
-    software_info.community = community
-    software_info.software_languages << SoftwareLanguage.last
-    software_info.software_databases << SoftwareDatabase.last
-    software_info.operating_systems << OperatingSystem.last
-    software_info.license_info = LicenseInfo.last
-
-
-    sc = SoftwareCategories.new()
-    sc.attributes.each do |key|
-      if(key.first == 'id' || key.first == 'software_info_id')
-        next
-      end
-      sc.update_attribute(key.first, false)
-    end
-    sc.save!
-
-    software_info.software_categories = sc
-
-    software_info.save!
-
-    community.save!
-
-    software_info
-  end
-  
 end
