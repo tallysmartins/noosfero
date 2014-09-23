@@ -65,9 +65,8 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     fields = software_fields
     post :new_software, :profile => person.identifier, :community => fields[6], :license_info => fields[5],
                         :software_info => fields[0], :library => fields[1], :database => fields[3],
-                        :language => fields[2], :operating_system=> fields[4]
-
-    assert_equal SoftwareInfo.last.name, "Debian"
+                        :language => fields[2], :operating_system=> fields[4],:software_categories => fields[7]
+    assert_equal SoftwareInfo.last.community.name, "Debian"
   end
 
 

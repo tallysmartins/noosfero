@@ -52,6 +52,16 @@ module SoftwareTestHelper
     license_info
   end
 
+  def create_categories categories_hash
+    software_categories = SoftwareCategories.new
+
+    categories_hash.each do |k,v|
+      software_categories[k] = v
+    end
+    software_categories.save
+    software_categories
+  end
+
   def create_software fields
 
     software = SoftwareInfo.new
@@ -63,6 +73,7 @@ module SoftwareTestHelper
     operating_system_hash  = fields[4]
     license_system_hash = fields[5]
     community_hash = fields[6]
+    categories_hash = fields[7]
 
     software_hash.each do |k,v|
       software[k] = v
@@ -79,6 +90,7 @@ module SoftwareTestHelper
     software.operating_systems << create_operating_system(operating_system_hash)
     software.license_info_id = license_system_hash
     software.libraries << create_library(library_hash)
+    software.software_categories = create_categories(categories_hash)
 
     software
   end
@@ -132,6 +144,30 @@ module SoftwareTestHelper
     fields['operating_platform'] = 'operating_plataform_test'
     fields['demonstration_url'] = 'test'
 
+    fields_categories = {}
+    fields_categories["administration"] = true
+    fields_categories["agriculture"] = "1"
+    fields_categories["business_and_services"] = "1"
+    fields_categories["communication"] = "1"
+    fields_categories["culture"] = "1"
+    fields_categories["national_defense"] = "1"
+    fields_categories["economy_and_finances"] = "1"
+    fields_categories["education"] = "1"
+    fields_categories["energy"] = "1"
+    fields_categories["sports"] = "1"
+    fields_categories["habitation"] = "1"
+    fields_categories["industry"] = "1"
+    fields_categories["environment"] = "1"
+    fields_categories["research_and_development"] = "1"
+    fields_categories["social_security"] = "1"
+    fields_categories["social_protection"] = "1"
+    fields_categories["sanitation"] = "1"
+    fields_categories["health"] = "1"
+    fields_categories["security_public_order"] = "1"
+    fields_categories["work"] = "1"
+    fields_categories["transportation"] = "1"
+    fields_categories["urbanism"] = "1"
+
     hash_list = []
     hash_list << fields
     hash_list << list_library
@@ -140,6 +176,7 @@ module SoftwareTestHelper
     hash_list << list_operating_system
     hash_list << fields_license
     hash_list << fields_community
+    hash_list << fields_categories
     hash_list
   end
 end

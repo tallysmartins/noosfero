@@ -45,7 +45,6 @@ class AccountControllerTest < ActionController::TestCase
 
     @second_profile_data_info = {
       :name=>"Um outro usuario",
-      :area_interest=>"uma area ai"
     }
     disable_signup_bot_check
   end
@@ -129,7 +128,8 @@ class AccountControllerTest < ActionController::TestCase
 
     post :signup, :user => @user_info, :profile_data => @profile_data_info
     assert !assigns(:user).save, "This should not have been saved."
-  
+  end
+
   should "user can register without secondary_email" do
     @user_info[:secondary_email] = ""
 
