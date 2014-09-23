@@ -1,7 +1,7 @@
 [.]
 
 [colab]
-checkout = git clone https://github.com/colab-community/colab.git --branch softwarepublico
+checkout = git clone https://github.com/colab-community/colab.git --branch spb-dev
 
 [utils/gitlab-irc]
 checkout = git clone https://gitlab.com/softwarepublico/gitlab-irc.git
