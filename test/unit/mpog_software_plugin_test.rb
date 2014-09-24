@@ -6,7 +6,7 @@ class MpogSoftwarePluginTest < ActiveSupport::TestCase
 
   def setup
     @plugin = MpogSoftwarePlugin.new
-    @user = create_user 'login', 'test@email.com', '1234', '1234', 'test2@email.com'
+    @user = create_user
     @person = @user.person
   end
 
