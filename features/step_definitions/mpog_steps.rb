@@ -107,7 +107,7 @@ Given /^the following softwares$/ do |table|
     operating_system_name = OperatingSystemName.where(:name => item[:operating_system]).first
     operating_system = OperatingSystem.where(:operating_system_name_id => operating_system_name).first
     
-    software_info = SoftwareInfo::new(:acronym=>item[:acronym], :operating_platform=>item[:operating_platform])
+    software_info = SoftwareInfo::new(:acronym=>item[:acronym], :operating_platform=>item[:operating_platform], :objectives => item[:objectives], :features => item[:features])
     software_info.community = community
     software_info.software_languages << software_language
     software_info.software_databases << software_database

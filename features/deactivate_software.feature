@@ -23,8 +23,8 @@ Feature: deactivate software
     | operating_system_name | version | 
     | Debian                | 1.0     |                 
     And the following softwares
-    | name  | acronym | operating_platform | software_language | software_database | operating_system|
-    | teste | ts      | I dont know        | Python            | PostgreSQL        | Debian |
+    | name  | acronym | operating_platform | software_language | software_database | operating_system| objectives | features |
+    | teste | ts      | I dont know        | Python            | PostgreSQL        | Debian          | teste      | teste    | 
     And I go to /plugin/mpog_software/archive_software
     And I should see "teste"
     And I follow "Deactivate software"
@@ -32,7 +32,7 @@ Feature: deactivate software
     And I go to /search/communities
     And I fill in "search-input" with "teste"
     And I press "Search"
-    Then I should not see "teste" within "search-profile-item"
+    Then I should not see "teste" within "#search-results"
 
   @selenium
   Scenario: Activate a deactivated software
@@ -46,8 +46,8 @@ Feature: deactivate software
     | operating_system_name | version | 
     | Debian                | 1.0     |                 
     And the following softwares
-    | name  | acronym | operating_platform | software_language | software_database | operating_system|
-    | teste | ts      | I dont know        | Python            | PostgreSQL        | Debian |
+    | name  | acronym | operating_platform | software_language | software_database | operating_system| objectives | features |
+    | teste | ts      | I dont know        | Python            | PostgreSQL        | Debian          | teste      | teste    |
    And I go to /plugin/mpog_software/archive_software
     And I should see "teste"
     And I follow "Deactivate software"
@@ -55,7 +55,7 @@ Feature: deactivate software
     And I go to /search/communities
     And I fill in "search-input" with "teste"
     And I press "Search"
-    And I should not see "Teste" within "search-profile-item"
+    And I should not see "Teste" within "#search-results"
     And I go to /plugin/mpog_software/archive_software
     And I should see "teste"
     And I follow "Activate Software"
@@ -63,4 +63,4 @@ Feature: deactivate software
     And I go to /search/communities 
     And I fill in "search-input" with "teste"
     And I press "Search"
-    Then I should see "teste" within "search-profile-item"
+    Then I should see "teste" within ".search-profile-item"
