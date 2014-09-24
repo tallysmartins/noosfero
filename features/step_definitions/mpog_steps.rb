@@ -24,7 +24,15 @@ Given /^Institutions has initial default values on database$/ do
   GovernmentalPower.create(:name => "Judiciario")
 
   GovernmentalSphere.create(:name => "Federal")
-  JuridicalNature.create(:name=> "Autarquia")
+
+  JuridicalNature.create(:name => "Autarquia")
+  JuridicalNature.create(:name => "Administracao Direta")
+  JuridicalNature.create(:name => "Empresa Publica")
+  JuridicalNature.create(:name => "Fundacao")
+  JuridicalNature.create(:name => "Orgao Autonomo")
+  JuridicalNature.create(:name => "Sociedade")
+  JuridicalNature.create(:name => "Sociedade Civil")
+  JuridicalNature.create(:name => "Sociedade de Economia Mista")
 end
 
 Given /^I type in "([^"]*)" into autocomplete list "([^"]*)" and I choose "([^"]*)"$/ do |typed, input_institution, should_select|
