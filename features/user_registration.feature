@@ -204,7 +204,6 @@ Feature: User Registration
     And I fill in "Password" with "secret"
     And I press "Log in"
     Then I should see "Complete Profile: 37%"
->>>>>>> a8e75c7... corrections: remove area of interest from forms.
 
   @selenium
   Scenario: Remove the incomplete resgistration percentage message
