@@ -1,7 +1,7 @@
 <h2><%= _('Institution Information') %></h2>
 
 <div class="formfield type-text">
-  <%= labelled_text_field(_("CNPJ"), 'institution[cnpj]', context.profile.institution.cnpj, :class=>"formlabel") %>
+  <%= labelled_text_field(_("CNPJ"), 'institution[cnpj]', context.profile.institution.cnpj, :class=>"formlabel intitution_cnpj_field", :placeholder=>"99.999.999/9999-99") %>
 </div>
 
 <span class='required-field'>

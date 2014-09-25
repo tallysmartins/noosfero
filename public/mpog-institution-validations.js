@@ -198,6 +198,10 @@
     jQuery(this).parent().remove();
   }
 
+  function add_mask_to_form_items() {
+    jQuery(".intitution_cnpj_field").mask("99.999.999/9999-99");
+  }
+
   function set_events() {
     jQuery("#create_institution_link").click(open_create_institution_modal);
 
@@ -212,6 +216,8 @@
     jQuery("#add_new_institution").click(add_new_institution);
 
     jQuery(".remove-institution").click(remove_institution);
+
+    add_mask_to_form_items();
 
     institution_autocomplete();
   }
