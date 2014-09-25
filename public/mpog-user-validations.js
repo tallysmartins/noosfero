@@ -89,6 +89,34 @@
     });
   }
 
+  function set_full_name_validation() {
+    function is_invalid_formated(text) {
+      slices = text.split(" ");
+
+      var reg = /(^|\s)([a-z]|[0-9]|([&\/\\#,+()$~%.'":*?<>{}!@\-\[\]]))/g;
+
+      for(var i = 0; i < slices.length; i++) {
+        if( reg.test(slices[i]) ) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    jQuery("#profile_data_name").blur(function(){
+      jQuery(this).attr("class", "");
+
+      if( this.value.length > 0 ) {
+        if( is_invalid_formated(this.value) ) {
+          jQuery(this).removeClass("validated").addClass("invalid");
+        } else {
+          jQuery(this).removeClass("invalid").addClass("validated");
+        }
+      }
+    });
+  }
+
   jQuery(document).ready(function(){
     set_initial_form_custom_data();
 
@@ -108,5 +136,14 @@
 
     fix_phone_mask_format("#profile_data_cell_phone");
     fix_phone_mask_format("#profile_data_comercial_phone");
+
+    window.setTimeout(function(){
+      /*
+      Noosfero application.js is one of the last loaded javascript files.
+      Then, to override an application.js validation, this code waits for 2 seconds.
+      Or else, application.js validation override this validation
+      */
+      set_full_name_validation();
+    }, 2000);
   });
 })();
