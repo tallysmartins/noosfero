@@ -1,11 +1,13 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
+require File.dirname(__FILE__) + '/plugin_test_helper'
+
 
 class SearchPersonTest < ActiveSupport::TestCase
-
+  include PluginTestHelper
   def setup
-    create_person("Jose_Augusto", "DF", "Gama", "jose_augusto@email.com")
-    create_person("Maria_cunha", "RJ", "Rio de Janeiro", "maria_cunha@email.com")
-    create_person("Joao_da_silva_costa_cunha", "RJ", "Rio de Janeiro", "joao_da_silva_costa_cunha@gemail.com")
+    create_person("Jose_Augusto", "jose_augusto@email.com", "aaaaaaa", "aaaaaaa", "jose_silva@email.com", "DF", "Gama")
+    create_person("Maria_cunha", "maria_cunha@email.com", "aaaaaaa", "aaaaaaa", "maria_silva@email.com" , "RJ", "Rio de Janeiro")
+    create_person("Joao_da_silva_costa_cunha", "joao_da_silva_costa_cunha@email.com", "aaaaaaa", "aaaaaaa", "joao_cunha@email.com" ,"RJ", "Rio de Janeiro")
   end
 
   should "Find people with Jo in name" do
@@ -42,23 +44,6 @@ class SearchPersonTest < ActiveSupport::TestCase
     people_list = Person.search("Ma", "RJ", "Rio", "ma")
 
     assert_equal 1, people_list.count
-  end
-
-  def create_person name, state, city, email
-    user =  User::new
-    user.login = name.downcase
-    user.email = email
-    user.secondary_email = "#{name}_secondary@email2.com"
-    user.password = "adlasdasd"
-    user.password_confirmation = "adlasdasd"
-    user.save!
-
-    user.person.name = name
-    user.person.state = state
-    user.person.city = city
-    user.person.save!
-
-    user.save!
   end
 
 end

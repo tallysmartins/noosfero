@@ -9,7 +9,7 @@ module PluginTestHelper
     institution.acronym = acronym
     institution.governmental_power = gov_p
     institution.governmental_sphere = gov_s
-    institution.save!
+    institution.save
 
     institution
   end
@@ -20,7 +20,7 @@ module PluginTestHelper
     institution.name = name
     institution.sisp = false
     institution.cnpj = cnpj
-    institution.save!
+    institution.save
 
     institution
   end
@@ -31,7 +31,7 @@ module PluginTestHelper
     community.country = country
     community.state = state
     community.city = city
-    community.save!
+    community.save
     community
   end
 
@@ -45,6 +45,15 @@ module PluginTestHelper
     user.save
     user.person.save
     user
+  end
+
+  def create_person name, email, password, password_confirmation, secondary_email, state, city
+    user = create_user(name.downcase, email, password, password_confirmation, secondary_email)
+    user.person.name = name
+    user.person.state = state
+    user.person.city = city
+    user.person.save
+    user.person
   end
 
 end

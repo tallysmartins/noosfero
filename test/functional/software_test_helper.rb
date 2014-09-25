@@ -141,7 +141,7 @@ module SoftwareTestHelper
     fields['acronym'] = 'test'
     fields['objectives'] = 'test'
     fields['features'] = 'test'
-    fields['operating_platform'] = 'operating_plataform_test'
+    fields['operating_platform'] = 'operating_platform_test'
     fields['demonstration_url'] = 'test'
 
     fields_categories = {}

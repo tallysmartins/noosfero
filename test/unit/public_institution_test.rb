@@ -1,19 +1,14 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
+require File.dirname(__FILE__) + '/plugin_test_helper'
 
 class PublicInstitutionTest < ActiveSupport::TestCase
+  include PluginTestHelper
   def setup
-    govPower = GovernmentalPower.create(:name=>"Some Gov Power")
-    govSphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
-    juriNature = JuridicalNature.create(:name => "Some jurid nature")
-    community = Community.create(:name => "Simple Public Institution")
+    @gov_power = GovernmentalPower.create(:name=>"Some Gov Power")
+    @gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
+    @juridical_nature = JuridicalNature.create(:name => "Autarquia")
 
-    @institution = PublicInstitution::new :name=>"Simple Public Institution", :acronym=>"SPI",
-      :governmental_power=>govPower, :governmental_sphere=>govSphere, :juridical_nature => juriNature
-
-    @institution.community = community
-    @institution.community.country = "BR"
-    @institution.community.state = "DF"
-    @institution.community.city = "Gama"
+    @institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere)
   end
 
   should "save without a cnpj" do

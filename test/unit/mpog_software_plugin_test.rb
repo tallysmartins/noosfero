@@ -6,7 +6,7 @@ class MpogSoftwarePluginTest < ActiveSupport::TestCase
 
   def setup
     @plugin = MpogSoftwarePlugin.new
-    @user = create_user
+    @user = create_user("login", "user@email.com", "123456", "123456", "user@secondary_email.com")
     @person = @user.person
   end
 
@@ -33,18 +33,4 @@ class MpogSoftwarePluginTest < ActiveSupport::TestCase
 
     assert_equal(test_percentege, plugin_percentege)
 	end
-
-  private
-
-  def create_user
-    user = User.new
-    user.login = "login"
-    user.email = "user@email.com"
-    user.password = "123456"
-    user.password_confirmation = "123456"
-    user.secondary_email = "user@secondary_email.com"
-    user.save
-    user.person.save
-    user
-  end
 end

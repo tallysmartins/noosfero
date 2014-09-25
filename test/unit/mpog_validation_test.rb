@@ -7,11 +7,7 @@ class MpogSoftwarePluginValidationTest < ActiveSupport::TestCase
   def setup
     @plugin = MpogSoftwarePlugin.new
 
-    institution = build_institution("Test institution")
-    institution.save
-
     @user = fast_create(User)
-    @user.institutions << institution
   end
 
   def teardown
@@ -28,25 +24,5 @@ class MpogSoftwarePluginValidationTest < ActiveSupport::TestCase
     @user.secondary_email = "test_email@com.br"
     @user.email = "test_email@net.br"
     assert @user.save
-  end
-
-  private
-
-  def build_institution name, type="PublicInstitution", cnpj=nil
-    institution = Institution::new
-    institution.name = name
-    institution.type = type
-    institution.cnpj = cnpj
-
-    institution.community = Community.create(:name => "Simple Public Institution")
-    institution.community.country = "BR"
-    institution.community.state = "DF"
-    institution.community.city = "Gama"
-
-    if type == "PublicInstitution"
-      institution.juridical_nature = JuridicalNature.first
-    end
-
-    institution
   end
 end

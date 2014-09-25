@@ -1,16 +1,14 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
+require File.dirname(__FILE__) + '/plugin_test_helper'
 
 class InstitutionTest < ActiveSupport::TestCase
-
+  include PluginTestHelper
   def setup
-    community = Community.create(:name => "Simple Public Institution")
+    @gov_power = GovernmentalPower.create(:name=>"Some Gov Power")
+    @gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
+    @juridical_nature = JuridicalNature.create(:name => "Autarquia")
 
-    @institution = Institution::new :name=>"Simple Institution"
-
-    @institution.community = community
-    @institution.community.country = "BR"
-    @institution.community.state = "DF"
-    @institution.community.city = "Gama"
+    @institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere)
   end
 
   should "not save institutions without name" do

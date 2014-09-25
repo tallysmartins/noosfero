@@ -1,6 +1,8 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
+require File.dirname(__FILE__) + '/plugin_test_helper'
 
 class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
+  include PluginTestHelper
 
   should 'not save user whose both email and secondary email are the same' do
 
@@ -95,13 +97,16 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
   should 'have institution if email is governmental' do
     user = fast_create(User)
 
-    user.email = "test@gov.br"
+    user.email = "testtest@gov.br"
 
     user.institutions = []
     assert !user.save, "this should not save"
 
-    institution = build_institution "Test simple institution"
-    institution.save
+    gov_power = GovernmentalPower.create(:name=>"Some Gov Power")
+    gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
+    juridical_nature = JuridicalNature.create(:name => "Autarquia")
+    institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", juridical_nature, gov_power, gov_sphere)
+    institution.save!
 
     user.institutions << institution
     assert user.save, "this should save"
@@ -119,21 +124,4 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     return user
   end
 
-  def build_institution name, type="PublicInstitution", cnpj=nil
-    institution = Institution::new
-    institution.name = name
-    institution.type = type
-    institution.cnpj = cnpj
-
-    institution.community = Community.create(:name => name)
-    institution.community.country = "BR"
-    institution.community.state = "DF"
-    institution.community.city = "Gama"
-
-    if type == "PublicInstitution"
-      institution.juridical_nature = JuridicalNature.first
-    end
-
-    institution
-  end
 end
