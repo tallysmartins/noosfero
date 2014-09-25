@@ -34,7 +34,7 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     @software = create_software @hash_list
     @software.community.add_admin(@offer.person)
     @software.save
-    assert_equal @offer.id, @software.community.admins.last.id
+    assert_equal @offer.person.id, @software.community.admins.last.id
   end
 
   should 'search new offers while creating a new software' do
