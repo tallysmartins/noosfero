@@ -81,7 +81,6 @@
       if( last.length == 3 ) {
           var move = jQuery(this).val().substr( jQuery(this).val().indexOf("-") - 1, 1 );
           var lastfour = move + last;
-
           var first = jQuery(this).val().substr( 0, 9 );
 
           jQuery(this).val( first + '-' + lastfour );
@@ -91,17 +90,10 @@
 
   function set_full_name_validation() {
     function is_invalid_formated(text) {
-      slices = text.split(" ");
+      var reg_firsts_char = /(^|\s)([a-z]|[0-9])/g;
+      var reg_special_char = /[^\w\*\s*]/g;
 
-      var reg = /(^|\s)([a-z]|[0-9]|([&\/\\#,+()$~%.'":*?<>{}!@\-\[\]]))/g;
-
-      for(var i = 0; i < slices.length; i++) {
-        if( reg.test(slices[i]) ) {
-          return true;
-        }
-      }
-
-      return false;
+      return reg_firsts_char.test(text) || reg_special_char.test(text);
     }
 
     jQuery("#profile_data_name").blur(function(){
@@ -110,8 +102,16 @@
       if( this.value.length > 0 ) {
         if( is_invalid_formated(this.value) ) {
           jQuery(this).removeClass("validated").addClass("invalid");
+
+          if(!jQuery(".full_name_error")[0]) {
+            var message = jQuery("#full_name_error").val();
+            jQuery(this).parent().append("<span class='full_name_error'>"+message+"</span>");
+          } else {
+            jQuery(".full_name_error").show();
+          }
         } else {
           jQuery(this).removeClass("invalid").addClass("validated");
+          jQuery(".full_name_error").hide();
         }
       }
     });

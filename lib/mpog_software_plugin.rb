@@ -44,6 +44,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
           link_to(_("Create new institution"), "#", :id=>"create_institution_link", :class=>'button with-text icon-add')+
           hidden_field_tag("user[institution_ids][]", "", :class => 'user_institutions')+
           hidden_field_tag("institution_selected", "")+
+          hidden_field_tag("full_name_error", _("Should begin with a capital letter and no special characters"))+
           content_tag("ul", "",:class=>"institutions_added")+
           content_tag(:div, "", :id=>"institution_dialog")
         ),
