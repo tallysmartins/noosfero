@@ -6,6 +6,8 @@ class Person
 
   attr_accessible :percentage_incomplete
 
+  validate :validate_full_name
+
   scope :search, lambda { |name="", state="", city="", email=""|
     like_sql = ""
     values = []
@@ -53,6 +55,19 @@ class Person
 
   def secondary_email= value
     self.user.secondary_email = value unless self.user.nil?
+  end
+
+  def validate_full_name
+    reg_firsts_char = /(^|\s)([a-z]|[0-9])/
+    reg_special_char = /[^\w\*\s]/
+
+    invalid = reg_firsts_char.match(self.name) || reg_special_char.match(self.name)
+
+    if invalid
+      self.errors.add(:name, _("Should begin with a capital letter and no special characters"))
+      return false
+    end
+    true
   end
 
   def software?
