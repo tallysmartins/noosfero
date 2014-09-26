@@ -96,23 +96,31 @@
       return reg_firsts_char.test(text) || reg_special_char.test(text);
     }
 
+    function show_full_name_error_message() {
+      var field = jQuery("#profile_data_name");
+
+      field.removeClass("validated").addClass("invalid");
+
+      if(!jQuery(".full_name_error")[0]) {
+        var message = jQuery("#full_name_error").val();
+        field.parent().append("<span class='full_name_error'>"+message+"</span>");
+      } else {
+        jQuery(".full_name_error").show();
+      }
+    }
+
+    function hide_full_name_error_message() {
+      jQuery("#profile_data_name").removeClass("invalid").addClass("validated");
+      jQuery(".full_name_error").hide();
+    }
+
     jQuery("#profile_data_name").blur(function(){
       jQuery(this).attr("class", "");
 
-      if( this.value.length > 0 ) {
-        if( is_invalid_formated(this.value) ) {
-          jQuery(this).removeClass("validated").addClass("invalid");
-
-          if(!jQuery(".full_name_error")[0]) {
-            var message = jQuery("#full_name_error").val();
-            jQuery(this).parent().append("<span class='full_name_error'>"+message+"</span>");
-          } else {
-            jQuery(".full_name_error").show();
-          }
-        } else {
-          jQuery(this).removeClass("invalid").addClass("validated");
-          jQuery(".full_name_error").hide();
-        }
+      if( this.value.length > 0 && is_invalid_formated(this.value) ) {
+        show_full_name_error_message();
+      } else {
+        hide_full_name_error_message();
       }
     });
   }
