@@ -92,8 +92,18 @@
     function is_invalid_formated(text) {
       var reg_firsts_char = /(^|\s)([a-z]|[0-9])/g;
       var reg_special_char = /[^\w\*\s*]/g;
+      var invalid = false;
+      var slices = text.split(" ");
 
-      return reg_firsts_char.test(text) || reg_special_char.test(text);
+      for(var i = 0; i < slices.length; i++) {
+        if( slices[i].length > 3 ) {
+          invalid = reg_firsts_char.test(slices[i]) || reg_special_char.test(slices[i]);
+        } else {
+          invalid = reg_special_char.test(slices[i]);
+        }
+      }
+
+      return invalid;
     }
 
     function show_full_name_error_message() {

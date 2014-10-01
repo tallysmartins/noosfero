@@ -60,8 +60,17 @@ class Person
   def validate_full_name
     reg_firsts_char = /(^|\s)([a-z]|[0-9])/
     reg_special_char = /[^\w\*\s]/
+    invalid = false
 
-    invalid = reg_firsts_char.match(self.name) || reg_special_char.match(self.name)
+    return false if self.name.blank?
+
+    self.name.split(" ").each do |value|
+      invalid = if value.length > 3
+        reg_firsts_char.match(value) || reg_special_char.match(value)
+      else
+        reg_special_char.match(value)
+      end
+    end
 
     if invalid
       self.errors.add(:name, _("Should begin with a capital letter and no special characters"))

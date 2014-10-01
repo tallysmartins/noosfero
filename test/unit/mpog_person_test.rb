@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../../../../test/test_helper'
 
 class MpogSoftwarePluginPersonTest < ActiveSupport::TestCase
   should 'save person with a valid full name' do
-    p = Person::new :name=>"S1mpl3 N4m3", :identifier=>"simple-name"
+    p = Person::new :name=>"S1mpl3 0f N4m3", :identifier=>"simple-name"
     p.user = fast_create(:user)
 
     assert_equal true, p.save
