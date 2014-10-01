@@ -110,7 +110,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
         unless is_admin
           institution = profile.user.institutions
-          params[:institution][:sisp] = institution.sisp if params[:institution][:sisp] != institution.sisp
+
+          if !params[:institution].blank? and !params[:institution][:sisp].nil?
+            params[:institution][:sisp] = institution.sisp if params[:institution][:sisp] != institution.sisp
+          end
         end
       end
     end
