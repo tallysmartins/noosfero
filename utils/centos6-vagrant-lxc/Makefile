@@ -46,7 +46,7 @@ fullclean: clean
 	$(RM) .$(BOX)-base
 	$(RM) lxc.conf
 	$(RM) metadata.json
-	sudo lxc-destroy -n $(BOX)-base
+	if sudo lxc-ls | grep $(BOX)-base; then sudo lxc-destroy -n $(BOX)-base; fi
 
 retry: clean uninstall all install
 	vagrant up
