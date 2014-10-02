@@ -203,6 +203,8 @@
   }
 
   function set_events() {
+    jQuery('#community_country').val("BR");
+    
     jQuery("#create_institution_link").click(open_create_institution_modal);
 
     jQuery("#type_PrivateInstitution").click(show_private_institutions_fields);
