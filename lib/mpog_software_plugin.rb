@@ -268,7 +268,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def profile_required_list
-    required_list = ["cell_phone","contact_phone","institutions","comercial_phone","country","city","state","organization_website","image"]
+    ["cell_phone","contact_phone","comercial_phone","country","city","state","organization_website","image"]
   end
 
   def profile_required_empty_list person
