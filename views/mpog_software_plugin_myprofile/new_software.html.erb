@@ -77,17 +77,17 @@
         <%= swf.radio_button(:intern,false)%>
       <div class="formfieldline">
         <%= swf.label "operating_platform", _("Operating Platform: ") %> <br />
-        <%= swf.text_area(:operating_platform, :class=>"expand-field") %>
+        <%= swf.text_area(:operating_platform) %>
       </div>
 
       <div class="formfieldline">
         <%= swf.label "objectives", _("Objectives: ")%><br />
-        <%= required swf.text_area(:objectives, :class=>"expand-field") %>
+        <%= required swf.text_area(:objectives) %>
       </div>
 
       <div class="formfieldline">
         <%= swf.label "features", _("Features: ")%><br />
-        <%= required swf.text_area(:features, :class=>"expand-field") %>
+        <%= required swf.text_area(:features) %>
       </div>
 
       <div class="formfieldline formfield type-text">

@@ -38,14 +38,6 @@
   border: none;
 }
 
-.expand-field {
-  height: 80px;
-}
-
-.expand-field-focus {
- height: 300px;
-}
-
 .mpog-incomplete-percentage img {
   margin-left: 5px;
 }

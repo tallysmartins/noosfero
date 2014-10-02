@@ -50,18 +50,7 @@ function hide_infos(){
   jQuery(".database-button-hide").hide();
   jQuery(".libraries-button-hide").hide();
   jQuery(".operating-system-button-hide").hide();
-
-
 }
-
-function animate_fields() {
-  jQuery(".expand-field").focus(function(){
-    jQuery(this).switchClass("expand-field", "expand-field-focus", 700, "easeInOutQuad");
-  }).blur(function(){
-    jQuery(this).switchClass("expand-field-focus", "expand-field", 700, "easeInOutQuad");
-  });
-}
-
 
 jQuery(document).ready(function(){
   var dynamic_tables = ["dynamic-databases", "dynamic-languages", "dynamic-libraries","dynamic-operating_systems"];
@@ -141,19 +130,4 @@ jQuery(document).ready(function(){
     jQuery(".libraries-button-show").hide();
     jQuery(".libraries-button-hide").show();
   });
-
-  jQuery(".operating_systems-button-hide").click(function(event){
-    event.preventDefault();
-    jQuery(".operating_systems-info").hide();
-    jQuery(".operating_systems-button-show").show();
-    jQuery(".operating_systems-button-hide").hide();
-  });
-
-  jQuery(".operating_systems-button-show").click(function(event){
-    event.preventDefault();
-    jQuery(".operating_systems-info").show();
-    jQuery(".operating_systems-button-show").hide();
-    jQuery(".operating_systems-button-hide").show();
-  });
-  animate_fields();
 });
