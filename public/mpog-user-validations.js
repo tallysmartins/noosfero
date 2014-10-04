@@ -160,6 +160,8 @@
         } else {
           invalid = reg_special_char.test(slices[i]);
         }
+
+        if(invalid) break;
       }
 
       return invalid;
