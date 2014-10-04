@@ -1,8 +1,67 @@
 (function(){
-  function set_initial_form_custom_data() {
-    jQuery('#profile_data_country').val("BR");
+  /*
+  * "Class" that switch state field between input and select
+  * If the Country if Brazil, set state to select field
+  * else set it as a input field
+  */
+  function SelectFieldChoices() {
+    // Get the initial state html
+    var input_select = jQuery("#state_field").parent().html();
+    var old_value = jQuery("#state_field").val();
 
+    function replace_with(html) {
+      var parent_div = jQuery("#state_field").parent();
+      parent_div.html(html);
+    }
+
+    function generate_select(state_list) {
+      var html = "<select class='type-select valid' id='state_field' name='profile_data[state]'>";
+
+      state_list.forEach(function(state){
+        html += "<option value='"+state+"'>"+state+"</option>";
+      });
+
+      html += "</select>";
+      return html;
+    }
+
+    function replace_state_with_select() {
+      jQuery.get("/plugin/mpog_software/get_brazil_states", function(response){
+        if( response.length > 0 ) {
+          var select_html = generate_select(response);
+          replace_with(select_html);
+
+          if( old_value.length != 0 && response.include(old_value) ) {
+            jQuery("#state_field").val(old_value);
+          }
+        }
+      });
+    }
+
+    function replace_state_with_input() {
+      replace_with(input_select);
+    }
+
+    return {
+      actualFieldIsInput : function() {
+        return jQuery("#state_field").attr("type") == "text";
+      },
+
+      setSelect : function() {
+        replace_state_with_select();
+      },
+
+      setInput : function() {
+        replace_state_with_input();
+      }
+    }
+  }
+
+  function set_initial_form_custom_data(selectFieldChoices) {
+    jQuery('#profile_data_country').val("BR");
     jQuery("#password-balloon").html(jQuery("#user_password_menssage").val());
+
+    selectFieldChoices.setSelect();
   }
 
   function check_reactivate_account(value, input_object){
@@ -136,7 +195,8 @@
   }
 
   jQuery(document).ready(function(){
-    set_initial_form_custom_data();
+    var selectFieldChoices = new SelectFieldChoices();
+    set_initial_form_custom_data(selectFieldChoices);
 
     jQuery('#secondary_email_field').blur(
       validate_email_format
@@ -150,6 +210,16 @@
     jQuery("#user_pw").blur(verify_user_password_size);
 
     jQuery("#profile_data_country").blur(show_or_hide_phone_mask);
+
+    // Event that calls the "Class" to siwtch state field types
+    jQuery("#profile_data_country").change(function(){
+      if( this.value == "BR" && selectFieldChoices.actualFieldIsInput() ) {
+        selectFieldChoices.setSelect();
+      } else {
+        selectFieldChoices.setInput();
+      }
+    });
+
     show_or_hide_phone_mask();
 
     fix_phone_mask_format("#profile_data_cell_phone");

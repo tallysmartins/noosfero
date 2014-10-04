@@ -141,6 +141,12 @@ class MpogSoftwarePluginController < ApplicationController
     end
   end
 
+  def get_brazil_states
+    redirect_to "/" unless request.xhr?
+
+    state_list = NationalRegion.find(:all, :conditions=>["national_region_type_id = ?", 2], :order=>"name")
+    render :json=>state_list.collect {|state| state.name }.to_json
+  end
 
   protected
 
@@ -207,5 +213,4 @@ class MpogSoftwarePluginController < ApplicationController
     end
     software_list
   end
-
 end
