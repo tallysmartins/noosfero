@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require_dependency 'person'
 
 class Person
@@ -58,17 +60,19 @@ class Person
   end
 
   def validate_full_name
-    reg_firsts_char = /(^|\s)([a-z]|[0-9])/
-    reg_special_char = /[^\w\*\s]/
+    full_validation = /([^\w\*\s*])|(^|\s)([a-z]|[0-9])/
+    partial_validation = /[^\w\*\s]/
     invalid = false
 
     return false if self.name.blank?
 
-    self.name.split(" ").each do |value|
+    validation_name = replace_some_special_chars(self.name)
+
+    validation_name.split(" ").each do |value|
       invalid = if value.length > 3
-        reg_firsts_char.match(value) || reg_special_char.match(value)
+        full_validation.match(value)
       else
-        reg_special_char.match(value)
+        partial_validation.match(value)
       end
     end
 
@@ -81,5 +85,25 @@ class Person
 
   def software?
     false
+  end
+
+  private
+
+  def replace_some_special_chars text
+    text.gsub(/([áàâãéèêíïóôõöú])/) do |value|
+      if( ["á","à","â","ã"].include?(value) )
+        "a"
+      elsif( ["é","è","ê"].include?(value) )
+        "e"
+      elsif( ["í","ï"].include?(value) )
+        "i"
+      elsif ( ["ó","ô","õ","ö"].include?(value) )
+        "o"
+      elsif( ["ú"].indexOf(value) )
+        "u"
+      else
+        value
+      end
+    end
   end
 end

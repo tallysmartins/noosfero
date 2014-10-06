@@ -148,17 +148,37 @@
   }
 
   function set_full_name_validation() {
+    // Sorry, I know its ugly. But I cant get ([^\w\*\s*])|(^|\s)([a-z]|[0-9])
+    // to ignore Brazilian not so much special chars in names
+    function replace_some_special_chars(text) {
+      return text.replace(/([áàâãéèêíïóôõöú])/g, function(value){
+        if( ["á","à","â","ã"].indexOf(value) != -1 )
+          return "a";
+        else if( ["é","è","ê"].indexOf(value) != -1 )
+          return "e";
+        else if( ["í","ï"].indexOf(value) != -1 )
+          return "i";
+        else if ( ["ó","ô","õ","ö"].indexOf(value) != -1 )
+          return "o";
+        else if( ["ú"].indexOf(value) != -1 )
+          return "u";
+        else
+          return value;
+      });
+    }
+
     function is_invalid_formated(text) {
-      var reg_firsts_char = /(^|\s)([a-z]|[0-9])/g;
-      var reg_special_char = /[^\w\*\s*]/g;
-      var invalid = false;
+      var full_validation = /([^\w\*\s*])|(^|\s)([a-z]|[0-9])/; // no special chars and do not initialize with no capital latter
+      var partial_validation = /[^\w\*\s*]/; // no special chars
+      text = replace_some_special_chars(text);
       var slices = text.split(" ");
+      var invalid = false;
 
       for(var i = 0; i < slices.length; i++) {
         if( slices[i].length > 3 ) {
-          invalid = reg_firsts_char.test(slices[i]) || reg_special_char.test(slices[i]);
+          invalid = full_validation.test(slices[i]);
         } else {
-          invalid = reg_special_char.test(slices[i]);
+          invalid = partial_validation.test(slices[i]);
         }
 
         if(invalid) break;
