@@ -54,7 +54,7 @@
     margin: auto;
     width: 100%;
 }
-
+/*
 #barra-brasil {
     z-index: 99;
      width: 100%;
@@ -65,7 +65,7 @@ div#wrapper-barra-brasil {
     width: 960px;
     font-family: Arial, Helvetica, sans-serif !important;
 }
-
+*/
 
 /****************** Estilos basicos ******************/
 
@@ -1304,6 +1304,10 @@ input.button.with-text {
 }
 
 /*track list nos blocos laterais*/
+.box-2{
+  width:150px;
+}
+
 .box-2 .track_list .item_card,
 .box-3 .track_list .item_card {
     margin: 10px 0px;
