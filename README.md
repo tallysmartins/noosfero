@@ -21,6 +21,8 @@ Activate Plugin
 
 As a Noosfero administrator user, go to administrator panel:
 
+- Execute the command to allow city and states to show up:
+  psql -U USERNAME -d NOOSFERO_DATABASE -a -f db/brazil_national_regions.sql
 - Click on "Enable/disable plugins" option
 - Click on "MPOG Software Plugin" check-box
 

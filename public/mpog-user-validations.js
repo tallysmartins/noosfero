@@ -126,10 +126,12 @@
       if( (typeof jQuery("#profile_data_cell_phone").data("rawMaskFn") === 'undefined') ) {
         jQuery("#profile_data_cell_phone").mask("(99) 9999?9-9999");
         jQuery("#profile_data_comercial_phone").mask("(99) 9999?9-9999");
+        jQuery("#profile_data_contact_phone").mask("(99) 9999?9-9999");
       }
     } else {
       jQuery("#profile_data_cell_phone").unmask();
       jQuery("#profile_data_comercial_phone").unmask();
+      jQuery("#profile_data_contact_phone").unmask();
     }
   }
 
@@ -147,74 +149,102 @@
     });
   }
 
-  function set_full_name_validation() {
-    // Sorry, I know its ugly. But I cant get ([^\w\*\s*])|(^|\s)([a-z]|[0-9])
-    // to ignore Brazilian not so much special chars in names
-    function replace_some_special_chars(text) {
-      return text.replace(/([áàâãéèêíïóôõöú])/g, function(value){
-        if( ["á","à","â","ã"].indexOf(value) != -1 )
-          return "a";
-        else if( ["é","è","ê"].indexOf(value) != -1 )
-          return "e";
-        else if( ["í","ï"].indexOf(value) != -1 )
-          return "i";
-        else if ( ["ó","ô","õ","ö"].indexOf(value) != -1 )
-          return "o";
-        else if( ["ú"].indexOf(value) != -1 )
-          return "u";
-        else
-          return value;
-      });
-    }
+  // Sorry, I know its ugly. But I cant get ([^\w\*\s*])|(^|\s)([a-z]|[0-9])
+  // to ignore Brazilian not so much special chars in names
+  function replace_some_special_chars(text) {
+    return text.replace(/([áàâãéèêíïóôõöú])/g, function(value){
+      if( ["á","à","â","ã"].indexOf(value) != -1 )
+        return "a";
+      else if( ["é","è","ê"].indexOf(value) != -1 )
+        return "e";
+      else if( ["í","ï"].indexOf(value) != -1 )
+        return "i";
+      else if ( ["ó","ô","õ","ö"].indexOf(value) != -1 )
+        return "o";
+      else if( ["ú"].indexOf(value) != -1 )
+        return "u";
+      else
+        return value;
+    });
+  }
 
-    function is_invalid_formated(text) {
-      var full_validation = /([^\w\*\s*])|(^|\s)([a-z]|[0-9])/; // no special chars and do not initialize with no capital latter
-      var partial_validation = /[^\w\*\s*]/; // no special chars
-      text = replace_some_special_chars(text);
-      var slices = text.split(" ");
-      var invalid = false;
+  function is_invalid_formated(text) {
+    var full_validation = /([^\w\*\s*])|(^|\s)([a-z]|[0-9])/; // no special chars and do not initialize with no capital latter
+    var partial_validation = /[^\w\*\s*]/; // no special chars
+    text = replace_some_special_chars(text);
+    var slices = text.split(" ");
+    var invalid = false;
 
-      for(var i = 0; i < slices.length; i++) {
-        if( slices[i].length > 3 ) {
-          invalid = full_validation.test(slices[i]);
-        } else {
-          invalid = partial_validation.test(slices[i]);
-        }
-
-        if(invalid) break;
-      }
-
-      return invalid;
-    }
-
-    function show_full_name_error_message() {
-      var field = jQuery("#profile_data_name");
-
-      field.removeClass("validated").addClass("invalid");
-
-      if(!jQuery(".full_name_error")[0]) {
-        var message = jQuery("#full_name_error").val();
-        field.parent().append("<span class='full_name_error'>"+message+"</span>");
+    for(var i = 0; i < slices.length; i++) {
+      if( slices[i].length > 3 ) {
+        invalid = full_validation.test(slices[i]);
       } else {
-        jQuery(".full_name_error").show();
+        invalid = partial_validation.test(slices[i]);
       }
+
+      if(invalid) break;
     }
 
-    function hide_full_name_error_message() {
-      jQuery("#profile_data_name").removeClass("invalid").addClass("validated");
-      jQuery(".full_name_error").hide();
-    }
+    return invalid;
+  }
 
-    jQuery("#profile_data_name").blur(function(){
+  jQuery("#profile_data_name").blur(function(){
+    jQuery(this).attr("class", "");
+
+    if( this.value.length > 0 && is_invalid_formated(this.value) ) {
+      show_full_name_error_message();
+    } else {
+      hide_full_name_error_message();
+    }
+  });
+
+
+  // Generic
+  function show_plugin_error_message(field_id, hidden_message_id ) {
+    var field = jQuery("#"+field_id);
+
+    field.removeClass("validated").addClass("invalid");
+
+    if(!jQuery("." + hidden_message_id)[0]) {
+      var message = jQuery("#" + hidden_message_id).val();
+      field.parent().append("<div class='" + hidden_message_id + " errorExplanation'>"+message+"</span>");
+    } else {
+      jQuery("." + hidden_message_id).show();
+    }
+  }
+
+  function hide_plugin_error_message(field_id, hidden_message_id) {
+    jQuery("#" + field_id).removeClass("invalid").addClass("validated");
+    jQuery("." + hidden_message_id).hide();
+  }
+  function addBlurFields(field_id, hidden_message_id, validation_function) {
+    jQuery("#" + field_id).blur(function(){
       jQuery(this).attr("class", "");
 
-      if( this.value.length > 0 && is_invalid_formated(this.value) ) {
-        show_full_name_error_message();
+      if( this.value.length > 0 && validation_function(this.value) ) {
+        show_plugin_error_message(field_id, hidden_message_id);
       } else {
-        hide_full_name_error_message();
+        hide_plugin_error_message(field_id, hidden_message_id);
       }
     });
   }
+
+  function invalid_email_validation(value)
+  {
+    var correct_format_regex = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
+
+    return !correct_format_regex.test(value)
+  }
+
+  function invalid_site_validation(value)
+  {
+    var correct_format_regex = new RegExp(/^http[s]{0,1}:\/\/[\w*\.]*/);
+
+    return !correct_format_regex.test(value)
+  }
+
+  //End generic
+
 
   jQuery(document).ready(function(){
     var selectFieldChoices = new SelectFieldChoices();
@@ -246,6 +276,13 @@
 
     fix_phone_mask_format("#profile_data_cell_phone");
     fix_phone_mask_format("#profile_data_comercial_phone");
+    fix_phone_mask_format("#profile_data_contact_phone");
+
+    addBlurFields("profile_data_name", "full_name_error", is_invalid_formated)
+    addBlurFields("profile_data_email", "email_error", invalid_email_validation)
+    addBlurFields("user_secondary_email", "email_error", invalid_email_validation)
+    addBlurFields("profile_data_personal_website", "site_error", invalid_site_validation)
+    addBlurFields("profile_data_organization_website", "site_error", invalid_site_validation)
 
     window.setTimeout(function(){
       /*
@@ -253,7 +290,6 @@
       Then, to override an application.js validation, this code waits for 2 seconds.
       Or else, application.js validation override this validation
       */
-      set_full_name_validation();
     }, 2000);
   });
 })();
