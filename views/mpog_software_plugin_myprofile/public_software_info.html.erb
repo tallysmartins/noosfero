@@ -1,0 +1,258 @@
+<%= javascript_include_tag "mpog-validations" %>
+
+<h1><%= _('Creating new software') %></h1>
+
+<% if environment.enabled?('admin_must_approve_new_communities') %>
+  <div class='explanation'>
+    <%= _("Note that the creation of communities in this environment is restricted. Your request to create this new community will be sent to %{environment} administrators and will be approved or rejected according to their methods and criteria.") % { :environment => environment.name }%>
+  </div>
+<%end %>
+
+<% unless @errors.blank? %>
+<div class="errorExplanation" id="errorExplanation">
+  <h2> <%= _("Can`t create new software: #{@errors.length} errors") %> </h2>
+  <ul>
+  <% @errors.each do |error| %>
+    <li> <%= error %> </li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div>
+  <%= labelled_form_for :community, :html => { :multipart => true } do |f| %>
+
+    <%= required_fields_message %>
+
+    <%= required f.text_field(:name) %>
+
+    <%= fields_for @software_info do |swf| %>
+      <div class="formfield type-text">
+        <%= swf.label("acronym" ,_("Acronym"), :class=>"formlabel") %>
+        <%= swf.text_field(:acronym) %>
+      </div>
+
+      <div class="formfieldline">
+        <%= swf.label _("Adherent to e-PING ?") %>
+
+        <%= swf.label "e_ping_true", "Yes" %>
+        <%= swf.radio_button(:e_ping,true)%>
+        <%= swf.label "e_ping_false", "No"%>
+        <%= swf.radio_button(:e_ping,false)%>
+      </div>
+
+      <div class="formfieldline">
+        <%= swf.label _("Adherent to e-MAG ?") %>
+
+        <%= swf.label "e_mag_true", "Yes"%>
+        <%= swf.radio_button(:e_mag,true)%>
+        <%= swf.label "e_mag_false", "No"%>
+        <%= swf.radio_button(:e_mag,false)%>
+      </div>
+
+      <div class="formfieldline">
+        <%= swf.label _("Adherent to ICP-Brasil ?") %>
+
+        <%= swf.label "icp_brasil_true", "Yes"%>
+        <%= swf.radio_button(:icp_brasil,true)%>
+        <%= swf.label "icp_brasil_false", "No"%>
+        <%= swf.radio_button(:icp_brasil,false)%>
+      </div>
+
+      <div class="formfieldline">
+        <%= swf.label _("Adherent to e-ARQ ?") %>
+
+        <%= swf.label "e_arq_true", "Yes"%>
+        <%= swf.radio_button(:e_arq,true)%>
+        <%= swf.label "e_arq_false", "No"%>
+        <%= swf.radio_button(:e_arq,false)%>
+      </div>
+
+      <div class="formfieldline">
+        <%= swf.label _("Internacionalizable ?") %>
+
+        <%= swf.label "intern_true", "Yes" %>
+        <%= swf.radio_button(:intern,true)%>
+        <%= swf.label "intern_false", "No"%>
+        <%= swf.radio_button(:intern,false)%>
+      <div class="formfieldline">
+        <%= swf.label "operating_platform", _("Operating Platform: ") %> <br />
+        <%= swf.text_area(:operating_platform, :class=>"expand-field") %>
+      </div>
+
+      <div class="formfieldline">
+        <%= swf.label "objectives", _("Objectives: ")%><br />
+        <%= required swf.text_area(:objectives, :class=>"expand-field") %>
+      </div>
+
+      <div class="formfieldline">
+        <%= swf.label "features", _("Features: ")%><br />
+        <%= required swf.text_area(:features, :class=>"expand-field") %>
+      </div>
+
+      <div class="formfieldline formfield type-text">
+        <%= swf.label "demonstration_url", _("Demonstration URL: ") %>
+        <%= swf.text_field(:demonstration_url) %>
+      </div>
+    <% end %>
+
+   <div class="formfieldline">
+      <%= content_tag('label', _('Fill in the search field to add offerers for this Software'), :id => "text-input-search-offerers") %>
+      <%= token_input_field_tag(:q, 'search-offerers', {:action => 'search_offerers'}, { :focus => true, :hint_text => _('Type in a search term for a person to be added as
+offerers'), :pre_populate => @tokenized_children}) %>
+    </div>
+
+  <div id='libraries_fields'>
+    <h4> <%= _("Libraries") %> </h4>
+    <%= render :partial => 'library_fields', :locals => { :f => f, :object_name => 'community', :profile => @community, :libraries => @list_libraries } %>
+  </div>
+  <br />
+
+  <div id='operating_system_fields'>
+    <h4> <%= _("Operating Systems") %> </h4>
+    <% if @list_operating_systems.blank? %>
+      <%= OperatingSystemHelper.operating_system_as_tables(nil, false).call %>
+    <% end %>
+    <%= render :partial => 'operating_system_fields', :locals => { :f => f, :object_name => 'community', :profile => @community, :operating_systems_fields => @list_operating_systems} %>
+  </div>
+  <br />
+
+  <%=  fields_for @license_info do |lcv| %>
+    <div class="formfieldline">
+      <h4> <%= lcv.label _("License Version: ") %> </h4>
+        <%= lcv.select(:version, LicenseInfo.all.map {|l| [l.version, l.version]}, {:selected=>1}, :onchange => "get_license_link('license_info_version')") %>
+
+      <h4> <%= _("License link") %> </h4>
+      <% LicenseHelper.getListLicenses.each do | license |  %>
+        <input type="hidden" id = "version_<%=license.id %>" value = "<%=license.link%>">
+      <% end %>
+      <a id = "version_link" href="<%= LicenseInfo.first.link %>" target="_BLANK"> <%=LicenseInfo.first.link %> </a>
+
+    </div>
+  <% end %>
+
+  <br />
+  <div id='programming_languages_fields'>
+    <h4> <%= _("Programming languages") %> </h4>
+    <% if @list_languages.blank? %>
+      <%= SoftwareLanguageHelper.language_as_tables(nil, false).call %>
+    <% end %>
+
+    <%= render :partial => 'language_fields', :locals => { :f => f, :object_name => 'community', :profile => @community, :languages => @list_languages } %>
+  </div>
+
+  <br />
+  <div id='database_fields'>
+    <h4> <%= _("Databases") %> </h4>
+    <% if @list_databases.blank? %>
+      <%= DatabaseHelper.database_as_tables(nil, true).call %>
+    <% end %>
+
+    <%= render :partial => 'database_fields', :locals => { :f => f, :object_name => 'community', :profile => @community, :database => @list_databases } %>
+  </div>
+
+  <%= fields_for @software_categories do |cv| %>
+  <div id="software_categories_fields">
+    <h4> <%= _("Software Categories:") %> </h4>
+
+    <%= cv.check_box :administration %>
+    <%= cv.label :administration, _("Administration") %><br />
+
+    <%= cv.check_box :agriculture %>
+    <%= cv.label :agriculture, _("Agriculture") %><br />
+
+    <%= cv.check_box :business_and_services %>
+    <%= cv.label :business_and_services, _("Business_and Services") %><br />
+
+    <%= cv.check_box :communication %>
+    <%= cv.label :communication, _("Communication") %><br />
+
+    <%= cv.check_box :culture %>
+    <%= cv.label :culture, _("Culture") %><br />
+
+    <%= cv.check_box :national_defense %>
+    <%= cv.label :national_defense, _("National Defense") %><br />
+
+    <%= cv.check_box :economy_and_finances %>
+    <%= cv.label :economy_and_finances, _("Economy and Finances") %><br />
+
+    <%= cv.check_box :education %>
+    <%= cv.label :education, _("Education") %><br />
+
+    <%= cv.check_box :energy %>
+    <%= cv.label :energy, _("Energy") %><br />
+
+    <%= cv.check_box :sports %>
+    <%= cv.label :sports, _("Sports") %><br />
+
+    <%= cv.check_box :habitation %>
+    <%= cv.label :habitation, _("Habitation") %><br />
+
+    <%= cv.check_box :industry %>
+    <%= cv.label :industry, _("Industry") %><br />
+
+    <%= cv.check_box :environment %>
+    <%= cv.label :environment, _("Environment") %><br />
+
+    <%= cv.check_box :research_and_development %>
+    <%= cv.label :research_and_development, _("Research and Development") %><br />
+
+    <%= cv.check_box :social_security %>
+    <%= cv.label :social_security, _("Social Security") %><br />
+
+    <%= cv.check_box :social_protection %>
+    <%= cv.label :social_protection, _("Social Protection") %><br />
+
+    <%= cv.check_box :sanitation %>
+    <%= cv.label :sanitation, _("Sanitation") %><br />
+
+    <%= cv.check_box :health %>
+    <%= cv.label :health, _("Health") %><br />
+
+    <%= cv.check_box :security_public_order %>
+    <%= cv.label :security_public_order, _("Security and Public Order") %><br />
+
+    <%= cv.check_box :work %>
+    <%= cv.label :work, _("Work") %><br />
+
+    <%= cv.check_box :transportation %>
+    <%= cv.label :transportation, _("Transportation") %><br />
+
+    <%= cv.check_box :urbanism %>
+    <%= cv.label :urbanism, _("Urbanism") %><br />
+  </div>
+  <% end %>
+  <%= render :partial => 'shared/organization_custom_fields', :locals => { :f => f, :object_name => 'community', :profile => @community } %>
+
+    <%= f.fields_for :image_builder, @community.image do |i| %>
+      <%= file_field_or_thumbnail(_('Image:'), @community.image, i) %>
+    <% end %>
+
+    <div style='margin-bottom: 1em; margin-top: 1em;'>
+      <%= _('New members must be approved:')%>
+    </div>
+    <div style='margin-bottom: 0.5em' id='community-join-before'>
+      <%= radio_button 'community', 'closed', 'true', :style => 'float: left' %>
+      <div style='margin-left: 30px'>
+        <%= _('<strong>Before</strong> joining this group (a moderator has to accept the member in pending request before member can access the intranet and/or the website).') %>
+      </div>
+    </div>
+    <div id='community-join-after'>
+      <%= radio_button 'community', 'closed', 'false', :style => 'float: left' %>
+      <div style='margin-left: 30px'>
+        <%= _('<strong>After</strong> joining this group (a moderator can always desactivate access for users later).') %>
+      </div>
+    </div>
+
+    <%= template_options(:communities, 'community')%>
+
+    <%= hidden_field_tag('back_to', @back_to) %>
+
+    <% button_bar do %>
+      <%= submit_button(:save, _('Create')) %>
+      <%= button(:cancel, _('Cancel'), @back_to ) %>
+    <% end %>
+
+  <% end %>
+
+</div>
