@@ -51,15 +51,15 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
    valid_community = request.post? && @community.valid?
    valid_software_info = request.post? && @software_info.valid?
-   #valid_license = (request.post? && @license_info.valid?)
+   valid_license = (request.post? && @license_info.valid?)
    #valid_libraries = @list_libraries.empty? || LibraryHelper.valid_list_libraries?(@list_libraries)
    #valid_database = DatabaseHelper.valid_list_database?(@list_databases)
    #valid_language = SoftwareLanguageHelper.valid_list_language?(@list_languages)
    #valid_operating_system = OperatingSystemHelper.valid_list_operating_system?(@list_operating_systems)
    #valid_software_categories = request.post? && @software_categories.valid?
 
-   if valid_software_info && valid_community 
-     @community = Community.create_after_moderation(user, {:environment => environment}.merge(params[:community]), @software_info )
+   if valid_software_info && valid_license && valid_community
+     @community = Community.create_after_moderation(user, {:environment => environment}.merge(params[:community]), @software_info, @license_info )
     redirect_to :controller => 'memberships', :action => 'index'
 
      unless params[:q].nil?

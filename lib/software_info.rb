@@ -2,18 +2,18 @@ class SoftwareInfo < ActiveRecord::Base
  # attr_accessible :e_mag, :icp_brasil, :intern, :e_ping, :e_arq, :operating_platform, :demonstration_url, :acronym, :objectives, :features, :license_infos_id, :community_id, :finality
  attr_accessible :finality
 
- #has_many :libraries, :dependent => :destroy
- #has_many :software_databases
- #has_many :database_descriptions, :through => :software_databases
- #has_many :software_languages
- #has_many :operating_systems 
- #has_many :programming_languages, :through => :software_languages
- #has_many :operating_system_names, :through => :operating_systems
+ has_many :libraries, :dependent => :destroy
+ has_many :software_databases
+ has_many :database_descriptions, :through => :software_databases
+ has_many :software_languages
+ has_many :operating_systems
+ has_many :programming_languages, :through => :software_languages
+ has_many :operating_system_names, :through => :operating_systems
 
  belongs_to :community
- #belongs_to :license_info
+ belongs_to :license_info
 
-  #has_one :software_categories
+ has_one :software_categories
 
   #validates :features, :objectives,
   # :presence=>true,
