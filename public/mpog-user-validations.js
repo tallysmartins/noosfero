@@ -176,7 +176,7 @@
     var invalid = false;
 
     for(var i = 0; i < slices.length; i++) {
-      if( slices[i].length > 3 ) {
+      if( slices[i].length > 3 || text.length <= 3 ) {
         invalid = full_validation.test(slices[i]);
       } else {
         invalid = partial_validation.test(slices[i]);
@@ -187,17 +187,6 @@
 
     return invalid;
   }
-
-  jQuery("#profile_data_name").blur(function(){
-    jQuery(this).attr("class", "");
-
-    if( this.value.length > 0 && is_invalid_formated(this.value) ) {
-      show_full_name_error_message();
-    } else {
-      hide_full_name_error_message();
-    }
-  });
-
 
   // Generic
   function show_plugin_error_message(field_id, hidden_message_id ) {
@@ -229,18 +218,16 @@
     });
   }
 
-  function invalid_email_validation(value)
-  {
+  function invalid_email_validation(value) {
     var correct_format_regex = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
 
-    return !correct_format_regex.test(value)
+    return !correct_format_regex.test(value);
   }
 
-  function invalid_site_validation(value)
-  {
-    var correct_format_regex = new RegExp(/^http[s]{0,1}:\/\/[\w*\.]*/);
+  function invalid_site_validation(value) {
+    var correct_format_regex = new RegExp(/(^|)(http[s]{0,1})\:\/\/(\w+[.])\w+/g);
 
-    return !correct_format_regex.test(value)
+    return !correct_format_regex.test(value);
   }
 
   //End generic
@@ -278,18 +265,10 @@
     fix_phone_mask_format("#profile_data_comercial_phone");
     fix_phone_mask_format("#profile_data_contact_phone");
 
-    addBlurFields("profile_data_name", "full_name_error", is_invalid_formated)
-    addBlurFields("profile_data_email", "email_error", invalid_email_validation)
-    addBlurFields("user_secondary_email", "email_error", invalid_email_validation)
-    addBlurFields("profile_data_personal_website", "site_error", invalid_site_validation)
-    addBlurFields("profile_data_organization_website", "site_error", invalid_site_validation)
-
-    window.setTimeout(function(){
-      /*
-      Noosfero application.js is one of the last loaded javascript files.
-      Then, to override an application.js validation, this code waits for 2 seconds.
-      Or else, application.js validation override this validation
-      */
-    }, 2000);
+    addBlurFields("profile_data_name", "full_name_error", is_invalid_formated);
+    addBlurFields("profile_data_email", "email_error", invalid_email_validation);
+    addBlurFields("user_secondary_email", "email_error", invalid_email_validation);
+    addBlurFields("profile_data_personal_website", "site_error", invalid_site_validation);
+    addBlurFields("profile_data_organization_website", "site_error", invalid_site_validation);
   });
 })();
