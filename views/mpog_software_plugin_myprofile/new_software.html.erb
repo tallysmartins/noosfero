@@ -1,4 +1,5 @@
 <%= javascript_include_tag "mpog-validations" %>
+<%= stylesheet_link_tag('plugins/mpog_software/mpog-software') %>
 
 <h1><%= _('Creating new software') %></h1>
 
@@ -24,7 +25,12 @@
 
     <%= required_fields_message %>
 
-    <%= required f.text_field(:name) %>
+    <%= label("name", _('Name'), {:class => 'formlabel'}) %>
+
+    <div id='software-name-field' class='formfield'>
+      <span id='software-hostname'><%= environment.default_hostname %>/</span>
+      <%= required text_field(:community, :name) %>
+    </div>
 
     <%= fields_for @software_info do |swf| %>
       <div class="formfield type-text">
