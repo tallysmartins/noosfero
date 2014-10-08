@@ -33,6 +33,19 @@
       </div>
     <% end %>
 
+  <%=  fields_for @license_info do |lcv| %>
+    <div class="formfieldline">
+      <h4> <%= lcv.label _("License Version: ") %> </h4>
+        <%= lcv.select(:version, LicenseInfo.all.map {|l| [l.version, l.version]}, {:selected=>1}, :onchange => "get_license_link('license_info_version')") %>
+
+      <h4> <%= _("License link") %> </h4>
+      <% LicenseHelper.getListLicenses.each do | license |  %>
+        <input type="hidden" id = "version_<%=license.id %>" value = "<%=license.link%>">
+      <% end %>
+      <a id = "version_link" href="<%= LicenseInfo.first.link %>" target="_BLANK"> <%=LicenseInfo.first.link %> </a>
+
+    </div>
+  <% end %>
     <%= template_options(:communities, 'community')%>
 
     <%= hidden_field_tag('back_to', @back_to) %>

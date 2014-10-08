@@ -19,11 +19,11 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
    #@list_databases = DatabaseHelper.list_database(params[:database])
    #@software_categories = SoftwareCategories::new params[:software_categories]
    #@list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
-   #@license_info = if params[:license_info].nil?
-   #  LicenseInfo::new
-   #else
-   #  LicenseInfo.find(:first, :conditions =>["version = ?","#{params[:license_info][:version]}"])
-   #end
+   @license_info = if params[:license_info].nil?
+     LicenseInfo::new
+   else
+     LicenseInfo.find(:first, :conditions =>["version = ?","#{params[:license_info][:version]}"])
+   end
 
    #if not @list_libraries.nil?
    #  @list_libraries.each do |library|
@@ -90,7 +90,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
      @errors |= @community.errors.full_messages
      @errors |= @software_info.errors.full_messages
-   #  @errors |= @license_info.errors.full_messages
+     @errors |= @license_info.errors.full_messages
    #  @errors |= @software_categories.errors.full_messages
    #end
   end
