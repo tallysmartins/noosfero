@@ -65,42 +65,30 @@
 
 <div id='libraries_fields'>
   <h4> <%= _("Libraries") %> </h4>
-  <% if @list_libraries.blank? %>
-    <%= LibraryHelper.library_as_tables(nil).call %>
-  <% else %>
-  <%= render :partial => 'library_fields', :locals => { :f => f, :object_name => 'community', :profile => @community, :libraries => @list_libraries } %>
-  <% end %>
+
+  <%= render :partial => 'library_fields', :locals => {:object_name => 'community', :profile => @community, :libraries => @list_libraries } %>
 </div>
 <br />
 
 <div id='operating_system_fields'>
   <h4> <%= _("Operating Systems") %> </h4>
-  <% if @list_operating_systems.blank? %>
-    <%= OperatingSystemHelper.operating_system_as_tables(nil, false).call %>
-  <% else %>
+
   <%= render :partial => 'operating_system_fields', :locals => {:object_name => 'community', :profile => @community, :operating_systems_fields => @list_operating_systems} %>
-  <% end %>
 </div>
 <br />
 
 <br />
 <div id='programming_languages_fields'>
   <h4> <%= _("Programming languages") %> </h4>
-  <% if @list_languages.blank? %>
-    <%= SoftwareLanguageHelper.language_as_tables(nil, false).call %>
-  <% else %>
+
   <%= render :partial => 'language_fields', :locals => { :object_name => 'community', :profile => @community, :languages => @list_languages } %>
-  <% end %>
 </div>
 
 <br />
 <div id='database_fields'>
   <h4> <%= _("Databases") %> </h4>
-  <% if @list_databases.blank? %>
-    <%= DatabaseHelper.database_as_tables(nil, true).call %>
-  <% else %>
+
   <%= render :partial => 'database_fields', :locals => {:object_name => 'community', :profile => @community, :database => @list_databases } %>
-  <% end %>
 </div>
 
 <div id="software_categories_fields">

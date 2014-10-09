@@ -1,6 +1,7 @@
 <%= fields_for :software_language, @software_language do |lng| %>
 
 <div id='languages'>
+  <% languages = [] if languages.nil? %>
 	<% SoftwareLanguageHelper.language_as_tables(languages).each do |tab| %>
 	  <%= tab.call %>
 	<%end%>

@@ -1,6 +1,7 @@
 <%= fields_for :operating_systems ,@operating_systems do |lib| %>
 
 <div id='operating_systems'>
+  <% operating_systems_fields = [] if operating_systems_fields.nil? %>
 	<% OperatingSystemHelper.operating_system_as_tables(operating_systems_fields).each do |tab| %>
 	  <%= tab.call %>
 	<% end %>

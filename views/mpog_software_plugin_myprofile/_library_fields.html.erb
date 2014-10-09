@@ -1,6 +1,7 @@
 <%= fields_for :library ,@library do |lib| %>
 
 <div id='libraries'>
+  <% libraries = [] if libraries.nil? %>
 	<% LibraryHelper.library_as_tables(libraries).each do |tab| %>
 	  <%= tab.call %>
 	<% end %>
