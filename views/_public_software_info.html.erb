@@ -1,16 +1,10 @@
 <%= javascript_include_tag "mpog-validations" %>
 
-<h1><%= _('Creating new software') %></h1>
-
-<% if environment.enabled?('admin_must_approve_new_communities') %>
-  <div class='explanation'>
-    <%= _("Note that the creation of communities in this environment is restricted. Your request to create this new community will be sent to %{environment} administrators and will be approved or rejected according to their methods and criteria.") % { :environment => environment.name }%>
-  </div>
-<%end %>
+<h1><%= _('Edit  software') %></h1>
 
 <% unless @errors.blank? %>
 <div class="errorExplanation" id="errorExplanation">
-  <h2> <%= _("Can`t create new software: #{@errors.length} errors") %> </h2>
+  <h2> <%= _("Can`t edit software: #{@errors.length} errors") %> </h2>
   <ul>
   <% @errors.each do |error| %>
     <li> <%= error %> </li>

@@ -127,3 +127,26 @@
   box-shadow: 0px 0px 7px green;
   border-color: rgb(0, 80, 0)
 }
+
+#software-name-field
+{
+  padding-bottom: 10px;
+}
+
+#software-hostname
+{
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+
+  background: #EEE;
+  border: 1px solid #CFCFCF;
+
+  line-height: 22px;
+  padding: 0px 7px;
+  color: #4A4A4A;
+  font-size: 20px;
+  text-transform: lowercase;
+  min-width: 190px;
+  border-spacing: 20px;
+}

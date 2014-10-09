@@ -1,0 +1,28 @@
+<h2><%= _('Software Information') %></h2>
+
+<%= label_tag("name", _('Name'), {:class => 'formlabel'}) %>
+
+<div id='software-name-field' class='formfield'>
+  <span id='software-hostname'><%= context.profile.environment.default_hostname %>/</span>
+  <%= text_field_tag(:name, context.profile.software_info.community.name) %>
+</div>
+    
+<h3> <%= _("Finality") %> </h3>
+<div id="finality"> 
+  <%= text_field_tag(:finality, context.profile.software_info.finality) %>
+</div>
+
+<h3> <%= _("Licenses") %> </h3>
+<div id='licenses'>
+  <%= select_tag(:version, options_for_select(LicenseHelper.getListLicenses.collect{|l| [l.version, l.id]}, :selected => context.profile.software_info.license_info.id), :onchange => "get_license_link('version')") %>
+  <br />
+
+  <h4> <%= _("License link") %> </h4>
+  <% LicenseHelper.getListLicenses.each do | license |  %>
+    <input type="hidden" id = "version_<%=license.id %>" value = "<%=license.link%>">
+  <% end %>
+
+  <a id = "version_link" href="<%= context.profile.software_info.license_info.link %>" target="BLANK"> <%= context.profile.software_info.license_info.link %> </a>
+</div>
+
+
