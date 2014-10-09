@@ -197,12 +197,16 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
+  def control_panel_buttons
+    return { :title => _("Software Info"), :icon => "edit-profile-group", :url => {:controller => "mpog_software_plugin_myprofile", :action => "edit_software"} }
+  end
+
   def stylesheet?
     true
   end
 
   def js_files
-    ["mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js", "mpog-incomplete-registration.js", "mpog-search.js", "jquery.maskedinput.min.js"]
+    ["mpog-software.js", "mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js", "mpog-incomplete-registration.js", "mpog-search.js", "jquery.maskedinput.min.js"]
   end
 
   def add_new_organization_buttons

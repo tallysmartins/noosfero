@@ -100,5 +100,10 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     result = environment.people.find(:all, :conditions => ['LOWER(name) LIKE ?', "%#{arg}%"])
     render :text => prepare_to_token_input(result).to_json
   end
+
+  def edit_software
+
+  end
+
 end
 end
