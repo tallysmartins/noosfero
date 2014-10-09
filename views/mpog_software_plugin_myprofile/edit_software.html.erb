@@ -1,7 +1,9 @@
-<%= _("Basic") %>
+<% tabs = [] %>
 
-<%= render :partial => 'main_software_editor_extras' %>
+<% tabs << {:title => _("Basic"), :id => 'basic-info',
+  :content => (render :partial => 'main_software_editor_extras')} %>
 
-<%= _("Especific") %>
+<% tabs << {:title => _("Especific"), :id => 'especific-info',
+  :content => (render :partial => 'public_software_info')} %>
 
-<%= render :partial => 'public_software_info' %>
+<%= render_tabs(tabs) %>

@@ -1,178 +1,174 @@
-<h1 class="database-button-show"><a href="#" class="button with-text icon-add"><%= _('Show edit  software') %></a></h1>
-<h1 class="database-button-hide"><%= _('Edit  software') %></h1>
-<div class = "database-info ">
-  <div>
-    <div class="formfield type-text">
-          <%= label_tag("acronym" ,_("Acronym"), :class=>"formlabel") %>
-          <%= text_field_tag(:acronym) %>
-        </div>
+<h1><%= _('Edit  software') %></h1>
 
-        <div class="formfieldline">
-          <%= label_tag _("Adherent to e-PING ?") %>
+<div class="formfield type-text">
+  <%= label_tag("acronym" ,_("Acronym"), :class=>"formlabel") %>
+  <%= text_field_tag(:acronym) %>
+</div>
 
-          <%= label_tag "e_ping_true", "Yes" %>
-          <%= radio_button_tag(:e_ping,true)%>
-          <%= label_tag "e_ping_false", "No"%>
-          <%= radio_button_tag(:e_ping,false)%>
-        </div>
+<div class="formfieldline">
+  <%= label_tag _("Adherent to e-PING ?") %>
 
-        <div class="formfieldline">
-          <%= label_tag _("Adherent to e-MAG ?") %>
+  <%= label_tag "e_ping_true", "Yes" %>
+  <%= radio_button_tag(:e_ping,true)%>
+  <%= label_tag "e_ping_false", "No"%>
+  <%= radio_button_tag(:e_ping,false)%>
+</div>
 
-          <%= label_tag "e_mag_true", "Yes"%>
-          <%= radio_button_tag(:e_mag,true)%>
-          <%= label_tag "e_mag_false", "No"%>
-          <%= radio_button_tag(:e_mag,false)%>
-        </div>
+<div class="formfieldline">
+  <%= label_tag _("Adherent to e-MAG ?") %>
 
-        <div class="formfieldline">
-          <%= label_tag _("Adherent to ICP-Brasil ?") %>
+  <%= label_tag "e_mag_true", "Yes"%>
+  <%= radio_button_tag(:e_mag,true)%>
+  <%= label_tag "e_mag_false", "No"%>
+  <%= radio_button_tag(:e_mag,false)%>
+</div>
 
-          <%= label_tag "icp_brasil_true", "Yes"%>
-          <%= radio_button_tag(:icp_brasil,true)%>
-          <%= label_tag "icp_brasil_false", "No"%>
-          <%= radio_button_tag(:icp_brasil,false)%>
-        </div>
+<div class="formfieldline">
+  <%= label_tag _("Adherent to ICP-Brasil ?") %>
 
-        <div class="formfieldline">
-          <%= label_tag _("Adherent to e-ARQ ?") %>
+  <%= label_tag "icp_brasil_true", "Yes"%>
+  <%= radio_button_tag(:icp_brasil,true)%>
+  <%= label_tag "icp_brasil_false", "No"%>
+  <%= radio_button_tag(:icp_brasil,false)%>
+</div>
 
-          <%= label_tag "e_arq_true", "Yes"%>
-          <%= radio_button_tag(:e_arq,true)%>
-          <%= label_tag "e_arq_false", "No"%>
-          <%= radio_button_tag(:e_arq,false)%>
-        </div>
+<div class="formfieldline">
+  <%= label_tag _("Adherent to e-ARQ ?") %>
 
-        <div class="formfieldline">
-          <%= label_tag _("Internacionalizable ?") %>
+  <%= label_tag "e_arq_true", "Yes"%>
+  <%= radio_button_tag(:e_arq,true)%>
+  <%= label_tag "e_arq_false", "No"%>
+  <%= radio_button_tag(:e_arq,false)%>
+</div>
 
-          <%= label_tag "intern_true", "Yes" %>
-          <%= radio_button_tag(:intern,true)%>
-          <%= label_tag "intern_false", "No"%>
-          <%= radio_button_tag(:intern,false)%>
-        <div class="formfieldline">
-          <%= label_tag "operating_platform", _("Operating Platform: ") %> <br />
-          <%= text_area_tag :operating_platform %>
-        </div>
+<div class="formfieldline">
+  <%= label_tag _("Internacionalizable ?") %>
 
-        <div class="formfieldline">
-          <%= label_tag "objectives", _("Objectives: ")%><br />
-          <%= text_area_tag :objectives %>
-        </div>
+  <%= label_tag "intern_true", "Yes" %>
+  <%= radio_button_tag(:intern,true)%>
+  <%= label_tag "intern_false", "No"%>
+  <%= radio_button_tag(:intern,false)%>
+<div class="formfieldline">
+  <%= label_tag "operating_platform", _("Operating Platform: ") %> <br />
+  <%= text_area_tag :operating_platform %>
+</div>
 
-        <div class="formfieldline">
-          <%= label_tag "features", _("Features: ")%><br />
-          <%= text_area_tag :features %>
-        </div>
+<div class="formfieldline">
+  <%= label_tag "objectives", _("Objectives: ")%><br />
+  <%= text_area_tag :objectives %>
+</div>
 
-    <div id='libraries_fields'>
-      <h4> <%= _("Libraries") %> </h4>
-      <% if @list_libraries.blank? %>
-        <%= LibraryHelper.library_as_tables(nil).call %>
-      <% else %>
-      <%= render :partial => 'library_fields', :locals => { :f => f, :object_name => 'community', :profile => @community, :libraries => @list_libraries } %>
-      <% end %>
-    </div>
-    <br />
+<div class="formfieldline">
+  <%= label_tag "features", _("Features: ")%><br />
+  <%= text_area_tag :features %>
+</div>
 
-    <div id='operating_system_fields'>
-      <h4> <%= _("Operating Systems") %> </h4>
-      <% if @list_operating_systems.blank? %>
-        <%= OperatingSystemHelper.operating_system_as_tables(nil, false).call %>
-      <% else %>
-      <%= render :partial => 'operating_system_fields', :locals => {:object_name => 'community', :profile => @community, :operating_systems_fields => @list_operating_systems} %>
-      <% end %>
-    </div>
-    <br />
+<div id='libraries_fields'>
+  <h4> <%= _("Libraries") %> </h4>
+  <% if @list_libraries.blank? %>
+    <%= LibraryHelper.library_as_tables(nil).call %>
+  <% else %>
+  <%= render :partial => 'library_fields', :locals => { :f => f, :object_name => 'community', :profile => @community, :libraries => @list_libraries } %>
+  <% end %>
+</div>
+<br />
 
-    <br />
-    <div id='programming_languages_fields'>
-      <h4> <%= _("Programming languages") %> </h4>
-      <% if @list_languages.blank? %>
-        <%= SoftwareLanguageHelper.language_as_tables(nil, false).call %>
-      <% else %>
-      <%= render :partial => 'language_fields', :locals => { :object_name => 'community', :profile => @community, :languages => @list_languages } %>
-      <% end %>
-    </div>
+<div id='operating_system_fields'>
+  <h4> <%= _("Operating Systems") %> </h4>
+  <% if @list_operating_systems.blank? %>
+    <%= OperatingSystemHelper.operating_system_as_tables(nil, false).call %>
+  <% else %>
+  <%= render :partial => 'operating_system_fields', :locals => {:object_name => 'community', :profile => @community, :operating_systems_fields => @list_operating_systems} %>
+  <% end %>
+</div>
+<br />
 
-    <br />
-    <div id='database_fields'>
-      <h4> <%= _("Databases") %> </h4>
-      <% if @list_databases.blank? %>
-        <%= DatabaseHelper.database_as_tables(nil, true).call %>
-      <% else %>
-      <%= render :partial => 'database_fields', :locals => {:object_name => 'community', :profile => @community, :database => @list_databases } %>
-      <% end %>
-    </div>
+<br />
+<div id='programming_languages_fields'>
+  <h4> <%= _("Programming languages") %> </h4>
+  <% if @list_languages.blank? %>
+    <%= SoftwareLanguageHelper.language_as_tables(nil, false).call %>
+  <% else %>
+  <%= render :partial => 'language_fields', :locals => { :object_name => 'community', :profile => @community, :languages => @list_languages } %>
+  <% end %>
+</div>
 
-    <div id="software_categories_fields">
-      <h4> <%= _("Software Categories:") %> </h4>
+<br />
+<div id='database_fields'>
+  <h4> <%= _("Databases") %> </h4>
+  <% if @list_databases.blank? %>
+    <%= DatabaseHelper.database_as_tables(nil, true).call %>
+  <% else %>
+  <%= render :partial => 'database_fields', :locals => {:object_name => 'community', :profile => @community, :database => @list_databases } %>
+  <% end %>
+</div>
 
-      <%= check_box_tag :administration %>
-      <%= label_tag :administration, _("Administration") %><br />
+<div id="software_categories_fields">
+  <h4> <%= _("Software Categories:") %> </h4>
 
-      <%= check_box_tag :agriculture %>
-      <%= label_tag :agriculture, _("Agriculture") %><br />
+  <%= check_box_tag :administration %>
+  <%= label_tag :administration, _("Administration") %><br />
 
-      <%= check_box_tag :business_and_services %>
-      <%= label_tag :business_and_services, _("Business_and Services") %><br />
+  <%= check_box_tag :agriculture %>
+  <%= label_tag :agriculture, _("Agriculture") %><br />
 
-      <%= check_box_tag :communication %>
-      <%= label_tag :communication, _("Communication") %><br />
+  <%= check_box_tag :business_and_services %>
+  <%= label_tag :business_and_services, _("Business_and Services") %><br />
 
-      <%= check_box_tag :culture %>
-      <%= label_tag :culture, _("Culture") %><br />
+  <%= check_box_tag :communication %>
+  <%= label_tag :communication, _("Communication") %><br />
 
-      <%= check_box_tag :national_defense %>
-      <%= label_tag :national_defense, _("National Defense") %><br />
+  <%= check_box_tag :culture %>
+  <%= label_tag :culture, _("Culture") %><br />
 
-      <%= check_box_tag :economy_and_finances %>
-      <%= label_tag :economy_and_finances, _("Economy and Finances") %><br />
+  <%= check_box_tag :national_defense %>
+  <%= label_tag :national_defense, _("National Defense") %><br />
 
-      <%= check_box_tag :education %>
-      <%= label_tag :education, _("Education") %><br />
+  <%= check_box_tag :economy_and_finances %>
+  <%= label_tag :economy_and_finances, _("Economy and Finances") %><br />
 
-      <%= check_box_tag :energy %>
-      <%= label_tag :energy, _("Energy") %><br />
+  <%= check_box_tag :education %>
+  <%= label_tag :education, _("Education") %><br />
 
-      <%= check_box_tag :sports %>
-      <%= label_tag :sports, _("Sports") %><br />
+  <%= check_box_tag :energy %>
+  <%= label_tag :energy, _("Energy") %><br />
 
-      <%= check_box_tag :habitation %>
-      <%= label_tag :habitation, _("Habitation") %><br />
+  <%= check_box_tag :sports %>
+  <%= label_tag :sports, _("Sports") %><br />
 
-      <%= check_box_tag :industry %>
-      <%= label_tag :industry, _("Industry") %><br />
+  <%= check_box_tag :habitation %>
+  <%= label_tag :habitation, _("Habitation") %><br />
 
-      <%= check_box_tag :environment %>
-      <%= label_tag :environment, _("Environment") %><br />
+  <%= check_box_tag :industry %>
+  <%= label_tag :industry, _("Industry") %><br />
 
-      <%= check_box_tag :research_and_development %>
-      <%= label_tag :research_and_development, _("Research and Development") %><br />
+  <%= check_box_tag :environment %>
+  <%= label_tag :environment, _("Environment") %><br />
 
-      <%= check_box_tag :social_security %>
-      <%= label_tag :social_security, _("Social Security") %><br />
+  <%= check_box_tag :research_and_development %>
+  <%= label_tag :research_and_development, _("Research and Development") %><br />
 
-      <%= check_box_tag :social_protection %>
-      <%= label_tag :social_protection, _("Social Protection") %><br />
+  <%= check_box_tag :social_security %>
+  <%= label_tag :social_security, _("Social Security") %><br />
 
-      <%= check_box_tag :sanitation %>
-      <%= label_tag :sanitation, _("Sanitation") %><br />
+  <%= check_box_tag :social_protection %>
+  <%= label_tag :social_protection, _("Social Protection") %><br />
 
-      <%= check_box_tag :health %>
-      <%= label_tag :health, _("Health") %><br />
+  <%= check_box_tag :sanitation %>
+  <%= label_tag :sanitation, _("Sanitation") %><br />
 
-      <%= check_box_tag :security_public_order %>
-      <%= label_tag :security_public_order, _("Security and Public Order") %><br />
+  <%= check_box_tag :health %>
+  <%= label_tag :health, _("Health") %><br />
 
-      <%= check_box_tag :work %>
-      <%= label_tag :work, _("Work") %><br />
+  <%= check_box_tag :security_public_order %>
+  <%= label_tag :security_public_order, _("Security and Public Order") %><br />
 
-      <%= check_box_tag :transportation %>
-      <%= label_tag :transportation, _("Transportation") %><br />
+  <%= check_box_tag :work %>
+  <%= label_tag :work, _("Work") %><br />
 
-      <%= check_box_tag :urbanism %>
-      <%= label_tag :urbanism, _("Urbanism") %><br />
-    </div>
-  </div>
+  <%= check_box_tag :transportation %>
+  <%= label_tag :transportation, _("Transportation") %><br />
+
+  <%= check_box_tag :urbanism %>
+  <%= label_tag :urbanism, _("Urbanism") %><br />
 </div>
