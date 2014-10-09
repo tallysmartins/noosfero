@@ -72,6 +72,7 @@ div#wrapper-barra-brasil {
 /******* itens do gov-plone.css *******/
 /*
 * { margin: 0; padding: 0; }*/
+
 * :link,:visited { text-decoration:none }
 * ul,ol { list-style:none; }
 * h1,h2,h3,h4,h5,h6,pre,code { font-size:1em; }
@@ -452,7 +453,11 @@ p {
     padding-right: 5px;
      background-position: 7px 50%;
 }
-
+/*
+#content .link-list-block li a.link-this-page{
+  border-right: none;
+}
+*/
 
 #content .box-2 .link-list-block li a:hover {
     background-color: #eee;
@@ -460,7 +465,7 @@ p {
 }
 
 #content .box-2 .link-list-block li a.link-this-page {
-    background-color: #EEEFFF;
+    background-color: #ffffff; /*#EEEFFF;*/
     font-weight: bold;
     width: auto;
 }
