@@ -27,7 +27,7 @@ module SoftwareLanguageHelper
     true
   end
 
-  def self.language_as_tables(list_languages, have_delete_button = true, show_information = false)
+  def self.language_as_tables(list_languages, show_information = false)
     extend(
       ActionView::Helpers::TagHelper,
       ActionView::Helpers::FormTagHelper,
@@ -39,10 +39,10 @@ module SoftwareLanguageHelper
     lambdas_list = []
 
     if not show_information
-      return language_html_structure({:programming_language_id => 1, :version => "", :operating_system => ""}, have_delete_button) if list_languages.nil?    
+      return language_html_structure({:programming_language_id => 1, :version => "", :operating_system => ""}) if list_languages.nil?
 
       list_languages.each do |language|
-        lambdas_list << language_html_structure(language, have_delete_button)
+        lambdas_list << language_html_structure(language)
       end
 
     else 
@@ -56,7 +56,7 @@ module SoftwareLanguageHelper
     lambdas_list
   end
 
-  def self.language_html_structure(language_data, have_delete_button = true)
+  def self.language_html_structure(language_data)
     Proc::new do
       content_tag('table',
         content_tag('tr',
@@ -74,15 +74,7 @@ module SoftwareLanguageHelper
         content_tag('tr',
           content_tag('td', label_tag(_("Operating System")))+
           content_tag('td', text_field_tag("language[][operating_system]", language_data[:operating_system]))+
-          
-          if have_delete_button
-            content_tag('td',
-              button_without_text(:delete, _('Delete'), "#" , :class=>"delete-dynamic-table"),
-              :align => 'right'
-            )
-          else
-            content_tag('td', "")
-          end
+          content_tag('td', button_without_text(:delete, _('Delete'), "#" , :class=>"delete-dynamic-table"), :align => 'right')
         ), :class => 'dynamic-table software-language-table'
       )
     end

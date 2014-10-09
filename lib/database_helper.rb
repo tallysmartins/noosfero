@@ -27,7 +27,7 @@ module DatabaseHelper
     true
   end
 
-  def self.database_as_tables(list_databases, have_delete_button = nil)
+  def self.database_as_tables(list_databases)
     extend(
       ActionView::Helpers::TagHelper,
       ActionView::Helpers::FormTagHelper,
@@ -36,18 +36,18 @@ module DatabaseHelper
       ApplicationHelper
     )
 
-    return database_html_structure({:database_description_id => 1, :version => "", :operating_system => ""}, have_delete_button) if list_databases.nil?    
+    return database_html_structure({:database_description_id => 1, :version => "", :operating_system => ""}) if list_databases.nil?
 
     lambdas_list = []
-    
+
     list_databases.each do |database|
-      lambdas_list << database_html_structure(database, have_delete_button)
+      lambdas_list << database_html_structure(database)
     end
 
     lambdas_list
   end
 
-  def self.database_html_structure(database_data, have_delete_button = nil)
+  def self.database_html_structure(database_data)
     Proc::new do
       content_tag('table',
         content_tag('tr',
@@ -65,15 +65,7 @@ module DatabaseHelper
          content_tag('tr',
           content_tag('td', label_tag(_("Operating System")))+
           content_tag('td', text_field_tag("database[][operating_system]", database_data[:operating_system]))+
-          
-          if have_delete_button.nil?
-              content_tag('td',
-              button_without_text(:delete, _('Delete'), "#" , :class=>"delete-dynamic-table"),
-              :align => 'right'
-            )
-          else
-            content_tag('td')
-          end
+          content_tag('td', button_without_text(:delete, _('Delete'), "#" , :class=>"delete-dynamic-table"), :align => 'right')
         ), :class => 'dynamic-table database-table'
       )
     end
