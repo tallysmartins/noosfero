@@ -25,7 +25,10 @@ if test -f /etc/yum.conf; then
 
   rm -f /etc/yum/pluginconf.d/fastestmirror.conf
 
-  sed -i -e 's/^#baseurl/baseurl/; s/^mirrorlist=/#mirrorlist-/' /etc/yum.repos.d/CentOS-*.repo
+  repofiles=$(grep -rl '^#baseurl' /etc/yum.repos.d)
+  if [ -n "$repofiles" ]; then
+    sed -i -e 's/^#baseurl/baseurl/; s/^mirrorlist=/#mirrorlist-/' $repofiles
+  fi
 
   if [ ! -f /var/tmp/yum-clean.stamp ]; then
     pgrep -f yum || yum clean all || true
