@@ -15,6 +15,7 @@ fi
 
 cat > /etc/profile.d/http_proxy.sh<<EOF
 export http_proxy='$http_proxy'
+export https_proxy='$http_proxy'
 export HTTP_PROXY='$http_proxy'
 EOF
 
