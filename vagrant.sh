@@ -1,8 +1,7 @@
 #!/bin/sh
 
 set -e
-cd /vagrant
 
 # colab
-sh ./colab/vagrant/bootstrap.sh
-sudo -u vagrant sh ./colab/vagrant/provision.sh
+sh /vagrant/colab/vagrant/bootstrap.sh
+sudo -u vagrant -i sh /vagrant/colab/vagrant/provision.sh
