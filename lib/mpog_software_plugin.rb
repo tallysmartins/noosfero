@@ -56,8 +56,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def profile_editor_extras
     if context.profile.person?
       expanded_template('person_editor_extras.html.erb')
-    elsif context.profile.respond_to? :software_info and !context.profile.software_info.nil?
-      expanded_template('software_editor_extras.html.erb')
     elsif context.profile.respond_to? :institution and !context.profile.institution.nil?
       @show_sisp_field = show_sisp_field
       expanded_template('institution_editor_extras.html.erb')
@@ -198,7 +196,11 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def control_panel_buttons
-    return { :title => _("Software Info"), :icon => "edit-profile-group", :url => {:controller => "mpog_software_plugin_myprofile", :action => "edit_software"} }
+    if context.profile.software?
+      return { :title => _("Software Info"), :icon => "edit-profile-group", :url => {:controller => "mpog_software_plugin_myprofile", :action => "edit_software"} }
+    else
+      return nil
+    end
   end
 
   def stylesheet?
