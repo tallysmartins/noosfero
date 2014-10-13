@@ -8,8 +8,8 @@
 </div>
     
 <h3> <%= _("Finality") %> </h3>
-<div id="finality"> 
-  <%= text_field_tag(:finality, @profile.software_info.finality) %>
+<div id="finality">
+  <%= text_field_tag("software[finality]", @profile.software_info.finality) %>
 </div>
 
 <h3> <%= _("Licenses") %> </h3>

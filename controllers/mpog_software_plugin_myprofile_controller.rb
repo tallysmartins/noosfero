@@ -56,7 +56,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
      @errors |= @software_info.errors.full_messages
      @errors |= @license_info.errors.full_messages
    #  @errors |= @software_categories.errors.full_messages
-   #end
+   end
   end
 
   def search_offerers
@@ -66,44 +66,48 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
   end
 
   def edit_software
-   @list_libraries = LibraryHelper.list_libraries(params[:library])
-   @list_languages = SoftwareLanguageHelper.list_language(params[:language])
-   @list_databases = DatabaseHelper.list_database(params[:database])
-   @software_categories = SoftwareCategories::new params[:software_categories]
-   @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
+
+    @list_libraries = LibraryHelper.list_libraries(params[:library])
+    @list_languages = SoftwareLanguageHelper.list_language(params[:language])
+    @list_databases = DatabaseHelper.list_database(params[:database])
+    @software_categories = SoftwareCategories::new params[:software_categories]
+    @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
 
 
-   if not @list_libraries.nil?
-     @list_libraries.each do |library|
-       @software_info.libraries << library
-     end
-   end
+    if not @list_libraries.nil?
+      @list_libraries.each do |library|
+        @software_info.libraries << library
+      end
+    end
 
-   if not @list_languages.nil?
-     @list_languages.each do |language|
-       @software_info.software_languages << language
-     end
-   end
+    if not @list_languages.nil?
+      @list_languages.each do |language|
+        @software_info.software_languages << language
+      end
+    end
 
-   if not @list_databases.nil?
-     @list_databases.each do |database|
-       @software_info.software_databases << database
-     end
-   end
+    if not @list_databases.nil?
+      @list_databases.each do |database|
+        @software_info.software_databases << database
+      end
+    end
 
-   if not @list_operating_systems.nil?
-     @list_operating_systems.each do |operating_system|
-       @software_info.operating_systems << operating_system
-     end
-   end
+    if not @list_operating_systems.nil?
+      @list_operating_systems.each do |operating_system|
+        @software_info.operating_systems << operating_system
+      end
+    end
 
-   valid_libraries = @list_libraries.empty? || LibraryHelper.valid_list_libraries?(@list_libraries)
-   valid_database = DatabaseHelper.valid_list_database?(@list_databases)
-   valid_language = SoftwareLanguageHelper.valid_list_language?(@list_languages)
-   valid_operating_system = OperatingSystemHelper.valid_list_operating_system?(@list_operating_systems)
-   valid_software_categories = request.post? && @software_categories.valid?
+    valid_libraries = @list_libraries.empty? || LibraryHelper.valid_list_libraries?(@list_libraries)
+    valid_database = DatabaseHelper.valid_list_database?(@list_databases)
+    valid_language = SoftwareLanguageHelper.valid_list_language?(@list_languages)
+    valid_operating_system = OperatingSystemHelper.valid_list_operating_system?(@list_operating_systems)
+    valid_software_categories = request.post? && @software_categories.valid?
 
+    if request.post?
+      #@software_info.update_attributes(params[:software])
+      #@software_info.save!
+    end
   end
 
-end
 end
