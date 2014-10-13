@@ -60,6 +60,7 @@
   function set_initial_form_custom_data(selectFieldChoices) {
     jQuery('#profile_data_country').val("BR");
     jQuery("#password-balloon").html(jQuery("#user_password_menssage").val());
+    jQuery("#profile_data_email").parent().append(jQuery("#email_public_message").remove());
 
     selectFieldChoices.setSelect();
   }

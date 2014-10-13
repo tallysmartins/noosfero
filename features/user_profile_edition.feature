@@ -5,7 +5,7 @@ Feature: Institution Field
 
   Background:
     Given "MpogSoftwarePlugin" plugin is enabled
-    And I am logged in as admin
+    And I am logged in as mpog_admin
     And I go to /admin/plugins
     And I check "MpogSoftwarePlugin"
     And I press "Save changes"
@@ -43,3 +43,8 @@ Feature: Institution Field
     Then I should see "Ministerio do Planejamento" within ".institutions_added"
     And I should see "Governo do DF" within ".institutions_added"
 
+  @selenium
+  Scenario: Verify text information to use governmental e-mail
+    Given I am on josesilva's control panel
+    And I follow "Edit Profile"
+    Then I should see "If you work in a public agency use your government e-Mail"

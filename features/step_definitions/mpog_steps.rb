@@ -168,3 +168,21 @@ end
 Given /^I sleep for (\d+) seconds$/ do |time|
   sleep time.to_i
 end
+
+Given /^I am logged in as mpog_admin$/ do
+  visit('/account/logout')
+
+  user = User.new(:login => 'admin_user', :password => '123456', :password_confirmation => '123456', :email => 'admin_user@example.com')
+  person = Person.new :name=>"Mpog Admin", :identifier=>"mpog-admin"
+  user.person = person
+  user.save!
+
+  user.activate
+  e = Environment.default
+  e.add_admin(user.person)
+
+  visit('/account/login')
+  fill_in("Username", :with => user.login)
+  fill_in("Password", :with => '123456')
+  click_button("Log in")
+end
