@@ -1,5 +1,5 @@
-.mpog_hidden_field{
-	display: none;
+.mpog_hidden_field {
+  display: none;
 }
 
 #signup-form small#secondary-email-balloon ,
@@ -117,3 +117,4 @@
   background: #fff;
   border: solid 1px #000;
 }
+

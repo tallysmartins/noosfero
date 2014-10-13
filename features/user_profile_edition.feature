@@ -35,7 +35,7 @@ Feature: Institution Field
     And I follow "Add new institution"
     And I press "Create my account"
     Then José da Silva's account is activated
-    
+
   @selenium
   Scenario: Add more then one instituion on profile editor
     Given I am on josesilva's control panel
@@ -53,17 +53,25 @@ Feature: Institution Field
     Given I am on josesilva's control panel
     And I follow "Edit Profile"
     Then I should see "If you work in a public agency use your government e-Mail"
-  
+
   @selenium
   Scenario: Verify if field 'city' is shown when Brazil is selected
     Given I am on josesilva's control panel
     And I follow "Edit Profile"
     Then I should see "City"
-  
+
   @selenium
   Scenario: Verify if field 'city' does not appear when Brazil is not selected as country
     Given I am on josesilva's control panel
     When I follow "Edit Profile"
     And I select "United States" from "profile_data_country"
+    Then I should not see "City" within ".type-text"
+
+  @selenium
+  Scenario: Show message of institution not found
+    Given I am on josesilva's control panel
+    And I follow "Edit Profile"
+    And I fill in "input_institution" with "Some Nonexistent Institution"
     And I sleep for 1 seconds
-    Then I should not see "City"
+    Then I should see "No institution found"
+

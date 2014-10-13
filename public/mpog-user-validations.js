@@ -8,6 +8,7 @@
     // Get the initial state html
     var input_select = jQuery("#state_field").parent().html();
     var old_value = jQuery("#state_field").val();
+    var city_parent_div = jQuery("#city_field").parent().parent().parent();
 
     function replace_with(html) {
       var parent_div = jQuery("#state_field").parent();
@@ -39,10 +40,11 @@
     }
 
     function hide_city(){
-          jQuery("#city_field").parent().parent().parent().hide();
+      city_parent_div.addClass("mpog_hidden_field");
     }
+
     function show_city(){
-          jQuery("#city_field").parent().parent().parent().show();
+      city_parent_div.removeClass("mpog_hidden_field");
     }
 
     function replace_state_with_input() {
