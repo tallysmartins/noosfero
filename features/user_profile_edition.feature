@@ -10,6 +10,11 @@ Feature: Institution Field
     And I check "MpogSoftwarePlugin"
     And I press "Save changes"
     And feature "skip_new_user_email_confirmation" is enabled on environment
+    And I go to /admin/features/manage_fields
+    And I check "person_fields_country_active"
+    And I check "person_fields_state_active"
+    And I check "person_fields_city_active"
+    And I press "Save changes"
     And I go to /account/logout
     And Institutions has initial default values on database
     And the following public institutions
@@ -48,3 +53,17 @@ Feature: Institution Field
     Given I am on josesilva's control panel
     And I follow "Edit Profile"
     Then I should see "If you work in a public agency use your government e-Mail"
+  
+  @selenium
+  Scenario: Verify if field 'city' is shown when Brazil is selected
+    Given I am on josesilva's control panel
+    And I follow "Edit Profile"
+    Then I should see "City"
+  
+  @selenium
+  Scenario: Verify if field 'city' does not appear when Brazil is not selected as country
+    Given I am on josesilva's control panel
+    When I follow "Edit Profile"
+    And I select "United States" from "profile_data_country"
+    And I sleep for 1 seconds
+    Then I should not see "City"

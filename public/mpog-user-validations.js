@@ -38,6 +38,13 @@
       });
     }
 
+    function hide_city(){
+          jQuery("#city_field").parent().parent().parent().hide();
+    }
+    function show_city(){
+          jQuery("#city_field").parent().parent().parent().show();
+    }
+
     function replace_state_with_input() {
       replace_with(input_select);
     }
@@ -53,6 +60,14 @@
 
       setInput : function() {
         replace_state_with_input();
+      },
+      
+      setHideCity : function(){
+        hide_city();
+      },
+
+      setShowCity : function(){
+        show_city();
       }
     }
   }
@@ -255,8 +270,10 @@
     jQuery("#profile_data_country").change(function(){
       if( this.value == "BR" && selectFieldChoices.actualFieldIsInput() ) {
         selectFieldChoices.setSelect();
+        selectFieldChoices.setShowCity();
       } else {
         selectFieldChoices.setInput();
+        selectFieldChoices.setHideCity();
       }
     });
 
