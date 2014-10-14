@@ -150,3 +150,9 @@
   min-width: 190px;
   border-spacing: 20px;
 }
+
+.mandatory::after
+{
+  color: red;
+  content: ' (*)'
+}
