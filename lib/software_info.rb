@@ -14,19 +14,6 @@ class SoftwareInfo < ActiveRecord::Base
 
  has_one :software_categories
 
-  #validates :features, :objectives,
-  # :presence=>true,
-  # :length => {
-  #   :maximum => 4000,
-  #   :too_long => _("Software features is too long (maximum is 4000 characters)")
-  # }
-
-  #validate :validate_operating_platform, :validate_acronym, :valid_software_info, :valid_databases, :valid_operating_systems
- 
-  #validate :finality, :presence => {:message => "Finality cannot be blank"}
-  validate :validate_finality 
-  
-
   # used on find_by_contents
   scope :like_search, lambda{ |name|
     joins(:community).where("name ilike ?", "%#{name}%")
@@ -118,11 +105,6 @@ class SoftwareInfo < ActiveRecord::Base
       self.errors.add(:acronym, _("can't have whitespaces"))
     end
   end
-
-  def validate_finality 
-    self.errors.add(:finality, _("can't be blank")) if self.finality.blank? && self.errors.messages[:finality].nil?
-  end
-
 
   def valid_operating_systems
     self.errors.add(:operating_system, _(": at least one must be filled")) if self.operating_systems.empty?

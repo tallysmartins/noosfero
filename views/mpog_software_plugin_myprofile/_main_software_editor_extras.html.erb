@@ -1,12 +1,5 @@
 <h2><%= _('Software Information') %></h2>
 
-<%= label_tag("name", _('Name'), {:class => 'formlabel'}) %>
-
-<div id='software-name-field' class='formfield'>
-  <span id='software-hostname'><%= @profile.environment.default_hostname %>/</span>
-  <%= text_field_tag(:name, @profile.software_info.community.name) %>
-</div>
-    
 <h3> <%= _("Finality") %> </h3>
 <div id="finality">
   <%= text_field_tag("software[finality]", @profile.software_info.finality) %>

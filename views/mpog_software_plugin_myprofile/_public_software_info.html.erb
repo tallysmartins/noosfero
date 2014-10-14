@@ -98,7 +98,6 @@
     <% if not k == "id" and not k == "software_info_id" %>
       <%= check_box_tag "software_categories[#{k}]", "true", !v.blank? %>
       <%= label_tag k.to_sym, _("#{k.gsub("_", " ").capitalize}") %><br />
-      <% puts "="*80, v%>
     <% end %>
   <% end %>
 
