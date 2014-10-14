@@ -10,5 +10,8 @@
 
 <%= render_tabs(tabs) %>
 
-<%= submit_button(:save, _('Save')) %>
+<% button_bar do %>
+    <%= submit_button(:save, _('Save')) %>
+    <%= button(:back, _('Back to control panel'), :controller => 'profile_editor') %>
+<% end %>
 <% end %>

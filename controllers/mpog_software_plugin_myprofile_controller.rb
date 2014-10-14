@@ -114,13 +114,11 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
         end
       end
 
-      valid_libraries = @list_libraries.empty? || LibraryHelper.valid_list_libraries?(@list_libraries)
-      valid_database = DatabaseHelper.valid_list_database?(@list_databases)
-      valid_language = SoftwareLanguageHelper.valid_list_language?(@list_languages)
-      valid_operating_system = OperatingSystemHelper.valid_list_operating_system?(@list_operating_systems)
-      valid_software_categories = request.post? && @software_categories.valid?
-
-      @software_info.save!
+      begin
+        @software_info.save!
+        redirect_to :controller => 'profile_editor', :action => 'index'
+      rescue ActiveRecord::RecordInvalid => invalid
+      end
     end
   end
 
