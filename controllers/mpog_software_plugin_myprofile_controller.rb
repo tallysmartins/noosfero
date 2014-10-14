@@ -66,47 +66,62 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
   end
 
   def edit_software
-
-    @list_libraries = LibraryHelper.list_libraries(params[:library])
-    @list_languages = SoftwareLanguageHelper.list_language(params[:language])
-    @list_databases = DatabaseHelper.list_database(params[:database])
-    @software_categories = SoftwareCategories::new params[:software_categories]
-    @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
-
-
-    if not @list_libraries.nil?
-      @list_libraries.each do |library|
-        @software_info.libraries << library
-      end
-    end
-
-    if not @list_languages.nil?
-      @list_languages.each do |language|
-        @software_info.software_languages << language
-      end
-    end
-
-    if not @list_databases.nil?
-      @list_databases.each do |database|
-        @software_info.software_databases << database
-      end
-    end
-
-    if not @list_operating_systems.nil?
-      @list_operating_systems.each do |operating_system|
-        @software_info.operating_systems << operating_system
-      end
-    end
-
-    valid_libraries = @list_libraries.empty? || LibraryHelper.valid_list_libraries?(@list_libraries)
-    valid_database = DatabaseHelper.valid_list_database?(@list_databases)
-    valid_language = SoftwareLanguageHelper.valid_list_language?(@list_languages)
-    valid_operating_system = OperatingSystemHelper.valid_list_operating_system?(@list_operating_systems)
-    valid_software_categories = request.post? && @software_categories.valid?
-
+    @software_info = @profile.software_info
+    @list_libraries = @software_info.libraries
+    @list_databases = @software_info.software_databases
+    @list_languages = @software_info.software_languages
+    @list_operating_systems = @software_info.operating_systems
+    @software_categories = @software_info.software_categories
+    @software_categories = SoftwareCategories.new if @software_categories.blank?
     if request.post?
-      #@software_info.update_attributes(params[:software])
-      #@software_info.save!
+      @software_info = SoftwareInfo.find(Community.where(:name => params[:name]).first.software_info.id)
+      @license = LicenseInfo.find(params[:license][:license_infos_id])
+      @software_info.license_info = @license
+      @software_info.update_attributes(params[:software])
+
+      @list_libraries = LibraryHelper.list_libraries(params[:library])
+      @list_languages = SoftwareLanguageHelper.list_language(params[:language])
+      @list_databases = DatabaseHelper.list_database(params[:database])
+      @software_categories = SoftwareCategories::new params[:software_categories]
+      @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
+
+      @software_info.software_categories = @software_categories
+
+      if not @list_libraries.nil?
+        @software_info.libraries.destroy_all
+        @list_libraries.each do |library|
+          @software_info.libraries << library
+        end
+      end
+
+      if not @list_languages.nil?
+        @software_info.software_languages.destroy_all
+        @list_languages.each do |language|
+          @software_info.software_languages << language
+        end
+      end
+
+      if not @list_databases.nil?
+        @software_info.software_databases.destroy_all
+        @list_databases.each do |database|
+          @software_info.software_databases << database
+        end
+      end
+
+      if not @list_operating_systems.nil?
+        @software_info.operating_systems.destroy_all
+        @list_operating_systems.each do |operating_system|
+          @software_info.operating_systems << operating_system
+        end
+      end
+
+      valid_libraries = @list_libraries.empty? || LibraryHelper.valid_list_libraries?(@list_libraries)
+      valid_database = DatabaseHelper.valid_list_database?(@list_databases)
+      valid_language = SoftwareLanguageHelper.valid_list_language?(@list_languages)
+      valid_operating_system = OperatingSystemHelper.valid_list_operating_system?(@list_operating_systems)
+      valid_software_categories = request.post? && @software_categories.valid?
+
+      @software_info.save!
     end
   end
 

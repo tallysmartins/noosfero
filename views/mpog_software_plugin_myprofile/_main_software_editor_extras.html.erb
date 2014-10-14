@@ -14,7 +14,7 @@
 
 <h3> <%= _("Licenses") %> </h3>
 <div id='licenses'>
-  <%= select_tag(:version, options_for_select(LicenseHelper.getListLicenses.collect{|l| [l.version, l.id]}, :selected => @profile.software_info.license_info.id), :onchange => "get_license_link('version')") %>
+  <%= select_tag("license[license_infos_id]", options_for_select(LicenseHelper.getListLicenses.collect{|l| [l.version, l.id]}, :selected => @profile.software_info.license_info.id), :onchange => "get_license_link('version')") %>
   <br />
 
   <h4> <%= _("License link") %> </h4>
@@ -27,6 +27,6 @@
 
 <div class="formfieldline formfield type-text">
   <%= label_tag "repository_url", _("Link to Repository: ") %>
-  <%= text_field_tag(:reository_url) %>
+  <%= text_field_tag("software[repository_link]", @profile.software_info.repository_link) %>
 </div>
 
