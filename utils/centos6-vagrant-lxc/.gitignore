@@ -1,5 +1,0 @@
-*.box
-metadata.json
-lxc.conf
-rootfs*
-.*-base
