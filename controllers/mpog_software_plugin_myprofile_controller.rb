@@ -74,7 +74,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @software_categories = @software_info.software_categories
     @software_categories = SoftwareCategories.new if @software_categories.blank?
     if request.post?
-      @software_info = SoftwareInfo.find(Community.where(:name => params[:name]).first.software_info.id)
+      @software_info = @profile.software_info
       @license = LicenseInfo.find(params[:license][:license_infos_id])
       @software_info.license_info = @license
       @software_info.update_attributes(params[:software])
@@ -84,8 +84,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
       @list_databases = DatabaseHelper.list_database(params[:database])
       @software_categories = SoftwareCategories::new params[:software_categories]
       @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
-
-      @software_info.software_categories = @software_categories
+      @software_info.software_categories = @software_categorie unless params[:software_categories].nil?
 
       if not @list_libraries.nil?
         @software_info.libraries.destroy_all
