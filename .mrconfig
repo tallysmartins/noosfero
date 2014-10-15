@@ -5,3 +5,15 @@ checkout = git clone https://github.com/colab-community/colab.git --branch pypi
 
 [mailman-api]
 checkout = git clone https://github.com/TracyWebTech/mailman-api.git
+
+[simplejson]
+checkout = git clone https://github.com/simplejson/simplejson.git
+
+[bottle]
+checkout = git clone https://github.com/defnull/bottle.git
+
+[paste]
+checkout = hg clone http://bitbucket.org/ianb/paste
+
+[six]
+checkout = hg clone https://bitbucket.org/gutworth/six
