@@ -186,7 +186,11 @@
     });
   }
 
-  function is_invalid_formated(text) {
+  function invalid_name_validation(text) {
+    if( text.trim().length == 0 ) {
+      return true;
+    }
+
     var full_validation = /([^\w\*\s*])|(^|\s)([a-z]|[0-9])/; // no special chars and do not initialize with no capital latter
     var partial_validation = /[^\w\*\s*]/; // no special chars
     text = replace_some_special_chars(text);
@@ -207,8 +211,8 @@
   }
 
   // Generic
-  function show_plugin_error_message(field_id, hidden_message_id ) {
-    var field = jQuery("#"+field_id);
+  function show_plugin_error_message(field_selector, hidden_message_id ) {
+    var field = jQuery(field_selector);
 
     field.removeClass("validated").addClass("invalid");
 
@@ -220,23 +224,28 @@
     }
   }
 
-  function hide_plugin_error_message(field_id, hidden_message_id) {
-    jQuery("#" + field_id).removeClass("invalid").addClass("validated");
+  function hide_plugin_error_message(field_selector, hidden_message_id) {
+    jQuery(field_selector).removeClass("invalid").addClass("validated");
     jQuery("." + hidden_message_id).hide();
   }
-  function addBlurFields(field_id, hidden_message_id, validation_function) {
-    jQuery("#" + field_id).blur(function(){
+
+  function addBlurFields(field_selector, hidden_message_id, validation_function) {
+    jQuery(field_selector).blur(function(){
       jQuery(this).attr("class", "");
 
-      if( this.value.length > 0 && validation_function(this.value) ) {
-        show_plugin_error_message(field_id, hidden_message_id);
+      if( validation_function(this.value) ) {
+        show_plugin_error_message(field_selector, hidden_message_id);
       } else {
-        hide_plugin_error_message(field_id, hidden_message_id);
+        hide_plugin_error_message(field_selector, hidden_message_id);
       }
     });
   }
 
   function invalid_email_validation(value) {
+    if( value.trim().length == 0 ) {
+      return true;
+    }
+
     var correct_format_regex = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
 
     return !correct_format_regex.test(value);
@@ -285,10 +294,10 @@
     fix_phone_mask_format("#profile_data_comercial_phone");
     fix_phone_mask_format("#profile_data_contact_phone");
 
-    addBlurFields("profile_data_name", "full_name_error", is_invalid_formated);
-    addBlurFields("profile_data_email", "email_error", invalid_email_validation);
-    addBlurFields("user_secondary_email", "email_error", invalid_email_validation);
-    addBlurFields("profile_data_personal_website", "site_error", invalid_site_validation);
-    addBlurFields("profile_data_organization_website", "site_error", invalid_site_validation);
+    addBlurFields("#profile_data_name", "full_name_error", invalid_name_validation);
+    addBlurFields("#profile_data_email", "email_error", invalid_email_validation);
+    addBlurFields("#user_secondary_email", "email_error", invalid_email_validation);
+    addBlurFields("#profile_data_personal_website", "site_error", invalid_site_validation);
+    addBlurFields("#profile_data_organization_website", "site_error", invalid_site_validation);
   });
 })();

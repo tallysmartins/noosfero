@@ -118,3 +118,12 @@
   border: solid 1px #000;
 }
 
+#profile-data .invalid {
+  border-color: rgb(127, 0, 0);
+  box-shadow: 0px 0px 7px red;
+}
+
+#profile-data .validated {
+  box-shadow: 0px 0px 7px green;
+  border-color: rgb(0, 80, 0)
+}
