@@ -1,5 +1,7 @@
 <% tabs = [] %>
 
+<%= error_messages_for :software_info %>
+
 <%= labelled_form_for :mpog_software_plugin_myprofile, :html => { :multipart => true, :id => 'edit-form' } do |f| %>
 
 <% tabs << {:title => _("Basic"), :id => 'basic-info',
