@@ -30,12 +30,14 @@
     <div id='software-name-field' class='formfield'>
       <span id='software-hostname'><%= environment.default_hostname %>/</span>
       <%= required text_field(:community, :name) %>
+      <%= content_tag(:small,_('Insert the name'), :id => 'name-balloon', :class => "helper-balloon") %>
     </div>
 
     <%= fields_for @software_info do |swf| %>
       <div class="formfield type-text">
         <%= swf.label("finality" ,_("Finality"), :class=>"formlabel") %>
         <%= required  swf.text_field(:finality) %>
+      <%= content_tag(:small,_('Insert the finality'), :id => 'finality-balloon', :class => "helper-balloon") %>
       </div>
     <% end %>
 
@@ -64,3 +66,21 @@
   <% end %>
 
 </div>
+
+
+<script type="text/javascript">
+jQuery(function($) {
+  add_balloon('#community_name', '#name-balloon');
+  add_balloon('#software_info_finality', '#finality-balloon');
+});
+
+function add_balloon(input_field, balloon_id){
+  jQuery(balloon_id).hide();
+  jQuery(input_field).focus(function() {
+    jQuery(balloon_id).fadeIn('slow');
+  });
+  jQuery(input_field).blur(function() {
+    jQuery(balloon_id).css('display','none');;
+  });
+}
+</script>

@@ -156,3 +156,19 @@
   color: red;
   content: ' (*)'
 }
+
+.helper-balloon {
+  display: none;
+  width: 142px;
+  height: 69px;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 11px;
+  padding: 5px 10px 45px 10px;
+  margin: 0;
+  line-height: 1.5em;
+  background: transparent url(/images/gray-balloon.png) bottom center no-repeat;
+  position: absolute;
+  margin-top: -110px;
+  margin-left: 0px;
+}
