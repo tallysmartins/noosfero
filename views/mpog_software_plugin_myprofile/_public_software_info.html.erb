@@ -95,5 +95,7 @@
       <%= label_tag k.to_sym, _("#{k.gsub("_", " ").capitalize}") %><br />
     <% end %>
   <% end %>
-
-</div>
+  <div id = "demonstration_url">
+      <%= label_tag(:demonstration_url ,_("Demonstration url:"), :class=>"formlabel") %>
+      <%= text_field_tag("software[demonstration_url]", @software_info.demonstration_url) %>
+  </div>
