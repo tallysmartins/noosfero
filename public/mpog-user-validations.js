@@ -229,11 +229,11 @@
     jQuery("." + hidden_message_id).hide();
   }
 
-  function addBlurFields(field_selector, hidden_message_id, validation_function) {
+  function addBlurFields(field_selector, hidden_message_id, validation_function, allow_blank) {
     jQuery(field_selector).blur(function(){
       jQuery(this).attr("class", "");
 
-      if( validation_function(this.value) ) {
+      if( validation_function(this.value, !!allow_blank) ) {
         show_plugin_error_message(field_selector, hidden_message_id);
       } else {
         hide_plugin_error_message(field_selector, hidden_message_id);
@@ -241,9 +241,9 @@
     });
   }
 
-  function invalid_email_validation(value) {
-    if( value.trim().length == 0 ) {
-      return true;
+  function invalid_email_validation(value, allow_blank) {
+    if( allow_blank && value.trim().length == 0 ) {
+      return false;
     }
 
     var correct_format_regex = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
@@ -296,7 +296,7 @@
 
     addBlurFields("#profile_data_name", "full_name_error", invalid_name_validation);
     addBlurFields("#profile_data_email", "email_error", invalid_email_validation);
-    addBlurFields("#user_secondary_email", "email_error", invalid_email_validation);
+    addBlurFields("#user_secondary_email", "email_error", invalid_email_validation, true);
     addBlurFields("#profile_data_personal_website", "site_error", invalid_site_validation);
     addBlurFields("#profile_data_organization_website", "site_error", invalid_site_validation);
   });
