@@ -15,6 +15,8 @@ class SoftwareInfo < ActiveRecord::Base
  has_one :software_categories
 
  validates_length_of :finality, :maximum => 100
+ 
+ validate :validate_acronym
 
   # used on find_by_contents
   scope :like_search, lambda{ |name|
