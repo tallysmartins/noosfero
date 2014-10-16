@@ -4,21 +4,21 @@
     <th colspan='2'><%= _('Software Information')%></th>
   </tr>
 
-  <%= display_field(_('Name:'), profile, :name, true) %>
+  <%= display_mpog_field(_('Name:'), profile, :name, true) %>
   <%= content_tag('tr', content_tag('td', _("Adherent to e_mag:")) + content_tag('td', profile.software_info.e_mag ? _("Yes") : _("No"))) %>
   <%= content_tag('tr', content_tag('td', _("Adherent to icp_brasil:")) + content_tag('td', profile.software_info.icp_brasil ? _("Yes") : _("No"))) %>
   <%= content_tag('tr', content_tag('td', _("Adherent to e_ping:")) + content_tag('td', profile.software_info.e_ping ? _("Yes") : _("No"))) %>
   <%= content_tag('tr', content_tag('td', _("Adherent to e_arq:")) + content_tag('td', profile.software_info.e_arq ? _("Yes") : _("No"))) %>
   <%= content_tag('tr', content_tag('td', _("Internacionalizable:")) + content_tag('td', profile.software_info.intern ? _("Yes") : _("No"))) %>
-  <%= display_field(_('Operating Platform:'), profile.software_info, :operating_platform, true) %>
-  <%= display_field(_('Demonstration URL:'), profile.software_info, :demonstration_url, true) %>
-  <%= display_field(_('Acronym:'), profile.software_info, :acronym, true) %>
-  <%= display_field(_('Objectives:'), profile.software_info, :objectives, true) %>
-  <%= display_field(_('Features:'), profile.software_info, :features, true) %>
+  <%= display_mpog_field(_('Operating Platform:'), profile.software_info, :operating_platform, true) %>
+  <%= display_mpog_field(_('Demonstration URL:'), profile.software_info, :demonstration_url, true) %>
+  <%= display_mpog_field(_('Acronym:'), profile.software_info, :acronym, true) %>
+  <%= display_mpog_field(_('Objectives:'), profile.software_info, :objectives, true) %>
+  <%= display_mpog_field(_('Features:'), profile.software_info, :features, true) %>
 
   <%= content_tag('tr', content_tag('td', _("License"))) %>
-  <%= display_field(_('Version:'), profile.software_info.license_info, :version, true) %>
-  <%= display_field(_('Link:'), profile.software_info.license_info, :link, true) %>
+  <%= display_mpog_field(_('Version:'), profile.software_info.license_info, :version, true) %>
+  <%= display_mpog_field(_('Link:'), profile.software_info.license_info, :link, true) %>
 </table>
 
 <table>
@@ -33,9 +33,9 @@
       <table class = "libraries-info dynamic-table">
         <%= content_tag('tr', content_tag('td', _("Libraries")) + content_tag('td', '')) %>
         <% profile.software_info.libraries.each do |library| %>
-          <%= display_field(_('Name:'), library, :name, true) %>
-          <%= display_field(_('Version:'), library, :version, true) %>
-          <%= display_field(_('License:'), library, :license, true) %>
+          <%= display_mpog_field(_('Name:'), library, :name, true) %>
+          <%= display_mpog_field(_('Version:'), library, :version, true) %>
+          <%= display_mpog_field(_('License:'), library, :license, true) %>
         <% end %>
       </table>
     </td>
@@ -52,9 +52,9 @@
       <table class = "database-info dynamic-table">
         <%= content_tag('tr', content_tag('td', _("Program Database")) + content_tag('td', '')) %>
         <% profile.software_info.software_databases.each do |database| %>
-          <%= display_field(_('Name:'), DatabaseDescription.find(database.database_description_id), :name, true) %>
-          <%= display_field(_('Version:'), database, :version, true) %>
-          <%= display_field(_('Operating System:'), database, :operating_system, true) %>
+          <%= display_mpog_field(_('Name:'), DatabaseDescription.find(database.database_description_id), :name, true) %>
+          <%= display_mpog_field(_('Version:'), database, :version, true) %>
+          <%= display_mpog_field(_('Operating System:'), database, :operating_system, true) %>
         <% end %>
       </table>
     </td>
@@ -71,9 +71,9 @@
       <table class = "language-info dynamic-table">
        <%= content_tag('tr', content_tag('td', _("Programming Language")) + content_tag('td', '')) %>
        <% profile.software_info.software_languages.each do |language| %>
-         <%= display_field(_('Name:'), language.programming_language , :name, true) %>
-         <%= display_field(_('Version:'), language, :version, true) %>
-         <%= display_field(_('Operating System:'), language, :operating_system, true) %>
+         <%= display_mpog_field(_('Name:'), language.programming_language , :name, true) %>
+         <%= display_mpog_field(_('Version:'), language, :version, true) %>
+         <%= display_mpog_field(_('Operating System:'), language, :operating_system, true) %>
        <% end %>
      </table>
    </td>
@@ -90,8 +90,8 @@
       <table class = "operating-system-info dynamic-table">
        <%= content_tag('tr', content_tag('td', _("Operating System")) + content_tag('td', '')) %>
        <% profile.software_info.operating_systems.each do |operating_system| %>
-         <%= display_field(_('Name:'), operating_system.operating_system_name , :name, true) %>
-         <%= display_field(_('Version:'), operating_system, :version, true) %>
+         <%= display_mpog_field(_('Name:'), operating_system.operating_system_name , :name, true) %>
+         <%= display_mpog_field(_('Version:'), operating_system, :version, true) %>
        <% end %>
      </table>
    </td>
