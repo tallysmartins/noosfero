@@ -29,6 +29,7 @@ class Institution < ActiveRecord::Base
 
     unless valid_institutions_type.include? self.type
       self.errors.add(:type, _("invalid, only public and private institutions are allowed."))
+
       return false
     end
     return true

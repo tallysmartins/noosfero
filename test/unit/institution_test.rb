@@ -19,7 +19,7 @@ class InstitutionTest < ActiveSupport::TestCase
 
   should "not save if institution has invalid type" do
     @institution.type = "Other type"
-    assert !@institution.save
+    assert !@institution.save, 'Invalid type'
     assert @institution.errors.full_messages.include? "Type invalid, only public and private institutions are allowed."
   end
   
