@@ -37,7 +37,7 @@
     <%= fields_for @software_info do |swf| %>
       <div class="formfield type-text">
         <%= swf.label("finality" ,_("Finality"), :class=>"formlabel") %>
-        <%= required swf.text_area(:finality, :cols => 40, :rows => 5, :maxlength => 100) %>
+        <%= required swf.text_area(:finality, :placeholder => _("It is a software of..."), :cols => 40, :rows => 5, :maxlength => 100) %>
       <%= content_tag(:small,_('Insert the finality'), :id => 'finality-balloon', :class => "helper-balloon") %>
       </div>
     <% end %>
