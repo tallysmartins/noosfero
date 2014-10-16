@@ -79,7 +79,7 @@
     jQuery("#password-balloon").html(jQuery("#user_password_menssage").val());
     jQuery("#profile_data_email").parent().append(jQuery("#email_public_message").remove());
 
-    selectFieldChoices.setSelect();
+    if( jQuery("#state_field").length != 0 ) selectFieldChoices.setSelect();
   }
 
   function check_reactivate_account(value, input_object){
@@ -270,35 +270,45 @@
     }
   }
 
+  function try_to_remove(list, field) {
+    try {
+      list.push(field.remove());
+    } catch(e) {
+      console.log("Cound not remove field");
+    }
+  }
+
   function get_edit_fields_in_insertion_order() {
     var containers = [];
 
-    containers.push(get_privacy_selector_parent_div("#profile_data_name").remove());
-    containers.push(get_privacy_selector_parent_div("#profile_data_email").remove());
-    containers.push(jQuery("#user_secondary_email").parent().parent().remove());
-    containers.push(jQuery("#select_institution").remove());
-    containers.push(get_privacy_selector_parent_div("#profile_data_cell_phone").remove());
-    containers.push(get_privacy_selector_parent_div("#profile_data_contact_phone").remove());
-    containers.push(get_privacy_selector_parent_div("#profile_data_comercial_phone").remove());
-    containers.push(get_privacy_selector_parent_div("#profile_data_personal_website").remove());
-    containers.push(get_privacy_selector_parent_div("#profile_data_organization_website").remove());
-    containers.push(get_privacy_selector_parent_div("#profile_data_birth_date").remove());
-    containers.push(get_privacy_selector_parent_div("#profile_data_country").remove());
-    containers.push(get_privacy_selector_parent_div("#state_field").remove());
-    containers.push(get_privacy_selector_parent_div("#city_field").remove());
+    try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_name"));
+    try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_email"));
+    try_to_remove(containers, jQuery("#user_secondary_email").parent().parent());
+    try_to_remove(containers, jQuery("#select_institution"));
+    try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_cell_phone"));
+    try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_contact_phone"));
+    try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_comercial_phone"));
+    try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_personal_website"));
+    try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_organization_website"));
+    try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_birth_date"));
+    try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_country"));
+    try_to_remove(containers, get_privacy_selector_parent_div("#state_field"));
+    try_to_remove(containers, get_privacy_selector_parent_div("#city_field"));
 
     return containers;
   }
 
   function change_edit_fields_order() {
     var form = jQuery("#profile-data");
-    var containers = get_edit_fields_in_insertion_order();
+    if( form.length != 0 ) {
+      var containers = get_edit_fields_in_insertion_order();
 
-    containers.reverse();
+      containers.reverse();
 
-    containers.forEach(function(container){
-      form.prepend(container);
-    });
+      containers.forEach(function(container){
+        form.prepend(container);
+      });
+    }
   }
 
   jQuery(document).ready(function(){
