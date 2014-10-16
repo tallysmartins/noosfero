@@ -2,7 +2,7 @@
 
 <div class="formfield type-text">
   <%= label_tag(:acronym ,_("Acronym"), :class=>"formlabel") %>
-  <%= text_field_tag("software[acronym]", @software_info.acronym) %>
+  <%= text_field_tag("software[acronym]", @software_info.acronym, :maxlength=>"10") %>
 </div>
 
 <div class="formfieldline">
@@ -55,12 +55,12 @@
 
 <div class="formfieldline">
   <%= label_tag "objectives", _("Objectives: ")%><br />
-  <%= text_area_tag "software[objectives]", @software_info.objectives%>
+  <%= text_area_tag "software[objectives]", @software_info.objectives, :maxlength=>"140"%>
 </div>
 
 <div class="formfieldline">
   <%= label_tag "features", _("Features: ")%><br />
-  <%= text_area_tag "software[features]", @software_info.features %>
+  <%= text_area_tag "software[features]", @software_info.features, :maxlength=>"4000" %>
 </div>
 
 <div id='libraries_fields'>

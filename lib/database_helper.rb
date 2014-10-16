@@ -58,13 +58,13 @@ module DatabaseHelper
 
         content_tag('tr',
           content_tag('td', label_tag(_("Version")))+
-          content_tag('td', text_field_tag("database[][version]", database_data[:version]))+
+          content_tag('td', text_field_tag("database[][version]", database_data[:version], :maxlength=>"20"))+
           content_tag('td')
         )+
 
          content_tag('tr',
           content_tag('td', label_tag(_("Operating System")))+
-          content_tag('td', text_field_tag("database[][operating_system]", database_data[:operating_system]))+
+          content_tag('td', text_field_tag("database[][operating_system]", database_data[:operating_system], :maxlength=>"20"))+
           content_tag('td', button_without_text(:delete, _('Delete'), "#" , :class=>"delete-dynamic-table"), :align => 'right')
         ), :class => 'dynamic-table database-table'
       )
