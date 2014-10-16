@@ -66,14 +66,14 @@ module SoftwareTestHelper
 
     software = SoftwareInfo.new
     community = Community.new
-    software_hash = fields[0]
-    library_hash = fields[1]
-    language_hash = fields[2]
-    database_hash = fields[3]
-    operating_system_hash  = fields[4]
-    license_system_hash = fields[5]
-    community_hash = fields[6]
-    categories_hash = fields[7]
+    software_hash = fields[2]
+    #library_hash = fields[1]
+    #language_hash = fields[2]
+    #database_hash = fields[3]
+    #operating_system_hash  = fields[4]
+    license_system_hash = fields[0]
+    community_hash = fields[1]
+    #categories_hash = fields[7]
 
     software_hash.each do |k,v|
       software[k] = v
@@ -85,25 +85,43 @@ module SoftwareTestHelper
 
     community.save!
     software.community = community
-    software.software_databases << create_database(database_hash)
-    software.software_languages << create_language(language_hash)
-    software.operating_systems << create_operating_system(operating_system_hash)
+    #software.software_databases << create_database(database_hash)
+    #software.software_languages << create_language(language_hash)
+    #software.operating_systems << create_operating_system(operating_system_hash)
     software.license_info_id = license_system_hash
-    software.libraries << create_library(library_hash)
-    software.software_categories = create_categories(categories_hash)
+    #software.libraries << create_library(library_hash)
+    #software.software_categories = create_categories(categories_hash)
 
+    software.save
     software
   end
 
-  def software_fields
-
+  def software_edit_basic_fields
     fields = Hash.new
+    fields_license = Hash.new
+    hash_list = []
+
+    fields['repository_link'] = 'www.github.com/test'
+    fields['finality'] = 'This is the new finality of the software'
+    hash_list << fields
+
+    #Fields for license info
+    fields_license['license_infos_id'] = LicenseInfo.last.id
+    hash_list << fields_license
+
+    hash_list
+  end
+
+  def software_edit_specific_fields
     fields_library = Hash.new
     fields_language = Hash.new
     fields_database = Hash.new
     fields_operating_system = Hash.new
-    fields_community = Hash.new
+    fields_software = Hash.new
+    fields_categories = Hash.new
     fields_license = Hash.new
+
+    hash_list = []
     list_database = []
     list_language = []
     list_operating_system = []
@@ -115,36 +133,39 @@ module SoftwareTestHelper
     fields_library['license'] = 'test'
     list_library << fields_library
     list_library << {}
+    hash_list << list_library
+
     #Fields for software language
     fields_language['version'] = 'test'
     fields_language['programming_language_id'] = ProgrammingLanguage.last.id
     fields_language['operating_system'] = 'test'
     list_language << fields_language
     list_language << {}
+    hash_list << list_language
+
     #Fields for database
     fields_database['version'] = 'test'
     fields_database['database_description_id'] = DatabaseDescription.last.id
     fields_database['operating_system'] = 'test'
     list_database << fields_database
     list_database << {}
-    #Fields for license info
-    fields_license['version'] = LicenseInfo.last.version
+    hash_list << list_database
+
     #Fields for operating system
     fields_operating_system['version'] = 'version'
     fields_operating_system['operating_system_name_id'] = OperatingSystemName.last.id
     list_operating_system << fields_operating_system
     list_operating_system << {}
-    #Fields for community
-    fields_community['name'] = 'Debian'
-    fields_community['identifier'] = 'debian'
+    hash_list << list_operating_system
 
-    fields['acronym'] = 'test'
-    fields['objectives'] = 'test'
-    fields['features'] = 'test'
-    fields['operating_platform'] = 'operating_platform_test'
-    fields['demonstration_url'] = 'test'
+    #software fields
+    fields_software['acronym'] = 'test'
+    fields_software['operating_platform'] = 'Linux'
+    fields_software['objectives'] = 'This is the objective of the software'
+    fields_software['features'] = 'This software does nothing'
+    hash_list << fields_software
 
-    fields_categories = {}
+    #Fields for software categories
     fields_categories["administration"] = true
     fields_categories["agriculture"] = "1"
     fields_categories["business_and_services"] = "1"
@@ -167,16 +188,34 @@ module SoftwareTestHelper
     fields_categories["work"] = "1"
     fields_categories["transportation"] = "1"
     fields_categories["urbanism"] = "1"
-
-    hash_list = []
-    hash_list << fields
-    hash_list << list_library
-    hash_list << list_language
-    hash_list << list_database
-    hash_list << list_operating_system
-    hash_list << fields_license
-    hash_list << fields_community
     hash_list << fields_categories
+
+    #Fields for license
+    fields_license['license_infos_id'] = LicenseInfo.last.id
+    hash_list << fields_license
+
+    hash_list
+  end
+
+  def software_fields
+    fields = Hash.new
+    fields_community = Hash.new
+    fields_license = Hash.new
+    hash_list = []
+
+    #Fields for license info
+    fields_license['version'] = LicenseInfo.last.version
+    hash_list << fields_license
+
+    #Fields for community
+    fields_community['name'] = 'Debian'
+    fields_community['identifier'] = 'debian'
+    hash_list << fields_community
+
+    #Fields for basic information
+    fields['finality'] = 'This is the finality of the software'
+    hash_list << fields
+
     hash_list
   end
 end

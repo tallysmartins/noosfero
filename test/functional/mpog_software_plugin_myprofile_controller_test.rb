@@ -63,13 +63,28 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
 
   should 'create a new software with all fields filled in' do 
     fields = software_fields
-    post :new_software, :profile => person.identifier, :community => fields[6], :license_info => fields[5],
-                        :software_info => fields[0], :library => fields[1], :database => fields[3],
-                        :language => fields[2], :operating_system=> fields[4],:software_categories => fields[7]
+    post :new_software, :profile => person.identifier, :community => fields[1], :license_info => fields[0],
+                        :software_info => fields[2]
     assert_equal SoftwareInfo.last.community.name, "Debian"
   end
 
+  should 'edit a new software adding basic information' do
+   fields_software = software_fields
+   fields = software_edit_basic_fields
 
+   software = create_software fields_software
+   post :edit_software, :profile => software.community.identifier, :license => fields[1], :software => fields[0], :library => {}, :operating_system => {}, :language => {}, :database => {}
+   assert_equal SoftwareInfo.last.repository_link, "www.github.com/test"
+  end
 
+  should 'edit a new software adding specific information' do
+   fields_software = software_fields
+   fields = software_edit_specific_fields
+
+   software = create_software fields_software
+   post :edit_software, :profile => software.community.identifier, :library => fields[0], :language => fields[1],
+                        :database => fields[2], :operating_system => fields[3], :software => fields[4], :software_categories => fields[5], :license => fields[6]
+   assert_equal SoftwareInfo.last.acronym, "test"
+  end
 
 end
