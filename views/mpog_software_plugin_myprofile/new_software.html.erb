@@ -1,3 +1,4 @@
+
 <%= javascript_include_tag "mpog-validations" %>
 <%= stylesheet_link_tag('plugins/mpog_software/mpog-software') %>
 
@@ -29,14 +30,14 @@
 
     <div id='software-name-field' class='formfield'>
       <span id='software-hostname'><%= environment.default_hostname %>/</span>
-      <%= required text_field(:community, :name) %>
+      <%= required text_field(:community, :name, :size => 30, :maxlength => 100) %>
       <%= content_tag(:small,_('Insert the name'), :id => 'name-balloon', :class => "helper-balloon") %>
     </div>
 
     <%= fields_for @software_info do |swf| %>
       <div class="formfield type-text">
         <%= swf.label("finality" ,_("Finality"), :class=>"formlabel") %>
-        <%= required  swf.text_field(:finality) %>
+        <%= required swf.text_area(:finality, :cols => 40, :rows => 5, :maxlength => 100) %>
       <%= content_tag(:small,_('Insert the finality'), :id => 'finality-balloon', :class => "helper-balloon") %>
       </div>
     <% end %>

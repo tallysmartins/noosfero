@@ -14,6 +14,8 @@ class SoftwareInfo < ActiveRecord::Base
 
  has_one :software_categories
 
+ validates_length_of :finality, :maximum => 100
+
   # used on find_by_contents
   scope :like_search, lambda{ |name|
     joins(:community).where("name ilike ?", "%#{name}%")
@@ -92,18 +94,28 @@ class SoftwareInfo < ActiveRecord::Base
     }
   }
 
+  def validate_name_lenght
+    if self.community.name.size > 100
+      self.errors.add(:base, _("Name is too long (maximum is %{count} characters)"))
+      false
+    end
+    true
+  end
+
   def validate_operating_platform
     self.errors.add(:operating_platform, _("can't be blank")) if self.operating_platform.blank? && self.errors.messages[:operating_platform].nil?
   end
 
   def validate_acronym
     self.acronym = "" if self.acronym.nil?
-
     if self.acronym.length > 10 && self.errors.messages[:acronym].nil?
       self.errors.add(:acronym, _("can't have more than 10 characteres"))
+      false
     elsif self.acronym.match(/\s+/)
       self.errors.add(:acronym, _("can't have whitespaces"))
+      false
     end
+    true
   end
 
   def valid_operating_systems
