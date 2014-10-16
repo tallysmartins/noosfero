@@ -50,17 +50,12 @@
   <%= radio_button_tag("software[intern]", false, !@software_info.intern)%>
 <div class="formfieldline">
   <%= label_tag "operating_platform", _("Operating Platform: ") %> <br />
-  <%= text_area_tag "software[operating_platform]", @software_info.operating_platform %>
-</div>
-
-<div class="formfieldline">
-  <%= label_tag "objectives", _("Objectives: ")%><br />
-  <%= text_area_tag "software[objectives]", @software_info.objectives, :maxlength=>"140"%>
+  <%= text_area_tag "software[operating_platform]", @software_info.operating_platform, :cols => 40, :rows => 5%>
 </div>
 
 <div class="formfieldline">
   <%= label_tag "features", _("Features: ")%><br />
-  <%= text_area_tag "software[features]", @software_info.features, :maxlength=>"4000" %>
+  <%= text_area_tag "software[features]", @software_info.features, :maxlength=>"4000", :cols => 40, :rows => 5%>
 </div>
 
 <div id='libraries_fields'>
