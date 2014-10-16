@@ -84,7 +84,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
       @list_databases = DatabaseHelper.list_database(params[:database])
       @software_categories = SoftwareCategories::new params[:software_categories]
       @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
-      @software_info.software_categories = @software_categorie unless params[:software_categories].nil?
+      @software_info.software_categories = @software_categories unless params[:software_categories].nil?
 
       if not @list_libraries.nil?
         @software_info.libraries.destroy_all
