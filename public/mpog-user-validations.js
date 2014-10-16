@@ -256,11 +256,54 @@
 
     return !correct_format_regex.test(value);
   }
-
   //End generic
 
+  function get_privacy_selector_parent_div(field_id, actual) {
+    if( actual == undefined ) actual = jQuery(field_id);
+
+    if( actual.is("form") || actual.length == 0 ) return null; // Not allow recursion over form
+
+    if( actual.hasClass("field-with-privacy-selector") ) {
+      return actual;
+    } else {
+      return get_privacy_selector_parent_div(field_id, actual.parent());
+    }
+  }
+
+  function get_edit_fields_in_insertion_order() {
+    var containers = [];
+
+    containers.push(get_privacy_selector_parent_div("#profile_data_name").remove());
+    containers.push(get_privacy_selector_parent_div("#profile_data_email").remove());
+    containers.push(jQuery("#user_secondary_email").parent().parent().remove());
+    containers.push(jQuery("#select_institution").remove());
+    containers.push(get_privacy_selector_parent_div("#profile_data_cell_phone").remove());
+    containers.push(get_privacy_selector_parent_div("#profile_data_contact_phone").remove());
+    containers.push(get_privacy_selector_parent_div("#profile_data_comercial_phone").remove());
+    containers.push(get_privacy_selector_parent_div("#profile_data_personal_website").remove());
+    containers.push(get_privacy_selector_parent_div("#profile_data_organization_website").remove());
+    containers.push(get_privacy_selector_parent_div("#profile_data_birth_date").remove());
+    containers.push(get_privacy_selector_parent_div("#profile_data_country").remove());
+    containers.push(get_privacy_selector_parent_div("#state_field").remove());
+    containers.push(get_privacy_selector_parent_div("#city_field").remove());
+
+    return containers;
+  }
+
+  function change_edit_fields_order() {
+    var form = jQuery("#profile-data");
+    var containers = get_edit_fields_in_insertion_order();
+
+    containers.reverse();
+
+    containers.forEach(function(container){
+      form.prepend(container);
+    });
+  }
 
   jQuery(document).ready(function(){
+    change_edit_fields_order(); // To change the fields order, it MUST be the first function executed
+
     var selectFieldChoices = new SelectFieldChoices();
     set_initial_form_custom_data(selectFieldChoices);
 
