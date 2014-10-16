@@ -163,6 +163,7 @@ module SoftwareTestHelper
     fields_software['operating_platform'] = 'Linux'
     fields_software['objectives'] = 'This is the objective of the software'
     fields_software['features'] = 'This software does nothing'
+    fields_software['demonstration_url'] = 'www.test.com'
     hash_list << fields_software
 
     #Fields for software categories
