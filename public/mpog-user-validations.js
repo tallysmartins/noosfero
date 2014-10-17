@@ -35,79 +35,75 @@
   * If the Country if Brazil, set state to select field
   * else set it as a input field
   */
-  function SelectFieldChoices() {
-    // Get the initial state html
-    var input_select = jQuery("#state_field").parent().html();
-    var old_value = jQuery("#state_field").val();
-    var city_parent_div = jQuery("#city_field").parent().parent().parent();
-
-    function replace_with(html) {
-      var parent_div = jQuery("#state_field").parent();
-      parent_div.html(html);
+  var SelectFieldChoices = (function() {
+    function SelectFieldChoices(state_id, city_id, state_url) {
+      this.state_id = state_id;
+      this.input_html = jQuery(state_id).parent().html();
+      this.old_value = jQuery(state_id).val();
+      this.city_parent_div = jQuery(city_id).parent().parent().parent();
+      this.state_url = state_url;
     }
 
-    function generate_select(state_list) {
-      var select_element = new SelectElement();
+    SelectFieldChoices.prototype.getCurrentStateElement = function() {
+      return jQuery(this.state_id);
+    };
 
+    SelectFieldChoices.prototype.replaceWith = function(html) {
+      var parent_div = this.getCurrentStateElement().parent();
+      parent_div.html(html);
+    };
+
+    SelectFieldChoices.prototype.generateSelect = function(state_list) {
+      var select_element, option;
+
+      select_element = new SelectElement();
       select_element.setAttr("name", "profile_data[state]");
       select_element.setAttr("id", "state_field");
       select_element.setAttr("class", "type-select valid");
 
-      state_list.forEach(function(state){
-        var option = SelectElement.generateOption(state, state);
+      state_list.forEach(function(state) {
+        option = SelectElement.generateOption(state, state);
         select_element.addOption(option);
       });
 
       return select_element.getSelect();
-    }
+    };
 
-    function replace_state_with_select() {
-      jQuery.get("/plugin/mpog_software/get_brazil_states", function(response){
-        if( response.length > 0 ) {
-          var select_html = generate_select(response);
-          replace_with(select_html);
+    SelectFieldChoices.prototype.replaceStateWithSelectElement = function() {
+      var klass = this;
 
-          if( old_value.length != 0 && response.include(old_value) ) {
-            jQuery("#state_field").val(old_value);
+      jQuery.get(this.state_url, function(response) {
+        var select_html;
+
+        if (response.length > 0) {
+          select_html = klass.generateSelect(response);
+          klass.replaceWith(select_html);
+
+          if (klass.old_value.length !== 0 && response.include(klass.old_value)) {
+            klass.getCurrentStateElement().val(klass.old_value);
           }
         }
       });
-    }
+    };
 
-    function hide_city(){
-      city_parent_div.addClass("mpog_hidden_field");
-    }
+    SelectFieldChoices.prototype.replaceStateWithInputElement = function() {
+      this.replaceWith(this.input_html);
+    };
 
-    function show_city(){
-      city_parent_div.removeClass("mpog_hidden_field");
-    }
+    SelectFieldChoices.prototype.hideCity = function() {
+      this.city_parent_div.addClass("mpog_hidden_field");
+    };
 
-    function replace_state_with_input() {
-      replace_with(input_select);
-    }
+    SelectFieldChoices.prototype.showCity = function() {
+      this.city_parent_div.removeClass("mpog_hidden_field");
+    };
 
-    return {
-      actualFieldIsInput : function() {
-        return jQuery("#state_field").attr("type") == "text";
-      },
+    SelectFieldChoices.prototype.actualFieldIsInput = function() {
+      return this.getCurrentStateElement().attr("type") === "text";
+    };
 
-      setSelect : function() {
-        replace_state_with_select();
-      },
-
-      setInput : function() {
-        replace_state_with_input();
-      },
-      
-      setHideCity : function(){
-        hide_city();
-      },
-
-      setShowCity : function(){
-        show_city();
-      }
-    }
-  }
+    return SelectFieldChoices;
+  })();
 
   function set_form_count_custom_data() {
     var divisor_option = SelectElement.generateOption("-1", "--------------------------------");
@@ -125,7 +121,7 @@
     jQuery("#password-balloon").html(jQuery("#user_password_menssage").val());
     jQuery("#profile_data_email").parent().append(jQuery("#email_public_message").remove());
 
-    if( jQuery("#state_field").length != 0 ) selectFieldChoices.setSelect();
+    if( jQuery("#state_field").length !== 0 ) selectFieldChoices.replaceStateWithSelectElement();
   }
 
   function check_reactivate_account(value, input_object){
@@ -134,7 +130,7 @@
       type: "GET",
       data: { "email": value },
       success: function(response) {
-        if( jQuery("#forgot_link").length == 0 )
+        if( jQuery("#forgot_link").length === 0 )
           jQuery(input_object).parent().append(response);
         else
           jQuery("#forgot_link").html(response);
@@ -162,7 +158,7 @@
 
     jQuery("#profile_data_country").find(':not(:selected)').css('display', (gov_suffix?'none':'block'));
 
-    check_reactivate_account(value, input_object)
+    check_reactivate_account(value, input_object);
   }
 
   function validate_email_format(){
@@ -233,7 +229,7 @@
   }
 
   function invalid_name_validation(text) {
-    if( text.trim().length == 0 ) {
+    if( text.trim().length === 0 ) {
       return true;
     }
 
@@ -288,7 +284,7 @@
   }
 
   function invalid_email_validation(value, allow_blank) {
-    if( allow_blank && value.trim().length == 0 ) {
+    if( allow_blank && value.trim().length === 0 ) {
       return false;
     }
 
@@ -305,9 +301,9 @@
   //End generic
 
   function get_privacy_selector_parent_div(field_id, actual) {
-    if( actual == undefined ) actual = jQuery(field_id);
+    if( actual === undefined ) actual = jQuery(field_id);
 
-    if( actual.is("form") || actual.length == 0 ) return null; // Not allow recursion over form
+    if( actual.is("form") || actual.length === 0 ) return null; // Not allow recursion over form
 
     if( actual.hasClass("field-with-privacy-selector") ) {
       return actual;
@@ -346,7 +342,7 @@
 
   function change_edit_fields_order() {
     var form = jQuery("#profile-data");
-    if( form.length != 0 ) {
+    if( form.length !== 0 ) {
       var containers = get_edit_fields_in_insertion_order();
 
       containers.reverse();
@@ -360,12 +356,10 @@
   jQuery(document).ready(function(){
     change_edit_fields_order(); // To change the fields order, it MUST be the first function executed
 
-    var selectFieldChoices = new SelectFieldChoices();
+    var selectFieldChoices = new SelectFieldChoices("#state_field", "#city_field", "/plugin/mpog_software/get_brazil_states");
     set_initial_form_custom_data(selectFieldChoices);
 
-    jQuery('#secondary_email_field').blur(
-      validate_email_format
-    );
+    jQuery('#secondary_email_field').blur(validate_email_format);
 
     jQuery("#user_email").blur(put_brazil_based_on_email);
 
@@ -381,15 +375,16 @@
       if( this.value == "-1" ) jQuery(this).val("BR");
 
       if( this.value == "BR" && selectFieldChoices.actualFieldIsInput() ) {
-        selectFieldChoices.setSelect();
-        selectFieldChoices.setShowCity();
+        selectFieldChoices.replaceStateWithSelectElement();
+        selectFieldChoices.showCity();
       } else if( this.value != "BR" && !selectFieldChoices.actualFieldIsInput() ) {
-        selectFieldChoices.setInput();
-        selectFieldChoices.setHideCity();
+        selectFieldChoices.replaceStateWithInputElement();
+        selectFieldChoices.hideCity();
       }
     });
 
     show_or_hide_phone_mask();
+    jQuery("#profile_data_birth_date").mask("99/99/9999");
 
     fix_phone_mask_format("#profile_data_cell_phone");
     fix_phone_mask_format("#profile_data_comercial_phone");
