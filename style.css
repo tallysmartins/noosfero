@@ -370,7 +370,7 @@ p {
     /*margin: 0;*/
 }
 
-#content .box-1 .block-title {
+/*#content .box-1 .block-title {
     background: url("images/bg-titulo-interno.png") repeat-x scroll 0 0 #FFF;
     border-bottom: medium none;
     border-top: 0px solid #757575;
@@ -379,10 +379,10 @@ p {
     padding: 0px;
     text-align: left;
     text-transform: uppercase;
-}
+} TITULO DA PAGINA*/
 
 #content .box-1 .block-title span{
-    background-color: #fff;
+   /* background-color: #fff;*/
     background-image: none;
     padding: 0 1em 0 0;
 }
