@@ -1,5 +1,36 @@
 (function(){
   /*
+  * "Class" for select and option html generation
+  */
+  var SelectElement = (function() {
+    function SelectElement(name, id) {
+      this.select = document.createElement("select");
+    }
+
+    SelectElement.prototype.setAttr = function(attr, value) {
+      return this.select.setAttribute(attr, value);
+    };
+
+    SelectElement.prototype.addOption = function(option) {
+      return this.select.add(option);
+    };
+
+    SelectElement.prototype.getSelect = function() {
+      return this.select;
+    };
+
+    SelectElement.generateOption = function(value, text) {
+      var option;
+      option = document.createElement("option");
+      option.setAttribute("value", value);
+      option.text = text;
+      return option;
+    };
+
+    return SelectElement;
+  })();
+
+  /*
   * "Class" that switch state field between input and select
   * If the Country if Brazil, set state to select field
   * else set it as a input field
@@ -16,14 +47,18 @@
     }
 
     function generate_select(state_list) {
-      var html = "<select class='type-select valid' id='state_field' name='profile_data[state]'>";
+      var select_element = new SelectElement();
+
+      select_element.setAttr("name", "profile_data[state]");
+      select_element.setAttr("id", "state_field");
+      select_element.setAttr("class", "type-select valid");
 
       state_list.forEach(function(state){
-        html += "<option value='"+state+"'>"+state+"</option>";
+        var option = SelectElement.generateOption(state, state);
+        select_element.addOption(option);
       });
 
-      html += "</select>";
-      return html;
+      return select_element.getSelect();
     }
 
     function replace_state_with_select() {
@@ -74,8 +109,19 @@
     }
   }
 
-  function set_initial_form_custom_data(selectFieldChoices) {
+  function set_form_count_custom_data() {
+    var divisor_option = SelectElement.generateOption("-1", "--------------------------------");
+    var default_option = SelectElement.generateOption("BR", "Brazil");
+
+    jQuery('#profile_data_country').find("option[value='']").remove();
+    jQuery('#profile_data_country').prepend(divisor_option);
+    jQuery('#profile_data_country').prepend(default_option);
     jQuery('#profile_data_country').val("BR");
+  }
+
+  function set_initial_form_custom_data(selectFieldChoices) {
+    set_form_count_custom_data();
+
     jQuery("#password-balloon").html(jQuery("#user_password_menssage").val());
     jQuery("#profile_data_email").parent().append(jQuery("#email_public_message").remove());
 
@@ -332,10 +378,12 @@
 
     // Event that calls the "Class" to siwtch state field types
     jQuery("#profile_data_country").change(function(){
+      if( this.value == "-1" ) jQuery(this).val("BR");
+
       if( this.value == "BR" && selectFieldChoices.actualFieldIsInput() ) {
         selectFieldChoices.setSelect();
         selectFieldChoices.setShowCity();
-      } else {
+      } else if( this.value != "BR" && !selectFieldChoices.actualFieldIsInput() ) {
         selectFieldChoices.setInput();
         selectFieldChoices.setHideCity();
       }
