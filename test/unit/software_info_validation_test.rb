@@ -43,9 +43,9 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     assert_equal true, @software_info.save
   end
 
-  should 'Not save SoftwareInfo if operating_platform is blank' do
+  should 'Save SoftwareInfo if operating_platform is blank' do
     @software_info.operating_platform = ''
-    assert_equal false, @software_info.save
+    assert_equal true, @software_info.save
   end
 
   should 'Save SoftwareInfo without demonstration_url be filled' do
@@ -64,36 +64,34 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     assert_equal false, @software_info.save
   end
 
-  should "Not save SoftwareInfo if acronym has whitespaces" do
+  should "Save SoftwareInfo if acronym has whitespaces" do
     @software_info.acronym = "AC DC"
     assert_equal false, @software_info.save
   end
 
-  should "Not save if objectives are empty" do
+  should "Save if objectives are empty" do
     @software_info.objectives = ""
 
-    assert_equal false, @software_info.save
-    assert_equal true, @software_info.errors.full_messages.include?(_("Objectives can't be blank"))
+    assert_equal true, @software_info.save
   end
 
-  should "Not save if features are empty" do
+  should "Save if features are empty" do
     @software_info.features = ""
 
-    assert_equal false, @software_info.save
-    assert_equal true, @software_info.errors.full_messages.include?(_("Features can't be blank"))
+    assert_equal true, @software_info.save
   end
 
   should "Not save if features are longer than 4000" do
     @software_info.features = "a"*4001
 
     assert_equal false, @software_info.save
-    assert_equal true, @software_info.errors.full_messages.include?(_("Features Software features is too long (maximum is 4000 characters)"))
+    assert_equal true, @software_info.errors.full_messages.include?(_("Features is too long (maximum is 4000 characters)"))
   end
 
   should "Not save if objectives are longer than  4000" do
     @software_info.objectives = "a"*4001
 
     assert_equal false, @software_info.save
-    assert_equal true, @software_info.errors.full_messages.include?(_("Objectives Software features is too long (maximum is 4000 characters)"))
+    assert_equal true, @software_info.errors.full_messages.include?(_("Objectives is too long (maximum is 4000 characters)"))
   end
 end

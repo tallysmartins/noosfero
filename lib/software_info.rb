@@ -15,6 +15,8 @@ class SoftwareInfo < ActiveRecord::Base
  has_one :software_categories
 
  validates_length_of :finality, :maximum => 100
+ validates_length_of :objectives, :maximum => 4000
+ validates_length_of :features, :maximum => 4000
  
  validate :validate_acronym
 
@@ -102,10 +104,6 @@ class SoftwareInfo < ActiveRecord::Base
       false
     end
     true
-  end
-
-  def validate_operating_platform
-    self.errors.add(:operating_platform, _("can't be blank")) if self.operating_platform.blank? && self.errors.messages[:operating_platform].nil?
   end
 
   def validate_acronym
