@@ -6,14 +6,14 @@ checkout = git clone https://github.com/colab-community/colab.git --branch pypi
 [mailman-api]
 checkout = git clone https://github.com/TracyWebTech/mailman-api.git
 
-[simplejson]
+[mailman-api/simplejson]
 checkout = git clone https://github.com/simplejson/simplejson.git
 
-[bottle]
+[mailman-api/bottle]
 checkout = git clone https://github.com/defnull/bottle.git
 
-[paste]
+[mailman-api/paste]
 checkout = hg clone http://bitbucket.org/ianb/paste
 
-[six]
+[mailman-api/paste/six]
 checkout = hg clone https://bitbucket.org/gutworth/six
