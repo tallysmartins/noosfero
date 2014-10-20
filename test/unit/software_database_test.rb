@@ -8,7 +8,7 @@ class SoftwareDatabaseTest < ActiveSupport::TestCase
     @software_database.database_description_id = 1
   end
 
-  should "save if all informations are filled" do
+  should "save if all informations of @software_database are filled" do
     assert @software_database.save, "Database should have been saved" 
   end
   
