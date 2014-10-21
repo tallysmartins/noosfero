@@ -2,6 +2,4 @@
 
 set -e
 
-# colab
-/vagrant/colab/vagrant/bootstrap.sh
-sudo -u vagrant -i /vagrant/colab/vagrant/provision.sh
+run-parts --exit-on-error /vagrant/vagrant.d
