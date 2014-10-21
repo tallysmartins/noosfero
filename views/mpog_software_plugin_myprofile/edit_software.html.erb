@@ -4,16 +4,17 @@
 
 <%= labelled_form_for :mpog_software_plugin_myprofile, :html => { :multipart => true, :id => 'edit-form' } do |f| %>
 
-<% tabs << {:title => _("Basic"), :id => 'basic-info',
+<% tabs << {:title => _("Software"), :id => 'basic-info',
   :content => (render :partial => 'main_software_editor_extras')} %>
 
-<% tabs << {:title => _("Especific"), :id => 'especific-info',
+<% tabs << {:title => _("Public Software"), :id => 'especific-info',
   :content => (render :partial => 'public_software_info')} %>
 
 <%= render_tabs(tabs) %>
 
 <% button_bar do %>
     <%= submit_button(:save, _('Save')) %>
+    <%= submit_button(:save, _('Save and Configure Community')) %>
     <%= button(:back, _('Back to control panel'), :controller => 'profile_editor') %>
 <% end %>
 <% end %>

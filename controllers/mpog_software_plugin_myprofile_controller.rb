@@ -116,7 +116,11 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
       begin
         @software_info.save!
-        redirect_to :controller => 'profile_editor', :action => 'index'
+        if params[:commit] == _('Save and Configure Community')
+          redirect_to :controller => 'profile_editor', :action => 'edit'
+        else
+          redirect_to :controller => 'profile_editor', :action => 'index'
+        end
       rescue ActiveRecord::RecordInvalid => invalid
       end
     end
