@@ -1,0 +1,3 @@
+#!/bin/sh
+
+osc checkout isv:spb:mailman-api
