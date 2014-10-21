@@ -48,6 +48,8 @@
   <%= radio_button_tag("software[intern]", true, @software_info.intern)%>
   <%= label_tag "intern_false", "No"%>
   <%= radio_button_tag("software[intern]", false, !@software_info.intern)%>
+</div>
+
 <div class="formfieldline">
   <%= label_tag "operating_platform", _("Operating Platform: ") %> <br />
   <%= text_area_tag "software[operating_platform]", @software_info.operating_platform, :cols => 40, :rows => 5%>
@@ -86,17 +88,7 @@
   <%= render :partial => 'database_fields', :locals => {:object_name => 'community', :profile => @community, :database => @list_databases } %>
 </div>
 
-<div id="software_categories_fields">
-  <h4> <%= _("Software Categories:") %> </h4>
-
-  <% @software_categories.attributes.each do |k, v| %>
-    <% if not k == "id" and not k == "software_info_id" %>
-      <%= check_box_tag "software_categories[#{k}]", "true", !v.blank? %>
-      <%= label_tag k.to_sym, _("#{k.gsub("_", " ").capitalize}") %><br />
-    <% end %>
-  <% end %>
-  <div id = "demonstration_url">
-      <%= label_tag(:demonstration_url ,_("Demonstration url:"), :class=>"formlabel") %>
-      <%= text_field_tag("software[demonstration_url]", @software_info.demonstration_url) %>
-  </div>
+<div id = "demonstration_url">
+    <%= label_tag(:demonstration_url ,_("Demonstration url:"), :class=>"formlabel") %>
+    <%= text_field_tag("software[demonstration_url]", @software_info.demonstration_url) %>
 </div>
