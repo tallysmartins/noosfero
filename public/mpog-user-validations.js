@@ -323,6 +323,8 @@
   function get_edit_fields_in_insertion_order() {
     var containers = [];
 
+    try_to_remove(containers, jQuery("h2")[0]);
+    try_to_remove(containers, jQuery(".pseudoformlabel").parent().parent());
     try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_name"));
     try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_email"));
     try_to_remove(containers, jQuery("#user_secondary_email").parent().parent());

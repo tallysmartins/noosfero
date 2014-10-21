@@ -177,7 +177,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def profile_tabs
     if context.profile.person?
-      { :title => _("Mpog"),
+      { :title => _("Secundary Information"),
         :id => 'mpog-fields',
         :content => Proc::new do render :partial => 'profile_tab' end,
         :start => true }
