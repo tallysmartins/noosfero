@@ -258,8 +258,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def calc_percentage_registration person
     required_list = profile_required_list
     empty_fields = profile_required_empty_list person
-
-    percentege = 100 - ((empty_fields.count*100)/required_list.count)
+    count = required_list[:person_fields].count + required_list[:user_fields].count
+    percentege = 100 - ((empty_fields.count*100)/count)
     person.percentage_incomplete = percentege
     person.save(validate: false)
     percentege
@@ -275,16 +275,24 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def profile_required_list
-    ["cell_phone","contact_phone","comercial_phone","country","city","state","organization_website","image"]
+    fields = Hash.new
+    fields[:person_fields] = ["cell_phone","contact_phone","comercial_phone","country","city","state","organization_website", "image", "identifier", "name"]
+    fields[:user_fields] = ["secondary_email", "email"]
+    fields
   end
 
   def profile_required_empty_list person
     empty_fields = []
     required_list = profile_required_list
 
-    required_list.each do |field|
+    required_list[:person_fields].each do |field|
       if person.send(field).blank?
         empty_fields << field.sub("_"," ") 
+      end
+    end
+    required_list[:user_fields].each do |field|
+      if person.user.send(field).blank?
+        empty_fields << field.sub("_"," ")
       end
     end
     empty_fields
