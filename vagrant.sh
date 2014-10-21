@@ -3,5 +3,5 @@
 set -e
 
 # colab
-sh /vagrant/colab/vagrant/bootstrap.sh
-sudo -u vagrant -i sh /vagrant/colab/vagrant/provision.sh
+/vagrant/colab/vagrant/bootstrap.sh
+sudo -u vagrant -i /vagrant/colab/vagrant/provision.sh
