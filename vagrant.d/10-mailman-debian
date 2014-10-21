@@ -1,0 +1,98 @@
+#!/bin/sh
+
+set -e
+
+export DEBIAN_FRONTEND=noninteractive
+
+if [ ! -f /etc/apt/sources.list.d/mailman-api.list ]; then
+  cat > /etc/apt/sources.list.d/mailman-api.list <<EOF
+deb http://download.opensuse.org/repositories/isv:/spb:/mailman-api/Debian_7.0/ ./
+deb-src http://download.opensuse.org/repositories/isv:/spb:/mailman-api/Debian_7.0/ ./
+EOF
+
+  apt-key add - <<EOF
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2.0.15 (GNU/Linux)
+
+mQENBFRE9cMBCADl9VaZi3A4u5Fy2X9FP/18xkz2U1hsklLTgvwSuFT4gDCgtvD4
+r3xAxnZ/52yLdAnrBratM1uC03WWifrCE+J5rImhiwP3itUzAGi/chmfVAuMBAVN
+7rjBpurQoEuMDwec60XmS9XJ+BrcO+MyKaLTxKwy1KN+vaIM8Z7evpFdZghXwbL6
+17ENLRbvqVs7gNtiyLQb26mNMRxTzp7vGFn4Vm2b73GrKvPC4nnUBA5FYZkSclk2
+gpYt/QSZ7qj/YQZmzx31YSSRB8BOPGlsXV2ShWTzvVXfQoZ//ViDgYUlwh5hmaJo
+f1gG6MumwJOdcfGlS2BOkddcYpNTveQ4HNQdABEBAAG0MGlzdjpzcGIgT0JTIFBy
+b2plY3QgPGlzdjpzcGJAYnVpbGQub3BlbnN1c2Uub3JnPokBPgQTAQIAKAUCVET1
+wwIbAwUJBB6wAAYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQE7yUxPVcdQmz
+yAf/VIWhDdhOnF6XsR/USY57T1gYxFP3H+KchlCfvyFRc3lczZaDVQ57WkYlw7/2
+TN2TpN6JMHPbmltD0QuQg9GSulgp1A5A6R9yWolcZ0QLkSndHcjQciZ4hHcrqO+C
+Yb8fCMFJfejJ5FcTEVCBQgnazgI9qRyPAhEFZF3OCgQ1XOoaufojPGoKYoNXBOGI
+g2phdVE1glq6ZesKMagoFURGf4pm/Muq5pjK0DbF/iVOM9uVGDWLLpfVMicYiHSF
+YbqundUK6MzFlwuLSM0lXYuaaOF6rN3Gq03FVjNE5jbCUxJZAHSYF8KLZ57Opr8R
+KVogKh7j5fixFpDoydcPkS0Md4hGBBMRAgAGBQJURPXDAAoJEDswEbdrnWUjeLkA
+oKdP1tDhp1FzMFX+MTvEM/HyupveAKCHai4jMDBsjsoVJDobCws7IBLa3g==
+=v9lx
+-----END PGP PUBLIC KEY BLOCK-----
+EOF
+  apt-get update
+fi
+
+# pre-configure postfix
+'debconf-set-selections' <<EOF
+postfix	postfix/main_mailer_type	select	Internet Site
+EOF
+
+apt-get install -qy postfix mailman mailman-api
+
+LISTS_DOMAIN=lists.local
+
+#################################################################
+# mailman-api configuration
+#################################################################
+
+# FIXME binding to 0.0.0.0 is too liberal
+cat > /etc/default/mailman-api <<EOF
+OPTIONS='--bind=0.0.0.0:8010'
+EOF
+service mailman-api restart
+
+if ! grep -q MAILMAN_API_URL /etc/colab/settings.yaml; then
+  echo "MAILMAN_API_URL: 'http://localhost:8010'" >> /etc/colab/settings.yaml
+fi
+
+#################################################################
+# mailman configuration
+#################################################################
+
+mailman_config() {
+  local key="$1"
+  local value="$2"
+  local conffile=/etc/mailman/mm_cfg.py
+  if grep -q "^$key\s*=" $conffile; then
+    sed -i -e "s/^$key\s*=.*/$key = $value/" $conffile
+  else
+    echo "$key = $value" >> $conffile
+  fi
+}
+
+mailman_config DEFAULT_EMAIL_HOST "'$LISTS_DOMAIN'"
+mailman_config MTA None
+mailman_config POSTFIX_STYLE_VIRTUAL_DOMAINS "['$LISTS_DOMAIN']"
+mailman_config DEB_LISTMASTER "'vagrant@localhost.localdomain'"
+
+# create some sample lists
+for list in list01 list02 list03; do
+  if list_lists --bare | grep "$list"; then
+    echo "$list already exists ..."
+  else
+    newlist "$list" vagrant@localhost.localdomain "pass-$list"
+    echo 'vagrant@localhost.localdomain' | add_members -r - "$list"
+  fi
+done
+
+#################################################################
+# postfix configuration
+#################################################################
+postconf relay_domains="$LISTS_DOMAIN"
+postconf transport_maps=hash:/etc/postfix/transport
+echo "$LISTS_DOMAIN		mailman:" > /etc/postfix/transport
+postmap /etc/postfix/transport
+service postfix restart
