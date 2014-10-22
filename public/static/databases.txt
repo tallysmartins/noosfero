@@ -1,176 +1,101 @@
-4th Dimension
-Adabas D
+Accumulo
+Adabas
 Aerospike
 AllegroGraph
-Alpha Five
 Altibase
-Amazon DynamoDB
-Apache Accumulo
-Apache Cassandra
-Apache CouchDB
-Apache Derby
-Apache Hbase
-Apache JENA
-Apache River
-Aster Data
-BaseX
 Berkeley DB
-BigTable
-BlackRay
-CA-Datacom
-CDB
-CSQL
-CUBRID
-Clarion
+Caché
+Cassandra
+CloudSearch
 Cloudant
-Cloudant Data Layer (CouchDB)
-Clusterpoint
-Clusterpoint XML database
-Clustrix
 Coherence
-CoreFoundation Property list
-Couchbase Server
-D3 Pick database
-DEX/Sparksee
-Daffodil database
+CouchDB
+Couchbase
+D3
+DB2
 DataEase
-Database Management Library
-Dataphor
-Datastore on Google Appengine
-Derby aka Java DB
-Dynamo
-EXASolution
-ElasticSearch
-Empress Embedded Database
+Datameer
+Db4o
+Derby
+Drizzle
+DynamoDB
+Ehcache
+Elasticsearch
+Endeca
 EnterpriseDB
-Extensible Storage Engine (ESE/NT)
-FileMaker Pro
+FileMaker
 Firebird
-FlockDB
-FoundationDB
-Freebase
-GT.M
-GemStone/S
-GigaSpaces
+GemFire
+Google BigQuery
+Google Search Appliance
 Greenplum
-GroveSite
 H2
-HSQLDB
+HBase
 Hazelcast
-Helix database
-Hibari
-Hypertable
-IBM DB2
-IBM DB2 Express-C
-IBM Informix C-ISAM
-IBM Lotus Approach
-IBM Notes and IBM Domino
-InfiniteGraph
-InfinityDB
+Hive
+HyperSQL
+IDMS
+IMS
+Infinispan
 Infobright
 Informix
 Ingres
-InterBase
-InterSystems Caché
-JADE
+Interbase
 Jackrabbit
-Keyspace
+Jena
 LevelDB
-Linter
 MariaDB
 MarkLogic
-MarkLogic Server
 MaxDB
 MemSQL
-MemcacheDB
+Memcached
 Microsoft Access
-Microsoft Jet Database Engine
+Microsoft Azure SQL Database
 Microsoft SQL Server
-Microsoft SQL Server Express
-Microsoft Visual FoxPro
-Mimer SQL
 Mnesia
-MonetDB
 MongoDB
 MySQL
-NDBM
 Neo4j
-NeoDatis ODB
 Netezza
-NexusDB
-NonStop SQL
-ODABA
-OWLIM
-Object database
-ObjectDB
-ObjectDatabase++
+NuoDB
 ObjectStore
-Objectivity/DB
-Ontotext-OWLIM
-OpenLink Virtuoso
-OpenLink Virtuoso Universal Server
-OpenOffice.org Base
-OpenQM
-Openbase
+OpenEdge
 Oracle
-Oracle NoSQL Database
-Oracle Rdb for OpenVMS
+Oracle NoSQL
 OrientDB
-Panorama
-Perst
-Pervasive PSQL
-Polyhedra
+ParAccel
+Percona Server
 PostgreSQL
-Postgres Plus Advanced Server
-Progress Software
-R:Base
-RDM Embedded
-RDM Server
-Revelation Software's OpenInsight
+RavenDB
+Red Brick
+Redis
+Redshift
+RethinkDB
 Riak
-Rocket U2
-SAND CDBMS
 SAP HANA
-SAP Sybase Adaptive Server Enterprise
-SAP Sybase IQ
 SQL Anywhere
-SQLBase
 SQLite
-ScimoreDB
 Sedna
+Sesame
 SimpleDB
-SmallSQL
 Solr
-Sones GraphDB
-SparkleDB
-Sqrrl Enterprise
-Sybase Advantage Database Server
-Tarantool
+Sparksee
+Sphinx
+Splunk
+Sybase ADS
+Sybase ASE
+Sybase IQ
 Teradata
-The SAS system
+Teradata Aster
 TimesTen
-TokuMX
-Tokyo Cabinet
-Tuple space
+Titan
 UniData
 UniVerse
-Unisys RDMS 2200
-VMDS
-Vectorwise
 Versant Object Database
 Vertica
-Virtuoso Universal Server
-WakandaDB
-XAP
-ZODB
-dBase
-db4o
-djondb
-eXist
-eXtremeDB
+Virtuoso
+VoltDB
+dBASE
+jBASE
 mSQL
-memcached
-mizanSQL
-redis
-solidDB
-txtSQL
+Other
