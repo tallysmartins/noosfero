@@ -1,4 +1,6 @@
-module ProfileHelper extend ProfileHelper
+require_dependency 'profile_helper'
+
+module ProfileHelper
   PERSON_CATEGORIES[:mpog_profile_information] = [:secondary_email, :institutions]
 
   def display_mpog_field(title, profile, field, force = false)

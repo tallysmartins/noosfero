@@ -1,5 +1,20 @@
 module PluginTestHelper
 
+  def create_community name
+    community = fast_create(Community)
+    community.name = name
+    community.save
+    community
+  end
+
+  def create_software_info name
+    community = create_community(name)
+    software_info = SoftwareInfo.new
+    software_info.community = community
+    software_info.save
+    software_info
+  end
+
   def create_public_institution name, acronym, country, state, city, juridical_nature, gov_p, gov_s
     institution = PublicInstitution.new
     institution.community = create_community_institution(name, country, state, city)
