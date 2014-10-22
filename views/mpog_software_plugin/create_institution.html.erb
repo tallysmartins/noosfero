@@ -92,7 +92,6 @@
       <br />
       
       <div>
-        <p><%= recaptcha_tags :ajax => true, :display => {:theme => 'clean'} %> </p>
         <%= link_to(_('Save'), '#', :id=>'save_institution_button', :class=>'button with-text icon-add') %>
       </div>
       <%= hidden_field_tag :institution_error_message, _("Could not send the form data to the server") %>

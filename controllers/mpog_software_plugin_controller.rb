@@ -47,20 +47,16 @@ class MpogSoftwarePluginController < ApplicationController
   end
 
   def new_institution
-    if request.xhr? and !params[:community].nil? and !params[:institution].nil? and !params[:recaptcha_response_field].nil?
+    if request.xhr? and !params[:community].nil? and !params[:institution].nil?
       response_message = {}
 
       institution = private_create_institution
 
-      response_message = if verify_recaptcha(:model=> institution, :message => _('Please type the word correctly'))
-        if institution.errors.full_messages.empty? and institution.valid? and institution.save
+      response_message = if institution.errors.full_messages.empty? and institution.valid? and institution.save
           {:success => true, :message => _("Institution successful created!"), :institution_data=>{:name=>institution.name, :id=>institution.id}}
         else
           {:success => false, :message => _("Institution could not be created!"), :errors => institution.errors.full_messages}
         end
-      else
-        {:success => false, :message=>_('Please type the image text correctly'), :errors=>[]}
-      end
 
       render :json => response_message.to_json
     else

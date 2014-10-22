@@ -65,9 +65,6 @@
           type: get_selected_institution_type(),
           acronym : jQuery("#institutions_acronym").val(),
         },
-        authenticity_token : jQuery("input[name='authenticity_token']").val(),
-        recaptcha_response_field : jQuery('#recaptcha_response_field').val(),
-        recaptcha_challenge_field : jQuery('#recaptcha_challenge_field').val()
     }
   }
 
