@@ -26,4 +26,8 @@ class CommunitiesBlock
     result.slice(0..get_limit-1)
   end
 
+  def profile_count
+    profile_list.count
+  end
+
 end
