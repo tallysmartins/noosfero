@@ -204,6 +204,12 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
+  def self.extra_blocks
+    {
+      SoftwaresBlock => {:type => [Environment, Person] }
+    }
+  end
+
   def stylesheet?
     true
   end
