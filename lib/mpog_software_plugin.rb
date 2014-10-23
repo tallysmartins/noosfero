@@ -455,6 +455,12 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
+  def self.extra_blocks
+    {
+      InstitutionsBlock => {:type => [Environment, Person]}
+    }
+  end
+
   private
 
   # Add and remove the user from it's institutions communities
