@@ -36,7 +36,7 @@ module DatabaseHelper
       ApplicationHelper
     )
 
-    return database_html_structure({:database_description_id => 1, :version => "", :operating_system => ""}) if list_databases.nil?
+    return database_html_structure({:database_description_id => "", :version => "", :operating_system => ""}) if list_databases.nil?
 
     lambdas_list = []
 
@@ -52,8 +52,8 @@ module DatabaseHelper
       content_tag('table',
         content_tag('tr',
           content_tag('td', label_tag(_("database Name: ")))+
-          content_tag('td', select_tag("database[][database_description_id]", SoftwareHelper.select_options(DatabaseDescription.all, database_data[:database_description_id]) ))+
-          content_tag('td')
+          content_tag('td', text_field_tag("database_autocomplete", "", :class=>"database_autocomplete"))+
+          content_tag('td', hidden_field_tag("database[][database_description_id]", database_data[:database_description_id], :class=>"database_description_id"))
         )+
 
         content_tag('tr',

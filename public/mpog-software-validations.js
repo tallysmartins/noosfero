@@ -1,4 +1,38 @@
 (function(){
+  function database_autocomplete() {
+    jQuery(".database_autocomplete").autocomplete({
+      source : function(request, response){
+        jQuery.ajax({
+          type: "GET",
+          url: "/plugin/mpog_software/get_databases",
+          data: {query: request.term},
+          success: function(result){
+            response(result);
+
+            /*if( result.length == 0 ) {
+              jQuery('#institution_empty_ajax_message').switchClass("hide-field", "show-field");
+            } else {
+              jQuery('#institution_empty_ajax_message').switchClass("show-field", "hide-field");
+            }*/
+          },
+          error: function(ajax, stat, errorThrown) {
+            console.log('Link not found : ' + errorThrown);
+          }
+        });
+      },
+
+      minLength: 1,
+
+      select : function (event, selected) {
+        jQuery(this)
+          .parent().parent()
+            .find(".database_description_id")
+              .val(selected.item.id);
+      }
+    });
+  }
+
+
   function delete_dynamic_table() {
     var button = jQuery(".delete-dynamic-table");
 
@@ -49,6 +83,7 @@
     var dynamic_tables = ["dynamic-databases", "dynamic-languages", "dynamic-libraries","dynamic-operating_systems"];
 
     delete_dynamic_table();
+    database_autocomplete();
 
     jQuery(".new-dynamic-table").click(function(){
       var link = jQuery(this);
@@ -63,6 +98,7 @@
       });
 
       delete_dynamic_table();
+      database_autocomplete();
       return false;
     });
 

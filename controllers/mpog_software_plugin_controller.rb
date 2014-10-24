@@ -148,6 +148,22 @@ class MpogSoftwarePluginController < ApplicationController
     render :json=>state_list.collect {|state| state.name }.to_json
   end
 
+  def get_databases
+    return render :json=>{} unless request.xhr? and params[:query]
+
+    data = DatabaseDescription.where("name ILIKE ?", "%#{params[:query]}%").collect {|db|
+      {:id=>db.id, :label=>db.name}
+    }
+    other = [DatabaseDescription.last].collect { |db|
+      {:id=>db.id, :label=>db.name}
+    }
+
+    # Always has other in the list
+    data |= other
+
+    render :json=> data
+  end
+
   protected
 
   def private_create_institution
