@@ -51,7 +51,7 @@ module DatabaseHelper
     database_name = if database_data[:database_description_id].blank?
       ""
     else
-      DatabaseDescription.find(database_data[:database_description_id]).name
+      DatabaseDescription.find(database_data[:database_description_id], :select=>"name").name
     end
 
     Proc::new do

@@ -151,10 +151,10 @@ class MpogSoftwarePluginController < ApplicationController
   def get_databases
     return render :json=>{} unless request.xhr? and params[:query]
 
-    data = DatabaseDescription.where("name ILIKE ?", "%#{params[:query]}%").collect {|db|
+    data = DatabaseDescription.where("name ILIKE ?", "%#{params[:query]}%").select("id, name").collect {|db|
       {:id=>db.id, :label=>db.name}
     }
-    other = [DatabaseDescription.last].collect { |db|
+    other = [DatabaseDescription.select("id, name").last].collect { |db|
       {:id=>db.id, :label=>db.name}
     }
 
