@@ -291,6 +291,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     percentege
   end
 
+  def admin_panel_links
+    [{:title => _('Create Institution'), :url => {:controller => 'mpog_software_plugin', :action => 'create_institution_admin'}}]
+  end
+
   protected
 
   def create_url_to_edit_profile person

@@ -46,8 +46,19 @@ class MpogSoftwarePluginController < ApplicationController
     end
   end
 
+  def create_institution_admin
+
+  end
+
+  def split_http_referer http_referer
+    split_list = []
+    split_list = http_referer.split("/")
+    return split_list.last
+  end
+
+
   def new_institution
-    if request.xhr? and !params[:community].nil? and !params[:institution].nil?
+    if !params[:community].nil? and !params[:institution].nil?
       response_message = {}
 
       institution = private_create_institution
@@ -57,8 +68,11 @@ class MpogSoftwarePluginController < ApplicationController
         else
           {:success => false, :message => _("Institution could not be created!"), :errors => institution.errors.full_messages}
         end
-
+    if request.xhr? and (split_http_referer(request.referer()) != "create_institution_admin")
       render :json => response_message.to_json
+    else
+      session[:notice] = response_message # consume the notice
+    end
     else
       redirect_to "/"
     end
