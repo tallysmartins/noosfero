@@ -5,29 +5,34 @@ class DatabaseHelperTest < ActiveSupport::TestCase
   include DatabaseHelper
 
   def setup
-    @database_objects = [{"database_description_id" => "1" ,"version" => "2.0", "operating_system" => "debian"},
-      {"database_description_id" => "2" ,"version" => "2.1", "operating_system" => "debian"},
-      {"database_description_id" => "3" ,"version" => "2.2", "operating_system" => "debian"}]
+    dd1 = DatabaseDescription.create(:name => "Oracle")
+    dd2 = DatabaseDescription.create(:name => "MySQL")
+
+    @database_objects = [
+      {:database_description_id => dd1.id.to_s ,:version => "2.0", :operating_system => "debian"},
+      {:database_description_id => dd2.id.to_s ,:version => "2.1", :operating_system => "debian"},
+      {:database_description_id => dd1.id.to_s ,:version => "2.2", :operating_system => "debian"}]
     @database_objects
   end
 
   def teardown
     @database_objects = nil
+    DatabaseDescription.destroy_all
   end
 
   should "return an empty list" do
     empty_list = []
-    assert_equal  [],DatabaseHelper.list_database(empty_list)
+    assert_equal [], DatabaseHelper.list_database(empty_list)
   end
 
   should "return a list with current database objects" do
     list_compare = []
-    assert_equal  list_compare.class, DatabaseHelper.list_database(@database_objects).class
+    assert_equal list_compare.class, DatabaseHelper.list_database(@database_objects).class
   end
 
   should "have same information from the list passed as parameter" do
     list_compare = DatabaseHelper.list_database(@database_objects)
-    assert_equal @database_objects.first[:database_description_id], list_compare.first.database_description_id
+    assert_equal @database_objects.first[:database_description_id].to_i, list_compare.first.database_description_id
   end
 
   should "return a list with the same size of the parameter" do
@@ -40,19 +45,32 @@ class DatabaseHelperTest < ActiveSupport::TestCase
     assert_equal false,DatabaseHelper.valid_list_database?(list_compare)
   end
 
- should "return a html text with operating system equals to linux" do
-      databases = []
+  should "return a html text with operating system equals to linux" do
+    databases = []
 
-      database_description = DatabaseDescription.new
-      database_description.name = "teste"
+    database_description = DatabaseDescription.new
+    database_description.name = "teste"
 
-      software_database = SoftwareDatabase.new
-      software_database.version = 2
-      software_database.operating_system = "linux"
-      software_database.database_description = database_description
+    software_database = SoftwareDatabase.new
+    software_database.version = 2
+    software_database.operating_system = "linux"
+    software_database.database_description = database_description
 
-      databases << software_database
+    databases << software_database
 
-      assert_not_nil DatabaseHelper.database_as_tables(databases).first.call.index("linux")
-    end
+    assert_not_nil DatabaseHelper.database_as_tables(databases).first.call.index("linux")
   end
+
+  should "remove invalid tables from the list" do
+    @database_objects.push({
+      :database_description_id => "I'm not a valid id",
+      :version => "2.0",
+      :operating_system => "debian"
+    })
+
+    database_objects_length = @database_objects.count
+    list_compare = DatabaseHelper.list_database(@database_objects)
+
+    assert_equal database_objects_length-1, list_compare.count
+  end
+end
