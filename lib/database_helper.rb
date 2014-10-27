@@ -5,7 +5,7 @@ module DatabaseHelper
     list_databases = []
 
     new_databases.each do |new_database|
-      unless SoftwareHelper.all_table_is_empty? new_database, ["database_description_id"]
+      unless SoftwareHelper.all_table_is_empty? new_database
         database = SoftwareDatabase.new
         database.database_description_id = new_database[:database_description_id]
         database.version = new_database[:version]
@@ -48,12 +48,21 @@ module DatabaseHelper
   end
 
   def self.database_html_structure(database_data)
+    database_name = if database_data[:database_description_id].blank?
+      ""
+    else
+      DatabaseDescription.find(database_data[:database_description_id]).name
+    end
+
     Proc::new do
       content_tag('table',
         content_tag('tr',
           content_tag('td', label_tag(_("database Name: ")))+
-          content_tag('td', text_field_tag("database_autocomplete", "", :class=>"database_autocomplete"))+
-          content_tag('td', hidden_field_tag("database[][database_description_id]", database_data[:database_description_id], :class=>"database_description_id"))
+          content_tag('td',
+            text_field_tag("database_autocomplete", database_name, :class=>"database_autocomplete") +
+            content_tag('div', _("Pick an item on the list"), :class=>"autocomplete_validation_message hide-field")
+          )+
+          content_tag('td', hidden_field_tag("database[][database_description_id]", database_data[:database_description_id], :class=>"database_description_id", data:{label:database_name}))
         )+
 
         content_tag('tr',

@@ -1,4 +1,26 @@
 (function(){
+  function get_hidden_description_field(autocomplete_field, klass) {
+    var field = jQuery(autocomplete_field);
+    field = field.parent().parent().find(klass);
+    return field;
+  }
+
+  function verify_autocomplete(field, klass) {
+    var field = jQuery(field);
+    var selected = get_hidden_description_field(field, klass);
+    var message_error = jQuery(field).parent().find(".autocomplete_validation_message");
+
+    if( field.length === 0 || selected.val().length === 0 ) {
+      message_error.removeClass("hide-field");
+      selected_value.val("");
+
+      message_error.show();
+    } else {
+      field.val(selected.attr("data-label"));
+      message_error.hide();
+    }
+  }
+
   function database_autocomplete() {
     jQuery(".database_autocomplete").autocomplete({
       source : function(request, response){
@@ -8,12 +30,6 @@
           data: {query: request.term},
           success: function(result){
             response(result);
-
-            /*if( result.length == 0 ) {
-              jQuery('#institution_empty_ajax_message').switchClass("hide-field", "show-field");
-            } else {
-              jQuery('#institution_empty_ajax_message').switchClass("show-field", "hide-field");
-            }*/
           },
           error: function(ajax, stat, errorThrown) {
             console.log('Link not found : ' + errorThrown);
@@ -24,11 +40,12 @@
       minLength: 1,
 
       select : function (event, selected) {
-        jQuery(this)
-          .parent().parent()
-            .find(".database_description_id")
-              .val(selected.item.id);
+        var description = get_hidden_description_field(this, ".database_description_id");
+        description.val(selected.item.id);
+        description.attr("data-label", selected.item.label);
       }
+    }).blur(function(){
+      verify_autocomplete(this, ".database_description_id");
     });
   }
 

@@ -156,3 +156,7 @@
   color: red;
   content: ' (*)'
 }
+
+.autocomplete_validation_message {
+  color: red;
+}
