@@ -138,6 +138,22 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         @searches[@asset] = {:results => results}
         @search = results
         render :action => :communities
+      #FIXME: Careful while merginging, this else must be the default action
+      else
+        unfiltered_list = visible_profiles(Community).select{ |com| com.name =~ /#{params[:query]}/}
+        list_without_software_and_institution = []
+        unfiltered_list.each do |p|
+          if p.class == Community and !p.software? and !p.institution?
+            list_without_software_and_institution << p
+          end
+        end
+
+        results = list_without_software_and_institution
+
+        results = results.paginate(:per_page => 24, :page => params[:page])
+        @searches[@asset] = {:results => results}
+        @search = results
+        render :action => :communities
       end
     end
 
