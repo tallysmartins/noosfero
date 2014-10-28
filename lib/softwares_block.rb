@@ -19,11 +19,11 @@ class SoftwaresBlock < CommunitiesBlock
     case owner
     when Profile
       lambda do |context|
-        link_to s_('softwares|View all'), :profile => owner.identifier, :controller => 'profile', :action => 'communities'
+        link_to s_('softwares|View all'), :profile => owner.identifier, :controller => 'profile', :action => 'communities', :type => 'Software'
       end
     when Environment
       lambda do |context|
-        link_to s_('softwares|View all'), :controller => 'search', :action => 'communities'
+        link_to s_('softwares|View all'), :controller => 'search', :action => 'communities', :type => 'Software'
       end
     else
       ''
