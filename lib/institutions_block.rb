@@ -21,11 +21,11 @@ class InstitutionsBlock < CommunitiesBlock
     case owner
     when Profile
       lambda do |context|
-        link_to s_('institutions|View all'), :profile => owner.identifier, :controller => 'profile', :action => 'communities'
+        link_to s_('institutions|View all'), :profile => owner.identifier, :controller => 'profile', :action => 'communities', :type => 'Institution'
       end
     when Environment
       lambda do |context|
-        link_to s_('institutions|View all'), :controller => 'search', :action => 'communities'
+        link_to s_('institutions|View all'), :controller => 'search', :action => 'communities', :type => 'Institution'
       end
     else
       ''

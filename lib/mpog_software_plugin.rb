@@ -161,6 +161,19 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         @search = results
         render :action => :communities
       end
+
+      if params[:type] == "Institution"
+        institutions = Institution.search_institution(params[:intitution_name])
+        communities = []
+        institutions.each do |s|
+          communities << s.community
+        end
+        results = communities
+        results = results.paginate(:per_page => 24, :page => params[:page])
+        @searches[@asset] = {:results => results}
+        @search = results
+        render :action => :communities
+      end
     end
 
     people_block = proc do
