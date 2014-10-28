@@ -128,10 +128,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     community_block = proc do
       results = []
       if params[:type] == "Software"
-        softwares = SoftwareInfo.search(params[:name], params[:database_description][:id],
-          params[:programming_language][:id], params[:operating_system][:id],
-          params[:license_info][:id], params[:e_ping], params[:e_mag], params[:internacionalizable],
-          params[:icp_brasil], params[:e_arq], params[:software_categories])
+        softwares = SoftwareInfo.search(params[:name])
         communities = []
         softwares.each do |s|
           communities << s.community

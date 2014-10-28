@@ -38,62 +38,10 @@ class SoftwareInfo < ActiveRecord::Base
       values << "%#{name}%" << "%#{name}%"
     end
 
-    unless database_description_id.blank?
-      like_sql << "software_databases.database_description_id = ? AND "
-      values << "#{database_description_id}"
-    end
-
-    unless programming_language_id.blank?
-      like_sql << "software_languages.programming_language_id = ? AND "
-      values << "#{programming_language_id}"
-    end
-
-    unless operating_system_name_id.blank?
-      like_sql << "operating_systems.operating_system_name_id = ? AND "
-      values << "#{operating_system_name_id}"
-    end
-
-    unless license_info_id.blank?
-      like_sql << "license_info_id = ? AND "
-      values << "#{license_info_id}"
-    end
-
-    unless internacionalizable.blank?
-      like_sql << "intern = ? AND "
-      values << "#{internacionalizable}"
-    end
-
-    unless icp_brasil.blank?
-      like_sql << "icp_brasil = ? AND "
-      values << "#{icp_brasil}"
-    end
-
-    unless e_ping.blank?
-      like_sql << "e_ping = ? AND "
-      values << "#{e_ping}"
-    end
-
-    unless e_mag.blank?
-      like_sql << "e_mag = ? AND "
-      values << "#{e_mag}"
-    end
-
-    unless e_arq.blank?
-      like_sql << "e_arq = ? AND "
-      values << "#{e_arq}"
-    end
-
-    unless software_categories.blank?
-      software_categories = software_categories.gsub(' ', '').underscore
-      like_sql << "software_categories.#{software_categories} = ? AND "
-      values << "true"
-    end
-
     like_sql = like_sql[0..like_sql.length-5]
 
     {
-      :joins => [:community, :software_databases, :software_languages, 
-        :operating_systems, :software_categories],
+      :joins => [:community],
       :conditions=>[like_sql, *values]
     }
   }
