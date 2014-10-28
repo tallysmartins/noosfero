@@ -35,28 +35,18 @@ EOF
   apt-get update
 fi
 
-# pre-configure postfix
+# pre-configure packages
 'debconf-set-selections' <<EOF
 postfix	postfix/main_mailer_type	select	Internet Site
+
+mailman	mailman/site_languages	multiselect	pt_BR (Brasilian Portuguese)
+mailman	mailman/default_server_language	select	pt_BR (Brasilian Portuguese)
 EOF
 
 apt-get install -qy postfix mailman mailman-api
 
 LISTS_DOMAIN=lists.local
-
-#################################################################
-# mailman-api configuration
-#################################################################
-
-# FIXME binding to 0.0.0.0 is too liberal
-cat > /etc/default/mailman-api <<EOF
-OPTIONS='--bind=0.0.0.0:8010'
-EOF
-service mailman-api restart
-
-if ! grep -q MAILMAN_API_URL /etc/colab/settings.yaml; then
-  echo "MAILMAN_API_URL: 'http://localhost:8010'" >> /etc/colab/settings.yaml
-fi
+TEST_LISTS='list01 list02 list03'
 
 #################################################################
 # mailman configuration
@@ -78,21 +68,51 @@ mailman_config MTA None
 mailman_config POSTFIX_STYLE_VIRTUAL_DOMAINS "['$LISTS_DOMAIN']"
 mailman_config DEB_LISTMASTER "'vagrant@localhost.localdomain'"
 
+# create mailman's meta-list
+sudo -u list newlist --quiet mailman vagrant@localhost.localdomain "pass-mailman"
+service mailman restart
+
 # create some sample lists
-for list in list01 list02 list03; do
+for list in $TEST_LISTS; do
   if list_lists --bare | grep "$list"; then
     echo "$list already exists ..."
   else
-    newlist "$list" vagrant@localhost.localdomain "pass-$list"
+    sudo -u list newlist --quiet "$list" vagrant@localhost.localdomain "pass-$list"
     echo 'vagrant@localhost.localdomain' | add_members -r - "$list"
   fi
 done
 
 #################################################################
+# mailman-api configuration
+#################################################################
+
+# FIXME binding to 0.0.0.0 is too liberal
+cat > /etc/default/mailman-api <<EOF
+OPTIONS='--bind=0.0.0.0:8010'
+EOF
+service mailman-api restart
+
+if ! grep -q MAILMAN_API_URL /etc/colab/settings.yaml; then
+  echo "MAILMAN_API_URL: 'http://localhost:8010'" >> /etc/colab/settings.yaml
+fi
+
+
+#################################################################
 # postfix configuration
 #################################################################
+
 postconf relay_domains="$LISTS_DOMAIN"
 postconf transport_maps=hash:/etc/postfix/transport
 echo "$LISTS_DOMAIN		mailman:" > /etc/postfix/transport
 postmap /etc/postfix/transport
 service postfix restart
+
+#################################################################
+# post a few message to each list
+#################################################################
+
+for list in $TEST_LISTS; do
+  for i in $(seq 1 10); do
+    (echo "this is a test ($i)") | mail -r vagrant@localhost.localdomain -s "test $i" "$list@lists.local"
+  done
+done
