@@ -91,10 +91,15 @@
       </span>
       <br />
 
-      <div>
-        <%= link_to(_('Save'), '#', :id=>'save_institution_button', :class=>'button with-text icon-add') %>
-      </div>
-      <%= hidden_field_tag :institution_error_message, _("Could not send the form data to the server") %>
+      <% if @url_token == "create_institution_admin" %>
+        <%= submit_button :save, _('Save') %>
+      <%else%>
+        <div>
+         <%= link_to(_('Save'), '#', :id=>'save_institution_button', :class=>'button with-text icon-add') %>
+        </div>
+        <%= hidden_field_tag :institution_error_message, _("Could not send the form data to the server") %>
+      <%end%>
+
     <% end %>
 
   <% end %>

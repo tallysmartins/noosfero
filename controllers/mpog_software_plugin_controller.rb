@@ -47,13 +47,27 @@ class MpogSoftwarePluginController < ApplicationController
   end
 
   def create_institution_admin
+    @url_token = split_http_referer request.original_url()
 
+    if request.post?
+      governmental = {}
+      juridical = {}
+      governmental[:power] = params[:institutions][:governmental_power]
+      governmental[:sphere] = params[:institutions][:governmental_sphere]
+      juridical[:nature] = params[:institutions][:juridical_nature]
+      params[:community][:country] = "BR"
+      params[:institutions].delete :governmental_power
+      params[:institutions].delete :governmental_sphere
+      params[:institutions].delete :juridical_nature
+      redirect_to :action => "new_institution", :community => params[:community], :institution => params[:institutions], :governmental => governmental, :juridical => juridical
+    end
   end
 
   def split_http_referer http_referer
     split_list = []
     split_list = http_referer.split("/")
-    return split_list.last
+    @url_token = split_list.last
+    return @url_token
   end
 
 
@@ -71,7 +85,8 @@ class MpogSoftwarePluginController < ApplicationController
     if request.xhr? and (split_http_referer(request.referer()) != "create_institution_admin")
       render :json => response_message.to_json
     else
-      session[:notice] = response_message # consume the notice
+      session[:notice] = response_message[:message] # consume the notice
+      redirect_to :controller => "/admin_panel", :action => "index"
     end
     else
       redirect_to "/"
