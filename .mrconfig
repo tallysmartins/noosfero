@@ -1,7 +1,7 @@
 [.]
 
 [colab]
-checkout = git clone https://github.com/colab-community/colab.git --branch pypi
+checkout = git clone https://github.com/colab-community/colab.git 
 
 [mailman-api]
 checkout = git clone https://github.com/TracyWebTech/mailman-api.git
@@ -18,6 +18,6 @@ checkout = hg clone http://bitbucket.org/ianb/paste
 [mailman-api/paste/six]
 checkout = hg clone https://bitbucket.org/gutworth/six
 
-[build/solr]
-checkout = wget -c http://archive.apache.org/dist/lucene/solr/4.6.1/solr-4.6.1.tgz && tar vxzf solr-4.6.1.tgz && mv solr-4.6.1 solr
+[sources/solr]
+checkout = wget -c http://archive.apache.org/dist/lucene/solr/4.6.1/solr-4.6.1.tgz 
 
