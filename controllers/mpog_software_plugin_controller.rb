@@ -141,6 +141,22 @@ class MpogSoftwarePluginController < ApplicationController
     render :json=> data
   end
 
+  def get_languages
+    return render :json=>{} unless request.xhr? and params[:query]
+
+    data = ProgrammingLanguage.where("name ILIKE ?", "%#{params[:query]}%").select("id, name").collect {|db|
+      {:id=>db.id, :label=>db.name}
+    }
+    other = [ProgrammingLanguage.select("id, name").last].collect { |db|
+      {:id=>db.id, :label=>db.name}
+    }
+
+    # Always has other in the list
+    data |= other
+
+    render :json=> data
+  end
+
   protected
 
   def private_create_institution

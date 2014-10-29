@@ -1,6 +1,6 @@
 module DatabaseHelper
 
-  def self.isValidDatabase? database
+  def self.valid_database? database
     return false if SoftwareHelper.all_table_is_empty?(database)
 
     database_description_id_list = DatabaseDescription.select(:id).collect {|dd| dd.id }
@@ -15,7 +15,7 @@ module DatabaseHelper
     list_databases = []
 
     new_databases.each do |new_database|
-      if isValidDatabase? new_database
+      if valid_database? new_database
         database = SoftwareDatabase.new
         database.database_description_id = new_database[:database_description_id]
         database.version = new_database[:version]

@@ -39,7 +39,7 @@ module SoftwareLanguageHelper
     lambdas_list = []
 
     if not show_information
-      return language_html_structure({:programming_language_id => 1, :version => "", :operating_system => ""}) if list_languages.nil?
+      return language_html_structure({:programming_language_id => "", :version => "", :operating_system => ""}) if list_languages.nil?
 
       list_languages.each do |language|
         lambdas_list << language_html_structure(language)
@@ -52,17 +52,24 @@ module SoftwareLanguageHelper
 
     end
 
-
     lambdas_list
   end
 
   def self.language_html_structure(language_data)
+    language_name = if language_data[:programming_language_id].blank?
+      ""
+    else
+      ProgrammingLanguage.find(language_data[:programming_language_id], :select=>"name").name
+    end
+
     Proc::new do
       content_tag('table',
         content_tag('tr',
           content_tag('td', label_tag(_("Language Name: ")))+
-          content_tag('td', select_tag("language[][programming_language_id]", SoftwareHelper.select_options(ProgrammingLanguage.all, language_data[:programming_language_id]) ))+
-          content_tag('td')
+          content_tag('td',
+            text_field_tag("language_autocomplete", language_name, :class=>"language_autocomplete") +
+            content_tag('div', _("Pick an item on the list"), :class=>"autocomplete_validation_message hide-field") ) +
+          content_tag('td', hidden_field_tag("language[][programming_language_id]", language_data[:programming_language_id], :class=>"programming_language_id", data:{label:language_name}))
         )+
 
         content_tag('tr',

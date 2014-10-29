@@ -30,9 +30,6 @@
           data: {query: request.term},
           success: function(result){
             response(result);
-          },
-          error: function(ajax, stat, errorThrown) {
-            console.log('Link not found : ' + errorThrown);
           }
         });
       },
@@ -49,6 +46,31 @@
     });
   }
 
+
+  function language_autocomplete() {
+    jQuery(".language_autocomplete").autocomplete({
+      source : function(request, response){
+        jQuery.ajax({
+          type: "GET",
+          url: "/plugin/mpog_software/get_languages",
+          data: {query: request.term},
+          success: function(result){
+            response(result);
+          }
+        });
+      },
+
+      minLength: 0,
+
+      select : function (event, selected) {
+        var description = get_hidden_description_field(this, ".programming_language_id");
+        description.val(selected.item.id);
+        description.attr("data-label", selected.item.label);
+      }
+    }).blur(function(){
+      verify_autocomplete(this, ".programming_language_id");
+    });
+  }
 
   function delete_dynamic_table() {
     var button = jQuery(".delete-dynamic-table");
@@ -101,6 +123,7 @@
 
     delete_dynamic_table();
     database_autocomplete();
+    language_autocomplete();
 
     jQuery(".new-dynamic-table").click(function(){
       var link = jQuery(this);
@@ -116,6 +139,7 @@
 
       delete_dynamic_table();
       database_autocomplete();
+      language_autocomplete();
       return false;
     });
 
