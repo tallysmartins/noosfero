@@ -1,7 +1,10 @@
 [.]
 
 [colab]
-checkout = git clone https://github.com/colab-community/colab.git
+checkout = git clone http://beta.softwarepublico.gov.br/gitlab/softwarepublico/colab.git
+
+[colab-deps-src]
+checkout = git clone http://beta.softwarepublico.gov.br/gitlab/softwarepublico/colab-deps-src.git
 
 [mailman-api]
 checkout = git clone https://github.com/TracyWebTech/mailman-api.git
