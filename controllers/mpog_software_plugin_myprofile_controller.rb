@@ -24,7 +24,6 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
    valid_license = (request.post? && @license_info.valid?)
    if valid_software_info && valid_license && valid_community
     @community = Community.create_after_moderation(user, {:environment => environment}.merge(params[:community]), @software_info, @license_info )
-    redirect_to :controller => 'mpog_software_plugin_myprofile', :action => 'edit_software', :profile => @community.identifier
 
      unless params[:q].nil?
        admins = params[:q].split(/,/).map{|n| environment.people.find n.to_i}
@@ -35,6 +34,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
        end
      end
 
+     redirect_to :controller => 'profile_editor', :action => 'edit', :profile => @community.identifier
    else
    #  @list_libraries.each do |lib|
    #    @errors |= lib.errors.full_messages
