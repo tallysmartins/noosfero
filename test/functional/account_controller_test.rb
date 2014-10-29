@@ -40,11 +40,11 @@ class AccountControllerTest < ActionController::TestCase
     }
 
     @profile_data_info = {
-      :name=>"Um novo usuario",
+      :name=>"Um Novo Usuario",
     }
 
     @second_profile_data_info = {
-      :name=>"Um outro usuario",
+      :name=>"Um Outro Usuario",
     }
     disable_signup_bot_check
   end
