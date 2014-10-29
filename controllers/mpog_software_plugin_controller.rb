@@ -125,29 +125,23 @@ class MpogSoftwarePluginController < ApplicationController
     render :json=>state_list.collect {|state| state.name }.to_json
   end
 
-  def get_databases
-    return render :json=>{} unless request.xhr? and params[:query]
+  def get_field_data
+    return render :json=>{} if !request.xhr? or params[:query].nil? or params[:field].nil?
 
-    data = DatabaseDescription.where("name ILIKE ?", "%#{params[:query]}%").select("id, name").collect {|db|
+    model = nil
+    case params[:field]
+      when "database"
+        model = DatabaseDescription
+      when "software_language"
+        model = ProgrammingLanguage
+      else
+        model = DatabaseDescription
+    end
+
+    data = model.where("name ILIKE ?", "%#{params[:query]}%").select("id, name").collect {|db|
       {:id=>db.id, :label=>db.name}
     }
-    other = [DatabaseDescription.select("id, name").last].collect { |db|
-      {:id=>db.id, :label=>db.name}
-    }
-
-    # Always has other in the list
-    data |= other
-
-    render :json=> data
-  end
-
-  def get_languages
-    return render :json=>{} unless request.xhr? and params[:query]
-
-    data = ProgrammingLanguage.where("name ILIKE ?", "%#{params[:query]}%").select("id, name").collect {|db|
-      {:id=>db.id, :label=>db.name}
-    }
-    other = [ProgrammingLanguage.select("id, name").last].collect { |db|
+    other = [model.select("id, name").last].collect { |db|
       {:id=>db.id, :label=>db.name}
     }
 

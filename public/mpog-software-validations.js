@@ -22,38 +22,21 @@
   }
 
   function database_autocomplete() {
-    jQuery(".database_autocomplete").autocomplete({
-      source : function(request, response){
-        jQuery.ajax({
-          type: "GET",
-          url: "/plugin/mpog_software/get_databases",
-          data: {query: request.term},
-          success: function(result){
-            response(result);
-          }
-        });
-      },
-
-      minLength: 1,
-
-      select : function (event, selected) {
-        var description = get_hidden_description_field(this, ".database_description_id");
-        description.val(selected.item.id);
-        description.attr("data-label", selected.item.label);
-      }
-    }).blur(function(){
-      verify_autocomplete(this, ".database_description_id");
-    });
+    enable_autocomplete("database", ".database_description_id", ".database_autocomplete");
   }
 
 
   function language_autocomplete() {
-    jQuery(".language_autocomplete").autocomplete({
+    enable_autocomplete("software_language", ".programming_language_id", ".language_autocomplete");
+  }
+
+  function enable_autocomplete(field_name, field_value_class, autocomplete_class) {
+    jQuery(autocomplete_class).autocomplete({
       source : function(request, response){
         jQuery.ajax({
           type: "GET",
-          url: "/plugin/mpog_software/get_languages",
-          data: {query: request.term},
+          url: "/plugin/mpog_software/get_field_data",
+          data: {query: request.term, field: field_name},
           success: function(result){
             response(result);
           }
@@ -63,12 +46,12 @@
       minLength: 0,
 
       select : function (event, selected) {
-        var description = get_hidden_description_field(this, ".programming_language_id");
+        var description = get_hidden_description_field(this, field_value_class);
         description.val(selected.item.id);
         description.attr("data-label", selected.item.label);
       }
     }).blur(function(){
-      verify_autocomplete(this, ".programming_language_id");
+      verify_autocomplete(this, field_value_class);
     });
   }
 
