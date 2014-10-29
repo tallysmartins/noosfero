@@ -1,3 +1,4 @@
 #!/bin/sh
 
 osc checkout isv:spb:mailman-api
+osc checkout isv:spb:colab
