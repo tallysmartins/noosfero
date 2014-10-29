@@ -98,9 +98,3 @@
  </tr>
  </tr>
 </table>
-
-<% if profile.admins.include? current_person %>
-  <%= label_tag _("Deactivate Software: ") %>
-  <%= button_without_text :'deactivate-user', _('Deactivate software'), {:controller => "mpog_software_plugin", :action => 'deactivate', :id => profile.software_info.id, :q => @q, :from_profile => true}, :filter => @filter, :confirm => _("Do you want to deactivate this software?") %>
-<% end %>
-

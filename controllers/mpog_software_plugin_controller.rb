@@ -2,29 +2,6 @@ require 'csv'
 class MpogSoftwarePluginController < ApplicationController
   include InstitutionHelper
 
-  def archive_software
-    per_page = 10
-    scope = SoftwareInfo
-    @q = params[:q]
-    @collection = find_by_contents(:community, scope, @q, {:per_page => per_page, :page => params[:npage]})[:results]
-  end
-
-  def deactivate
-   community = SoftwareInfo.find(params[:id]).community_id
-   Community.find(community).deactivate
-   if params[:from_profile]
-      redirect_to :back
-   else
-      redirect_to :action => 'archive_software'
-   end
-  end
-
-  def activate
-   community = SoftwareInfo.find(params[:id]).community_id
-   Community.find(community).activate
-   redirect_to :action => 'archive_software'
-  end
-
   def check_reactivate_account
     if request.xhr? and params[:email]
       result = ""
