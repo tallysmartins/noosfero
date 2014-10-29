@@ -1,11 +1,21 @@
 module SoftwareLanguageHelper
 
+  def self.valid_language? language
+    return false if SoftwareHelper.all_table_is_empty?(language)
+
+    programming_language_id_list = ProgrammingLanguage.select(:id).collect {|dd| dd.id }
+
+    return false unless programming_language_id_list.include?(language[:programming_language_id].to_i)
+
+    true
+  end
+
   def self.list_language new_languages
     return [] if new_languages.nil? or new_languages.length == 0
     list_languages = []
 
     new_languages.each do |new_language|
-      unless SoftwareHelper.all_table_is_empty? new_language, ["programming_language_id"]
+      if valid_language? new_language
         language = SoftwareLanguage.new
         language.programming_language = ProgrammingLanguage.find(new_language[:programming_language_id])
         language.version = new_language[:version]
@@ -17,7 +27,7 @@ module SoftwareLanguageHelper
     list_languages
   end
 
-    def self.valid_list_language? list_languages
+  def self.valid_list_language? list_languages
     return false if list_languages.nil? or list_languages.length == 0
 
     list_languages.each do |language|
