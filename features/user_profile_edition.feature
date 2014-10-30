@@ -15,31 +15,17 @@ Feature: Institution Field
     And I check "person_fields_state_active"
     And I check "person_fields_city_active"
     And I press "Save changes"
-    And I go to /account/logout
     And Institutions has initial default values on database
     And the following public institutions
       | name                       | acronym | country | state | city       | cnpj               | juridical_nature | governmental_power | governmental_sphere |
       | Ministerio das Cidades     | MC      | BR      | DF    | Gama       | 58.745.189/0001-21 | Autarquia        | Executivo          | Federal             |
       | Governo do DF              | GDF     | BR      | DF    | Taguatinga | 12.645.166/0001-44 | Autarquia        | Legislativo        | Federal             |
       | Ministerio do Planejamento | MP      | BR      | DF    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             |
-    And I go to /account/signup
-    And Institutions has initial default values on database
-    And I fill in the following within ".no-boxes":
-      | e-Mail                | josesilva@nowitgo.com|
-      | Username              | josesilva              |
-      | Password              | secret                 |
-      | Password confirmation | secret                 |
-      | Full name             | José da Silva          |
-      | Secondary e-Mail      | josesilva@example.com  |
-    And wait for the captcha signup time
-    And I follow "Add new institution"
-    And I press "Create my account"
-    Then José da Silva's account is activated
+    And I am logged in as mpog_admin
 
   @selenium
   Scenario: Add more then one instituion on profile editor
-    Given I am on josesilva's control panel
-    And I follow "Edit Profile"
+    Given I follow "Edit Profile"
     And I follow "Add new institution"
     And I type in "Minis" into autocomplete list "input_institution" and I choose "Ministerio do Planejamento"
     And I follow "Add new institution"
@@ -50,27 +36,23 @@ Feature: Institution Field
 
   @selenium
   Scenario: Verify text information to use governmental e-mail
-    Given I am on josesilva's control panel
-    And I follow "Edit Profile"
+    Given I follow "Edit Profile"
     Then I should see "If you work in a public agency use your government e-Mail"
 
   @selenium
   Scenario: Verify if field 'city' is shown when Brazil is selected
-    Given I am on josesilva's control panel
-    And I follow "Edit Profile"
+    Given I follow "Edit Profile"
     Then I should see "City"
 
   @selenium
   Scenario: Verify if field 'city' does not appear when Brazil is not selected as country
-    Given I am on josesilva's control panel
-    When I follow "Edit Profile"
-    And I select "United States" from "profile_data_country"
+    Given I follow "Edit Profile"
+    When I select "United States" from "profile_data_country"
     Then I should not see "City" within ".type-text"
 
   @selenium
   Scenario: Show message of institution not found
-    Given I am on josesilva's control panel
-    And I follow "Edit Profile"
+    Given I follow "Edit Profile"
     And I fill in "input_institution" with "Some Nonexistent Institution"
     And I sleep for 1 seconds
     Then I should see "No institution found"

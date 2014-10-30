@@ -5,7 +5,7 @@ Feature: deactivate user
 
   Background:
     Given "MpogSoftwarePlugin" plugin is enabled
-    And I am logged in as admin
+    And I am logged in as mpog_admin
     And I go to /admin/plugins
     And I check "MpogSoftwarePlugin"
     And I press "Save changes"

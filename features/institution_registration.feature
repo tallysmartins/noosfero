@@ -5,16 +5,16 @@ Feature: Institution Field
 
   Background:
     Given "MpogSoftwarePlugin" plugin is enabled
-    And I am logged in as admin
+    And I am logged in as mpog_admin
     And I go to /admin/plugins
     And I check "MpogSoftwarePlugin"
     And I press "Save changes"
-    And I go to /account/logout
     And Institutions has initial default values on database
+    And I am logged in as mpog_admin
 
   @selenium
   Scenario: Show new institution fields when clicked in create new institution
-    Given I go to /account/signup
+    Given I follow "Edit Profile"
     When I follow "Create new institution"
     And I should see "New Institution"
     And I should see "Name"
@@ -30,7 +30,7 @@ Feature: Institution Field
 
    @selenium
    Scenario: Show new institution fields when private institution is selected
-    Given I go to /account/signup
+    Given I follow "Edit Profile"
     When I follow "Create new institution"
     And I should see "New Institution"
     And I should see "Name"
@@ -44,7 +44,7 @@ Feature: Institution Field
 
   @selenium
   Scenario: Create new public institution when all required fields are filled.
-    Given I go to /account/signup
+    Given I follow "Edit Profile"
     When I follow "Create new institution"
     And I fill in "community_name" with "Institution Name"
     And I fill in "institutions_cnpj" with "00.000.000/0001-00"
@@ -60,7 +60,7 @@ Feature: Institution Field
 
   @selenium
   Scenario: Create new private institution when all required fields are filled
-    Given I go to /account/signup
+    Given I follow "Edit Profile"
     When I follow "Create new institution"
     And I fill in "community_name" with "Institution Name"
     And I fill in "institutions_cnpj" with "00.000.000/0001-00"
@@ -73,7 +73,7 @@ Feature: Institution Field
       
   @selenium
   Scenario: Don't create an institution when name and cpnj are not filled
-    Given I go to /account/signup
+    Given I follow "Edit Profile"
     When I follow "Create new institution"
     And I choose "Private Institution"
     And I fill in "institutions_acronym" with "Teste"
@@ -82,12 +82,10 @@ Feature: Institution Field
     And I fill in "community_city" with "Brasilia"
     And I follow "Save"
     Then I should see "Institution could not be created!"
-    And I should see "Name can't be blank"
-    And I should see "CNPJ can't be blank"
 
   @selenium
   Scenario: Don't Create new institution when a governamental field is not filled
-    Given I go to /account/signup
+    Given I follow "Edit Profile"
     When I follow "Create new institution"
     And I fill in "community_name" with "Institution Name"
     And I fill in "institutions_cnpj" with "00.000.000/0001-00"
@@ -96,22 +94,12 @@ Feature: Institution Field
     And I fill in "community_city" with "Brasilia"
     And I choose "Public Institution"
     And I follow "Save"
-    Then I should see "Governmental power can't be blank"
-    And I should see "Governmental sphere can't be blank"
-    And I should see "Juridical nature can't be blank"
+    Then I should see "Institution could not be created!"
 
   @selenium
   Scenario: Don't Create new institution when no field is filled
-    Given I go to /account/signup
+    Given I follow "Edit Profile"
     When I follow "Create new institution"
     And I choose "Public Institution"
     And I follow "Save"
     Then I should see "Institution could not be created!"
-    And I should see "Name can't be blank"
-    And I should see "Country can't be blank"
-    And I should see "State can't be blank"
-    And I should see "City can't be blank"
-    And I should see "Governmental power can't be blank"
-    And I should see "Governmental sphere can't be blank"
-    And I should see "Juridical nature can't be blank"
-    And I should see "CNPJ can't be blank"
