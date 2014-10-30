@@ -11,6 +11,12 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
   def new_software
     @errors = []
+
+    software_template = Community["software"]
+    if (!software_template.blank? && software_template.is_template)
+      params["community"]["template_id"] = software_template.id unless params["community"].blank?
+    end
+
     @community = Community.new(params[:community])
     @community.environment = environment
     @software_info = SoftwareInfo.new(params[:software_info])
@@ -22,20 +28,20 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
    valid_community = request.post? && @community.valid?
    valid_software_info = request.post? && @software_info.valid?
    valid_license = (request.post? && @license_info.valid?)
-   if valid_software_info && valid_license && valid_community
-    @community = Community.create_after_moderation(user, {:environment => environment}.merge(params[:community]), @software_info, @license_info )
+    if valid_software_info && valid_license && valid_community
+      @community = Community.create_after_moderation(user, {:environment => environment}.merge(params[:community]), @software_info, @license_info )
 
-     unless params[:q].nil?
-       admins = params[:q].split(/,/).map{|n| environment.people.find n.to_i}
+      unless params[:q].nil?
+        admins = params[:q].split(/,/).map{|n| environment.people.find n.to_i}
 
-       admins.each do |admin|
-         @community.add_member(admin)
-         @community.add_admin(admin)
-       end
-     end
+        admins.each do |admin|
+          @community.add_member(admin)
+          @community.add_admin(admin)
+        end
+      end
 
-     redirect_to :controller => 'profile_editor', :action => 'edit', :profile => @community.identifier
-   else
+      redirect_to :controller => 'profile_editor', :action => 'edit', :profile => @community.identifier
+    else
    #  @list_libraries.each do |lib|
    #    @errors |= lib.errors.full_messages
    #  end
