@@ -36,6 +36,14 @@
         <%= link_to(_("#{block.owner.name} profile"), {:controller => 'profile', :action => "index", :profile => block.owner.identifier}) %>
       </td>
     </tr>
+    <% unless block.owner.software_info.repository_link.blank? %>
+      <tr>
+        <td colspan="2">
+          <%= _("Main repository: ") %>
+          <%= link_to block.owner.software_info.repository_link, block.owner.software_info.repository_link %>
+        </td>
+      </tr>
+    <% end %>
     <tr>
       <td>
         <i>
