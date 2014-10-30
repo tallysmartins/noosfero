@@ -3,11 +3,16 @@
 set -e
 
 if [ -x /usr/bin/apt-get ]; then
-  regex='debian|generic'
+  os='debian'
 fi
 
 if [ -x /usr/bin/yum ]; then
-  regex='centos|generic'
+  os='centos'
 fi
 
-run-parts --exit-on-error --regex="$regex" /vagrant/vagrant.d
+for script in $(find /vagrant/vagrant.d -name '*-generic' -or -name "*-$os" | sort); do
+  (
+    set -x
+    $script
+  )
+done
