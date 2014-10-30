@@ -48,19 +48,6 @@ class MpogSoftwarePluginController < ApplicationController
 
   def create_institution_admin
     @url_token = split_http_referer request.original_url()
-
-    if request.post?
-      governmental = {}
-      juridical = {}
-      governmental[:power] = params[:institutions][:governmental_power]
-      governmental[:sphere] = params[:institutions][:governmental_sphere]
-      juridical[:nature] = params[:institutions][:juridical_nature]
-      params[:community][:country] = "BR"
-      params[:institutions].delete :governmental_power
-      params[:institutions].delete :governmental_sphere
-      params[:institutions].delete :juridical_nature
-      redirect_to :action => "new_institution", :community => params[:community], :institution => params[:institutions], :governmental => governmental, :juridical => juridical
-    end
   end
 
   def split_http_referer http_referer
@@ -70,24 +57,24 @@ class MpogSoftwarePluginController < ApplicationController
     return @url_token
   end
 
-
   def new_institution
-    if !params[:community].nil? and !params[:institution].nil?
+    if !params[:community].nil? and !params[:institutions].nil?
       response_message = {}
 
       institution = private_create_institution
 
       response_message = if institution.errors.full_messages.empty? and institution.valid? and institution.save
-          {:success => true, :message => _("Institution successful created!"), :institution_data=>{:name=>institution.name, :id=>institution.id}}
-        else
-          {:success => false, :message => _("Institution could not be created!"), :errors => institution.errors.full_messages}
-        end
-    if request.xhr? and (split_http_referer(request.referer()) != "create_institution_admin")
-      render :json => response_message.to_json
-    else
-      session[:notice] = response_message[:message] # consume the notice
-      redirect_to :controller => "/admin_panel", :action => "index"
-    end
+        {:success => true, :message => _("Institution successful created!"), :institution_data=>{:name=>institution.name, :id=>institution.id}}
+      else
+        {:success => false, :message => _("Institution could not be created!"), :errors => institution.errors.full_messages}
+      end
+
+      if request.xhr?
+        render :json => response_message.to_json
+      else
+        session[:notice] = response_message[:message] # consume the notice
+        redirect_to :controller => "/admin_panel", :action => "index"
+      end
     else
       redirect_to "/"
     end
@@ -182,10 +169,10 @@ class MpogSoftwarePluginController < ApplicationController
     community = Community.new(params[:community])
     community.environment = environment
 
-    institution = if params[:institution][:type] == "PublicInstitution"
-      PublicInstitution::new params[:institution]
+    institution = if params[:institutions][:type] == "PublicInstitution"
+      PublicInstitution::new params[:institutions].except(:governmental_power, :governmental_sphere, :juridical_nature)
     else
-      PrivateInstitution::new params[:institution]
+      PrivateInstitution::new params[:institutions].except(:governmental_power, :governmental_sphere, :juridical_nature)
     end
 
     institution.name = community[:name]
@@ -193,9 +180,9 @@ class MpogSoftwarePluginController < ApplicationController
 
     if institution.type == "PublicInstitution"
       begin
-        govPower = GovernmentalPower.find params[:governmental][:power]
-        govSphere = GovernmentalSphere.find params[:governmental][:sphere]
-        jur_nature = JuridicalNature.find params[:juridical][:nature]
+        govPower = GovernmentalPower.find params[:institutions][:governmental_power]
+        govSphere = GovernmentalSphere.find params[:institutions][:governmental_sphere]
+        jur_nature = JuridicalNature.find params[:institutions][:juridical_nature]
 
         institution.juridical_nature = jur_nature
         institution.governmental_power = govPower
@@ -211,7 +198,7 @@ class MpogSoftwarePluginController < ApplicationController
     end
 
     InstitutionHelper.register_institution_modification institution
-    
+
     institution
   end
 

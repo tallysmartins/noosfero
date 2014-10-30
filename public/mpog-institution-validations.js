@@ -32,38 +32,21 @@
     jQuery("#institutions_governmental_sphere option").selected(0);
   }
 
-  function get_selected_institution_type() {
-    var radio_buttons = jQuery("input[type='radio'][name='type']");
-    var type = "";
-
-    for( var i = 0; i < radio_buttons.length; i++ ) {
-      if( radio_buttons[i].checked ) {
-        type = radio_buttons[i].value;
-        break;
-      }
-    }
-
-    return type;
-  }
-
   function get_post_data() {
     return {
-        community : { name : jQuery("#community_name").val(),
+        community : {
+          name : jQuery("#community_name").val(),
           country : jQuery("#community_country").val(),
           state : jQuery("#community_state").val(),
           city : jQuery("#community_city").val()
         },
-        governmental : {
-          power : jQuery("#institutions_governmental_power").selected().val(),
-          sphere : jQuery("#institutions_governmental_sphere").selected().val()
-        },
-        juridical : {
-          nature : jQuery("#institutions_juridical_nature").selected().val()
-        },
-        institution : {
+        institutions : {
           cnpj: jQuery("#institutions_cnpj").val(),
-          type: get_selected_institution_type(),
+          type: jQuery("input[name='institutions[type]']:checked").val(),
           acronym : jQuery("#institutions_acronym").val(),
+          governmental_power: jQuery("#institutions_governmental_power").selected().val(),
+          governmental_sphere: jQuery("#institutions_governmental_sphere").selected().val(),
+          juridical_nature: jQuery("#institutions_juridical_nature").selected().val()
         },
     }
   }
@@ -204,9 +187,12 @@
     
     jQuery("#create_institution_link").click(open_create_institution_modal);
 
-    jQuery("#type_PrivateInstitution").click(show_private_institutions_fields);
-
-    jQuery("#type_PublicInstitution").click(show_public_institutions_fields);
+    jQuery("input[type='radio']").click(function(){
+      if( this.value == "PublicInstitution" )
+        show_public_institutions_fields();
+      else
+        show_private_institutions_fields();
+    });
 
     jQuery('#save_institution_button').click(save_institution);
 

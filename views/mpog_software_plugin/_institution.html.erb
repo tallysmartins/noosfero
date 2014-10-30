@@ -20,11 +20,11 @@
 <div id = 'create_institution_errors' class='errorExplanation hide-field'></div>
 
 <div>
-  <%= labelled_form_for :community, :html => { :multipart => true, :id=>"institution_form" } do |f| %>
+  <%= labelled_form_for :community, :url => {:action=>"new_institution"}, :html => { :multipart => true, :id=>"institution_form" } do |f| %>
     <%= required f.text_field(:name) %>
     <%= content_tag :span, _("Institution name already exists"), :id=>"already_exists_text", :class=>"errorExplanation hide-field" %>
 
-    <%= required select_country(_('Country'), f, 'country', {:class => 'type-select', :id => "community_country"}) %>
+    <%= required select_country(_('Country'), 'community', 'country', {:class => 'type-select', :id => "community_country"}) %>
     <%= required f.text_field(:state) %>
     <%= required f.text_field(:city) %>
 
@@ -39,10 +39,14 @@
 
       <span class=''>
         <div class='formfield type-radio'>
-          <%= label_tag("type_PublicInstitution", _("Public Institution")) %>
-          <%= radio_button_tag(:type,"PublicInstitution", true)%>
-          <%= label_tag("type_PrivateInstitution", _("Private Institution")) %>
-          <%= radio_button_tag(:type,"PrivateInstitution")%>
+          <label> <%= _("Public Institution") %>
+            <%= radio_button_tag("institutions[type]", "PublicInstitution", true) %>
+          </label>
+
+          <label>
+            <%= _("Private Institution") %>
+            <%= radio_button_tag("institutions[type]" ,"PrivateInstitution")%>
+          </label>
         </div>
       </span>
 
