@@ -6,7 +6,7 @@
 <% else %>
   <table id="software-information-block-table">
     <tr>
-      <td>
+      <td width="30%" id="col-profile-big-image">
         <div class="profile-big-image">
           <div class="profile-big-image-inner1">
             <span class="profile-big-image-inner2">
@@ -15,7 +15,7 @@
           </div>
         </div>
       </td>
-      <td>
+      <td width="70%" id="col-software-name">
         <h1>
           <%= _("#{block.owner.software_info.acronym} - ") unless block.owner.software_info.acronym.blank? %>
           <%= _("#{block.owner.name}") %>
