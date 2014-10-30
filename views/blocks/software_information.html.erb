@@ -12,6 +12,9 @@
             <span class="profile-big-image-inner2">
               <%= link_to profile_image(block.owner, :big) +"\n", profile.url %>
             </span>
+            <div class='admin-link'>
+              <%= link_to _('Control panel'), block.owner.admin_url %>
+            </div>
           </div>
         </div>
       </td>
