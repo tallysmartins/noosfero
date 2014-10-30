@@ -53,6 +53,15 @@
 
     </div>
   <% end %>
+
+
+    <%= fields_for @software_info do |swf| %>
+      <div class="formfieldline formfield type-text">
+        <%= swf.label "repository_url", _("Link to Repository: ") , :class => "formlabel"%>
+        <%= swf.text_field :repository_link %>
+      </div>
+    <% end %>
+
     <%= template_options(:communities, 'community')%>
 
     <%= hidden_field_tag('back_to', @back_to) %>
