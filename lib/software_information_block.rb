@@ -1,5 +1,9 @@
 class SoftwareInformationBlock < Block
 
+  attr_accessible :show_name
+
+  settings_items :show_name, :type => :boolean, :default => false
+
   def self.description
     _('Basic Software Information')
   end
