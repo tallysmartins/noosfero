@@ -77,7 +77,7 @@ module SoftwareLanguageHelper
         content_tag('tr',
           content_tag('td', label_tag(_("Language Name: ")))+
           content_tag('td',
-            text_field_tag("language_autocomplete", language_name, :class=>"language_autocomplete") +
+            text_field_tag("language_autocomplete", language_name, :class=>"language_autocomplete", :placeholder=>_("Autocomplete field, type something")) +
             content_tag('div', _("Pick an item on the list"), :class=>"autocomplete_validation_message hide-field") ) +
           content_tag('td', hidden_field_tag("language[][programming_language_id]", language_data[:programming_language_id], :class=>"programming_language_id", data:{label:language_name}))
         )+

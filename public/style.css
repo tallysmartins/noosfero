@@ -37,6 +37,9 @@
 .dynamic-table td, .dynamic-table tr {
   border: none;
 }
+.dynamic-table input {
+  width: 220px;
+}
 
 .mpog-incomplete-percentage img {
   margin-left: 5px;

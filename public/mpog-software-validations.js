@@ -52,6 +52,8 @@
       }
     }).blur(function(){
       verify_autocomplete(this, field_value_class);
+    }).click(function(){
+      jQuery(this).autocomplete("search", "");
     });
   }
 

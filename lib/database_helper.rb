@@ -69,7 +69,7 @@ module DatabaseHelper
         content_tag('tr',
           content_tag('td', label_tag(_("database Name: ")))+
           content_tag('td',
-            text_field_tag("database_autocomplete", database_name, :class=>"database_autocomplete") +
+            text_field_tag("database_autocomplete", database_name, :class=>"database_autocomplete", :placeholder=>_("Autocomplete field, type something")) +
             content_tag('div', _("Pick an item on the list"), :class=>"autocomplete_validation_message hide-field")
           )+
           content_tag('td', hidden_field_tag("database[][database_description_id]", database_data[:database_description_id], :class=>"database_description_id", data:{label:database_name}))
