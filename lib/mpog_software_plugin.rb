@@ -219,7 +219,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def self.extra_blocks
     {
-      SoftwaresBlock => {:type => [Environment, Person] }
+      SoftwaresBlock => {:type => [Environment, Person] },
+      SoftwareInformationBlock => {:type => [Community] }
     }
   end
 
