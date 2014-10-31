@@ -16,6 +16,12 @@
 
 /****************** FIM cabecalho azul ****************/
 
+/****************** Block Agenda ********************/
+@import url(agenda.css);
+
+/****************** Block Redes Sociais ********************/
+@import url(redes_sociais.css);
+
 
 @import url(../../icons/tango/style.css);
 
@@ -1059,8 +1065,7 @@ div#article-parent {
 }
 
 .formfield input, .formfield textarea{
-    /*background: url("../images/input-bg.gif") no-repeat scroll left top transparent;*/
-    background-image: none;
+    background: none #FFFFFF;
     border: 1px solid #DDDDDD;
     color: #585858;
     font-size: 16px;
@@ -1080,6 +1085,11 @@ div#article-parent {
 
 .search-field .formfield, .search-field .formfield input {
      margin-right: 0.5em;
+}
+
+
+.formfieldline input[type="text"] {
+	width: 300px;
 }
 
 #search-page form.search_form input.icon-search {
