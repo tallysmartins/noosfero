@@ -1,0 +1,41 @@
+.ui-widget-header
+{
+	background: none;
+	border: 0px solid #aaaaaa;
+	color: none;
+	font-weight: bold;
+}
+.ui-tabs .ui-tabs-panel
+{
+	background-color: #eeeff1;
+	border-width: 1px;
+	color: #777;
+	display: block;
+	font-size: 13px;
+	padding: 1em 1.4em;
+	text-decoration: none;
+}
+.ui-tabs .ui-tabs-nav
+{
+	margin: 0;
+	padding: 0;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default
+{
+	background: #d5d5d5 none;
+	border: 1px solid #d4d5d7;
+	color: #555555;
+	font-weight: normal;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active
+{
+	background: #eeeff1 none;
+	background-color: #eeeff1;
+	border: 1px solid #aaaaaa;
+	color: #212121;
+	font-weight: normal;
+}
+.ui-widget-content
+{
+	border: 0px solid #aaaaaa;
+}
