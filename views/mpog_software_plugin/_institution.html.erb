@@ -6,11 +6,11 @@
   </div>
 <%end %>
 
-<% unless @errors.blank? %>
+<% unless flash[:errors].nil? %>
 <div class="errorExplanation" id="errorExplanation">
-  <h2> <%= _("Can`t create new Institution: #{@errors.length} errors") %> </h2>
+  <h2> <%= _("Can`t create new Institution: #{flash[:errors].length} errors") %> </h2>
   <ul>
-  <% @errors.each do |error| %>
+  <% flash[:errors].each do |error| %>
     <li> <%= error %> </li>
   <% end %>
   </ul>

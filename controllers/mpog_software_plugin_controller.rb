@@ -46,10 +46,6 @@ class MpogSoftwarePluginController < ApplicationController
     end
   end
 
-  def create_institution_admin
-    @url_token = split_http_referer request.original_url()
-  end
-
   def split_http_referer http_referer
     split_list = []
     split_list = http_referer.split("/")
@@ -57,11 +53,15 @@ class MpogSoftwarePluginController < ApplicationController
     return @url_token
   end
 
+  def create_institution_admin
+    @url_token = split_http_referer request.original_url()
+  end
+
   def new_institution
     if !params[:community].nil? and !params[:institutions].nil?
       response_message = {}
 
-      institution = private_create_institution
+      institution = private_create_institution()
 
       response_message = if institution.errors.full_messages.empty? and institution.valid? and institution.save
         {:success => true, :message => _("Institution successful created!"), :institution_data=>{:name=>institution.name, :id=>institution.id}}
@@ -73,7 +73,13 @@ class MpogSoftwarePluginController < ApplicationController
         render :json => response_message.to_json
       else
         session[:notice] = response_message[:message] # consume the notice
-        redirect_to :controller => "/admin_panel", :action => "index"
+
+        if response_message[:success]
+          redirect_to :controller => "/admin_panel", :action => "index"
+        else
+          flash[:errors] = response_message[:errors]
+          redirect_to :controller => "mpog_software_plugin", :action => "create_institution_admin"
+        end
       end
     else
       redirect_to "/"
