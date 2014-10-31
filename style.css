@@ -14,6 +14,9 @@
 /****************** Dropline Menu ********************/
 @import url(dropline_menu.css);
 
+/****************** Recent content ********************/
+@import url(recent-content.css);
+
 /****************** FIM cabecalho azul ****************/
 
 
@@ -68,7 +71,6 @@ div#wrapper-barra-brasil {
 */
 
 /****************** Estilos basicos ******************/
-
 /******* itens do gov-plone.css *******/
 /*
 * { margin: 0; padding: 0; }*/
@@ -352,6 +354,9 @@ p {
    display: inline-block;
     vertical-align: top;
 }
+.box-3{
+  width: 150px;
+}
 
 .box-2 .block .block-inner-2,
 .box-3 .block .block-inner-2{
@@ -407,18 +412,18 @@ p {
 }
 
 #content .recent-documents-block li {
-    background: none repeat scroll 0 0 #FFF;
-    border-bottom: 1px solid #CCCCCC;
+    background: none repeat scroll 0 0 #eeeff2;/*#FFF;*/
+    border-bottom: 1px solid #c0c1c1; /*#CCCCCC;*/
     display: block;
     margin: 0;
     min-height: 1em;
-    padding: 8px;
+    padding: 20px;
     text-align: left;
 }
 
 #content .recent-documents-block li a {
     color: #464A55;
-    line-height: 1em;
+    line-height: 1.2em;
 }
 
 #content .recent-documents-block li a:hover{
@@ -445,7 +450,7 @@ p {
     border-radius: 0 0 0 0;
     border-right: medium none;
     border-top: 0px solid #64946E !important;
-    color: #436976;
+    color: #454545; /*#436976;*/
     font-weight: normal;
     width: auto;
      font-size: 12px;
@@ -453,11 +458,13 @@ p {
     padding-right: 5px;
      background-position: 7px 50%;
 }
-/*
-#content .link-list-block li a.link-this-page{
+
+#content .link-list-block li a.link-this-page,
+#content .link-list-block li a.link-this-page:hover
+{
   border-right: none;
 }
-*/
+
 
 #content .box-2 .link-list-block li a:hover {
     background-color: #eee;
@@ -1064,7 +1071,7 @@ div#article-parent {
     border: 1px solid #DDDDDD;
     color: #585858;
     font-size: 16px;
-     width: 100%;
+     /*width: 100%;*/
      word-wrap: break-word;
 }
 

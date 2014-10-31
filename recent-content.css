@@ -1,0 +1,14 @@
+
+#content .recent-documents-block .block-inner-2 {
+  background-color: #eeeff1;
+  padding-bottom: 10px;
+  border: 1px solid #c0c1c1;
+  border-radius:8px;
+  margin:1px;
+  padding: 10px 0px;
+}
+
+#content .recent-documents-block .block-inner-2 .block-title{
+  background-color: #eeeff1;
+  border-top:none;
+}
