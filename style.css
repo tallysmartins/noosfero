@@ -1094,11 +1094,6 @@ div#article-parent {
      margin-right: 0.5em;
 }
 
-
-.formfieldline input[type="text"] {
-	width: 300px;
-}
-
 #search-page form.search_form input.icon-search {
     background: url("images/btn_busca.png") no-repeat scroll 50% 50% transparent;
     border: 1px solid #DDDDDD;
