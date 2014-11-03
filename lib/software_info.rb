@@ -1,5 +1,5 @@
 class SoftwareInfo < ActiveRecord::Base
-  attr_accessible :e_mag, :icp_brasil, :intern, :e_ping, :e_arq, :operating_platform, :demonstration_url, :acronym, :objectives, :features, :license_infos_id, :community_id, :finality, :repository_link
+  attr_accessible :e_mag, :icp_brasil, :intern, :e_ping, :e_arq, :operating_platform, :demonstration_url, :acronym, :objectives, :features, :license_infos_id, :community_id, :finality, :repository_link, :public_software
 
  has_many :libraries, :dependent => :destroy
  has_many :software_databases

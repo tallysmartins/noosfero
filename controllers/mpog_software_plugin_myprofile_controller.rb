@@ -79,7 +79,11 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @list_operating_systems = @software_info.operating_systems
     @software_categories = @software_info.software_categories
     @software_categories = SoftwareCategories.new if @software_categories.blank?
+
+    @show_public_software_field = show_public_software_field
+
     if request.post?
+      params[:software][:public_software] ||= false
       @software_info = @profile.software_info
       @license = LicenseInfo.find(params[:license][:license_infos_id])
       @software_info.license_info = @license
@@ -130,6 +134,10 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
       rescue ActiveRecord::RecordInvalid => invalid
       end
     end
+  end
+
+  def show_public_software_field
+    environment.admins.include?(current_user.person)
   end
 
 end
