@@ -46,7 +46,8 @@
           acronym : jQuery("#institutions_acronym").val(),
           governmental_power: jQuery("#institutions_governmental_power").selected().val(),
           governmental_sphere: jQuery("#institutions_governmental_sphere").selected().val(),
-          juridical_nature: jQuery("#institutions_juridical_nature").selected().val()
+          juridical_nature: jQuery("#institutions_juridical_nature").selected().val(),
+          corporate_name: jQuery("#institutions_corporate_name").val()
         },
     }
   }

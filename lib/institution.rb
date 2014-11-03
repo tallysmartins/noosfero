@@ -8,9 +8,11 @@ class Institution < ActiveRecord::Base
   attr_accessible :name, :acronym, :unit_code, :parent_code, :unit_type, 
                   :sub_juridical_nature, :normalization_level, 
                   :version, :cnpj, :type, :governmental_power, :governmental_sphere,
-                  :sisp, :juridical_nature
+                  :sisp, :juridical_nature, :corporate_name
 
   validates :name, :presence=>true, :uniqueness=>true
+
+  validates :corporate_name, :presence => true
 
   before_save :verify_institution_type
 

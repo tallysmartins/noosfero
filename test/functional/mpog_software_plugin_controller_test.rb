@@ -164,7 +164,8 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
         :acronym => "",
         :governmental_power => "",
         :governmental_sphere => "",
-        :juridical_nature => ""
+        :juridical_nature => "",
+        :corporate_name => "coporate default"
       }
     }
     fields
@@ -186,6 +187,7 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
     institution.governmental_power = gov_p
     institution.governmental_sphere = gov_s
     institution.cnpj = cnpj
+    institution.corporate_name = "corporate default"
     institution.save!
     institution
   end
