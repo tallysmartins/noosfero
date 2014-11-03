@@ -15,6 +15,7 @@ Source:	http://archive.apache.org/dist/lucene/solr/4.6.1/solr-4.6.1.tgz
 Patch: solr-4.6.1.patch
 URL: http://lucene.apache.org/solr/
 Vendor: The Apache Software Foundation
+Requires: java
 
 %description
 SolrTM is the popular, blazing fast open source enterprise search platform from the Apache LuceneTM project. Its major features include powerful full-text search, hit highlighting, faceted search, near real-time indexing, dynamic clustering, database integration, rich document (e.g., Word, PDF) handling, and geospatial search. Solr is highly reliable, scalable and fault tolerant, providing distributed indexing, replication and load-balanced querying, automated failover and recovery, centralized configuration and more. Solr powers the search and navigation features of many of the world's largest internet sites.
@@ -43,18 +44,19 @@ mkdir -p %{buildroot}/usr/share/solr/example/solr
 cp -r %{_builddir}/solr-4.6.1/example/webapps/solr.war %{buildroot}/usr/share/solr/example/solr/
 
 mkdir -p %{buildroot}/etc/init.d
-cp -r %{_builddir}/solr-4.6.1/start.sh %{buildroot}/etc/init.d/
+cp -r %{_builddir}/solr-4.6.1/scripts/solr %{buildroot}/etc/init.d/
 
 # Esta seção lista todos os arquivos que fazem parte do pacote: se um
 # arquivo não for listado abaixo, não será inserido no pacote. A diretiva
 # %doc indica um arquivo de documentação
 %files
 /usr/share/solr
-%attr(755, -, -) /etc/init.d/start.sh
+%attr(755, -, -) /etc/init.d/solr
 
 %post
 chkconfig solr on
 service solr start
+chmod u+x /usr/share/solr/start.sh
 
 # Esta seção remove os arquivos que foram criados durante o build
 %clean
