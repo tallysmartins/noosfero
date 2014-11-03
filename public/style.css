@@ -194,3 +194,7 @@
 #content .softwares-block .block-footer-content a {
   background: url(../../../designs/themes/base/imgs/arrow-right-p.png) 100% 50% no-repeat;
 }
+
+.improve_input_size {
+  width: 315px !important;
+}
