@@ -30,12 +30,12 @@
       <span class=''>
           <div class='formfield type-radio'>
             <label> <%= _("Public Institution") %>
-              <%= radio_button_tag("institutions[type]", "PublicInstitution", true) %>
+              <%= radio_button_tag("institutions[type]", "PublicInstitution") %>
             </label>
 
             <label>
               <%= _("Private Institution") %>
-              <%= radio_button_tag("institutions[type]" ,"PrivateInstitution")%>
+              <%= radio_button_tag("institutions[type]" ,"PrivateInstitution", true)%>
             </label>
           </div>
         </span>

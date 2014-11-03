@@ -21,12 +21,10 @@
 
   function show_public_institutions_fields() {
     jQuery(".public-institutions-fields").show();
-    jQuery("label[for='institutions_acronym']").html(jQuery("#acronym_translate").val());
   }
 
   function show_private_institutions_fields() {
     jQuery(".public-institutions-fields").hide();
-    jQuery("label[for='institutions_acronym']").html(jQuery("#fantasy_name_translate").val());
 
     jQuery("#institutions_governmental_power option").selected(0);
     jQuery("#institutions_governmental_sphere option").selected(0);
@@ -183,7 +181,25 @@
     jQuery(".intitution_cnpj_field").mask("99.999.999/9999-99");
   }
 
+  function show_hide_cnpj_city() {
+    var cnpj = jQuery("#institutions_cnpj").parent().parent();
+    var city = jQuery("#community_city").parent().parent();
+    var state = jQuery("#community_state").parent().parent();
+
+    if( this.value != "BR" ) {
+      cnpj.hide();
+      city.hide();
+      state.hide();
+    } else {
+      cnpj.show();
+      city.show();
+      state.show();
+    }
+  }
+
   function set_events() {
+    show_private_institutions_fields();
+
     jQuery('#community_country').val("BR");
     
     jQuery("#create_institution_link").click(open_create_institution_modal);
@@ -202,6 +218,8 @@
     jQuery("#add_new_institution").click(add_new_institution);
 
     jQuery(".remove-institution").click(remove_institution);
+
+    jQuery("#community_country").change(show_hide_cnpj_city);
 
     add_mask_to_form_items();
 

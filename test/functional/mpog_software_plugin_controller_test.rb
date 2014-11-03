@@ -148,6 +148,29 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
     assert_redirected_to(controller: "mpog_software_plugin", action: "create_institution_admin")
   end
 
+  should "Create foreign institution without city, state and cnpj by post" do
+    @controller.stubs(:verify_recaptcha).returns(true)
+
+    fields = generate_form_fields "Foreign institution", "AZ", "", "", "", "PrivateInstitution"
+    fields[:institutions][:acronym] = "FI"
+
+    post :new_institution, fields
+
+    assert_redirected_to(controller: "admin_panel", action: "index")
+  end
+
+  should "Create foreign institution without city, state and cnpj by ajax" do
+    @controller.stubs(:verify_recaptcha).returns(true)
+
+    fields = generate_form_fields "Foreign institution", "AZ", "", "", "", "PrivateInstitution"
+    fields[:institutions][:acronym] = "FI"
+
+    xhr :post, :new_institution, fields
+
+    json_response = ActiveSupport::JSON.decode(@response.body)
+    assert json_response["success"]
+  end
+
   private
 
   def generate_form_fields name, country, state, city, cnpj, type
