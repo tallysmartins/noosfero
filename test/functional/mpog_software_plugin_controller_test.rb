@@ -20,8 +20,8 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
     @response = ActionController::TestResponse.new
 
     @institution_list = []
-    @institution_list << create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @govPower, @govSphere)
-    @institution_list << create_public_institution("Tribunal Regional da Uniao", "TRU", "BR", "DF", "Brasilia", @juridical_nature, @govPower, @govSphere)
+    @institution_list << create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @govPower, @govSphere, "12.345.678/9012-45")
+    @institution_list << create_public_institution("Tribunal Regional da Uniao", "TRU", "BR", "DF", "Brasilia", @juridical_nature, @govPower, @govSphere, "12.345.678/9012-90")
   end
 
   should "Search for institution with acronym" do
@@ -54,48 +54,15 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
     assert_template 'create_institution'
   end
 
-  should "create new institution with ajax" do
+  should "create new institution with ajax without acronym" do
     @controller.stubs(:verify_recaptcha).returns(true)
 
-    xhr :get, :new_institution,
-      :authenticity_token=>"dsa45a6das52sd",
-      :name => "foo bar",
-      :community=>{:name=>"foo bar", :country => "BR", :state => "DF", :city => "Brasilia"},
-      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
-      :juridical => {:nature => @juridical_nature.id},
-      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"fb", :type=>"PublicInstitution"},
-      :recaptcha_response_field=>''
+    fields = generate_form_fields "foo bar", "BR", "DF", "Brasilia", "12.234.567/8900-10", "PublicInstitution"
+    fields[:institutions][:governmental_power] = @govPower.id
+    fields[:institutions][:governmental_sphere] = @govSphere.id
+    fields[:institutions][:juridical_nature] = @juridical_nature.id
 
-
-    json_response = ActiveSupport::JSON.decode(@response.body)
-
-    assert json_response["success"]
-  end
-
-  should "create more than one institution without acronym" do
-    @controller.stubs(:verify_recaptcha).returns(true)
-
-    xhr :get, :new_institution,
-      :authenticity_token=>"dsa45a6das52sd",
-      :name => "foo bar",
-      :community=>{:name=>"foo bar", :country => "BR", :state => "DF", :city => "Brasilia"},
-      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
-      :juridical => {:nature => @juridical_nature.id},
-      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"", :type=>"PublicInstitution"},
-      :recaptcha_response_field=>''
-
-    json_response = ActiveSupport::JSON.decode(@response.body)
-
-    assert json_response["success"]
-
-    xhr :get, :new_institution,
-      :authenticity_token=>"dsa45a6das52sd",
-      :name => "foo bar 2",
-      :community=>{:name=>"foo bar 2", :country => "BR", :state => "DF", :city => "Brasilia"},
-      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
-      :juridical => {:nature => @juridical_nature.id},
-      :institution => {:cnpj=>"12.224.567/8900-10", :acronym=>"", :type=>"PublicInstitution"},
-      :recaptcha_response_field=>''
+    xhr :get, :new_institution, fields
 
     json_response = ActiveSupport::JSON.decode(@response.body)
 
@@ -105,14 +72,12 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
   should "not create a institution that already exists" do
     @controller.stubs(:verify_recaptcha).returns(true)
 
-    xhr :get, :new_institution,
-      :authenticity_token=>"dsa45a6das52sd",
-      :name => "Ministerio Publico da Uniao",
-      :community=>{:name=>"Ministerio Publico da Uniao", :country => "BR", :state => "DF", :city => "Brasilia"},
-      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
-      :juridical => {:nature => @juridical_nature.id},
-      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"fb", :type=>"PublicInstitution"},
-      :recaptcha_response_field=>''
+    fields = generate_form_fields "Ministerio Publico da Uniao", "BR", "DF", "Brasilia", "12.234.567/8900-10", "PublicInstitution"
+    fields[:institutions][:governmental_power] = @govPower.id
+    fields[:institutions][:governmental_sphere] = @govSphere.id
+    fields[:institutions][:juridical_nature] = @juridical_nature.id
+
+    xhr :get, :new_institution, fields
 
     json_response = ActiveSupport::JSON.decode(@response.body)
 
@@ -122,14 +87,10 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
   should "not create a institution without cnpj" do
     @controller.stubs(:verify_recaptcha).returns(true)
 
-    xhr :get, :new_institution,
-      :authenticity_token=>"dsa45a6das52sd",
-      :name => "Ministerio Publico da Uniao",
-      :community=>{:name=>"Ministerio Publico da Uniao", :country => "BR", :state => "DF", :city => "Brasilia"},
-      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
-      :juridical => {:nature => @juridical_nature.id},
-      :institution => {:cnpj=> "", :acronym=>"fb", :type=>"PublicInstitution"},
-      :recaptcha_response_field=>''
+    fields = generate_form_fields "Some Private Institution", "BR", "DF", "Brasilia", "", "PrivateInstitution"
+    fields[:institutions][:acronym] = "SPI"
+
+    xhr :get, :new_institution, fields
 
     json_response = ActiveSupport::JSON.decode(@response.body)
 
@@ -165,26 +126,51 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
     assert_equal "false", @response.body
   end
 
-  should "update institution date_modification in your creation" do
+  should "Create new institution with method post" do
     @controller.stubs(:verify_recaptcha).returns(true)
 
-    xhr :get, :new_institution,
-      :authenticity_token=>"dsa45a6das52sd",
-      :name => "foo bar",
-      :community=>{:name=>"foo bar", :country => "BR", :state => "DF", :city => "Brasilia"},
-      :governmental=>{:power=>@govPower.id, :sphere=>@govSphere.id},
-      :juridical => {:nature => @juridical_nature.id},
-      :institution => {:cnpj=>"12.234.567/8900-10", :acronym=>"fb", :type=>"PublicInstitution"},
-      :recaptcha_response_field=>''
+    fields = generate_form_fields "Some Private Institution", "BR", "DF", "Brasilia", "12.345.567/8900-10", "PrivateInstitution"
+    fields[:institutions][:acronym] = "SPI"
 
-    date = Time.now.day.to_s + "/" + Time.now.month.to_s + "/" + Time.now.year.to_s
-    assert_equal date, Institution.last.date_modification
+    post :new_institution, fields
+
+    assert_redirected_to(controller: "admin_panel", action: "index")
   end
 
+  should "not create new institution with method post without cnpj" do
+    @controller.stubs(:verify_recaptcha).returns(true)
+
+    fields = generate_form_fields "Some Private Institution", "BR", "DF", "Brasilia", "", "PrivateInstitution"
+    fields[:institutions][:acronym] = "SPI"
+
+    post :new_institution, fields
+
+    assert_redirected_to(controller: "mpog_software_plugin", action: "create_institution_admin")
+  end
 
   private
 
-  def create_public_institution name, acronym, country, state, city, juridical_nature, gov_p, gov_s
+  def generate_form_fields name, country, state, city, cnpj, type
+    fields = {
+      :community => {
+        :name => name,
+        :country => country,
+        :state => state,
+        :city => city
+      },
+      :institutions => {
+        :cnpj=> cnpj,
+        :type => type,
+        :acronym => "",
+        :governmental_power => "",
+        :governmental_sphere => "",
+        :juridical_nature => ""
+      }
+    }
+    fields
+  end
+
+  def create_public_institution name, acronym, country, state, city, juridical_nature, gov_p, gov_s, cnpj
     institution_community = fast_create(Community)
     institution_community.name = name
     institution_community.country = country
@@ -199,6 +185,7 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
     institution.acronym = acronym
     institution.governmental_power = gov_p
     institution.governmental_sphere = gov_s
+    institution.cnpj = cnpj
     institution.save!
     institution
   end
