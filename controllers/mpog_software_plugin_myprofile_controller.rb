@@ -9,6 +9,35 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     nil
   end
 
+  def edit_institution
+    @show_sisp_field = environment.admins.include?(current_user.person)
+    @estate_list = NationalRegion.find(:all, :conditions=>["national_region_type_id = ?", 2], :order=>"name")
+
+    @institution = @profile.institution
+
+    if request.post?
+      @institution.community.update_attributes(params[:community])
+      @institution.update_attributes(params[:institutions].except(:governmental_power, :governmental_sphere, :juridical_nature))
+
+      if @institution.type == "PublicInstitution"
+        begin
+          govPower = GovernmentalPower.find params[:institutions][:governmental_power]
+          govSphere = GovernmentalSphere.find params[:institutions][:governmental_sphere]
+          jur_nature = JuridicalNature.find params[:institutions][:juridical_nature]
+
+          @institution.juridical_nature = jur_nature
+          @institution.governmental_power = govPower
+          @institution.governmental_sphere = govSphere
+          @institution.save
+        rescue
+          @institution.errors.add(:governmental_fields, _("Could not find Governmental Power or Governmental Sphere"))
+        end
+      end
+
+      flash[:errors] = @institution.errors.full_messages unless @institution.valid?
+    end
+  end
+
   def new_software
     @errors = []
 

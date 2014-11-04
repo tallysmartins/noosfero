@@ -233,6 +233,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     elsif context.profile.person?
       return { :title => _("Create a new software"), :icon => "design-editor", :url => {:controller => "mpog_software_plugin_myprofile", :action => "new_software"} }
       return nil
+    elsif context.profile.institution?
+      return { :title => _("Institution Info"), :icon => "edit-profile-group", :url => {:controller => "mpog_software_plugin_myprofile", :action => "edit_institution"} }
     end
   end
 

@@ -183,14 +183,15 @@
     jQuery(".intitution_cnpj_field").mask("99.999.999/9999-99");
   }
 
-  function show_hide_cnpj_city(e) {
+  function show_hide_cnpj_city(country) {
+    console.log(country)
     var cnpj = jQuery("#institutions_cnpj").parent().parent();
     var city = jQuery("#community_city").parent().parent();
     var state = jQuery("#community_state").parent().parent();
 
-    if( this.value == "-1" ) jQuery(this).val("BR");
+    if( country == "-1" ) jQuery("#community_country").val("BR");
 
-    if( this.value != "BR" ) {
+    if( country != "BR" ) {
       cnpj.hide();
       city.hide();
       state.hide();
@@ -199,12 +200,10 @@
       city.show();
       state.show();
     }
-
-    e.preventDefault();
   }
 
-  function institution_type_actions() {
-    if( this.value == "PublicInstitution" )
+  function institution_type_actions(type) {
+    if( type == "PublicInstitution" )
       show_public_institutions_fields();
     else
       show_private_institutions_fields();
@@ -214,20 +213,30 @@
     var divisor_option = SelectElement.generateOption("-1", "--------------------------------");
     var default_option = SelectElement.generateOption("BR", "Brazil");
 
+    var inst_type = jQuery("input[name='institutions[type]']:checked").val();
+    var country = jQuery("#community_country").val();
+
+    institution_type_actions(inst_type);
+    show_hide_cnpj_city(country);
+
     if( jQuery('#community_country').find("option[value='']").length == 1 ) {
       jQuery('#community_country').find("option[value='']").remove();
       jQuery('#community_country').prepend(divisor_option);
       jQuery('#community_country').prepend(default_option);
-      jQuery('#community_country').val("BR");
+
+      if(jQuery("#edit_institution_page").val() == "false"){
+        jQuery('#community_country').val("BR");
+        show_hide_cnpj_city(jQuery('#community_country').val());
+      }
     }
   }
 
   function set_events() {
-    show_private_institutions_fields();
-    
     jQuery("#create_institution_link").click(open_create_institution_modal);
 
-    jQuery("input[type='radio'][name='institutions[type]']").click(institution_type_actions);
+    jQuery("input[name='institutions[type]']").click(function(){
+      institution_type_actions(this.value);
+    });
 
     jQuery('#save_institution_button').click(save_institution);
 
@@ -237,7 +246,10 @@
 
     jQuery(".remove-institution").click(remove_institution);
 
-    jQuery("#community_country").change(show_hide_cnpj_city);
+    jQuery("#community_country").change(function(){
+      console.log(this.value)
+      show_hide_cnpj_city(this.value);
+    });
 
     add_mask_to_form_items();
 
