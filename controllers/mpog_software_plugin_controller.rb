@@ -40,6 +40,7 @@ class MpogSoftwarePluginController < ApplicationController
 
   def create_institution
     @show_sisp_field = environment.admins.include?(current_user.person)
+    @estate_list = get_state_list()
 
     if request.xhr?
       render :layout=>false
@@ -57,6 +58,7 @@ class MpogSoftwarePluginController < ApplicationController
 
   def create_institution_admin
     @show_sisp_field = environment.admins.include?(current_user.person)
+    @estate_list = get_state_list()
 
     @url_token = split_http_referer request.original_url()
   end
@@ -143,7 +145,7 @@ class MpogSoftwarePluginController < ApplicationController
   def get_brazil_states
     redirect_to "/" unless request.xhr?
 
-    state_list = NationalRegion.find(:all, :conditions=>["national_region_type_id = ?", 2], :order=>"name")
+    state_list = get_state_list()
     render :json=>state_list.collect {|state| state.name }.to_json
   end
 
@@ -174,6 +176,10 @@ class MpogSoftwarePluginController < ApplicationController
   end
 
   protected
+
+  def get_state_list
+    NationalRegion.find(:all, :conditions=>["national_region_type_id = ?", 2], :order=>"name")
+  end
 
   def private_create_institution
     community = Community.new(params[:community])

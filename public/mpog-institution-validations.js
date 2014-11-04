@@ -4,6 +4,8 @@
 
     jQuery.get("/plugin/mpog_software/create_institution", function(response){
       jQuery("#institution_dialog").html(response);
+
+      set_form_count_custom_data();
       set_events();
 
       jQuery("#institution_dialog").dialog({
@@ -212,10 +214,12 @@
     var divisor_option = SelectElement.generateOption("-1", "--------------------------------");
     var default_option = SelectElement.generateOption("BR", "Brazil");
 
-    jQuery('#community_country').find("option[value='']").remove();
-    jQuery('#community_country').prepend(divisor_option);
-    jQuery('#community_country').prepend(default_option);
-    jQuery('#community_country').val("BR");
+    if( jQuery('#community_country').find("option[value='']").length == 1 ) {
+      jQuery('#community_country').find("option[value='']").remove();
+      jQuery('#community_country').prepend(divisor_option);
+      jQuery('#community_country').prepend(default_option);
+      jQuery('#community_country').val("BR");
+    }
   }
 
   function set_events() {

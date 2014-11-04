@@ -51,7 +51,14 @@
       </span>
 
       <%= required select_country(_('Country'), 'community', 'country', {:class => 'type-select', :id => "community_country"}) %>
-      <%= required f.text_field(:state) %>
+
+      <span class='required-field'>
+        <div class="formfield">
+          <label for="community_state" class="formlabel"><%= _("State") %></label>
+          <%= f.select(:state, @estate_list.collect {|state| [state.name, state.name]}) %>
+        </div>
+      </span>
+
       <%= required f.text_field(:city) %>
 
 
