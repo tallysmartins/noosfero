@@ -85,7 +85,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @software_categories = @software_info.software_categories
     @software_categories = SoftwareCategories.new if @software_categories.blank?
 
-    @show_public_software_field = show_public_software_field
+    @disabled_public_software_field = disabled_public_software_field
 
     if request.post?
       params[:software][:public_software] ||= false
@@ -141,8 +141,8 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     end
   end
 
-  def show_public_software_field
-    environment.admins.include?(current_user.person)
+  def disabled_public_software_field
+    !environment.admins.include?(current_user.person)
   end
 
   def community_must_be_approved

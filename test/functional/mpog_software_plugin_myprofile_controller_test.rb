@@ -89,4 +89,15 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
    assert_equal SoftwareInfo.last.acronym, "test"
   end
 
+  should 'upgrade a generic software to a public software' do
+    fields_software = software_fields
+    fields = software_edit_specific_fields
+
+    fields[4]['public_software'] = true
+    software = create_software fields_software
+    post :edit_software, :profile => software.community.identifier, :library => fields[0], :language => fields[1],
+                        :database => fields[2], :operating_system => fields[3], :software => fields[4], :software_categories => fields[5], :license => fields[6]
+    assert_equal true, SoftwareInfo.last.public_software?
+  end
+
 end

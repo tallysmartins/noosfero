@@ -92,7 +92,7 @@
       .text(link);
   }
 
-  function hide_infos(){
+  function hide_infos() {
     jQuery(".language-info").hide();
     jQuery(".database-info").hide();
     jQuery(".libraries-info").hide();
@@ -101,6 +101,13 @@
     jQuery(".database-button-hide").hide();
     jQuery(".libraries-button-hide").hide();
     jQuery(".operating-system-button-hide").hide();
+  }
+
+  function hide_show_public_software_fields() {
+    if (jQuery("#software_public_software").prop("checked"))
+        jQuery(".public-software-fields").show();
+    else
+        jQuery(".public-software-fields").hide();
   }
 
   jQuery(document).ready(function(){
@@ -183,5 +190,7 @@
       jQuery(".libraries-button-show").hide();
       jQuery(".libraries-button-hide").show();
     });
+    hide_show_public_software_fields();
+    jQuery("#software_public_software").click(hide_show_public_software_fields);
   });
 })();

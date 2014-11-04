@@ -1,6 +1,6 @@
-Feature: edit adherent fields   
+Feature: edit adherent fields
   As a user
-  I want to edit adherent fields 
+  I want to edit adherent fields
   to mantain my public software up to date.
 
   Background:
@@ -20,26 +20,35 @@ Feature: edit adherent fields
     And I fill in "software_info_finality" with "basic software finality"
     And I press "Create"
 
-  Scenario: Don't show public software checkbox to no enviroment admin
+  Scenario: Disable public software checkbox to non admin users
     Given I am logged in as "joaosilva"
     And I go to /myprofile/basic-software/plugin/mpog_software/edit_software
     And I follow "Specifications"
-    Then I should not see "Is a public software"
+    Then I should see "Public software" within ".public_software_disabled"
 
-  Scenario: Show public software checkbox no enviroment admin
+  Scenario: Enable public software checkbox to admin users
     Given I am logged in as mpog_admin
     And I go to /myprofile/basic-software/plugin/mpog_software/edit_software
     And I follow "Specifications"
-    Then I should see "Is a public software"
+    Then I should see "Public software" within ".public_software_enabled"
 
+  @selenium
   Scenario: Show adherent fields when checkbox are checked
     Given I am logged in as mpog_admin
     And I go to /myprofile/basic-software/plugin/mpog_software/edit_software
     And I follow "Specifications"
+    And I uncheck "software[public_software]"
     And I check "software[public_software]"
-    And I press "Save"
+    Then I should see "Adherent to e-ping ?"
+
+  @selenium
+  Scenario: Don't show adherent fields when checkbox are not checked
+    Given I am logged in as mpog_admin
     And I go to /myprofile/basic-software/plugin/mpog_software/edit_software
     And I follow "Specifications"
-    Then I should see "Adherent to e-ping ?"
+    And I check "software[public_software]"
+    And I uncheck "software[public_software]"
+    Then I should not see "Adherent to e-ping ?"
+
 
 
