@@ -181,10 +181,12 @@
     jQuery(".intitution_cnpj_field").mask("99.999.999/9999-99");
   }
 
-  function show_hide_cnpj_city() {
+  function show_hide_cnpj_city(e) {
     var cnpj = jQuery("#institutions_cnpj").parent().parent();
     var city = jQuery("#community_city").parent().parent();
     var state = jQuery("#community_state").parent().parent();
+
+    if( this.value == "-1" ) jQuery(this).val("BR");
 
     if( this.value != "BR" ) {
       cnpj.hide();
@@ -195,21 +197,33 @@
       city.show();
       state.show();
     }
+
+    e.preventDefault();
+  }
+
+  function institution_type_actions() {
+    if( this.value == "PublicInstitution" )
+      show_public_institutions_fields();
+    else
+      show_private_institutions_fields();
+  }
+
+  function set_form_count_custom_data() {
+    var divisor_option = SelectElement.generateOption("-1", "--------------------------------");
+    var default_option = SelectElement.generateOption("BR", "Brazil");
+
+    jQuery('#community_country').find("option[value='']").remove();
+    jQuery('#community_country').prepend(divisor_option);
+    jQuery('#community_country').prepend(default_option);
+    jQuery('#community_country').val("BR");
   }
 
   function set_events() {
     show_private_institutions_fields();
-
-    jQuery('#community_country').val("BR");
     
     jQuery("#create_institution_link").click(open_create_institution_modal);
 
-    jQuery("input[type='radio']").click(function(){
-      if( this.value == "PublicInstitution" )
-        show_public_institutions_fields();
-      else
-        show_private_institutions_fields();
-    });
+    jQuery("input[type='radio']").click(institution_type_actions);
 
     jQuery('#save_institution_button').click(save_institution);
 
@@ -226,5 +240,8 @@
     institution_autocomplete();
   }
 
-  jQuery(document).ready(set_events);
+  jQuery(document).ready(function(){
+    set_form_count_custom_data();
+    set_events();
+  });
 })();
