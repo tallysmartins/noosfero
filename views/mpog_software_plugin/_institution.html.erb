@@ -98,7 +98,7 @@
             <%= inst.label("sisp" ,_("Yes")) %>
             <%= inst.radio_button(:sisp, true) %>
             <%= inst.label("sisp" ,_("No")) %>
-            <%= inst.radio_button(:sisp, false) %>
+            <%= inst.radio_button(:sisp, false, :checked=>"checked") %>
           <% else %>
             <%= inst.label("sisp", _("No")) %>
           <% end %>

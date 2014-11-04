@@ -39,6 +39,8 @@ class MpogSoftwarePluginController < ApplicationController
   end
 
   def create_institution
+    @show_sisp_field = environment.admins.include?(current_user.person)
+
     if request.xhr?
       render :layout=>false
     else
@@ -54,6 +56,8 @@ class MpogSoftwarePluginController < ApplicationController
   end
 
   def create_institution_admin
+    @show_sisp_field = environment.admins.include?(current_user.person)
+
     @url_token = split_http_referer request.original_url()
   end
 

@@ -223,7 +223,7 @@
     
     jQuery("#create_institution_link").click(open_create_institution_modal);
 
-    jQuery("input[type='radio']").click(institution_type_actions);
+    jQuery("input[type='radio'][name='institutions[type]']").click(institution_type_actions);
 
     jQuery('#save_institution_button').click(save_institution);
 
