@@ -209,49 +209,6 @@
     });
   }
 
-  // Sorry, I know its ugly. But I cant get ([^\w\*\s*])|(^|\s)([a-z]|[0-9])
-  // to ignore Brazilian not so much special chars in names
-  function replace_some_special_chars(text) {
-    return text.replace(/([áàâãéèêíïóôõöú])/g, function(value){
-      if( ["á","à","â","ã"].indexOf(value) != -1 )
-        return "a";
-      else if( ["é","è","ê"].indexOf(value) != -1 )
-        return "e";
-      else if( ["í","ï"].indexOf(value) != -1 )
-        return "i";
-      else if ( ["ó","ô","õ","ö"].indexOf(value) != -1 )
-        return "o";
-      else if( ["ú"].indexOf(value) != -1 )
-        return "u";
-      else
-        return value;
-    });
-  }
-
-  function invalid_name_validation(text) {
-    if( text.trim().length === 0 ) {
-      return true;
-    }
-
-    var full_validation = /([^\w\*\s*])|(^|\s)([a-z]|[0-9])/; // no special chars and do not initialize with no capital latter
-    var partial_validation = /[^\w\*\s*]/; // no special chars
-    text = replace_some_special_chars(text);
-    var slices = text.split(" ");
-    var invalid = false;
-
-    for(var i = 0; i < slices.length; i++) {
-      if( slices[i].length > 3 || text.length <= 3 ) {
-        invalid = full_validation.test(slices[i]);
-      } else {
-        invalid = partial_validation.test(slices[i]);
-      }
-
-      if(invalid) break;
-    }
-
-    return invalid;
-  }
-
   // Generic
   function show_plugin_error_message(field_selector, hidden_message_id ) {
     var field = jQuery(field_selector);
@@ -392,7 +349,6 @@
     fix_phone_mask_format("#profile_data_comercial_phone");
     fix_phone_mask_format("#profile_data_contact_phone");
 
-    addBlurFields("#profile_data_name", "full_name_error", invalid_name_validation);
     addBlurFields("#profile_data_email", "email_error", invalid_email_validation);
     addBlurFields("#user_secondary_email", "email_error", invalid_email_validation, true);
     addBlurFields("#profile_data_personal_website", "site_error", invalid_site_validation);
