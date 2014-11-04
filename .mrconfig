@@ -8,3 +8,19 @@ checkout = git clone http://beta.softwarepublico.gov.br/gitlab/softwarepublico/c
 
 [mailman-api]
 checkout = git clone https://github.com/TracyWebTech/mailman-api.git
+
+[mailman-api/simplejson]
+checkout = git clone https://github.com/simplejson/simplejson.git
+
+[mailman-api/bottle]
+checkout = git clone https://github.com/defnull/bottle.git
+
+[mailman-api/paste]
+checkout = hg clone http://bitbucket.org/ianb/paste
+
+[mailman-api/paste/six]
+checkout = hg clone https://bitbucket.org/gutworth/six
+
+[sources/solr]
+checkout = wget -c http://archive.apache.org/dist/lucene/solr/4.6.1/solr-4.6.1.tgz 
+

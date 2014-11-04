@@ -15,11 +15,13 @@ ifeq ("$(V)", "1")
 	qecho := @true
 else
 	Q := @
-	RPMBUILD_FLAGS := --quiet
+	RPMBUILD_FLAGS := --quiet --short-circuit
 	qecho := @echo
 endif
 
-all: sdist rpm
+.PHONY: $(COMPONENTS)
+
+all: rpm
 
 sdist: $(TARBALLS)
 
@@ -27,8 +29,10 @@ rpm: $(RPMS)
 
 $(TARBALLS): build/$(PROJECT)-%-$(VERSION).$(TARBALL_FORMAT): %
 	$(qecho) "TAR\t$@"
-	$(Q)mkdir -p $$(dirname $@)
-	$(Q)tarball=$$(readlink -f $@); (cd ./$< && git archive --prefix=$(PROJECT)-$<-$(VERSION)/ HEAD | gzip - > $$tarball) || ($(RM) $@; false)
+	$(Q)cp -r $< $(PROJECT)-$<-$(VERSION)
+	$(Q)mkdir -p build
+	$(Q)tar vczf $@ $(PROJECT)-$<-$(VERSION)
+	$(Q)rm -rf $(PROJECT)-$<-$(VERSION)
 
 $(RPMS): build/$(PROJECT)-%-$(VERSION)-1.$(ARCH).rpm: build/$(PROJECT)-%-$(VERSION).$(TARBALL_FORMAT)
 
@@ -37,7 +41,7 @@ $(RPMS): build/$(PROJECT)-%-$(VERSION)-1.$(ARCH).rpm: rpm/%.spec
 	$(Q)mkdir -p ~/rpmbuild/SOURCES
 	$(Q)component=$$(basename $< .spec) && \
 		ln -f build/$(PROJECT)-$$component-$(VERSION).$(TARBALL_FORMAT) ~/rpmbuild/SOURCES/ && \
-		rpmbuild -bb $(RPMBUILD_FLAGS) $< && \
+		rpmbuild -ba $(RPMBUILD_FLAGS) $< && \
 		ln -f ~/rpmbuild/RPMS/$(ARCH)/$(PROJECT)-$$component-$(VERSION)-1.el6.$(ARCH).rpm $@
 
 %.spec: %.spec.in
