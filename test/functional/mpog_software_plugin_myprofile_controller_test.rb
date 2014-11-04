@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
 require File.dirname(__FILE__) + '/../../controllers/mpog_software_plugin_myprofile_controller'
 require File.dirname(__FILE__) + '/software_test_helper'
+require File.dirname(__FILE__) + '/institution_test_helper'
 
 class MpogSoftwarePluginMyprofileController; def rescue_action(e) raise e end;
 end
@@ -100,4 +101,36 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     assert_equal true, SoftwareInfo.last.public_software?
   end
 
+  should "user edit its community institution" do
+    govPower = GovernmentalPower.create(:name=>"Some Gov Power")
+    govSphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
+    juridical_nature = JuridicalNature.create(:name => "Autarquia")
+
+    institution = InstitutionTestHelper.create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", juridical_nature, govPower, govSphere, "12.345.678/9012-45")
+    identifier = institution.community.identifier
+
+    fields = InstitutionTestHelper.generate_form_fields "institution new name", "BR", "DF", "Gama", "12.345.678/9012-45", "PrivateInstitution"
+
+    post :edit_institution, :profile=>institution.community.identifier, :community=>fields[:community], :institutions=>fields[:institutions]
+
+    institution = Community[identifier].institution
+    assert_not_equal "Ministerio Publico da Uniao", institution.community.name
+  end
+
+  should "not user edit its community institution with wrong values" do
+    govPower = GovernmentalPower.create(:name=>"Some Gov Power")
+    govSphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
+    juridical_nature = JuridicalNature.create(:name => "Autarquia")
+
+    institution = InstitutionTestHelper.create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", juridical_nature, govPower, govSphere, "12.345.678/9012-45")
+    identifier = institution.community.identifier
+
+    fields = InstitutionTestHelper.generate_form_fields "", "BR", "DF", "Gama", "6465465465", "PrivateInstitution"
+
+    post :edit_institution, :profile=>institution.community.identifier, :community=>fields[:community], :institutions=>fields[:institutions]
+
+    institution = Community[identifier].institution
+    assert_equal "Ministerio Publico da Uniao", institution.community.name
+    assert_equal "12.345.678/9012-45", institution.cnpj
+  end
 end
