@@ -105,21 +105,33 @@ end
 
 Given /^the following softwares$/ do |table|
   table.hashes.each do |item|
-    community = Community.create :name=>item[:name]
-    programming_language = ProgrammingLanguage.where(:name=>item[:software_language]).first
-    database_description = DatabaseDescription.where(:name=>item[:software_database]).first
+    software_info = SoftwareInfo.new
+    software_info.community = Community.create(:name=>item[:name])
 
-    software_language = SoftwareLanguage.where(:programming_language_id=>programming_language).first
-    software_database = SoftwareDatabase.where(:database_description_id=>database_description).first
+    software_info.acronym = item[:acronym] if item[:acronym]
+    software_info.acronym = item[:operating_platform] if item[:operating_platform]
+    software_info.acronym = item[:objectives] if item[:objectives]
+    software_info.acronym = item[:features] if item[:features]
+    software_info.public_software = item[:public_software] == "true" if item[:public_software]
 
-    operating_system_name = OperatingSystemName.where(:name => item[:operating_system]).first
-    operating_system = OperatingSystem.where(:operating_system_name_id => operating_system_name).first
-    
-    software_info = SoftwareInfo::new(:acronym=>item[:acronym], :operating_platform=>item[:operating_platform], :objectives => item[:objectives], :features => item[:features])
-    software_info.community = community
-    software_info.software_languages << software_language
-    software_info.software_databases << software_database
-    software_info.operating_systems << operating_system
+    if item[:software_language]
+      programming_language = ProgrammingLanguage.where(:name=>item[:software_language]).first
+      software_language = SoftwareLanguage.where(:programming_language_id=>programming_language).first
+      software_info.software_languages << software_language
+    end
+
+    if item[:software_database]
+      database_description = DatabaseDescription.where(:name=>item[:software_database]).first
+      software_database = SoftwareDatabase.where(:database_description_id=>database_description).first
+      software_info.software_databases << software_database
+    end
+
+    if item[:operating_system]
+      operating_system_name = OperatingSystemName.where(:name => item[:operating_system]).first
+      operating_system = OperatingSystem.where(:operating_system_name_id => operating_system_name).first
+      software_info.operating_systems << operating_system
+    end
+
     software_info.save!
   end
 end

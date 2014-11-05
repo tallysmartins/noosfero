@@ -1,13 +1,20 @@
 class SoftwaresBlock < CommunitiesBlock
 
-  attr_accessible :accessor_id, :accessor_type, :role_id, :resource_id, :resource_type
+  settings_items :software_type
+  attr_accessible :accessor_id, :accessor_type, :role_id, :resource_id, :resource_type, :software_type
 
   def self.description
     _('Softwares')
   end
 
   def default_title
-    n_('{#} software', '{#} softwares', profile_count)
+    if self.software_type == "Generic"
+      return n_('{#} generic software', '{#} generic softwares', profile_count)
+    elsif self.software_type == "Public"
+      return n_('{#} public software', '{#} public softwares', profile_count)
+    else
+      return n_('{#} software', '{#} softwares', profile_count)
+    end
   end
 
   def help
@@ -15,6 +22,7 @@ class SoftwaresBlock < CommunitiesBlock
   end
 
   def footer
+    self.software_type ||= "All"
     owner = self.owner
     case owner
     when Profile
@@ -51,9 +59,15 @@ class SoftwaresBlock < CommunitiesBlock
 
     list_with_software = []
 
-    visible_profiles.each do |p|
-			if p.class == Community and p.software? and !p.institution?
-				list_with_software << p
+    result.each do |profile|
+			if profile.class == Community and profile.software?
+        if self.software_type == "Public"
+          list_with_software << profile if profile.software_info.public_software?
+        elsif self.software_type == "Generic"
+          list_with_software << profile if !profile.software_info.public_software?
+        else
+          list_with_software << profile
+        end
 			end
     end
 

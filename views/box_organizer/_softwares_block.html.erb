@@ -1,0 +1,3 @@
+<div id='edit-softwares-block'>
+  <%= labelled_form_field _('Software Type:'), select_tag('block[software_type]', options_for_select(["Public", "Generic", "All"], @block.software_type) )%>
+</div>
