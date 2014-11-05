@@ -8,7 +8,7 @@ class InstitutionTest < ActiveSupport::TestCase
     @gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
     @juridical_nature = JuridicalNature.create(:name => "Autarquia")
 
-    @institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere)
+    @institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere, "11.222.333/4444-55")
   end
 
   should "not save institutions without name" do

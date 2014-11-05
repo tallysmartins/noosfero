@@ -41,6 +41,11 @@ class SoftwareCategoriesTest < ActiveSupport::TestCase
     @software_info.software_categories = @software_categories
   end
 
+  def teardown
+    SoftwareDatabase.destroy_all
+    DatabaseDescription.destroy_all
+  end
+
   should "save software correctly with SoftwareCategories filds" do
     assert @software_info.save
   end

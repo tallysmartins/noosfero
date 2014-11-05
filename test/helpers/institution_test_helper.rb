@@ -31,7 +31,7 @@ module InstitutionTestHelper
     institution.governmental_sphere = gov_s
     institution.cnpj = cnpj
     institution.corporate_name = "corporate default"
-    institution.save!
+    institution.save
     institution
   end
 
@@ -42,7 +42,7 @@ module InstitutionTestHelper
     institution.acronym = acronym
     institution.cnpj = cnpj
     institution.corporate_name = "corporate default"
-    institution.save!
+    institution.save
 
     institution
   end
@@ -53,7 +53,7 @@ module InstitutionTestHelper
     institution_community.country = country
     institution_community.state = state
     institution_community.city = city
-    institution_community.save!
+    institution_community.save
     institution_community
   end
 end

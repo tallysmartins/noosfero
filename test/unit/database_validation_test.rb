@@ -13,6 +13,8 @@ class DatabaseValidationTest < ActiveSupport::TestCase
 
   def teardown
     @database = nil
+    DatabaseDescription.destroy_all
+    SoftwareDatabase.destroy_all
   end
 
   should "Save database if all fields are filled" do

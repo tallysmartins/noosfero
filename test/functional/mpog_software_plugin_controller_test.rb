@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
-require File.dirname(__FILE__) + '/institution_test_helper'
+require File.dirname(__FILE__) + '/../helpers/institution_test_helper'
 require File.dirname(__FILE__) + '/../../controllers/mpog_software_plugin_controller'
 
 class MpogSoftwarePluginController; def rescue_action(e) raise e end; end

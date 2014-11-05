@@ -8,6 +8,11 @@ class SoftwareDatabaseTest < ActiveSupport::TestCase
     @software_database.database_description_id = 1
   end
 
+  def teardown
+    DatabaseDescription.destroy_all
+    SoftwareDatabase.destroy_all
+  end
+
   should "save if all informations of @software_database are filled" do
     assert @software_database.save, "Database should have been saved" 
   end

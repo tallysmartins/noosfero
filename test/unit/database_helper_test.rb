@@ -11,12 +11,12 @@ class DatabaseHelperTest < ActiveSupport::TestCase
     @database_objects = [
       {:database_description_id => dd1.id.to_s ,:version => "2.0", :operating_system => "debian"},
       {:database_description_id => dd2.id.to_s ,:version => "2.1", :operating_system => "debian"},
-      {:database_description_id => dd1.id.to_s ,:version => "2.2", :operating_system => "debian"}]
-    @database_objects
+    ]
   end
 
   def teardown
     @database_objects = nil
+    SoftwareDatabase.destroy_all
     DatabaseDescription.destroy_all
   end
 
@@ -70,7 +70,6 @@ class DatabaseHelperTest < ActiveSupport::TestCase
 
     database_objects_length = @database_objects.count
     list_compare = DatabaseHelper.list_database(@database_objects)
-
-    assert_equal database_objects_length-1, list_compare.count
+    assert_equal list_compare.count, database_objects_length-1
   end
 end

@@ -1,4 +1,10 @@
+require File.dirname(__FILE__) + '/../helpers/institution_test_helper'
+
 module PluginTestHelper
+
+  def create_public_institution *params
+    InstitutionTestHelper.create_public_institution *params
+  end
 
   def create_community name
     community = fast_create(Community)
@@ -15,29 +21,8 @@ module PluginTestHelper
     software_info
   end
 
-  def create_public_institution name, acronym, country, state, city, juridical_nature, gov_p, gov_s
-    institution = PublicInstitution.new
-    institution.community = create_community_institution(name, country, state, city)
-    institution.name = name
-    institution.juridical_nature = juridical_nature
-    institution.sisp = false
-    institution.acronym = acronym
-    institution.governmental_power = gov_p
-    institution.governmental_sphere = gov_s
-    institution.save
-
-    institution
-  end
-
-  def create_private_institution name, cnpj, country, state, city
-    institution = PrivateInstitution.new
-    institution.community = create_community_institution(name, country, state, city)
-    institution.name = name
-    institution.sisp = false
-    institution.cnpj = cnpj
-    institution.save
-
-    institution
+  def create_private_institution *params
+    InstitutionTestHelper.create_private_institution *params
   end
 
   def create_community_institution name, country, state, city

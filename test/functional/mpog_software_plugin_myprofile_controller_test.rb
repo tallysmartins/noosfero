@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
 require File.dirname(__FILE__) + '/../../controllers/mpog_software_plugin_myprofile_controller'
 require File.dirname(__FILE__) + '/software_test_helper'
-require File.dirname(__FILE__) + '/institution_test_helper'
+require File.dirname(__FILE__) + '/../helpers/institution_test_helper'
 
 class MpogSoftwarePluginMyprofileController; def rescue_action(e) raise e end;
 end

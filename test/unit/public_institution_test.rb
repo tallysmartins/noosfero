@@ -8,12 +8,12 @@ class PublicInstitutionTest < ActiveSupport::TestCase
     @gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
     @juridical_nature = JuridicalNature.create(:name => "Autarquia")
 
-    @institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere)
+    @institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere, "11.222.333/4444-55")
   end
 
-  should "save without a cnpj" do
+  should "not save without a cnpj" do
     @institution.cnpj = nil
-    assert @institution.save 
+    assert !@institution.save 
   end
 
   should "save institution without an acronym" do
