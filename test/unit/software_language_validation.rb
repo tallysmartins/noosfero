@@ -7,6 +7,11 @@ class SoftwareLanguageValidationTest < ActiveSupport::TestCase
     @software_info.save
   end
 
+  def teardown
+    @software_info = nil
+    SoftwareInfo.destroy_all
+  end
+
   should "Save SoftwareLanguage if version and programming_language are filled" do
     @software_language = create_software_language
     assert_equal true, @software_language.save

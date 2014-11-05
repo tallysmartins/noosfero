@@ -11,6 +11,17 @@ class PublicInstitutionTest < ActiveSupport::TestCase
     @institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere, "11.222.333/4444-55")
   end
 
+  def teardown
+    GovernmentalPower.destroy_all
+    GovernmentalSphere.destroy_all
+    JuridicalNature.destroy_all
+    Institution.destroy_all
+    @gov_power = nil
+    @gov_sphere = nil
+    @juridical_nature = nil
+    @institution = nil
+  end
+
   should "not save without a cnpj" do
     @institution.cnpj = nil
     assert !@institution.save 

@@ -7,6 +7,11 @@ class PrivateInstitutionTest < ActiveSupport::TestCase
     @institution = create_private_institution "Simple Private Institution", "SPI", "BR", "DF", "Gama", "00.000.000/0001-00"
   end
 
+  def teardown
+    @institution = nil
+    Institution.destroy_all
+  end
+
   should "not save without a cnpj" do
     @institution.cnpj = nil
 

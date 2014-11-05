@@ -6,11 +6,11 @@ class DatabaseHelperTest < ActiveSupport::TestCase
 
   def setup
     dd1 = DatabaseDescription.create(:name => "Oracle")
-    dd2 = DatabaseDescription.create(:name => "MySQL")
+    dd2 = DatabaseDescription.create!(:name => "MySQL")
 
     @database_objects = [
       {:database_description_id => dd1.id.to_s ,:version => "2.0", :operating_system => "debian"},
-      {:database_description_id => dd2.id.to_s ,:version => "2.1", :operating_system => "debian"},
+      {:database_description_id => dd2.id.to_s ,:version => "2.1", :operating_system => "debian"}
     ]
   end
 
@@ -64,7 +64,7 @@ class DatabaseHelperTest < ActiveSupport::TestCase
   should "remove invalid tables from the list" do
     @database_objects.push({
       :database_description_id => "I'm not a valid id",
-      :version => "2.0",
+      :version => "2.5",
       :operating_system => "debian"
     })
 

@@ -16,7 +16,7 @@ class OperatingSystemHelperTest < ActiveSupport::TestCase
   end
 
   def teardown
-    @database_objects = nil
+    @operating_system_objects = nil
   end
 
   should "return an empty list" do
@@ -44,7 +44,7 @@ class OperatingSystemHelperTest < ActiveSupport::TestCase
     assert_equal false,OperatingSystemHelper.valid_list_operating_system?(list_compare)
   end
 
- should "return a html text with operating system" do
+  should "return a html text with operating system" do
       operating_systems = []
 
       operating_system = OperatingSystemName.new
@@ -57,5 +57,5 @@ class OperatingSystemHelperTest < ActiveSupport::TestCase
       operating_systems << software_operating_system
 
       assert_not_nil OperatingSystemHelper.operating_system_as_tables(operating_systems).first.call.index(OperatingSystemName.first.name)
-    end
+  end
 end

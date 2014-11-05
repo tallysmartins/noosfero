@@ -10,6 +10,10 @@ class SearchPersonTest < ActiveSupport::TestCase
     create_person("Joao_da_silva_costa_cunha", "joao_da_silva_costa_cunha@email.com", "aaaaaaa", "aaaaaaa", "joao_cunha@email.com" ,"RJ", "Rio de Janeiro")
   end
 
+  def teardown
+    Person.destroy_all
+  end
+
   should "Find people with Jo in name" do
     people_list = Person.search("Jo")
 

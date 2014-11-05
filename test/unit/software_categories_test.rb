@@ -44,6 +44,11 @@ class SoftwareCategoriesTest < ActiveSupport::TestCase
   def teardown
     SoftwareDatabase.destroy_all
     DatabaseDescription.destroy_all
+    ProgrammingLanguage.destroy_all
+    SoftwareLanguage.destroy_all
+    OperatingSystem.destroy_all
+    SoftwareCategories.destroy_all
+    SoftwareInfo.destroy_all
   end
 
   should "save software correctly with SoftwareCategories filds" do

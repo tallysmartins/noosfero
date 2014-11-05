@@ -1,9 +1,8 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
 
 class SoftwareDatabaseTest < ActiveSupport::TestCase
-  DatabaseDescription.create!(name: "MySQL")
-
   def setup
+    DatabaseDescription.create!(name: "PostgreSQL")
     @software_database = SoftwareDatabase.new(:version => "1.0", :operating_system => "Debian")
     @software_database.database_description_id = 1
   end

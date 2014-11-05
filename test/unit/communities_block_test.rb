@@ -25,6 +25,16 @@ class CommunitiesBlockTest < ActiveSupport::TestCase
     @comminities_block.expects(:owner).at_least_once.returns(@person)
   end
 
+  def teardown
+    GovernmentalPower.destroy_all
+    GovernmentalSphere.destroy_all
+    JuridicalNature.destroy_all
+    CommunitiesBlock.destroy_all
+    @person = nil
+    @institution = nil
+    @community = nil
+    @software_info = nil
+  end
   should "not have community of software or institution in block" do
     assert_equal 1, @comminities_block.profile_list.count
   end

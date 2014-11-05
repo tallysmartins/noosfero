@@ -9,6 +9,10 @@ class OperatingSystemValidationTest < ActiveSupport::TestCase
     @operating_system
   end
 
+  def teardown
+    @operating_system.destroy
+  end
+
   should "save OperatingSystem if all fields are filled" do
    assert @operating_system.save
   end

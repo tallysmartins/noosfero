@@ -11,6 +11,12 @@ class InstitutionTest < ActiveSupport::TestCase
     @institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere, "11.222.333/4444-55")
   end
 
+  def teardown
+    GovernmentalPower.destroy_all
+    GovernmentalSphere.destroy_all
+    JuridicalNature.destroy_all
+    @institution = nil
+  end
   should "not save institutions without name" do
     @institution.name = nil
     assert !@institution.save
