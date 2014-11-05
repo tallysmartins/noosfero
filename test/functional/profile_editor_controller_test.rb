@@ -29,15 +29,6 @@ class ProfileEditorControllerTest < ActionController::TestCase
     @institution_list << InstitutionTestHelper.create_public_institution("Tribunal Regional da Uniao", "TRU", "BR", "DF", "Brasilia", @juridical_nature, @govPower, @govSphere, "12.345.678/9012-90")
   end
 
-  should "update institution date_modification when edit profile" do
-    InstitutionTestHelper.create_public_institution("Just a test name", "JTN", "BR", "DF", "Gama", @juridical_nature, @govPower, @govSphere, "12.345.678/9055-33")
-
-    post :edit, :profile => Institution.last.community.identifier, :profile_data => {:name => "Ministerio da Saude"}, :institution => Institution.last
-    
-    date = Time.now.day.to_s + "/" + Time.now.month.to_s + "/" + Time.now.year.to_s
-    assert_equal date, Institution.last.date_modification
-  end
-
   should "add new institution for user into edit profile" do
     user = fast_create(User)
     user.person = fast_create(Person)
