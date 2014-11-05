@@ -116,7 +116,6 @@ background-repeat: no-repeat;
   display: block;
   float: right;
   clear: left;
-  border-bottom: 1px dotted #2c66ce; /*#969696;*/ /*#d0d9ff;*/
   padding-bottom: 2px;
   margin-top: -15px;
   font-size: 10px;
@@ -136,8 +135,9 @@ background-repeat: no-repeat;
 }
 
 #portal-siteactions li {
-  display: inline;
-  margin: 0 5px 0 0;
+	display: inline;
+	margin: 0 5px 0 0;
+	border-bottom: 1px dotted #2c66ce;; /*#d0d9ff;*/
 }
 /*
 #portal-siteactions li a:hover {
@@ -775,7 +775,7 @@ text-align:center
 }
 
 .contraste {
-background-color:#0d0d0d!important;
+background-color:#000!important;
 color:#fff
 }
 
@@ -785,21 +785,23 @@ border-color:#666
 }
 
 .contraste footer {
-background-image:none;
-background-color:#000
+	background-image:none;
+	background-color:#000;
 }
 .contraste footer h2,.contraste footer h3,.contraste footer h4 {
 color:#fff
 }
 .contraste footer .footer-atalhos,.contraste footer .footer-logos {
-background:#1c1c1c;
+/*background:#1c1c1c;*/
 border-color:yellow
 }
 .contraste footer .footer-atalhos a,.contraste footer .footer-logos a {
 color:#ff0
 }
-.contraste footer .footer-ferramenta {
-background:#000
+.contraste footer .footer-ferramenta,
+.contraste footer .footer-atalhos {
+	background-color:#000;
+	color:#fff;
 }
 
 .container2,.navbar-static-top .container2,.navbar-fixed-top .container2,.navbar-fixed-bottom .container2 {
