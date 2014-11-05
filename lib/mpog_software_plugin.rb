@@ -59,6 +59,12 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     elsif context.profile.respond_to? :institution and !context.profile.institution.nil?
       @show_sisp_field = show_sisp_field
       expanded_template('institution_editor_extras.html.erb')
+    elsif context.profile.respond_to? :software_info and !context.profile.software_info.nil?
+      if context.profile.software_info.first_edit?
+        context.profile.software_info.first_edit = false
+        context.profile.software_info.save!
+        expanded_template('first_edit_software_community_extras.html.erb')
+      end
     end
   end
 

@@ -47,26 +47,10 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
         redirect_to :controller => 'profile_editor', :action => 'edit', :profile => @community.identifier
       end
     else
-   #  @list_libraries.each do |lib|
-   #    @errors |= lib.errors.full_messages
-   #  end
-   #  
-   #  @list_languages.each do |lng|
-   #    @errors |= lng.errors.full_messages
-   #  end
-   #
-   #  @list_databases.each do |db|
-   #    @errors |= db.errors.full_messages
-   #  end
-
-   #  @list_operating_systems.each do |os|
-   #    @errors |= os.errors.full_messages
-   #  end
 
      @errors |= @community.errors.full_messages
      @errors |= @software_info.errors.full_messages
      @errors |= @license_info.errors.full_messages
-   #  @errors |= @software_categories.errors.full_messages
    end
   end
 

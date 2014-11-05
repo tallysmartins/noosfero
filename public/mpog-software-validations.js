@@ -105,9 +105,17 @@
 
   function hide_show_public_software_fields() {
     if (jQuery("#software_public_software").prop("checked"))
-        jQuery(".public-software-fields").show();
+      jQuery(".public-software-fields").show();
     else
-        jQuery(".public-software-fields").hide();
+      jQuery(".public-software-fields").hide();
+  }
+
+  function replace_software_creations_step() {
+    var software_creation_step = jQuery("#software_creation_step").remove();
+
+    if( software_creation_step.size() > 0 ) {
+      jQuery("#profile-data").parent().prepend(software_creation_step);
+    }
   }
 
   jQuery(document).ready(function(){
@@ -192,5 +200,7 @@
     });
     hide_show_public_software_fields();
     jQuery("#software_public_software").click(hide_show_public_software_fields);
+
+    replace_software_creations_step();
   });
 })();
