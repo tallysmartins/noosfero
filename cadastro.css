@@ -118,6 +118,7 @@ border-radius: 8px;
 
 /**************************MODAL Instituicao***************************/
 
+/*
 
 #institution_dialog {
   background-color:#F0F0F0 !important;
@@ -153,12 +154,13 @@ margin:10px;
 #institution_dialog .formfield.type-radio {
 	/*background-color:#E7E7E7;*/ /*colorir linhas especificas*/
 	/*width:100%;*/
-	background: url(images/hdot2.gif) repeat-x bottom #ECECEC;
-	/*margin:0px 10px 10px 0px;*/
-}
-
+	/*background: url(images/hdot2.gif) repeat-x bottom #ECECEC;
+	/*margin:0px 10px 10px 0px;
+}*/
+/*
 #institution_dialog .formfield:hover,
 #institution_dialog .formfield.type-text:hover,
 #institution_dialog .formfield.type-radio:hover {
 	background: url(images/hdot2.gif) repeat-x bottom #f1e5dc;
 }
+*/
