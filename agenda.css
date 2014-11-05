@@ -50,7 +50,7 @@ font-family: "open_sansregular", Arial, Helvetica, sans-serif;
 }
 
 #content a:hover, dl.portlet a:hover {
-color: #000 !important;
+	/*color: #000 !important;*/
 }
 
 #content .agenda-tile h2 {

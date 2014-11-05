@@ -689,6 +689,11 @@ p {
     font-weight: bold;
     padding: 0.5em 1em;
     text-decoration: none;
+
+}
+
+#content .read-more a {
+    margin-right: 10px;
 }
 
 .comment-info {
@@ -2060,7 +2065,8 @@ body.contraste #content .read_more a,
 body.contraste .more_button .view_all a,
 body.contraste .read_more a
 {
-    background: url("images/button-read-more-vazio-contraste.png") no-repeat scroll left 50% #333;
+     /*background: url("images/button-read-more-vazio-contraste.png") no-repeat scroll left 50% #333;*/
+     background: none #333;
      color: #ffff00;
      border: 0px;
      border-radius: 0px;
@@ -2072,6 +2078,7 @@ body.contraste #portal-siteactions a,
 body.contraste #logo a,
 body.contraste #logo #portal-title,
 body.contraste #sobre a,
+body.contraste #theme-footer a,
 body.contraste h1,
 body.contraste h2,
 body.contraste h3,
@@ -2099,7 +2106,7 @@ body.contraste #content a:link,
 body.contraste #content a:link,
 body.contraste #content a:visited,
 body.contraste #content a {
-    color: #ffff00;
+    color: #fff;
 }
 
 
@@ -2124,7 +2131,7 @@ body.contraste.action-home-index .block .block-inner-2,
 body.contraste.action-environment_design-index .block .block-inner-2,
 body.contraste.action-home-index #content .tags-block .block-inner-2,
 body.contraste.action-environment_design-index #content .tags-block .block-inner-2 {
-    background-color: #333;
+    background-color: #000;
 }
 
 body.contraste.action-home-index .community-track-plugin_track-card-list-block .block-inner-2 {
@@ -2138,8 +2145,8 @@ body.contraste.action-home-index #content .tags-block .block-inner-2, body.contr
 }
 
 body.contraste.action-home-index #content .box-1 .block-title span, body.contraste.action-environment_design-index #content .box-1 .block-title span {
-    color: #000;
-    background-color: white;
+	background-color: #000;
+	color: #FFF !important;
 }
 
 body.contraste #accessibility span {
@@ -2161,7 +2168,6 @@ body.contraste #footer-content {
 }
 
 body.contraste #content .link-list-block li a {
-    background-color: #EEEFFF;
     background-color: #000;
      color: white;
 }
@@ -2185,6 +2191,12 @@ body.contraste.action-content_viewer-view_page #content .box-1 .block-title span
 
 body.contraste #content .article-comment {
     background: none repeat scroll 0 0 #000;
+}
+
+body.contraste #content .recent-documents-block .block-inner-2,
+body.contraste #content .box .block-title {
+    background-color: #000;
+    color: white;
 }
 
 body.contraste #comments_list .comment-info,
@@ -2240,7 +2252,34 @@ body.contraste #theme-header .header-content #link-faq a {
 }
 
 body.contraste #portal-siteactions {
-    border-bottom: 1px dotted #fff;
+    /*border-bottom: 1px dotted #fff;*/
+}
+
+body.contraste #complete_registration {
+	background-color: transparent;
+}
+
+body.contraste tr:hover td {
+	background-color: #333;
+}
+
+body.contraste .action-friends-index .profile-list li:hover,
+body.contraste  .common-profile-list-block .vcard:hover {
+	border: 1px solid #CCC;
+	background: #333;
+	text-decoration: none;
+}
+
+body.contraste .menu-submenu-content {
+	border: 1px solid #CCC;
+	background: none #333 ;
+	
+}
+
+body.contraste #user .logged-in {
+	background: none #333 ;
+	/* background: url("images/barra-menu-user-bg.png") repeat-x bottom center #FEFEFE; */
+	color: #fff;
 }
 
 body.contraste #social-icons #sb_face {
@@ -2271,6 +2310,89 @@ body.contraste #social-icons #sb_flickr:hover {
     background: url("images/icone-branco-flickr.png") 0 20px;
 }
 
+body.contraste .no-boxes-inner-2 {
+	background-color: #000!important;
+	color: #fff;
+}
+
+body.contraste #signup-form {
+	color: #fff;
+}
+
+body.contraste #portal-searchbox {
+	border-color: #FFF;
+	background-color: #000;
+}
+
+body.contraste #portal-searchbox .searchField {
+	background-color: #000;
+	color: #FFF !important;
+}
+
+body.contraste #header input.searchButton {
+	background-color: #000;
+	background-position: 0px 2px;
+}
+
+body.contraste #menucontainer {
+	background: #333;
+	color: #FFF !important;
+}
+
+body.contraste #menucontainer ul li.parent_menu a {
+	color: #FFF !important;
+}
+
+body.contraste #content .no-boxes h1 {
+	color: #FFF !important;
+}
+
+body.contraste #signup-form .formfieldline, 
+body.contraste #signup-formfield-group,
+body.contraste #signup-form .required-field label, 
+body.contraste #signup-form .formlabel {
+	background-color: #000;
+	color: #FFF !important;
+}
+
+body.contraste .pseudoformlabel,
+body.contraste  .formlabel {
+	color: #FFF;
+}
+
+body.contraste #signup-form {
+	border-color: #FFF;
+	background-color: #000;
+}
+
+body.contraste #signup-form .formfield input, 
+body.contraste #signup-form .formfield textarea {
+	background-color: #000;
+	color: #FFF !important;
+}
+
+body.contraste #signup-domain {
+	border-color: #FFF;
+	background-color: #000;
+	color: #FFF !important;
+}
+
+body.contraste .ui-state-default,
+body.contraste .ui-widget-content .ui-state-default,
+body.contraste .ui-widget-header .ui-state-default {
+	border: 1px solid #FFF;
+	background-color: #000;
+	color: #FFF !important;
+}
+
+body.contraste .agenda-tile .title {
+	border-bottom: 1px solid #FFF;
+	color: #FFF;
+}
+
+body.contraste .agenda-tile .period {
+	color: #FFF;
+}
 
 /*botão rss*/
 #article .blog-feed-link {
