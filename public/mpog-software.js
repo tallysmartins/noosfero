@@ -10,15 +10,33 @@
     jQuery(".operating-system-button-hide").hide();
   }
 
-  function add_software_on_control_panel() {
-    if(jQuery(".control-panel").size() > 0 && jQuery(".control-panel-edit-profile-group:contains('Software')").size() > 0 ) {
-      jQuery(".control-panel")[0].innerHTML = jQuery(".control-panel-edit-profile-group:contains('Software')")[0].outerHTML + jQuery(".control-panel")[0].innerHTML
-      jQuery(".control-panel-edit-profile-group:contains('Software')")[1].remove();
+  function add_software_on_control_panel(control_panel) {
+    var software_link = jQuery(".control-panel-software-link").remove();
+
+    if( software_link.size() > 0 ) {
+      control_panel.prepend(software_link);
+    }
+  }
+
+  function add_institution_on_control_panel(control_panel) {
+    var institution_link = jQuery(".control-panel-instituton-link").remove();
+
+    if( institution_link.size() > 0 ) {
+      control_panel.prepend(institution_link);
+    }
+  }
+
+  function add_itens_on_controla_panel() {
+    var control_panel = jQuery(".control-panel");
+
+    if( control_panel.size() > 0 ) {
+      add_software_on_control_panel(control_panel);
+      add_institution_on_control_panel(control_panel);
     }
   }
 
   jQuery(document).ready(function(){
-    add_software_on_control_panel();
+    add_itens_on_controla_panel();
     hide_infos();
   });
 })();

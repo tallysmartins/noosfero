@@ -229,12 +229,12 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def control_panel_buttons
     if context.profile.software?
-      return { :title => _("Software Info"), :icon => "edit-profile-group", :url => {:controller => "mpog_software_plugin_myprofile", :action => "edit_software"} }
+      return { :title => _("Software Info"), :icon => "edit-profile-group control-panel-software-link", :url => {:controller => "mpog_software_plugin_myprofile", :action => "edit_software"} }
     elsif context.profile.person?
       return { :title => _("Create a new software"), :icon => "design-editor", :url => {:controller => "mpog_software_plugin_myprofile", :action => "new_software"} }
       return nil
     elsif context.profile.institution?
-      return { :title => _("Institution Info"), :icon => "edit-profile-group", :url => {:controller => "mpog_software_plugin_myprofile", :action => "edit_institution"} }
+      return { :title => _("Institution Info"), :icon => "edit-profile-group control-panel-instituton-link", :url => {:controller => "mpog_software_plugin_myprofile", :action => "edit_institution"} }
     end
   end
 

@@ -184,7 +184,6 @@
   }
 
   function show_hide_cnpj_city(country) {
-    console.log(country)
     var cnpj = jQuery("#institutions_cnpj").parent().parent();
     var city = jQuery("#community_city").parent().parent();
     var state = jQuery("#community_state").parent().parent();
