@@ -12,3 +12,5 @@
 /utils/gitlab-irc
 /build-area
 /obs/isv:spb*
+
+docs/_build/
