@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'softwarepublico'
-copyright = u'2014, Universidade de Brasilia. \n Esta documentação está licenciada sob a Licença Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional.'
+copyright = u'2014, Universidade de Brasília - UnB. Documentação licenciada sob a Licença Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -197,7 +197,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'softwarepublico.tex', u'softwarepublico Documentation',
-   u'Universidade de Brasilia', 'manual'),
+   u'Universidade de Brasília', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -241,7 +241,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'softwarepublico', u'softwarepublico Documentation',
-   u'Universidade de Brasilia', 'softwarepublico', 'One line description of project.',
+   u'Universidade de Brasília', 'softwarepublico', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -262,9 +262,9 @@ texinfo_documents = [
 
 # Bibliographic Dublin Core info.
 epub_title = u'softwarepublico'
-epub_author = u'Universidade de Brasilia'
-epub_publisher = u'Universidade de Brasilia'
-epub_copyright = u'2014, Universidade de Brasilia'
+epub_author = u'Universidade de Brasília'
+epub_publisher = u'Universidade de Brasília'
+epub_copyright = u'2014, Universidade de Brasília. Documentação licenciada sob a Licença Crea  tive Commons Atribuição-CompartilhaIgual 4.0 Internacional'
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = u'softwarepublico'
