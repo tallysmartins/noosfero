@@ -196,7 +196,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'softwarepublico.tex', u'softwarepublico Documentation',
+  ('index', 'softwarepublico.tex',
+   u'Documentação - Software Público Brasileiro (SPB)',
    u'Universidade de Brasília', 'manual'),
 ]
 
@@ -226,8 +227,9 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'softwarepublico', u'softwarepublico Documentation',
-     [u'Universidade de Brasilia'], 1)
+    ('index', 'softwarepublico',
+     u'Documentação - Software Público Brasileiro (SPB)',
+     [u'Universidade de Brasília'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -240,7 +242,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'softwarepublico', u'softwarepublico Documentation',
+  ('index', 'softwarepublico',
+   u'Documentação - Software Público Brasileiro (SPB)',
    u'Universidade de Brasília', 'softwarepublico', 'One line description of project.',
    'Miscellaneous'),
 ]
