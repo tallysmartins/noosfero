@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'softwarepublico'
-copyright = u'2014, Universidade de Brasilia'
+copyright = u'2014, Universidade de Brasilia. \n Esta documentação está licenciada sob a Licença Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
