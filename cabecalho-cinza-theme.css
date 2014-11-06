@@ -720,8 +720,9 @@ margin: 0 0 18px 0;
 }
 
 footer nav ul {
-margin-left:-40px; /*0; Verificar*/
+	margin-left: 0px; 
 }
+
 footer nav li {
 display:block;
 padding-bottom:3px

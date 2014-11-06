@@ -430,27 +430,23 @@ p {
     color:#2c66ce; /*#757575;*/
     padding: 8px 8px 24px 10px;
     text-transform: uppercase;
+    
+    font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+    font-variant: normal;
     /*margin: 0;*/
 }
 
-/*#content .box-1 .block-title {
-    background: url("images/bg-titulo-interno.png") repeat-x scroll 0 0 #FFF;
-    border-bottom: medium none;
-    border-top: 0px solid #757575;
-    color: #757575;
-    font-size: 12px;
-    padding: 0px;
-    text-align: left;
-    text-transform: uppercase;
-} TITULO DA PAGINA*/
+#content .box-1 .block-title {
+    font-size: 20px;
+    text-transform: none;
+    font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+}
 
 #content .box-1 .block-title span{
    /* background-color: #fff;*/
     background-image: none;
     padding: 0 1em 0 0;
 }
-
-
 
 
 
