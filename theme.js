@@ -46,4 +46,16 @@ function alignBlocks(containerIndex){
 
   $('#block-48500 > .block-inner-1 > .block-inner-2').append('<div class="more_button" style="position: absolute; top: 5px; left: 519px;"><div class="view_all"><a href="/portal/blog">Ler todas</a></div></div>');
 
+
+
+// Foco no botao de busca
+
+$('#link-buscar').click(function(e) {
+    e.preventDefault();
+    window.location.hash = '#portal-searchbox';
+    $('.searchField').focus()
+})
+
 })(jQuery);
+
+
