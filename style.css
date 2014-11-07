@@ -86,9 +86,6 @@ url("fonts/opensans-800-webfont.svg#open_sansextrabold") format("svg");
 /* */
 
 
-
-
-
 #theme-header {
     height: auto;
 }
@@ -413,7 +410,7 @@ p {
     vertical-align: top;
 }
 .box-3{
-  width: 150px;
+  width: 190px;
 }
 
 .box-2 .block .block-inner-2,

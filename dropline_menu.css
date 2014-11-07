@@ -13,7 +13,7 @@ Its not necessary to add position
     height: 30px;
     position: relative;
     
-    background-color: rgb(236,237,241);
+    background-color: #ecedf1;
     
 }
 #menucontainer ul {
@@ -65,7 +65,7 @@ For the background-color opacity is used to create a semi-transperant look as a 
     /*margin: 0px;
     padding: 0px;*/
     opacity: 0.8;
-    background-color:#4E5155;
+    background-color: #4E5155;
     display: inline;
     /*border-right:3px solid #6A91A8;*/
 }
