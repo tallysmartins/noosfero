@@ -241,7 +241,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def self.extra_blocks
     {
       SoftwaresBlock => {:type => [Environment, Person] },
-      SoftwareInformationBlock => {:type => [Community] }
+      SoftwareInformationBlock => {:type => [Community] },
+      InstitutionsBlock => {:type => [Environment, Person]}
     }
   end
 
@@ -472,12 +473,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     ControlledVocabulary.transaction do
       context.profile.software_info.software_categories.update_attributes!(context.params[:software_categories])
     end
-  end
-
-  def self.extra_blocks
-    {
-      InstitutionsBlock => {:type => [Environment, Person]}
-    }
   end
 
   private

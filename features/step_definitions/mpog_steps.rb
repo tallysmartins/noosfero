@@ -33,6 +33,12 @@ Given /^Institutions has initial default values on database$/ do
   JuridicalNature.create(:name => "Sociedade")
   JuridicalNature.create(:name => "Sociedade Civil")
   JuridicalNature.create(:name => "Sociedade de Economia Mista")
+
+  national_region = NationalRegion.new
+  national_region.name = "Distrito Federal"
+  national_region.national_region_code = '35'
+  national_region.national_region_type_id = NationalRegionType::STATE
+  national_region.save
 end
 
 Given /^I type in "([^"]*)" into autocomplete list "([^"]*)" and I choose "([^"]*)"$/ do |typed, input_institution, should_select|
@@ -60,6 +66,7 @@ Given /^the following public institutions?$/ do |table|
 
     institution = PublicInstitution.new(:name => item[:name], :type => "PublicInstitution", :acronym => item[:acronym], :cnpj => item[:cnpj], :juridical_nature => juridical_nature, :governmental_power => governmental_power, :governmental_sphere => governmental_sphere)
     institution.community = community
+    institution.corporate_name = item[:corporate_name]
     institution.save!
   end
 end
