@@ -1788,6 +1788,8 @@ input.button.with-text {
 #content .enterprises-block .block-footer-content a,
 #content .members-block .block-footer-content a,
 #content .communities-block .block-footer-content a,
+#content .softwares-block .block-footer-content a,
+#content .institutions-block .block-footer-content a,
 #content .friends-block .block-footer-content a {
     background: url("images/bg-btn-ver-mais-1px.png") repeat-x scroll 0 0 #EEEEEE;
     border: 1px solid #CCCCCC;
