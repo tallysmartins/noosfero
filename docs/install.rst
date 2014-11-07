@@ -1,6 +1,9 @@
 Instalação
 ==========
 
+(see :ref:`dependencies`)
+
+
 Repositório do SPB
 -------------------
 
