@@ -705,9 +705,11 @@ text-decoration:underline
 footer .container-menus {
 /*padding:46px 0 0 0*/
 }
+
 footer .row {
-margin-bottom: 46px; /*13px*/
+	margin-bottom: 20px;
 }
+
 footer nav {
 border-left:1px dotted #2c66ce; /*#555;*/ /*#dbdbc8;*/
 padding:0 5px 0 10px
@@ -718,7 +720,7 @@ font-weight:bold;
 color: #2c66ce; /*#3b3f44;*/
 line-height:1.3em;
 padding: 0px; /*30px 0 0px 0;*/
-margin: 0 0 18px 0;
+margin: 0 0 8px 0;
 }
 
 footer nav ul {
