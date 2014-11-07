@@ -1,16 +1,81 @@
 Instalação
 ==========
 
-(see :ref:`dependencies`)
+.. Descrição dos pacotes e listagem das dependências de cada pacote
+
+Para instalação das ferramentas que compõem o Software Público, é necessária a
+instalação de um conjunto de pacotes RPM. Um pacote RPM consiste em uma coleção
+de uma ou mais ferramentas que permite um meio automático de instalação,
+atualização, configuração e remoção de softwares. 
+
+O processo de instalação aqui descrito permite a instalação e configuração
+desses pacotes em uma máquina com o Sistema Operacional CentOS 7 instalado e
+atualizado. Os pacotes a seguir já são fornecidos nativamente pelo Sistema
+Operacional, não sendo necessária uma configuração adicional para a
+instalação dos mesmos.
+
+* Mailman
+* Nginx
+* PostgreSQL Server
+
+Somados a esses, alguns pacotes não fornecidos nativamente também são
+necessários. Os mesmos estão listados a seguir.
+
+* Noosfero
+* Gitlab
+* Solr
+* Colab
+* Colab-deps
+* Mailman-api
+
+Para disponibilizar cada pacote não nativo do CentOS 7, fez-se um levantamento
+das dependências de cada ferramenta empacotada, bem como do processo de 
+instalação de cada uma, de modo a automatizar esse processo.
+A seção :ref:`dependencies` descreve brevemente o levantamento de dependências
+feito.
 
 
 Repositório do SPB
 -------------------
+.. Configuração do repositório yum em /etc/yum.repos.d
 
+Para instalação dos pacotes existentes no repositório do SPB através do
+gerenciador de instalação e remoção de pacotes do CentOS (o *Yum*), é preciso
+adicionar o arquivo de configuração desse repositório no diretório
+`/etc/yum.repos./` do Sistema Operacional onde o Portal do Software Público deve
+ser instalado.
+
+Procedimento:
+
+Os comandos a seguir devem ser executados via terminal, com permissões de super
+usuário do sistema.
+
+1. Instalar (caso não esteja instalado) o programa `wget`, para download das
+   configurações de repositório
+
+::
+
+   yum install -y wget
+
+#. Ir para o diretório `/etc/yum.repos./`
+
+::
+
+   cd /etc/yum.repos./
+
+#. Fazer o *download* dos arquivos de configuração nesse diretório:
+
+::
+
+   wget http://download.opensuse.org/repositories/isv:/spb:/colab/CentOS_7/isv:spb:colab.repo
+   wget http://download.opensuse.org/repositories/isv:/spb:/mailman-api/CentOS_7/isv:spb:mailman-api.repo
 
 
 Instalação das Ferramentas (via pacote)
 ---------------------------------------
+
+.. Instalação dos pacotes via yum
+
 
 
 
