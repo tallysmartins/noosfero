@@ -74,20 +74,23 @@ ferramentas listadas a seguir.
 * Transliterate
 
 
-
 Mailman-api
 -----------
 
 Esse pacote contém o Mailman-api. Esta ferramenta python possui como
-dependência o pacote Bottle. Como o mesmo não é provido nativamente pelo
-CentOS 7, foi necessário empacotá-lo separadamente.
+dependência os pacotes Bottle e python. Como o Bottle não é provido
+nativamente pelo CentOS 7, foi necessário empacotá-lo separadamente.
 
 Bottle
 -----------
 
-Esse pacote contém a ferramenta python Bottle, requisito para a utilização da
-ferramenta Mailman-api
+Esse pacote contém a ferramenta Bottle, um framowork web escrito em
+python, e requisito para a utilização da ferramenta Mailman-api. Este pacote
+possui como dependência o pacote python, que está disponível nativamente no
+CentOS.
 
 Solr
 ----
-
+Esse pacote contém a ferramenta python Bottle, e integra o conjunto de
+ferramentas do SPB. Sua instalação requer o pacote Java, que já existe
+nativamente no CentOS.
