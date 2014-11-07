@@ -37,14 +37,13 @@ feito.
 
 Repositório do SPB
 -------------------
+
 .. Configuração do repositório yum em /etc/yum.repos.d
 
 Para instalação dos pacotes existentes no repositório do SPB através do
 gerenciador de instalação e remoção de pacotes do CentOS (o *Yum*), é preciso
 adicionar o arquivo de configuração desse repositório no diretório
 `/etc/yum.repos./` do Sistema Operacional onde o Portal do Software Público deve
-ser instalado.
-
 Procedimento:
 
 Os comandos a seguir devem ser executados via terminal, com permissões de super
@@ -57,13 +56,13 @@ usuário do sistema.
 
    yum install -y wget
 
-#. Ir para o diretório `/etc/yum.repos./`
+2. Ir para o diretório `/etc/yum.repos./`
 
 ::
 
    cd /etc/yum.repos./
 
-#. Fazer o *download* dos arquivos de configuração nesse diretório:
+3. Fazer o *download* dos arquivos de configuração nesse diretório:
 
 ::
 
@@ -76,8 +75,33 @@ Instalação das Ferramentas (via pacote)
 
 .. Instalação dos pacotes via yum
 
+Após a configuração do repositório do SPB, todos os pacotes deverão estar
+disponíveis através do *yum*. Ainda que algumas dependências sejam tratadas
+automaticamente, o comportamento de alguns pacotes é dependente da ordem em que
+os mesmos são instalados. Portanto, deve-se executar a instalação na ordem
+especificada a seguir.
+Os comandos a seguir devem ser executados via terminal, com permissões de super
+usuário do sistema.
 
+Procedimento:
 
+1. Instalar o pacote PostreSQL Server
+
+::
+
+   yum install postgresql-server
+
+2. Instalar os pacotes do Colab, Noosfero e Gitlab
+
+::
+
+   yum install colab noosfero gitlab
+
+3. Instalar os pacotes Nginx
+
+::
+
+   yum install nginx
 
 Configurações
 --------------
