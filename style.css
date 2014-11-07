@@ -2196,6 +2196,12 @@ body.contraste.action-home-index #content .box-1 .block-title span, body.contras
 	color: #FFF !important;
 }
 
+body.contraste #logo #portal-title {
+    background-image: url("images/logotipo_spb_beta_ac.svg");
+	background-repeat: no-repeat;
+	background-size: 374px 78px;
+}
+
 body.contraste #accessibility span {
     background: #fff !important;
     color: #000 !important;
