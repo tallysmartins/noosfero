@@ -241,6 +241,31 @@ Após editar todos os arquivos desejados reinicie o processo do Colab com utiliz
 Gitlab
 ++++++
 
+Crie/edite o arquivo ``/etc/gitlab/gitlab.rb`` com o seguinte conteúdo:
+
+.. code-block:: ruby
+
+   external_url 'https://beta.softwarepublico.gov.br'
+   gitlab_rails['internal_api_url'] = 'http://127.0.0.1:8090/gitlab'
+   nginx['enable'] = false
+   unicorn['enable'] = true
+   unicorn['port'] = 8090
+   postgresql['port'] = 5433
+   gitlab_rails['gitlab_https'] = true
+   gitlab_rails['env_enable'] = true
+   gitlab_rails['env_database_name'] = 'colab'
+   gitlab_rails['env_database_host'] = '127.0.0.1'
+   gitlab_rails['env_database_user'] = '<usuario_do_postgresql>'
+   gitlab_rails['env_database_password'] = '<senha_do_postgresql>'
+   gitlab_rails['omniauth_enabled'] = true
+   gitlab_rails['omniauth_allow_single_sign_on'] = true
+   gitlab_rails['omniauth_block_auto_created_users'] = false
+
+
+Substitua o domínio ``beta.softwarepublico.gov.br`` pelo desejado, e configure o usuário e senha que terão acesso ao banco de dados.
+
+Execute o comando para regerar a configuração do Gitlab: ``gitlab-ctl reconfigure``. Ao termino da reconfiguração o script irá reiniciar o serviço automaticamente.
+
 
 Noosfero
 ++++++++
