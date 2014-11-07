@@ -151,6 +151,64 @@ Reinicie o serviço do Nginx com o comando: ``sudo service nginx restart``.
 Colab
 +++++
 
+Crie/edite o arquivo ``/etc/colab/settings.d/admins.yaml`` e adicione o nome e e-mail dos administradores do sistema:
+
+.. code-block:: yaml
+
+   ## System admins
+   ADMINS: &admin
+     -
+       - John Foo
+       - john@example.com
+	 -
+	   - Mary Bar
+	   - mary@example.com
+
+   MANAGERS: *admin
+
+
+Crie/edite o arquivo ``/etc/colab/settings.d/hosts.yaml`` e configure a URL principal da aplicação e quais URLs poderão ser utilizadas para que o login seja efetuado. Exemplo:
+
+.. code-block:: yaml
+
+   SITE_URL: 'https://beta.softwarepublico.gov.br'
+   BROWSERID_AUDIENCES:
+     - http://beta.softwarepublico.gov.br
+     - https://beta.softwarepublico.gov.br
+
+
+Crie/edite o arquivo ``/etc/colab/settings.d/email.yaml`` e configure o endereço que será utilizado no FROM dos e-mails enviados pelo Colab. Veja o exemplo:
+
+.. code-block:: yaml
+
+   COLAB_FROM_ADDRESS: '"Portal do Software Publico" <noreply@beta.softwarepublico.gov.br>'
+   SERVER_EMAIL: '"Portal do Software Publico" <noreply@beta.softwarepublico.gov.br>'
+
+
+Crie/edite o arquivo ``/etc/colab/settings.d/conversejs.yaml`` e desative o Converse.js:
+
+.. code-block:: yaml
+
+   CONVERSEJS_ENABLED: False
+
+
+Crie/edite o arquivo ``/etc/colab/settings.d/feedzilla.yaml`` e desative o Feedzilla (blog planet):
+
+.. code-block:: yaml
+
+   FEEDZILLA_ENABLED: False
+
+
+*(opcional)* Crie/edite o arquivo ``/etc/colab/settings.d/raven.yaml`` e adicione a *string* de conexão da sua instancia do Sentry  como no exemplo abaixo:
+
+.. code-block:: yaml
+
+   ### Log errors to Sentry instance
+   RAVEN_DSN: 'https://<user>:<key>@sentry.example.com/<id>'
+
+
+Após editar todos os arquivos desejados reinicie o processo do Colab com utilizando o comando ``service colab restart``.
+
 
 Gitlab
 ++++++
