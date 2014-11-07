@@ -167,11 +167,15 @@ Crie/edite o arquivo ``/etc/colab/settings.d/admins.yaml`` e adicione o nome e e
    MANAGERS: *admin
 
 
-Crie/edite o arquivo ``/etc/colab/settings.d/hosts.yaml`` e configure a URL principal da aplicação e quais URLs poderão ser utilizadas para que o login seja efetuado. Exemplo:
+Crie/edite o arquivo ``/etc/colab/settings.d/hosts.yaml`` e configure a URL principal da aplicação, quais hosts deverão aceitar requisições e quais hosts poderão ser utilizadas para que o login seja efetuado. Exemplo:
 
 .. code-block:: yaml
 
    SITE_URL: 'https://beta.softwarepublico.gov.br'
+
+   ALLOWED_HOSTS:
+     - beta.softwarepublico.gov.br
+
    BROWSERID_AUDIENCES:
      - http://beta.softwarepublico.gov.br
      - https://beta.softwarepublico.gov.br
