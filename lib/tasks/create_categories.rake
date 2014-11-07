@@ -2,7 +2,7 @@ namespace :software do
   desc "Create software categories"
   task :create_categories => :environment do
     Environment.all.each do |env|
-      if env.plugin_enabled?("MpogSoftware")
+      if env.plugin_enabled?("MpogSoftwarePlugin")
         software = Category.create!(:name => _("Software"), :environment => env)
         Category.create!(:name => _("Agriculture, Fisheries and Extraction"), :environment => env, :parent => software)
         Category.create!(:name => _("Science, Information and Communication"), :environment => env, :parent => software)
