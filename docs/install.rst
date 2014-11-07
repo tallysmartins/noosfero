@@ -78,6 +78,8 @@ Para configurar o Nginx crie o arquivo ``/etc/nginx/sites-enabled/colab.conf`` c
 
 Substitua o domínio de exemplo ``beta.softwarepublico.gov.br`` pelo domínio desejado.
 
+Certifique-se de instalar o certificado SSL (``/etc/nginx/colab.crt``) e sua chave privada (``/etc/nginx/colab.crt``).
+
 Reinicie o serviço do Nginx com o comando: ``sudo service nginx restart``.
 
 
