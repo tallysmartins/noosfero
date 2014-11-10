@@ -270,7 +270,63 @@ Execute o comando para regerar a configuração do Gitlab: ``gitlab-ctl reconfig
 Noosfero
 ++++++++
 
+Edite o arquivo ``/etc/noosfero/thin.yml``, e adicione uma linha com o
+seguinte conteúdo:
 
+.. code-block:: yaml
+
+   prefix: /social
+
+Crie/edite o arquivo ``/etc/default/noosfero`` e adicione a seguinte
+linha:
+
+.. code-block:: sh
+
+   export RAILS_RELATIVE_URL_ROOT=/social
+
+Reinicie o serviço:
+
+.. code-block:: sh
+
+   $ sudo service noosfero restart
 
 Mailman
 +++++++
+
+Edite o arquivo de configuração do `mailman` em
+``/etc/mailman/mm_cfg.py``, e ajuste os seguintes valores:
+
+.. code-block:: python
+
+   DEFAULT_EMAIL_HOST = 'listas.softwarepublico.gov.br'
+   MTA = None
+   POSTFIX_STYLE_VIRTUAL_DOMAINS ['listas.softwarepublico.gov.br']
+
+Crie a lista de discussão default, necessária para a inicialização do
+serviço. Substitua ``USER@DOMAIN.COM`` pelo email a ser usado como
+administrador do `mailman`, e ``PASSWORD`` pela senha de administração do
+`mailman`.
+
+.. code-block:: sh
+
+   $ sudo -u mailman newlist --quiet mailman USER@DOMAIN.COM PASSWORD
+   $ sudo service mailman restart
+
+
+Configure o postfix:
+
+.. code-block:: sh
+
+   $ sudo postconf relay_domains=listas.softwarepublico.gov.br
+   $ sudo postconf transport_maps=hash:/etc/postfix/transport
+
+Crie/edite ``/etc/postfix/transport`` com o seguinte conteúdo::
+
+   listas.softwarepublico.gov.br mailman:
+
+Gere o banco de dados para consulta, e reinicie o serviço::
+
+.. code-block:: sh
+
+   $ sudo postmap /etc/postfix/transport
+   $ sudo service postfix restart
