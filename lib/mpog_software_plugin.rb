@@ -16,43 +16,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     _("Add Public Software and MPOG features.")
   end
 
-  def signup_extra_contents
-    institutions = Institution.all
-
-    Proc::new do
-      content_tag(:div,
-        hidden_field_tag("user_password_menssage", _("Choose a password that you can remember easily. It must have at least 6 characters.")) +
-        required(labelled_form_field(
-          _('Secondary e-Mail'),
-          text_field(:user, :secondary_email, :id => 'secondary_email_field') +
-          content_tag(
-          :small, _("If you have a gov email, don't forget to use this email on the primary email") ,:class => 'signup-form',:id =>'secondary-email-balloon')
-         )),
-      :id => 'signup-secondary-email') +
-
-      content_tag(:div,
-        labelled_form_field(
-          _('Institutions'),
-          content_tag(:div,
-            text_field(:institution, :name, :id=>"input_institution"),
-          :class => 'institution_container')+
-          content_tag(
-            :small, _('Fill with your institution') ,:class => 'signup-form', :id =>'institution-balloon'
-          ) +
-          content_tag(:div, _("The searched institution does not exist"), :id=>"institution_empty_ajax_message", :class=>"errorExplanation hide-field")+
-          link_to(_("Add new institution"), "#", :class=>'button with-text icon-add', :id => 'add_new_institution') +
-          link_to(_("Create new institution"), "#", :id=>"create_institution_link", :class=>'button with-text icon-add')+
-          hidden_field_tag("user[institution_ids][]", "", :class => 'user_institutions')+
-          hidden_field_tag("institution_selected", "")+
-          hidden_field_tag("full_name_error", _("Should begin with a capital letter and no special characters"))+
-          content_tag("ul", "",:class=>"institutions_added")+
-          content_tag(:div, "", :id=>"institution_dialog")
-        ),
-       :id => 'signup-institution'
-      )
-    end
-  end
-
   def profile_editor_extras
     if context.profile.person?
       expanded_template('person_editor_extras.html.erb')

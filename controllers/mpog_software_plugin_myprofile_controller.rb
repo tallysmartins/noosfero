@@ -4,11 +4,6 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
   def index
   end
 
-  def archive_software
-    puts "="*80
-    nil
-  end
-
   def edit_institution
     @show_sisp_field = environment.admins.include?(current_user.person)
     @estate_list = NationalRegion.find(:all, :conditions=>["national_region_type_id = ?", 2], :order=>"name")
