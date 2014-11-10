@@ -67,6 +67,11 @@ class MpogSoftwarePluginController < ApplicationController
     if !params[:community].nil? and !params[:institutions].nil?
       response_message = {}
 
+      institution_template = Community["institution"]
+      if (!institution_template.blank? && institution_template.is_template)
+        params[:community][:template_id] = institution_template.id unless params[:community].blank?
+      end
+
       institution = private_create_institution()
 
       response_message = if institution.errors.full_messages.empty? and institution.valid? and institution.save
