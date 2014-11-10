@@ -104,6 +104,17 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         @searches[@asset] = {:results => results}
         @search = results
         render :action => :communities
+      elsif params[:type] == "Institution"
+        institutions = Institution.search_institution(params[:intitution_name])
+        communities = []
+        institutions.each do |s|
+          communities << s.community
+        end
+        results = communities
+        results = results.paginate(:per_page => 24, :page => params[:page])
+        @searches[@asset] = {:results => results}
+        @search = results
+        render :action => :communities
       #FIXME: Careful while merginging, this else must be the default action
       else
         unfiltered_list = visible_profiles(Community).select{ |com| com.name =~ /#{params[:query]}/}
@@ -122,18 +133,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         render :action => :communities
       end
 
-      if params[:type] == "Institution"
-        institutions = Institution.search_institution(params[:intitution_name])
-        communities = []
-        institutions.each do |s|
-          communities << s.community
-        end
-        results = communities
-        results = results.paginate(:per_page => 24, :page => params[:page])
-        @searches[@asset] = {:results => results}
-        @search = results
-        render :action => :communities
-      end
     end
 
     people_block = proc do
@@ -415,9 +414,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def add_new_search_filter
-    if context.params[:action] == "people"
-      expanded_template('search/search_user_filter.html.erb')
-    elsif context.params[:action] == "communities"
+    if context.params[:action] == "communities"
       @active_type = if context.params[:type] == "Software"
         "software"
       elsif context.params[:type] == "Institution"
