@@ -14,6 +14,7 @@
 /obs/isv:spb*
 /packages
 /docs/_build/
+/omniauth-remote-user
 *.swp
 *~
 *.swo
