@@ -1109,7 +1109,7 @@ div#article-parent {
 .pagination .next_page{margin-left: 0.5em; font-weight: bold;}
 
 #profile-header {
-	position: absolute; /* Corrige link de login movendo */
+	position: absolute; /* Corrige link de login  */
 }
 
 #public-profile-search, #profile-search-results form, .profile-search-block form {
@@ -2199,7 +2199,7 @@ body.contraste.action-home-index #content .box-1 .block-title span, body.contras
 	color: #FFF !important;
 }
 
-body.contraste f#logo #portal-title {
+body.contraste #logo #portal-title {
     background-image: url("images/logotipo_spb_beta_ac.svg");
 	background-repeat: no-repeat;
 	background-size: 374px 78px;
