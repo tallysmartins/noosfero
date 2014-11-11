@@ -4,8 +4,8 @@ class Community
 
   attr_accessible :visible
 
-  has_one :software_info, :dependent=>:delete
-  has_one :institution, :dependent=>:delete
+  has_one :software_info, :dependent=>:destroy
+  has_one :institution, :dependent=>:destroy
 
   def self.create_after_moderation(requestor, attributes = {}, software_info = nil, license_info = nil, software_categories = nil)
     community = Community.new(attributes)
@@ -21,7 +21,7 @@ class Community
       software_info.save
     end
 
-    if community.environment.enabled?('admin_must_approve_new_communities')
+    if community.environment.enabled?('admin_must_approve_new_communities') and !community.environment.admins.include?(requestor)
       cc = CreateCommunity.create(attributes.merge(:requestor => requestor, :software_info=>software_info))
     else
       community = Community.create(attributes)

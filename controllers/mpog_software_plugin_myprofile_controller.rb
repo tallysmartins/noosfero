@@ -64,7 +64,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
         end
       end
 
-      if environment.enabled?("admin_must_approve_new_communities")
+      if environment.enabled?("admin_must_approve_new_communities") and !environment.admins.include?(current_user.person)
         session[:notice] = _('Your new software request will be evaluated by an administrator. You will be notified.')
         redirect_to user.admin_url
       else
