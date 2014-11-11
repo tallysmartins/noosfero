@@ -73,7 +73,11 @@ class MpogSoftwarePluginController < ApplicationController
       end
 
       institution = private_create_institution()
-
+      if environment.admins.include?(current_user.person)
+        environment.admins.each do |adm|
+          institution.community.add_admin(adm)
+        end
+      end
       response_message = if institution.errors.full_messages.empty? and institution.valid? and institution.save
         {:success => true, :message => _("Institution successful created!"), :institution_data=>{:name=>institution.name, :id=>institution.id}}
       else
