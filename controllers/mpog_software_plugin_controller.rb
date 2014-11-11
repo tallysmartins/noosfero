@@ -73,7 +73,7 @@ class MpogSoftwarePluginController < ApplicationController
       end
 
       institution = private_create_institution()
-      if environment.admins.include?(current_user.person)
+      if environment.admins.include?(current_user.person) and params[:edit_institution_page] == false
         environment.admins.each do |adm|
           institution.community.add_admin(adm)
         end

@@ -9,6 +9,7 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
   def setup
     @admin = create_user("adminuser").person
     @admin.stubs(:has_permission?).returns("true")
+    @controller.stubs(:current_user).returns(@admin.user)
 
     @environment = Environment.default
     @environment.enabled_plugins = ['MpogSoftwarePlugin']
@@ -171,6 +172,21 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
 
     json_response = ActiveSupport::JSON.decode(@response.body)
     assert json_response["success"]
+  end
+
+  should "add environment admins to institution when created via admin panel" do
+    @controller.stubs(:verify_recaptcha).returns(true)
+    admin2 = create_user("another_admin").person
+    admin2.stubs(:has_permission?).returns("true")
+    @environment.add_admin(admin2)
+    @environment.save
+
+    fields = InstitutionTestHelper.generate_form_fields "Private Institution", "BR", "DF", "Brasilia", "12.323.557/8900-10", "PrivateInstitution"
+    fields[:institutions][:acronym] = "PI"
+    fields[:edit_institution_page] = false
+    post :new_institution, fields
+
+    assert(Institution.last.community.admins.include?(admin2) )
   end
 
 end
