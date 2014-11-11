@@ -10,7 +10,7 @@ if [ -x /usr/bin/yum ]; then
   os='centos'
 fi
 
-for script in $(find /vagrant/vagrant.d -name '*-generic' -or -name "*-$os" | sort); do
+for script in $(find /vagrant/vagrant/provision.d -name '*-generic' -or -name "*-$os" | sort); do
   (
     set -x
     $script

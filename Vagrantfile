@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision 'shell', path: 'proxy.sh', args: [proxy]
   end
 
-  config.vm.provision 'shell', path: 'vagrant.sh'
+  config.vm.provision 'shell', path: 'vagrant/provision.sh'
 
   config.vm.network :forwarded_port, guest: 8000, host: 8000 # Colab (runserver)
 end
