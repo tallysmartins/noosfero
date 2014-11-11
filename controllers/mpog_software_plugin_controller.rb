@@ -78,10 +78,10 @@ class MpogSoftwarePluginController < ApplicationController
           institution.community.add_admin(adm)
         end
       end
-      response_message = if institution.errors.full_messages.empty? and institution.valid? and institution.save
+      response_message = if institution.errors.full_messages.empty? and institution.community.errors.full_messages.empty? and institution.valid? and institution.save
         {:success => true, :message => _("Institution successful created!"), :institution_data=>{:name=>institution.name, :id=>institution.id}}
       else
-        {:success => false, :message => _("Institution could not be created!"), :errors => institution.errors.full_messages}
+        {:success => false, :message => _("Institution could not be created!"), :errors => institution.errors.full_messages << institution.community.errors.full_messages}
       end
 
       if request.xhr?
