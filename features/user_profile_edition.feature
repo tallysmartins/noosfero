@@ -23,6 +23,11 @@ Feature: Institution Field
       | Ministerio do Planejamento | MP      | BR      | DF    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             | Ministerio do Planejamento |
     And I am logged in as mpog_admin
 
+  Scenario: Go to control panel when clicked on 'Complete your profile' link
+    When I follow "Complete your profile"
+    Then I should see "Profile settings for "
+    And I should see "Personal information"
+
   @selenium
   Scenario: Add more then one instituion on profile editor
     Given I follow "Edit Profile"

@@ -7,6 +7,9 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   include FormsHelper
   include LibraryHelper
   include InstitutionHelper
+  include ActionView::Helpers
+  include ActionDispatch::Routing
+  include Rails.application.routes.url_helpers
 
   def self.plugin_name
     "MpogSoftwarePlugin"
@@ -228,9 +231,11 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     return if context.session[:user].nil? or context.session[:hide_incomplete_percentage] == true
 
     person = Person.where(:user_id=>context.session[:user]).first
+
     if context.profile && context.profile.person? and !person.nil?
-      @profile_edit_link = link_to _("Complete your profile"), "/myprofile/#{person.identifier}/profile_editor/edit"
+      @person = person
       @percentege = calc_percentage_registration(person)
+
       if @percentege >= 0 and @percentege <= 100
         expanded_template('incomplete_registration.html.erb')
       end

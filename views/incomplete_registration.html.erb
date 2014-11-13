@@ -4,7 +4,7 @@
       <div><%= _("Complete Profile")+": <span>#{@percentege}</span>%" %></div>
       <canvas id="complete_registration_percentage" width="100%" height="20"></canvas>
       <div>
-        <%= @profile_edit_link %> |
+        <%= link_to _("Complete your profile"), { :profile=>@person.identifier, :controller=>"profile_editor", :action=> "edit" } %> |
         <%= link_to _("Hide"), "#", :class=>"hide-incomplete-percentage" %>
       </div>
     </div>
