@@ -52,18 +52,20 @@ span.nov_spb {
 /*Static block for box3*/
 #content .box-1 .tags-block .block-inner-2 .block-title{
   font-size: 15px;
-  border-top: none;
+  /*border-top: none;*/
   background: none;
   border-bottom: none;
-  padding: 0px; 
-  margin-top:-11px;
+  padding: 10px 0px 0px 0px;
+  margin:10px; 
+  /*margin-top:-5px;*/
 }
+
 #content .box-1 .tags-block .block-inner-2 .tag_cloud{
   font-size: 12px;
   margin-top:-11px;
   text-align: left;
-  margin-top: -28px;
-  margin-left: 35px;
+  margin-top: -26px;
+  margin-left: 42px;
 
 }
 
@@ -72,6 +74,7 @@ span.nov_spb {
   border-radius:8px;
   background-color:#c0c1c1;
   padding:3px 6px;
+  margin:10px 3px;
 }
 
 #content .box-1 .tags-block .block-footer-content a{
