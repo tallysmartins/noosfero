@@ -1112,7 +1112,9 @@ div#article-parent {
 .pagination .prev_page{margin-right: 0.5em; font-weight: bold;}
 .pagination .next_page{margin-left: 0.5em; font-weight: bold;}
 
-
+#profile-header {
+	position: absolute; /* Corrige link de login  */
+}
 
 #public-profile-search, #profile-search-results form, .profile-search-block form {
  background-color: transparent;
@@ -1121,6 +1123,7 @@ div#article-parent {
 #public-profile-search .search-field .formfield {
     float: left;
 }
+
 #public-profile-search .search-field .formfield input {
     margin-top: 0px;
 }
