@@ -1,0 +1,95 @@
+/*Static block for box3*/
+#content .box-3 .statistics-block .block-inner-2 .block-title{
+  font-size: 0px;
+  border-top: none;
+  background: none;
+  border-bottom: none;
+  padding: 0px; 
+  margin-top:-11px;
+}
+#content .box-3 .statistics-block .block-inner-2 .statistics-block-data{
+  font-size: 12px;
+}
+
+/*Software Information block*/
+
+#software-information-block-table :hover
+#col-profile-big-image :hover,
+#col-software-name :hover {
+  background-color: none;
+}
+
+#col-software-name h1 {
+  text-align: left;
+}
+#col-software-name {
+  font-style: normal;
+  vertical-align:top; !important;
+}
+
+
+/*
+.box-3.statistics-block{
+border: none;
+
+}*/
+
+#download_spb{
+  text-align: left;
+  border:1px solid #c0c1c1;
+  border-radius: 8px;
+  width: 90%;
+  padding:10px;
+}
+
+span.req_spb{
+  padding:5px;
+}
+span.nov_spb {
+  padding: 5px;
+}
+
+/*Static block for box3*/
+#content .box-1 .tags-block .block-inner-2 .block-title{
+  font-size: 15px;
+  border-top: none;
+  background: none;
+  border-bottom: none;
+  padding: 0px; 
+  margin-top:-11px;
+}
+#content .box-1 .tags-block .block-inner-2 .tag_cloud{
+  font-size: 12px;
+  margin-top:-11px;
+  text-align: left;
+  margin-top: -28px;
+  margin-left: 35px;
+
+}
+
+#content .box-1 .tags-block .block-inner-2 .tag_cloud a{
+  border:1px solid #c0c1c1;
+  border-radius:8px;
+  background-color:#c0c1c1;
+  padding:3px 6px;
+}
+
+#content .box-1 .tags-block .block-footer-content a{
+  background: none;
+  border: none;
+  border-radius: none;
+}
+
+#content .box-1 .tags-block .block-footer-content {
+  margin-top: -25px;
+}
+
+
+/*
+.tag_cloud {
+text-align: left;
+margin-top: -27px;
+margin-left: 35px;
+border:
+
+*/
