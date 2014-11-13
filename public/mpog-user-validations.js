@@ -1,4 +1,10 @@
 (function(){
+  var AJAX_URL = {
+    check_reactivate_account:
+      url_with_subdirectory("/plugin/mpog_software/check_reactivate_account")
+  };
+
+
   /*
   * "Class" that switch state field between input and select
   * If the Country if Brazil, set state to select field
@@ -95,7 +101,7 @@
 
   function check_reactivate_account(value, input_object){
     jQuery.ajax({
-      url : "/plugin/mpog_software/check_reactivate_account",
+      url : AJAX_URL.check_reactivate_account,
       type: "GET",
       data: { "email": value },
       success: function(response) {

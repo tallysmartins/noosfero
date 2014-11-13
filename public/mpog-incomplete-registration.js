@@ -1,8 +1,14 @@
 (function() {
+  var AJAX_URL = {
+    hide_registration_incomplete_percentage:
+      url_with_subdirectory("/plugin/mpog_software/hide_registration_incomplete_percentage")
+  };
+
+
   function hide_incomplete_percentage(evt) {
     evt.preventDefault();
 
-    jQuery.get("/plugin/mpog_software/hide_registration_incomplete_percentage", {hide:true}, function(response){
+    jQuery.get(AJAX_URL.hide_registration_incomplete_percentage, {hide:true}, function(response){
       if( response == true )
         jQuery("#complete_registration").fadeOut();
     });

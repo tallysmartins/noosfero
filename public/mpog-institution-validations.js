@@ -1,8 +1,20 @@
 (function(){
+  var AJAX_URL = {
+    create_institution_modal:
+      url_with_subdirectory("/plugin/mpog_software/create_institution"),
+    new_institution:
+      url_with_subdirectory("/plugin/mpog_software/new_institution"),
+    institution_already_exists:
+      url_with_subdirectory("/plugin/mpog_software/institution_already_exists"),
+    get_institutions:
+      url_with_subdirectory("/plugin/mpog_software/get_institutions")
+  };
+
+
   function open_create_institution_modal(evt) {
     evt.preventDefault();
 
-    jQuery.get("/plugin/mpog_software/create_institution", function(response){
+    jQuery.get(AJAX_URL.create_institution_modal, function(response){
       jQuery("#institution_dialog").html(response);
 
       set_form_count_custom_data();
@@ -54,6 +66,7 @@
 
   function success_ajax_response(response) {
     close_loading();
+
     if(response.success){
       var institution_name  = response.institution_data.name;
       var institution_id = response.institution_data.id;
@@ -79,11 +92,10 @@
 
   function save_institution(evt) {
     evt.preventDefault();
-    var form_data = jQuery("#institution_form").serialize();
 
     open_loading(jQuery("#loading_message").val());
     jQuery.ajax({
-      url: "/plugin/mpog_software/new_institution",
+      url: AJAX_URL.new_institution,
       data : get_post_data(),
       type: "POST",
       success: success_ajax_response,
@@ -96,16 +108,16 @@
   }
 
   function institution_already_exists(){
-      if( this.value.length >= 3 ) {
-        jQuery.get("/plugin/mpog_software/institution_already_exists", {name:this.value}, function(response){
-          if( response == true ) {
-            jQuery("#already_exists_text").switchClass("hide-field", "show-field");
-          } else {
-            jQuery("#already_exists_text").switchClass("show-field", "hide-field");
-          }
-        });
-      }
+    if( this.value.length >= 3 ) {
+      jQuery.get(AJAX_URL.institution_already_exists, {name:this.value}, function(response){
+        if( response == true ) {
+          jQuery("#already_exists_text").switchClass("hide-field", "show-field");
+        } else {
+          jQuery("#already_exists_text").switchClass("show-field", "hide-field");
+        }
+      });
     }
+  }
 
   function get_clone_institution_data(value) {
     var user_institutions = jQuery(".user_institutions").first().clone();
@@ -119,7 +131,7 @@
       source : function(request, response){
         jQuery.ajax({
           type: "GET",
-          url: "/plugin/mpog_software/get_institutions",
+          url: AJAX_URL.get_institutions,
           data: {query: request.term},
           success: function(result){
             response(result);
@@ -246,7 +258,6 @@
     jQuery(".remove-institution").click(remove_institution);
 
     jQuery("#community_country").change(function(){
-      console.log(this.value)
       show_hide_cnpj_city(this.value);
     });
 

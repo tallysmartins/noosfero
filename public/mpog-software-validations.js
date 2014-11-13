@@ -1,4 +1,10 @@
 (function(){
+  var AJAX_URL = {
+    get_field_data:
+      url_with_subdirectory("/plugin/mpog_software/get_field_data")
+  };
+
+
   function get_hidden_description_field(autocomplete_field, klass) {
     var field = jQuery(autocomplete_field);
     field = field.parent().parent().find(klass);
@@ -35,7 +41,7 @@
       source : function(request, response){
         jQuery.ajax({
           type: "GET",
-          url: "/plugin/mpog_software/get_field_data",
+          url: AJAX_URL.get_field_data,
           data: {query: request.term, field: field_name},
           success: function(result){
             response(result);

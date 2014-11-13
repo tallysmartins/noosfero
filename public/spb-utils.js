@@ -28,3 +28,10 @@ var SelectElement = (function() {
 
   return SelectElement;
 })();
+
+
+function url_with_subdirectory(url) {
+  var subdirectory = jQuery("meta[property='noosfero:root']").attr("content");
+
+  return subdirectory+url;
+}

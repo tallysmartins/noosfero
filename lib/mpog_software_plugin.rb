@@ -213,7 +213,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def js_files
-    ["mpog-custom-libraries.js", "mpog-software.js", "mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js", "mpog-incomplete-registration.js", "mpog-search.js", "jquery.maskedinput.min.js"]
+    ["spb-utils.js", "mpog-software.js", "mpog-software-validations.js", "mpog-user-validations.js", "mpog-institution-validations.js", "mpog-incomplete-registration.js", "mpog-search.js", "jquery.maskedinput.min.js"]
   end
 
   def add_new_organization_buttons
