@@ -1,5 +1,7 @@
 class SoftwareInfo < ActiveRecord::Base
-  attr_accessible :e_mag, :icp_brasil, :intern, :e_ping, :e_arq, :operating_platform, :demonstration_url, :acronym, :objectives, :features, :license_infos_id, :community_id, :finality, :repository_link, :public_software, :first_edit
+  attr_accessible :e_mag, :icp_brasil, :intern, :e_ping, :e_arq, :operating_platform
+  attr_accessible :demonstration_url, :acronym, :objectives, :features, :license_infos_id
+  attr_accessible :community_id, :finality, :repository_link, :public_software, :first_edit
 
   has_many :libraries, :dependent => :destroy
   has_many :software_databases
@@ -53,6 +55,16 @@ class SoftwareInfo < ActiveRecord::Base
     end
     true
   end
+
+  # if create_after_moderation receive a model object, would be possible to reuse core method
+  def self.create_after_moderation(requestor, attributes = {})
+    environment = attributes.delete(:environment)
+    name = attributes.delete(:name)
+    software = SoftwareInfo.new(attributes)
+    CreateSoftware.create!(attributes.merge(:requestor => requestor, :environment => environment, :name => name))
+  end
+
+
 
   def validate_acronym
     self.acronym = "" if self.acronym.nil?

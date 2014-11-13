@@ -54,7 +54,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
    valid_license = (request.post? && @license_info.valid?)
    if valid_software_info && valid_license && valid_community
       @community = Community.create_after_moderation(user, {:environment => environment}.merge(params[:community]), @software_info, @license_info )
-
+      @software_info = SoftwareInfo.create_after_moderation(user,params[:software_info].merge({:environment => environment,:name => params[:community][:name]}))
       unless params[:q].nil?
         admins = params[:q].split(/,/).map{|n| environment.people.find n.to_i}
 
