@@ -170,23 +170,6 @@ h1, h2, h3, h4, h5, h6 {
     top: 50%;
 }
 
-a:link, #content a:link, dl.portlet a:link {
-    color: #2c67cd;
-    /*border-bottom: none;*/
-}
-
-a:visited, #content a:visited, dl.portlet a:visited {
-    color:#2c66ce; /*#2c67cd;*/
-}
-
-#content a:hover, dl.portlet a:hover {
-    color: #000;
-}
-
-#category-ajax-selector .select-subcategory-link:hover {
-    color: #fff;
-}
-
 body div.overlaybg div.close,
 body div.overlay div.close {
     right: -14px;
