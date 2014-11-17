@@ -3,12 +3,12 @@ class CreateSoftware < Task
   validates_presence_of :requestor_id, :target_id
   validates_presence_of :name
 
-  attr_accessible :name, :finality, :repository_link, :requestor, :environment
+  attr_accessible :name, :finality, :repository_link, :requestor, :environment, :reject_explanation
 
   alias :environment :target
   alias :environment= :target=
 
-  DATA_FIELDS = ['name', 'finality', 'license_infos_id', 'repository_link']
+  DATA_FIELDS = ['name', 'finality', 'license_info_id', 'repository_link']
   DATA_FIELDS.each do |field|
     settings_items field.to_sym
   end
@@ -19,8 +19,8 @@ class CreateSoftware < Task
     community.environment = self.environment
     community.add_admin(self.requestor)
 
-    software = SoftwareInfo.create!(:name => self.name, :finality => self.finality,
-    :repository_link => self.repository_link, :community => community,
+    software = SoftwareInfo.create!(:finality => self.finality,
+    :repository_link => self.repository_link, :community_id => community.id,
     :license_info_id => self.license_info_id)
   end
 
@@ -81,5 +81,7 @@ class CreateSoftware < Task
   def task_finished_message
     _('Your request for registering the software "%{software}" was approved. You can access %{environment} now and start using your new software.') % { :software => self.name, :environment => self.environment }
   end
+
+  private
 
 end
