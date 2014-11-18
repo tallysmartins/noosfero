@@ -3,12 +3,12 @@ class CreateSoftware < Task
   validates_presence_of :requestor_id, :target_id
   validates_presence_of :name
 
-  attr_accessible :name, :finality, :repository_link, :requestor, :environment, :reject_explanation
+  attr_accessible :name, :finality, :repository_link, :requestor, :environment, :reject_explanation, :license_info
 
   alias :environment :target
   alias :environment= :target=
 
-  DATA_FIELDS = ['name', 'finality', 'license_info_id', 'repository_link']
+  DATA_FIELDS = ['name', 'finality', 'license_info', 'repository_link']
   DATA_FIELDS.each do |field|
     settings_items field.to_sym
   end
@@ -21,7 +21,7 @@ class CreateSoftware < Task
 
     software = SoftwareInfo.create!(:finality => self.finality,
     :repository_link => self.repository_link, :community_id => community.id,
-    :license_info_id => self.license_info_id)
+    :license_info => self.license_info)
   end
 
   def title

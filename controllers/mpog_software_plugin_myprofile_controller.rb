@@ -45,15 +45,15 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @community.environment = environment
     @software_info = SoftwareInfo.new(params[:software_info])
     @license_info = if params[:license_info].nil?
-     LicenseInfo::new
-   else
-     LicenseInfo.find(:first, :conditions =>["version = ?","#{params[:license_info][:version]}"])
-   end
-   valid_community = request.post? && @community.valid?
-   valid_software_info = request.post? && @software_info.valid?
-   valid_license = (request.post? && @license_info.valid?)
-   if valid_software_info && valid_license && valid_community
-      @software_info = SoftwareInfo.create_after_moderation(user,params[:software_info].merge({:environment => environment,:name => params[:community][:name]}))
+      LicenseInfo::new
+    else
+      LicenseInfo.find(:first, :conditions =>["version = ?","#{params[:license_info][:version]}"])
+    end
+
+    valid_models = request.post? && (@community.valid? && @software_info.valid? && @license_info.valid?)
+
+    if valid_models
+      @software_info = SoftwareInfo.create_after_moderation(user,params[:software_info].merge({:environment => environment,:name => params[:community][:name], :license_info => @license_info}))
       unless params[:q].nil?
         admins = params[:q].split(/,/).map{|n| environment.people.find n.to_i}
 
@@ -62,14 +62,18 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
           @community.add_admin(admin)
         end
       end
+      if !environment.admins.include?(current_user.person)
         session[:notice] = _('Your new software request will be evaluated by an administrator. You will be notified.')
         redirect_to user.admin_url
+      else
+        redirect_to :controller => 'profile_editor', :action => 'edit', :profile => @community.identifier
+      end
     else
 
-     @errors |= @community.errors.full_messages
-     @errors |= @software_info.errors.full_messages
-     @errors |= @license_info.errors.full_messages
-   end
+      @errors |= @community.errors.full_messages
+      @errors |= @software_info.errors.full_messages
+      @errors |= @license_info.errors.full_messages
+    end
   end
 
   def search_offerers
@@ -149,4 +153,5 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
   def community_must_be_approved
   end
+
 end

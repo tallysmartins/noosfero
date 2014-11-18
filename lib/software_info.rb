@@ -1,6 +1,6 @@
 class SoftwareInfo < ActiveRecord::Base
   attr_accessible :e_mag, :icp_brasil, :intern, :e_ping, :e_arq, :operating_platform
-  attr_accessible :demonstration_url, :acronym, :objectives, :features, :license_info_id
+  attr_accessible :demonstration_url, :acronym, :objectives, :features, :license_info
   attr_accessible :community_id, :finality, :repository_link, :public_software, :first_edit
 
   has_many :libraries, :dependent => :destroy
@@ -60,8 +60,18 @@ class SoftwareInfo < ActiveRecord::Base
   def self.create_after_moderation(requestor, attributes = {})
     environment = attributes.delete(:environment)
     name = attributes.delete(:name)
-    software = SoftwareInfo.new(attributes)
-    CreateSoftware.create!(attributes.merge(:requestor => requestor, :environment => environment, :name => name))
+    license_info = attributes.delete(:license_info)
+    software_info = SoftwareInfo.new(attributes)
+    if !environment.admins.include? requestor
+      CreateSoftware.create!(attributes.merge(:requestor => requestor, :environment => environment, :name => name, :license_info => license_info))
+    else
+      community = Community.new(:name => name)
+      community.environment = environment
+      software_info.save
+      community.software_info = software_info
+      community.save!
+      community.add_admin(requestor)
+    end
   end
 
 

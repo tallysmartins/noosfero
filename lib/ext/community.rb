@@ -7,25 +7,13 @@ class Community
   has_one :software_info, :dependent=>:destroy
   has_one :institution, :dependent=>:destroy
 
-  def self.create_after_moderation(requestor, attributes = {}, software_info = nil, license_info = nil, software_categories = nil)
+  def self.create_after_moderation(requestor, attributes = {})
     community = Community.new(attributes)
 
-    if not software_info.nil?
-        if not license_info.nil?
-          software_info.license_info = license_info
-        end
-
-        if not software_categories.nil?
-          software_info.software_categories = software_categories
-        end
-      software_info.save
-    end
-
     if community.environment.enabled?('admin_must_approve_new_communities') and !community.environment.admins.include?(requestor)
-      cc = CreateCommunity.create(attributes.merge(:requestor => requestor, :software_info=>software_info))
+      cc = CreateCommunity.create(attributes.merge(:requestor => requestor))
     else
       community = Community.create(attributes)
-      community.software_info = software_info
       community.add_admin(requestor)
     end
     community
