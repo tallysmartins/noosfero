@@ -1,4 +1,5 @@
 class CreateSoftware < Task
+  include Rails.application.routes.url_helpers
 
   validates_presence_of :requestor_id, :target_id
   validates_presence_of :name
@@ -79,9 +80,15 @@ class CreateSoftware < Task
   end
 
   def task_finished_message
-    _('Your request for registering the software "%{software}" was approved. You can access %{environment} now and start using your new software.') % { :software => self.name, :environment => self.environment }
+    _('Your request for registering the software "%{software}" was approved. You can access %{url} and finish the registration of your software.') % { :software => self.name, :url => mount_url }
   end
 
   private
+
+  def mount_url
+    identifier = Community.where(:name => self.name).first.identifier
+    # The use of url_for doesn't allow the /social within the Public Software portal. That's why the url is mounted so 'hard coded'
+    url = "#{environment.top_url}/myprofile/#{identifier}/profile_editor/edit"
+  end
 
 end
