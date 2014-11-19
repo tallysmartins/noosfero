@@ -23,9 +23,9 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     OperatingSystemName.create(:name=>"Debian")
 
     login_as(@person.user.login)
-    @e = Environment.default
-    @e.enable_plugin('MpogSoftwarePlugin')
-    @e.save!
+    @environment = Environment.default
+    @environment.enable_plugin('MpogSoftwarePlugin')
+    @environment.save!
   end
 
   attr_accessor :person, :offer
@@ -66,7 +66,8 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
 
   should 'create a new software with all fields filled in' do 
     fields = software_fields
-    post :new_software, :profile => person.identifier, :community => fields[1], :license_info => fields[0],
+    @environment.add_admin(@person)
+    post :new_software, :profile => @person.identifier, :community => fields[1], :license_info => fields[0],
                         :software_info => fields[2]
     assert_equal SoftwareInfo.last.community.name, "Debian"
   end
