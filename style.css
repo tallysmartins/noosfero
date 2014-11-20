@@ -1,4 +1,4 @@
-@import url(../profile-base/style.css);
+ @import url(../profile-base/style.css);
 /******************** cabecalho verde ********************/
 /*@import url(cabecalho-verde-theme.css);*/
 /****************** FIM cabecalho verde ******************/
@@ -390,6 +390,7 @@ p {
 
 .box-1 {
    /* display: inline-block;*/
+   /*width: 490px;*/
 }
 
 .box-2 {
@@ -397,7 +398,7 @@ p {
     vertical-align: top;
 }
 .box-3{
-  width: 190px;
+  width: 190px; /*230px;*/
 }
 
 .box-2 .block .block-inner-2,

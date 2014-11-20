@@ -421,7 +421,7 @@ filter: alpha(opacity=100);
 /* Social Box */
 
 #social-box {
-    border-top: 4px solid #2c66ce;
+    border-top: 4px solid #2c66ce; /*#172938;*/
 }
 
 
@@ -444,9 +444,12 @@ filter: alpha(opacity=100);
 
 #social-box li {
     float: left;
-    margin: 8px;
-    padding-top: 10px;
+    margin: 15px;
+    /*padding-top: 10px;*/
     vertical-align: middle;
+    display: flex;
+    line-height: 20px;
+
 }
 
 #sb_face,
