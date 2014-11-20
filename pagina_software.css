@@ -13,20 +13,26 @@
 
 /*Software Information block*/
 
-#software-information-block-table :hover
-#col-profile-big-image :hover,
-#col-software-name :hover {
-  background-color: none;
-}
 #software-information-block-table{
   width:515px;
   margin:0px 15px;
+}
+
+#software-information-block-table td{
+	display: none;
+}
+
+#software-information-block-table td#col-profile-big-image,
+#software-information-block-table td#col-software-name {
+	display: table-cell;
 }
 
 #col-software-name h1 {
   text-align: left;
   line-height: 37px;
   font-size: 34px;
+  font-family: Arial, open_sansbold, Helvetica, sans-serif;
+   font-weight: bold;
 }
 #col-software-name {
   font-style: normal;

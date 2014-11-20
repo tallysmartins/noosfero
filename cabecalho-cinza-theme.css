@@ -9,6 +9,11 @@ a:visited, #content a:visited, dl.portlet a:visited {
     color:#2c66ce; /*#2c67cd;*/
 }
 
+/* Remove in all td gray backgroung hover */
+tr:hover td {
+	background-color: transparent;
+}
+
 #content a:hover, dl.portlet a:hover {
     color: #000;
 }
