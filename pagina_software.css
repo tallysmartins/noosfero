@@ -1,6 +1,3 @@
-/* GIT TEST 123 */
-
-
 
 /*Static block for box3*/
 #content .box-3 .statistics-block .block-inner-2 .block-title{
@@ -16,6 +13,9 @@
 }
 
 /*Software Information block*/
+#content .block.software-information-block{
+	margin-bottom:60px;}
+
 
 #software-information-block-table{
   width:515px;
@@ -31,12 +31,29 @@
 	display: table-cell;
 }
 
+/* Estilo correto para 2 colunas */
+/*
 #col-software-name h1 {
   text-align: left;
-  line-height: 37px;
   font-size: 34px;
+  line-height: 1.2em;
   font-family: Arial, open_sansbold, Helvetica, sans-serif;
-   font-weight: bold;
+  font-weight: bold;}
+*/
+
+/* Estilo temporario 1 coluna */
+#col-software-name h1 {
+  text-align: left;
+  font-size: 30px;
+  line-height: 1.1em;
+  font-family: Arial, open_sansbold, Helvetica, sans-serif;
+  font-weight: bold;}
+
+#col-software-name B{
+  font-weight: normal;
+  font-family: Arial, open_sansregular, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.3em;
 }
 #col-software-name {
   font-style: normal;
@@ -59,7 +76,7 @@ border: none;
   padding:10px;*/
   width: 490px;
   margin: 0px 15px;
-	padding: 15px 20px 30px 15px;
+	padding: 20px 20px 30px;
 	border-radius: 4px;
 	background-image: -o-linear-gradient(-89deg, #0099FF 0%, #3E67B1 100%);
 	background-image: -moz-linear-gradient(-89deg, #0099FF 0%, #3E67B1 100%);
@@ -75,8 +92,8 @@ border: none;
 	margin-top: 0px;
 }
 
-#download_spb spam {
-	font-family: open_sansbold;
+#download_spb span {
+	font-family: open_sansregular;
 	font-size: 13px;
 	color: #ECEDF1;
 	text-decoration:none;
@@ -114,14 +131,15 @@ border: none;
 #content span.licensed a:visited,
 #content span.licensed a:link {
 	font-family: open_sansregular;
-	font-size: 14px;
-	/*color: #ECEDF1;*/
-	text-decoration:underline;
+	font-size: 12px;
+	/*color: #ECEDF1;
+	text-decoration:underline;*/
 }
 
 #download_info {
-  margin:0px 15px;
+  margin:2px 20px 0;
 }
+
 #content span.req_spb, #content span.nov_spb, #content span.licensed {
   padding: 5px;
 }
@@ -129,6 +147,35 @@ border: none;
 #content span.req_spb a:hover , #content span.nov_spb a:hover, #content span.licensed a:hover {
   color: #8ECBF7;
 }
+
+
+/************* Artigos ****************/
+
+.main-block #article-header H1.title, #content .main-block H1, #content .main-block .article-body H1{
+  padding:0 !important;
+  margin:0 0 10px !important;
+  border:none !important;
+  font-size: 22px !important;
+  line-height: 1.3em !important;
+  font-family: Arial, open_sansbold, Helvetica, sans-serif !important;
+  font-variant:normal;
+  font-weight: bold;
+  color:#172938;}
+
+
+#content .main-block .article-body H1{
+  padding-top:25px !important;
+  margin-top:25px !important;
+  border-top:solid 1px #D7D7D7 !important;
+}
+
+.article-body P{
+	text-align:left;
+	font-size:14px;
+	line-height:1.3em;
+	margin-bottom:10px;}
+
+
 
 /*Static block for box3*/
 #content .box-1 .tags-block .block-inner-2 .block-title{
@@ -194,6 +241,7 @@ margin-left: 35px;
 border:
 
 */
+
 /*************raw html - category and tags****************/
 
 #content .raw-html-block .tag_cloud 
@@ -269,5 +317,39 @@ border-color: #3a70d1; /*#205c90;*/
   margin-bottom: 30px;
 }
 
+
+/********* Botao Repositorio ************/
+#bt_repositorio, #bt_repositorio:active, #bt_repositorio:visited{
+	position:relative;
+	display:block;
+	padding:12px 10px;
+	border-radius: 4px;
+	background: #EAEBEE;
+	font-size:12px;
+	font-family: open_sansbold, Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+
+#bt_repositorio::after{
+	content:'>';
+	position:absolute;
+	padding-left:2px;
+	margin-top:-2px;
+	right:10px;
+	width:18px;
+	height:20px;
+	color:#FFF;
+	background:#2C66CE;
+	border-radius: 4px;
+	font-size:16px;
+	line-height:20px;
+	text-align:center;}
+
+#content #bt_repositorio:hover{
+	color:#FFF;
+	background: #2C66CE;
+	text-decoration:none;
+}
 
 
