@@ -67,6 +67,7 @@ class SoftwareInfo < ActiveRecord::Base
     else
       community = Community.new(:name => name)
       community.environment = environment
+      software_info.license_info = license_info
       software_info.save
       community.software_info = software_info
       community.save!
