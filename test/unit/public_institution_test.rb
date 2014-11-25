@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
-require File.dirname(__FILE__) + '/plugin_test_helper'
+require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
 class PublicInstitutionTest < ActiveSupport::TestCase
   include PluginTestHelper
@@ -24,7 +24,7 @@ class PublicInstitutionTest < ActiveSupport::TestCase
 
   should "not save without a cnpj" do
     @institution.cnpj = nil
-    assert !@institution.save 
+    assert !@institution.save
   end
 
   should "save institution without an acronym" do

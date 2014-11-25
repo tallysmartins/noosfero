@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
-require File.dirname(__FILE__) + '/plugin_test_helper'
+require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
 class InstitutionTest < ActiveSupport::TestCase
   include PluginTestHelper
@@ -28,14 +28,14 @@ class InstitutionTest < ActiveSupport::TestCase
     assert !@institution.save, 'Invalid type'
     assert @institution.errors.full_messages.include? "Type invalid, only public and private institutions are allowed."
   end
-  
-  should "not save without country" do 
+
+  should "not save without country" do
     @institution.community.country = nil
     assert !@institution.save, "Country can't be blank"
     assert @institution.errors.full_messages.include? "Country can't be blank"
   end
 
-  should "not save without state" do 
+  should "not save without state" do
     @institution.community.state = nil
 
     assert !@institution.save, "State can't be blank"

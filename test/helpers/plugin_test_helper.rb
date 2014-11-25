@@ -21,8 +21,8 @@ module PluginTestHelper
     software_info
   end
 
-  def create_private_institution *params
-    InstitutionTestHelper.create_private_institution *params
+  def create_private_institution name, acronym, country, state, city, cnpj
+    InstitutionTestHelper.create_private_institution(name, acronym, country, state, city, cnpj)
   end
 
   def create_community_institution name, country, state, city

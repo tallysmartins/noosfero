@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
-require File.dirname(__FILE__) + '/plugin_test_helper'
+require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
 class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
   include PluginTestHelper
@@ -82,7 +82,7 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     user2 = fast_create(User)
     user2.email = "test2@email.com"
     user2.secondary_email = ""
-    assert user2.save 
+    assert user2.save
   end
   should 'return an error if secondary email is governmental and primary is not' do
     user = fast_create(User)
