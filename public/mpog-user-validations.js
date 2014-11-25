@@ -220,7 +220,7 @@
       return false;
     }
 
-    var correct_format_regex = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
+    var correct_format_regex = new RegExp(/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i);
 
     return !correct_format_regex.test(value);
   }
