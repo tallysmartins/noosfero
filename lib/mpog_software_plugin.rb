@@ -128,7 +128,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     {
       SoftwaresBlock => {:type => [Environment, Person] },
       SoftwareInformationBlock => {:type => [Community] },
-      InstitutionsBlock => {:type => [Environment, Person]}
+      InstitutionsBlock => {:type => [Environment, Person]},
+      DownloadBlock => {:type => [Community]}
     }
   end
 
