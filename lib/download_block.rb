@@ -1,6 +1,6 @@
 class DownloadBlock < Block
 
-  attr_accessible :name, :link, :software_description,:show_name, :version_news
+  attr_accessible :name, :link, :software_description, :show_name, :version_news
 
   settings_items :name, :type => :string, :default => ''
   settings_items :link, :type => :string, :default => ''
