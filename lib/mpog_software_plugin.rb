@@ -130,7 +130,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       SoftwareInformationBlock => {:type => [Community] },
       InstitutionsBlock => {:type => [Environment, Person]},
       DownloadBlock => {:type => [Community]},
-      RepositoryBlock => {:type => [Community]}
+      RepositoryBlock => {:type => [Community]},
+      CategoriesAndTagsBlock => {:type => [Community]}
     }
   end
 
