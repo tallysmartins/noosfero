@@ -25,33 +25,9 @@
           <%= _("#{block.owner.software_info.acronym} - ") unless block.owner.software_info.acronym.blank? %>
           <%= _("#{block.owner.name}") %>
         </h1>
-
         <b>
           <%= block.owner.software_info.finality %>
         </b>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <% identifier_name = block.owner.software_info.acronym.blank? ? block.owner.name : block.owner.software_info.acronym %>
-        <%= _("For more detailed information see ") %>
-        <%= link_to(_("#{block.owner.name} profile"), {:controller => 'profile', :action => "index", :profile => block.owner.identifier}) %>
-      </td>
-    </tr>
-    <% unless block.owner.software_info.repository_link.blank? %>
-      <tr>
-        <td colspan="2">
-          <%= _("Main repository: ") %>
-          <%= link_to block.owner.software_info.repository_link, block.owner.software_info.repository_link %>
-        </td>
-      </tr>
-    <% end %>
-    <tr>
-      <td>
-        <i>
-          <%= _("Licensed by ") %>
-          <%= link_to block.owner.software_info.license_info.version, block.owner.software_info.license_info.link %>
-        </i>
       </td>
     </tr>
   </table>
