@@ -128,7 +128,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     {
       SoftwaresBlock => {:type => [Environment, Person] },
       SoftwareInformationBlock => {:type => [Community] },
-      InstitutionsBlock => {:type => [Environment, Person]}
+      InstitutionsBlock => {:type => [Environment, Person]},
+      DownloadBlock => {:type => [Community]},
+      RepositoryBlock => {:type => [Community]},
+      CategoriesAndTagsBlock => {:type => [Community]}
     }
   end
 
@@ -220,7 +223,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
     required_list[:person_fields].each do |field|
       if person.send(field).blank?
-        empty_fields << field.sub("_"," ") 
+        empty_fields << field.sub("_"," ")
       end
     end
     required_list[:user_fields].each do |field|

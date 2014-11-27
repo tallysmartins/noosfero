@@ -2,7 +2,6 @@
 
 <% if block.owner.software_info.nil? %>
   <%= _("This community needs a software to use this block") %>
-
 <% else %>
   <table id="software-information-block-table">
     <tr>
@@ -13,7 +12,9 @@
               <%= link_to profile_image(block.owner, :big) +"\n", profile.url %>
             </span>
             <div class='admin-link'>
-              <%= link_to _('Control panel'), block.owner.admin_url %>
+              <% if block.owner.admins.include?(current_user.person) %>
+                <%= link_to _('Control panel'), block.owner.admin_url %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -23,33 +24,9 @@
           <%= _("#{block.owner.software_info.acronym} - ") unless block.owner.software_info.acronym.blank? %>
           <%= _("#{block.owner.name}") %>
         </h1>
-
         <b>
           <%= block.owner.software_info.finality %>
         </b>
-      </td> 
-    </tr>
-    <tr>
-      <td colspan="2">
-        <% identifier_name = block.owner.software_info.acronym.blank? ? block.owner.name : block.owner.software_info.acronym %>
-        <%= _("For more detailed information see ") %>
-        <%= link_to(_("#{block.owner.name} profile"), {:controller => 'profile', :action => "index", :profile => block.owner.identifier}) %>
-      </td>
-    </tr>
-    <% unless block.owner.software_info.repository_link.blank? %>
-      <tr>
-        <td colspan="2">
-          <%= _("Main repository: ") %>
-          <%= link_to block.owner.software_info.repository_link, block.owner.software_info.repository_link %>
-        </td>
-      </tr>
-    <% end %>
-    <tr>
-      <td>
-        <i>
-          <%= _("Licensed by ") %>
-          <%= link_to block.owner.software_info.license_info.version, block.owner.software_info.license_info.link %>
-        </i>
       </td>
     </tr>
   </table>
