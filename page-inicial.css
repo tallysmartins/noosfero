@@ -45,6 +45,24 @@
   margin:5px;
   text-align:right;
   text-transform: uppercase;
+  margin-right: 32px;
 }
+
+#bt_catalog-search::after {
+content:'>';
+position: absolute;
+padding-left: 2px;
+/*margin-top: -2px;*/
+right: 10px;
+width: 18px;
+height: 20px;
+color: #172857;
+background: #eee;
+border-radius: 4px;
+font-size: 16px;
+line-height: 20px;
+text-align: center;
+}
+
 
 /*fim bloco buscar no catalogo*/
