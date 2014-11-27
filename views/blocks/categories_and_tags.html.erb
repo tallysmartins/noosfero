@@ -1,14 +1,19 @@
-<h3 class="block-title"><span><%= _("Categories") %></span></h3>
+<% if block.owner.categories.count > 0 %>
+	<h3 class="block-title"><span><%= _("Categories") %></span></h3>
 
-<div class="category_cloud">
-<% block.owner.categories.each do |category| %>
-	<%= link_to category.name , category.path, :id => "select-category-1-link", :class => "select-subcategory-link", :target => "_blank" %>
+	<div class="category_cloud">
+	<% block.owner.categories.each do |category| %>
+		<%= link_to category.name , category.path, :id => "select-category-1-link", :class => "select-subcategory-link", :target => "_blank" %>
+	<% end %>
+	</div><!-- end class='category_cloud' -->
 <% end %>
-</div><!-- end class='category_cloud' -->
 
-<h3 class="block-title"><span><%= _("Tags") %></span></h3>
-<div class="tag_cloud">
-<% block.owner.tag_list.each do |tag| %>
-	<%= link_to tag , "#", :id => "select-category-1-link", :class => "select-subcategory-link"%>
+<% if block.owner.tag_list.count > 0 %>
+	<h3 class="block-title"><span><%= _("Tags") %></span></h3>
+
+	<div class="tag_cloud">
+	<% block.owner.tag_list.each do |tag| %>
+		<%= link_to tag , "#", :id => "select-category-1-link", :class => "select-subcategory-link"%>
+	<% end %>
+	</div>
 <% end %>
-</div>
