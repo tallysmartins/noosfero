@@ -527,7 +527,7 @@ p {
     width: auto;
     border-right: none;
     font-weight: bold;
-    background-color: #eeefff;
+    /*background-color:#eeefff;*/
     border-radius: 0px;
 }
 
@@ -542,7 +542,7 @@ p {
 
 #content .box-3 .link-list-block li a:hover {
     background-color: #FFF;
-    color: #436976;
+    color: #000;
 }
 
 #content .box-3 .link-list-block li {

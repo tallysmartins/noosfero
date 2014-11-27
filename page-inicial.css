@@ -67,5 +67,25 @@ line-height: 20px;
 text-align: center;
 }
 
-
 /*fim bloco buscar no catalogo*/
+
+/*Bloco mais software*/
+#mais-software-block{
+  width:auto;
+}
+
+#sbp-information-softwares ul li{
+ margin-top: 20px;
+ margin-bottom: 20px;
+ border-bottom: 2px solid #ccc;
+}
+
+#sbp-information-softwares ul li a{
+  padding:5px;
+  margin:5px;
+}
+
+#list-categories ul li{
+ list-style:inside disc;
+ margin-left:5px;
+}
