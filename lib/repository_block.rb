@@ -1,8 +1,7 @@
 class RepositoryBlock < Block
 
-  attr_accessible :link, :show_name
+  attr_accessible :show_name
 
-  settings_items :link, :type => :string, :default => ''
   settings_items :show_name, :type => :boolean, :default => false
 
   def self.description

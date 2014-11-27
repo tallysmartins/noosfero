@@ -1,28 +1,32 @@
-<div id="download-block">
-  <div id="download_spb">
-    <h2> <%= _("Download") %> </h2>
+<% if block.owner.software_info.nil? %>
+  <%= _("This community needs a software to use this block") %>
+<% else %>
+  <div id="download-block">
+    <div id="download_spb">
+      <h2> <%= _("Download") %> </h2>
 
-    <span class="download-name">
-      <%= link_to block.name, "#" %>
-    </span>
+      <span class="download-name">
+        <%= link_to block.name, "#" %>
+      </span>
 
-    <span class="download-system">
-      <%= _(block.software_description) %>
-    </span>
+      <span class="download-system">
+        <%= _(block.software_description) %>
+      </span>
+    </div>
+
+    <p id="download_info">
+      <span class="req_spb">
+        <%= link_to _("Minimal Requirements") , block.owner.public_profile_url, :class => "anchor-link", :target => "_self" %>
+      </span>
+
+      <span class="nov_spb">
+        <%= link_to(_("Version News"), block.version_news, :class => "anchor-link", :target => "_self") if !block.version_news.blank? %>
+      </span>
+
+       <span class="licensed">
+        <%= _("Licensed by") %>
+        <%= link_to block.owner.software_info.license_info.version , block.owner.software_info.license_info.link, :target => "_blank" %>
+      </span>
+    </p>
   </div>
-
-  <p id="download_info">
-    <span class="req_spb">
-      <%= link_to _("Minimal Requirements") , block.owner.admin_url, :class => "anchor-link", :target => "_self" %>
-    </span>
-
-    <span class="nov_spb">
-      <%= link_to(_("Version News"), block.version_news, :class => "anchor-link", :target => "_self") if !block.version_news.blank? %>
-    </span>
-
-     <span class="licensed">
-      <%= _("Licensed by") %>
-      <%= link_to block.owner.software_info.license_info.version , block.owner.software_info.license_info.link, :target => "_blank" %>
-    </span>
-  </p>
-</div>
+<% end %>

@@ -16,13 +16,4 @@ class RepositoryBlockTest < ActiveSupport::TestCase
   should 'describe itself' do
     assert_not_equal Block.description, RepositoryBlock.description
   end
-
-  should 'have software info to repository it' do
-
-    link = "gitlab.com/teste"
-
-    block = RepositoryBlock.create(:link => link)
-
-    assert_equal block.link, link, "Link should not be empty"
-  end
 end

@@ -1,1 +1,5 @@
-<%= link_to _("Repository") , block.link, :id => "bt_repositorio", :target => "_blank" %>
+<% if block.owner.software_info.nil? %>
+  <%= _("This community needs a software to use this block") %>
+<% else %>
+  <%= link_to _("Repository") , block.owner.software_info.repository_link, :id => "bt_repositorio", :target => "_blank" %>
+<% end %>
