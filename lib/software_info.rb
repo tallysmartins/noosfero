@@ -65,8 +65,10 @@ class SoftwareInfo < ActiveRecord::Base
     if !environment.admins.include? requestor
       CreateSoftware.create!(attributes.merge(:requestor => requestor, :environment => environment, :name => name, :license_info => license_info))
     else
+      software_template = Community["software"]
       community = Community.new(:name => name)
       community.environment = environment
+      community.template_id = software_template.id if (!software_template.blank? && software_template.is_template)
       software_info.license_info = license_info
       software_info.save
       community.software_info = software_info
