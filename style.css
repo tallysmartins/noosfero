@@ -25,6 +25,8 @@
 /****************** pagina de software ********************/
 @import url(pagina_software.css);
 
+@import url(page-inicial.css);
+
 
 /****************** Block Redes Sociais ********************/
 @import url(redes_sociais.css);
