@@ -1,4 +1,6 @@
 class SoftwareInfo < ActiveRecord::Base
+  SEARCH_FILTERS = []
+
   attr_accessible :e_mag, :icp_brasil, :intern, :e_ping, :e_arq, :operating_platform
   attr_accessible :demonstration_url, :acronym, :objectives, :features, :license_info
   attr_accessible :community_id, :finality, :repository_link, :public_software, :first_edit
@@ -47,6 +49,10 @@ class SoftwareInfo < ActiveRecord::Base
       :conditions=>[like_sql, *values]
     }
   }
+
+  def self.default_search_display
+    'compact'
+  end
 
   def validate_name_lenght
     if self.community.name.size > 100
