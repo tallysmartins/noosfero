@@ -32,6 +32,13 @@ Schedule Institutions Update
 ./plugins/mpog_software/script/schedule_institution_update.sh
 
 
+Create Categories
+-------------------
+
+To create the categories that a software can have run
+
+rake software:create_categories
+
 Running MPOG Software tests
 --------------------
 $ ruby plugins/mpog_software/test/unit/name_of_file.rb
