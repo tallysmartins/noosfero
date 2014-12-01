@@ -111,10 +111,10 @@ background-repeat: no-repeat;
 #logo #portal-title {
     background-image: url("images/logotipo_spb_beta.svg");
 	background-repeat: no-repeat;
-	background-size: 374px 56px;
+	background-size: 370px; /*374px 56px;*/
 	height: 78px;
 	width: 374px;
-  	margin: 20px 0px 10px 0px;
+  	margin: 10px 0px 10px 0px; /*20px 0px 10px 0px; config logo anterior*/
   	/*margin: 30px 0px 20px 0px;*/
  /* color: #fff;
   font-size: 40px;

@@ -243,25 +243,29 @@ border:
 */
 
 /*************raw html - category and tags****************/
-/
+
+.categories-and-tags-block{
+border-top:4px solid #21376C;
+}
+/*
 #content .categories-and-tags-block .tag_cloud 
 category_cloud{
 
-}
+}*/
 
 #content .box-1 .categories-and-tags-block .block-inner-1 .block-title{
   font-size: 11px;
   border-top: 1px solid #8b949b;
   /*border-top: none;*/
   background: none;
-  /*border-bottom: 1px solid #8b949b;*/
+  border-bottom: 1px solid #8b949b;
   /*border-bottom: none;*/
   /*padding: 15px 0px 0px 3px;*/
   /*margin:10px;*/
   /*margin-top:-5px;*/
 }
 #content .box-1 .categories-and-tags-block .block-inner-2 .block-title{
-  border-top: 4px solid #2c66ce; /*#172938;*/
+  border-top: 4px solid transparent; /*#2c66ce;*/ /*#172938;*/
 }
 
 #content .box-1 .categories-and-tags-block .block-inner-1 .tag_cloud {
