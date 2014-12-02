@@ -77,40 +77,74 @@ text-align: center;
   border-radius:8px;
   margin:11px 0px;
   padding: 10px 0px;
-}
-#content .recent-documents-block .block-inner-2 {
-  background-color: #eeeff1;
-  border: 1px solid #c0c1c1;
-  border-radius:8px;
-  margin:11px 0px;
-  padding: 10px 0px;
+  font-size: 14px;
 }
 
-
-#content .recent-documents-block .block-inner-2 .block-title{
-  background-color: #eeeff1;
-  border-top:none;
-}
 #sbp-information-softwares h2{
-  margin:10px;
+  text-align:left;
+  text-transform: uppercase;
+  color:#464A55;
+  padding:0px 0px 15px 20px;
   border-bottom:1px solid #c0c1c1;
 }
 
-#sbp-information-softwares ul li{
- margin-top: 20px;
- margin-bottom: 20px;
- border-bottom: 2px solid #ccc;
+#title-mais-software{
+  margin-left:10px;
 }
 
-#sbp-information-softwares ul li a{
-  padding:5px;
-  margin:5px;
+#sbp-information-softwares li{
+ border-bottom: 1px solid #ccc;
+ margin: 0;
+ min-height: 1em;
+ padding: 20px;
+ font-weight: bold;
 }
+
+
+#sbp-information-softwares li a {
+  color: #294266 !important;
+  font-weight: bold;
+}
+
+#sbp-information-softwares li a:hover {
+  text-decoration: none;
+}
+
+
 #list-categories{
-margin:10px;
+  margin:20px;
 }
+
+#list-categories p{
+  color:#464A55;
+}
+
 #list-categories ul li{
  /*list-style:inside disc;*/
  /*margin-left:5px;*/
+ /*color:#30496A;*/
  margin:10px 5px 5px 0px;
+}
+
+#list-categories li a{
+   color:#294266 !important;
+   font-weight: bold;
+}
+#list-categories a:hover {
+  text-decoration: none !important;
+}
+
+#footer-mais-software {
+  border-top:1px solid #c0c1c1;
+  padding: 10px 10px 0px 3px;
+  margin:0px;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 10px;
+
+}
+
+#footer-mais-software a {
+  color: #464A55 !important;
+
 }
