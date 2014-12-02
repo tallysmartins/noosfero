@@ -91,12 +91,11 @@ namespace :templates do
           box3.blocks << members_block
           box3.save!
 
-          #TODO: Adicionar links
           another_link_list_block = LinkListBlock.new
           another_link_list_block.position = 5
           another_link_list_block.display = "always"
           another_link_list_block.title = "Participe"
-          links = [{"icon"=>"", "name"=>"Lista de E-mails", "address"=>"http://beta.softwarepublico.gov.br/archives/thread/", "target"=>"_self"}, {"icon"=>"no-icon", "name"=>"Comunidade", "address"=>"/profile/{profile}", "target"=>"_self"}, {"icon"=>"", "name"=>"Blog", "address"=>"/{profile}/blog", "target"=>"_self"}, {"icon"=>"no-icon", "name"=>"Fórum", "address"=>"/{profile}/forum-de-duvidas-e-discussao", "target"=>"_self"}, {"icon"=>"", "name"=>"Convide Amigos", "address"=>"/profile/{profile}/invite/friends", "target"=>"_self"}]
+          links = [{:icon => "", :name => "Lista de E-mails", :address => "http://beta.softwarepublico.gov.br/archives/thread/", :target => "_self"}, {:icon => "no-icon", :name => "Comunidade", :address => "/profile/{profile}", :target => "_self"}, {:icon => "", :name => "Blog", :address => "/{profile}/blog", :target => "_self"}, {:icon => "", :name => "Convide Amigos", :address => "/profile/{profile}/invite/friends", :target => "_self"}]
 
           another_link_list_block.save!
           box3.blocks << another_link_list_block
@@ -115,16 +114,19 @@ namespace :templates do
           box3.save!
           puts "RepositoryBlock successfully added to software!"
 
-          #TODO: Adicionar links
           link_list_block = LinkListBlock.new
           link_list_block.position = 3
           link_list_block.display = "always"
           link_list_block.title = "Ajuda"
-          link_list_block.links = [{"icon"=>"no-icon", "name"=>"Download de Versões", "address"=>"/{profile}/versoes", "target"=>"_self"}, {"icon"=>"", "name"=>"Pergutas Frequentes", "address"=>"/{profile}/perguntas-frequentes", "target"=>"_self"}, {"icon"=>"no-icon", "name"=>"README", "address"=>"/{profile}/versoes-estaveis", "target"=>"_self"}, {"icon"=>"", "name"=>"Como Instalar", "address"=>"/{profile}/tutorial-de-instalacao", "target"=>"_self"}, {"icon"=>"", "name"=>"Manuais", "address"=>"/{profile}/manuais-de-usuario", "target"=>"_self"}]
 
           link_list_block.save!
+          link_list_block.links << {:icon => "no-icon", :name => "Download de Versões", :address => "/{profile}/versoes", :target => "_self"}
+          link_list_block.links << {:icon => "", :name => "Pergutas Frequentes", :address => "/{profile}/perguntas-frequentes", :target => "_self"}
+          link_list_block.links << {:icon => "no-icon", :name => "README", :address => "/{profile}/versoes-estaveis", :target => "_self"}
+          link_list_block.links << {:icon => "", :name => "Como Instalar", :address => "/{profile}/tutorial-de-instalacao", :target => "_self"}
+          link_list_block.links << {:icon => "", :name => "Manuais", :address => "/{profile}/manuais-de-usuario", :target => "_self"}
+          link_list_block.save!
           box3.blocks << link_list_block
-          link_list_block.update_attributes(:links => links)
           box3.save!
           puts "LinkListBlock successfully added to software!"
 
@@ -154,7 +156,7 @@ namespace :templates do
 
           generate_article(software, Folder, {name: "Versões Estáveis", slug: "versoes-estaveis", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "Pasta com os pacotes para download das versões existentes do Software."})
 
-          generate_article(software, TinyMceArticle, {name: "Tutorial de Instalação", body: "<h2>Introdução</h2>\r\n<p>Texto introdutório à página de instalação. Caso tenha-se uma documento específico que possa ser redundante com esta página, remova está página e mantenha apenas o documento. Neste caso, referencie-o adequadamente na página principal do seu software.</p>\r\n<h2>Requisitos</h2>\r\n<p>Texto identificando as dependências e requisitos necessários para a realização da instalação do Software.</p>\r\n<p>Para demonstrar comandos através de terminais utilize a seguinte formatação:</p>\r\n<table style=\"height: 25px; border-color: #000000; background-color: #e7bef7;\" width=\"461\">\r\n\r\n<tr>\r\n<td>\r\n<pre><code><em># sudo apt-get install example</em></code></pre>\r\n</td>\r\n</tr>\r\n\r\n</table>\r\n<h2>Passos para instalação</h2>\r\n<p>Crie quantos tópicos forem necessários para melhor explicar a instalação</p>\r\n<h2>Configuração</h2>\r\n<p>Explique todas as configurações necessários para configurar adequadamente outros serviços complementares e do próprio Software.</p>\r\n<h2>Teste da instalação</h2>\r\n<p>Explique os passos para testar se a instalação foi realizada com sucesso.</p>", license_id: 1})
+          generate_article(software, TinyMceArticle, {name: "Tutorial de Instalação", body: "<h2>Introdução</h2>\r\n<p>Texto introdutório à página de instalação. Caso tenha-se uma documento específico que possa ser redundante com esta página, remova está página e mantenha apenas o documento. Neste caso, referencie-o adequadamente na página principal do seu software.</p>\r\n<h2>Requisitos</h2>\r\n<p>Texto identificando as dependências e requisitos necessários para a realização da instalação do Software.</p>\r\n<p>Para demonstrar comandos através de terminais utilize a seguinte formatação:</p>\r\n<table style=\"height: 25px; border-color: #000000; background-color: #e7bef7;\" width=\"461\">\r\n\r\n<tr>\r\n<td>\r\n<pre><code><em>$ sudo apt-get install example</em></code></pre>\r\n</td>\r\n</tr>\r\n\r\n</table>\r\n<h2>Passos para instalação</h2>\r\n<p>Crie quantos tópicos forem necessários para melhor explicar a instalação</p>\r\n<h2>Configuração</h2>\r\n<p>Explique todas as configurações necessários para configurar adequadamente outros serviços complementares e do próprio Software.</p>\r\n<h2>Teste da instalação</h2>\r\n<p>Explique os passos para testar se a instalação foi realizada com sucesso.</p>", license_id: 1})
 
           generate_article(software, TinyMceArticle, {name: "Versões", body: "<p>Texto com detalhamento das mudanças que cada versão do software introduziu. Sugere-se que os arquivos aqui linkados sejam colocados dentro da pasta <a href=\"/software/versoes-estaveis\">Versões Estáveis</a>.</p>\r\n<hr />\r\n<h2> Versão X.Y.C</h2>\r\n<p>Download da <a title=\"Link para arquivo da versão\" href=\"#\">nova versão X.Y.C</a></p>\r\n<ul>\r\n<li>Nova funcionalidade 1</li>\r\n<li>Nova funcionalidade 2</li>\r\n<li>Novo bug resolvido 1</li>\r\n<li>Novo bug resolvido 2</li>\r\n</ul>\r\n<hr />\r\n<h2>Versão X.Y.B</h2>\r\n<p>Lançada <a title=\"Link para o arquivo da nova versão X.Y.B\" href=\"#\">nova versão X.Y.B</a></p>\r\n<ul>\r\n<li>Nova funcionalidade 1</li>\r\n<li>Nova funcionalidade 2</li>\r\n<li>Novo bug resolvido 1</li>\r\n<li>Novo bug resolvido 2</li>\r\n</ul>\r\n<hr />\r\n<h2>Versão X.Y.A</h2>\r\n<p>Download da <a title=\"Link para o arquivo da nova versão X.Y.A\" href=\"#\">nova versão X.Y.A</a></p>\r\n<ul>\r\n<li>Nova funcionalidade 1</li>\r\n<li>Nova funcionalidade 2</li>\r\n<li>Novo bug resolvido 1</li>\r\n<li>Novo bug resolvido 2</li>\r\n</ul>", license_id: 1})
 
