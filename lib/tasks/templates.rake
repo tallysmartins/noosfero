@@ -46,7 +46,7 @@ namespace :templates do
           box1.blocks << categories_block
           box1.save!
           puts "CategoriesAndTagsBlock successfully added to software!"
-          
+
           main_block = MainBlock.new
           main_block.position = 3
           main_block.save!
@@ -86,17 +86,18 @@ namespace :templates do
           members_block.prioritize_profiles_with_image = true
           members_block.show_join_leave_button = false
           members_block.title = "Equipe"
-          
+
           members_block.save!
           box3.blocks << members_block
           box3.save!
 
+          #TODO: Adicionar links
           another_link_list_block = LinkListBlock.new
           another_link_list_block.position = 5
           another_link_list_block.display = "always"
           another_link_list_block.title = "Participe"
           links = [{"icon"=>"", "name"=>"Lista de E-mails", "address"=>"http://beta.softwarepublico.gov.br/archives/thread/", "target"=>"_self"}, {"icon"=>"no-icon", "name"=>"Comunidade", "address"=>"/profile/{profile}", "target"=>"_self"}, {"icon"=>"", "name"=>"Blog", "address"=>"/{profile}/blog", "target"=>"_self"}, {"icon"=>"no-icon", "name"=>"Fórum", "address"=>"/{profile}/forum-de-duvidas-e-discussao", "target"=>"_self"}, {"icon"=>"", "name"=>"Convide Amigos", "address"=>"/profile/{profile}/invite/friends", "target"=>"_self"}]
-          
+
           another_link_list_block.save!
           box3.blocks << another_link_list_block
           another_link_list_block.update_attributes(:links => links)
@@ -108,18 +109,19 @@ namespace :templates do
           repository_block.position = 4
           repository_block.display = "always"
           repository_block.title = ""
-          
+
           repository_block.save!
           box3.blocks << repository_block
           box3.save!
           puts "RepositoryBlock successfully added to software!"
 
+          #TODO: Adicionar links
           link_list_block = LinkListBlock.new
           link_list_block.position = 3
           link_list_block.display = "always"
           link_list_block.title = "Ajuda"
           link_list_block.links = [{"icon"=>"no-icon", "name"=>"Download de Versões", "address"=>"/{profile}/versoes", "target"=>"_self"}, {"icon"=>"", "name"=>"Pergutas Frequentes", "address"=>"/{profile}/perguntas-frequentes", "target"=>"_self"}, {"icon"=>"no-icon", "name"=>"README", "address"=>"/{profile}/versoes-estaveis", "target"=>"_self"}, {"icon"=>"", "name"=>"Como Instalar", "address"=>"/{profile}/tutorial-de-instalacao", "target"=>"_self"}, {"icon"=>"", "name"=>"Manuais", "address"=>"/{profile}/manuais-de-usuario", "target"=>"_self"}]
-          
+
           link_list_block.save!
           box3.blocks << link_list_block
           link_list_block.update_attributes(:links => links)
@@ -135,7 +137,7 @@ namespace :templates do
           box3.blocks << profile_image_block
           box3.save!
           puts "ProfileImageBlock successfully added to software!"
-          
+
           statistics_block = StatisticsBlock.new
           statistics_block.position = 1
           statistics_block.display = "home_page_only"
@@ -145,6 +147,18 @@ namespace :templates do
           puts "StatisticsBlock successfully added to software!"
           puts "MembersBlock successfully added to software!"
           puts "Software Box 3 successfully created!"
+
+          generate_article(software, TinyMceArticle, {name: "Perguntas Frequentes", slug: "perguntas-frequentes", published: true, accept_comments: true, notify_comments: true, license_id: 1, body: "<h3 style=\"text-align: justify;\">Pergunta 1</h3>\r\n<ul>\r\n<li>Resposta: Resposta para a pergunta 1.</li>\r\n</ul>\r\n<p> </p>\r\n<h3>Pergunta 2</h3>\r\n<ul>\r\n<li>Resposta: Resposta para a pergunta 2.</li>\r\n</ul>\r\n<p> </p>\r\n<h3 style=\"text-align: justify;\">Pergunta 3</h3>\r\n<ul>\r\n<li style=\"text-align: justify;\">Resposta: Resposta para a pergunta 3.</li>\r\n</ul>"})
+
+          generate_article(software, Folder, {name: "Manuais de Usuário", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "Pasta destinada para manuais de uso do Software"})
+
+          generate_article(software, Folder, {name: "Versões Estáveis", slug: "versoes-estaveis", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "Pasta com os pacotes para download das versões existentes do Software."})
+
+          generate_article(software, TinyMceArticle, {name: "Tutorial de Instalação", body: "<h2>Introdução</h2>\r\n<p>Texto introdutório à página de instalação. Caso tenha-se uma documento específico que possa ser redundante com esta página, remova está página e mantenha apenas o documento. Neste caso, referencie-o adequadamente na página principal do seu software.</p>\r\n<h2>Requisitos</h2>\r\n<p>Texto identificando as dependências e requisitos necessários para a realização da instalação do Software.</p>\r\n<p>Para demonstrar comandos através de terminais utilize a seguinte formatação:</p>\r\n<table style=\"height: 25px; border-color: #000000; background-color: #e7bef7;\" width=\"461\">\r\n\r\n<tr>\r\n<td>\r\n<pre><code><em># sudo apt-get install example</em></code></pre>\r\n</td>\r\n</tr>\r\n\r\n</table>\r\n<h2>Passos para instalação</h2>\r\n<p>Crie quantos tópicos forem necessários para melhor explicar a instalação</p>\r\n<h2>Configuração</h2>\r\n<p>Explique todas as configurações necessários para configurar adequadamente outros serviços complementares e do próprio Software.</p>\r\n<h2>Teste da instalação</h2>\r\n<p>Explique os passos para testar se a instalação foi realizada com sucesso.</p>", license_id: 1})
+
+          generate_article(software, TinyMceArticle, {name: "Versões", body: "<p>Texto com detalhamento das mudanças que cada versão do software introduziu. Sugere-se que os arquivos aqui linkados sejam colocados dentro da pasta <a href=\"/software/versoes-estaveis\">Versões Estáveis</a>.</p>\r\n<hr />\r\n<h2> Versão X.Y.C</h2>\r\n<p>Download da <a title=\"Link para arquivo da versão\" href=\"#\">nova versão X.Y.C</a></p>\r\n<ul>\r\n<li>Nova funcionalidade 1</li>\r\n<li>Nova funcionalidade 2</li>\r\n<li>Novo bug resolvido 1</li>\r\n<li>Novo bug resolvido 2</li>\r\n</ul>\r\n<hr />\r\n<h2>Versão X.Y.B</h2>\r\n<p>Lançada <a title=\"Link para o arquivo da nova versão X.Y.B\" href=\"#\">nova versão X.Y.B</a></p>\r\n<ul>\r\n<li>Nova funcionalidade 1</li>\r\n<li>Nova funcionalidade 2</li>\r\n<li>Novo bug resolvido 1</li>\r\n<li>Novo bug resolvido 2</li>\r\n</ul>\r\n<hr />\r\n<h2>Versão X.Y.A</h2>\r\n<p>Download da <a title=\"Link para o arquivo da nova versão X.Y.A\" href=\"#\">nova versão X.Y.A</a></p>\r\n<ul>\r\n<li>Nova funcionalidade 1</li>\r\n<li>Nova funcionalidade 2</li>\r\n<li>Novo bug resolvido 1</li>\r\n<li>Novo bug resolvido 2</li>\r\n</ul>", license_id: 1})
+
+          generate_article(software, TinyMceArticle, {name: "Sobre o #{software.name}", body: "<p>Texto com explicação detalhada sobre o Software. </p>\r\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>\r\n<p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>\r\n<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>\r\n<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsa</p>\r\n<hr />\r\n<h1>Requisitos Mínimos</h1>\r\n<p>Texto curto informativo sobre os requisitos mínimos do software. </p>\r\n<p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequa.</p>\r\n<p>Maiores informações podem ser encontradas na <a href=\"/{profile}/tutorial-de-instalacao\">página de instalação</a>.</p>\r\n<hr />\r\n<h1>Novidades da versão X.Y</h1>\r\n<p>Texto informativo sobre as novidades da última versão estável do software. Listar aqui as principais funcionalidades em linhas gerais. Pode-se também ter um link para a página de versões do software, onde terá informações mais detalhadas.</p>\r\n<ul>\r\n<li>Detalhes de uma funcionalidade nova</li>\r\n<li>Detalhes de outra funcionalidade nova</li>\r\n<li>Detalhes sobre um bug corrigido</li>\r\n<li>Detalhes sobre mudanças na interface de usuário</li>\r\n</ul>", license_id: 1 }, true)
 
           puts "Software Template successfully created!"
         end
@@ -274,17 +288,20 @@ namespace :templates do
       end
     end
   end
-end
 
-#Articles para software template
-#[#<TinyMceArticle id: 38, name: "Perguntas Frequentes", slug: "perguntas-frequentes", path: "perguntas-frequentes", parent_id: nil, body: "<h3 style=\"text-align: justify;\">Pergunta 1</h3>\r\n<...", abstract: "", profile_id: 12, updated_at: "2014-10-29 21:11:14", created_at: "2014-10-29 21:00:27", last_changed_by_id: 5, version: 6, type: "TinyMceArticle", size: nil, content_type: nil, filename: nil, height: nil, width: nil, comments_count: 0, advertise: true, published: true, start_date: nil, end_date: nil, children_count: 0, accept_comments: true, reference_article_id: nil, setting: {:allow_members_to_edit=>false, :moderate_comments=>false, :display_hits=>true, :display_versions=>false, :author_name=>"adminuser"}, notify_comments: true, hits: 14, published_at: "2014-10-29 21:00:27", source: nil, highlighted: false, external_link: nil, thumbnails_processed: false, is_image: false, translation_of_id: nil, language: "pt", source_name: nil, license_id: 1, image_id: nil, position: nil, spam_comments_count: 0, author_id: 5, created_by_id: 5>,
-#<Blog id: 32, name: "Blog", slug: "blog", path: "blog", parent_id: nil, body: nil, abstract: nil, profile_id: 12, updated_at: "2014-10-29 19:30:49", created_at: "2014-10-29 19:30:48", last_changed_by_id: nil, version: 1, type: "Blog", size: nil, content_type: nil, filename: nil, height: nil, width: nil, comments_count: 0, advertise: false, published: true, start_date: nil, end_date: nil, children_count: 1, accept_comments: true, reference_article_id: nil, setting: {}, notify_comments: true, hits: 7, published_at: "2014-10-17 16:43:25", source: nil, highlighted: false, external_link: nil, thumbnails_processed: false, is_image: false, translation_of_id: nil, language: nil, source_name: nil, license_id: nil, image_id: nil, position: nil, spam_comments_count: 0, author_id: nil, created_by_id: nil>,
-#<RssFeed id: 33, name: "feed", slug: "feed", path: "blog/feed", parent_id: 32, body: {}, abstract: nil, profile_id: 12, updated_at: "2014-10-29 19:30:48", created_at: "2014-10-29 19:30:48", last_changed_by_id: nil, version: 1, type: "RssFeed", size: nil, content_type: nil, filename: nil, height: nil, width: nil, comments_count: 0, advertise: false, published: true, start_date: nil, end_date: nil, children_count: 0, accept_comments: true, reference_article_id: nil, setting: {}, notify_comments: true, hits: 0, published_at: "2014-10-29 19:30:48", source: nil, highlighted: false, external_link: nil, thumbnails_processed: false, is_image: false, translation_of_id: nil, language: nil, source_name: nil, license_id: nil, image_id: nil, position: nil, spam_comments_count: 0, author_id: nil, created_by_id: nil>,
-#<Folder id: 35, name: "Manuais de Usuário", slug: "manuais-de-usuario", path: "manuais-de-usuario", parent_id: nil, body: "Pasta destinada para manuais de uso do Software", abstract: nil, profile_id: 12, updated_at: "2014-10-29 20:47:23", created_at: "2014-10-29 20:47:23", last_changed_by_id: 5, version: 1, type: "Folder", size: nil, content_type: nil, filename: nil, height: nil, width: nil, comments_count: 0, advertise: true, published: true, start_date: nil, end_date: nil, children_count: 0, accept_comments: false, reference_article_id: nil, setting: {:author_name=>"adminuser"}, notify_comments: true, hits: 5, published_at: "2014-10-29 20:47:23", source: nil, highlighted: false, external_link: nil, thumbnails_processed: false, is_image: false, translation_of_id: nil, language: nil, source_name: nil, license_id: 1, image_id: nil, position: nil, spam_comments_count: 0, author_id: 5, created_by_id: 5>,
-#<Gallery id: 34, name: "Gallery", slug: "gallery", path: "gallery", parent_id: nil, body: nil, abstract: nil, profile_id: 12, updated_at: "2014-10-29 19:30:49", created_at: "2014-10-29 19:30:49", last_changed_by_id: nil, version: 1, type: "Gallery", size: nil, content_type: nil, filename: nil, height: nil, width: nil, comments_count: 0, advertise: false, published: true, start_date: nil, end_date: nil, children_count: 0, accept_comments: true, reference_article_id: nil, setting: {}, notify_comments: true, hits: 0, published_at: "2014-10-17 16:43:25", source: nil, highlighted: false, external_link: nil, thumbnails_processed: false, is_image: false, translation_of_id: nil, language: nil, source_name: nil, license_id: nil, image_id: nil, position: nil, spam_comments_count: 0, author_id: nil, created_by_id: nil>,
-#<RssFeed id: 37, name: "feed", slug: "feed", path: "forum-de-duvidas-e-discussao/feed", parent_id: 36, body: {}, abstract: nil, profile_id: 12, updated_at: "2014-10-29 20:50:58", created_at: "2014-10-29 20:50:58", last_changed_by_id: nil, version: 1, type: "RssFeed", size: nil, content_type: nil, filename: nil, height: nil, width: nil, comments_count: 0, advertise: false, published: true, start_date: nil, end_date: nil, children_count: 0, accept_comments: true, reference_article_id: nil, setting: {}, notify_comments: true, hits: 0, published_at: "2014-10-29 20:50:58", source: nil, highlighted: false, external_link: nil, thumbnails_processed: false, is_image: false, translation_of_id: nil, language: nil, source_name: nil, license_id: nil, image_id: nil, position: nil, spam_comments_count: 0, author_id: nil, created_by_id: nil>,
-#<Folder id: 39, name: "Versões Estáveis", slug: "versoes-estaveis", path: "versoes-estaveis", parent_id: nil, body: "Pasta com os pacotes para download das versões exis...", abstract: nil, profile_id: 12, updated_at: "2014-10-29 21:14:46", created_at: "2014-10-29 21:14:46", last_changed_by_id: 5, version: 1, type: "Folder", size: nil, content_type: nil, filename: nil, height: nil, width: nil, comments_count: 0, advertise: true, published: true, start_date: nil, end_date: nil, children_count: 0, accept_comments: false, reference_article_id: nil, setting: {:author_name=>"adminuser"}, notify_comments: true, hits: 11, published_at: "2014-10-29 21:14:46", source: nil, highlighted: false, external_link: nil, thumbnails_processed: false, is_image: false, translation_of_id: nil, language: nil, source_name: nil, license_id: 1, image_id: nil, position: nil, spam_comments_count: 0, author_id: 5, created_by_id: 5>,
-#<Forum id: 36, name: "Fórum de Dúvidas e Discussão", slug: "forum-de-duvidas-e-discussao", path: "forum-de-duvidas-e-discussao", parent_id: nil, body: "Fórum destinado para dúvidas e discussões técnicas ...", abstract: nil, profile_id: 12, updated_at: "2014-10-29 20:50:58", created_at: "2014-10-29 20:50:58", last_changed_by_id: 5, version: 1, type: "Forum", size: nil, content_type: nil, filename: nil, height: nil, width: nil, comments_count: 0, advertise: true, published: true, start_date: nil, end_date: nil, children_count: 1, accept_comments: true, reference_article_id: nil, setting: {:posts_per_page=>10, :has_terms_of_use=>false, :terms_of_use=>"", :allow_members_to_edit=>false, :moderate_comments=>false, :allows_members_to_create_topics=>true, :author_name=>"adminuser"}, notify_comments: true, hits: 2, published_at: "2014-10-29 20:50:58", source: nil, highlighted: false, external_link: nil, thumbnails_processed: false, is_image: false, translation_of_id: nil, language: nil, source_name: nil, license_id: 1, image_id: nil, position: nil, spam_comments_count: 0, author_id: 5, created_by_id: 5>,
-#<TinyMceArticle id: 40, name: "Tutorial de Instalação", slug: "tutorial-de-instalacao", path: "tutorial-de-instalacao", parent_id: nil, body: "<h2>Introdução</h2>\r\n<p>Texto introdutório à página...", abstract: "", profile_id: 12, updated_at: "2014-10-29 22:01:37", created_at: "2014-10-29 22:01:37", last_changed_by_id: 5, version: 1, type: "TinyMceArticle", size: nil, content_type: nil, filename: nil, height: nil, width: nil, comments_count: 0, advertise: true, published: true, start_date: nil, end_date: nil, children_count: 0, accept_comments: true, reference_article_id: nil, setting: {:allow_members_to_edit=>false, :moderate_comments=>false, :display_hits=>true, :display_versions=>false, :author_name=>"adminuser"}, notify_comments: true, hits: 7, published_at: "2014-10-29 22:01:37", source: nil, highlighted: false, external_link: nil, thumbnails_processed: false, is_image: false, translation_of_id: nil, language: "pt", source_name: nil, license_id: 1, image_id: nil, position: nil, spam_comments_count: 0, author_id: 5, created_by_id: 5>,
-#<TinyMceArticle id: 42, name: "Versões", slug: "versoes", path: "versoes", parent_id: nil, body: "<p>Texto com detalhamento das mudanças que cada ver...", abstract: "", profile_id: 12, updated_at: "2014-10-30 19:17:10", created_at: "2014-10-30 18:55:08", last_changed_by_id: 5, version: 3, type: "TinyMceArticle", size: nil, content_type: nil, filename: nil, height: nil, width: nil, comments_count: 0, advertise: true, published: true, start_date: nil, end_date: nil, children_count: 0, accept_comments: true, reference_article_id: nil, setting: {:allow_members_to_edit=>false, :moderate_comments=>false, :display_hits=>true, :display_versions=>false, :author_name=>"adminuser"}, notify_comments: true, hits: 10, published_at: "2014-10-30 18:55:08", source: nil, highlighted: false, external_link: nil, thumbnails_processed: false, is_image: false, translation_of_id: nil, language: "pt", source_name: nil, license_id: 1, image_id: nil, position: nil, spam_comments_count: 0, author_id: 5, created_by_id: 5>,
-#<TinyMceArticle id: 41, name: "Sobre o Software (INFORMAR NOME)", slug: "sobre-o-software-informar-nome", path: "sobre-o-software-informar-nome", parent_id: nil, body: "<p>Texto com explicação detalhada sobre o Software....", abstract: "", profile_id: 12, updated_at: "2014-10-30 13:57:05", created_at: "2014-10-30 13:54:40", last_changed_by_id: 5, version: 3, type: "TinyMceArticle", size: nil, content_type: nil, filename: nil, height: nil, width: nil, comments_count: 0, advertise: true, published: true, start_date: nil, end_date: nil, children_count: 0, accept_comments: false, reference_article_id: nil, setting: {:allow_members_to_edit=>false, :moderate_comments=>false, :display_hits=>true, :display_versions=>false, :author_name=>"adminuser"}, notify_comments: false, hits: 72, published_at: "2014-10-30 13:54:40", source: nil, highlighted: false, external_link: nil, thumbnails_processed: false, is_image: false, translation_of_id: nil, language: "pt", source_name: nil, license_id: 1, image_id: nil, position: nil, spam_comments_count: 0, author_id: 5, created_by_id: 5>]
+  private
+
+  def generate_article(software, klass, params, home_page = false)
+    article = klass.new(params)
+    article.body = params[:body]
+
+    software.articles << article
+    if home_page
+      software.home_page = article
+    end
+
+    software.save!
+
+    puts "#{params[:name]} #{klass} successfully created!"
+  end
+end
