@@ -15,18 +15,6 @@ class MpogSoftwarePluginController < ApplicationController
     end
   end
 
-  def get_institutions
-    list = []
-
-    if request.xhr? and params[:query]
-      list = Institution.search_institution(params[:query]).map{ |institution|
-        {:value=>institution.name, :id=>institution.id}
-      }
-    end
-
-    render :json => list.to_json
-  end
-
   def hide_registration_incomplete_percentage
     response = false
 
@@ -151,6 +139,30 @@ class MpogSoftwarePluginController < ApplicationController
     end
   end
 
+  def get_institutions
+    list = []
+
+    if request.xhr? and params[:query]
+      list = Institution.search_institution(params[:query]).map{ |institution|
+        {:value=>institution.name, :id=>institution.id}
+      }
+    end
+
+    render :json => list.to_json
+  end
+
+  def get_categories
+    list = []
+
+    if request.xhr? and params[:query]
+      Category.where("name ILIKE ?", "%#{params[:query]}%").collect { |c|
+        list << {:label=>c.name, :id=>c.id} if c.name != "Software"
+      }
+    end
+
+    render :json => list.to_json
+  end
+
   def get_brazil_states
     redirect_to "/" unless request.xhr?
 
@@ -227,7 +239,7 @@ class MpogSoftwarePluginController < ApplicationController
       software_list.each do |software|
         software[:name] = Community.find(software.community_id).name
         software[:languages_list] = []
-        
+
         software.software_languages.each do |sl|
           software[:languages_list] << {}
           index =  software[:languages_list].count - 1

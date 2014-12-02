@@ -1,0 +1,33 @@
+<style type="text/css">
+	#catalog-list ul li {
+		display: inline;
+		margin-right: 5px;
+		font-size: 14px;
+	}
+
+	#catalog-list ul li span {
+		display: none;
+		cursor: pointer;
+	}
+
+	#catalog-list ul li:hover span {
+		display: inline-block;
+	}
+
+	.catalog-remove-item {
+		padding: 3px;
+		border: solid 1px #999;
+		border-radius: 3px;
+		background: #d4d4d4;
+	}
+</style>
+
+<div>
+	<div id="catalog-list">
+		<ul></ul>
+	</div>
+
+	<div id="catalog-filter">
+		<%= text_field(:software, :catalog, :id=>"software-catalog") %>
+	</div>
+</div>
