@@ -1,6 +1,6 @@
 class SoftwaresBlock < CommunitiesBlock
 
-  settings_items :software_type
+  settings_items :software_type, :default => "All"
   attr_accessible :accessor_id, :accessor_type, :role_id, :resource_id, :resource_type, :software_type
 
   def self.description
