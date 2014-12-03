@@ -11,13 +11,13 @@ class SearchController
 
   def software_infos
     @titles[:software_infos] = "Software Infos"
+    @category_filters = []
 
     if params[:filter].blank?
       results = filter_communities_list{|community| community.software?}
     else
-      integer_filters = []
-      params[:filter].split(",").each{|f| integer_filters << f.to_i}
-      results = filter_communities_list{|community| community.software? && !(community.category_ids & integer_filters).blank?}
+      params[:filter].split(",").each{|f| @category_filters << f.to_i}
+      results = filter_communities_list{|community| community.software? && !(community.category_ids & @category_filters).blank?}
     end
 
     results = results.paginate(:per_page => 24, :page => params[:page])

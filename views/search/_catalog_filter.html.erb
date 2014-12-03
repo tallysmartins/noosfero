@@ -1,34 +1,51 @@
+<!-- Remove CSS when design team send corrections -->
 <style type="text/css">
-	#catalog-list ul li {
-		display: inline;
-		margin-right: 5px;
-		font-size: 14px;
-		padding: 5px;
-	}
+  #catalog-list ul li {
+    display: inline;
+    margin-right: 5px;
+    font-size: 14px;
+    padding: 5px;
+  }
 
-	#catalog-list ul li span {
-		display: none;
-		cursor: pointer;
-	}
+  #catalog-list ul li span {
+    display: none;
+    cursor: pointer;
+  }
 
-	#catalog-list ul li:hover span {
-		display: inline-block;
-	}
+  #catalog-list ul li:hover span {
+    display: inline-block;
+  }
 
-	.catalog-remove-item {
-		padding: 3px;
-		border: solid 1px #999;
-		border-radius: 3px;
-		background: #d4d4d4;
-	}
+  .catalog-remove-item {
+    padding: 3px;
+    border: solid 1px #999;
+    border-radius: 3px;
+    background: #d4d4d4;
+  }
+
+  .category_box {
+    font-size: 11px !important;
+    border:1px solid #e9e8ed;
+    border-radius:8px;
+    background-color:#e9e8ed;
+    padding:3px 6px;
+    margin:10px 3px;
+    color: blue;
+  }
 </style>
 
 <div>
-	<div id="catalog-list">
-		<ul></ul>
-	</div>
+  <div id="catalog-list">
+    <ul>
+      <% @category_filters.each do |filter_id| %>
+        <li class="category_box"> <%= _(Category.find(filter_id).name) %>
+        <span class="catalog-remove-item" data-id="<%= filter_id %>" >x</span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
-	<div id="catalog-filter">
-		<%= text_field(:software, :catalog, :id=>"software-catalog") %>
-	</div>
+  <div id="catalog-filter">
+    <%= text_field(:software, :catalog, :id=>"software-catalog") %>
+  </div>
 </div>

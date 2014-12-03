@@ -9,10 +9,8 @@
   function create_catalog_element(first, value, id) {
     var li_tag = document.createElement("li");
 
-    if( first )
-      li_tag.innerHTML = value + " <span class='catalog-remove-item' data-id='"+id+"'>x</span>";
-    else
-      li_tag.innerHTML = ", " + value + " <span class='catalog-remove-item' data-id='"+id+"'>x</span>";
+    li_tag.className = "category_box";
+    li_tag.innerHTML = value + " <span class='catalog-remove-item' data-id='"+id+"'>x</span>";
 
     return li_tag;
   }
@@ -88,12 +86,7 @@
     jQuery(".catalog-remove-item").click(remote_catalog_item);
   }
 
-  function clear_filters() {
-    jQuery("#filter").val("");
-  }
-
   jQuery(document).ready(function(){
-    clear_filters();
     set_autocomplate();
     set_events();
   });
