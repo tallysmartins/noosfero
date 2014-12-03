@@ -1,24 +1,24 @@
 <div id="mais-software-block">
-	<div id="sbp-information-softwares">
+  <div id="sbp-information-softwares">
 
-	<h2>Veja mais Software</h2>
-		<ul>
-			<li><a href="#">Mais baixados</a></li>
-			<li><a href="#">Melhores notas</a></li>
-			<li><a href="#">Atualizados recentemente</a></li>
-			<li><a href="#">Novos no Portal</a></li>
-		</ul>
-	</div>
+  <h2>Veja mais Software</h2>
+    <ul>
+      <li><a href="#">Mais baixados</a></li>
+      <li><a href="#">Melhores notas</a></li>
+      <li><a href="#">Atualizados recentemente</a></li>
+      <li><a href="#">Novos no Portal</a></li>
+    </ul>
+  </div>
 
-	<div id="list-categories">
-		<p><%= _("Categories:") %></p>
-		<ul class="categories-mais-software">
+  <div id="list-categories">
+    <p><%= _("Categories:") %></p>
+    <ul class="categories-mais-software">
 
-			<% Category.all.each do |category| %>
-				<% if category.name != "Software" %>
-					<li><%= link_to category.name + " (#{category.software_infos.count})", "#" %></li>
-				<% end %>
-			<% end %>
-		</ul>
-	</div>
+      <% Category.all.each do |category| %>
+        <% if category.name != "Software" %>
+          <li><%= link_to category.name + " (#{category.software_infos.count})", {:controller => :search, :action => :software_infos, :filter => category.id} %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
 </div>
