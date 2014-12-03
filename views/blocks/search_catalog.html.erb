@@ -1,12 +1,12 @@
 <div id="catalogo-software-search">
   <h1><%= _("Catalog of Public Software") %></h1>
   <%= form_tag(controller: "search", action: "software_infos", method: "get") do %>
-  	<%= text_field(:query, "software", :placeholder => "e.g: control, municipal or java", :class=>"searchField", :id=>"search-Gadget") %>
-  	<%= submit_tag("Search", {:class=>"searchButton-catalog"})%>
+  <%= text_field_tag(:query, nil, :placeholder => "e.g: control, municipal or java", :class=>"searchField", :id=>"search-Gadget") %>
+    <%= submit_tag("Search", {:class=>"searchButton-catalog"})%>
   <% end %>
 
   <div id="search-catalog-footer">
-  	<p><%= _("Access the complete catalog")%>
+    <p><%= _("Access the complete catalog")%>
     <%= link_to "", "/search/software_infos" , {:id => "bt_catalog-search"}%></p>
   </div>
 </div>
