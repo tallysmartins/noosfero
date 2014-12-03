@@ -12,7 +12,14 @@ class SearchController
   def software_infos
     @titles[:software_infos] = "Software Infos"
 
-    results = filter_communities_list{|community| community.software?}
+    if params[:filter].blank?
+      results = filter_communities_list{|community| community.software?}
+    else
+      integer_filters = []
+      params[:filter].split(",").each{|f| integer_filters << f.to_i}
+      results = filter_communities_list{|community| community.software? && !(community.category_ids & integer_filters).blank?}
+    end
+
     results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
@@ -28,7 +35,7 @@ class SearchController
     communities_list = []
     unfiltered_list.each do |profile|
       if profile.class == Community and yield(profile)
-        communities_list << profile
+          communities_list << profile
       end
     end
     communities_list
