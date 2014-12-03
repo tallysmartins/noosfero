@@ -88,7 +88,12 @@
     jQuery(".catalog-remove-item").click(remote_catalog_item);
   }
 
+  function clear_filters() {
+    jQuery("#filter").val("");
+  }
+
   jQuery(document).ready(function(){
+    clear_filters();
     set_autocomplate();
     set_events();
   });
