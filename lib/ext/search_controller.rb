@@ -10,7 +10,7 @@ class SearchController
   end
 
   def software_infos
-    @titles[:software_infos] = "Software Infos"
+    @titles[:software_infos] = _("Software Catalog")
     @category_filters = []
 
     if params[:filter].blank?
