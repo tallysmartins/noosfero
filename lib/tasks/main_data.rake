@@ -72,6 +72,12 @@ namespace :main_data do
         box2.blocks << third_link_list_block
         box2.save!
         puts "Third LinkListBlock successfully added to software!"
+
+        generate_article(community, Blog, {name: "Notícias", slug: "noticias", published: true, accept_comments: true, notify_comments: true, license_id: 1, body: "", accept_comments: false, posts_per_page: 5})
+        generate_article(community, TinyMceArticle, {name: "Sobre o Portal", slug: "sobre-o-portal", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
+        generate_article(community, TinyMceArticle, {name: "Publique seu software", slug: "publique-seu-software", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
+        generate_article(community, TinyMceArticle, {name: "Inicie um projeto", slug: "inicie-um-projeto", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
+        generate_article(community, TinyMceArticle, {name: "Entenda o que é", slug: "entenda-o-que-e", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
       end
     end
   end
