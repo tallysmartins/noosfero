@@ -94,17 +94,12 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def profile_tabs
-    if context.profile.person?
-      { :title => _("Secundary Information"),
-        :id => 'mpog-fields',
-        :content => Proc::new do render :partial => 'profile_tab' end,
-        :start => true }
-    elsif context.profile.software?
+    if context.profile.community? && context.profile.software?
         { :title => _("Software"),
         :id => 'mpog-fields',
         :content => Proc::new do render :partial => 'software_tab' end,
         :start => true }
-    elsif context.profile.institution?
+    elsif context.profile.community? && context.profile.institution?
       { :title => _("Institution"),
         :id => 'mpog-fields',
         :content => Proc::new do render :partial => 'institution_tab' end,
