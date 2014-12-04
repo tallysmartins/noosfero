@@ -15,7 +15,12 @@ class CreateSoftware < Task
   end
 
   def perform
-    community = Community.create!(:name => self.name)
+    software_template = Community["software"]
+    if (!software_template.blank? && software_template.is_template)
+      template_id = software_template.id
+    end
+
+    community = Community.create!(:name => self.name, :template_id => template_id)
 
     community.environment = self.environment
     community.add_admin(self.requestor)
