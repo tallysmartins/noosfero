@@ -12,6 +12,7 @@ namespace :main_data do
   task :all => :environment do
     Rake::Task["main_data:destroy"].invoke
     Rake::Task["templates:destroy"].invoke
+    Rake::Task["software:create_categories"].invoke
     Rake::Task["main_data:populate"].invoke
   end
 
@@ -43,7 +44,7 @@ namespace :main_data do
 
         generate_fixed_blocks(community)
 
-        generate_article(community, Blog, {name: "Notícias", slug: "noticias", published: true, accept_comments: true, notify_comments: true, license_id: 1, body: "", accept_comments: false, posts_per_page: 5})
+        generate_article(community, Blog, {name: "Notícias", slug: "noticias", published: true, accept_comments: true, notify_comments: true, license_id: 1, body: "", accept_comments: false, posts_per_page: 5}, true)
         generate_article(community, TinyMceArticle, {name: "Sobre o Portal", slug: "sobre-o-portal", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
         generate_article(community, TinyMceArticle, {name: "Publique seu software", slug: "publique-seu-software", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
         generate_article(community, TinyMceArticle, {name: "Inicie um projeto", slug: "inicie-um-projeto", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
