@@ -355,7 +355,7 @@ namespace :templates do
       third_link_list_block.fixed = true
       third_link_list_block.save!
 
-      third_link_list_block.links << {:icon => "no-icon", :name => "Catálogo de Software Público", :address => "#", :target => "_self"}
+      third_link_list_block.links << {:icon => "no-icon", :name => "Catálogo de Software Público", :address => "/search/software_infos", :target => "_self"}
       third_link_list_block.links << {:icon => "no-icon", :name => "Comunidades", :address => "/search/communities", :target => "_self"}
 
       third_link_list_block.save!

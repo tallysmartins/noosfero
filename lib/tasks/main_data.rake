@@ -3,8 +3,16 @@
 
 namespace :main_data do
   desc "Create the main community and its contents"
-  task :all => :environment do
+  task :populate => :environment do
     Rake::Task["main_data:community"].invoke
+    Rake::Task["templates:create:all"].invoke
+  end
+
+  desc "Create the main community and its contents"
+  task :all => :environment do
+    Rake::Task["main_data:destroy"].invoke
+    Rake::Task["templates:destroy"].invoke
+    Rake::Task["main_data:populate"].invoke
   end
 
   desc "Create the main community"
@@ -111,7 +119,7 @@ namespace :main_data do
     third_link_list_block.fixed = true
     third_link_list_block.save!
 
-    third_link_list_block.links << {:icon => "no-icon", :name => "Catálogo de Software Público", :address => "#", :target => "_self"}
+    third_link_list_block.links << {:icon => "no-icon", :name => "Catálogo de Software Público", :address => "/search/software_infos", :target => "_self"}
     third_link_list_block.links << {:icon => "no-icon", :name => "Comunidades", :address => "/search/communities", :target => "_self"}
 
     third_link_list_block.save!
