@@ -14,10 +14,8 @@
     <p><%= _("Categories:") %></p>
     <ul class="categories-mais-software">
 
-      <% Category.all.each do |category| %>
-        <% if category.name != "Software" %>
-          <li><%= link_to category.name + " (#{category.software_infos.count})", {:controller => :search, :action => :software_infos, :filter => category.id} %></li>
-        <% end %>
+      <% Category.where(:name => "Software").first.children.each do |category| %>
+        <li><%= link_to category.name + " (#{category.software_infos.count})", {:controller => :search, :action => :software_infos, :filter => category.id} %></li>
       <% end %>
     </ul>
   </div>
