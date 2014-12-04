@@ -49,6 +49,21 @@ namespace :main_data do
         generate_article(community, TinyMceArticle, {name: "Publique seu software", slug: "publique-seu-software", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
         generate_article(community, TinyMceArticle, {name: "Inicie um projeto", slug: "inicie-um-projeto", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
         generate_article(community, TinyMceArticle, {name: "Entenda o que é", slug: "entenda-o-que-e", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
+        generate_article(community, TinyMceArticle, {name: "Ajuda", slug: "ajuda", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
+      end
+    end
+  end
+
+  desc "Create the home page blocks"
+  task :home => :environment do
+    Environment.all.each do |env|
+      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
+        identifier = "spb"
+
+        box2 = env.boxes.where(:position => 2).first
+        box2.blocks.destroy_all
+
+        generate_fixed_blocks(env)
       end
     end
   end
@@ -122,6 +137,7 @@ namespace :main_data do
 
     third_link_list_block.links << {:icon => "no-icon", :name => "Catálogo de Software Público", :address => "/search/software_infos", :target => "_self"}
     third_link_list_block.links << {:icon => "no-icon", :name => "Comunidades", :address => "/search/communities", :target => "_self"}
+    third_link_list_block.links << {:icon => "no-icon", :name => "Ajuda", :address => "/#{identifier}/ajuda", :target => "_self"}
 
     third_link_list_block.save!
     box2.blocks << third_link_list_block
