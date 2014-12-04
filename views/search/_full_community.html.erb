@@ -1,0 +1,57 @@
+<% software = community.software_info %>
+<li class="search-profile-item">
+  <div class="search-enterprise-item">
+    <div class="search-enterprise-item-column-left">
+      <%= profile_image_link community, :portrait, 'div', community.send(@filter + '_label') + show_date(community.created_at) %>
+    </div>
+
+    <div class="search-enterprise-item-column-right">
+
+      <div class="search-community-content-block">
+        <span>
+          <% link_name = software.acronym.blank? ? community.name : "#{software.acronym} - #{community.name}" %>
+          <%= link_to_homepage(link_name, community.identifier, :class => "search-result-title") %>
+        </span>
+
+        <p>
+          <% body_stripped = strip_tags(software.finality) %>
+          <%= excerpt(body_stripped, body_stripped.first(3), 200) if body_stripped %>
+        </p>
+      </div>
+
+      <div class="search-community-content-block">
+        <span>
+          <%= _("Software licence") %>:
+          <%= link_to(software.license_info.version, software.license_info.link, :target=>"blank", :class => "search-result-title") %>
+        </span>
+      </div>
+
+      <div class="search-community-content-block">
+        <span>
+          <%= _("Link software repository") %>:
+          <%= link_to(software.repository_link, software.repository_link, :target=>"blank", :class => "search-result-title") %>
+        </span>
+      </div>
+
+      <div class="search-community-content-block">
+        <span>
+          <%= _("Software Categories") %>
+        </span>
+
+        <% if not community.categories.empty? %>
+          <ul>
+          <% community.categories.each do |category| %>
+            <li> <%= category.name %> </li>
+          <% end %>
+          </ul>
+        <% else %>
+          <p>
+            <span><%= _("This software doesn't has categories") %></span>
+          </p>
+        <% end %>
+      </div>
+    </div>
+
+    <hr class="clearfix" />
+  </div>
+</li>

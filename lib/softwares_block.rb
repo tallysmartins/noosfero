@@ -31,7 +31,7 @@ class SoftwaresBlock < CommunitiesBlock
       end
     when Environment
       lambda do |context|
-        link_to s_('softwares|View all'), :controller => 'search', :action => 'communities', :type => 'Software'
+        link_to s_('softwares|View all'), :controller => 'search', :action => 'software_infos'
       end
     else
       ''
