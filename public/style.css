@@ -198,3 +198,29 @@
 .improve_input_size {
   width: 315px !important;
 }
+
+.software-block {
+  position: relative;
+  float: left;
+  margin: 0px 5px 5px 0px;
+  padding: 5px;
+  width: 30%;
+}
+
+.software-block-content {
+  position: relative;
+  background-color: red;
+  z-index: 10;
+}
+
+.software-block-logo {
+  width: 150px;
+  height: 150px;
+  margin: 0px auto;
+}
+
+.software-block-finality {
+  position: relative;
+  background-color: #333;
+  z-index: 20;
+}
