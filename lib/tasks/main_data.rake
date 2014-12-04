@@ -50,6 +50,7 @@ namespace :main_data do
         generate_article(community, TinyMceArticle, {name: "Inicie um projeto", slug: "inicie-um-projeto", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
         generate_article(community, TinyMceArticle, {name: "Entenda o que é", slug: "entenda-o-que-e", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
         generate_article(community, TinyMceArticle, {name: "Ajuda", slug: "ajuda", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
+        generate_article(community, TinyMceArticle, {name: "Contato", slug: "contato", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
       end
     end
   end
