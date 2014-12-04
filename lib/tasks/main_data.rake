@@ -11,7 +11,8 @@ namespace :main_data do
   task :community => :environment do
     Environment.all.each do |env|
       if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
-        community = Community.create!(:name => "SPB", :identifier => "spb")
+        identifier = "spb"
+        community = Community.create!(:name => "SPB", :identifier => identifier)
         community.layout_template = "leftbar"
 
         box1 = community.boxes.where(:position => 1).first
@@ -32,46 +33,7 @@ namespace :main_data do
         box1.save!
         puts "MainBlock successfully added to SPB!"
 
-        first_link_list_block = LinkListBlock.new
-        first_link_list_block.position = 3
-        first_link_list_block.display = "always"
-        first_link_list_block.title = "Portal do SPB"
-        first_link_list_block.save!
-
-        first_link_list_block.links << {:icon => "no-icon", :name => "Sobre o Portal", :address => "/{profile}/sobre-o-portal", :target => "_self"}
-        first_link_list_block.links << {:icon => "no-icon", :name => "Notícias", :address => "/{profile}/noticias", :target => "_self"}
-        first_link_list_block.save!
-        box2.blocks << first_link_list_block
-        box2.save!
-        puts "First LinkListBlock successfully added to software!"
-
-        second_link_list_block = LinkListBlock.new
-        second_link_list_block.position = 2
-        second_link_list_block.display = "always"
-        second_link_list_block.title = "Software Público"
-        second_link_list_block.save!
-
-        second_link_list_block.links << {:icon => "no-icon", :name => "Entenda o que é", :address => "/{profile}/entenda-o-que-e", :target => "_self"}
-        second_link_list_block.links << {:icon => "no-icon", :name => "Inicie um projeto", :address => "/{profile}/inicie-um-projeto", :target => "_self"}
-        second_link_list_block.links << {:icon => "no-icon", :name => "Publique seu software", :address => "/{profile}/publique-seu-software", :target => "_self"}
-        second_link_list_block.save!
-        box2.blocks << second_link_list_block
-        box2.save!
-        puts "Second LinkListBlock successfully added to software!"
-
-        third_link_list_block = LinkListBlock.new
-        third_link_list_block.position = 1
-        third_link_list_block.display = "always"
-        third_link_list_block.title = ""
-        third_link_list_block.save!
-
-        third_link_list_block.links << {:icon => "no-icon", :name => "Catálogo de Software Público", :address => "#", :target => "_self"}
-        third_link_list_block.links << {:icon => "no-icon", :name => "Comunidades", :address => "/search/communities", :target => "_self"}
-
-        third_link_list_block.save!
-        box2.blocks << third_link_list_block
-        box2.save!
-        puts "Third LinkListBlock successfully added to software!"
+        generate_fixed_blocks(community)
 
         generate_article(community, Blog, {name: "Notícias", slug: "noticias", published: true, accept_comments: true, notify_comments: true, license_id: 1, body: "", accept_comments: false, posts_per_page: 5})
         generate_article(community, TinyMceArticle, {name: "Sobre o Portal", slug: "sobre-o-portal", published: true, accept_comments: false, notify_comments: true, license_id: 1, body: "", accept_comments: false})
@@ -106,5 +68,55 @@ namespace :main_data do
     software.save!
 
     puts "#{params[:name]} #{klass} successfully created!"
+  end
+
+  def generate_fixed_blocks(profile)
+    identifier = "spb"
+
+    box2 = profile.boxes.where(:position => 2).first
+
+    first_link_list_block = LinkListBlock.new
+    first_link_list_block.position = 3
+    first_link_list_block.display = "always"
+    first_link_list_block.title = "Portal do SPB"
+    first_link_list_block.fixed = true
+    first_link_list_block.save!
+
+    first_link_list_block.links << {:icon => "no-icon", :name => "Sobre o Portal", :address => "/#{identifier}/sobre-o-portal", :target => "_self"}
+    first_link_list_block.links << {:icon => "no-icon", :name => "Notícias", :address => "/#{identifier}/noticias", :target => "_self"}
+    first_link_list_block.save!
+    box2.blocks << first_link_list_block
+    box2.save!
+    puts "First LinkListBlock successfully added to software!"
+
+    second_link_list_block = LinkListBlock.new
+    second_link_list_block.position = 2
+    second_link_list_block.display = "always"
+    second_link_list_block.title = "Software Público"
+    second_link_list_block.fixed = true
+    second_link_list_block.save!
+
+    second_link_list_block.links << {:icon => "no-icon", :name => "Entenda o que é", :address => "/#{identifier}/entenda-o-que-e", :target => "_self"}
+    second_link_list_block.links << {:icon => "no-icon", :name => "Inicie um projeto", :address => "/#{identifier}/inicie-um-projeto", :target => "_self"}
+    second_link_list_block.links << {:icon => "no-icon", :name => "Publique seu software", :address => "/#{identifier}/publique-seu-software", :target => "_self"}
+    second_link_list_block.save!
+    box2.blocks << second_link_list_block
+    box2.save!
+    puts "Second LinkListBlock successfully added to software!"
+
+    third_link_list_block = LinkListBlock.new
+    third_link_list_block.position = 1
+    third_link_list_block.display = "always"
+    third_link_list_block.title = ""
+    third_link_list_block.fixed = true
+    third_link_list_block.save!
+
+    third_link_list_block.links << {:icon => "no-icon", :name => "Catálogo de Software Público", :address => "#", :target => "_self"}
+    third_link_list_block.links << {:icon => "no-icon", :name => "Comunidades", :address => "/search/communities", :target => "_self"}
+
+    third_link_list_block.save!
+    box2.blocks << third_link_list_block
+    box2.save!
+    puts "Third LinkListBlock successfully added to software!"
   end
 end

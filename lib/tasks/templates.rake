@@ -162,6 +162,8 @@ namespace :templates do
 
           generate_article(software, TinyMceArticle, {name: "Sobre o #{software.name}", body: "<p>Texto com explicação detalhada sobre o Software. </p>\r\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>\r\n<p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>\r\n<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>\r\n<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsa</p>\r\n<hr />\r\n<h1>Requisitos Mínimos</h1>\r\n<p>Texto curto informativo sobre os requisitos mínimos do software. </p>\r\n<p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequa.</p>\r\n<p>Maiores informações podem ser encontradas na <a href=\"/{profile}/tutorial-de-instalacao\">página de instalação</a>.</p>\r\n<hr />\r\n<h1>Novidades da versão X.Y</h1>\r\n<p>Texto informativo sobre as novidades da última versão estável do software. Listar aqui as principais funcionalidades em linhas gerais. Pode-se também ter um link para a página de versões do software, onde terá informações mais detalhadas.</p>\r\n<ul>\r\n<li>Detalhes de uma funcionalidade nova</li>\r\n<li>Detalhes de outra funcionalidade nova</li>\r\n<li>Detalhes sobre um bug corrigido</li>\r\n<li>Detalhes sobre mudanças na interface de usuário</li>\r\n</ul>", license_id: 1 }, true)
 
+          generate_fixed_blocks(software)
+
           puts "Software Template successfully created!"
         end
       end
@@ -265,6 +267,8 @@ namespace :templates do
           box1.blocks << main_block
           box1.save!
           puts "MainBlock successfully added to institution!"
+
+          generate_fixed_blocks(community)
         end
       end
     end
@@ -305,5 +309,61 @@ namespace :templates do
     software.save!
 
     puts "#{params[:name]} #{klass} successfully created!"
+  end
+
+  def generate_fixed_blocks(profile)
+    identifier = "spb"
+
+    community = Community[identifier]
+
+    if community
+      box2 = profile.boxes.where(:position => 2).first
+
+      first_link_list_block = LinkListBlock.new
+      first_link_list_block.position = 3
+      first_link_list_block.display = "always"
+      first_link_list_block.title = "Portal do SPB"
+      first_link_list_block.fixed = true
+      first_link_list_block.save!
+
+      first_link_list_block.links << {:icon => "no-icon", :name => "Sobre o Portal", :address => "/#{identifier}/sobre-o-portal", :target => "_self"}
+      first_link_list_block.links << {:icon => "no-icon", :name => "Notícias", :address => "/#{identifier}/noticias", :target => "_self"}
+      first_link_list_block.save!
+      box2.blocks << first_link_list_block
+      box2.save!
+      puts "First LinkListBlock successfully added to software!"
+
+      second_link_list_block = LinkListBlock.new
+      second_link_list_block.position = 2
+      second_link_list_block.display = "always"
+      second_link_list_block.title = "Software Público"
+      second_link_list_block.fixed = true
+      second_link_list_block.save!
+
+      second_link_list_block.links << {:icon => "no-icon", :name => "Entenda o que é", :address => "/#{identifier}/entenda-o-que-e", :target => "_self"}
+      second_link_list_block.links << {:icon => "no-icon", :name => "Inicie um projeto", :address => "/#{identifier}/inicie-um-projeto", :target => "_self"}
+      second_link_list_block.links << {:icon => "no-icon", :name => "Publique seu software", :address => "/#{identifier}/publique-seu-software", :target => "_self"}
+      second_link_list_block.save!
+      box2.blocks << second_link_list_block
+      box2.save!
+      puts "Second LinkListBlock successfully added to software!"
+
+      third_link_list_block = LinkListBlock.new
+      third_link_list_block.position = 1
+      third_link_list_block.display = "always"
+      third_link_list_block.title = ""
+      third_link_list_block.fixed = true
+      third_link_list_block.save!
+
+      third_link_list_block.links << {:icon => "no-icon", :name => "Catálogo de Software Público", :address => "#", :target => "_self"}
+      third_link_list_block.links << {:icon => "no-icon", :name => "Comunidades", :address => "/search/communities", :target => "_self"}
+
+      third_link_list_block.save!
+      box2.blocks << third_link_list_block
+      box2.save!
+      puts "Third LinkListBlock successfully added to software!"
+    else
+      puts "IMPOSSIBLE TO CREATE FIXED BLOCKS, THERE IS NO COMMUNITY CALLED SPB"
+    end
   end
 end
