@@ -203,7 +203,7 @@
 .software-block {
   position: relative;
   float: left;
-  margin: 0px 5px 5px 0px;
+  margin: 0px 10px 10px 0px;
   width: 30%;
   height: 200px;
   word-wrap: break-word;
@@ -228,5 +228,6 @@
   background-color: #fff;
   top: 100%;
   display: block;
+  background-color:rgba(255, 255, 255, 0.9);
 }
 /* End software block main area definitions */
