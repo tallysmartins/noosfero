@@ -718,6 +718,73 @@ color:#000000;
     height: 100%;
     display: block;
 }
+
+/* Cores dos sideboxs */
+
+
+/* Cor padrao do box */
+#content .box .block-title {
+    border-top: 4px solid #2c66ce;
+    background: #eee;
+    color:#2c66ce;
+}
+
+#content .box .read-more {
+    border-top: 1px solid #2c66ce;
+    background: #eee;
+}
+
+#content .read-more a {
+    color: #000000;
+}
+
+#content .box .read-more a::after {
+	background: #2c66ce;
+}
+
+/* Todos os blocos da coluna da esquerda da mesma cor */
+#content .box-2 .block-outer .block-title {
+	border-top: 4px solid #4562b1;
+	background: #eee;
+	color: #4562b1;
+}
+
+#content .box-2 .block-outer .read-more {
+    border-top: 1px solid #4562b1;
+    background: #eee;
+}
+
+#content .box-2 .block-outer .read-more a {
+    color: #000000;
+}
+
+#content .box-2 .block-outer .read-more a::after {
+	color: #FFFFFF;
+	background: #4562b1;
+}
+
+/* Bloco de artigo sempre da mesma cor */
+
+#content .box .article-block .block-title {
+	border-top: 4px solid #08A649;
+	background: #eee;
+	color: #08A649;
+}
+
+#content .box .block-outer .article-block  .read-more {
+    border-top: 1px solid #08A649;
+    background: #eee;
+}
+
+#content .box .block-outer .article-block .read-more a {
+    color: #000000;
+}
+
+#content .box .block-outer .article-block .read-more a::after {
+	color: #FFFFFF;
+	background: #08A649;
+}
+
 /************* FIM Bar Psocial Style - Menu Horizontal**************/
 
 
@@ -809,7 +876,7 @@ margin-left:0!important
 }
 
 footer {
-background:#d5d5d5;/#ecedf1*/
+background:#d5d5d5;
 }
 footer .footer-atalhos {
 background:#fff;
