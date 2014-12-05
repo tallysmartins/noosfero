@@ -230,3 +230,8 @@
   margin:10px 3px;
   color: blue;
 }
+
+.search-results-type-software_info li {
+  width: 100% !important;
+  display: block !important;
+}
