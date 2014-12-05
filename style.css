@@ -408,6 +408,17 @@ p {
     padding: 0 0 1em;
 }
 
+
+/* Tamanho das colunas customiazdos na pagina inicial */
+.action-home-index .box-3{
+  width: 230px;
+}
+
+.action-home-index .box-1 {
+   /* display: inline-block;*/
+   width: 490px;
+}
+
 /* padrao do box */
 #content .box .block-title {
     font-size: 12px;
