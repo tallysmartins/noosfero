@@ -1,9 +1,9 @@
 class SoftwareInfo < ActiveRecord::Base
   SEARCH_FILTERS = []
-  SEARCH_DISPLAYS = %w[full]
+  SEARCH_DISPLAYS = %w[compact]
 
   def self.default_search_display
-    'full'
+    'compact'
   end
 
   attr_accessible :e_mag, :icp_brasil, :intern, :e_ping, :e_arq, :operating_platform

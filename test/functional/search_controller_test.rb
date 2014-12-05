@@ -58,4 +58,15 @@ class SearchControllerTest < ActionController::TestCase
     assert_not_includes assigns(:searches)[:software_infos][:results], software_without_category.community
   end
 
+  should "institutions_search don't have community or software" do
+    community = create_community("New Community")
+    software = create_software_info("New Software")
+    institution = create_private_institution("New Private Institution", "NPI" , "Brazil", "DF", "Gama", "66.544.314/0001-63")
+
+    get :institutions, :query => "New"
+
+    assert_includes assigns(:searches)[:institutions][:results], institution.community
+    assert_not_includes assigns(:searches)[:institutions][:results], community
+    assert_not_includes assigns(:searches)[:institutions][:results], software.community
+  end
 end
