@@ -1,4 +1,12 @@
 class Institution < ActiveRecord::Base
+
+  SEARCH_FILTERS = []
+  SEARCH_DISPLAYS = %w[compact]
+
+  def self.default_search_display
+    'compact'
+  end
+
   belongs_to :governmental_power
   belongs_to :governmental_sphere
   belongs_to :juridical_nature

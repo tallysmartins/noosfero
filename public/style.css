@@ -198,3 +198,35 @@
 .improve_input_size {
   width: 315px !important;
 }
+
+.search-community-content-block span {
+  width: auto;
+}
+
+#catalog-list ul li {
+    display: inline;
+    margin-right: 5px;
+    font-size: 14px;
+    padding: 5px;
+  }
+
+#catalog-list ul li span {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.catalog-remove-item {
+  padding: 3px;
+  border: solid 1px #999;
+  border-radius: 3px;
+}
+
+.category_box {
+  font-size: 11px;
+  border:1px solid #e9e8ed;
+  border-radius:8px;
+  background-color:#e9e8ed;
+  padding:3px 6px;
+  margin:10px 3px;
+  color: blue;
+}
