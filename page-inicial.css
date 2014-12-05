@@ -76,7 +76,7 @@ text-align: center;
   border: 1px solid #c0c1c1;
   border-radius:8px;
   margin:11px 0px;
-  padding: 10px 0px;
+  padding: 5px 0px;
   font-size: 14px;
 }
 
@@ -84,8 +84,8 @@ text-align: center;
   font-size:16px;
   text-align:left;
   text-transform: uppercase;
-  color:#464A55;
-  padding:0px 0px 15px 20px;
+  color:#454545; /*#464A55;*/
+  padding:0px 0px 10px 10px; /*0px 0px 15px 20px;*/
   border-bottom:1px solid #c0c1c1;
 }
 
@@ -97,7 +97,7 @@ text-align: center;
  border-bottom: 1px solid #ccc;
  margin: 0;
  min-height: 1em;
- padding: 20px;
+ padding: 15px;
  font-weight: bold;
 }
 
@@ -120,7 +120,7 @@ text-align: center;
 }
 
 #list-categories ul li{
- margin:10px 5px 5px 0px;
+ margin:10px 5px 5px 8px;
 }
 
 #list-categories li a{
@@ -168,7 +168,6 @@ text-align: center;
 .box-1 .softwares-block .common-profile-list-block .vcard:hover{
   border:none;
   background:none;
-
 }
 
 .box-1 .softwares-block .common-profile-list-block span {
@@ -181,13 +180,12 @@ text-align: center;
   margin-bottom: 40px;
   font-size: 14px;
 }
-.box-1 .softwares-block .common-profile-list-block .org :hover{
-  color:#;
-}
 
+/*
 #content .box-1 .softwares-block ul {
-margin: -10px 0px 10px 20px; /*-20px 20px;*/
+margin: -10px 0px 10px 20px; /*-20px 20px;
 }
+*/
 
 #content .box-1 .softwares-block .common-profile-list-block .vcard {
   margin:10px !important;
