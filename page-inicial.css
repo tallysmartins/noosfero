@@ -70,6 +70,7 @@ text-align: center;
 
 /*Veja mais software*/
 #mais-software-block{
+  font-family:arial;
   width:auto;
   background-color: #eeeff1;
   border: 1px solid #c0c1c1;
@@ -80,6 +81,7 @@ text-align: center;
 }
 
 #sbp-information-softwares h2{
+  font-size:16px;
   text-align:left;
   text-transform: uppercase;
   color:#464A55;
@@ -100,7 +102,8 @@ text-align: center;
 }
 
 #sbp-information-softwares li a {
-  color: #294266 !important;
+  color:#335277 !important;
+  /*color: #294266 !important;*/
   font-weight: bold;
 }
 
@@ -121,8 +124,9 @@ text-align: center;
 }
 
 #list-categories li a{
-   color:#294266 !important;
-   font-weight: bold;
+  color:#335277 !important;
+  /*color:#294266 !important;*/
+  font-weight: bold;
 }
 #list-categories a:hover {
   text-decoration: none !important;
@@ -134,7 +138,7 @@ text-align: center;
   margin:0px;
   text-align: right;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 #footer-mais-software a {
@@ -174,6 +178,11 @@ text-align: center;
 
 .box-1 .softwares-block .common-profile-list-block .org{
   margin-left: 10px;
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+.box-1 .softwares-block .common-profile-list-block .org :hover{
+  color:#;
 }
 
 #content .box-1 .softwares-block ul {
