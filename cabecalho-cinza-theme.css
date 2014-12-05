@@ -785,6 +785,28 @@ color:#000000;
 	background: #08A649;
 }
 
+/* Bloco de noticias sempre da mesma cor */
+
+#content .box .display-content-block .block-title {
+	border-top: 4px solid #643C67;
+	background: #eee;
+	color: #643C67;
+}
+
+#content .box .block-outer .display-content-block .read-more {
+    border-top: 1px solid #643C67;
+    background: #eee;
+}
+
+#content .box .block-outer .display-content-block .read-more a {
+    color: #000000;
+}
+
+#content .box .block-outer .display-content-block .read-more a::after {
+	color: #FFFFFF;
+	background: #643C67;
+}
+
 /************* FIM Bar Psocial Style - Menu Horizontal**************/
 
 
