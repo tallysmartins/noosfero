@@ -10,44 +10,57 @@
       <div class="search-community-content-block">
         <span>
           <% link_name = software.acronym.blank? ? community.name : "#{software.acronym} - #{community.name}" %>
-          <%= link_to_homepage(link_name, community.identifier, :class => "search-result-title") %>
+          <h4>
+            <%= link_to_homepage(link_name, community.identifier) %>
+          </h4>
         </span>
 
-        <p>
+        <span>
           <% body_stripped = strip_tags(software.finality) %>
+          <b>
+            <%= _("Finality") + ":" if body_stripped %>
+          </b>
           <%= excerpt(body_stripped, body_stripped.first(3), 200) if body_stripped %>
-        </p>
-      </div>
-
-      <div class="search-community-content-block">
-        <span>
-          <%= _("Software licence") %>:
-          <%= link_to(software.license_info.version, software.license_info.link, :target=>"blank", :class => "search-result-title") %>
         </span>
       </div>
 
       <div class="search-community-content-block">
         <span>
-          <%= _("Link software repository") %>:
-          <%= link_to(software.repository_link, software.repository_link, :target=>"blank", :class => "search-result-title") %>
+          <b>
+            <%= _("Software licence") %>:
+          </b>
+          <%= link_to(software.license_info.version, software.license_info.link, :target=>"blank") %>
         </span>
       </div>
 
       <div class="search-community-content-block">
         <span>
-          <%= _("Software Categories") %>
+          <b>
+            <%= _("Link software repository") %>:
+          </b>
+          <%= link_to(software.repository_link, software.repository_link, :target=>"blank") %>
+        </span>
+      </div>
+
+      <div class="search-community-content-block">
+        <span>
+          <b>
+            <%= _("Software Categories") %>:
+          </b>
         </span>
 
-        <% if not community.categories.empty? %>
-          <ul>
-          <% community.categories.each do |category| %>
-            <li> <%= category.name %> </li>
-          <% end %>
+        <% if !community.categories.empty? %>
+          <ul id="categories-list">
+            <% community.categories.each do |category| %>
+              <li>
+                <%= category.name %>
+              </li>
+            <% end %>
           </ul>
         <% else %>
-          <p>
-            <span><%= _("This software doesn't has categories") %></span>
-          </p>
+          <span>
+            <%= _("This software doesn't have categories") %>
+          </span>
         <% end %>
       </div>
     </div>

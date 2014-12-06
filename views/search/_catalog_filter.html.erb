@@ -1,5 +1,6 @@
 <div>
   <div id="catalog-list">
+    <br>
     <ul>
       <% @category_filters.each do |filter_id| %>
         <li class="category_box"> <%= _(Category.find(filter_id).name) %>
@@ -10,7 +11,9 @@
   </div>
 
   <div id="catalog-filter">
-    <span><%= _("Categories filter") %>:</span>
-    <%= text_field(:software, :catalog, :id=>"software-catalog", :placeholder=>_("Type a category name here")) %>
+    <h4>
+      <span><%= _("Categories filter") %>:</span>
+      <%= text_field(:software, :catalog, :id=>"software-catalog", :placeholder=>_("Type a category name here")) %>
+    </h4>
   </div>
 </div>
