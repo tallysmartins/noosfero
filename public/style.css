@@ -227,6 +227,11 @@
   border-radius:8px;
   background-color:#e9e8ed;
   padding:3px 6px;
-  margin:10px 3px;
+  margin: 10px 3px;
   color: blue;
+}
+
+.search-results-type-software_info li {
+  width: 100% !important;
+  display: block !important;
 }
