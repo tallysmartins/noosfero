@@ -81,7 +81,7 @@ class SoftwaresBlock < CommunitiesBlock
       block = self
 
       proc do
-        render :file => 'blocks/main_area_softwares', :locals => { :profiles=> block.profile_list() }
+        render :file => 'blocks/main_area_softwares', :locals => { :profiles=> block.profile_list(), :block => block }
       end
     else
       super(arg)
