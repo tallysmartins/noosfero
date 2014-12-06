@@ -75,4 +75,16 @@ class SoftwaresBlock < CommunitiesBlock
 
     result.slice(0..get_limit-1)
   end
+
+  def content(arg={})
+    if self.box.owner_type == "Environment" && self.box.position == 1
+      block = self
+
+      proc do
+        render :file => 'blocks/main_area_softwares', :locals => { :profiles=> block.profile_list() }
+      end
+    else
+      super(arg)
+    end
+  end
 end
