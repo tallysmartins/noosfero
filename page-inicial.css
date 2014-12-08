@@ -152,8 +152,56 @@ text-align: center;
 
 .box-1 .softwares-block{
   border-bottom: 1px solid #ccc;
+  overflow: auto;
+}
+.software-block {
+  height: 220px;
 }
 
+/*
+.box-1 .software-block{
+  margin:20px 10px 0px 0px;
+}*/
+
+.box-1 .software-block-title {
+  text-align: center;
+  font-weight: normal !important;
+  font-size: 14px !important;
+}
+
+.box-1 .software-block-finality,
+.box-1 .software-block-content {
+  padding-top:20px;
+}
+
+.software-block-logo {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /*padding: 20px;*/
+}
+
+.software-block img{
+  max-width: 90px;
+  height: auto;
+}
+
+.software-block-logo{
+  display:block;
+  text-align: center;
+  width:130px;
+  height:90px;
+  padding-top:20px;
+  padding-bottom:20px;
+  overflow: hidden;
+}
+
+/*
+.box-1 .software-block-title h3 {
+  font-weight: normal !important;
+  font-size: 14px !important;
+
+}
+*/
 .box-1 .softwares-block .common-profile-list-block{
   margin-top:-20px;
 }

@@ -528,7 +528,8 @@ p {
 }
 
 #content .link-list-block li a {
-    line-height: 30px;
+    line-height: 20px;
+    padding:10px 0px;
 }
 
 #content .link-list-block h3.empty + ul {
