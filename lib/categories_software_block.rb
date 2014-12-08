@@ -9,7 +9,7 @@ class CategoriesSoftwareBlock < Block
   end
 
   def help
-    _('This block displays the categories and the amount of softwares for each categorie.')
+    _('This block displays the categories and the amount of softwares for each category.')
   end
 
   def content(args={})
