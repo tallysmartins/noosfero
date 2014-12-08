@@ -2786,5 +2786,14 @@ body.action-embed-index {
 
 .article-body ul {
     list-style-position: inside;
+    list-style-type: disc;
+}
+
+.article-body ol {
+    list-style-position: inside;
+    list-style-type: decimal;
+}
+
+.article-body li {
     list-style: inherit;
 }
