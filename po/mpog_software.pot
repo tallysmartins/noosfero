@@ -1,0 +1,1134 @@
+ SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0~rc4\n"
+"POT-Creation-Date: 2014-12-08 17:44-0000\n"
+"PO-Revision-Date: 2014-11-12 13:05-0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: plugins/mpog_software/lib/repository_block.rb:8
+msgid "Repository Link"
+msgstr "Link pro Repositório"
+
+#: plugins/mpog_software/lib/repository_block.rb:12
+msgid "This block displays the repository link of a software."
+msgstr "Este bloco exibe as informações básicas de um perfil de software."
+
+#: plugins/mpog_software/lib/create_software.rb:34
+msgid "New software"
+msgstr "Novo software"
+
+#: plugins/mpog_software/lib/create_software.rb:48
+msgid "%{requestor} wants to create software %{subject} with no finality."
+msgstr "%{requestor} deseja criar o software %{subject} sem finalidade."
+
+#: plugins/mpog_software/lib/create_software.rb:50
+msgid ""
+"%{requestor} wants to create software %{subject} with this finality:<p><em>"
+"%{finality}</em></p>"
+msgstr ""
+"%{requestor} deseja criar o software %{subject} com esta finalidade:<p><em>"
+"%{finality}</em></p>"
+
+#: plugins/mpog_software/lib/create_software.rb:70
+msgid "%{requestor} wants to create software %{subject}"
+msgstr "%{requestor} deseja criar o software %{subject}"
+
+#: plugins/mpog_software/lib/create_software.rb:74
+msgid ""
+"User \"%{user}\" just requested to create software %{software}. You have to "
+"approve or reject it through the \"Pending Validations\" section in your "
+"control panel.\n"
+msgstr ""
+"Usuário \"%{user}\" requisitou a criação do software %{software}. Você tem que"
+"aprovar ou rejeitar pela seção \"Validações Pendentes\" no seur "
+"painel de controle"
+
+#: plugins/mpog_software/lib/create_software.rb:78
+msgid ""
+"Your request for registering software %{software} at %{environment} was just "
+"sent. Environment administrator will receive it and will approve or reject "
+"your request according to his methods and creteria.\n"
+"\n"
+"      You will be notified as soon as environment administrator has a "
+"position about your request."
+msgstr "Sua requisição para registrar o software %{software} no %{environment} foi enviado "
+". O administrador do ambiente irá receber uma notificação para aprovar ou rejeitar"
+"sua requisição de acordo com seus métodos e critérios"
+" Você será notificado assim que o administrador tenha uma posição sobre sua requisição."
+
+#: plugins/mpog_software/lib/create_software.rb:84
+msgid ""
+"Your request for registering software %{software} at %{environment} was not "
+"approved by the environment administrator. The following explanation was "
+"given: \n"
+"\n"
+"%{explanation}"
+msgstr ""
+"Sua requisição para o registro do software %{software} no %{environment} não foit "
+"aprovado pelo administrador do ambiente. The following explanation was "
+"given: \n"
+"\n"
+
+#: plugins/mpog_software/lib/create_software.rb:88
+msgid ""
+"Your request for registering the software \"%{software}\" was approved. You "
+"can access %{url} and finish the registration of your software."
+msgstr ""
+"Sua requisição para registro do software \"%{software}\" foi aprovado. Você "
+"pode acessar pela %{url} e finalizar o registro do seu software."
+
+
+#: plugins/mpog_software/lib/institution.rb:42
+msgid "invalid, only public and private institutions are allowed."
+msgstr "inválido, somente instituição públicas ou privadas são permitidas."
+
+#: plugins/mpog_software/lib/institution.rb:51
+#: plugins/mpog_software/lib/institution.rb:60
+#: plugins/mpog_software/lib/institution.rb:72
+#: plugins/mpog_software/lib/institution.rb:97
+#: plugins/mpog_software/lib/library.rb:13
+#: plugins/mpog_software/lib/library.rb:17
+#: plugins/mpog_software/lib/library.rb:21
+msgid "can't be blank"
+msgstr "Não pode ser em branco"
+
+#: plugins/mpog_software/lib/institution.rb:89
+msgid "invalid format"
+msgstr "formato inválido"
+
+#: plugins/mpog_software/lib/software_language_helper.rb:78
+#: plugins/mpog_software/lib/software_language_helper.rb:104
+msgid "Language Name: "
+msgstr "Nome da Linguagem: "
+
+#: plugins/mpog_software/lib/software_language_helper.rb:80
+#: plugins/mpog_software/lib/database_helper.rb:72
+msgid "Autocomplete field, type something"
+msgstr "Campo automático, digite algo"
+
+#: plugins/mpog_software/lib/software_language_helper.rb:81
+#: plugins/mpog_software/lib/database_helper.rb:73
+msgid "Pick an item on the list"
+msgstr "Pegue um item da lista"
+
+#: plugins/mpog_software/lib/software_language_helper.rb:86
+#: plugins/mpog_software/lib/software_language_helper.rb:110
+#: plugins/mpog_software/lib/library_helper.rb:58
+#: plugins/mpog_software/lib/operating_system_helper.rb:62
+#: plugins/mpog_software/lib/database_helper.rb:79
+msgid "Version"
+msgstr "Versão"
+
+#: plugins/mpog_software/lib/software_language_helper.rb:92
+#: plugins/mpog_software/lib/software_language_helper.rb:116
+#: plugins/mpog_software/lib/database_helper.rb:85
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:91
+msgid "Operating System"
+msgstr "Sistema Operacional"
+
+#: plugins/mpog_software/lib/software_language_helper.rb:94
+#: plugins/mpog_software/lib/library_helper.rb:67
+#: plugins/mpog_software/lib/operating_system_helper.rb:66
+#: plugins/mpog_software/lib/database_helper.rb:87
+msgid "Delete"
+msgstr "Excluir"
+
+#: plugins/mpog_software/lib/software_categories.rb:23
+msgid "At last one category must be checked"
+msgstr "Pelo menos uma categoria deve ser selecionada"
+
+#: plugins/mpog_software/lib/search_catalog_block.rb:8
+msgid "Search Softwares catalog"
+msgstr "Busca do Catalogo de Software"
+
+#: plugins/mpog_software/lib/search_catalog_block.rb:12
+msgid "This block displays the search categories field "
+msgstr "Este bloco apresenta os campos das categorias de busca."
+
+#: plugins/mpog_software/lib/download_block.rb:12
+msgid "Download Stable Version"
+msgstr "Baixar Versão Estável"
+
+#: plugins/mpog_software/lib/download_block.rb:16
+msgid "This block displays the stable version of a software."
+msgstr "Este bloco exibe a versão estável de um software."
+
+#: plugins/mpog_software/lib/library_helper.rb:52
+#: plugins/mpog_software/lib/operating_system_helper.rb:56
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:31
+#: plugins/mpog_software/views/_main_software_editor_extras.html.erb:3
+msgid "Name"
+msgstr "Nome"
+
+#: plugins/mpog_software/lib/library_helper.rb:64
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:19
+msgid "License"
+msgstr "Licença"
+
+#: plugins/mpog_software/lib/software_language.rb:7
+#: plugins/mpog_software/lib/software_language.rb:8
+msgid "Software language is too long (maximum is 20 characters)"
+msgstr ""
+"Linguagem de programação do software contém mais caracteres do que o "
+"permitido (máximo é 20 caracteres)"
+
+#: plugins/mpog_software/lib/softwares_block.rb:7
+msgid "Softwares"
+msgstr "Softwares"
+
+#: plugins/mpog_software/lib/softwares_block.rb:12
+msgid "{#} generic software"
+msgid_plural "{#} generic softwares"
+msgstr[0] "{#} software genérico"
+msgstr[1] "{#} softwares genéricos"
+
+#: plugins/mpog_software/lib/softwares_block.rb:14
+msgid "{#} public software"
+msgid_plural "{#} public softwares"
+msgstr[0] "{#} software público"
+msgstr[1] "{#} software públicos"
+
+#: plugins/mpog_software/lib/softwares_block.rb:16
+msgid "{#} software"
+msgid_plural "{#} softwares"
+msgstr[0] "{#} software"
+msgstr[1] "{#} softwares"
+
+#: plugins/mpog_software/lib/softwares_block.rb:21
+msgid "This block displays the softwares in which the user is a member."
+msgstr "Este bloco apresenta os softwares no qual o usuário é membro."
+
+#: plugins/mpog_software/lib/softwares_block.rb:30
+#: plugins/mpog_software/lib/softwares_block.rb:34
+msgid "softwares|View all"
+msgstr "Ver todos"
+
+#: plugins/mpog_software/lib/library.rb:9
+#: plugins/mpog_software/lib/library.rb:10
+msgid "Library is too long (maximum is 20 characters)"
+msgstr ""
+"Biblioteca contém mais caracteres do que o permitido (máximo é 20 caracteres)"
+
+#: plugins/mpog_software/lib/ext/search_controller.rb:13
+msgid "Institution Catalog"
+msgstr "Catalogo de Instituição"
+
+#: plugins/mpog_software/lib/ext/search_controller.rb:23
+msgid "Software Catalog"
+msgstr "Catalogo de Software"
+
+#: plugins/mpog_software/lib/ext/user.rb:15
+msgid "Email must be different from secondary email."
+msgstr "E-mail deve ser diferente do e-mail secundário."
+
+#: plugins/mpog_software/lib/ext/user.rb:29
+msgid "E-mail or secondary e-mail already taken."
+msgstr "E-mail ou e-mail secundário já está sendo utilizado"
+
+#: plugins/mpog_software/lib/ext/user.rb:37
+msgid "Invalid secondary email format."
+msgstr "Formato do e-mail secundário inválido."
+
+#: plugins/mpog_software/lib/ext/user.rb:54
+msgid "The governamental email must be the primary one."
+msgstr "O e-mail governamental deve ser o e-mail primário."
+
+#: plugins/mpog_software/lib/ext/user.rb:57
+msgid "Institution is obligatory if user has a government email."
+msgstr "Instituição é obrigatória se o usuário tiver um e-mail governamental."
+
+#: plugins/mpog_software/lib/software_information_block.rb:8
+msgid "Basic Software Information"
+msgstr "Informações Básicas Software"
+
+#: plugins/mpog_software/lib/software_information_block.rb:12
+msgid "This block displays the basic information of a software profile."
+msgstr "Este bloco exibe as informações básicas de um perfil de software."
+
+#: plugins/mpog_software/lib/operating_system.rb:7
+msgid "Operating system is too long (maximum is 20 characters)"
+msgstr ""
+"Sistema operacional contém mais caracteres do que o permitido (máximo é 20 "
+"caracteres)"
+
+#: plugins/mpog_software/lib/institutions_block.rb:4
+#: plugins/mpog_software/views/person_editor_extras.html.erb:10
+msgid "Institutions"
+msgstr "Instituições"
+
+#: plugins/mpog_software/lib/institutions_block.rb:12
+msgid "{#} institution"
+msgid_plural "{#} institutions"
+msgstr[0] "{#} intituição"
+msgstr[1] "{#} instituições"
+
+#: plugins/mpog_software/lib/institutions_block.rb:16
+msgid "This block displays the institutions in which the user is a member."
+msgstr "Este bloco mostra as instituições a que o usuário pertence"
+
+#: plugins/mpog_software/lib/institutions_block.rb:24
+#: plugins/mpog_software/lib/institutions_block.rb:28
+msgid "institutions|View all"
+msgstr "Ver todas"
+
+#: plugins/mpog_software/lib/categories_and_tags_block.rb:8
+msgid "Categories and Tags"
+msgstr "Categorias e Tags"
+
+#: plugins/mpog_software/lib/categories_and_tags_block.rb:12
+msgid "This block displays the categories and tags of a software."
+msgstr "Este bloco exibe as informações básicas de um perfil de software."
+
+#: plugins/mpog_software/lib/mpog_software_plugin.rb:19
+msgid "Add Public Software and MPOG features."
+msgstr "Adicionar  funcionalidades referentes ao Software Público e MPOG"
+
+#: plugins/mpog_software/lib/mpog_software_plugin.rb:98
+#: plugins/mpog_software/test/functional/search_controller_test.rb:20
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_software.html.erb:7
+#: plugins/mpog_software/views/mpog_software_plugin/_software_list.html.erb:11
+#: plugins/mpog_software/views/search/search_community_filter.html.erb:10
+msgid "Software"
+msgstr "Software"
+
+#: plugins/mpog_software/lib/mpog_software_plugin.rb:103
+#: plugins/mpog_software/views/search/search_community_filter.html.erb:12
+msgid "Institution"
+msgstr "Instituição"
+
+#: plugins/mpog_software/lib/mpog_software_plugin.rb:113
+msgid "Software Info"
+msgstr "Informação de Software"
+
+#: plugins/mpog_software/lib/mpog_software_plugin.rb:115
+#: plugins/mpog_software/lib/mpog_software_plugin.rb:156
+msgid "Create a new software"
+msgstr "Criar um novo software"
+
+#: plugins/mpog_software/lib/mpog_software_plugin.rb:118
+msgid "Institution Info"
+msgstr "Informação de Instituição"
+
+#: plugins/mpog_software/lib/mpog_software_plugin.rb:209
+msgid "Create Institution"
+msgstr "Criar Instituição"
+
+#: plugins/mpog_software/lib/categories_software_block.rb:8
+msgid "Categories Softwares"
+msgstr "Categorias de Software"
+
+#: plugins/mpog_software/lib/categories_software_block.rb:12
+msgid ""
+"This block displays the categories and the amount of softwares for each "
+"categorie."
+msgstr ""
+"O bloco apresenta as categorias e a quantidade de softwares para cada"
+"categoria."
+
+#: plugins/mpog_software/lib/software_database.rb:7
+#: plugins/mpog_software/lib/software_database.rb:8
+msgid "Software database is too long (maximum is 20 characters)"
+msgstr ""
+"Banco de dados do software contém mais caracteres do que o permitido (máximo "
+"é 20 caracteres)"
+
+#: plugins/mpog_software/lib/software_info.rb:60
+msgid "Name is too long (maximum is %{count} characters)"
+msgstr ""
+"Nome contém mais caracteres do que o permitido (máximo é %{count} caracteres)"
+
+#: plugins/mpog_software/lib/software_info.rb:92
+msgid "can't have more than 10 characteres"
+msgstr "não pode ter mais de 10 caracteres"
+
+#: plugins/mpog_software/lib/software_info.rb:95
+msgid "can't have whitespaces"
+msgstr "não pode ter espaços"
+
+#: plugins/mpog_software/lib/software_info.rb:102
+#: plugins/mpog_software/lib/software_info.rb:106
+#: plugins/mpog_software/lib/software_info.rb:110
+msgid ": at least one must be filled"
+msgstr ": Pelo menos um deve ser preenchido"
+
+#: plugins/mpog_software/lib/database_helper.rb:70
+msgid "database Name: "
+msgstr "Nome do banco de dados:"
+
+#: plugins/mpog_software/test/unit/software_info_validation_test.rb:99
+msgid "Features is too long (maximum is 4000 characters)"
+msgstr "Caracteristicas contém mais caracteres do que o permitido (máximo é 4000 caracteres)"
+
+#: plugins/mpog_software/test/unit/software_info_validation_test.rb:106
+msgid "Objectives is too long (maximum is 4000 characters)"
+msgstr "Objetivos contém mais caracteres do que o permitido (máximo é 4000 caracteres)"
+
+#: plugins/mpog_software/test/unit/mpog_person_test.rb:22
+#: plugins/mpog_software/test/unit/mpog_person_test.rb:28
+msgid "Name Should begin with a capital letter and no special characters"
+msgstr "Nome deve começar com uma letra maiúscula e sem caracteres especiais"
+
+#: plugins/mpog_software/controllers/mpog_software_plugin_controller.rb:70
+msgid "Institution successful created!"
+msgstr "Instituição criada com sucesso!"
+
+#: plugins/mpog_software/controllers/mpog_software_plugin_controller.rb:72
+msgid "Institution could not be created!"
+msgstr "Instituição não pode ser criada!"
+
+#: plugins/mpog_software/controllers/mpog_software_plugin_controller.rb:228
+#: plugins/mpog_software/controllers/mpog_software_plugin_myprofile_controller.rb:28
+msgid "Could not find Governmental Power or Governmental Sphere"
+msgstr ""
+"Não foi possível encontrar o Poder Governamental ou Esfera Governamental"
+
+#: plugins/mpog_software/controllers/mpog_software_plugin_myprofile_controller.rb:66
+msgid ""
+"Your new software request will be evaluated by an administrator. You will be "
+"notified."
+msgstr ""
+"Sua requisição para criação de um novo software será avaliada por um "
+"administrador. Você será noficado."
+
+#: plugins/mpog_software/controllers/mpog_software_plugin_myprofile_controller.rb:140
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_software.html.erb:17
+msgid "Save and Configure Community"
+msgstr "Salvar e Configurar Comunidade"
+
+#: plugins/mpog_software/views/incomplete_registration.html.erb:4
+msgid "Complete Profile"
+msgstr "Complete o Perfil"
+
+#: plugins/mpog_software/views/incomplete_registration.html.erb:7
+msgid "Complete your profile"
+msgstr "Complete o seu perfil"
+
+#: plugins/mpog_software/views/incomplete_registration.html.erb:8
+msgid "Hide"
+msgstr "Esconder"
+
+#: plugins/mpog_software/views/first_edit_software_community_extras.html.erb:2
+msgid "Step 2/2 - Software Community Configuration"
+msgstr "Passo 2/2 - Configuração da Comunidade do Software"
+
+#: plugins/mpog_software/views/person_editor_extras.html.erb:2
+msgid "Secondary e-mail"
+msgstr "E-mail secundário"
+
+#: plugins/mpog_software/views/person_editor_extras.html.erb:20
+msgid "No institution found"
+msgstr "Nenhuma instituição encontrada"
+
+#: plugins/mpog_software/views/person_editor_extras.html.erb:21
+msgid "Add new institution"
+msgstr "Adicionar nova instituição"
+
+#: plugins/mpog_software/views/person_editor_extras.html.erb:22
+msgid "Create new institution"
+msgstr "Criar nova instituição"
+
+#: plugins/mpog_software/views/person_editor_extras.html.erb:38
+msgid "Should begin with a capital letter and no special characters"
+msgstr "Deve começar com uma letra maiúscula e sem caracteres especiais"
+
+#: plugins/mpog_software/views/person_editor_extras.html.erb:39
+msgid "Email should have the following format: name@host.br"
+msgstr "Email deve ter o seguinte formato: nome@host.br"
+
+#: plugins/mpog_software/views/person_editor_extras.html.erb:40
+msgid "Site should have a valid format: http://name.hosts"
+msgstr "Site deve ter um formato válido: http: //name.hosts"
+
+#: plugins/mpog_software/views/person_editor_extras.html.erb:41
+msgid "If you work in a public agency use your government e-Mail"
+msgstr ""
+"Se você trabalhar em uma agência pública utilize o seu e-mail governamental"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:4
+#: plugins/mpog_software/views/_main_software_editor_extras.html.erb:1
+msgid "Software Information"
+msgstr "Informação do Software"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:7
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:36
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:55
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:74
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:93
+#: plugins/mpog_software/views/box_organizer/_download_block.html.erb:2
+msgid "Name:"
+msgstr "Nome:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:8
+msgid "Adherent to e_mag:"
+msgstr "Aderente ao e-Mag:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:8
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:9
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:10
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:11
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:12
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:19
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:105
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:105
+msgid "Yes"
+msgstr "Sim"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:8
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:9
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:10
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:11
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:12
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:19
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:107
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:110
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:107
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:110
+msgid "No"
+msgstr "Não"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:9
+msgid "Adherent to icp_brasil:"
+msgstr "Adherent ao ICP-Brasil:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:10
+msgid "Adherent to e_ping:"
+msgstr "Aderente ao e-Ping:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:11
+msgid "Adherent to e_arq:"
+msgstr "Aderente ao e-Arq:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:12
+msgid "Internacionalizable:"
+msgstr "Internacionalizável:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:13
+msgid "Operating Platform:"
+msgstr "Plataforma Operacional:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:14
+msgid "Demonstration URL:"
+msgstr "URL de demonstração:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:15
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:15
+msgid "Acronym:"
+msgstr "Sigla:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:16
+msgid "Objectives:"
+msgstr "Objetivos:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:17
+msgid "Features:"
+msgstr "Características:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:20
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:37
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:56
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:75
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:94
+msgid "Version:"
+msgstr "Versão:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:21
+#: plugins/mpog_software/views/box_organizer/_download_block.html.erb:3
+msgid "Link:"
+msgstr "Endereço:"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:26
+msgid "Show Libraries"
+msgstr "Mostrar Bibliotecas"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:27
+msgid "Hide Libraries"
+msgstr "Esconder Bibliotecas"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:34
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:14
+msgid "Libraries"
+msgstr "Bibliotecas"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:38
+msgid "License:"
+msgstr "Licença"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:45
+msgid "Show Database"
+msgstr "Mostrar Banco de Dados"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:46
+msgid "Hide Database"
+msgstr "Esconder Banco de Dados"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:53
+msgid "Program Database"
+msgstr "Programa de Banco de Dados"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:57
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:76
+msgid "Operating System:"
+msgstr "Sistema Operacional"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:64
+msgid "Show Languages"
+msgstr "Mostrar Linguagens"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:65
+msgid "Hide Languages"
+msgstr "Esconder Linguagens"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:72
+msgid "Programming Language"
+msgstr "Linguagem de Programação"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:83
+msgid "Show Operating Systems"
+msgstr "Mostrar Sistemas Operacionais"
+
+#: plugins/mpog_software/views/profile/_software_tab.html.erb:84
+msgid "Hide Operating Systems"
+msgstr "Esconder Sistemas Operacionais"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:3
+msgid "Institution Information"
+msgstr "Informação da Instituição"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:6
+msgid "Type:"
+msgstr "Tipo:"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:7
+msgid "CNPJ:"
+msgstr "CNPJ:"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:8
+msgid "Last modification:"
+msgstr "Última Modificação"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:9
+msgid "Country:"
+msgstr "País:"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:10
+msgid "State:"
+msgstr "Estado:"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:11
+msgid "City:"
+msgstr "Cidade:"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:13
+msgid "Fantasy Name:"
+msgstr "Nome Fantasia:"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:16
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:90
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:90
+msgid "Governmental Power:"
+msgstr "Poder Governamental"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:17
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:83
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:83
+msgid "Governmental Sphere:"
+msgstr "Esfera governamental:"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:18
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:96
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:96
+msgid "Juridical Nature:"
+msgstr "Natureza Jurídica:"
+
+#: plugins/mpog_software/views/profile/_institution_tab.html.erb:19
+msgid "SISP:"
+msgstr "SISP:"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:4
+msgid "Step 1/2 - Software Creation"
+msgstr "Passo 1/2 - Criação de Software"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:7
+msgid "Creating new software"
+msgstr "Criando novo software"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:11
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:5
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:5
+msgid ""
+"Note that the creation of communities in this environment is restricted. "
+"Your request to create this new community will be sent to %{environment} "
+"administrators and will be approved or rejected according to their methods "
+"and criteria."
+msgstr ""
+"Note que a criação de comunidades neste ambiente é restrita.A sua requisição "
+"para criar esta nova comunidade será enviada para os administradores do "
+"%{environment} e será aprovada ou rejeitada de acordo com seus métodos e "
+"critérios. "
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:17
+msgid "\"Can`t create new software: #{@errors.length} errors\""
+msgstr "\"Não é possível criar um novo software: #{@errors.length} erros\""
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:40
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_main_software_editor_extras.html.erb:8
+#: plugins/mpog_software/views/_main_software_editor_extras.html.erb:10
+#: plugins/mpog_software/views/search/_full_community.html.erb:21
+msgid "Finality"
+msgstr "Finalidade"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:41
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_main_software_editor_extras.html.erb:10
+msgid "It is a software of..."
+msgstr "É um software de ..."
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:47
+msgid "License Version: "
+msgstr "Versão da Licença: "
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:50
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_main_software_editor_extras.html.erb:18
+#: plugins/mpog_software/views/_main_software_editor_extras.html.erb:20
+msgid "License link"
+msgstr "Endereço da licença"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:62
+#: plugins/mpog_software/views/_main_software_editor_extras.html.erb:29
+msgid "Link to Repository: "
+msgstr "Link pro Repositório:"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:70
+msgid "Create"
+msgstr "Criar"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/new_software.html.erb:71
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:1
+msgid "Edit  software"
+msgstr "Editar software"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:4
+msgid "Operating Platform"
+msgstr "Plataforma Operacional"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:9
+msgid "Features"
+msgstr "Características"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:21
+msgid "Operating Systems"
+msgstr "Sistemas Operacionais"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:29
+msgid "Programming languages"
+msgstr "Linguagens de Programação"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:36
+msgid "Databases"
+msgstr "Bancos de Dados"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:42
+msgid "Demonstration url"
+msgstr "Url de demonstração"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:51
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:54
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:57
+msgid "Public Software"
+msgstr "Software Público"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:51
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:54
+msgid "Public software"
+msgstr "Software público"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:59
+msgid "Adherent to e-PING ?"
+msgstr "Aderente ao e-PING ?"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:68
+msgid "Adherent to e-MAG ?"
+msgstr "Aderente ao e-MAG ?"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:77
+msgid "Adherent to ICP-Brasil ?"
+msgstr "Aderente ao ICP-Brasil?"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:86
+msgid "Adherent to e-ARQ ?"
+msgstr "Aderente ao e-ARQ?"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_public_software_info.html.erb:95
+msgid "Internacionalizable ?"
+msgstr "Internacionalizável?"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_database_fields.html.erb:11
+msgid "New Database"
+msgstr "Novo Banco de Dados"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_operating_system_fields.html.erb:11
+msgid "New Operating System"
+msgstr "Novo Sistema Operacional"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_main_software_editor_extras.html.erb:1
+msgid " Information"
+msgstr " Informação"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_main_software_editor_extras.html.erb:3
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:74
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:76
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:74
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:76
+msgid "Acronym"
+msgstr "Sigla"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_main_software_editor_extras.html.erb:13
+#: plugins/mpog_software/views/_main_software_editor_extras.html.erb:15
+msgid "Licenses"
+msgstr "Licenças"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_main_software_editor_extras.html.erb:26
+msgid "Link to Repository"
+msgstr "Link pro Repositório"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:1
+msgid "Edit Institution"
+msgstr "Editar Instituição"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:11
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:11
+msgid "\"Can`t create new Institution: #{flash[:errors].length} errors\""
+msgstr ""
+"\"Não é possível criar nova Instituição: # {do flash [: erros] .length} erros"
+"\""
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:24
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:24
+msgid "All fields with (*) are mandatory"
+msgstr "Todos os campos com (*) são obrigatórios"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:32
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:32
+msgid "Public Institution"
+msgstr "Instituição Pública"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:37
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:37
+msgid "Private Institution"
+msgstr "Instituição Privada"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:44
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:44
+msgid "Institution name already exists"
+msgstr "Nome da instituição já existe"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:48
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:48
+msgid "Corporate Name"
+msgstr "Razão Social"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:53
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:53
+msgid "Country"
+msgstr "País"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:57
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:57
+msgid "State"
+msgstr "Estado"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:67
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:67
+msgid "CNPJ"
+msgstr "CNPJ"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:75
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:75
+msgid "Fantasy name"
+msgstr "Nome Fantasia"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:84
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:84
+msgid "Select a Governmental Sphere"
+msgstr "Selecione uma Esfera Governamental"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:91
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:91
+msgid "Select a Governmental Power"
+msgstr "Selecione um Poder Governamental"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:97
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:97
+msgid "Select a Juridical Nature"
+msgstr "Selecione um Natureza Jurídica"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:103
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:103
+msgid "SISP?"
+msgstr "SISP?"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_institution.html.erb:116
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_software.html.erb:16
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:117
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:120
+msgid "Save"
+msgstr "Salvar"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_software.html.erb:10
+msgid "Specifications"
+msgstr "Especificações"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/edit_software.html.erb:18
+msgid "Back to control panel"
+msgstr "Voltar para o painel de controle"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_language_fields.html.erb:11
+msgid "New language"
+msgstr "Nova linguagem"
+
+#: plugins/mpog_software/views/mpog_software_plugin_myprofile/_library_fields.html.erb:11
+msgid "New Library"
+msgstr "Nova Biblioteca"
+
+#: plugins/mpog_software/views/box_organizer/_download_block.html.erb:4
+msgid "Software Description:"
+msgstr "Descrição do Software"
+
+#: plugins/mpog_software/views/box_organizer/_download_block.html.erb:5
+msgid "Link to Version News:"
+msgstr "Link para Novidades da Versão:"
+
+#: plugins/mpog_software/views/box_organizer/_softwares_block.html.erb:2
+msgid "Limit of items"
+msgstr "Limite de itens"
+
+#: plugins/mpog_software/views/box_organizer/_softwares_block.html.erb:3
+msgid "Software Type:"
+msgstr "Tipo do Software:"
+
+#: plugins/mpog_software/views/blocks/categories_software.html.erb:14
+msgid "Categories:"
+msgstr "Categorias"
+
+#: plugins/mpog_software/views/blocks/repository.html.erb:2
+#: plugins/mpog_software/views/blocks/software_information.html.erb:4
+#: plugins/mpog_software/views/blocks/download.html.erb:2
+msgid "This community needs a software to use this block"
+msgstr "Esta comunidade precisa de um software para utilizar este bloco"
+
+#: plugins/mpog_software/views/blocks/repository.html.erb:4
+msgid "Repository"
+msgstr "Repositório"
+
+#: plugins/mpog_software/views/blocks/main_area_softwares.html.erb:22
+msgid "See More"
+msgstr "Veja Mais"
+
+#: plugins/mpog_software/views/blocks/categories_and_tags.html.erb:2
+msgid "Categories"
+msgstr "Categorias"
+
+#: plugins/mpog_software/views/blocks/categories_and_tags.html.erb:12
+msgid "Tags"
+msgstr "Tags"
+
+#: plugins/mpog_software/views/blocks/software_information.html.erb:16
+msgid "Control panel"
+msgstr "Painel de controle"
+
+#: plugins/mpog_software/views/blocks/software_information.html.erb:24
+msgid "\"#{block.owner.software_info.acronym} - \""
+msgstr "\"#{block.owner.software_info.acronym} - \""
+
+#: plugins/mpog_software/views/blocks/software_information.html.erb:25
+msgid "\"#{block.owner.name}\""
+msgstr "\"#{block.owner.name}\""
+
+#: plugins/mpog_software/views/blocks/download.html.erb:6
+msgid "Download"
+msgstr "Baixar"
+
+#: plugins/mpog_software/views/blocks/download.html.erb:19
+msgid "Minimal Requirements"
+msgstr "Requisitos Mínimos"
+
+#: plugins/mpog_software/views/blocks/download.html.erb:23
+msgid "Version News"
+msgstr "Novidades da Versão"
+
+#: plugins/mpog_software/views/blocks/download.html.erb:27
+msgid "Licensed by"
+msgstr "Licenciado por "
+
+#: plugins/mpog_software/views/blocks/search_catalog.html.erb:2
+msgid "Catalog of Public Software"
+msgstr "Catalogo de Software Público"
+
+#: plugins/mpog_software/views/blocks/search_catalog.html.erb:9
+msgid "Access the complete catalog"
+msgstr "Acesse o catalogo completo"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_software_list.html.erb:12
+msgid "Actions"
+msgstr "Ações"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_software_list.html.erb:20
+msgid "Activate Software"
+msgstr "Ativar Software"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_software_list.html.erb:20
+msgid "Do you want to activate this software?"
+msgstr "Você quer ativar este software?"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_software_list.html.erb:22
+msgid "Deactivate software"
+msgstr "Desativar software"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_software_list.html.erb:22
+msgid "Do you want to deactivate this software?"
+msgstr "Você quer desativar este software?"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_software_list.html.erb:24
+msgid "Remove"
+msgstr "Remover"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_software_list.html.erb:24
+msgid "Do you want to remove this software?"
+msgstr "Você deseja remover este software?"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_softwares_search_form.html.erb:3
+msgid "Find software"
+msgstr "Buscar software"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_softwares_search_form.html.erb:5
+#: plugins/mpog_software/views/search/search_community_filter.html.erb:32
+msgid "Search"
+msgstr "Pesquisar"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:1
+msgid "New Institution"
+msgstr "Nova Instituição"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:122
+msgid "Could not send the form data to the server"
+msgstr "Não foi possível enviar os dados do formulário para o servidor"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_institution.html.erb:129
+msgid "Creating institution"
+msgstr "Criando Instituição"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_index_buttons.html.erb:2
+msgid "Software list as [CSV]"
+msgstr "Lista de Software como [CSV]"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_index_buttons.html.erb:3
+msgid "Software list as [XML]"
+msgstr "Lista de Software como [XML]"
+
+#: plugins/mpog_software/views/mpog_software_plugin/_index_buttons.html.erb:4
+msgid "Back"
+msgstr "Voltar"
+
+#: plugins/mpog_software/views/search/_catalog_filter.html.erb:15
+msgid "Categories filter"
+msgstr "Filtro de categorias"
+
+#: plugins/mpog_software/views/search/_catalog_filter.html.erb:16
+msgid "Type a category name here"
+msgstr "Digite o nome de uma categoria aqui"
+
+#: plugins/mpog_software/views/search/software_infos.html.erb:3
+#: plugins/mpog_software/views/search/institutions.html.erb:3
+msgid "Type words about the %s you're looking for"
+msgstr "Digite palavras sobre o(a) %s que você está procurando"
+
+#: plugins/mpog_software/views/search/_full_community.html.erb:30
+msgid "Software licence"
+msgstr "Licença de Software"
+
+#: plugins/mpog_software/views/search/_full_community.html.erb:39
+msgid "Link software repository"
+msgstr "Link para o Repositório do Software"
+
+#: plugins/mpog_software/views/search/_full_community.html.erb:48
+msgid "Software Categories"
+msgstr "Categorias de Software"
+
+#: plugins/mpog_software/views/search/_full_community.html.erb:62
+msgid "This software doesn't have categories"
+msgstr "Este software não tem categorias"
+
+#: plugins/mpog_software/views/search/search_community_filter.html.erb:8
+msgid "Community"
+msgstr "Comunidade"
+
+msgid "Secundary Information"
+msgstr "Informação Secundária"
+
+msgid "For more detailed information see "
+msgstr "Para informações mais detalhadas, ver"
+
+msgid "\"#{block.owner.name} profile\""
+msgstr "\"#{block.owner.name} profile\""
+
+msgid "Main repository: "
+msgstr "Repositório principal:"
+
+msgid "Editar Instituição"
+msgstr "Editar Instituição"
+
+msgid "Generic"
+msgstr "Genérico"
+
+msgid  "Agriculture, Fisheries and Extraction"
+msgstr "Agricultura, Extrativismo e Pesca "
+
+msgid  "Science, Information and Communication"
+msgstr "Ciência, Informação e Comunicação"
+
+msgid  "Economy and Finances"
+msgstr "Economia e Finanças"
+
+msgid  "Public Administration"
+msgstr "Gestão Pública"
+
+msgid  "Habitation, Sanitation and Urbanism"
+msgstr "Habitação, Saneamento e Urbanismo "
+
+msgid  "Individual, Family and Society"
+msgstr "Pessoa, Família e Sociedade"
+
+msgid  "Health"
+msgstr "Saúde"
+
+msgid  "Social Welfare and Development"
+msgstr "Bem-estar e Desenvolvimento Social"
+
+msgid  "Defense and Security"
+msgstr "Defesa e Segurança"
+
+msgid  "Education"
+msgstr "Educação"
+
+msgid  "Government and Politics"
+msgstr "Governo e Política"
+
+msgid  "Justice and Legislation"
+msgstr "Justiça e Legislação"
+
+msgid  "International Relationships"
+msgstr "Relações Internacionais"
