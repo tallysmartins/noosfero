@@ -31,7 +31,7 @@ class SoftwareInfo < ActiveRecord::Base
 
   # used on find_by_contents
   scope :like_search, lambda{ |name|
-    joins(:community).where("name ilike ?", "%#{name}%")
+    joins(:community).where("name ILIKE ? OR acronym ILIKE ?", "%#{name}%", "%#{name}%")
   }
 
   scope :search, lambda { |name="", database_description_id = "",

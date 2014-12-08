@@ -23,13 +23,7 @@ class SearchController
     @titles[:software_infos] = _("Software Catalog")
     @category_filters = []
 
-    if params[:filter].blank?
-      results = filter_communities_list{|community| community.software?}
-    else
-      params[:filter].split(",").each{|f| @category_filters << f.to_i}
-      results = filter_communities_list{|community| community.software? && !(community.category_ids & @category_filters).blank?}
-    end
-
+    results = filter_software_infos_list
     results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
@@ -49,5 +43,19 @@ class SearchController
       end
     end
     communities_list
+  end
+
+  def filter_software_infos_list
+    unfiltered_software_infos_list = SoftwareInfo.like_search(params[:query])
+
+    filtered_communities_list = []
+    unfiltered_software_infos_list.each{|software| filtered_communities_list << software.community}
+
+    if not params[:filter].blank?
+      params[:filter].split(",").each{|f| @category_filters << f.to_i}
+      filtered_communities_list.select!{|community| !(community.category_ids & @category_filters).blank?}
+    end
+
+    filtered_communities_list
   end
 end
