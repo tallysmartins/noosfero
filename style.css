@@ -491,7 +491,7 @@ p {
 }
 
 #content .search-catalog-block form {
-    padding: 0 10px;
+    padding: 0 10px 10px 10px;
 }
 
 #content .search-catalog-block #search-catalog-footer a {
