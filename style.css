@@ -423,6 +423,12 @@ p {
    width: 490px;
 }
 
+
+#content .box .article-block .short-post {
+    padding-top: 10px;
+}
+
+
 /* padrao do box */
 #content .box .block-title {
     font-size: 12px;
@@ -446,7 +452,7 @@ p {
 
 #content .read-more a {
     line-height: 20px;
-    padding: 10px 8px 8px 8px;
+    padding: 8px;
     display: block
 }
 
@@ -486,6 +492,20 @@ p {
 
 #content .search-catalog-block form {
     padding: 0 10px;
+}
+
+#content .search-catalog-block #search-catalog-footer a {
+    display: block;
+    color: #FFF;
+    padding: 8px;
+}
+
+#content .search-catalog-block #search-catalog-footer p {
+    margin: 0px;
+}
+
+#content .search-catalog-block #search-catalog-footer a:hover {
+    background-color: #101A38
 }
 
 /**/

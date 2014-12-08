@@ -18,10 +18,10 @@
 
 #search-Gadget {
   width:95%;
-  padding:5px;
+  padding:8px;
   margin:5px;
   border-radius:4px;
-
+  border: none;
 }
 .searchButton-catalog{
   background-color: #1A397D; /*#193A7D;*/
@@ -38,32 +38,29 @@
   background-color:#192758; /*#172857;*/
   color:#FFFFFF;
   border-top:1px solid;
-  padding:2px;
   border-bottom-left-radius:4px;
   border-bottom-right-radius:4px;
 }
 
-#search-catalog-footer p{
-  margin:5px;
+#search-catalog-footer p {
   text-align:right;
   text-transform: uppercase;
-  margin-right: 32px;
 }
 
 #bt_catalog-search::after {
-content:'>';
-position: absolute;
-padding-left: 2px;
-/*margin-top: -2px;*/
-right: 10px;
-width: 18px;
-height: 20px;
-color: #172857;
-background: #eee;
-border-radius: 4px;
-font-size: 16px;
-line-height: 20px;
-text-align: center;
+    content:'>';
+    padding-left: 8px;
+    padding-right: 5px;
+    /*margin-top: -2px;*/
+    right: 10px;
+    width: 18px;
+    height: 20px;
+    color: #172857;
+    background: #eee;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
 }
 
 /**********************************************************/
@@ -310,7 +307,7 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 .block.display-content-block .title {
     padding-left: 160px;
     padding-right: 0px;
-    max-height: 40px;
+    max-height: 33px;
     overflow: hidden;
 }
 
