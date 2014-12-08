@@ -244,7 +244,7 @@ border:
 
 /*************raw html - category and tags****************/
 
-#content .block .categories-and-tags-block :not(.article-block){
+#content .block .categories-and-tags-block {
 border-top:4px solid #21376C;
 }
 /*
@@ -253,7 +253,7 @@ category_cloud{
 
 }*/
 
-#content .box-1 .categories-and-tags-block .block-inner-1 .block-title :not(.article-block){
+#content .box-1 .categories-and-tags-block .block-inner-1 .block-title {
   font-size: 11px;
   border-top: 1px solid #8b949b;
   /*border-top: none;*/
