@@ -239,11 +239,10 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 }
 
 .block.display-content-block .image {
-    width: 100px;
+    width: 150px;
     height: 90px;
     position: absolute;
     margin-top: 35px;
-    
     border: 0px solid #c0c1c1;
     border-radius: 8px;
     text-align: center;

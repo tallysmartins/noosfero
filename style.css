@@ -2782,3 +2782,9 @@ body.action-embed-index {
   margin: 1px auto 5px;
   padding-right: 150px;
 }
+
+
+.article-body ul {
+    list-style-position: inside;
+    list-style: inherit;
+}
