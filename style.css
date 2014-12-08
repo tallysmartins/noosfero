@@ -439,7 +439,6 @@ p {
     font-size: 10px;
     text-align: right;
     border-bottom: none;    
-    padding: 10px 8px 8px 8px;
     text-transform: uppercase;    
     font-family: "open_sans", Arial, Helvetica, sans-serif;
     font-variant: normal;
@@ -447,7 +446,12 @@ p {
 
 #content .read-more a {
     line-height: 20px;
-    margin-left: 15px;
+    padding: 10px 8px 8px 8px;
+    display: block
+}
+
+#content .read-more a:hover {
+    background: #dedede;
 }
 
 #content .box .read-more a::after {
@@ -475,7 +479,14 @@ p {
     padding: 0 1em 0 0;
 }
 
+/* Bloco de busca pagina inicial*/
+#content .search-catalog-block h1 {
+    padding: 10px 10px 0 10px;
+}
 
+#content .search-catalog-block form {
+    padding: 0 10px;
+}
 
 /**/
 
@@ -712,7 +723,7 @@ p {
 
 #content .display-content-block .title a {
     background-color: transparent;
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     font-weight: bold;
     line-height: 1em;
@@ -732,6 +743,22 @@ p {
     line-height:21px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Numeracao dentro de artigos */
+.article-body ul {
+    list-style-position: inside;
+    list-style-type: disc;
+}
+
+.article-body ol {
+    list-style-position: inside;
+    list-style-type: decimal;
+}
+
+.article-body li {
+    list-style: inherit;
+}
+
 /* fim tamanho da fonte dentro dos artigos*/
 
 
@@ -2783,17 +2810,3 @@ body.action-embed-index {
   padding-right: 150px;
 }
 
-
-.article-body ul {
-    list-style-position: inside;
-    list-style-type: disc;
-}
-
-.article-body ol {
-    list-style-position: inside;
-    list-style-type: decimal;
-}
-
-.article-body li {
-    list-style: inherit;
-}
