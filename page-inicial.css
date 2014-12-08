@@ -173,6 +173,12 @@ text-align: center;
 .box-1 .software-block-content {
   padding-top:20px;
 }
+.software-block-finality{
+  background-color:#f4f4f4;
+  padding:10px;
+  border-radius:8px;
+  width:120px;
+}
 
 .software-block-logo {
   border: 1px solid #ccc;
