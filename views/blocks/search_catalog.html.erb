@@ -6,7 +6,6 @@
   <% end %>
 
   <div id="search-catalog-footer">
-    <p><%= _("Access the complete catalog")%>
-    <%= link_to "", {controller: "search", action: "software_infos"} , {:id => "bt_catalog-search"}%></p>
+    <p><%= link_to _("Access the complete catalog"), {controller: "search", action: "software_infos"} , {:id => "bt_catalog-search"}%></p>
   </div>
 </div>
