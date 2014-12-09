@@ -6,7 +6,9 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
   def edit_institution
     @show_sisp_field = environment.admins.include?(current_user.person)
-    @state_list = NationalRegion.find(:all, :conditions=>["national_region_type_id = ?", 2], :order=>"name")
+    @estate_list = NationalRegion.find(:all, :conditions => 
+                                        {:national_region_type_id =>  2}, 
+                                        :order=>"name")
 
     @institution = @profile.institution
 
