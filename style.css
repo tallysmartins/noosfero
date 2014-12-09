@@ -203,7 +203,7 @@ h2, h3 {
 }
 
 p {
-    line-height: 1.8em;
+    line-height: 1.5em;
     margin: 0 0 1em 0;
 }
 
@@ -444,8 +444,8 @@ p {
 #content .box .read-more {
     font-size: 10px;
     text-align: right;
-    border-bottom: none;    
-    text-transform: uppercase;    
+    border-bottom: none;
+    text-transform: uppercase;
     font-family: "open_sans", Arial, Helvetica, sans-serif;
     font-variant: normal;
 }
@@ -2421,7 +2421,7 @@ body.contraste  .common-profile-list-block .vcard:hover {
 body.contraste .menu-submenu-content {
 	border: 1px solid #CCC;
 	background: none #333 ;
-	
+
 }
 
 body.contraste #user .logged-in {
@@ -2495,9 +2495,9 @@ body.contraste #content .no-boxes h1 {
 	color: #FFF !important;
 }
 
-body.contraste #signup-form .formfieldline, 
+body.contraste #signup-form .formfieldline,
 body.contraste #signup-formfield-group,
-body.contraste #signup-form .required-field label, 
+body.contraste #signup-form .required-field label,
 body.contraste #signup-form .formlabel {
 	background-color: #000;
 	color: #FFF !important;
@@ -2513,7 +2513,7 @@ body.contraste #signup-form {
 	background-color: #000;
 }
 
-body.contraste #signup-form .formfield input, 
+body.contraste #signup-form .formfield input,
 body.contraste #signup-form .formfield textarea {
 	background-color: #000;
 	color: #FFF !important;
