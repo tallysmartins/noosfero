@@ -4,7 +4,8 @@ class CreateDatabaseDescriptionsTable < ActiveRecord::Migration
       t.string :name
     end
 
-    SoftwareHelper.create_list_with_file("plugins/mpog_software/public/static/databases.txt", DatabaseDescription)
+    PATH_TO_FILE="plugins/mpog_software/public/static/databases.txt"
+    SoftwareHelper.create_list_with_file(PATH_TO_FILE, DatabaseDescription)
   end
 
   def self.down

@@ -4,7 +4,9 @@ class CreateLicenseInfosTable < ActiveRecord::Migration
       t.string :version
       t.string :link
     end
-    LicenseInfo.create(:version=>"CC-GPL-V2", :link=>"http://creativecommons.org/licenses/GPL/2.0/legalcode.pt")
+
+    LINK="http://creativecommons.org/licenses/GPL/2.0/legalcode.pt"
+    LicenseInfo.create(:version=>"CC-GPL-V2", :link=>LINK)
   end
 
   def self.down

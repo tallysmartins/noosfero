@@ -6,6 +6,7 @@ class CreateGovernmentalSpheres < ActiveRecord::Migration
       t.timestamps
     end
 
-    SoftwareHelper.create_list_with_file("plugins/mpog_software/public/static/governmental_sphere.txt", GovernmentalSphere)
+    PATH_TO_FILE = "plugins/mpog_software/public/static/governmental_sphere.txt"
+    SoftwareHelper.create_list_with_file(PATH_TO_FILE, GovernmentalSphere)
   end
 end
