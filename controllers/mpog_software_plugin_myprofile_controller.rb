@@ -6,18 +6,14 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
   def edit_institution
     @show_sisp_field = environment.admins.include?(current_user.person)
-    @estate_list = NationalRegion.find(:all, :conditions =>
-                                       { :national_region_type_id =>  2 },
-                                         :order=>'name')
-
+    @state_list = NationalRegion.find(:all, :conditions => { :national_region_type_id =>  2 }, :order => 'name')
     @institution = @profile.institution
     update_institution if request.post?
   end
 
   def new_software
-
-    software_template = Community["software"]
-    if (!software_template.blank? && software_template.is_template)
+    software_template = Community['software']
+    if !software_template.blank? && software_template.is_template
       params["community"]["template_id"] = software_template.id unless params["community"].blank?
     end
 
@@ -25,7 +21,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @community.environment = environment
     @software_info = SoftwareInfo.new(params[:software_info])
     @license_info = if params[:license_info].nil?
-      LicenseInfo::new
+      LicenseInfo.new
     else
       LicenseInfo.find(:first, :conditions =>["version = ?","#{params[:license_info][:version]}"])
     end
@@ -33,27 +29,9 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     valid_models = request.post? && (@community.valid? && @software_info.valid? && @license_info.valid?)
 
     if valid_models
-      @software_info = SoftwareInfo.create_after_moderation(user,params[:software_info].merge({:environment => environment,:name => params[:community][:name], :license_info => @license_info}))
-      unless params[:q].nil?
-        admins = params[:q].split(/,/).map{|n| environment.people.find n.to_i}
-
-        admins.each do |admin|
-          @community.add_member(admin)
-          @community.add_admin(admin)
-        end
-      end
-      if !environment.admins.include?(current_user.person)
-        session[:notice] = _('Your new software request will be evaluated by an administrator. You will be notified.')
-        redirect_to user.admin_url
-      else
-        redirect_to :controller => 'profile_editor', :action => 'edit', :profile => @community.identifier
-      end
+      send_software_to_moderation
     else
-
-      @errors = []
-      @errors |= @community.errors.full_messages
-      @errors |= @software_info.errors.full_messages
-      @errors |= @license_info.errors.full_messages
+      add_software_erros
     end
   end
 
@@ -64,67 +42,23 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
   end
 
   def edit_software
-    @software_info = @profile.software_info
-    @list_libraries = @software_info.libraries
-    @list_databases = @software_info.software_databases
-    @list_languages = @software_info.software_languages
-    @list_operating_systems = @software_info.operating_systems
-    @software_categories = @software_info.software_categories
-    @software_categories = SoftwareCategories.new if @software_categories.blank?
+    update_software_atributes
 
-    @disabled_public_software_field = disabled_public_software_field
+    return unless request.post?
+    constroy_software
+    software_info_insert_models.call(@list_libraries, 'libraries')
+    software_info_insert_models.call(@list_languages, 'software_languages')
+    software_info_insert_models.call(@list_operating_systems, 'operating_systems')
 
-    if request.post?
-      params[:software][:public_software] ||= false
-      @software_info = @profile.software_info
-      @license = LicenseInfo.find(params[:license][:license_infos_id])
-      @software_info.license_info = @license
-      @software_info.update_attributes(params[:software])
-
-      @list_libraries = LibraryHelper.list_libraries(params[:library])
-      @list_languages = SoftwareLanguageHelper.list_language(params[:language])
-      @list_databases = DatabaseHelper.list_database(params[:database])
-      @software_categories = SoftwareCategories::new params[:software_categories]
-      @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
-      @software_info.software_categories = @software_categories unless params[:software_categories].nil?
-
-      software_info_insert_models.call(@list_libraries,'libraries')
-
-      if not @list_languages.nil?
-        @software_info.software_languages.destroy_all
-        @list_languages.each do |language|
-          @software_info.software_languages << language
-        end
+    begin
+      @software_info.save!
+      if params[:commit] == _('Save and Configure Community')
+        redirect_to :controller => 'profile_editor', :action => 'edit'
+      else
+        redirect_to :controller => 'profile_editor', :action => 'index'
       end
-
-      if not @list_databases.nil?
-        @software_info.software_databases.destroy_all
-        @list_databases.each do |database|
-          @software_info.software_databases << database
-        end
-      end
-
-      if not @list_operating_systems.nil?
-        @software_info.operating_systems.destroy_all
-        @list_operating_systems.each do |operating_system|
-          @software_info.operating_systems << operating_system
-        end
-      end
-
-      begin
-        @software_info.save!
-        if params[:commit] == _('Save and Configure Community')
-          redirect_to :controller => 'profile_editor', :action => 'edit'
-        else
-          redirect_to :controller => 'profile_editor', :action => 'index'
-        end
-      rescue ActiveRecord::RecordInvalid => invalid
-      end
+    rescue ActiveRecord::RecordInvalid => invalid
     end
-  end
-
-  def software_info_insert_models
-      proc { |list,model_attr| @software_info.send(model_attr).destroy_all; list.collect!{|m| @software_info.send(model_attr) << m } unless list.nil? }
   end
 
   def disabled_public_software_field
@@ -133,7 +67,15 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
   def community_must_be_approved
   end
+
   private
+
+  def add_software_erros
+      @errors = []
+      @errors |= @community.errors.full_messages
+      @errors |= @software_info.errors.full_messages
+      @errors |= @license_info.errors.full_messages
+  end
 
   def update_institution
     @institution.community.update_attributes(params[:community])
@@ -159,4 +101,61 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @institution.save
   end
 
+  def software_info_insert_models
+    proc { |list,model_attr|
+      @software_info.send(model_attr).destroy_all
+      list.collect!{|m| @software_info.send(model_attr) << m } unless list.nil?
+    }
+  end
+
+  def constroy_software
+    params[:software][:public_software] ||= false
+    @software_info = @profile.software_info
+    @license = LicenseInfo.find(params[:license][:license_infos_id])
+    @software_info.license_info = @license
+    @software_info.update_attributes(params[:software])
+
+    @list_libraries = LibraryHelper.list_libraries(params[:library])
+    @list_languages = SoftwareLanguageHelper.list_language(params[:language])
+    @list_databases = DatabaseHelper.list_database(params[:database])
+    @software_categories = SoftwareCategories::new params[:software_categories]
+    @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
+    @software_info.software_categories = @software_categories unless params[:software_categories].nil?
+  end
+
+  def send_software_to_moderation
+    @software_info = SoftwareInfo.create_after_moderation(user,
+                        params[:software_info].merge({
+                         :environment => environment,
+                        :name => params[:community][:name], 
+                        :license_info => @license_info }))
+    unless params[:q].nil?
+      admins = params[:q].split(/,/).map{ |n| environment.people.find n.to_i }
+
+      admins.each do |admin|
+        @community.add_member(admin)
+        @community.add_admin(admin)
+      end
+    end
+    if !environment.admins.include?(current_user.person)
+      session[:notice] = _('Your new software request will be evaluated by an'\
+                           'administrator. You will be notified.')
+      redirect_to user.admin_url
+    else
+      redirect_to :controller => 'profile_editor',
+                  :action => 'edit',
+                  :profile => @community.identifier
+    end
+  end
+
+  def update_software_atributes
+    @software_info = @profile.software_info
+    @list_libraries = @software_info.libraries
+    @list_databases = @software_info.software_databases
+    @list_languages = @software_info.software_languages
+    @list_operating_systems = @software_info.operating_systems
+    @software_categories = @software_info.software_categories
+    @software_categories = SoftwareCategories.new if @software_categories.blank?
+    @disabled_public_software_field = disabled_public_software_field
+  end
 end
