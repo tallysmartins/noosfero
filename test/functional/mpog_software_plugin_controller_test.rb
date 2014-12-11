@@ -108,17 +108,6 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
     assert_equal "false", @response.body
   end
 
-  should "response as XML to export softwares" do
-    get :download, :format => 'xml'
-    assert_equal 'text/xml', @response.content_type
-  end
-
-  should "response as CSV to export softwares" do
-    get :download, :format => 'csv'
-    assert_equal 'text/csv', @response.content_type
-    assert_equal "name;acronym;demonstration_url;e_arq;e_mag;e_ping;features;icp_brasil;objectives;operating_platform\n", @response.body
-  end
-
   should "hide registration incomplete message" do
     xhr :get, :hide_registration_incomplete_percentage, :hide=>true
     assert_equal "true", @response.body
