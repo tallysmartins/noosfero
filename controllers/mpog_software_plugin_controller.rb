@@ -7,8 +7,8 @@ class MpogSoftwarePluginController < ApplicationController
       result = ""
       user = User.where(:email => params[:email])
 
-      if user.length == 1
-        result = "<span id='forgot_link'><a href='/account/forgot_password'> Reactive account</a></span>" unless user[0].person.visible
+      if user.length == 1 && !user[0].person.visible
+        result = "<span id='forgot_link'><a href='/account/forgot_password'> Reactive account</a></span>"
       end
 
       render :json => result.to_json
@@ -28,7 +28,7 @@ class MpogSoftwarePluginController < ApplicationController
 
   def create_institution
     @show_sisp_field = environment.admins.include?(current_user.person)
-    @estate_list = get_state_list()
+    @state_list = get_state_list()
 
     if request.xhr?
       render :layout=>false
@@ -46,7 +46,7 @@ class MpogSoftwarePluginController < ApplicationController
 
   def create_institution_admin
     @show_sisp_field = environment.admins.include?(current_user.person)
-    @estate_list = get_state_list()
+    @state_list = get_state_list()
 
     @url_token = split_http_referer request.original_url()
   end
@@ -81,14 +81,6 @@ class MpogSoftwarePluginController < ApplicationController
     render :json=>already_exists.to_json
   end
 
-  def download
-    respond_to do |format|
-      format.html
-      format_xml_download format
-      format_csv_download format
-    end
-  end
-
   def get_institutions
     redirect_to "/" if !request.xhr? || params[:query].blank?
 
@@ -119,20 +111,21 @@ class MpogSoftwarePluginController < ApplicationController
   end
 
   def get_field_data
-    return render :json=>{} if !request.xhr? || params[:query].nil? || params[:field].nil?
+    condition = !request.xhr? || params[:query].nil? || params[:field].nil?
+    return render :json=>{} if condition
 
     model = case params[:field]
-      when "database"
-        DatabaseDescription
-      when "software_language"
-        ProgrammingLanguage
-      else
-        DatabaseDescription
-      end
+            when "software_language"
+              ProgrammingLanguage
+            else
+              DatabaseDescription
+            end
 
-    data = model.where("name ILIKE ?", "%#{params[:query]}%").select("id, name").collect { |db|
+    data = model.where("name ILIKE ?", "%#{params[:query]}%").select("id, name")
+    data.collect { |db|
       {:id=>db.id, :label=>db.name}
     }
+
     other = [model.select("id, name").last].collect { |db|
       {:id=>db.id, :label=>db.name}
     }
@@ -148,34 +141,55 @@ class MpogSoftwarePluginController < ApplicationController
   def get_state_list
     redirect_to "/" unless request.xhr?
 
-    NationalRegion.find(:all, :conditions=>["national_region_type_id = ?", 2], :order=>"name")
+    NationalRegion.find(
+      :all,
+      :conditions=>["national_region_type_id = ?", 2],
+      :order=>"name"
+    )
+  end
+
+  def set_institution_type
+    institution_params = params[:institutions].except(
+      :governmental_power,
+      :governmental_sphere,
+      :juridical_nature
+    )
+    if params[:institutions][:type] == "PublicInstitution"
+      PublicInstitution::new institution_params
+    else
+      PrivateInstitution::new institution_params
+    end
+  end
+
+  def set_public_institution_fields institution
+    inst_fields = params[:institutions]
+
+    begin
+      gov_power = GovernmentalPower.find inst_fields[:governmental_power]
+      gov_sphere = GovernmentalSphere.find inst_fields[:governmental_sphere]
+      jur_nature = JuridicalNature.find inst_fields[:juridical_nature]
+
+      institution.juridical_nature = jur_nature
+      institution.governmental_power = gov_power
+      institution.governmental_sphere = gov_sphere
+    rescue
+      institution.errors.add(
+        :governmental_fields,
+        _("Could not find Governmental Power or Governmental Sphere")
+      )
+    end
   end
 
   def private_create_institution
     community = Community.new(params[:community])
     community.environment = environment
-
-    institution = if params[:institutions][:type] == "PublicInstitution"
-      PublicInstitution::new params[:institutions].except(:governmental_power, :governmental_sphere, :juridical_nature)
-    else
-      PrivateInstitution::new params[:institutions].except(:governmental_power, :governmental_sphere, :juridical_nature)
-    end
+    institution = set_institution_type
 
     institution.name = community[:name]
     institution.community = community
 
     if institution.type == "PublicInstitution"
-      begin
-        govPower = GovernmentalPower.find params[:institutions][:governmental_power]
-        govSphere = GovernmentalSphere.find params[:institutions][:governmental_sphere]
-        jur_nature = JuridicalNature.find params[:institutions][:juridical_nature]
-
-        institution.juridical_nature = jur_nature
-        institution.governmental_power = govPower
-        institution.governmental_sphere = govSphere
-      rescue
-        institution.errors.add(:governmental_fields, _("Could not find Governmental Power or Governmental Sphere"))
-      end
+      set_public_institution_fields institution
     end
 
     InstitutionHelper.register_institution_modification institution
@@ -183,41 +197,16 @@ class MpogSoftwarePluginController < ApplicationController
     institution
   end
 
-  def software_list_to_correct_format software_list=[]
-    if !software_list.empty?
-      software_list.each do |software|
-        software[:name] = Community.find(software.community_id).name
-        software[:languages_list] = []
-
-        software.software_languages.each do |sl|
-          software[:languages_list] << {}
-          index =  software[:languages_list].count - 1
-          software[:languages_list][index][:name] = ProgrammingLanguage.find(sl.programming_language_id).name
-          software[:languages_list][index][:version] = sl.version
-          software[:languages_list][index][:operating_system] = sl.operating_system
-        end
-
-        software[:database_list] = []
-        software.software_databases.each do |dd|
-          software[:database_list] << {}
-          index =  software[:database_list].count - 1
-          software[:database_list][index][:name] = DatabaseDescription.find(dd.database_description_id).name
-          software[:database_list][index][:version] = dd.version
-          software[:database_list][index][:operating_system] = dd.operating_system
-        end
-      end
-    end
-    software_list
-  end
-
   def add_template_in_params institution_template
-    if (!institution_template.blank? && institution_template.is_template)
-      params[:community][:template_id] = institution_template.id unless params[:community].blank?
+    com_fields = params[:community]
+    if !institution_template.blank? && institution_template.is_template
+      com_fields[:template_id]= institution_template.id unless com_fields.blank?
     end
   end
 
   def add_environment_admins_to_institution institution
-    if environment.admins.include?(current_user.person) && params[:edit_institution_page] == false
+    edit_page = params[:edit_institution_page] == false
+    if environment.admins.include?(current_user.person) && edit_page
       environment.admins.each do |adm|
         institution.community.add_admin(adm)
       end
@@ -225,10 +214,19 @@ class MpogSoftwarePluginController < ApplicationController
   end
 
   def save_institution institution
-    if institution.errors.full_messages.empty? and institution.community.errors.full_messages.empty? and institution.valid? and institution.save
-      {:success => true, :message => _("Institution successful created!"), :institution_data=>{:name=>institution.name, :id=>institution.id}}
+    inst_errors = institution.errors.full_messages
+    com_errors = institution.community.errors.full_messages
+
+    if inst_errors.empty? && com_errors.empty? && institution.valid? && institution.save
+      { :success => true,
+        :message => _("Institution successful created!"),
+        :institution_data => {:name=>institution.name, :id=>institution.id}
+      }
     else
-      {:success => false, :message => _("Institution could not be created!"), :errors => institution.errors.full_messages << institution.community.errors.full_messages}
+      { :success => false,
+        :message => _("Institution could not be created!"),
+        :errors => inst_errors << com_errors
+      }
     end
   end
 
@@ -238,49 +236,6 @@ class MpogSoftwarePluginController < ApplicationController
     else
       flash[:errors] = response_message[:errors]
       redirect_to :controller => "mpog_software_plugin", :action => "create_institution_admin"
-    end
-  end
-
-  def format_xml_download format
-    format.xml do
-      softwares = software_list_to_correct_format(SoftwareInfo.all)
-      send_data(
-        softwares.to_xml(
-          :skip_types => true,
-          :only => %w[name acronym demonstration_url e_arq e_mag e_ping features icp_brasil objectives operating_platform languages_list database_list]
-        ),
-        :type => 'text/xml',
-        :disposition => "attachment; filename=softwares.xml")
-    end
-  end
-
-  def format_csv_download format
-    format.csv do
-      softwares = software_list_to_correct_format(SoftwareInfo.all)
-      csv_content = ""
-
-      softwares.each do |s|
-        csv_content << "name;acronym;demonstration_url;e_arq;e_mag;e_ping;features;icp_brasil;objectives;operating_platform\n"
-        csv_content << CSV.generate_line([s['name'], s['acronym'], s['demonstration_url'], s['e_arq'], s['e_mag'], s['e_ping'], s['features'], s['icp_brasil'], s['objectives'], s['operating_platform']], {:col_sep => ';'})
-
-        csv_content << "\nlanguage_name;language_version;language_operating_system\n"
-        s[:languages_list].each { |sl|
-          csv_content << CSV.generate_line([sl[:name], sl[:version], sl[:operating_system]], {:col_sep => ';'})
-        }
-
-        csv_content << "\ndatabase_name;database_version;database_operating_system\n"
-        s[:database_list].each { |dl|
-          csv_content << CSV.generate_line([dl[:name], dl[:version], dl[:operating_system]], {:col_sep => ';'})
-        }
-
-        csv_content << "\n\n"
-      end
-
-      if csv_content.blank?
-        csv_content = "name;acronym;demonstration_url;e_arq;e_mag;e_ping;features;icp_brasil;objectives;operating_platform\n"
-      end
-
-      render :text => csv_content, :content_type => 'text/csv', :layout => false
     end
   end
 end

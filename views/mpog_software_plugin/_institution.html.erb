@@ -55,7 +55,7 @@
       <span class='required-field'>
         <div class="formfield">
           <label for="community_state" class="formlabel"><%= _("State") %></label>
-          <%= f.select(:state, @estate_list.collect {|state| [state.name, state.name]}) %>
+          <%= f.select(:state, @state_list.collect {|state| [state.name, state.name]}) %>
         </div>
       </span>
 
