@@ -121,7 +121,7 @@ class MpogSoftwarePluginController < ApplicationController
             end
 
     data = model.where("name ILIKE ?", "%#{params[:query]}%").select("id, name")
-    data.collect { |db|
+    data = data.collect { |db|
       {:id=>db.id, :label=>db.name}
     }
 
