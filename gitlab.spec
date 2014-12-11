@@ -8,7 +8,7 @@ URL:     https://beta.softwarepublico.gov.br/gitlab/softwarepublico/gitlab
 Source0: %{name}-%{version}.tar.gz
 
 BuildRequires: gitlab-deps,postgresql-server, postgresql-devel
-Requires: gitlab-deps, postgresql-server
+Requires: gitlab-deps, postgresql-server, git
 
 %description
 GitLab
