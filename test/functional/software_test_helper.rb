@@ -67,13 +67,8 @@ module SoftwareTestHelper
     software = SoftwareInfo.new
     community = Community.new
     software_hash = fields[2]
-    #library_hash = fields[1]
-    #language_hash = fields[2]
-    #database_hash = fields[3]
-    #operating_system_hash  = fields[4]
     license_system_hash = fields[0]
     community_hash = fields[1]
-    #categories_hash = fields[7]
 
     software_hash.each do |k,v|
       software[k] = v
@@ -85,12 +80,7 @@ module SoftwareTestHelper
 
     community.save!
     software.community = community
-    #software.software_databases << create_database(database_hash)
-    #software.software_languages << create_language(language_hash)
-    #software.operating_systems << create_operating_system(operating_system_hash)
     software.license_info_id = license_system_hash
-    #software.libraries << create_library(library_hash)
-    #software.software_categories = create_categories(categories_hash)
 
     software.save
     software
@@ -165,31 +155,6 @@ module SoftwareTestHelper
     fields_software['features'] = 'This software does nothing'
     fields_software['demonstration_url'] = 'www.test.com'
     hash_list << fields_software
-
-    #Fields for software categories
-    fields_categories["administration"] = true
-    fields_categories["agriculture"] = "1"
-    fields_categories["business_and_services"] = "1"
-    fields_categories["communication"] = "1"
-    fields_categories["culture"] = "1"
-    fields_categories["national_defense"] = "1"
-    fields_categories["economy_and_finances"] = "1"
-    fields_categories["education"] = "1"
-    fields_categories["energy"] = "1"
-    fields_categories["sports"] = "1"
-    fields_categories["habitation"] = "1"
-    fields_categories["industry"] = "1"
-    fields_categories["environment"] = "1"
-    fields_categories["research_and_development"] = "1"
-    fields_categories["social_security"] = "1"
-    fields_categories["social_protection"] = "1"
-    fields_categories["sanitation"] = "1"
-    fields_categories["health"] = "1"
-    fields_categories["security_public_order"] = "1"
-    fields_categories["work"] = "1"
-    fields_categories["transportation"] = "1"
-    fields_categories["urbanism"] = "1"
-    hash_list << fields_categories
 
     #Fields for license
     fields_license['license_infos_id'] = LicenseInfo.last.id

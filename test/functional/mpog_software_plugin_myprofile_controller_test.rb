@@ -87,7 +87,7 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
 
    software = create_software fields_software
    post :edit_software, :profile => software.community.identifier, :library => fields[0], :language => fields[1],
-                        :database => fields[2], :operating_system => fields[3], :software => fields[4], :software_categories => fields[5], :license => fields[6]
+                        :database => fields[2], :operating_system => fields[3], :software => fields[4], :license => fields[5]
    assert_equal SoftwareInfo.last.acronym, "test"
   end
 
@@ -98,7 +98,7 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     fields[4]['public_software'] = true
     software = create_software fields_software
     post :edit_software, :profile => software.community.identifier, :library => fields[0], :language => fields[1],
-                        :database => fields[2], :operating_system => fields[3], :software => fields[4], :software_categories => fields[5], :license => fields[6]
+                        :database => fields[2], :operating_system => fields[3], :software => fields[4], :license => fields[5]
     assert_equal true, SoftwareInfo.last.public_software?
   end
 
