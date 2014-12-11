@@ -1,9 +1,12 @@
 module SoftwareHelper
-  def self.select_options programming_languages, selected=0
+  def self.select_options programming_languages, selected = 0
     value = ""
 
     programming_languages.each do |language|
-      value += "<option value=#{language.id} #{'selected' if selected == language.id}>#{language.name}</option>"
+      selected = selected == language.id ? 'selected' : ''
+      value += "<option value=#{language.id} #{selected}>
+                  #{language.name}
+                </option>"
     end
 
     value

@@ -15,8 +15,9 @@ class Institution < ActiveRecord::Base
 
   attr_accessible :name, :acronym, :unit_code, :parent_code, :unit_type,
                   :sub_juridical_nature, :normalization_level,
-                  :version, :cnpj, :type, :governmental_power, :governmental_sphere,
-                  :sisp, :juridical_nature, :corporate_name
+                  :version, :cnpj, :type, :governmental_power,
+                  :governmental_sphere, :sisp, :juridical_nature,
+                  :corporate_name
 
   validates :name, :presence=>true, :uniqueness=>true
 
@@ -30,7 +31,8 @@ class Institution < ActiveRecord::Base
     where("name ilike ? OR acronym ilike ?", "%#{value}%", "%#{value}%" )
   }
 
-  validate :validate_country, :validate_state, :validate_city, :verify_institution_type, :validate_cnpj, :validate_format_cnpj
+  validate :validate_country, :validate_state, :validate_city,
+           :verify_institution_type, :validate_cnpj, :validate_format_cnpj
 
 
   protected
@@ -39,7 +41,10 @@ class Institution < ActiveRecord::Base
     valid_institutions_type = ["PublicInstitution", "PrivateInstitution"]
 
     unless valid_institutions_type.include? self.type
-      self.errors.add(:type, _("invalid, only public and private institutions are allowed."))
+      self.errors.add(
+        :type,
+        _("invalid, only public and private institutions are allowed.")
+      )
 
       return false
     end
@@ -47,7 +52,10 @@ class Institution < ActiveRecord::Base
   end
 
   def validate_country
-    if (self.community.blank?) || self.community.country.blank? && self.errors[:country].blank?
+    if(self.community.blank? ||
+       self.community.country.blank? &&
+       self.errors[:country].blank?)
+
       self.errors.add(:country, _("can't be blank"))
       return false
     end
@@ -55,7 +63,10 @@ class Institution < ActiveRecord::Base
   end
 
   def validate_state
-    if (self.community.blank?) || self.errors[:state].blank? && self.community.state.blank?
+    if(self.community.blank? ||
+       self.errors[:state].blank? &&
+       self.community.state.blank?)
+
       if self.community.country == "BR"
         self.errors.add(:state, _("can't be blank"))
         return false
@@ -67,7 +78,10 @@ class Institution < ActiveRecord::Base
   end
 
   def validate_city
-    if (self.community.blank?) || self.errors[:city].blank? && self.community.city.blank?
+    if(self.community.blank? ||
+       self.errors[:city].blank? &&
+       self.community.city.blank?)
+
       if self.community.country == "BR"
         self.errors.add(:city, _("can't be blank"))
         return false
