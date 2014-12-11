@@ -73,7 +73,7 @@ EOF
 
 %install
 mkdir -p                          %{buildroot}/etc/gitlab
-cp config/gitlab.yml              %{buildroot}/etc/gitlab/gitlab.yml
+mv config/gitlab.yml              %{buildroot}/etc/gitlab/gitlab.yml
 cp config/unicorn.rb.example      %{buildroot}/etc/gitlab/unicorn.rb
 cp config/database.yml.postgresql %{buildroot}/etc/gitlab/database.yml 
 
