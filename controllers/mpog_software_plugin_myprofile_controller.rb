@@ -60,7 +60,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
   def community_must_be_approved
   end
-  
+
   private
 
   def add_software_erros
@@ -120,16 +120,14 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @list_libraries = LibraryHelper.list_libraries(params[:library])
     @list_languages = SoftwareLanguageHelper.list_language(params[:language])
     @list_databases = DatabaseHelper.list_database(params[:database])
-    @software_categories = SoftwareCategories::new params[:software_categories]
     @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
-    @software_info.software_categories = @software_categories unless params[:software_categories].nil?
   end
 
   def send_software_to_moderation
     @software_info = SoftwareInfo.create_after_moderation(user,
                         params[:software_info].merge({
                          :environment => environment,
-                        :name => params[:community][:name], 
+                        :name => params[:community][:name],
                         :license_info => @license_info }))
     unless params[:q].nil?
       admins = params[:q].split(/,/).map{ |n| environment.people.find n.to_i }
@@ -156,8 +154,6 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @list_databases = @software_info.software_databases
     @list_languages = @software_info.software_languages
     @list_operating_systems = @software_info.operating_systems
-    @software_categories = @software_info.software_categories
-    @software_categories = SoftwareCategories.new if @software_categories.blank?
     @disabled_public_software_field = disabled_public_software_field
   end
 end
