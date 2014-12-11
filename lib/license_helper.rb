@@ -1,7 +1,5 @@
-module LicenseHelper 
-
-	def self.getListLicenses 
-		LicenseInfo.all 
+module LicenseHelper
+  def self.getListLicenses
+    LicenseInfo.all
   end
-
 end

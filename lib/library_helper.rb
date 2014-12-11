@@ -34,10 +34,10 @@ module LibraryHelper
       ApplicationHelper
     )
 
-    return library_html_structure({:name=>"", :version=>"", :license=>""}) if list_libraries.nil?    
+    return library_html_structure({:name=>"", :version=>"", :license=>""}) if list_libraries.nil?
 
     lambdas_list = []
-    
+
     list_libraries.each do |library|
       lambdas_list << library_html_structure(library)
     end
