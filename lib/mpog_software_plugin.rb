@@ -6,7 +6,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   include ActionView::Helpers::AssetTagHelper
   include FormsHelper
   include LibraryHelper
-  include InstitutionHelper
   include ActionView::Helpers
   include ActionDispatch::Routing
   include Rails.application.routes.url_helpers
@@ -249,7 +248,9 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def institution_transaction
-    InstitutionHelper.register_institution_modification context.profile.institution
+    institution.date_modification = DateTime.now
+    institution.save
+
     if context.params.has_key?(:governmental_power)
       context.profile.institution.governmental_power_id = context.params[:governmental_power]
       context.profile.institution.save!

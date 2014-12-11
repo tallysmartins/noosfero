@@ -1,6 +1,5 @@
 require 'csv'
 class MpogSoftwarePluginController < ApplicationController
-  include InstitutionHelper
 
   def check_reactivate_account
     if request.xhr? && params[:email]
@@ -192,7 +191,8 @@ class MpogSoftwarePluginController < ApplicationController
       set_public_institution_fields institution
     end
 
-    InstitutionHelper.register_institution_modification institution
+    institution.date_modification = DateTime.now
+    institution.save
 
     institution
   end
