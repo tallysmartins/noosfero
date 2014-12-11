@@ -3,11 +3,12 @@ module DatabaseHelper
   def self.valid_database? database
     return false if SoftwareHelper.all_table_is_empty?(database)
 
-    database_description_id_list = DatabaseDescription.select(:id).collect {|dd| dd.id }
+    database_description_id_list = DatabaseDescription.select(:id).
+                                    collect {|dd| dd.id}
 
-    return false unless database_description_id_list.include?(database[:database_description_id].to_i)
-
-    true
+    return database_description_id_list.include?(
+      database[:database_description_id].to_i
+    )
   end
 
   def self.list_database new_databases
@@ -17,7 +18,10 @@ module DatabaseHelper
     new_databases.each do |new_database|
       if valid_database? new_database
         database = SoftwareDatabase.new
-        database.database_description_id = new_database[:database_description_id]
+
+        database.database_description_id =
+          new_database[:database_description_id]
+
         database.version = new_database[:version]
         database.operating_system = new_database[:operating_system]
         list_databases << database
@@ -46,7 +50,9 @@ module DatabaseHelper
       ApplicationHelper
     )
 
-    return database_html_structure({:database_description_id => "", :version => "", :operating_system => ""}) if list_databases.nil?
+    return database_html_structure(
+      {:database_description_id => "", :version => "", :operating_system => ""}
+    ) if list_databases.nil?
 
     lambdas_list = []
 
@@ -61,30 +67,78 @@ module DatabaseHelper
     database_name = if database_data[:database_description_id].blank?
       ""
     else
-      DatabaseDescription.find(database_data[:database_description_id], :select=>"name").name
+      DatabaseDescription.find(
+        database_data[:database_description_id],
+        :select=>"name"
+      ).name
     end
 
     Proc::new do
-      content_tag('table',
-        content_tag('tr',
+      content_tag(
+        'table',
+        content_tag(
+          'tr',
           content_tag('td', label_tag(_("database Name: ")))+
-          content_tag('td',
-            text_field_tag("database_autocomplete", database_name, :class=>"database_autocomplete", :placeholder=>_("Autocomplete field, type something")) +
-            content_tag('div', _("Pick an item on the list"), :class=>"autocomplete_validation_message hide-field")
+          content_tag(
+            'td',
+            text_field_tag(
+              "database_autocomplete",
+              database_name,
+              :class=>"database_autocomplete",
+              :placeholder=>_("Autocomplete field, type something")
+            ) +
+            content_tag(
+              'div',
+              _("Pick an item on the list"),
+              :class=>"autocomplete_validation_message hide-field"
+            )
           )+
-          content_tag('td', hidden_field_tag("database[][database_description_id]", database_data[:database_description_id], :class=>"database_description_id", data:{label:database_name}))
+          content_tag(
+            'td',
+            hidden_field_tag(
+              "database[][database_description_id]",
+              database_data[:database_description_id],
+              :class => "database_description_id",
+              :data => {:label => database_name}
+            )
+          )
         )+
 
-        content_tag('tr',
+        content_tag(
+          'tr',
           content_tag('td', label_tag(_("Version")))+
-          content_tag('td', text_field_tag("database[][version]", database_data[:version], :maxlength=>"20"))+
+          content_tag(
+            'td',
+            text_field_tag(
+              "database[][version]",
+              database_data[:version],
+              :maxlength=>"20"
+            )
+          )+
           content_tag('td')
         )+
 
-         content_tag('tr',
-          content_tag('td', label_tag(_("Operating System")))+
-          content_tag('td', text_field_tag("database[][operating_system]", database_data[:operating_system], :maxlength=>"20"))+
-          content_tag('td', button_without_text(:delete, _('Delete'), "#" , :class=>"delete-dynamic-table"), :align => 'right')
+          content_tag(
+            'tr',
+            content_tag('td', label_tag(_("Operating System")))+
+            content_tag(
+              'td',
+              text_field_tag(
+                "database[][operating_system]",
+                database_data[:operating_system],
+                :maxlength=>"20"
+              )
+            )+
+            content_tag(
+              'td',
+              button_without_text(
+                :delete,
+                _('Delete'),
+                "#" ,
+                :class=>"delete-dynamic-table"
+              ),
+              :align => 'right'
+            )
         ), :class => 'dynamic-table database-table'
       )
     end

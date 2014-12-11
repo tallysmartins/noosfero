@@ -7,6 +7,9 @@ class JuridicalNature < ActiveRecord::Base
   validates_uniqueness_of :name
 
   def public_institutions
-    Institution.where(:type=>"PublicInstitution", :governmental_power_id=>self.id)
+    Institution.where(
+      :type=>"PublicInstitution",
+      :governmental_power_id=>self.id
+    )
   end
 end

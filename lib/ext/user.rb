@@ -12,18 +12,27 @@ class User
   }
 
   def email_different_secondary?
-    self.errors.add(:base, _("Email must be different from secondary email.")) if self.email == self.secondary_email
+    self.errors.add(
+      :base,
+      _("Email must be different from secondary email.")
+    ) if self.email == self.secondary_email
   end
 
   def email_has_already_been_used?
-    user_already_saved = User.find(:first, :conditions=>["email = ?", self.email])
+    user_already_saved = User.find(:first,
+                                   :conditions => ["email = ?", self.email])
 
     if user_already_saved.nil?
-      primary_email_hasnt_been_used = User.primary_or_secondary_email_already_used?(self.email).empty?
+      primary_email_hasnt_been_used =
+        User.primary_or_secondary_email_already_used?(self.email).empty?
+
       if !self.secondary_email.nil? and self.secondary_email.empty?
         self.secondary_email = nil
       end
-      secondary_email_hasnt_been_used = User.primary_or_secondary_email_already_used?(self.secondary_email).empty?
+
+      secondary_email_hasnt_been_used =
+        User.primary_or_secondary_email_already_used?(self.secondary_email).
+          empty?
 
       if !primary_email_hasnt_been_used or !secondary_email_hasnt_been_used
         self.errors.add(:base, _("E-mail or secondary e-mail already taken."))
@@ -34,7 +43,10 @@ class User
   def secondary_email_format
     if !self.secondary_email.nil? and self.secondary_email.length > 0
       test = /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
-      self.errors.add(:base, _("Invalid secondary email format.")) unless test.match(self.secondary_email)
+
+      unless test.match(self.secondary_email)
+        self.errors.add(:base, _("Invalid secondary email format."))
+      end
     end
   end
 
@@ -49,12 +61,18 @@ class User
 
     unless primary_email_has_gov_suffix
       if !self.secondary_email.nil? and self.secondary_email.length > 0
-        secondary_email_has_gov_suffix = true if test.match(self.secondary_email)
+        secondary_email_has_gov_suffix = !!test.match(self.secondary_email)
       end
-      self.errors.add(:base, _("The governamental email must be the primary one.")) if secondary_email_has_gov_suffix
+      self.errors.add(
+        :base,
+        _("The governamental email must be the primary one.")
+      ) if secondary_email_has_gov_suffix
     end
 
-    self.errors.add(:base, _("Institution is obligatory if user has a government email.")) if primary_email_has_gov_suffix and self.institutions.blank?
+    self.errors.add(
+      :base,
+       _("Institution is obligatory if user has a government email.")
+    ) if primary_email_has_gov_suffix and self.institutions.blank?
   end
 
 end

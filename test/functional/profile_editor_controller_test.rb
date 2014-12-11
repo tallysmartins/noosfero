@@ -1,6 +1,9 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
 require File.dirname(__FILE__) + '/../helpers/institution_test_helper'
-require File.dirname(__FILE__) + '/../../../../app/controllers/my_profile/profile_editor_controller'
+require(
+  File.dirname(__FILE__) +
+  '/../../../../app/controllers/my_profile/profile_editor_controller'
+)
 
 class ProfileEditorController; def rescue_action(e) raise e end; end
 
@@ -11,7 +14,13 @@ class ProfileEditorControllerTest < ActionController::TestCase
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     @profile = create_user('default_user').person
-    Environment.default.affiliate(@profile, [Environment::Roles.admin(Environment.default.id)] + Profile::Roles.all_roles(Environment.default.id))
+
+    Environment.default.affiliate(
+      @profile,
+      [Environment::Roles.admin(Environment.default.id)] +
+      Profile::Roles.all_roles(Environment.default.id)
+    )
+
     @environment = Environment.default
     @environment.enabled_plugins = ['MpogSoftwarePlugin']
     admin = create_user("adminuser").person
@@ -25,8 +34,29 @@ class ProfileEditorControllerTest < ActionController::TestCase
     @juridical_nature = JuridicalNature.create(:name => "Autarquia")
 
     @institution_list = []
-    @institution_list << InstitutionTestHelper.create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @govPower, @govSphere, "12.345.678/9012-45")
-    @institution_list << InstitutionTestHelper.create_public_institution("Tribunal Regional da Uniao", "TRU", "BR", "DF", "Brasilia", @juridical_nature, @govPower, @govSphere, "12.345.678/9012-90")
+    @institution_list << InstitutionTestHelper.create_public_institution(
+      "Ministerio Publico da Uniao",
+      "MPU",
+      "BR",
+      "DF",
+      "Gama",
+      @juridical_nature,
+      @govPower,
+      @govSphere,
+      "12.345.678/9012-45"
+    )
+
+    @institution_list << InstitutionTestHelper.create_public_institution(
+      "Tribunal Regional da Uniao",
+      "TRU",
+      "BR",
+      "DF",
+      "Brasilia",
+      @juridical_nature,
+      @govPower,
+      @govSphere,
+      "12.345.678/9012-90"
+    )
   end
 
   should "add new institution for user into edit profile" do

@@ -21,7 +21,9 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def profile_editor_extras
     if context.profile.person?
       expanded_template('person_editor_extras.html.erb')
-    elsif context.profile.respond_to? :software_info and !context.profile.software_info.nil?
+    elsif context.profile.respond_to? :software_info &&
+          !context.profile.software_info.nil?
+
       if context.profile.software_info.first_edit?
         context.profile.software_info.first_edit = false
         context.profile.software_info.save!
@@ -55,7 +57,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       if context.params.has_key?(:operating_system)
         operating_system_transaction
       end
-      if context.params.has_key?(:institution) || context.params.has_key?(:governmental_power) || context.params.has_key?(:governmental_sphere)
+      if context.params.has_key?(:institution) ||
+          context.params.has_key?(:governmental_power) ||
+          context.params.has_key?(:governmental_sphere)
+
         institution_transaction
       end
 
@@ -77,8 +82,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         unless is_admin
           institution = profile.user.institutions
 
-          if !params[:institution].blank? and !params[:institution][:sisp].nil?
-            params[:institution][:sisp] = institution.sisp if params[:institution][:sisp] != institution.sisp
+          if !params[:institution].blank? && !params[:institution][:sisp].nil?
+            if params[:institution][:sisp] != institution.sisp
+              params[:institution][:sisp] = institution.sisp
+            end
           end
         end
       end
@@ -109,12 +116,32 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def control_panel_buttons
     if context.profile.software?
-      return { :title => _("Software Info"), :icon => "edit-profile-group control-panel-software-link", :url => {:controller => "mpog_software_plugin_myprofile", :action => "edit_software"} }
+      return {
+        :title => _("Software Info"),
+        :icon => "edit-profile-group control-panel-software-link",
+        :url => {
+          :controller => "mpog_software_plugin_myprofile",
+          :action => "edit_software"
+        }
+      }
     elsif context.profile.person?
-      return { :title => _("Create a new software"), :icon => "design-editor", :url => {:controller => "mpog_software_plugin_myprofile", :action => "new_software"} }
+      return {
+        :title => _("Create a new software"),
+        :icon => "design-editor",
+        :url => {
+          :controller => "mpog_software_plugin_myprofile",
+          :action => "new_software"
+        }
+      }
       return nil
     elsif context.profile.institution?
-      return { :title => _("Institution Info"), :icon => "edit-profile-group control-panel-instituton-link", :url => {:controller => "mpog_software_plugin_myprofile", :action => "edit_institution"} }
+      return {
+        :title => _("Institution Info"),
+        :icon => "edit-profile-group control-panel-instituton-link",
+        :url => {
+          :controller => "mpog_software_plugin_myprofile",
+          :action => "edit_institution"}
+        }
     end
   end
 
@@ -152,7 +179,12 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def add_new_organization_buttons
     Proc::new do
-      button(:add, _('Create a new software'), :controller => 'mpog_software_plugin_myprofile', :action => 'new_software')
+      button(
+        :add,
+        _('Create a new software'),
+        :controller => 'mpog_software_plugin_myprofile',
+        :action => 'new_software'
+      )
     end
   end
 
@@ -162,7 +194,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def profile_blocks_extra_content
-    return if context.session[:user].nil? or context.session[:hide_incomplete_percentage] == true
+    return if context.session[:user].nil? or
+              !!context.session[:hide_incomplete_percentage]
 
     person = Person.where(:user_id=>context.session[:user]).first
 
@@ -176,10 +209,32 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
+  def custom_user_registration_attributes user
+    unless context.params[:user][:institution_ids].nil?
+      context.params[:user][:institution_ids].delete("")
+
+      context.params[:user][:institution_ids].each do |institution_id|
+        institution = Institution.find institution_id
+        user.institutions << institution
+
+        if institution.community.admins.blank?
+          institution.community.add_admin(user.person)
+        end
+      end
+    end
+    user.save unless user.institution_ids.empty?
+
+    user.institutions.each do |institution|
+      community = institution.community
+      community.add_member user.person
+    end
+  end
+
   def calc_percentage_registration person
     required_list = profile_required_list
     empty_fields = profile_required_empty_list person
-    count = required_list[:person_fields].count + required_list[:user_fields].count
+    count = required_list[:person_fields].count +
+            required_list[:user_fields].count
     percentege = 100 - ((empty_fields.count*100)/count)
     person.percentage_incomplete = percentege
     person.save(validate: false)
@@ -187,7 +242,15 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def admin_panel_links
-    [{:title => _('Create Institution'), :url => {:controller => 'mpog_software_plugin', :action => 'create_institution_admin'}}]
+    [
+      {
+        :title => _('Create Institution'),
+        :url => {
+          :controller => 'mpog_software_plugin',
+          :action => 'create_institution_admin'
+        }
+      }
+    ]
   end
 
   protected
@@ -201,7 +264,18 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def profile_required_list
     fields = Hash.new
-    fields[:person_fields] = ["cell_phone","contact_phone","comercial_phone","country","city","state","organization_website", "image", "identifier", "name"]
+    fields[:person_fields] = [
+      "cell_phone",
+      "contact_phone",
+      "comercial_phone",
+      "country",
+      "city",
+      "state",
+      "organization_website",
+      "image",
+      "identifier",
+      "name"
+    ]
     fields[:user_fields] = ["secondary_email", "email"]
     fields
   end
@@ -225,10 +299,15 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def operating_system_transaction
     OperatingSystem.transaction do
-      list_operating = OperatingSystemHelper.list_operating_system(context.params[:operating_system])
+      list_operating = OperatingSystemHelper.list_operating_system(
+        context.params[:operating_system]
+      )
 
       if OperatingSystemHelper.valid_list_operating_system?(list_operating)
-        OperatingSystem.where(:software_info_id => context.profile.software_info.id).destroy_all
+        OperatingSystem.where(
+          :software_info_id => context.profile.software_info.id
+        ).destroy_all
+
         list_operating.each do |operating_system|
           operating_system.software_info = context.profile.software_info
           operating_system.save!
@@ -252,30 +331,40 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     institution.save
 
     if context.params.has_key?(:governmental_power)
-      context.profile.institution.governmental_power_id = context.params[:governmental_power]
+      context.profile.institution.governmental_power_id =
+        context.params[:governmental_power]
+
       context.profile.institution.save!
     end
 
     if context.params.has_key?(:governmental_sphere)
-      context.profile.institution.governmental_sphere_id = context.params[:governmental_sphere]
+      context.profile.institution.governmental_sphere_id =
+        context.params[:governmental_sphere]
+
       context.profile.institution.save!
     end
 
     if context.params.has_key?(:juridical_nature)
-      context.profile.institution.juridical_nature_id = context.params[:juridical_nature]
+      context.profile.institution.juridical_nature_id =
+        context.params[:juridical_nature]
+
       context.profile.institution.save!
     end
 
     if context.params.has_key?(:institution)
       Institution.transaction do
-        context.profile.institution.update_attributes!(context.params[:institution])
+        context.profile.
+          institution.
+          update_attributes!(context.params[:institution])
       end
     end
   end
 
   def software_info_transaction
     SoftwareInfo.transaction do
-      context.profile.software_info.update_attributes!(context.params[:software_info])
+      context.profile.
+        software_info.
+        update_attributes!(context.params[:software_info])
     end
   end
 
@@ -284,7 +373,9 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       list_libraries = LibraryHelper.list_libraries(context.params[:library])
 
       if LibraryHelper.valid_list_libraries?(list_libraries)
-        Library.where(:software_info_id=> context.profile.software_info.id).destroy_all
+        Library.where(
+          :software_info_id=> context.profile.software_info.id
+        ).destroy_all
 
         list_libraries.each do |library|
           library.software_info_id = context.profile.software_info.id
@@ -301,7 +392,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       list_databases = DatabaseHelper.list_database(context.params[:database])
 
       if DatabaseHelper.valid_list_database?(list_databases)
-        SoftwareDatabase.where(:software_info_id => context.profile.software_info.id).destroy_all
+        SoftwareDatabase.where(
+          :software_info_id => context.profile.software_info.id
+        ).destroy_all
+
         list_databases.each do |database|
           database.software_info = context.profile.software_info
           database.save!
@@ -320,10 +414,14 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def language_transaction
     SoftwareLanguage.transaction do
-      list_language = SoftwareLanguageHelper.list_language(context.params[:language])
+      list_language = SoftwareLanguageHelper.list_language(
+        context.params[:language]
+      )
 
       if SoftwareLanguageHelper.valid_list_language?(list_language)
-        SoftwareLanguage.where(:software_info_id => context.profile.software_info.id).destroy_all
+        SoftwareLanguage.where(
+          :software_info_id => context.profile.software_info.id
+        ).destroy_all
 
         list_language.each do |language|
           language.software_info = context.profile.software_info
@@ -337,7 +435,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def software_categories_transaction
     ControlledVocabulary.transaction do
-      context.profile.software_info.software_categories.update_attributes!(context.params[:software_categories])
+      context.profile.
+        software_info.
+        software_categories.
+        update_attributes!(context.params[:software_categories])
     end
   end
 

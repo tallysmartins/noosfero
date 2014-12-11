@@ -4,7 +4,7 @@ class SearchController
 
   def communities
     results = filter_communities_list do |community|
-      !community.software? && !community.institution?
+      !community.software? and !community.institution?
     end
     results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}
@@ -55,9 +55,7 @@ class SearchController
 
     filtered_communities_list = []
     unfiltered_software_infos_list.each do |software|
-      unless software.community.is_template?
-        filtered_communities_list << software.community
-      end
+      filtered_communities_list << software.community
     end
 
     if not params[:filter].blank?

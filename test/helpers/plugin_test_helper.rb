@@ -22,7 +22,14 @@ module PluginTestHelper
   end
 
   def create_private_institution name, acronym, country, state, city, cnpj
-    InstitutionTestHelper.create_private_institution(name, acronym, country, state, city, cnpj)
+    InstitutionTestHelper.create_private_institution(
+      name,
+      acronym,
+      country,
+      state,
+      city,
+      cnpj
+    )
   end
 
   def create_community_institution name, country, state, city
@@ -36,7 +43,13 @@ module PluginTestHelper
   end
 
   def create_person name, email, password, password_confirmation, secondary_email, state, city
-    user = create_user(name.to_slug, email, password, password_confirmation, secondary_email)
+    user = create_user(
+      name.to_slug,
+      email,
+      password,
+      password_confirmation,
+      secondary_email
+    )
     person = Person::new
 
     user.person = person

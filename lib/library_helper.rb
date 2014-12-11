@@ -34,7 +34,13 @@ module LibraryHelper
       ApplicationHelper
     )
 
-    return library_html_structure({:name=>"", :version=>"", :license=>""}) if list_libraries.nil?
+    return library_html_structure(
+      {
+        :name=>"",
+        :version=>"",
+        :license=>""
+      }
+    ) if list_libraries.nil?
 
     lambdas_list = []
 
@@ -47,27 +53,47 @@ module LibraryHelper
 
   def self.library_html_structure library_data
     Proc::new do
-      content_tag('table',
-        content_tag('tr',
+      content_tag(
+        'table',
+        content_tag(
+          'tr',
           content_tag('td', label_tag(_("Name")))+
-          content_tag('td', text_field_tag("library[][name]", library_data[:name]))+
+          content_tag(
+            'td',
+            text_field_tag("library[][name]", library_data[:name])
+          )+
           content_tag('td')
         )+
 
-        content_tag('tr',
+        content_tag(
+          'tr',
           content_tag('td', label_tag(_("Version")))+
-          content_tag('td', text_field_tag("library[][version]", library_data[:version]))+
+          content_tag(
+            'td',
+            text_field_tag("library[][version]", library_data[:version])
+          )+
           content_tag('td')
         )+
 
-        content_tag('tr',
+        content_tag(
+          'tr',
           content_tag('td', label_tag(_("License")))+
-          content_tag('td', text_field_tag("library[][license]", library_data[:license])) +
-          content_tag('td',
-            button_without_text(:delete, _('Delete'), "#" , :class=>"delete-dynamic-table"),
+          content_tag(
+            'td',
+            text_field_tag("library[][license]", library_data[:license])) +
+          content_tag(
+            'td',
+            button_without_text(
+              :delete,
+              _('Delete'),
+              "#" ,
+              :class=>"delete-dynamic-table"
+            ),
             :align => 'right'
           )
-        ), :class => 'dynamic-table library-table'
+        ),
+
+        :class => 'dynamic-table library-table'
       )
     end
   end

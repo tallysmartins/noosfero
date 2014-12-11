@@ -6,9 +6,14 @@ class SoftwareInfo < ActiveRecord::Base
     'full'
   end
 
-  attr_accessible :e_mag, :icp_brasil, :intern, :e_ping, :e_arq, :operating_platform
-  attr_accessible :demonstration_url, :acronym, :objectives, :features, :license_info
-  attr_accessible :community_id, :finality, :repository_link, :public_software, :first_edit
+  attr_accessible :e_mag, :icp_brasil, :intern, :e_ping, :e_arq,
+                  :operating_platform
+
+  attr_accessible :demonstration_url, :acronym, :objectives, :features,
+                  :license_info
+
+  attr_accessible :community_id, :finality, :repository_link, :public_software,
+                  :first_edit
 
   has_many :libraries, :dependent => :destroy
   has_many :software_databases
@@ -31,7 +36,9 @@ class SoftwareInfo < ActiveRecord::Base
 
   # used on find_by_contents
   scope :like_search, lambda{ |name|
-    joins(:community).where("name ILIKE ? OR acronym ILIKE ?", "%#{name}%", "%#{name}%")
+    joins(:community).where(
+      "name ILIKE ? OR acronym ILIKE ?", "%#{name}%", "%#{name}%"
+    )
   }
 
   scope :search, lambda { |name="", database_description_id = "",
@@ -57,7 +64,10 @@ class SoftwareInfo < ActiveRecord::Base
 
   def validate_name_lenght
     if self.community.name.size > 100
-      self.errors.add(:base, _("Name is too long (maximum is %{count} characters)"))
+      self.errors.add(
+        :base,
+        _("Name is too long (maximum is %{count} characters)")
+      )
       false
     end
     true
@@ -70,12 +80,23 @@ class SoftwareInfo < ActiveRecord::Base
     license_info = attributes.delete(:license_info)
     software_info = SoftwareInfo.new(attributes)
     if !environment.admins.include? requestor
-      CreateSoftware.create!(attributes.merge(:requestor => requestor, :environment => environment, :name => name, :license_info => license_info))
+      CreateSoftware.create!(
+        attributes.merge(
+          :requestor => requestor,
+          :environment => environment,
+          :name => name,
+          :license_info => license_info
+        )
+      )
     else
       software_template = Community["software"]
       community = Community.new(:name => name)
       community.environment = environment
-      community.template_id = software_template.id if (!software_template.blank? && software_template.is_template)
+
+      if (!software_template.blank? && software_template.is_template)
+        community.template_id = software_template.id
+      end
+
       software_info.license_info = license_info
       software_info.save
       community.software_info = software_info
@@ -99,15 +120,21 @@ class SoftwareInfo < ActiveRecord::Base
   end
 
   def valid_operating_systems
-    self.errors.add(:operating_system, _(": at least one must be filled")) if self.operating_systems.empty?
+    if self.operating_systems.empty?
+      self.errors.add(:operating_system, _(": at least one must be filled"))
+    end
   end
 
   def valid_software_info
-    self.errors.add(:software_languages, _(": at least one must be filled")) if self.software_languages.empty?
+    if self.software_languages.empty?
+      self.errors.add(:software_languages, _(": at least one must be filled"))
+    end
   end
 
   def valid_databases
-    self.errors.add(:software_databases, _(": at least one must be filled")) if self.software_databases.empty?
+    if self.software_databases.empty?
+      self.errors.add(:software_databases, _(": at least one must be filled"))
+    end
   end
 
   def visible?

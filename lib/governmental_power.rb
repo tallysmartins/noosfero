@@ -5,6 +5,9 @@ class GovernmentalPower < ActiveRecord::Base
   has_many :institutions
 
   def public_institutions
-    Institution.where(:type=>"PublicInstitution", :governmental_power_id=>self.id)
+    Institution.where(
+      :type=>"PublicInstitution",
+      :governmental_power_id=>self.id
+    )
   end
 end
