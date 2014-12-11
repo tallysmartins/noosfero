@@ -27,12 +27,15 @@ class SoftwareLanguageHelperTest < ActiveSupport::TestCase
 
   should "return a list with current software language objects" do
     list_compare = []
-    assert_equal list_compare.class, SoftwareLanguageHelper.list_language(@software_language_objects).class
+    softwares = SoftwareLanguageHelper.list_language(@software_language_objects)
+    assert_equal list_compare.class, softwares.class
   end
 
   should "have same information from the list passed as parameter" do
     list_compare = SoftwareLanguageHelper.list_language(@software_language_objects)
-    assert_equal @software_language_objects.first[:programming_language_id].to_i, list_compare.first.programming_language_id
+    lang_id = @software_language_objects.first[:programming_language_id].to_i
+
+    assert_equal lang_id, list_compare.first.programming_language_id
   end
 
   should "return a list with the same size of the parameter" do
@@ -57,8 +60,8 @@ class SoftwareLanguageHelperTest < ActiveSupport::TestCase
     software_language.programming_language = programming_language
 
     softwares_languages << software_language
-
-    assert_not_nil SoftwareLanguageHelper.language_as_tables(softwares_languages).first.call.index("linux")
+    lang_table = SoftwareLanguageHelper.language_as_tables(softwares_languages)
+    assert_not_nil lang_table.first.call.index("linux")
   end
 
   should "remove invalid tables from the list" do

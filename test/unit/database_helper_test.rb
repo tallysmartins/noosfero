@@ -27,12 +27,14 @@ class DatabaseHelperTest < ActiveSupport::TestCase
 
   should "return a list with current database objects" do
     list_compare = []
-    assert_equal list_compare.class, DatabaseHelper.list_database(@database_objects).class
+    db_tables = DatabaseHelper.list_database(@database_objects)
+    assert_equal list_compare.class, db_tables.class
   end
 
   should "have same information from the list passed as parameter" do
     list_compare = DatabaseHelper.list_database(@database_objects)
-    assert_equal @database_objects.first[:database_description_id].to_i, list_compare.first.database_description_id
+    db_objects_id = @database_objects.first[:database_description_id]
+    assert_equal db_objects_id.to_i, list_compare.first.database_description_id
   end
 
   should "return a list with the same size of the parameter" do
@@ -57,8 +59,9 @@ class DatabaseHelperTest < ActiveSupport::TestCase
     software_database.database_description = database_description
 
     databases << software_database
+    db_tables = DatabaseHelper.database_as_tables(databases)
 
-    assert_not_nil DatabaseHelper.database_as_tables(databases).first.call.index("linux")
+    assert_not_nil db_tables.first.call.index("linux")
   end
 
   should "remove invalid tables from the list" do

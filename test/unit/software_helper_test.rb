@@ -6,9 +6,11 @@ class SoftwareHelperTest < ActiveSupport::TestCase
 
   should "Create ProgrammingLanguages based on file with languages names" do
     ProgrammingLanguage.delete_all
-    SoftwareHelper.create_list_with_file("plugins/mpog_software/public/static/languages.txt", ProgrammingLanguage)
+    PATH_TO_FILE = "plugins/mpog_software/public/static/languages.txt"
 
-    list = File.open("plugins/mpog_software/public/static/languages.txt", "r")
+    SoftwareHelper.create_list_with_file(PATH_TO_FILE, ProgrammingLanguage)
+
+    list = File.open(PATH_TO_FILE, "r")
     count = list.readlines.count
     list.close
 

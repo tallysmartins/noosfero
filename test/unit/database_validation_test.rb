@@ -21,28 +21,28 @@ class DatabaseValidationTest < ActiveSupport::TestCase
     assert_equal true, @database.save
   end
 
-  should "Don't save database if database_description database_description is empty" do
+  should "not save database if database_description is empty" do
     @database.database_description = nil
     assert_equal true, !@database.save
   end
 
-  should "Don't save database if operating system are empty" do
+  should "not save database if operating system are empty" do
     @database.operating_system = " "
     assert_equal true, !@database.save
   end
 
-  should "Don't save database if version are empty" do
+  should "not save database if version are empty" do
     @database.version = " "
     assert_equal true, !@database.save
   end
 
-  should "Don't save database if version is too long" do
+  should "not save database if version is too long" do
     @database.version = "A too long version to be a valid version for database"
     assert !@database.save
   end
 
-  should "Don't save database if operating system is too long" do
-    @database.operating_system = "A too long operating system to be a valid operating system for library"
+  should "not save database if operating system is too long" do
+    @database.operating_system = "A too long operating system to be a valid db"
     assert !@database.save
   end
 end

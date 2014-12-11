@@ -60,7 +60,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
   def community_must_be_approved
   end
-
+  
   private
 
   def add_software_erros

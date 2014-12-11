@@ -11,7 +11,9 @@ class MpogSoftwarePluginPersonTest < ActiveSupport::TestCase
   end
 
   should 'save person with a valid full name with accents' do
-    p = Person::new :name=>'Jônatàs dâ Sîlvã Jösé', :identifier=>"jonatas-jose-da-silva"
+    name = 'Jônatàs dâ Sîlvã Jösé'
+    identifier = "jonatas-jose-da-silva"
+    p = Person::new :name=>name, :identifier=>identifier
     p.user = fast_create(:user)
 
     assert_equal true, p.save

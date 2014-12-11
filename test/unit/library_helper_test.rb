@@ -5,7 +5,8 @@ class LibraryHelperTest < ActiveSupport::TestCase
   include LibraryHelper
 
   def setup
-    @license_objects = [{"name" => "license1" ,"version" => "2.0", "license" => "debian", "software_id" => "1"},
+    @license_objects = [
+      {"name" => "license1" ,"version" => "2.0", "license" => "debian", "software_id" => "1"},
       {"name" => "license2" ,"version" => "2.1", "license" => "debian", "software_id" => "1"},
       {"name" => "license3" ,"version" => "2.2", "license" => "debian", "software_id" => "1"}]
   end
@@ -21,7 +22,8 @@ class LibraryHelperTest < ActiveSupport::TestCase
 
   should "return a list with current library objects" do
     list_compare = []
-    assert_equal  list_compare.class, LibraryHelper.list_libraries(@license_objects).class
+    lib_table = LibraryHelper.list_libraries(@license_objects)
+    assert_equal  list_compare.class, lib_table.class
   end
 
   should "have same information from the list passed as parameter" do
@@ -46,7 +48,8 @@ class LibraryHelperTest < ActiveSupport::TestCase
     library_description.name = "Lib"
 
     libraries << library_description
+    lib_table = LibraryHelper.library_as_tables(libraries)
 
-    assert_not_nil LibraryHelper.library_as_tables(libraries).first.call.index("lib")
+    assert_not_nil lib_table.first.call.index("lib")
   end
 end

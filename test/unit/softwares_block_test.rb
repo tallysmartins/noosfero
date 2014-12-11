@@ -23,7 +23,14 @@ class SoftwaresBlockTest < ActiveSupport::TestCase
   end
 
   should 'list softwares' do
-    user = create_person("Jose_Augusto", "jose_augusto@email.com", "aaaaaaa", "aaaaaaa", "jose_silva@email.com", "DF", "Gama")
+    user = create_person("Jose_Augusto",
+            "jose_augusto@email.com",
+            "aaaaaaa",
+            "aaaaaaa",
+            "jose_silva@email.com",
+            "DF",
+            "Gama"
+          )
 
     software_info = create_software_info("new software")
     software_info.community.add_member(user)

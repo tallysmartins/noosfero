@@ -6,7 +6,15 @@ class MpogSoftwarePluginTest < ActiveSupport::TestCase
 
   def setup
     @plugin = MpogSoftwarePlugin.new
-    @person = create_person("My Name", "user@email.com", "123456", "123456", "user@secondary_email.com", "Any State", "Some City")
+    @person = create_person(
+                "My Name",
+                "user@email.com",
+                "123456",
+                "123456",
+                "user@secondary_email.com",
+                "Any State",
+                "Some City"
+              )
   end
 
   def teardown

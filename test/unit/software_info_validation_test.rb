@@ -3,17 +3,27 @@ require File.dirname(__FILE__) + '/../../../../test/test_helper'
 class SoftwareInfoValidationTest < ActiveSupport::TestCase
 
   def setup
-    @community = fast_create(Community, :identifier => 'new-software', :name => 'New Software')
+    @community = fast_create(
+                  Community,
+                  :identifier => 'new-software',
+                  :name => 'New Software'
+                )
 
     @language = ProgrammingLanguage.new(:name => 'C++')
     @language.save
-    @software_language = SoftwareLanguage.new(:version => '1', :operating_system => 'os')
+    @software_language = SoftwareLanguage.new(
+                          :version => '1',
+                          :operating_system => 'os'
+                        )
     @software_language.programming_language = @language
     @software_language.save
 
     @database = DatabaseDescription.new(:name => 'Oracle')
     @database.save
-    @software_database = SoftwareDatabase.new(:version => '2', :operating_system => 'os2')
+    @software_database = SoftwareDatabase.new(
+                          :version => '2',
+                          :operating_system => 'os2'
+                        )
     @software_database.database_description = @database
     @software_database.save
 
@@ -23,20 +33,23 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     @operating_system.operating_system_name = @operating_system_name
     @operating_system.save
 
-    @software_info = SoftwareInfo.new(:acronym => "SFTW", :e_mag => true,:icp_brasil => true,:intern => true,:e_ping => true,
-     :e_arq => true, :operating_platform => true, :objectives => "", :features => "")
+    @software_info = SoftwareInfo.new(
+                      :acronym => "SFTW",
+                      :e_mag => true,
+                      :icp_brasil => true,
+                      :intern => true,
+                      :e_ping => true,
+                      :e_arq => true,
+                      :operating_platform => true,
+                      :objectives => "",
+                      :features => ""
+                    )
     @software_info.software_languages << @software_language
     @software_info.software_databases << @software_database
     @software_info.operating_systems << @operating_system
 
     @software_info.features = "Do a lot of things"
     @software_info.objectives = "All tests should pass !"
-
-    software_categories = SoftwareCategories::new
-    software_categories.administration = true
-    software_categories.save
-
-    @software_info.software_categories = software_categories
   end
 
   def teardown
@@ -47,7 +60,6 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     OperatingSystem.destroy_all
     OperatingSystemName.destroy_all
     SoftwareInfo.destroy_all
-    SoftwareCategories.destroy_all
   end
 
   should 'Save SoftwareInfo if all fields are filled' do
@@ -94,15 +106,17 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
 
   should "Not save if features are longer than 4000" do
     @software_info.features = "a"*4001
+    error_msg = _("Features is too long (maximum is 4000 characters)")
 
     assert_equal false, @software_info.save
-    assert_equal true, @software_info.errors.full_messages.include?(_("Features is too long (maximum is 4000 characters)"))
+    assert_equal true, @software_info.errors.full_messages.include?(error_msg)
   end
 
   should "Not save if objectives are longer than  4000" do
     @software_info.objectives = "a"*4001
+    error_msg = _("Objectives is too long (maximum is 4000 characters)")
 
     assert_equal false, @software_info.save
-    assert_equal true, @software_info.errors.full_messages.include?(_("Objectives is too long (maximum is 4000 characters)"))
+    assert_equal true, @software_info.errors.full_messages.include?(error_msg)
   end
 end
