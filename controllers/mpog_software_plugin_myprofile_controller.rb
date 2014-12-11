@@ -88,12 +88,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
       @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])
       @software_info.software_categories = @software_categories unless params[:software_categories].nil?
 
-      if not @list_libraries.nil?
-        @software_info.libraries.destroy_all
-        @list_libraries.each do |library|
-          @software_info.libraries << library
-        end
-      end
+      software_info_insert_models.call(@list_libraries,'libraries')
 
       if not @list_languages.nil?
         @software_info.software_languages.destroy_all
@@ -128,6 +123,10 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     end
   end
 
+  def software_info_insert_models
+      proc { |list,model_attr| @software_info.send(model_attr).destroy_all; list.collect!{|m| @software_info.send(model_attr) << m } unless list.nil? }
+  end
+
   def disabled_public_software_field
     !environment.admins.include?(current_user.person)
   end
@@ -150,13 +149,13 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
   end
 
   def governmental_updates
-    govPower = GovernmentalPower.find params[:institutions][:governmental_power]
-    govSphere = GovernmentalSphere.find params[:institutions][:governmental_sphere]
+    gov_power = GovernmentalPower.find params[:institutions][:governmental_power]
+    gov_sphere = GovernmentalSphere.find params[:institutions][:governmental_sphere]
     jur_nature = JuridicalNature.find params[:institutions][:juridical_nature]
 
     @institution.juridical_nature = jur_nature
-    @institution.governmental_power = govPower
-    @institution.governmental_sphere = govSphere
+    @institution.governmental_power = gov_power
+    @institution.governmental_sphere = gov_sphere
     @institution.save
   end
 
