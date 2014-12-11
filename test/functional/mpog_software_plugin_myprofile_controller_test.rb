@@ -22,7 +22,7 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     DatabaseDescription.create(:name => "database")
     OperatingSystemName.create(:name=>"Debian")
 
-    login_as(@person.user.login)
+    login_as(@person.user_login)
     @environment = Environment.default
     @environment.enable_plugin('MpogSoftwarePlugin')
     @environment.save!
@@ -64,7 +64,7 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     assert response.count == 0
   end
 
-  should 'create a new software with all fields filled in' do 
+  should 'create a new software with all fields filled in' do
     fields = software_fields
     @environment.add_admin(@person)
     post :new_software, :profile => @person.identifier, :community => fields[1], :license_info => fields[0],

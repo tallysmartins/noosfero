@@ -8,6 +8,8 @@ class Person
 
   attr_accessible :percentage_incomplete
 
+  delegate :login, :to => :user, :prefix => true
+
   scope :search, lambda { |name="", state="", city="", email=""|
     like_sql = ""
     values = []
@@ -33,8 +35,8 @@ class Person
     end
     like_sql = like_sql[0..like_sql.length-5]
 
-    { 
-      :joins => :user, 
+    {
+      :joins => :user,
       :conditions=>[like_sql, *values]
     }
   }
