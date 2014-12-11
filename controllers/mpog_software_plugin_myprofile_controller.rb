@@ -15,20 +15,25 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
   def new_software
     set_software_as_template
+    
     @community = Community.new(params[:community])
     @community.environment = environment
     @software_info = SoftwareInfo.new(params[:software_info])
     @license_info = if params[:license_info].nil?
       LicenseInfo.new
     else
-      LicenseInfo.find(:first, :conditions => ["version = ?","#{params[:license_info][:version]}"])
+      LicenseInfo.find(:first,
+                       :conditions => ["version = ?",
+                                      "#{params[:license_info][:version]}"])
     end
+
     control_software_creation
   end
 
   def search_offerers
     arg = params[:q].downcase
-    result = environment.people.find(:all, :conditions => ['LOWER(name) LIKE ?', "%#{arg}%"])
+    result = environment.people.find(:all,
+                                     :conditions => [ 'LOWER(name) LIKE ?', "%#{arg}%"])
     render :text => prepare_to_token_input(result).to_json
   end
 
@@ -118,8 +123,6 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
     create_list_model_helpers
 
-    @software_categories = SoftwareCategories::new params[:software_categories]
-    @software_info.software_categories = @software_categories unless params[:software_categories].nil?
     @software_info
   end
 
