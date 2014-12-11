@@ -6,6 +6,7 @@ Group:   Development/Tools
 License: Expat
 URL:     https://beta.softwarepublico.gov.br/gitlab/softwarepublico/gitlab
 Source0: %{name}-%{version}.tar.gz
+Patch0: gitlab-7.5.2-jquery-ui-5.patch
 BuildArch: noarch
 BuildRequires: gitlab-deps
 Requires: gitlab-deps, git
@@ -14,7 +15,8 @@ Requires: gitlab-deps, git
 GitLab
 
 %prep
-%autosetup
+%setup -q
+%patch0 -p 1
 
 %build
 cat > config/gitlab.yml <<EOF
