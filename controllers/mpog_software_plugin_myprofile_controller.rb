@@ -25,14 +25,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     else
       LicenseInfo.find(:first, :conditions =>["version = ?","#{params[:license_info][:version]}"])
     end
-
-    valid_models = request.post? && (@community.valid? && @software_info.valid? && @license_info.valid?)
-
-    if valid_models
-      send_software_to_moderation
-    else
-      add_software_erros
-    end
+    control_software_creation
   end
 
   def search_offerers
@@ -75,6 +68,15 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
       @errors |= @community.errors.full_messages
       @errors |= @software_info.errors.full_messages
       @errors |= @license_info.errors.full_messages
+  end
+
+  def control_software_creation
+    valid_models = request.post? && (@community.valid? && @software_info.valid? && @license_info.valid?)
+    if valid_models
+      send_software_to_moderation
+    else
+      add_software_erros
+    end
   end
 
   def update_institution
