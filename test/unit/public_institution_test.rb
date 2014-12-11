@@ -8,7 +8,17 @@ class PublicInstitutionTest < ActiveSupport::TestCase
     @gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
     @juridical_nature = JuridicalNature.create(:name => "Autarquia")
 
-    @institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere, "11.222.333/4444-55")
+    @institution = create_public_institution(
+                    "Ministerio Publico da Uniao",
+                    "MPU",
+                    "BR",
+                    "DF",
+                    "Gama",
+                    @juridical_nature,
+                    @gov_power,
+                    @gov_sphere,
+                    "11.222.333/4444-55"
+                  )
   end
 
   def teardown
@@ -33,23 +43,26 @@ class PublicInstitutionTest < ActiveSupport::TestCase
   end
 
   should "Not save institution without a governmental_power" do
+    invalid_msg = "Governmental power can't be blank"
     @institution.governmental_power = nil
 
     assert !@institution.save
-    assert @institution.errors.full_messages.include? "Governmental power can't be blank"
+    assert @institution.errors.full_messages.include? invalid_msg
   end
 
   should "Not save institution without a governmental_sphere" do
+    invalid_msg = "Governmental sphere can't be blank"
     @institution.governmental_sphere = nil
 
     assert !@institution.save
-    assert @institution.errors.full_messages.include? "Governmental sphere can't be blank"
+    assert @institution.errors.full_messages.include? invalid_msg
   end
 
   should "not save institution without juridical nature" do
+    invalid_msg = "Juridical nature can't be blank"
     @institution.juridical_nature = nil
 
     assert !@institution.save
-    assert @institution.errors.full_messages.include? "Juridical nature can't be blank"
+    assert @institution.errors.full_messages.include? invalid_msg
   end
 end

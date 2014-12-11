@@ -23,9 +23,23 @@ class InstitutionsBlockTest < ActiveSupport::TestCase
   end
 
   should 'list institutions' do
-    user = create_person("Jose_Augusto", "jose_augusto@email.com", "aaaaaaa", "aaaaaaa", "jose_silva@email.com", "DF", "Gama")
+    user = create_person("Jose_Augusto",
+            "jose_augusto@email.com",
+            "aaaaaaa",
+            "aaaaaaa",
+            "jose_silva@email.com",
+            "DF",
+            "Gama"
+          )
 
-    institution  = create_private_institution "inst name", "IN", "country", "state", "city", "00.111.222/3333-44"
+    institution  = create_private_institution(
+                    "inst name",
+                    "IN",
+                    "country",
+                    "state",
+                    "city",
+                    "00.111.222/3333-44"
+                   )
     institution.community.add_member(user)
 
     block = InstitutionsBlock.new

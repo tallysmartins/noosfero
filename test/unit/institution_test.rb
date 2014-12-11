@@ -8,7 +8,17 @@ class InstitutionTest < ActiveSupport::TestCase
     @gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
     @juridical_nature = JuridicalNature.create(:name => "Autarquia")
 
-    @institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere, "11.222.333/4444-55")
+    @institution = create_public_institution(
+                      "Ministerio Publico da Uniao",
+                      "MPU",
+                      "BR",
+                      "DF",
+                      "Gama",
+                      @juridical_nature,
+                      @gov_power,
+                      @gov_sphere,
+                      "11.222.333/4444-55"
+                    )
   end
 
   def teardown
@@ -24,9 +34,10 @@ class InstitutionTest < ActiveSupport::TestCase
   end
 
   should "not save if institution has invalid type" do
+    invalid_msg = "Type invalid, only public and private institutions are allowed."
     @institution.type = "Other type"
     assert !@institution.save, 'Invalid type'
-    assert @institution.errors.full_messages.include? "Type invalid, only public and private institutions are allowed."
+    assert @institution.errors.full_messages.include? invalid_msg
   end
 
   should "not save without country" do

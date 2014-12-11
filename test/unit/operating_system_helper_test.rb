@@ -6,12 +6,14 @@ OperatingSystemName.create(:name=>"CentOS")
 
 class OperatingSystemHelperTest < ActiveSupport::TestCase
 
-	include OperatingSystemHelper
+  include OperatingSystemHelper
 
-	def setup
-    @operating_system_objects = [{:operating_system_name_id => "1" ,:version => "2.0"},
+  def setup
+    @operating_system_objects = [
+      {:operating_system_name_id => "1" ,:version => "2.0"},
       {:operating_system_name_id => "2" ,"version" => "2.1"},
-      {:operating_system_name_id => "3" ,"version" => "2.2"}]
+      {:operating_system_name_id => "3" ,"version" => "2.2"}
+    ]
     @operating_system_objects
   end
 
@@ -26,12 +28,14 @@ class OperatingSystemHelperTest < ActiveSupport::TestCase
 
   should "return a list with current OperatingSystems" do
     list_compare = []
-    assert_equal  list_compare.class, OperatingSystemHelper.list_operating_system(@operating_system_objects).class
+    list_op = OperatingSystemHelper.list_operating_system(@operating_system_objects)
+    assert_equal  list_compare.class, list_op.class
   end
 
   should "have same information from the list passed as parameter" do
     list_compare = OperatingSystemHelper.list_operating_system(@operating_system_objects)
-    assert_equal @operating_system_objects.first[:operating_system_name_id], list_compare.first.operating_system_name_id.to_s
+    first_operating = @operating_system_objects.first[:operating_system_name_id]
+    assert_equal first_operating, list_compare.first.operating_system_name_id.to_s
   end
 
   should "return a list with the same size of the parameter" do
@@ -55,7 +59,8 @@ class OperatingSystemHelperTest < ActiveSupport::TestCase
       software_operating_system.operating_system_name = operating_system
 
       operating_systems << software_operating_system
+      op_table = OperatingSystemHelper.operating_system_as_tables(operating_systems)
 
-      assert_not_nil OperatingSystemHelper.operating_system_as_tables(operating_systems).first.call.index(OperatingSystemName.first.name)
+      assert_not_nil op_table.first.call.index(OperatingSystemName.first.name)
   end
 end

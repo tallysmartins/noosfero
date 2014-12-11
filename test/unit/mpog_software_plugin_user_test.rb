@@ -13,7 +13,7 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     assert !user.save
   end
 
-  should 'not save user whose both email and secondary email have already been used' do
+  should 'not save user whose email and secondary email have been taken' do
     user1 = create_default_user
     user2 = fast_create(User)
 
@@ -31,7 +31,7 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     assert !user2.save
   end
 
-  should 'not save user whose email has already been used in another users secondary email' do
+  should 'not save user whose email has been taken another in users secondary email' do
     user1 = create_default_user
     user2 = fast_create(User)
 
@@ -41,7 +41,7 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     assert !user2.save
   end
 
-  should 'not save user whose secondary email has already been used in another users email' do
+  should 'not save user whose secondary email has been taken used in another users email' do
     user1 = create_default_user
     user2 = fast_create(User)
 
@@ -85,13 +85,14 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     assert user2.save
   end
   should 'return an error if secondary email is governmental and primary is not' do
+    invalid_msg = "The governamental email must be the primary one."
     user = fast_create(User)
 
     user.email = "test@email.com"
     user.secondary_email = "test@gov.br"
 
     assert !user.save
-    assert user.errors.full_messages.include?("The governamental email must be the primary one.")
+    assert user.errors.full_messages.include?(invalid_msg)
   end
 
   should 'have institution if email is governmental' do
@@ -105,7 +106,17 @@ class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
     gov_power = GovernmentalPower.create(:name=>"Some Gov Power")
     gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
     juridical_nature = JuridicalNature.create(:name => "Autarquia")
-    institution = create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", juridical_nature, gov_power, gov_sphere, "44.555.666/7777-88")
+    institution = create_public_institution(
+                    "Ministerio Publico da Uniao",
+                    "MPU",
+                    "BR",
+                    "DF",
+                    "Gama",
+                    juridical_nature,
+                    gov_power,
+                    gov_sphere,
+                    "44.555.666/7777-88"
+                  )
     institution.save!
 
     user.institutions << institution

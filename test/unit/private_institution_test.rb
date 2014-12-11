@@ -4,7 +4,14 @@ require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 class PrivateInstitutionTest < ActiveSupport::TestCase
   include PluginTestHelper
   def setup
-    @institution = create_private_institution "Simple Private Institution", "SPI", "BR", "DF", "Gama", "00.000.000/0001-00"
+    @institution = create_private_institution(
+                      "Simple Private Institution",
+                      "SPI",
+                      "BR",
+                      "DF",
+                      "Gama",
+                      "00.000.000/0001-00"
+                    )
   end
 
   def teardown
@@ -20,10 +27,18 @@ class PrivateInstitutionTest < ActiveSupport::TestCase
   end
 
   should "not save with a repeated cnpj" do
+    msg = "Cnpj has already been taken"
     assert @institution.save
-    sec_institution = create_private_institution "Another Private Institution", "API", "BR", "DF", "Gama", "00.000.000/0001-00"
+    sec_institution = create_private_institution(
+                        "Another Private Institution",
+                        "API",
+                        "BR",
+                        "DF",
+                        "Gama",
+                        "00.000.000/0001-00"
+                      )
 
-    assert sec_institution.errors.full_messages.include? "Cnpj has already been taken"
+    assert sec_institution.errors.full_messages.include? msg
   end
 
   should "save without fantasy name" do

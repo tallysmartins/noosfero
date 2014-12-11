@@ -12,7 +12,7 @@ class SoftwareLanguageValidationTest < ActiveSupport::TestCase
     SoftwareInfo.destroy_all
   end
 
-  should "Save SoftwareLanguage if version and programming_language are filled" do
+  should "Save SoftwareLanguage if version and prog_language are filled" do
     @software_language = create_software_language
     assert_equal true, @software_language.save
   end
@@ -31,13 +31,14 @@ class SoftwareLanguageValidationTest < ActiveSupport::TestCase
 
   should "Don't save SoftwareLanguage if version is too long" do
     @software_language = create_software_language
-    @software_language.version = "A too long version to be considered valid as a version"
+    @software_language.version = "A too long version to be valid as a version"
     assert_equal true, !@software_language.save
   end
 
   should "Don't save SoftwareLanguage if operating system is too long" do
+    operating_system = "A too long to be valid as a operating system"
     @software_language = create_software_language
-    @software_language.operating_system = "A too long operating system to be considered valid as a operating system"
+    @software_language.operating_system = operating_system
     assert_equal true, !@software_language.save
   end
 

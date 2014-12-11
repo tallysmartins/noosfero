@@ -44,7 +44,7 @@ class SearchPersonTest < ActiveSupport::TestCase
     assert_equal 2, people_list.count
   end
 
-  should "Find people with Ma in name and RJ in state and Rio in city and ma in email" do
+  should "Find people with Ma in name and email and RJ in state and Rio in city" do
     people_list = Person.search("Ma", "RJ", "Rio", "ma")
 
     assert_equal 1, people_list.count
