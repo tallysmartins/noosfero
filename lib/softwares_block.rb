@@ -1,7 +1,8 @@
 class SoftwaresBlock < CommunitiesBlock
 
   settings_items :software_type, :default => "All"
-  attr_accessible :accessor_id, :accessor_type, :role_id, :resource_id, :resource_type, :software_type
+  attr_accessible :accessor_id, :accessor_type, :role_id,
+                  :resource_id, :resource_type, :software_type
 
   def self.description
     _('Softwares')
@@ -27,11 +28,14 @@ class SoftwaresBlock < CommunitiesBlock
     case owner
     when Profile
       lambda do |context|
-        link_to s_('softwares|View all'), :profile => owner.identifier, :controller => 'profile', :action => 'communities', :type => 'Software'
+        link_to s_('softwares|View all'), :profile => owner.identifier,
+                :controller => 'profile', :action => 'communities',
+                :type => 'Software'
       end
     when Environment
       lambda do |context|
-        link_to s_('softwares|View all'), :controller => 'search', :action => 'software_infos'
+        link_to s_('softwares|View all'), :controller => 'search',
+                :action => 'software_infos'
       end
     else
       ''
@@ -47,33 +51,21 @@ class SoftwaresBlock < CommunitiesBlock
   end
 
   def profile_list
-    result = nil
-    visible_profiles = profiles.visible.includes([:image,:domains,:preferred_domain,:environment])
-    if !prioritize_profiles_with_image
-      result = visible_profiles.all(:limit => get_limit, :order => 'profiles.updated_at DESC').sort_by{ rand }
-    elsif profiles.visible.with_image.count >= get_limit
-      result = visible_profiles.with_image.all(:limit => get_limit * 5, :order => 'profiles.updated_at DESC').sort_by{ rand }
-    else
-      result = visible_profiles.with_image.sort_by{ rand } + visible_profiles.without_image.all(:limit => get_limit * 5, :order => 'profiles.updated_at DESC').sort_by{ rand }
+    profiles = get_visible_profiles
+
+    software_profiles = profiles.select do |profile|
+      profile.class == Community && profile.software?
     end
 
-    list_with_software = []
-
-    result.each do |profile|
-			if profile.class == Community and profile.software?
-        if self.software_type == "Public"
-          list_with_software << profile if profile.software_info.public_software?
-        elsif self.software_type == "Generic"
-          list_with_software << profile if !profile.software_info.public_software?
-        else
-          list_with_software << profile
-        end
-			end
+    block_softwares = if self.software_type == "Public"
+      software_profiles.select { |profile| profile.software_info.public_software? }
+    elsif self.software_type == "Generic"
+      software_profiles.select { |profile| !profile.software_info.public_software? }
+    else # All
+      software_profiles
     end
 
-    result = list_with_software
-
-    result.slice(0..get_limit-1)
+    block_softwares.slice(0..get_limit-1)
   end
 
   def content(arg={})
@@ -81,10 +73,33 @@ class SoftwaresBlock < CommunitiesBlock
       block = self
 
       proc do
-        render :file => 'blocks/main_area_softwares', :locals => { :profiles=> block.profile_list(), :block => block }
+        render :file => 'blocks/main_area_softwares',
+               :locals => {:profiles=> block.profile_list(), :block => block}
       end
     else
       super(arg)
+    end
+  end
+
+  protected
+
+  def get_visible_profiles
+    profile_include_list = [:image, :domains, :preferred_domain, :environment]
+    visible_profiles = profiles.visible.includes(profile_include_list)
+
+    if !prioritize_profiles_with_image
+      visible_profiles.all( :limit => get_limit,
+                            :order => 'profiles.updated_at DESC'
+                          ).sort_by{ rand }
+    elsif profiles.visible.with_image.count >= get_limit
+      visible_profiles.with_image.all( :limit => get_limit * 5,
+                                       :order => 'profiles.updated_at DESC'
+                                     ).sort_by{ rand }
+    else
+      visible_profiles.with_image.sort_by{ rand } +
+      visible_profiles.without_image.all( :limit => get_limit * 5,
+                                          :order => 'profiles.updated_at DESC'
+                                        ).sort_by{ rand }
     end
   end
 end
