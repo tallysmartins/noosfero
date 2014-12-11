@@ -138,8 +138,6 @@ class MpogSoftwarePluginController < ApplicationController
   protected
 
   def get_state_list
-    redirect_to "/" unless request.xhr?
-
     NationalRegion.find(
       :all,
       :conditions=>["national_region_type_id = ?", 2],
