@@ -35,8 +35,8 @@ module OperatingSystemHelper
     lambdas_list = []
 
     if not show_information
-      return operating_system_html_structure({:operating_system_name_id => "", :version => ""}, have_delete_button) if list_operating_system.nil?    
-    
+      return operating_system_html_structure({:operating_system_name_id => "", :version => ""}, have_delete_button) if list_operating_system.nil?
+
     list_operating_system.each do |operating_system|
       lambdas_list << operating_system_html_structure(operating_system,have_delete_button)
     end

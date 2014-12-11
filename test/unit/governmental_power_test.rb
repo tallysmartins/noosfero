@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../../../../test/test_helper'
 require File.dirname(__FILE__) + '/../helpers/institution_test_helper'
 
 class GovernmentalPowerTest < ActiveSupport::TestCase
-  
+
   def setup
     @gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
     @juridical_nature = JuridicalNature.create(:name => "Autarquia")

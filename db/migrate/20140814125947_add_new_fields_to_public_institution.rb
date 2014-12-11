@@ -6,6 +6,6 @@ class AddNewFieldsToPublicInstitution < ActiveRecord::Migration
 
   def down
     remove_column :institutions, :sisp
-    add_column :institutions, :juridical_nature, :string 
+    add_column :institutions, :juridical_nature, :string
   end
 end

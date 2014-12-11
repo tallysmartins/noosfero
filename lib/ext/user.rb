@@ -18,9 +18,9 @@ class User
   def email_has_already_been_used?
     user_already_saved = User.find(:first, :conditions=>["email = ?", self.email])
 
-    if user_already_saved.nil? 
+    if user_already_saved.nil?
       primary_email_hasnt_been_used = User.primary_or_secondary_email_already_used?(self.email).empty?
-      if !self.secondary_email.nil? and self.secondary_email.empty? 
+      if !self.secondary_email.nil? and self.secondary_email.empty?
         self.secondary_email = nil
       end
       secondary_email_hasnt_been_used = User.primary_or_secondary_email_already_used?(self.secondary_email).empty?

@@ -1,7 +1,6 @@
 class AddFinalityFieldToSoftwareTable < ActiveRecord::Migration
   def up
     add_column :software_infos, :finality, :string, :limit => 140
-    
   end
 
   def down

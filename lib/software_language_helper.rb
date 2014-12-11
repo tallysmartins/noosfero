@@ -45,7 +45,7 @@ module SoftwareLanguageHelper
       ActionView::Helpers::FormOptionsHelper,
       ApplicationHelper
     )
-    
+
     lambdas_list = []
 
     if not show_information
@@ -55,7 +55,7 @@ module SoftwareLanguageHelper
         lambdas_list << language_html_structure(language)
       end
 
-    else 
+    else
       list_languages.each do |language|
         lambdas_list << language_html_show_structure(language)
       end

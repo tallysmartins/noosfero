@@ -10,7 +10,6 @@ class SearchCatalogBlock < Block
 
   def help
     _('This block displays the search categories field ')
-    
   end
 
   def content(args={})

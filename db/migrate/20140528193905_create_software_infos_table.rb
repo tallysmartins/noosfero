@@ -3,11 +3,11 @@ class CreateSoftwareInfosTable < ActiveRecord::Migration
     create_table :software_infos do |t|
       t.references :license_info
       t.references :community
-      t.boolean :e_mag, :default => false 
-      t.boolean :icp_brasil,:default => false 
-      t.boolean :intern, :default => false 
-      t.boolean :e_ping, :default => false 
-      t.boolean :e_arq, :default => false 
+      t.boolean :e_mag, :default => false
+      t.boolean :icp_brasil,:default => false
+      t.boolean :intern, :default => false
+      t.boolean :e_ping, :default => false
+      t.boolean :e_arq, :default => false
       t.string :name, :default => ' '
       t.string :operating_platform
       t.string :demonstration_url

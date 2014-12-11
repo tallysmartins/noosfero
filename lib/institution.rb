@@ -13,8 +13,8 @@ class Institution < ActiveRecord::Base
 
   has_and_belongs_to_many :users
 
-  attr_accessible :name, :acronym, :unit_code, :parent_code, :unit_type, 
-                  :sub_juridical_nature, :normalization_level, 
+  attr_accessible :name, :acronym, :unit_code, :parent_code, :unit_type,
+                  :sub_juridical_nature, :normalization_level,
                   :version, :cnpj, :type, :governmental_power, :governmental_sphere,
                   :sisp, :juridical_nature, :corporate_name
 
@@ -25,7 +25,7 @@ class Institution < ActiveRecord::Base
   before_save :verify_institution_type
 
   belongs_to :community
-  
+
   scope :search_institution, lambda{ |value|
     where("name ilike ? OR acronym ilike ?", "%#{value}%", "%#{value}%" )
   }

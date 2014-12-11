@@ -67,7 +67,7 @@ class SoftwareLanguageValidationTest < ActiveSupport::TestCase
     software_info.intern = true
     software_info.e_ping = true
     software_info.e_arq = true
-    software_info.operating_platform = 'GNU/Linux' 
+    software_info.operating_platform = 'GNU/Linux'
     software_info.features = "Do a lot of things"
     software_info.objectives = "All tests should pass !"
     software_info
