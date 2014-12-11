@@ -6,24 +6,22 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
   def edit_institution
     @show_sisp_field = environment.admins.include?(current_user.person)
-    @state_list = NationalRegion.find(:all, :conditions => { :national_region_type_id =>  2 }, :order => 'name')
+    @state_list = NationalRegion.find(:all, :conditions =>
+                                            { :national_region_type_id =>  2 },
+                                             :order => 'name')
     @institution = @profile.institution
     update_institution if request.post?
   end
 
   def new_software
-    software_template = Community['software']
-    if !software_template.blank? && software_template.is_template
-      params["community"]["template_id"] = software_template.id unless params["community"].blank?
-    end
-
+    set_software_as_template
     @community = Community.new(params[:community])
     @community.environment = environment
     @software_info = SoftwareInfo.new(params[:software_info])
     @license_info = if params[:license_info].nil?
       LicenseInfo.new
     else
-      LicenseInfo.find(:first, :conditions =>["version = ?","#{params[:license_info][:version]}"])
+      LicenseInfo.find(:first, :conditions => ["version = ?","#{params[:license_info][:version]}"])
     end
     control_software_creation
   end
@@ -38,7 +36,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     update_software_atributes
 
     return unless request.post?
-    constroy_software
+    @software_info = constroy_software
     software_info_insert_models.call(@list_libraries, 'libraries')
     software_info_insert_models.call(@list_languages, 'software_languages')
     software_info_insert_models.call(@list_operating_systems, 'operating_systems')
@@ -49,6 +47,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
         redirect_to :controller => 'profile_editor', :action => 'edit'
       else
         redirect_to :controller => 'profile_editor', :action => 'index'
+        session[:notice] = _('Software updated sucessefuly')
       end
     rescue ActiveRecord::RecordInvalid => invalid
     end
@@ -117,6 +116,14 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @software_info.license_info = @license
     @software_info.update_attributes(params[:software])
 
+    create_list_model_helpers
+
+    @software_categories = SoftwareCategories::new params[:software_categories]
+    @software_info.software_categories = @software_categories unless params[:software_categories].nil?
+    @software_info
+  end
+
+  def create_list_model_helpers
     @list_libraries = LibraryHelper.list_libraries(params[:library])
     @list_languages = SoftwareLanguageHelper.list_language(params[:language])
     @list_databases = DatabaseHelper.list_database(params[:database])
@@ -129,15 +136,10 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
                          :environment => environment,
                         :name => params[:community][:name],
                         :license_info => @license_info }))
-    unless params[:q].nil?
-      admins = params[:q].split(/,/).map{ |n| environment.people.find n.to_i }
 
-      admins.each do |admin|
-        @community.add_member(admin)
-        @community.add_admin(admin)
-      end
-    end
-    if !environment.admins.include?(current_user.person)
+    add_admin_to_community
+
+    if  !environment.admins.include?(current_user.person)
       session[:notice] = _('Your new software request will be evaluated by an'\
                            'administrator. You will be notified.')
       redirect_to user.admin_url
@@ -155,5 +157,23 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @list_languages = @software_info.software_languages
     @list_operating_systems = @software_info.operating_systems
     @disabled_public_software_field = disabled_public_software_field
+  end
+
+  def set_software_as_template
+    software_template = Community['software']
+    software_valid = !software_template.blank? && software_template.is_template && !params['community'].blank?
+    if software_valid
+      params['community']['template_id'] = software_template.id if software_valid
+    end
+  end
+
+  def add_admin_to_community
+    unless params[:q].nil?
+      admins = params[:q].split(/,/).map{ |n| environment.people.find n.to_i }
+      admins.each do |admin|
+        @community.add_member(admin)
+        @community.add_admin(admin)
+      end
+    end
   end
 end

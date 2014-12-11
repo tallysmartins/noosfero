@@ -21,7 +21,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def profile_editor_extras
     if context.profile.person?
       expanded_template('person_editor_extras.html.erb')
-    elsif context.profile.respond_to? :software_info &&
+    elsif context.profile.respond_to?(:software_info) &&
           !context.profile.software_info.nil?
 
       if context.profile.software_info.first_edit?
