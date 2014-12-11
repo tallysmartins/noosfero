@@ -1,4 +1,0 @@
-# This file is an example for a crontab file used to update insitutions from
-# the web service, SIORG.
-
-@weekly root cd /usr/share/noosfero && rails runner plugins/mpog_software/bin/update_institutions

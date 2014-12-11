@@ -1,6 +1,0 @@
-#!/usr/bin/env ruby
-# encoding: utf-8
-require "net/http"
-include InstitutionHelper
-
-InstitutionHelper.mass_update
