@@ -87,6 +87,7 @@ ln -s /var/log/gitlab      %{buildroot}/usr/lib/gitlab/log
 ln -s /var/lib/gitlab/tmp  %{buildroot}/usr/lib/gitlab/tmp
 ln -s /var/lib/gitlab/.gitlab_shell_secret %{buildroot}/usr/lib/gitlab/.gitlab_shell_secret
 ln -s /var/lib/gitlab/.secret %{buildroot}/usr/lib/gitlab/.secret
+ln -s /var/lib/gitlab-assets %{buildroot}/usr/lib/gitlab/public/assets
 
 %post
 groupadd git || true
@@ -111,8 +112,11 @@ if [ /usr/bin/redis-server ]; then
   service redis enable
 fi
 
+mkdir -p /var/lib/gitlab-assets
+
 cd /usr/lib/gitlab/
 yes yes | sudo -u git bundle exec rake gitlab:setup RAILS_ENV=production
+bundle exec rake assets:precompile RAILS_ENV=production
 
 %postun
 #TODO Remove
