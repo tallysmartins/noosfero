@@ -72,6 +72,11 @@ class SearchControllerTest < ActionController::TestCase
 
   should "Don't found template in communities search" do
     community = create_community("New Community")
+    software = create_software_info("New Software")
+    software.license_info = LicenseInfo.create(:version => "GPL")
+    software.save!
+
+    institution = create_private_institution("New Private Institution", "NPI" , "Brazil", "DF", "Gama", "66.544.314/0001-63")
 
     community_template = create_community("New Community Template")
     community_template.is_template = true
@@ -86,10 +91,14 @@ class SearchControllerTest < ActionController::TestCase
     )
   end
 
-  should "Don't found template in software_infos search" do
-    software = create_software_info("New Software")
-    software.license_info = LicenseInfo.create(:version => "GPL")
-    software.save!
+  should "software_infos search by category" do
+    software_with_category = create_software_info("New Software With Category")
+    software_with_category.license_info = LicenseInfo.create(:version => "GPL")
+
+    software_without_category = create_software_info("New Software Without Category")
+    software_without_category.license_info = LicenseInfo.create(:version => "GPL")
+
+    category = Category.create!(:name => "Health", :environment => @environment, :parent => @category_software)
 
     software_template = create_software_info("New Software Template")
     software_template.license_info = LicenseInfo.last
