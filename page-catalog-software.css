@@ -1,8 +1,10 @@
+/*controller-search action-search-software_infos template-default webkit*/
+
 #catalog-filter{
   display: none;
 }
 
-#content #main-content-wrapper-8 h1{
+.action-search-software_infos #content #main-content-wrapper-8 h1{
   border-top: 3px solid #4562b1 !important;
   color: #4562b1 !important;
   text-transform: uppercase;
@@ -14,10 +16,15 @@
   background-color:#f1f1f1;
 }
 
-#main-content-wrapper-8 .search-form{
+.action-search-software_infos #main-content-wrapper-8 .search-form{
   margin-top:-10px;
   background-color:#f1f1f1;
 }
+
+.action-search-software_infos .search-results-header {
+border-bottom: 2px solid #ccc !important;
+}
+
 #search-input {
   font-size:110%;
   margin: 0px 0px 20px 15px;
@@ -41,37 +48,43 @@
   margin-bottom: 20px;
   margin-left:32px;
   color:#ffffff;
-  background-color:#4562b1;
+  /*background-color:#4562b1;*/
   text-transform: uppercase;
   font-weight: bold;
-  border: 1px solid #4562b1;
+  /*border: 1px solid #4562b1;*/
   padding:0px;
 }
-.icon-search{
+.action-search-software_infos #content input.button{
+    background-color:#4562b1;
+    border: 1px solid #4562b1;
+
+
+}
+
+.action-search-software_infos .icon-search{
   background-image:none !important;
 
 }
 
 .controller-search .search-field .formfield {
   width: 720px;
-  display: inline-block;
 }
 
-.only-one-result-box .search-enterprise-item {
+.action-search-software_infos .only-one-result-box .search-enterprise-item {
   padding: 50px 0 !important;
   background: #ffffff;
 }
 
-.search-results-innerbox {
+.action-search-software_infos .search-results-innerbox {
   border:none;
 }
 
-.common-profile-list-block .vcard:hover {
+.action-search-software_infos .common-profile-list-block .vcard:hover {
   border: none;
   background: none;
 }
 
-.common-profile-list-block .vcard:hover .menu-submenu-trigger {
+.action-search-software_infos .common-profile-list-block .vcard:hover .menu-submenu-trigger {
   display:none;
 }
 /*
@@ -80,25 +93,25 @@
 }
 */
 
-.search-enterprise-item-column-left{
+.action-search-software_infos .search-enterprise-item-column-left{
   border-right: 2px solid #ccc;
   padding: 0px 50px 0px 10px;
   margin:none;
 }
 
-.search-enterprise-item-column-right{
+.action-search-software_infos .search-enterprise-item-column-right{
   width:70%;
 }
 
-.common-profile-list-block .vcard {
+.action-search-software_infos .common-profile-list-block .vcard {
   border: none;
 }
 
-.org {
+.action-search-software_infos .org {
   display:none !important;
 }
 
-.search-enterprise-item-column-left .vcard img {
+.action-search-software_infos .search-enterprise-item-column-left .vcard img {
   max-width: 90px;
   height: auto;
   max-height: 90px;
@@ -112,27 +125,27 @@ border: none;
 /* max-height: 50px; 
 }*/
 
-.common-profile-list-block .profile-image{
+.action-search-software_infos .common-profile-list-block .profile-image{
   padding:20px 40px;
   margin-left:50px;
 }
-.common-profile-list-block span {
+.action-search-software_infos .common-profile-list-block span {
   width: 50% !important;
 }
 
-.common-profile-list-block .extra_info {
+.action-search-software_infos .common-profile-list-block .extra_info {
   font-size: 13px;
   opacity: inherit;
-  margin-top:-95px;
+  margin-top:-100px;
   margin-bottom:100px;
   text-align: left;
 
 }
-.search-enterprise-item .search-enterprise-item-column-right {
+.action-search-software_infos .search-enterprise-item .search-enterprise-item-column-right {
   font-size: 13px;
   margin:-20px;
 }
-.search-enterprise-item-column-right .search-community-content-block h4 a {
+.action-search-software_infos .search-enterprise-item-column-right .search-community-content-block h4 a {
   color:#172938 !important;
   font-size:19px !important;
 }
