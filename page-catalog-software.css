@@ -1,0 +1,163 @@
+#catalog-filter{
+  display: none;
+}
+
+#content #main-content-wrapper-8 h1{
+  border-top: 3px solid #4562b1 !important;
+  color: #4562b1 !important;
+  text-transform: uppercase;
+  font-size: 19px !important;
+  padding-left: 0.8em !important;
+  /*padding: 0px;*/
+  margin-left: 0px;
+  border-bottom:none !important;
+  background-color:#f1f1f1;
+}
+
+#main-content-wrapper-8 .search-form{
+  margin-top:-10px;
+  background-color:#f1f1f1;
+}
+#search-input {
+  font-size:110%;
+  margin: 0px 0px 20px 15px;
+  border-radius: 4px;
+  padding: 0.55em;
+}
+
+#search-input.blur {
+  font-size:110%;
+  font-style: normal;
+  color: #aaa;
+  margin: 0px 0px 20px 15px;
+  border-radius:4px;
+  padding:0.55em;
+}
+
+.controller-search #content form input.button.submit {
+  height: 30px;
+  max-height: 30px;
+  width: 87px;
+  margin-bottom: 20px;
+  margin-left:32px;
+  color:#ffffff;
+  background-color:#4562b1;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 1px solid #4562b1;
+  padding:0px;
+}
+.icon-search{
+  background-image:none !important;
+
+}
+
+.controller-search .search-field .formfield {
+  width: 720px;
+  display: inline-block;
+}
+
+.only-one-result-box .search-enterprise-item {
+  padding: 50px 0 !important;
+  background: #ffffff;
+}
+
+.search-results-innerbox {
+  border:none;
+}
+
+.common-profile-list-block .vcard:hover {
+  border: none;
+  background: none;
+}
+
+.common-profile-list-block .vcard:hover .menu-submenu-trigger {
+  display:none;
+}
+/*
+.common-profile-list-block .profile-image {
+  padding:0px 200px;
+}
+*/
+
+.search-enterprise-item-column-left{
+  border-right: 2px solid #ccc;
+  padding: 0px 50px 0px 10px;
+  margin:none;
+}
+
+.search-enterprise-item-column-right{
+  width:70%;
+}
+
+.common-profile-list-block .vcard {
+  border: none;
+}
+
+.org {
+  display:none !important;
+}
+
+.search-enterprise-item-column-left .vcard img {
+  max-width: 90px;
+  height: auto;
+  max-height: 90px;
+  margin-left:90px;
+}
+
+/*
+.common-profile-list-block img {
+border: none;
+/* max-width: 50px; */
+/* max-height: 50px; 
+}*/
+
+.common-profile-list-block .profile-image{
+  padding:20px 40px;
+  margin-left:50px;
+}
+.common-profile-list-block span {
+  width: 50% !important;
+}
+
+.common-profile-list-block .extra_info {
+  font-size: 13px;
+  opacity: inherit;
+  margin-top:-95px;
+  margin-bottom:100px;
+  text-align: left;
+
+}
+.search-enterprise-item .search-enterprise-item-column-right {
+  font-size: 13px;
+  margin:-20px;
+}
+.search-enterprise-item-column-right .search-community-content-block h4 a {
+  color:#172938 !important;
+  font-size:19px !important;
+}
+
+/*.search-community-content-block {
+  display:none;
+}
+
+/*
+.extra_info{
+  text-align: left;
+  padding: 0px; 
+  margin: 0px 0px 0px 0px;  
+}
+
+*/
+
+/*
+img {
+display: block;
+text-align: center;
+width: 150px;
+height: 90px;
+padding-top: 20px;
+padding-bottom: 30px;
+overflow: hidden;
+}
+*/
