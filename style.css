@@ -407,9 +407,10 @@ p {
   width: 190px; /*230px;*/
 }
 
+
 .box-2 .block .block-inner-2,
 .box-3 .block .block-inner-2{
-    padding: 0 0 1em;
+/*    padding: 0 0 1em;*/
 }
 
 
@@ -434,7 +435,7 @@ p {
     font-size: 12px;
     text-align: left;
     border-bottom: none;
-    padding: 8px 8px 22px 10px;
+    padding: 5px 8px 18px 7px;
     text-transform: uppercase;
     font-family: "open_sansbold", Arial, Helvetica, sans-serif;
     font-variant: normal;
@@ -475,9 +476,10 @@ p {
 
 
 #content .box-1 .block-title {
-    font-size: 20px;
+    font-size: 18px;
     text-transform: none;
     font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+    padding: 5px 8px 20px 10px;
 }
 
 #content .box-1 .block-title span{
@@ -487,17 +489,18 @@ p {
 
 /* Bloco de busca pagina inicial*/
 #content .search-catalog-block h1 {
-    padding: 10px 10px 0 10px;
+    margin: 0 15px 10px 15px;
+    padding: 10px 0 0 0;
 }
 
 #content .search-catalog-block form {
-    padding: 0 10px 10px 10px;
+/*    padding: 0 15px;*/
 }
 
 #content .search-catalog-block #search-catalog-footer a {
     display: block;
     color: #FFF;
-    padding: 10px;
+    padding: 5px 0px 10px 0px;
 }
 
 #content .search-catalog-block #search-catalog-footer p {
@@ -549,12 +552,19 @@ p {
 }
 
 #content .link-list-block li a {
-    line-height: 20px;
-    padding:10px 0px;
+    line-height: 17px;
+    padding: 6px 0px 8px 0px;
 }
 
 #content .link-list-block h3.empty + ul {
     border-top: 1px solid #ddd;
+}
+
+/* Menus que nao tiverem titulo, nao tem padding left e right e nao mostra os icones caso seja inserido */
+#content .link-list-block h3.empty + ul li a {
+    padding-left: 0px;
+    padding-right: 0px;
+    background-image: none;
 }
 
 #content .link-list-block li {
@@ -704,7 +714,7 @@ p {
 }
 
 .block-outer {
-    margin-top: 45px;
+    margin-bottom: 45px;
     clear: both;
 }
 
