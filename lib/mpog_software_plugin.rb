@@ -177,24 +177,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
-  def custom_user_registration_attributes user
-    unless context.params[:user][:institution_ids].nil?
-      context.params[:user][:institution_ids].delete("")
-
-      context.params[:user][:institution_ids].each do |institution_id|
-        institution = Institution.find institution_id
-        user.institutions << institution
-        institution.community.add_admin(user.person) if institution.community.admins.blank?
-      end
-    end
-    user.save unless user.institution_ids.empty?
-
-    user.institutions.each do |institution|
-      community = institution.community
-      community.add_member user.person
-    end
-  end
-
   def calc_percentage_registration person
     required_list = profile_required_list
     empty_fields = profile_required_empty_list person
@@ -349,19 +331,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       else
         raise 'Invalid Software Language fields'
       end
-    end
-  end
-
-  def add_new_search_filter
-    if context.params[:action] == "communities"
-      @active_type = if context.params[:type] == "Software"
-        "software"
-      elsif context.params[:type] == "Institution"
-        "institution"
-      else
-        "community"
-      end
-      expanded_template('search/search_community_filter.html.erb')
     end
   end
 
