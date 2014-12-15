@@ -33,45 +33,16 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def profile_editor_transaction_extras
-    if context.profile.respond_to?(:software_info)
-      if context.params.has_key?(:software_info)
-        software_info_transaction
-      end
+      single_hash_transactions = {:user => "user", :software_info => "software_info",
+                                  :version => "license", :language => "language",
+                                  :operating_system => "operating_system",
+                                  :software_categories => "software_categories",
+                                  :instituton => "instituton", :library => "libraries"}
 
-      if context.params.has_key?(:library)
-        libraries_transaction
+      single_hash_transactions.each do |model,transaction|
+        call_model_transaction(model,transaction)
       end
-
-      if context.params.has_key?(:version)
-        license_transaction
-      end
-
-      if context.params.has_key?(:language)
-        language_transaction
-      end
-
-      if context.params.has_key?(:database)
-        databases_transaction
-      end
-
-      if context.params.has_key?(:operating_system)
-        operating_system_transaction
-      end
-      if context.params.has_key?(:institution) ||
-          context.params.has_key?(:governmental_power) ||
-          context.params.has_key?(:governmental_sphere)
-
-        institution_transaction
-      end
-
-      if context.params.has_key?(:software_categories)
-        software_categories_transaction
-      end
-    elsif context.profile.respond_to?(:user)
-      if context.params.has_key?(:user)
-        user_transaction
-      end
-    end
+      
   end
 
   def profile_editor_controller_filters
@@ -479,5 +450,9 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def show_sisp_field
     current_person = User.find(context.session[:user]).person
     context.environment.admins.include?(current_person)
+  end
+
+  def call_model_transaction(model,name)
+      send(name + '_transaction') if context.params.has_key?(model.to_sym)
   end
 end
