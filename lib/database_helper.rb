@@ -64,84 +64,38 @@ module DatabaseHelper
   end
 
   def self.database_html_structure(database_data)
-    database_name = if database_data[:database_description_id].blank?
-      ""
+    database_name, database_id = if database_data[:database_description_id].blank?
+      ["", ""]
     else
-      DatabaseDescription.find(
+      [DatabaseDescription.find(
         database_data[:database_description_id],
         :select=>"name"
-      ).name
+      ).name, database_data[:database_description_id]]
     end
 
-    Proc::new do
-      content_tag(
-        'table',
-        content_tag(
-          'tr',
-          content_tag('td', label_tag(_("database Name: ")))+
-          content_tag(
-            'td',
-            text_field_tag(
-              "database_autocomplete",
-              database_name,
-              :class=>"database_autocomplete",
-              :placeholder=>_("Autocomplete field, type something")
-            ) +
-            content_tag(
-              'div',
-              _("Pick an item on the list"),
-              :class=>"autocomplete_validation_message hide-field"
-            )
-          )+
-          content_tag(
-            'td',
-            hidden_field_tag(
-              "database[][database_description_id]",
-              database_data[:database_description_id],
-              :class => "database_description_id",
-              :data => {:label => database_name}
-            )
-          )
-        )+
+    data = {
+      model_name: "database",
+      field_name: "database_description_id",
+      name: {
+        label: _("Name"),
+        value: database_name,
+        hidden: true,
+        autocomplete: true,
+        id: database_id
+      },
+      version: {
+        label: _("Version"),
+        value: database_data[:version],
+        hidden: true
+      },
+      operating_system: {
+        label: _("Operating system"),
+        value: database_data[:operating_system],
+        delete: true
+      }
+    }
 
-        content_tag(
-          'tr',
-          content_tag('td', label_tag(_("Version")))+
-          content_tag(
-            'td',
-            text_field_tag(
-              "database[][version]",
-              database_data[:version],
-              :maxlength=>"20"
-            )
-          )+
-          content_tag('td')
-        )+
-
-          content_tag(
-            'tr',
-            content_tag('td', label_tag(_("Operating System")))+
-            content_tag(
-              'td',
-              text_field_tag(
-                "database[][operating_system]",
-                database_data[:operating_system],
-                :maxlength=>"20"
-              )
-            )+
-            content_tag(
-              'td',
-              button_without_text(
-                :delete,
-                _('Delete'),
-                "#" ,
-                :class=>"delete-dynamic-table"
-              ),
-              :align => 'right'
-            )
-        ), :class => 'dynamic-table database-table'
-      )
-    end
+    DynamicTableHelper.table_html_structure(data)
   end
 
   def self.add_dynamic_table
