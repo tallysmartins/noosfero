@@ -116,9 +116,9 @@ Given /^the following softwares$/ do |table|
     software_info.community = Community.create(:name=>item[:name])
 
     software_info.acronym = item[:acronym] if item[:acronym]
-    software_info.acronym = item[:operating_platform] if item[:operating_platform]
-    software_info.acronym = item[:objectives] if item[:objectives]
-    software_info.acronym = item[:features] if item[:features]
+    software_info.operating_platform = item[:operating_platform] if item[:operating_platform]
+    software_info.objectives = item[:objectives] if item[:objectives]
+    software_info.features = item[:features] if item[:features]
     software_info.public_software = item[:public_software] == "true" if item[:public_software]
 
     if item[:software_language]

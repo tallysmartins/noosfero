@@ -9,7 +9,7 @@ class JuridicalNature < ActiveRecord::Base
   def public_institutions
     Institution.where(
       :type=>"PublicInstitution",
-      :governmental_power_id=>self.id
+      :juridical_nature_id=>self.id
     )
   end
 end

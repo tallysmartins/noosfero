@@ -10,37 +10,6 @@ class Person
 
   delegate :login, :to => :user, :prefix => true
 
-  scope :search, lambda { |name="", state="", city="", email=""|
-    like_sql = ""
-    values = []
-
-    unless name.blank?
-      like_sql << "name ILIKE ? OR identifier ILIKE ? AND "
-      values << "%#{name}%" << "%#{name}%"
-    end
-
-    unless state.blank?
-      like_sql << "data ILIKE ? AND "
-      values << "%:state: %#{state}%"
-    end
-
-    unless city.blank?
-      like_sql << "data ILIKE ? AND "
-      values << "%:city: %#{city}%"
-    end
-
-    unless email.blank?
-      like_sql << "email ILIKE ? AND "
-      values << "%#{email}%"
-    end
-    like_sql = like_sql[0..like_sql.length-5]
-
-    {
-      :joins => :user,
-      :conditions=>[like_sql, *values]
-    }
-  }
-
   def institutions
     institutions = []
     unless self.user.institutions.nil?

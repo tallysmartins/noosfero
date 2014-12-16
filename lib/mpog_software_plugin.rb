@@ -42,7 +42,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       single_hash_transactions.each do |model,transaction|
         call_model_transaction(model,transaction)
       end
-      
+
   end
 
   def profile_editor_controller_filters

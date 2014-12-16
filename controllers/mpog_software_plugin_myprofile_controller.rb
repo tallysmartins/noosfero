@@ -15,7 +15,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
   def new_software
     set_software_as_template
-    
+
     @community = Community.new(params[:community])
     @community.environment = environment
     @software_info = SoftwareInfo.new(params[:software_info])
@@ -55,6 +55,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
         session[:notice] = _('Software updated sucessefuly')
       end
     rescue ActiveRecord::RecordInvalid => invalid
+      session[:notice] = _('Could not update software')
     end
   end
 

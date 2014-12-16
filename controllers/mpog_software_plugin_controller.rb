@@ -113,17 +113,12 @@ class MpogSoftwarePluginController < ApplicationController
     condition = !request.xhr? || params[:query].nil? || params[:field].nil?
     return render :json=>{} if condition
 
-    model = case params[:field]
-            when "software_language"
-              ProgrammingLanguage
-            else
-              DatabaseDescription
-            end
+    model = get_model_by_params_field
 
     data = model.where("name ILIKE ?", "%#{params[:query]}%").select("id, name")
-    data = data.collect { |db|
-      {:id=>db.id, :label=>db.name}
-    }
+                .collect { |db|
+                  {:id=>db.id, :label=>db.name}
+                }
 
     other = [model.select("id, name").last].collect { |db|
       {:id=>db.id, :label=>db.name}
@@ -234,6 +229,15 @@ class MpogSoftwarePluginController < ApplicationController
     else
       flash[:errors] = response_message[:errors]
       redirect_to :controller => "mpog_software_plugin", :action => "create_institution_admin"
+    end
+  end
+
+  def get_model_by_params_field
+    case params[:field]
+    when "software_language"
+      return ProgrammingLanguage
+    else
+      return DatabaseDescription
     end
   end
 end
