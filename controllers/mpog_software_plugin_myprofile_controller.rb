@@ -44,6 +44,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @software_info = constroy_software
     software_info_insert_models.call(@list_libraries, 'libraries')
     software_info_insert_models.call(@list_languages, 'software_languages')
+    software_info_insert_models.call(@list_databases, 'software_databases')
     software_info_insert_models.call(@list_operating_systems, 'operating_systems')
 
     begin
