@@ -300,26 +300,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def institution_transaction
     institution.date_modification = DateTime.now
     institution.save
+    institution_models = %w(governmental_power governmental_sphere juridical_nature)
 
-    if context.params.has_key?(:governmental_power)
-      context.profile.institution.governmental_power_id =
-        context.params[:governmental_power]
-
-      context.profile.institution.save!
-    end
-
-    if context.params.has_key?(:governmental_sphere)
-      context.profile.institution.governmental_sphere_id =
-        context.params[:governmental_sphere]
-
-      context.profile.institution.save!
-    end
-
-    if context.params.has_key?(:juridical_nature)
-      context.profile.institution.juridical_nature_id =
-        context.params[:juridical_nature]
-
-      context.profile.institution.save!
+    institution_models.each do |model|
+      call_institution_transaction(model)
     end
 
     if context.params.has_key?(:institution)
@@ -454,5 +438,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def call_model_transaction(model,name)
       send(name + '_transaction') if context.params.has_key?(model.to_sym)
+  end
+
+  def call_institution_transaction(model)
+    context.profile.institution.send(model + '_id = ', context.params[model.to_sym])
+    context.profile.institution.save!
   end
 end
