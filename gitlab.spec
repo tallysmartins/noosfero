@@ -79,6 +79,8 @@ mv config/gitlab.yml              %{buildroot}/etc/gitlab/gitlab.yml
 cp config/unicorn.rb.example      %{buildroot}/etc/gitlab/unicorn.rb
 cp config/database.yml.postgresql %{buildroot}/etc/gitlab/database.yml 
 
+sed -i 's/\/home\/\git/\/usr\/lib/' %{buildroot}/etc/gitlab/unicorn.rb
+
 mkdir -p %{buildroot}/usr/lib/gitlab
 cp -r app bin config config.ru db doc GITLAB_SHELL_VERSION lib Procfile public Rakefile vendor VERSION %{buildroot}/usr/lib/gitlab/
 mv %{buildroot}/usr/lib/gitlab/config/initializers/rack_attack.rb.example %{buildroot}/usr/lib/gitlab/config/initializers/rack_attack.rb
@@ -99,7 +101,6 @@ fi
 if [ -x /usr/bin/postgres ]; then
   service postgresql initdb || true
   service postgresql start
-  service postgresql enable
   sudo -u postgres createuser --createdb git || true
 fi
 mkdir -p /var/log/gitlab
@@ -111,7 +112,6 @@ mkdir -p /var/lib/gitlab/tmp
 chown -R git:git /var/lib/gitlab
 if [ /usr/bin/redis-server ]; then
   service redis start
-  service redis enable
 fi
 
 mkdir -p /var/lib/gitlab-assets
