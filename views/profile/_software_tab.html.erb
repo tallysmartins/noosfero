@@ -50,11 +50,13 @@
   <tr>
     <td>
       <table class = "database-info dynamic-table">
-        <%= content_tag('tr', content_tag('td', _("Program Database")) + content_tag('td', '')) %>
-        <% profile.software_info.software_databases.each do |database| %>
-          <%= display_mpog_field(_('Name:'), DatabaseDescription.find(database.database_description_id), :name, true) %>
-          <%= display_mpog_field(_('Version:'), database, :version, true) %>
-        <% end %>
+        <%= content_tag('tr', content_tag('td', _("Software Databases")) + content_tag('td', '')) %>
+        <tr> <td>
+          <% databases = profile.software_info.software_databases %>
+          <% DatabaseHelper.database_as_tables(databases, true).each do |tab| %>
+            <%= tab.call %>
+          <%end%>
+        </td> </tr>
       </table>
     </td>
   </tr>
@@ -68,11 +70,13 @@
   <tr>
     <td>
       <table class = "language-info dynamic-table">
-       <%= content_tag('tr', content_tag('td', _("Programming Language")) + content_tag('td', '')) %>
-       <% profile.software_info.software_languages.each do |language| %>
-         <%= display_mpog_field(_('Name:'), language.programming_language , :name, true) %>
-         <%= display_mpog_field(_('Version:'), language, :version, true) %>
-       <% end %>
+       <%= content_tag('tr', content_tag('td', _("Software Languages")) + content_tag('td', '')) %>
+        <tr> <td>
+          <% languages = profile.software_info.software_languages %>
+          <% SoftwareLanguageHelper.language_as_tables(languages, true).each do |tab| %>
+            <%= tab.call %>
+          <%end%>
+        </td> </tr>
      </table>
    </td>
  </tr>

@@ -3,8 +3,7 @@ module SoftwareLanguageHelper
   FIELD_NAME = "programming_language_id"
   COLLUMN_NAME = {
     name: "name",
-    version: "version",
-    operating_system: "operating_system"
+    version: "version"
   }
 
   def self.valid_language? language
@@ -29,7 +28,6 @@ module SoftwareLanguageHelper
         language.programming_language =
           ProgrammingLanguage.find(new_language[:programming_language_id])
         language.version = new_language[:version]
-        language.operating_system = new_language[:operating_system]
         list_languages << language
       end
     end
@@ -47,21 +45,21 @@ module SoftwareLanguageHelper
     true
   end
 
-  def self.language_as_tables(list_languages)
+  def self.language_as_tables(list_languages, disabled=false)
     return language_html_structure(
-      {:programming_language_id => "", :version => "", :operating_system => ""}
+      {:programming_language_id => "", :version => ""}, disabled
     ) if list_languages.nil?
 
     lambdas_list = []
 
     list_languages.each do |language|
-      lambdas_list << language_html_structure(language)
+      lambdas_list << language_html_structure(language, disabled)
     end
 
     lambdas_list
   end
 
-  def self.language_html_structure(language_data)
+  def self.language_html_structure(language_data, disabled)
     language_id = language_data[:programming_language_id]
     language_name = if language_data[:programming_language_id].blank?
       ""
@@ -92,7 +90,7 @@ module SoftwareLanguageHelper
       }
     }
 
-    DynamicTableHelper.table_html_structure(data)
+    DynamicTableHelper.table_html_structure(data, disabled)
   end
 
   def self.add_dynamic_table

@@ -9,11 +9,12 @@ module DynamicTableHelper
   LABEL_TEXT = {
     :name => _("Name"),
     :version => _("Version"),
-    :operating_system => _("Operating system"),
     :license => _("License")
   }
+  @disabled = false
 
-  def self.table_html_structure data={}
+  def self.table_html_structure data={}, disabled=false
+    @disabled = disabled
     Proc::new do
       content_tag :table , DynamicTableHelper.generate_table_lines(data), :class => "dynamic-table"
     end
@@ -46,7 +47,7 @@ module DynamicTableHelper
     content_tag :td, label_tag(label)
   end
 
-  def self.value_collumn value="", name="", autocomplete=false
+  def self.value_collumn value="", name="", autocomplete=false, disabled=false
     html_options =
       if autocomplete
         {
@@ -57,6 +58,7 @@ module DynamicTableHelper
         {}
       end
 
+    html_options[:disabled] = @disabled
     if autocomplete
       content_tag :td, text_field_tag("#{@model}_autocomplete", value, html_options)
     else
@@ -66,7 +68,9 @@ module DynamicTableHelper
 
   def self.hidden_collumn delete=false, hidden_data=false
     value =
-      if delete
+      if @disabled
+        nil
+      elsif delete
         button_without_text(
           :delete, _('Delete'), "#" , :class=>"delete-dynamic-table"
         )

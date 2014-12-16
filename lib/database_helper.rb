@@ -3,8 +3,7 @@ module DatabaseHelper
   FIELD_NAME = "database_description_id"
   COLLUMN_NAME = {
     name: "name",
-    version: "version",
-    operating_system: "operating_system"
+    version: "version"
   }
 
   def self.valid_database? database
@@ -30,7 +29,6 @@ module DatabaseHelper
           new_database[:database_description_id]
 
         database.version = new_database[:version]
-        database.operating_system = new_database[:operating_system]
         list_databases << database
       end
     end
@@ -48,21 +46,21 @@ module DatabaseHelper
     true
   end
 
-  def self.database_as_tables(list_databases)
+  def self.database_as_tables(list_databases, disabled=false)
     return database_html_structure(
-      {:database_description_id => "", :version => "", :operating_system => ""}
+      {:database_description_id => "", :version => ""}, disabled
     ) if list_databases.nil?
 
     lambdas_list = []
 
     list_databases.each do |database|
-      lambdas_list << database_html_structure(database)
+      lambdas_list << database_html_structure(database, disabled)
     end
 
     lambdas_list
   end
 
-  def self.database_html_structure(database_data)
+  def self.database_html_structure(database_data, disabled)
     database_id = database_data[:database_description_id]
     database_name = if database_data[:database_description_id].blank?
       ""
@@ -93,7 +91,7 @@ module DatabaseHelper
       }
     }
 
-    DynamicTableHelper.table_html_structure(data)
+    DynamicTableHelper.table_html_structure(data, disabled)
   end
 
   def self.add_dynamic_table
