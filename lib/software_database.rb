@@ -16,7 +16,7 @@ class SoftwareDatabase < ActiveRecord::Base
     :too_long => _("Software database is too long (maximum is 20 characters)")
   )
 
-  validates_presence_of :database_description_id, :version, :operating_system
+  validates_presence_of :database_description_id, :version
   validates(
     :database_description_id,
     :numericality => {:greater_than_or_equal_to => 1}

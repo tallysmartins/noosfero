@@ -88,12 +88,7 @@ module DatabaseHelper
         label: DynamicTableHelper::LABEL_TEXT[:version],
         value: database_data[:version],
         name: COLLUMN_NAME[:version],
-        hidden: true
-      },
-      operating_system: {
-        label: DynamicTableHelper::LABEL_TEXT[:operating_system],
-        value: database_data[:operating_system],
-        name: COLLUMN_NAME[:operating_system],
+        hidden: true,
         delete: true
       }
     }

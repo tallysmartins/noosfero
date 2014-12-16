@@ -13,13 +13,13 @@ module DynamicTableHelper
     :license => _("License")
   }
 
-  def self.table_html_structure data
+  def self.table_html_structure data={}
     Proc::new do
       content_tag :table , DynamicTableHelper.generate_table_lines(data), :class => "dynamic-table"
     end
   end
 
-  def self.generate_table_lines data
+  def self.generate_table_lines data={}
     @model = data[:model_name].to_css_class
     @field_name = data[:field_name]
     @value = data[:name][:value]
@@ -28,23 +28,25 @@ module DynamicTableHelper
     [
       self.table_line(data[:name]),
       self.table_line(data[:version]),
-      self.table_line(data[:operating_system]||data[:license])
+      self.table_line(data[:license])
     ].join()
   end
 
-  def self.table_line row_data
-    content_tag :tr, [
-      self.label_collumn(row_data[:label]),
-      self.value_collumn(row_data[:value], row_data[:name], row_data[:autocomplete]),
-      self.hidden_collumn(row_data[:delete], row_data[:hidden])
-    ].join()
+  def self.table_line row_data={}
+    if !row_data.blank?
+      content_tag :tr, [
+        self.label_collumn(row_data[:label]),
+        self.value_collumn(row_data[:value], row_data[:name], row_data[:autocomplete]),
+        self.hidden_collumn(row_data[:delete], row_data[:hidden])
+      ].join()
+    end
   end
 
-  def self.label_collumn label
+  def self.label_collumn label=""
     content_tag :td, label_tag(label)
   end
 
-  def self.value_collumn value, name, autocomplete=false
+  def self.value_collumn value="", name="", autocomplete=false
     html_options =
       if autocomplete
         {
@@ -55,7 +57,11 @@ module DynamicTableHelper
         {}
       end
 
-    content_tag :td, text_field_tag("#{@model}[][#{name}]", value, html_options)
+    if autocomplete
+      content_tag :td, text_field_tag("#{@model}_autocomplete", value, html_options)
+    else
+      content_tag :td, text_field_tag("#{@model}[][#{name}]", value, html_options)
+    end
   end
 
   def self.hidden_collumn delete=false, hidden_data=false

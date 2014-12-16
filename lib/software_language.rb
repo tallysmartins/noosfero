@@ -16,5 +16,5 @@ class SoftwareLanguage < ActiveRecord::Base
     :too_long => _("Software language is too long (maximum is 20 characters)")
   )
 
-  validates_presence_of :version,:programming_language,:operating_system
+  validates_presence_of :version,:programming_language
 end

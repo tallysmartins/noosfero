@@ -47,25 +47,15 @@ module SoftwareLanguageHelper
     true
   end
 
-  def self.language_as_tables(list_languages, show_information = false)
+  def self.language_as_tables(list_languages)
+    return language_html_structure(
+      {:programming_language_id => "", :version => "", :operating_system => ""}
+    ) if list_languages.nil?
+
     lambdas_list = []
 
-    if not show_information
-      return language_html_structure(
-               {:programming_language_id => "",
-                :version => "",
-                :operating_system => ""}
-             ) if list_languages.nil?
-
-      list_languages.each do |language|
-        lambdas_list << language_html_structure(language)
-      end
-
-    else
-      list_languages.each do |language|
-        lambdas_list << language_html_show_structure(language)
-      end
-
+    list_languages.each do |language|
+      lambdas_list << language_html_structure(language)
     end
 
     lambdas_list
@@ -97,48 +87,12 @@ module SoftwareLanguageHelper
         label: DynamicTableHelper::LABEL_TEXT[:version],
         value: language_data[:version],
         name: COLLUMN_NAME[:version],
-        hidden: true
-      },
-      operating_system: {
-        label: DynamicTableHelper::LABEL_TEXT[:operating_system],
-        value: language_data[:operating_system],
-        name: COLLUMN_NAME[:operating_system],
+        hidden: true,
         delete: true
       }
     }
 
     DynamicTableHelper.table_html_structure(data)
-  end
-
-  def self.language_html_show_structure(language)
-     Proc::new do
-      content_tag(
-        'table',
-        content_tag(
-          'tr',
-          content_tag('td', label_tag(_("Language Name: ")))+
-          content_tag(
-            'td',
-            ProgrammingLanguage.where(
-              :id => language[:programming_language_id]
-            )[0].name
-          )+
-          content_tag('td')
-        )+
-
-        content_tag('tr',
-          content_tag('td', label_tag(_("Version")))+
-          content_tag('td', language[:version])+
-          content_tag('td')
-        )+
-
-        content_tag('tr',
-          content_tag('td', label_tag(_("Operating System")))+
-          content_tag('td', language[:operating_system])+
-          content_tag('td', "")
-        ), :class => 'dynamic-table software-language-table'
-      )
-    end
   end
 
   def self.add_dynamic_table
