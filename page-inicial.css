@@ -11,22 +11,23 @@
   border-bottom: none !important;
   text-align: left;
   margin:5px;
-  font-family:"open_sans", Arial;
+  font-family:"open_sansregular", Arial;
   font-weight: normal;
+  font-size:22px;
   padding: 5px 0px 0px 0px;
 }
 
-#search-Gadget {
-  width:95%;
-  padding:8px;
-  margin:5px;
-  border-radius:4px;
+#content #search-Gadget {
+  width: 90%;
+  padding: 8px;
+  margin: 0 15px 9px 15px;
+  border-radius: 4px;
   border: none;
 }
 .searchButton-catalog{
   background-color: #1A397D; /*#193A7D;*/
   color:#FFFFFF;
-  margin:5px;
+  margin: 0px 0px 15px 15px;
   border:1px solid #FFFFFF;
   border-radius: 4px;
   padding:5px 20px;
@@ -50,20 +51,21 @@
 
 #bt_catalog-search::after {
     content:'>';
-    padding-left: 8px;
-    padding-right: 5px;
-    /*margin-top: -2px;*/
-    right: 10px;
-    width: 18px;
-    height: 20px;
+    padding-left: 7px;
+    padding-right: 4px;
     color: #172857;
     background: #eee;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 20px;
     text-align: center;
     margin-left: 5px;
+    position: relative;
+    margin-left: 5px;
+    top: 2px;
+    margin-right: 15px;
 }
+
 
 /**********************************************************/
 
@@ -170,26 +172,52 @@
 
 .box-1 .software-block-finality,
 .box-1 .software-block-content {
-  padding-bottom: 20px;
+  padding-bottom: 32px;
 }
 .software-block-finality {
   background-color:#f4f4f4;
   /*padding:10px;*/
   border-radius: 8px;
-  width:155px;
+  width:142px;
   height: 185px;
   border: solid 1px #D7D7D7;
   left:0px;
 }
 
 .software-block-finality p {
-    padding: 10px;
-    height: 120px;
+    padding: 12px 12px 0 12px;
+    height: 150px;
     overflow: hidden;
 }
 
-.software-block-finality a {
+#content .software-block-finality a,
+#content .software-block-finality a:visited,
+#content .software-block-finality a:link,
+#content .software-block-finality a:focus {
     padding: 0 10px;
+    text-align: right;
+    color: #231F20;
+    text-transform: uppercase;
+    font-size: 10px;
+    display: block;
+    border-top: 1px solid #DDD;
+    padding-top: 9px;
+}
+
+.software-block-finality a::after {
+    content:'>';
+    padding-left: 7px;
+    padding-right: 4px;
+    color: #FFF;
+    background: #2c65cd;
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    margin-left: 5px;
+    position: relative;
+    margin-left: 5px;
+    top: 2px;
 }
 
 .software-block-logo {
@@ -206,7 +234,7 @@
 .software-block-logo{
   display:block;
   text-align: center;
-  width:130px;
+  width:140px;
   height:90px;
   padding-top:20px;
   padding-bottom:20px;
@@ -285,8 +313,16 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 }
 
 #content .box-1 .software-block {
-    margin: 0px 0px 14px 0px;
-    width: 160px;
+    margin: 0px 26px 14px 0px;
+    width: 145px;
+}
+
+/* Para que os blocos de software que ficam na borda direita fiquem sem margin-right */
+#content .box-1 .software-block:nth-child(4),
+#content .box-1 .software-block:nth-child(7),
+#content .box-1 .software-block:nth-child(10),
+#content .box-1 .software-block:nth-child(13) {
+    margin-right: 0px;
 }
 
 #content .software-block-info {
@@ -298,6 +334,11 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
     font-size: 14px;
     font-family: "open_sansregular", Arial, Helvetica, sans-serif;
     color: #2C66CE;
+}
+
+/* Nao mostrar descricao no bloco de software */
+#content .software-block-description {
+    display: none;
 }
 
 #content .block.display-content-block .block-title,
