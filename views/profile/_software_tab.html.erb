@@ -54,7 +54,6 @@
         <% profile.software_info.software_databases.each do |database| %>
           <%= display_mpog_field(_('Name:'), DatabaseDescription.find(database.database_description_id), :name, true) %>
           <%= display_mpog_field(_('Version:'), database, :version, true) %>
-          <%= display_mpog_field(_('Operating System:'), database, :operating_system, true) %>
         <% end %>
       </table>
     </td>
@@ -73,7 +72,6 @@
        <% profile.software_info.software_languages.each do |language| %>
          <%= display_mpog_field(_('Name:'), language.programming_language , :name, true) %>
          <%= display_mpog_field(_('Version:'), language, :version, true) %>
-         <%= display_mpog_field(_('Operating System:'), language, :operating_system, true) %>
        <% end %>
      </table>
    </td>
