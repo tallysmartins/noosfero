@@ -5,29 +5,29 @@
 }
 
 .action-search-software_infos #content #main-content-wrapper-8 h1{
-  border-top: 3px solid #4562b1 !important;
-  color: #4562b1 !important;
+  border-top: 4px solid #3E67B1 !important;
+  color: #2B65cd !important;
   text-transform: uppercase;
-  font-size: 19px !important;
-  padding-left: 0.8em !important;
-  /*padding: 0px;*/
-  margin-left: 0px;
+  font-size: 16px !important;
+  /*padding-left: 0.8em !important;*/
+  padding: 15px 0px 15px 15px;
+  /*margin-left: 0px;*/
   border-bottom:none !important;
-  background-color:#f1f1f1;
+  background-color:#eee;
 }
 
 .action-search-software_infos #main-content-wrapper-8 .search-form{
   margin-top:-10px;
-  background-color:#f1f1f1;
+  background-color: #eee; /*#f1f1f1;*/
 }
 
 .action-search-software_infos .search-results-header {
-border-bottom: 2px solid #ccc !important;
+border-bottom: 1px solid #ccc !important;
 }
 
 #search-input {
   font-size:110%;
-  margin: 0px 0px 20px 15px;
+  margin: 0px 0px 15px 15px;
   border-radius: 4px;
   padding: 0.55em;
 }
@@ -35,8 +35,8 @@ border-bottom: 2px solid #ccc !important;
 #search-input.blur {
   font-size:110%;
   font-style: normal;
-  color: #aaa;
-  margin: 0px 0px 20px 15px;
+  color: #eee; /*#aaa;*/
+  margin: 0px 0px 15px 15px;
   border-radius:4px;
   padding:0.55em;
 }
@@ -45,8 +45,8 @@ border-bottom: 2px solid #ccc !important;
   height: 30px;
   max-height: 30px;
   width: 87px;
-  margin-bottom: 20px;
-  margin-left:32px;
+  margin-bottom: 15px;
+  margin-left: 32px;
   color:#ffffff;
   /*background-color:#4562b1;*/
   text-transform: uppercase;
@@ -55,15 +55,17 @@ border-bottom: 2px solid #ccc !important;
   padding:0px;
 }
 .action-search-software_infos #content input.button{
-    background-color:#4562b1;
-    border: 1px solid #4562b1;
-
-
+    background-color:#2B65cd;
+    border-radius: 1px solid #2B65cd;
 }
 
 .action-search-software_infos .icon-search{
   background-image:none !important;
 
+}
+
+.search-enterprise-item {
+  border-bottom: 1px solid #eee;
 }
 
 .controller-search .search-field .formfield {
@@ -87,6 +89,11 @@ border-bottom: 2px solid #ccc !important;
 .action-search-software_infos .common-profile-list-block .vcard:hover .menu-submenu-trigger {
   display:none;
 }
+
+.common-profile-list-block .vcard a.profile_link{
+  float:left; 
+}
+
 /*
 .common-profile-list-block .profile-image {
   padding:0px 200px;
@@ -94,13 +101,14 @@ border-bottom: 2px solid #ccc !important;
 */
 
 .action-search-software_infos .search-enterprise-item-column-left{
-  border-right: 2px solid #ccc;
+  border-right: 1px solid #ccc;
   padding: 0px 50px 0px 10px;
   margin:none;
+  position:absolute;
 }
 
 .action-search-software_infos .search-enterprise-item-column-right{
-  width:70%;
+  width:65%;
 }
 
 .action-search-software_infos .common-profile-list-block .vcard {
@@ -114,7 +122,7 @@ border-bottom: 2px solid #ccc !important;
 .action-search-software_infos .search-enterprise-item-column-left .vcard img {
   max-width: 90px;
   height: auto;
-  max-height: 90px;
+  max-height: 130px; /*90px;*/
   margin-left:90px;
 }
 
@@ -126,51 +134,57 @@ border: none;
 }*/
 
 .action-search-software_infos .common-profile-list-block .profile-image{
-  padding:20px 40px;
-  margin-left:50px;
+  /*padding:20px 40px;*/
+  margin-left:100px;
+  margin-top: 10px;
+  width: 130px;
+  height: 130px;
 }
+/*
 .action-search-software_infos .common-profile-list-block span {
   width: 50% !important;
-}
+}*/
 
 .action-search-software_infos .common-profile-list-block .extra_info {
   font-size: 13px;
   opacity: inherit;
-  margin-top:-100px;
-  margin-bottom:100px;
+  width:135px;
+  padding-right:20px;
   text-align: left;
+  position:absolute;
+  top:0px;
+ /* margin-bottom:130px;*/ /*verificar melhor forma de fazer, tamanho da barra laterial*/
 
 }
+
 .action-search-software_infos .search-enterprise-item .search-enterprise-item-column-right {
-  font-size: 13px;
-  margin:-20px;
+  font-size: 15px;
+  padding-top: 0px;
 }
+
 .action-search-software_infos .search-enterprise-item-column-right .search-community-content-block h4 a {
   color:#172938 !important;
   font-size:19px !important;
 }
 
-/*.search-community-content-block {
-  display:none;
+.search-community-content-block span b:last-child{
+  float: left;
+  margin-right: 10px;
+}
+
+.search-community-content-block #categories-list li{
+  text-decoration: underline;
+  font-size: 13px;
+  color:#2B65cd;
+  display:block !important;
+  float:left;
+  margin-right: 10px !important;
+  width: auto !important;
 }
 
 /*
-.extra_info{
-  text-align: left;
-  padding: 0px; 
-  margin: 0px 0px 0px 0px;  
-}
-
-*/
-
-/*
-img {
-display: block;
-text-align: center;
-width: 150px;
-height: 90px;
-padding-top: 20px;
-padding-bottom: 30px;
-overflow: hidden;
+.search-results-box .common-profile-list-block li,
+.search-results-type-software_info li {
+  width:100%;
 }
 */
