@@ -1,4 +1,11 @@
 module DatabaseHelper
+  MODEL_NAME = "database"
+  FIELD_NAME = "database_description_id"
+  COLLUMN_NAME = {
+    name: "name",
+    version: "version",
+    operating_system: "operating_system"
+  }
 
   def self.valid_database? database
     return false if SoftwareHelper.all_table_is_empty?(database)
@@ -42,14 +49,6 @@ module DatabaseHelper
   end
 
   def self.database_as_tables(list_databases)
-    extend(
-      ActionView::Helpers::TagHelper,
-      ActionView::Helpers::FormTagHelper,
-      ActionView::Helpers::UrlHelper,
-      ActionView::Helpers::FormOptionsHelper,
-      ApplicationHelper
-    )
-
     return database_html_structure(
       {:database_description_id => "", :version => "", :operating_system => ""}
     ) if list_databases.nil?
@@ -64,33 +63,37 @@ module DatabaseHelper
   end
 
   def self.database_html_structure(database_data)
-    database_name, database_id = if database_data[:database_description_id].blank?
-      ["", ""]
+    database_id = database_data[:database_description_id]
+    database_name = if database_data[:database_description_id].blank?
+      ""
     else
-      [DatabaseDescription.find(
+      DatabaseDescription.find(
         database_data[:database_description_id],
         :select=>"name"
-      ).name, database_data[:database_description_id]]
+      ).name
     end
 
     data = {
-      model_name: "database",
-      field_name: "database_description_id",
+      model_name: MODEL_NAME,
+      field_name: FIELD_NAME,
       name: {
-        label: _("Name"),
+        label: DynamicTableHelper::LABEL_TEXT[:name],
         value: database_name,
         hidden: true,
         autocomplete: true,
+        name: COLLUMN_NAME[:name],
         id: database_id
       },
       version: {
-        label: _("Version"),
+        label: DynamicTableHelper::LABEL_TEXT[:version],
         value: database_data[:version],
+        name: COLLUMN_NAME[:version],
         hidden: true
       },
       operating_system: {
-        label: _("Operating system"),
+        label: DynamicTableHelper::LABEL_TEXT[:operating_system],
         value: database_data[:operating_system],
+        name: COLLUMN_NAME[:operating_system],
         delete: true
       }
     }

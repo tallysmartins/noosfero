@@ -1,4 +1,11 @@
 module SoftwareLanguageHelper
+  MODEL_NAME = "language"
+  FIELD_NAME = "programming_language_id"
+  COLLUMN_NAME = {
+    name: "name",
+    version: "version",
+    operating_system: "operating_system"
+  }
 
   def self.valid_language? language
     return false if SoftwareHelper.all_table_is_empty?(language)
@@ -41,14 +48,6 @@ module SoftwareLanguageHelper
   end
 
   def self.language_as_tables(list_languages, show_information = false)
-    extend(
-      ActionView::Helpers::TagHelper,
-      ActionView::Helpers::FormTagHelper,
-      ActionView::Helpers::UrlHelper,
-      ActionView::Helpers::FormOptionsHelper,
-      ApplicationHelper
-    )
-
     lambdas_list = []
 
     if not show_information
@@ -73,6 +72,7 @@ module SoftwareLanguageHelper
   end
 
   def self.language_html_structure(language_data)
+    language_id = language_data[:programming_language_id]
     language_name = if language_data[:programming_language_id].blank?
       ""
     else
@@ -82,65 +82,32 @@ module SoftwareLanguageHelper
       ).name
     end
 
-    Proc::new do
-      content_tag('table',
-        content_tag(
-          'tr',
-          content_tag('td', label_tag(_("Language Name: "))) +
-          content_tag(
-            'td',
-            text_field_tag(
-              "language_autocomplete",
-              language_name,
-              :class=>"language_autocomplete",
-              :placeholder=>_("Autocomplete field, type something")
-            ) +
-            content_tag(
-              'div',
-              _("Pick an item on the list"),
-               :class=>"autocomplete_validation_message hide-field")
-            ) +
-          content_tag(
-            'td',
-            hidden_field_tag("language[][programming_language_id]",
-            language_data[:programming_language_id],
-            :class=>"programming_language_id",
-            data:{label:language_name})
-          )
-        )+
+    data = {
+      model_name: MODEL_NAME,
+      field_name: FIELD_NAME,
+      name: {
+        label: DynamicTableHelper::LABEL_TEXT[:name],
+        value: language_name,
+        hidden: true,
+        autocomplete: true,
+        name: COLLUMN_NAME[:name],
+        id: language_id
+      },
+      version: {
+        label: DynamicTableHelper::LABEL_TEXT[:version],
+        value: language_data[:version],
+        name: COLLUMN_NAME[:version],
+        hidden: true
+      },
+      operating_system: {
+        label: DynamicTableHelper::LABEL_TEXT[:operating_system],
+        value: language_data[:operating_system],
+        name: COLLUMN_NAME[:operating_system],
+        delete: true
+      }
+    }
 
-        content_tag(
-          'tr',
-          content_tag('td', label_tag(_("Version")))+
-          content_tag(
-            'td',
-            text_field_tag("language[][version]",language_data[:version])
-          ) +
-          content_tag('td')
-        )+
-
-        content_tag(
-          'tr',
-          content_tag('td', label_tag(_("Operating System")))+
-          content_tag(
-            'td',
-            text_field_tag(
-              "language[][operating_system]",
-              language_data[:operating_system]
-            )
-          ) +
-          content_tag('td',
-            button_without_text(
-              :delete,
-              _('Delete'),
-              "#",
-              :class=>"delete-dynamic-table"
-            ),
-            :align => 'right'
-          )
-        ), :class => 'dynamic-table software-language-table'
-      )
-    end
+    DynamicTableHelper.table_html_structure(data)
   end
 
   def self.language_html_show_structure(language)

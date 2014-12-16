@@ -1,11 +1,17 @@
 module DynamicTableHelper
+  extend(
+    ActionView::Helpers::TagHelper,
+    ActionView::Helpers::FormTagHelper,
+    ActionView::Helpers::UrlHelper,
+    ApplicationHelper
+  )
 
-extend(
-      ActionView::Helpers::TagHelper,
-      ActionView::Helpers::FormTagHelper,
-      ActionView::Helpers::UrlHelper,
-      ApplicationHelper
-    )
+  LABEL_TEXT = {
+    :name => _("Name"),
+    :version => _("Version"),
+    :operating_system => _("Operating system"),
+    :license => _("License")
+  }
 
   def self.table_html_structure data
     Proc::new do
@@ -29,7 +35,7 @@ extend(
   def self.table_line row_data
     content_tag :tr, [
       self.label_collumn(row_data[:label]),
-      self.value_collumn(row_data[:value], row_data[:autocomplete]),
+      self.value_collumn(row_data[:value], row_data[:name], row_data[:autocomplete]),
       self.hidden_collumn(row_data[:delete], row_data[:hidden])
     ].join()
   end
@@ -38,7 +44,7 @@ extend(
     content_tag :td, label_tag(label)
   end
 
-  def self.value_collumn value, autocomplete=false
+  def self.value_collumn value, name, autocomplete=false
     html_options =
       if autocomplete
         {
@@ -49,7 +55,7 @@ extend(
         {}
       end
 
-    content_tag :td, text_field_tag("#{@model}", value, html_options)
+    content_tag :td, text_field_tag("#{@model}[][#{name}]", value, html_options)
   end
 
   def self.hidden_collumn delete=false, hidden_data=false
