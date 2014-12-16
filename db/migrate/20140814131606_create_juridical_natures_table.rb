@@ -4,8 +4,8 @@ class CreateJuridicalNaturesTable < ActiveRecord::Migration
       t.string :name
     end
 
-    PATH_TO_FILE="plugins/mpog_software/public/static/juridical_nature.txt"
-    SoftwareHelper.create_list_with_file(PATH_TO_FILE, JuridicalNature)
+    path_to_file = "plugins/mpog_software/public/static/juridical_nature.txt"
+    SoftwareHelper.create_list_with_file(path_to_file, JuridicalNature)
   end
 
   def down
