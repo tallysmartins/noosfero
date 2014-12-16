@@ -65,7 +65,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     [{
       :type => "before_filter",
       :method_name => "validate_institution_sisp_field_access",
-      :options => { :only=>:edit },
+      :options => { :only => :edit },
       :block => block
     }]
   end
@@ -87,32 +87,11 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def control_panel_buttons
     if context.profile.software?
-      return {
-        :title => _("Software Info"),
-        :icon => "edit-profile-group control-panel-software-link",
-        :url => {
-          :controller => "mpog_software_plugin_myprofile",
-          :action => "edit_software"
-        }
-      }
+      return software_info_button
     elsif context.profile.person?
-      return {
-        :title => _("Create a new software"),
-        :icon => "design-editor",
-        :url => {
-          :controller => "mpog_software_plugin_myprofile",
-          :action => "new_software"
-        }
-      }
-      return nil
+      return create_new_software_button
     elsif context.profile.institution?
-      return {
-        :title => _("Institution Info"),
-        :icon => "edit-profile-group control-panel-instituton-link",
-        :url => {
-          :controller => "mpog_software_plugin_myprofile",
-          :action => "edit_institution"}
-        }
+      return institution_info_button
     end
   end
 
@@ -443,5 +422,39 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def call_institution_transaction(model)
     context.profile.institution.send(model + '_id = ', context.params[model.to_sym])
     context.profile.institution.save!
+  end
+
+
+  def software_info_button
+    {
+      :title => _("Software Info"),
+      :icon => "edit-profile-group control-panel-software-link",
+      :url => {
+        :controller => "mpog_software_plugin_myprofile",
+        :action => "edit_software"
+      }
+    }
+  end
+
+  def create_new_software_button
+    {
+      :title => _("Create a new software"),
+      :icon => "design-editor",
+      :url => {
+        :controller => "mpog_software_plugin_myprofile",
+        :action => "new_software"
+      }
+    }
+  end
+
+  def institution_info_button
+    {
+      :title => _("Institution Info"),
+      :icon => "edit-profile-group control-panel-instituton-link",
+      :url => {
+        :controller => "mpog_software_plugin_myprofile",
+        :action => "edit_institution"
+      }
+    }
   end
 end
