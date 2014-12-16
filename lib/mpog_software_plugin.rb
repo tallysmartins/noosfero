@@ -144,16 +144,16 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def profile_blocks_extra_content
-    return if context.session[:user].nil? or
-              !!context.session[:hide_incomplete_percentage]
+    return if context.session[:user].nil? ||
+              !context.session[:hide_incomplete_percentage].blank?
 
     person = Person.where(:user_id=>context.session[:user]).first
 
-    if context.profile && context.profile.person? and !person.nil?
+    if context.profile && context.profile.person? && !person.nil?
       @person = person
       @percentege = calc_percentage_registration(person)
 
-      if @percentege >= 0 and @percentege <= 100
+      if @percentege >= 0 && @percentege <= 100
         expanded_template('incomplete_registration.html.erb')
       end
     end

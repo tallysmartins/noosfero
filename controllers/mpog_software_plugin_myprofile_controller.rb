@@ -92,7 +92,8 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
       begin
         governmental_updates
       rescue
-        @institution.errors.add(:governmental_fields, _("Could not find Governmental Power or Governmental Sphere"))
+        @institution.errors.add(:governmental_fields,
+                                _("Could not find Governmental Power or Governmental Sphere"))
       end
     end
     flash[:errors] = @institution.errors.full_messages unless @institution.valid?
