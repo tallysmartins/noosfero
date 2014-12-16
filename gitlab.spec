@@ -120,6 +120,14 @@ cd /usr/lib/gitlab/
 yes yes | sudo -u git bundle exec rake gitlab:setup RAILS_ENV=production
 bundle exec rake assets:precompile RAILS_ENV=production
 
+cp /usr/lib/gitlab/lib/support/init.d/gitlab /etc/init.d/gitlab
+cp /usr/lib/gitlab/lib/support/init.d/gitlab.default.example /etc/default/gitlab
+cp /usr/lib/gitlab/lib/support/logrotate/gitlab /etc/logrotate.d/gitlab
+
+sed -i 's/app_root="\/home\/\$app_user\/gitlab"/app_root="\/usr\/lib\/gitlab"/' /etc/init.d/gitlab
+sed -i 's/app_root="\/home\/\$app_user\/gitlab"/app_root="\/usr\/lib\/gitlab"/' /etc/default/gitlab
+sed -i 's/\/home\/\git/\/usr\/lib/' /etc/logrotate.d/gitlab
+
 %postun
 #TODO Remove
 sudo -u postgres psql -d template1 << EOF 
