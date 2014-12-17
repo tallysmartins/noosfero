@@ -41,22 +41,29 @@ border-bottom: 1px solid #ccc !important;
   padding:0.55em;
 }
 
+.controller-search .search-field .formfield {
+  width: 80%;
+}
+
 .controller-search #content form input.button.submit {
   height: 30px;
   max-height: 30px;
   width: 87px;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
   margin-left: 32px;
-  color:#ffffff;
+  /*color:#ffffff;*/
   /*background-color:#4562b1;*/
   text-transform: uppercase;
   font-weight: bold;
   /*border: 1px solid #4562b1;*/
-  padding:0px;
+  /*padding:0px;*/
 }
 .action-search-software_infos #content input.button{
-    background-color:#2B65cd;
-    border-radius: 1px solid #2B65cd;
+  background-color:#2B65cd;
+  border: 1px solid #2B65cd;
+  color: #ffffff; 
+  border-radius: 4px;
+  padding:0px;
 }
 
 .action-search-software_infos .icon-search{
@@ -68,8 +75,8 @@ border-bottom: 1px solid #ccc !important;
   border-bottom: 1px solid #eee;
 }*/
 
-.controller-search .search-field .formfield {
-  width: 720px;
+.controller-search .action-search-software_infos .search-field .formfield {
+  width: 80%;
 }
 
 .action-search-software_infos .only-one-result-box .search-enterprise-item {
@@ -102,13 +109,15 @@ border-bottom: 1px solid #ccc !important;
 
 .action-search-software_infos .search-enterprise-item-column-left{
   border-right: 1px solid #ccc;
-  padding: 0px 50px 0px 10px;
-  margin:none;
-  position:absolute;
+  width: 135px;
+  height: 130px;
+  /*padding: 0px 60px 0px 10px; /*50 no lugar coloquei 70*/
+  /*margin:none;*/
+  /*position:absolute;*/
 }
 
 .action-search-software_infos .search-enterprise-item-column-right{
-  width:65%;
+  width:70%; /*470px;*/
 }
 
 .action-search-software_infos .common-profile-list-block .vcard {
@@ -122,8 +131,16 @@ border-bottom: 1px solid #ccc !important;
 .action-search-software_infos .search-enterprise-item-column-left .vcard img {
   max-width: 90px;
   height: auto;
-  max-height: 130px; /*90px;*/
-  margin-left:90px;
+  /*margin-left: 15px;
+  margin-right: 15px;*/
+  /*max-height: 130px; /*90px;*/
+  /*margin-left: 60%; /*30%;90px;
+  position: absolute;
+  float: left;*/
+}
+
+.action-search-software_infos .common-profile-list-block img{
+  max-height: none;
 }
 
 /*
@@ -135,8 +152,8 @@ border: none;
 
 .action-search-software_infos .common-profile-list-block .profile-image{
   /*padding:20px 40px;*/
-  margin-left:100px;
-  margin-top: 10px;
+  margin-left: 140px; /*85px; TESTANDO*/ 
+  /*margin-top: 10px;*/
   width: 130px;
   height: 130px;
 }
@@ -167,7 +184,7 @@ border: none;
   font-size:19px !important;
 }
 
-.action-search-software_infos .search-community-content-block span b:last-child{
+.action-search-software_infos .search-community-content-block span b:last-child {
   float: left;
   margin-right: 10px;
 }
