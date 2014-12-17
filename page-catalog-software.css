@@ -63,10 +63,10 @@ border-bottom: 1px solid #ccc !important;
   background-image:none !important;
 
 }
-
+/*
 .search-enterprise-item {
   border-bottom: 1px solid #eee;
-}
+}*/
 
 .controller-search .search-field .formfield {
   width: 720px;
@@ -90,7 +90,7 @@ border-bottom: 1px solid #ccc !important;
   display:none;
 }
 
-.common-profile-list-block .vcard a.profile_link{
+.action-search-software_infos .common-profile-list-block .vcard a.profile_link{
   float:left; 
 }
 
@@ -167,12 +167,12 @@ border: none;
   font-size:19px !important;
 }
 
-.search-community-content-block span b:last-child{
+.action-search-software_infos .search-community-content-block span b:last-child{
   float: left;
   margin-right: 10px;
 }
 
-.search-community-content-block #categories-list li{
+.action-search-software_infos .search-community-content-block #categories-list li{
   text-decoration: underline;
   font-size: 13px;
   color:#2B65cd;
