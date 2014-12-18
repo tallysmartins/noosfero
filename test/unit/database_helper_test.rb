@@ -9,8 +9,8 @@ class DatabaseHelperTest < ActiveSupport::TestCase
     dd2 = DatabaseDescription.create!(:name => "MySQL")
 
     @database_objects = [
-      {:database_description_id => dd1.id.to_s ,:version => "2.0", :operating_system => "debian"},
-      {:database_description_id => dd2.id.to_s ,:version => "2.1", :operating_system => "debian"}
+      {:database_description_id => dd1.id.to_s ,:version => "2.0"},
+      {:database_description_id => dd2.id.to_s ,:version => "2.1"}
     ]
   end
 
@@ -47,28 +47,10 @@ class DatabaseHelperTest < ActiveSupport::TestCase
     assert_equal false,DatabaseHelper.valid_list_database?(list_compare)
   end
 
-  should "return a html text with operating system equals to linux" do
-    databases = []
-
-    database_description = DatabaseDescription.new
-    database_description.name = "teste"
-
-    software_database = SoftwareDatabase.new
-    software_database.version = 2
-    software_database.operating_system = "linux"
-    software_database.database_description = database_description
-
-    databases << software_database
-    db_tables = DatabaseHelper.database_as_tables(databases)
-
-    assert_not_nil db_tables.first.call.index("linux")
-  end
-
   should "remove invalid tables from the list" do
     @database_objects.push({
       :database_description_id => "I'm not a valid id",
-      :version => "2.5",
-      :operating_system => "debian"
+      :version => "2.5"
     })
 
     database_objects_length = @database_objects.count

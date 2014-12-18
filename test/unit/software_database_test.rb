@@ -4,8 +4,7 @@ class SoftwareDatabaseTest < ActiveSupport::TestCase
   def setup
     DatabaseDescription.create!(name: "PostgreSQL")
     @software_database = SoftwareDatabase.new(
-                          :version => "1.0",
-                          :operating_system => "Debian"
+                          :version => "1.0"
                         )
     @software_database.database_description_id = 1
   end
@@ -32,16 +31,5 @@ class SoftwareDatabaseTest < ActiveSupport::TestCase
   should "not save if version has more than 20 characters" do
     @software_database.version = "a"*21
     assert !@software_database.save, "Version must have until 20 characters"
-  end
-
-  should "not save if operating system is empty" do
-    @software_database.operating_system = nil
-    assert !@software_database.save, "Operating system must be filled"
-  end
-
-  should "not save if operating system has more than 20 characters" do
-    invalid_msg = "Operating system must have until 20 characters"
-    @software_database.operating_system = "a"*21
-    assert !@software_database.save, invalid_msg
   end
 end

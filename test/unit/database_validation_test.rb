@@ -7,7 +7,6 @@ class DatabaseValidationTest < ActiveSupport::TestCase
    @database = SoftwareDatabase.new
    @database.database_description = @database_desc
    @database.version = "MYSQL"
-   @database.operating_system = "debian"
    @database
   end
 
@@ -26,11 +25,6 @@ class DatabaseValidationTest < ActiveSupport::TestCase
     assert_equal true, !@database.save
   end
 
-  should "not save database if operating system are empty" do
-    @database.operating_system = " "
-    assert_equal true, !@database.save
-  end
-
   should "not save database if version are empty" do
     @database.version = " "
     assert_equal true, !@database.save
@@ -38,11 +32,6 @@ class DatabaseValidationTest < ActiveSupport::TestCase
 
   should "not save database if version is too long" do
     @database.version = "A too long version to be a valid version for database"
-    assert !@database.save
-  end
-
-  should "not save database if operating system is too long" do
-    @database.operating_system = "A too long operating system to be a valid db"
     assert !@database.save
   end
 end

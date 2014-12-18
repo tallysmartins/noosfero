@@ -27,7 +27,7 @@ class LibraryHelperTest < ActiveSupport::TestCase
   end
 
   should "have same information from the list passed as parameter" do
-    list_compare = LibraryHelper.list_libraries(@license_objects)
+    list_compare = LibraryHelper.list_library(@license_objects)
     assert_equal @license_objects.first[:name], list_compare.first.name
   end
 

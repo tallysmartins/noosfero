@@ -9,9 +9,9 @@ class SoftwareLanguageHelperTest < ActiveSupport::TestCase
     pl2 = ProgrammingLanguage.create(:name => "Java")
 
     @software_language_objects = [
-      {:programming_language_id => pl1.id.to_s ,:version => "2.0", :operating_system => "debian"},
-      {:programming_language_id => pl2.id.to_s ,:version => "2.1", :operating_system => "debian"},
-      {:programming_language_id => pl1.id.to_s ,:version => "2.2", :operating_system => "debian"}]
+      {:programming_language_id => pl1.id.to_s ,:version => "2.0"},
+      {:programming_language_id => pl2.id.to_s ,:version => "2.1"},
+      {:programming_language_id => pl1.id.to_s ,:version => "2.2"}]
     @software_language_objects
   end
 
@@ -48,27 +48,10 @@ class SoftwareLanguageHelperTest < ActiveSupport::TestCase
     assert_equal false,SoftwareLanguageHelper.valid_list_language?(list_compare)
   end
 
-  should "return a html text with operating system equals to linux" do
-    softwares_languages = []
-
-    programming_language = ProgrammingLanguage.new
-    programming_language.name = "teste"
-
-    software_language = SoftwareLanguage.new
-    software_language.version = 2
-    software_language.operating_system = "linux"
-    software_language.programming_language = programming_language
-
-    softwares_languages << software_language
-    lang_table = SoftwareLanguageHelper.language_as_tables(softwares_languages)
-    assert_not_nil lang_table.first.call.index("linux")
-  end
-
   should "remove invalid tables from the list" do
     @software_language_objects.push({
       :programming_language_id => "I'm not a valid id",
-      :version => "2.0",
-      :operating_system => "debian"
+      :version => "2.0"
     })
 
     software_language_objects_length = @software_language_objects.count

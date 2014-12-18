@@ -35,19 +35,6 @@ class SoftwareLanguageValidationTest < ActiveSupport::TestCase
     assert_equal true, !@software_language.save
   end
 
-  should "Don't save SoftwareLanguage if operating system is too long" do
-    operating_system = "A too long to be valid as a operating system"
-    @software_language = create_software_language
-    @software_language.operating_system = operating_system
-    assert_equal true, !@software_language.save
-  end
-
-  should "Save SoftwareLanguage if operating_system is not filed" do
-    @software_language = create_software_language
-    @software_language.operating_system = ""
-    assert_equal false, @software_language.save
-  end
-
   private
 
   def create_software_language
@@ -55,7 +42,6 @@ class SoftwareLanguageValidationTest < ActiveSupport::TestCase
     software_language.software_info = @software_info
     software_language.programming_language = ProgrammingLanguage.last
     software_language.version = "version"
-    software_language.operating_system = "GNU/Linux"
     software_language
   end
 

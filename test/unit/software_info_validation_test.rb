@@ -12,8 +12,7 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     @language = ProgrammingLanguage.new(:name => 'C++')
     @language.save
     @software_language = SoftwareLanguage.new(
-                          :version => '1',
-                          :operating_system => 'os'
+                          :version => '1'
                         )
     @software_language.programming_language = @language
     @software_language.save
@@ -21,8 +20,7 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     @database = DatabaseDescription.new(:name => 'Oracle')
     @database.save
     @software_database = SoftwareDatabase.new(
-                          :version => '2',
-                          :operating_system => 'os2'
+                          :version => '2'
                         )
     @software_database.database_description = @database
     @software_database.save
