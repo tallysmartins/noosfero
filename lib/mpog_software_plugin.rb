@@ -71,17 +71,9 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def profile_tabs
-    if context.profile.community? && context.profile.software?
-        { :title => _("Software"),
-        :id => 'mpog-fields',
-        :content => Proc::new do render :partial => 'software_tab' end,
-        :start => true }
-    elsif context.profile.community? && context.profile.institution?
-      { :title => _("Institution"),
-        :id => 'mpog-fields',
-        :content => Proc::new do render :partial => 'institution_tab' end,
-        :start => true
-      }
+    if context.profile.community?
+      return profile_tabs_software if context.profile.software?
+      profile_tabs_institution
     end
   end
 
@@ -396,18 +388,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       end
     end
 
-    leave_communities = (old_communities - new_communities)
-    enter_communities = (new_communities - old_communities)
-
-    leave_communities.each do |community|
-      community.remove_member(user.person)
-      user.institutions.delete(community.institution)
-    end
-
-    enter_communities.each do |community|
-      community.add_member(user.person)
-      user.institutions << community.institution
-    end
+    manage_user_institutions(user, leave_communities, enter_communities)
   end
 
   def show_sisp_field
@@ -455,6 +436,36 @@ class MpogSoftwarePlugin < Noosfero::Plugin
         :controller => "mpog_software_plugin_myprofile",
         :action => "edit_institution"
       }
+    }
+  end
+
+  def manage_user_institutions(leave_communities,enter_communities)
+    leave_communities = (old_communities - new_communities)
+    enter_communities = (new_communities - old_communities)
+
+    leave_communities.each do |community|
+      community.remove_member(user.person)
+      user.institutions.delete(community.institution)
+    end
+
+    enter_communities.each do |community|
+      community.add_member(user.person)
+      user.institutions << community.institution
+    end
+  end
+
+  def profile_tabs_software
+    { :title => _("Software"),
+      :id => 'mpog-fields',
+      :content => Proc::new do render :partial => 'software_tab' end,
+      :start => true }
+  end
+
+  def profile_tabs_institution
+    { :title => _("Institution"),
+      :id => 'mpog-fields',
+      :content => Proc::new do render :partial => 'institution_tab' end,
+      :start => true
     }
   end
 end
