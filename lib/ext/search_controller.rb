@@ -3,7 +3,9 @@ require_dependency 'search_controller'
 class SearchController
 
   def communities
-    results = filter_communities_list{|community| !community.software? and !community.institution?}
+    results = filter_communities_list do |community|
+      !community.software? && !community.institution?
+    end
     results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
@@ -31,17 +33,20 @@ class SearchController
 
   def filter_communities_list
     unfiltered_list = visible_profiles(Community)
+
     unless params[:query].nil?
       unfiltered_list = unfiltered_list.select do |com|
         com.name.downcase =~ /#{params[:query].downcase}/
       end
     end
+
     communities_list = []
     unfiltered_list.each do |profile|
-      if profile.class == Community and yield(profile)
+      if profile.class == Community && !profile.is_template? && yield(profile)
           communities_list << profile
       end
     end
+
     communities_list
   end
 
@@ -49,11 +54,17 @@ class SearchController
     unfiltered_software_infos_list = SoftwareInfo.like_search(params[:query])
 
     filtered_communities_list = []
-    unfiltered_software_infos_list.each{|software| filtered_communities_list << software.community}
+    unfiltered_software_infos_list.each do |software|
+      unless software.community.is_template?
+        filtered_communities_list << software.community
+      end
+    end
 
     if not params[:filter].blank?
       params[:filter].split(",").each{|f| @category_filters << f.to_i}
-      filtered_communities_list.select!{|community| !(community.category_ids & @category_filters).blank?}
+      filtered_communities_list.select! do |community|
+        !(community.category_ids & @category_filters).blank?
+      end
     end
 
     filtered_communities_list
