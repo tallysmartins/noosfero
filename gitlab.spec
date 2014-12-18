@@ -114,6 +114,10 @@ if [ /usr/bin/redis-server ]; then
   service redis start
 fi
 
+git config --global user.name "GitLab"
+git config --global user.email "example@example.com"
+git config --global core.autocrlf input
+
 mkdir -p /var/lib/gitlab-assets
 
 cd /usr/lib/gitlab/
