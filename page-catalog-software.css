@@ -22,7 +22,7 @@
 }
 
 .action-search-software_infos .search-results-header {
-border-bottom: 1px solid #ccc !important;
+  border-bottom: 1px solid #ccc !important;
 }
 
 #search-input {
@@ -61,6 +61,7 @@ border-bottom: 1px solid #ccc !important;
 .action-search-software_infos #content input.button{
   background-color:#2B65cd;
   border: 1px solid #2B65cd;
+  font-family:open_sansbold;
   color: #ffffff; 
   border-radius: 4px;
   padding:0px;
@@ -109,7 +110,7 @@ border-bottom: 1px solid #ccc !important;
 
 .action-search-software_infos .search-enterprise-item-column-left{
   border-right: 1px solid #ccc;
-  width: 135px;
+  width: 143px;
   height: 130px;
   /*padding: 0px 60px 0px 10px; /*50 no lugar coloquei 70*/
   /*margin:none;*/
@@ -117,7 +118,7 @@ border-bottom: 1px solid #ccc !important;
 }
 
 .action-search-software_infos .search-enterprise-item-column-right{
-  width:70%; /*470px;*/
+  width:70%; /*440px;*/
 }
 
 .action-search-software_infos .common-profile-list-block .vcard {
@@ -143,13 +144,6 @@ border-bottom: 1px solid #ccc !important;
   max-height: none;
 }
 
-/*
-.common-profile-list-block img {
-border: none;
-/* max-width: 50px; */
-/* max-height: 50px; 
-}*/
-
 .action-search-software_infos .common-profile-list-block .profile-image{
   /*padding:20px 40px;*/
   margin-left: 140px; /*85px; TESTANDO*/ 
@@ -157,13 +151,10 @@ border: none;
   width: 130px;
   height: 130px;
 }
-/*
-.action-search-software_infos .common-profile-list-block span {
-  width: 50% !important;
-}*/
 
 .action-search-software_infos .common-profile-list-block .extra_info {
   font-size: 13px;
+  font-family: Arial;
   opacity: inherit;
   width:135px;
   padding-right:20px;
@@ -173,10 +164,21 @@ border: none;
  /* margin-bottom:130px;*/ /*verificar melhor forma de fazer, tamanho da barra laterial*/
 
 }
+.action-search-software_infos .common-profile-list-block .extra_info::before{
+  content: url("images/ic-calendar.png");
+  line-height: 20px;
+  margin-right:10px;
+  margin-top:6px;
+  float: left;
+  /*padding-top: 10px;*/
+  /* position: static; */
+  /* overflow: auto; */
+}
 
 .action-search-software_infos .search-enterprise-item .search-enterprise-item-column-right {
   font-size: 15px;
   padding-top: 0px;
+  font-family: Arial;
 }
 
 .action-search-software_infos .search-enterprise-item-column-right .search-community-content-block h4 a {
@@ -184,11 +186,24 @@ border: none;
   font-size:19px !important;
 }
 
-.action-search-software_infos .search-community-content-block span b:last-child {
+.action-search-software_infos .search-enterprise-item-column-right span b:last-child {
   float: left;
   margin-right: 10px;
+  /*font-size: 13px;*/ /*font deve ser aplicada as categorias*/
+}
+/* Verificar a melhor maneira de fazer
+.action-search-software_infos .search-enterprise-item-column-right span b:nth-last-child(2){
+  display: none;
 }
 
+.action-search-software_infos .search-enterprise-item-column-right span a:nth-last-child(1){
+  display: none;
+}*/
+
+.action-search-software_infos .search-community-content-block #categories-list{
+  margin-top:35px;
+  margin-bottom: 10px;
+}
 .action-search-software_infos .search-community-content-block #categories-list li{
   text-decoration: underline;
   font-size: 13px;
@@ -199,9 +214,3 @@ border: none;
   width: auto !important;
 }
 
-/*
-.search-results-box .common-profile-list-block li,
-.search-results-type-software_info li {
-  width:100%;
-}
-*/
