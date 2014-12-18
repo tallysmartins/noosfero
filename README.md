@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/fabio1079/noosfero-plugin/badges/gpa.svg)](https://codeclimate.com/github/fabio1079/noosfero-plugin)
+
 README - MPOG Software Público Plugin
 ================================
 
