@@ -1,10 +1,6 @@
-module DatabaseHelper
-  MODEL_NAME = "database"
+class DatabaseHelper < DynamicTableHelper
+  MODEL_NAME ="database"
   FIELD_NAME = "database_description_id"
-  COLLUMN_NAME = {
-    name: "name",
-    version: "version"
-  }
 
   def self.valid_database? database
     return false if SoftwareHelper.all_table_is_empty?(database)
@@ -75,23 +71,15 @@ module DatabaseHelper
       model_name: MODEL_NAME,
       field_name: FIELD_NAME,
       name: {
-        label: DynamicTableHelper::LABEL_TEXT[:name],
         value: database_name,
-        hidden: true,
-        autocomplete: true,
-        name: COLLUMN_NAME[:name],
-        id: database_id
+        id: database_id,
       },
       version: {
-        label: DynamicTableHelper::LABEL_TEXT[:version],
-        value: database_data[:version],
-        name: COLLUMN_NAME[:version],
-        hidden: true,
-        delete: true
+        value: database_data[:version]
       }
     }
 
-    DynamicTableHelper.table_html_structure(data, disabled)
+    table_html_structure(data, disabled)
   end
 
   def self.add_dynamic_table

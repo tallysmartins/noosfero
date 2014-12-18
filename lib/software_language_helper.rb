@@ -1,10 +1,6 @@
-module SoftwareLanguageHelper
-  MODEL_NAME = "language"
+class SoftwareLanguageHelper < DynamicTableHelper
+  MODEL_NAME ="language"
   FIELD_NAME = "programming_language_id"
-  COLLUMN_NAME = {
-    name: "name",
-    version: "version"
-  }
 
   def self.valid_language? language
     return false if SoftwareHelper.all_table_is_empty?(language)
@@ -55,7 +51,6 @@ module SoftwareLanguageHelper
     list_languages.each do |language|
       lambdas_list << language_html_structure(language, disabled)
     end
-
     lambdas_list
   end
 
@@ -74,23 +69,15 @@ module SoftwareLanguageHelper
       model_name: MODEL_NAME,
       field_name: FIELD_NAME,
       name: {
-        label: DynamicTableHelper::LABEL_TEXT[:name],
         value: language_name,
-        hidden: true,
-        autocomplete: true,
-        name: COLLUMN_NAME[:name],
-        id: language_id
+        id: language_id,
       },
       version: {
-        label: DynamicTableHelper::LABEL_TEXT[:version],
-        value: language_data[:version],
-        name: COLLUMN_NAME[:version],
-        hidden: true,
-        delete: true
+        value: language_data[:version]
       }
     }
 
-    DynamicTableHelper.table_html_structure(data, disabled)
+    table_html_structure(data, disabled)
   end
 
   def self.add_dynamic_table
