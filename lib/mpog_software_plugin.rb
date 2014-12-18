@@ -18,14 +18,16 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   end
 
   def profile_editor_extras
-    if context.profile.person?
-      expanded_template('person_editor_extras.html.erb')
-    elsif context.profile.respond_to?(:software_info) &&
-      !context.profile.software_info.nil?
+    profile = context.profile
 
-      if context.profile.software_info.first_edit?
-        context.profile.software_info.first_edit = false
-        context.profile.software_info.save!
+    if profile.person?
+      expanded_template('person_editor_extras.html.erb')
+    elsif profile.respond_to?(:software_info) &&
+      !profile.software_info.nil?
+
+      if profile.software_info.first_edit?
+        profile.software_info.first_edit = false
+        profile.software_info.save!
         expanded_template('first_edit_software_community_extras.html.erb')
       end
     end
@@ -34,11 +36,12 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   def profile_editor_transaction_extras
     single_hash_transactions = { :user => 'user',
                                  :software_info => 'software_info',
-                                 :version => 'license', :language => 'language',
-                                 :operating_system => 'operating_system',
+                                 :version => 'license', :language => 'generic_model',
+                                 :operating_system => 'generic_model',
                                  :software_categories => 'software_categories',
                                  :instituton => 'instituton',
-                                 :library => 'libraries' }
+                                 :library => 'generic_model',
+                                 :database => 'generic_model' }
 
     single_hash_transactions.each do |model, transaction|
       call_model_transaction(model, transaction)
@@ -72,7 +75,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def profile_tabs
     if context.profile.community?
-      profile_tabs_software if context.profile.software?
+      return profile_tabs_software if context.profile.software?
       profile_tabs_institution
     end
   end
@@ -190,20 +193,21 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def profile_required_list
     fields = {}
-    fields[:person_fields] = %w('cell_phone'
-                                'contact_phone'
-                                'comercial_phone'
-                                'country'
-                                'city'
-                                'state'
-                                'organization_website'
-                                'image',
-                                'identifier'
-                                'name')
+    fields[:person_fields] = %w(cell_phone
+                                contact_phone
+                                comercial_phone
+                                country
+                                city
+                                state
+                                organization_website
+                                image
+                                identifier
+                                name)
 
-    fields[:user_fields] = %w('secondary_email' 'email')
+    fields[:user_fields] = %w(secondary_email email)
     fields
   end
+
 
   def profile_required_empty_list(person)
     empty_fields = []
@@ -216,27 +220,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       empty_fields << field.sub('_',' ') if person.user.send(field).blank?
     end
     empty_fields
-  end
-
-  def operating_system_transaction
-    OperatingSystem.transaction do
-      list_operating = OperatingSystemHelper.list_operating_system(
-        context.params[:operating_system]
-      )
-
-      if OperatingSystemHelper.valid_list_operating_system?(list_operating)
-        OperatingSystem.where(
-          :software_info_id => context.profile.software_info.id
-        ).destroy_all
-
-        list_operating.each do |operating_system|
-          operating_system.software_info = context.profile.software_info
-          operating_system.save!
-        end
-      else
-        raise 'Invalid Operating System fields'
-      end
-    end
   end
 
   def user_transaction
@@ -274,78 +257,10 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     end
   end
 
-  def libraries_transaction
-    Library.transaction do
-      list_libraries = LibraryHelper.list_libraries(context.params[:library])
-
-      if LibraryHelper.valid_list_libraries?(list_libraries)
-        Library.where(
-          :software_info_id=> context.profile.software_info.id
-        ).destroy_all
-
-        list_libraries.each do |library|
-          library.software_info_id = context.profile.software_info.id
-          library.save!
-        end
-      else
-        raise 'Invalid Library fields'
-      end
-    end
-  end
-
-  def databases_transaction
-    SoftwareDatabase.transaction do
-      list_databases = DatabaseHelper.list_database(context.params[:database])
-
-      if DatabaseHelper.valid_list_database?(list_databases)
-        SoftwareDatabase.where(
-          :software_info_id => context.profile.software_info.id
-        ).destroy_all
-
-        list_databases.each do |database|
-          database.software_info = context.profile.software_info
-          database.save!
-        end
-      else
-        raise 'Invalid Database fields'
-      end
-    end
-  end
-
   def license_transaction
     license = LicenseInfo.find(context.params[:version])
     context.profile.software_info.license_info = license
     context.profile.software_info.save!
-  end
-
-  def language_transaction
-    SoftwareLanguage.transaction do
-      list_language = SoftwareLanguageHelper.list_language(
-        context.params[:language]
-      )
-
-      if SoftwareLanguageHelper.valid_list_language?(list_language)
-        SoftwareLanguage.where(
-          :software_info_id => context.profile.software_info.id
-        ).destroy_all
-
-        list_language.each do |language|
-          language.software_info = context.profile.software_info
-          language.save!
-        end
-      else
-        raise 'Invalid Software Language fields'
-      end
-    end
-  end
-
-  def software_categories_transaction
-    ControlledVocabulary.transaction do
-      context.profile
-        .software_info
-        .software_categories
-        .update_attributes!(context.params[:software_categories])
-    end
   end
 
   private
@@ -384,6 +299,34 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     context.profile.institution.send(model + '_id = ',
                                      context.params[model.to_sym])
     context.profile.institution.save!
+  end
+
+  def generic_model_transaction
+    models_list = [
+                    [SoftwareLanguage, SoftwareLanguageHelper, 'language'],
+                    [SoftwareDatabase, DatabaseHelper, 'database'],
+                    [OperatingSystem, OperatingSystemHelper, 'operating_system'],
+                    [Library, LibraryHelper, 'library']
+                  ]
+    models_list.each do |model|
+      list_of_model = 'list_'+model[2].to_s
+      model[0].transaction do
+        list = model[1].send(list_of_model, context.params[model[2].to_sym])
+
+        if model[2].send('valid_'+list_of_model+'?', list_of_model)
+          model[0].where(
+            :software_info_id => context.profile.software_info.id
+          ).destroy_all
+
+          list.each do |model|
+            model.software_info = context.profile.software_info
+            model.save!
+          end
+        else
+          raise 'Invalid Software #{model[2]} fields'
+        end
+      end
+    end
   end
 
   def software_info_button

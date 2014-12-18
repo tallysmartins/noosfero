@@ -42,7 +42,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
 
     return unless request.post?
     @software_info = constroy_software
-    software_info_insert_models.call(@list_libraries, 'libraries')
+    software_info_insert_models.call(@list_library, 'libraries')
     software_info_insert_models.call(@list_languages, 'software_languages')
     software_info_insert_models.call(@list_databases, 'software_databases')
     software_info_insert_models.call(@list_operating_systems, 'operating_systems')
@@ -130,7 +130,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
   end
 
   def create_list_model_helpers
-    @list_libraries = LibraryHelper.list_libraries(params[:library])
+    @list_libraries = LibraryHelper.list_library(params[:library])
     @list_languages = SoftwareLanguageHelper.list_language(params[:language])
     @list_databases = DatabaseHelper.list_database(params[:database])
     @list_operating_systems = OperatingSystemHelper.list_operating_system(params[:operating_system])

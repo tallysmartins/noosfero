@@ -1,7 +1,5 @@
-class LibraryHelper < DynamicTableHelper
-  MODEL_NAME ="library"
-
-  def self.list_libraries new_libraries
+module LibraryHelper
+  def self.list_library new_libraries
     return [] if new_libraries.nil? or new_libraries.length == 0
     list_libraries = []
 
@@ -18,7 +16,7 @@ class LibraryHelper < DynamicTableHelper
     list_libraries
   end
 
-  def self.valid_list_libraries? list_libraries
+  def self.valid_list_library? list_libraries
     return true if list_libraries.nil? or list_libraries.length == 0
 
     list_libraries.each do |library|

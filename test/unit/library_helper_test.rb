@@ -17,12 +17,12 @@ class LibraryHelperTest < ActiveSupport::TestCase
 
   should "return an empty list" do
     empty_list = []
-    assert_equal  [],LibraryHelper.list_libraries(empty_list)
+    assert_equal  [],LibraryHelper.list_library(empty_list)
   end
 
   should "return a list with current library objects" do
     list_compare = []
-    lib_table = LibraryHelper.list_libraries(@license_objects)
+    lib_table = LibraryHelper.list_library(@license_objects)
     assert_equal  list_compare.class, lib_table.class
   end
 
@@ -32,13 +32,13 @@ class LibraryHelperTest < ActiveSupport::TestCase
   end
 
   should "return a list with the same size of the parameter" do
-    list_compare = LibraryHelper.list_libraries(@license_objects)
+    list_compare = LibraryHelper.list_library(@license_objects)
     assert_equal @license_objects.count, list_compare.count
   end
 
   should "return false if list_database are empty or null" do
     list_compare = []
-    assert_equal true, LibraryHelper.valid_list_libraries?(list_compare)
+    assert_equal true, LibraryHelper.valid_list_library?(list_compare)
   end
 
   should "return a html text with license name equals to linux" do
