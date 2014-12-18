@@ -43,17 +43,13 @@ class DatabaseHelper < DynamicTableHelper
   end
 
   def self.database_as_tables(list_databases, disabled=false)
-    return database_html_structure(
-      {:database_description_id => "", :version => ""}, disabled
-    ) if list_databases.nil?
-
-    lambdas_list = []
-
-    list_databases.each do |database|
-      lambdas_list << database_html_structure(database, disabled)
+    model_list = if list_databases.blank?
+      [{:database_description_id => "", :version => ""}]
+    else
+      list_databases
     end
 
-    lambdas_list
+    models_as_tables model_list, "database_html_structure", disabled
   end
 
   def self.database_html_structure(database_data, disabled)
@@ -83,6 +79,6 @@ class DatabaseHelper < DynamicTableHelper
   end
 
   def self.add_dynamic_table
-    database_as_tables(nil).call
+    database_as_tables(nil).first.call
   end
 end

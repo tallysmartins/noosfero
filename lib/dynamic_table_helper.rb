@@ -133,4 +133,12 @@ class DynamicTableHelper
 
     row_data
   end
+
+  def self.models_as_tables models, callback, disabled=false
+    lambdas_list = []
+
+    models.map do |model|
+      send(callback, model, disabled)
+    end
+  end
 end

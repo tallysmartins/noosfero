@@ -42,16 +42,13 @@ class SoftwareLanguageHelper < DynamicTableHelper
   end
 
   def self.language_as_tables(list_languages, disabled=false)
-    return language_html_structure(
-      {:programming_language_id => "", :version => ""}, disabled
-    ) if list_languages.nil?
-
-    lambdas_list = []
-
-    list_languages.each do |language|
-      lambdas_list << language_html_structure(language, disabled)
+    model_list = if list_languages.blank?
+      [{:programming_language_id => "", :version => ""}]
+    else
+      list_languages
     end
-    lambdas_list
+
+    models_as_tables model_list, "language_html_structure", disabled
   end
 
   def self.language_html_structure(language_data, disabled)
@@ -81,6 +78,6 @@ class SoftwareLanguageHelper < DynamicTableHelper
   end
 
   def self.add_dynamic_table
-    language_as_tables(nil).call
+    language_as_tables(nil).first.call
   end
 end
