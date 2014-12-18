@@ -1,0 +1,30 @@
+#article-hits {
+  display:none !important;
+
+}
+
+.main-block #article-header H1.title{
+  font-size: 26px !important;
+  margin-bottom:  10px !important;
+}
+
+.article-body {
+  font-family: arial;
+}
+
+.article-body P {
+  margin-bottom: 15px;
+}
+
+ul.lista-ajuda {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  font-size: 15px;
+}
+
+ul.lista-ajuda li {
+  list-style: square;
+  list-style-position: inside;
+  margin-bottom: 2px;
+}
