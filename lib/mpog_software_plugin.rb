@@ -72,11 +72,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def profile_tabs
     if context.profile.community?
-      if context.profile.software?
-        profile_tabs_software
-      elsif context.profile.institution?
-        profile_tabs_institution
-      end
+      profile_tabs_software if context.profile.software?
+      profile_tabs_institution
     end
   end
 
@@ -193,18 +190,18 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def profile_required_list
     fields = {}
-    fields[:person_fields] = %w('cell_phone',
-                                'contact_phone',
-                                'comercial_phone',
-                                'country',
-                                'city',
-                                'state',
-                                'organization_website',
+    fields[:person_fields] = %w('cell_phone'
+                                'contact_phone'
+                                'comercial_phone'
+                                'country'
+                                'city'
+                                'state'
+                                'organization_website'
                                 'image',
-                                'identifier',
+                                'identifier'
                                 'name')
 
-    fields[:user_fields] = %w('secondary_email', 'email')
+    fields[:user_fields] = %w('secondary_email' 'email')
     fields
   end
 
