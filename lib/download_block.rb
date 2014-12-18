@@ -1,12 +1,14 @@
 class DownloadBlock < Block
 
-  attr_accessible :name, :link, :software_description, :show_name, :version_news
+  attr_accessible :name, :link, :software_description, :show_name,
+                  :version_news, :minimum_requirements
 
   settings_items :name, :type => :string, :default => ''
   settings_items :link, :type => :string, :default => ''
   settings_items :software_description, :type => :string, :default => ''
   settings_items :show_name, :type => :boolean, :default => false
   settings_items :version_news, :type => :string, :default => ''
+  settings_items :minimum_requirements, :type => :string, :default => ''
 
   def self.description
     _('Download Stable Version')

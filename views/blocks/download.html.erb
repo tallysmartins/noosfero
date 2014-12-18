@@ -16,11 +16,11 @@
 
     <p id="download_info">
       <span class="req_spb">
-        <%= link_to _("Minimal Requirements") , block.owner.public_profile_url, :class => "anchor-link", :target => "_self" %>
+        <%= link_to _("Minimal Requirements") , block.minimum_requirements, :class => "anchor-link", :target => "_self" unless block.minimum_requirements.blank? %>
       </span>
 
       <span class="nov_spb">
-        <%= link_to(_("Version News"), block.version_news, :class => "anchor-link", :target => "_self") if !block.version_news.blank? %>
+        <%= link_to(_("Version News"), block.version_news, :class => "anchor-link", :target => "_self") unless block.version_news.blank? %>
       </span>
 
        <span class="licensed">
