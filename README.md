@@ -39,6 +39,17 @@ To create the categories that a software can have run
 
 rake software:create_categories
 
+
+Translate Plugin
+------------------
+
+To translate the strings used in the plugin run
+
+ruby script/move-translations-to-plugins.rb
+rake updatepo
+rake noosfero:translations:compile
+
+
 Running MPOG Software tests
 --------------------
 $ ruby plugins/mpog_software/test/unit/name_of_file.rb
