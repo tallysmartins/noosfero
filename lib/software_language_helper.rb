@@ -42,11 +42,8 @@ class SoftwareLanguageHelper < DynamicTableHelper
   end
 
   def self.language_as_tables(list_languages, disabled=false)
-    model_list = if list_languages.blank?
-      [{:programming_language_id => "", :version => ""}]
-    else
-      list_languages
-    end
+    model_list = list_languages
+    model_list ||= [{:programming_language_id => "", :version => ""}]
 
     models_as_tables model_list, "language_html_structure", disabled
   end
@@ -68,12 +65,16 @@ class SoftwareLanguageHelper < DynamicTableHelper
       name: {
         value: language_name,
         id: language_id,
+        hidden: true,
+        autocomplete: true
       },
       version: {
-        value: language_data[:version]
+        value: language_data[:version],
+        hidden: true,
+        delete: true
       }
     }
-
+    DATA[:license].delete(:value)
     table_html_structure(data, disabled)
   end
 

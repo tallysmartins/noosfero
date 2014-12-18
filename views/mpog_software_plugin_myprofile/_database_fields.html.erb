@@ -1,7 +1,7 @@
 <%= fields_for :database_description, @database_description do |db| %>
 
 <div id='databases'>
-  <% database = [] if database.nil? %>
+  <% database = [] if database.blank? %>
 	<% DatabaseHelper.database_as_tables(database).each do |tab| %>
 	  <%= tab.call %>
 	<%end%>

@@ -21,19 +21,16 @@ class DynamicTableHelper
   DATA = {
     name: {
       label: LABEL_TEXT[:name],
-      hidden: true,
-      autocomplete: true,
       name: COLLUMN_NAME[:name],
     },
     version: {
       label: LABEL_TEXT[:version],
       name: COLLUMN_NAME[:version],
-      hidden: true,
-      delete: true,
     } ,
     license: {
       label: LABEL_TEXT[:license],
       name: COLLUMN_NAME[:license],
+      delete: true
     }
   }
   @@disabled = false
@@ -58,7 +55,7 @@ class DynamicTableHelper
       self.table_line(row_data[:version])
     ]
 
-    if row_data[:license].has_key? :value
+    if row_data[:license].has_key?(:value)
       table_line_data << self.table_line(row_data[:license])
     end
 

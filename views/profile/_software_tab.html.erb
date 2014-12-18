@@ -30,13 +30,22 @@
 
   <tr>
     <td>
-      <table class = "libraries-info dynamic-table">
-        <%= content_tag('tr', content_tag('td', _("Libraries")) + content_tag('td', '')) %>
-        <% profile.software_info.libraries.each do |library| %>
-          <%= display_mpog_field(_('Name:'), library, :name, true) %>
-          <%= display_mpog_field(_('Version:'), library, :version, true) %>
-          <%= display_mpog_field(_('License:'), library, :license, true) %>
-        <% end %>
+      <table class = "libraries-info">
+        <thead>
+          <tr>
+            <th colspan="2"><%= _("Libraries") %></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr> <td>
+            <% libraries = profile.software_info.libraries %>
+            <% LibraryHelper.libraries_as_tables(libraries, true).each do |tab| %>
+              <%= tab.call %>
+            <%end%>
+          </td> </tr>
+        </tbody>
       </table>
     </td>
   </tr>
@@ -49,14 +58,22 @@
 
   <tr>
     <td>
-      <table class = "database-info dynamic-table">
-        <%= content_tag('tr', content_tag('td', _("Software Databases")) + content_tag('td', '')) %>
-        <tr> <td>
-          <% databases = profile.software_info.software_databases %>
-          <% DatabaseHelper.database_as_tables(databases, true).each do |tab| %>
-            <%= tab.call %>
-          <%end%>
-        </td> </tr>
+      <table class = "database-info">
+        <thead>
+          <tr>
+            <th colspan="2"><%= _("Software Databases") %></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr> <td>
+            <% databases = profile.software_info.software_databases %>
+            <% DatabaseHelper.database_as_tables(databases, true).each do |tab| %>
+              <%= tab.call %>
+            <%end%>
+          </td> </tr>
+        </tbody>
       </table>
     </td>
   </tr>
@@ -69,14 +86,22 @@
 
   <tr>
     <td>
-      <table class = "language-info dynamic-table">
-       <%= content_tag('tr', content_tag('td', _("Software Languages")) + content_tag('td', '')) %>
-        <tr> <td>
-          <% languages = profile.software_info.software_languages %>
-          <% SoftwareLanguageHelper.language_as_tables(languages, true).each do |tab| %>
-            <%= tab.call %>
-          <%end%>
-        </td> </tr>
+      <table class = "language-info">
+        <thead>
+          <tr>
+            <th colspan="2"><%= _("Software Languages") %></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr> <td>
+            <% languages = profile.software_info.software_languages %>
+            <% SoftwareLanguageHelper.language_as_tables(languages, true).each do |tab| %>
+              <%= tab.call %>
+            <%end%>
+          </td> </tr>
+        </tbody>
      </table>
    </td>
  </tr>
@@ -89,12 +114,20 @@
 
   <tr>
     <td>
-      <table class = "operating-system-info dynamic-table">
-       <%= content_tag('tr', content_tag('td', _("Operating System")) + content_tag('td', '')) %>
-       <% profile.software_info.operating_systems.each do |operating_system| %>
-         <%= display_mpog_field(_('Name:'), operating_system.operating_system_name , :name, true) %>
-         <%= display_mpog_field(_('Version:'), operating_system, :version, true) %>
-       <% end %>
+      <table class = "operating-system-info">
+        <thead>
+          <tr>
+            <th colspan="2"><%= _("Operating System") %></th>
+            <th></th>
+          </tr>
+        </thead>
+
+       <tbody>
+         <% profile.software_info.operating_systems.each do |operating_system| %>
+           <%= display_mpog_field(_('Name:'), operating_system.operating_system_name , :name, true) %>
+           <%= display_mpog_field(_('Version:'), operating_system, :version, true) %>
+         <% end %>
+       </tbody>
      </table>
    </td>
  </tr>

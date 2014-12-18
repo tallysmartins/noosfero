@@ -43,11 +43,8 @@ class DatabaseHelper < DynamicTableHelper
   end
 
   def self.database_as_tables(list_databases, disabled=false)
-    model_list = if list_databases.blank?
-      [{:database_description_id => "", :version => ""}]
-    else
-      list_databases
-    end
+    model_list = list_databases
+    model_list ||= [{:database_description_id => "", :version => ""}]
 
     models_as_tables model_list, "database_html_structure", disabled
   end
@@ -69,12 +66,16 @@ class DatabaseHelper < DynamicTableHelper
       name: {
         value: database_name,
         id: database_id,
+        hidden: true,
+        autocomplete: true
       },
       version: {
-        value: database_data[:version]
+        value: database_data[:version],
+        hidden: true,
+        delete: true
       }
     }
-
+    DATA[:license].delete(:value)
     table_html_structure(data, disabled)
   end
 

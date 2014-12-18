@@ -1,4 +1,6 @@
-module LibraryHelper
+class LibraryHelper < DynamicTableHelper
+  MODEL_NAME ="library"
+
   def self.list_libraries new_libraries
     return [] if new_libraries.nil? or new_libraries.length == 0
     list_libraries = []
@@ -26,79 +28,34 @@ module LibraryHelper
     true
   end
 
-  def self.library_as_tables list_libraries
-    extend(
-      ActionView::Helpers::TagHelper,
-      ActionView::Helpers::FormTagHelper,
-      ActionView::Helpers::UrlHelper,
-      ApplicationHelper
-    )
+  def self.libraries_as_tables list_libraries, disabled=false
+    model_list = list_libraries
+    model_list ||= [{:name=>"", :version=>"", :license=>""}]
 
-    return library_html_structure(
-      {
-        :name=>"",
-        :version=>"",
-        :license=>""
-      }
-    ) if list_libraries.nil?
-
-    lambdas_list = []
-
-    list_libraries.each do |library|
-      lambdas_list << library_html_structure(library)
-    end
-
-    lambdas_list
+    models_as_tables model_list, "library_html_structure", disabled
   end
 
-  def self.library_html_structure library_data
-    Proc::new do
-      content_tag(
-        'table',
-        content_tag(
-          'tr',
-          content_tag('td', label_tag(_("Name")))+
-          content_tag(
-            'td',
-            text_field_tag("library[][name]", library_data[:name])
-          )+
-          content_tag('td')
-        )+
+  def self.library_html_structure library_data, disabled
+    data = {
+      model_name: MODEL_NAME,
+      name: {
+        value: library_data[:name],
+        hidden: false,
+        autocomplete: false
+      },
+      version: {
+        value: library_data[:version],
+        delete: false
+      },
+      license: {
+        value: library_data[:license]
+      }
+    }
 
-        content_tag(
-          'tr',
-          content_tag('td', label_tag(_("Version")))+
-          content_tag(
-            'td',
-            text_field_tag("library[][version]", library_data[:version])
-          )+
-          content_tag('td')
-        )+
-
-        content_tag(
-          'tr',
-          content_tag('td', label_tag(_("License")))+
-          content_tag(
-            'td',
-            text_field_tag("library[][license]", library_data[:license])) +
-          content_tag(
-            'td',
-            button_without_text(
-              :delete,
-              _('Delete'),
-              "#" ,
-              :class=>"delete-dynamic-table"
-            ),
-            :align => 'right'
-          )
-        ),
-
-        :class => 'dynamic-table library-table'
-      )
-    end
+    table_html_structure(data, disabled)
   end
 
   def self.add_dynamic_table
-    library_as_tables(nil).call
+    libraries_as_tables(nil).first.call
   end
 end

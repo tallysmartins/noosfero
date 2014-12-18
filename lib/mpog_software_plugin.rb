@@ -5,7 +5,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   include ActionView::Helpers::JavaScriptHelper
   include ActionView::Helpers::AssetTagHelper
   include FormsHelper
-  include LibraryHelper
   include ActionView::Helpers
   include ActionDispatch::Routing
   include Rails.application.routes.url_helpers
@@ -73,8 +72,11 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def profile_tabs
     if context.profile.community?
-      profile_tabs_software if context.profile.software?
-      profile_tabs_institution
+      if context.profile.software?
+        profile_tabs_software
+      elsif context.profile.institution?
+        profile_tabs_institution
+      end
     end
   end
 
