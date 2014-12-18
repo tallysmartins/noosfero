@@ -9,16 +9,20 @@
   color: #2B65cd !important;
   text-transform: uppercase;
   font-size: 16px !important;
-  /*padding-left: 0.8em !important;*/
-  padding: 15px 0px 15px 15px;
-  /*margin-left: 0px;*/
+  padding: 15px 0px 10px 15px;
   border-bottom:none !important;
   background-color:#eee;
+  /*padding-left: 0.8em !important;*/
+  /*margin-left: 0px;*/
 }
 
 .action-search-software_infos #main-content-wrapper-8 .search-form{
   margin-top:-10px;
   background-color: #eee; /*#f1f1f1;*/
+}
+
+.action-search-software_infos .map-or-list-search-results{
+  margin-top:20px;
 }
 
 .action-search-software_infos .search-results-header {
@@ -51,12 +55,12 @@
   width: 87px;
   margin-bottom: 14px;
   margin-left: 32px;
-  /*color:#ffffff;*/
-  /*background-color:#4562b1;*/
   text-transform: uppercase;
   font-weight: bold;
   /*border: 1px solid #4562b1;*/
   /*padding:0px;*/
+  /*color:#ffffff;*/
+  /*background-color:#4562b1;*/
 }
 .action-search-software_infos #content input.button{
   background-color:#2B65cd;
@@ -81,8 +85,10 @@
 }
 
 .action-search-software_infos .only-one-result-box .search-enterprise-item {
-  padding: 50px 0 !important;
+  padding-top:35px !important;
+  padding-bottom: 35px !important;
   background: #ffffff;
+  /*padding: 50px 0 !important;*/
 }
 
 .action-search-software_infos .search-results-innerbox {
@@ -118,7 +124,13 @@
 }
 
 .action-search-software_infos .search-enterprise-item-column-right{
-  width:70%; /*440px;*/
+  width:60%; /*440px;*/
+  float:left;
+  margin-left: 130px;
+  /*text-align: justify;*/
+}
+#content .vcard a:hover{
+  color:#2C66CE;
 }
 
 .action-search-software_infos .common-profile-list-block .vcard {
