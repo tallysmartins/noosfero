@@ -28,6 +28,10 @@
 @import url(page-inicial.css);
 @import url(page-catalog-software.css);
 
+/****************** pagina de artigos ********************/
+@import url(pagina-artigos.css);
+
+
 /****************** Block Redes Sociais ********************/
 @import url(redes_sociais.css);
 
