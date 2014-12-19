@@ -19,7 +19,7 @@
 
 #content #search-Gadget {
   width: 90%;
-  padding: 8px;
+  padding: 7px;
   margin: 0 15px 9px 15px;
   border-radius: 4px;
   border: none;
@@ -30,7 +30,7 @@
   margin: 0px 0px 15px 15px;
   border:1px solid #FFFFFF;
   border-radius: 4px;
-  padding:5px 20px;
+  padding:6px 25px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 14px;
@@ -114,15 +114,16 @@
 }
 
 #list-categories{
-  margin:20px;
+  margin: 14px 14px 14px 14px;
 }
 
 #list-categories p{
   color:#464A55;
+  margin: 0 0 16px 0;
 }
 
 #list-categories ul li{
- margin:10px 5px 5px 8px;
+ margin:18px 5px 5px 5px;
 }
 
 #list-categories li a{
