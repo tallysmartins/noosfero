@@ -4,27 +4,80 @@
 }
 
 .main-block #article-header H1.title{
-  font-size: 26px !important;
+  font-size: 34px !important;
+  line-height: 37px !important;
   margin-bottom:  10px !important;
 }
 
 .article-body {
-  font-family: arial;
+    line-height: 21px;
+    font-family: arial;
+    font-size: 15px;
 }
 
-.article-body P {
-  margin-bottom: 15px;
+#content .main-block h2, #content .main-block h3 {
+  min-height: 0 !important;
 }
 
-ul.lista-ajuda {
+#content .main-block .article-body h2 {
+ font-size: 16px !important;
+  font-weight: bold;
+  line-height: 21px;
+  margin-bottom: 20px;
+  font-family:  arial;
+}
+
+#content .main-block .article-body h3 {
+   font-size: 15px !important;;
+   line-height: 21px;
+   font-weight: bold;
+   margin-bottom: 20px;
+   font-family:  arial;
+}
+
+#content .main-block .article-body P {
+  margin-bottom: 20px;
+  font-family:  arial;
+}
+
+#content .main-block .article-body .zoomable-image {
+ overflow: auto;
+ display: block;
+ margin-bottom: 10px;
+}
+
+.article-body ul.lista-ajuda {
   padding-top: 20px;
-  margin-top: 20px;
+  margin-top: 45px;
+  margin-bottom: 20px;
   border-top: 1px solid #ddd;
   font-size: 15px;
 }
 
-ul.lista-ajuda li {
-  list-style: square;
+.article-body ul.lista-ajuda li {
   list-style-position: inside;
   margin-bottom: 2px;
+}
+
+.article-body ul.etapas-publicacao {
+  margin-bottom: 20px;
+}
+
+.article-body ul.etapas-publicacao li {
+  list-style: none;
+  list-style-position: inside;
+  margin-bottom: 10px;
+}
+
+.article-body ul.etapas-publicacao li strong {
+  background: #333;
+  padding: 2px 8px;
+  border-radius: 50%;
+  color: #fff;
+  float: left;
+  margin-right: 6px;
+}
+
+#content .main-block .created-at {
+  font-family: arial !important;
 }
