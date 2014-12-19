@@ -197,6 +197,9 @@
   color:#172938 !important;
   font-size:19px !important;
 }
+.action-search-software_infos .search-enterprise-item-column-right span b{
+  font-weight: normal;
+}
 
 .action-search-software_infos .search-enterprise-item-column-right span b:last-child {
   float: left;
