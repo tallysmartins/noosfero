@@ -87,7 +87,7 @@
   text-align:left;
   text-transform: uppercase;
   color:#454545; /*#464A55;*/
-  padding:0px 0px 10px 10px; /*0px 0px 15px 20px;*/
+  padding:0px 0px 17px 15px; /*0px 0px 15px 20px;*/
   border-bottom:1px solid #c0c1c1;
 }
 
@@ -99,7 +99,7 @@
  border-bottom: 1px solid #ccc;
  margin: 0;
  min-height: 1em;
- padding: 15px;
+ padding: 17px 15px 17px 14px;
  font-weight: bold;
 }
 

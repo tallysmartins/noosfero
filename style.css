@@ -430,9 +430,31 @@ p {
 
 
 #content .box .article-block .short-post {
-    padding-top: 10px;
+    padding-top: 22px;
 }
 
+#content .box .article-block .block-title {
+    font-size: 18px;
+    text-align: left;
+    border-bottom: none;
+    padding: 6px 8px 22px 10px;
+    text-transform: none;
+    font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+}
+
+#content .box .article-block p {
+    font-size: 15px;
+    text-align: left;
+    padding: 0;
+    text-transform: none;
+    font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+    margin: 0 0 12px 0;
+    line-height: 18px;
+}
+
+#content .box .article-block .read-more {
+    margin-top: 30px;
+}
 
 /* padrao do box */
 #content .box .block-title {
@@ -461,6 +483,11 @@ p {
     display: block
 }
 
+#content .article-block .read-more a {
+    font-size: 11px;
+    padding: 9px 9px 10px 9px;
+}
+
 #content .read-more a:hover {
     background: #dedede;
 }
@@ -477,6 +504,9 @@ p {
 	font-family: "open_sansbold", Arial, Helvetica, sans-serif;
 }
 
+#content .box .article-block .read-more a::after {
+	font-size: 14px;
+}
 
 
 #content .box-1 .block-title {
