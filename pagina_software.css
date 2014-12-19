@@ -254,9 +254,13 @@ border:
   /*float:left;*/
   position: static;
   background: none;
-  margin-top:2px;
-}
+  margin-top:10px;
 
+}
+#content .box-1 .categories-and-tags-block .block-inner-1 .block-title:last-child {
+  border-top:1px solid #8b949b;
+  border-bottom: 1px solid #8b949b;
+}
   /*font-size: 11px;
   border-top: 1px solid #8b949b;
   /*border-top: none;
@@ -286,7 +290,7 @@ border:
 #content .box-1 .categories-and-tags-block .block-inner-1 .category_cloud {
   float:right;
   position: absolute;
-  margin-top:9px;
+  margin-top:-40px;
   margin-left:72px;
   margin-bottom: 10px;
 }
