@@ -244,46 +244,57 @@ border:
 
 /*************raw html - category and tags****************/
 
-#content .block .categories-and-tags-block {
-border-top:4px solid #21376C;
+#content .categories-and-tags-block {
+  border-top:4px solid #4562b1; 
+  /*border-top: 3px solid #21376C;*/
 }
-/*
-#content .categories-and-tags-block .tag_cloud 
-category_cloud{
-
-}*/
 
 #content .box-1 .categories-and-tags-block .block-inner-1 .block-title {
   font-size: 11px;
+  float:left;
+  background: none;
+  margin-top:2px;
+}
+
+  /*font-size: 11px;
   border-top: 1px solid #8b949b;
-  /*border-top: none;*/
+  /*border-top: none;
   background: none;
   border-bottom: 1px solid #8b949b;
   /*border-bottom: none;*/
   /*padding: 15px 0px 0px 3px;*/
   /*margin:10px;*/
   /*margin-top:-5px;*/
-}
+
 #content .box-1 .categories-and-tags-block .block-inner-2 .block-title{
   border-top: 4px solid transparent; /*#2c66ce;*/ /*#172938;*/
 }
 
 #content .box-1 .categories-and-tags-block .block-inner-1 .tag_cloud {
-  /*margin-top:-11px;*/
+  float:left;
+  position: absolute;
+  margin-top:9px;
+  margin-left:72px;
+  /*margin-top:-11px;
   margin-bottom: 15px;
   text-align: left;
   margin-top: -47px;
-  margin-left: 40px;
+  margin-left: 40px;*/
 
 }
 #content .box-1 .categories-and-tags-block .block-inner-1 .category_cloud {
-  /*margin-top:-11px;*/
+  float:left;
+  position: absolute;
+  margin-top:9px;
+  margin-left:72px;
+  margin-bottom: 10px;
+}
+
+  /*margin-top:-11px;
   margin-bottom: 15px;
   text-align: left;
   margin-top: -47px;
-  margin-left: 72px;
-
-}
+  margin-left: 72px;*/
 
 #content .box-1 .categories-and-tags-block .block-inner-1 .tag_cloud a,
 #content .box-1 .categories-and-tags-block .block-inner-1 .category_cloud a {
@@ -297,29 +308,30 @@ category_cloud{
 
 #content .box-1 .categories-and-tags-block .block-inner-1 .tag_cloud a:hover,
 #content .box-1 .categories-and-tags-block .block-inner-1 .category_cloud a:hover {
-background: #3a70d1; /*#205c90;*/
-color: white;
-border-color: #3a70d1; /*#205c90;*/
+  background: #3a70d1; /*#205c90;*/
+  color: white;
+  border-color: #3a70d1; /*#205c90;*/
 }
 
 #content .box-1 .categories-and-tags-block .block-inner-1 .tag_cloud a:link, 
 #content .box-1 .categories-and-tags-block .block-inner-1 .category_cloud a:link {
   text-decoration: none;
 }
-
+/*
 #content .box-1 .categories-and-tags-block .block-footer-content a{
+  display:none;
   background: none;
   border: none;
   border-radius: none;
   top:-5px;
   font-size:0px;
-}
-
+}*/
+/*
 #content .box-1 .categories-and-tags-block .block-footer-content {
   /*margin-top: -15px;*/
-  border-bottom: 1px solid #8b949b;
+  /*border-bottom: 1px solid #8b949b;
   margin-bottom: 30px;
-}
+}*/
 
 
 /********* Botao Repositorio ************/
