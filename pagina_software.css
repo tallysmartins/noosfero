@@ -251,7 +251,8 @@ border:
 
 #content .box-1 .categories-and-tags-block .block-inner-1 .block-title {
   font-size: 11px;
-  float:left;
+  /*float:left;*/
+  position: static;
   background: none;
   margin-top:2px;
 }
@@ -271,9 +272,9 @@ border:
 }
 
 #content .box-1 .categories-and-tags-block .block-inner-1 .tag_cloud {
-  float:left;
+  float:right;
   position: absolute;
-  margin-top:9px;
+  margin-top:-35px;
   margin-left:72px;
   /*margin-top:-11px;
   margin-bottom: 15px;
@@ -283,7 +284,7 @@ border:
 
 }
 #content .box-1 .categories-and-tags-block .block-inner-1 .category_cloud {
-  float:left;
+  float:right;
   position: absolute;
   margin-top:9px;
   margin-left:72px;
@@ -304,6 +305,7 @@ border:
   background-color:#e9e8ed;
   padding:3px 6px;
   margin:10px 3px;
+  line-height: 28px;
 }
 
 #content .box-1 .categories-and-tags-block .block-inner-1 .tag_cloud a:hover,
