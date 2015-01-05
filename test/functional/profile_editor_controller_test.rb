@@ -60,11 +60,7 @@ class ProfileEditorControllerTest < ActionController::TestCase
   end
 
   should "add new institution for user into edit profile" do
-    user = fast_create(User)
-    user.person = fast_create(Person)
-    user.person.user = user
-    user.save!
-    user.person.save!
+    user = create_basic_user
 
     params_user = Hash.new
     params_user[:institution_ids] = []
@@ -79,16 +75,12 @@ class ProfileEditorControllerTest < ActionController::TestCase
   end
 
   should "remove institutions for user into edit profile" do
-    user = fast_create(User)
-    user.person = fast_create(Person)
+    user = create_basic_user
 
     @institution_list.each do |institution|
       user.institutions << institution
     end
-
-    user.person.user = user
     user.save!
-    user.person.save!
 
     params_user = Hash.new
     params_user[:institution_ids] = []
@@ -98,5 +90,16 @@ class ProfileEditorControllerTest < ActionController::TestCase
     post :edit, :profile => User.last.person.identifier, :user => params_user
 
     assert_equal 0, User.last.institutions.count
+  end
+
+  protected
+
+  def create_basic_user
+    user = fast_create(User)
+    user.person = fast_create(Person)
+    user.person.user = user
+    user.save!
+    user.person.save!
+    user
   end
 end

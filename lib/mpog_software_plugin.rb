@@ -143,7 +143,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       !context.session[:hide_incomplete_percentage].blank?
 
     person = Person.where(:user_id => context.session[:user]).first
-    puts "="*80,person,"="*80
     call_percentage_profile_template(person)
   end
 
@@ -283,7 +282,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       end
     end
 
-    manage_user_institutions(user, leave_communities, enter_communities)
+    manage_user_institutions(user, old_communities, new_communities)
   end
 
   def show_sisp_field
@@ -362,7 +361,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     }
   end
 
-  def manage_user_institutions(leave_communities, enter_communities)
+  def manage_user_institutions(user, old_communities, new_communities)
     leave_communities = (old_communities - new_communities)
     enter_communities = (new_communities - old_communities)
 
