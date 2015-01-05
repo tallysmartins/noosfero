@@ -2,8 +2,6 @@ require File.dirname(__FILE__) + '/../../../../test/test_helper'
 
 class LibraryHelperTest < ActiveSupport::TestCase
 
-  include LibraryHelper
-
   def setup
     @license_objects = [
       {"name" => "license1" ,"version" => "2.0", "license" => "debian", "software_id" => "1"},
@@ -48,7 +46,7 @@ class LibraryHelperTest < ActiveSupport::TestCase
     library_description.name = "Lib"
 
     libraries << library_description
-    lib_table = LibraryHelper.library_as_tables(libraries)
+    lib_table = LibraryHelper.libraries_as_tables(libraries)
 
     assert_not_nil lib_table.first.call.index("lib")
   end

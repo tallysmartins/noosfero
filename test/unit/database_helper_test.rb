@@ -2,8 +2,6 @@ require File.dirname(__FILE__) + '/../../../../test/test_helper'
 
 class DatabaseHelperTest < ActiveSupport::TestCase
 
-  include DatabaseHelper
-
   def setup
     dd1 = DatabaseDescription.create(:name => "Oracle")
     dd2 = DatabaseDescription.create!(:name => "MySQL")

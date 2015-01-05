@@ -6,8 +6,6 @@ OperatingSystemName.create(:name=>"CentOS")
 
 class OperatingSystemHelperTest < ActiveSupport::TestCase
 
-  include OperatingSystemHelper
-
   def setup
     @operating_system_objects = [
       {:operating_system_name_id => "1" ,:version => "2.0"},

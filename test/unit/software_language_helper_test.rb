@@ -2,8 +2,6 @@ require File.dirname(__FILE__) + '/../../../../test/test_helper'
 
 class SoftwareLanguageHelperTest < ActiveSupport::TestCase
 
-  include SoftwareLanguageHelper
-
   def setup
     pl1 = ProgrammingLanguage.create(:name => "Python")
     pl2 = ProgrammingLanguage.create(:name => "Java")
