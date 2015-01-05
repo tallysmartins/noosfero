@@ -1,4 +1,7 @@
-module OperatingSystemHelper
+class OperatingSystemHelper < DynamicTableHelper
+  MODEL_NAME = "operating_system"
+  FIELD_NAME = "operating_system_name_id"
+
   def self.list_operating_system new_operating_systems
     return [] if new_operating_systems.nil? or new_operating_systems.length == 0
     list_operating_system = []
@@ -30,88 +33,39 @@ module OperatingSystemHelper
     true
   end
 
-  def self.operating_system_as_tables(list_operating_system, have_delete_button = true, show_information = false)
-    extend(
-      ActionView::Helpers::TagHelper,
-      ActionView::Helpers::FormTagHelper,
-      ActionView::Helpers::UrlHelper,
-      ActionView::Helpers::FormOptionsHelper,
-      ApplicationHelper
-    )
+  def self.operating_system_as_tables(list_operating_system, disabled=false)
+    model_list = list_operating_system
+    model_list ||= [{:operating_system_name_id => "", :version => ""}]
 
-    lambdas_list = []
-
-    if not show_information
-      return operating_system_html_structure(
-        {:operating_system_name_id => "", :version => ""},
-        have_delete_button
-      ) if list_operating_system.nil?
-
-    list_operating_system.each do |operating_system|
-      lambdas_list << operating_system_html_structure(
-        operating_system,
-        have_delete_button
-      )
-    end
-    else
-    list_operating_system.each do |operating_system|
-      lambdas_list << operating_system_html_structure(operating_system)
-    end
-    end
-
-    lambdas_list
+    models_as_tables model_list, "operating_system_html_structure", disabled
   end
 
-  def self.operating_system_html_structure (operating_system_data,have_delete_button = true)
-    Proc::new do
-      content_tag(
-        'table',
-        content_tag(
-          'tr',
-          content_tag('td', label_tag(_("Name")))+
-          content_tag(
-            'td',
-            select_tag(
-              "operating_system[][operating_system_name_id]",
-              SoftwareHelper.select_options(
-                  OperatingSystemName.all,
-                  operating_system_data[:operating_system_name_id]
-                )
-              )
-            )+
-          content_tag('td')
-        )+
+  def self.operating_system_html_structure (operating_system_data, disabled)
+    select_options = options_for_select(
+      OperatingSystemName.all.collect {|osn| [osn.name, osn.id]},
+      operating_system_data[:operating_system_name_id]
+    )
 
-        content_tag(
-          'tr',
-          content_tag('td', label_tag(_("Version")))+
-          content_tag(
-            'td',
-            text_field_tag(
-              "operating_system[][version]",
-              operating_system_data[:version]
-            )
-          )+
-          if have_delete_button
-            content_tag(
-              'td',
-              button_without_text(
-                :delete,
-                _('Delete'),
-                "#" ,
-                :class=>"delete-dynamic-table"
-              ),
-              :align => 'right'
-            )
-          else
-            content_tag('td', "")
-          end
-        ),:class => 'dynamic-table library-table'
-      )
-    end
+    data = {
+      model_name: MODEL_NAME,
+      field_name: FIELD_NAME,
+      name: {
+        hidden: false,
+        autocomplete: false,
+        select_field: true,
+        options: select_options
+      },
+      version: {
+        value: operating_system_data[:version],
+        hidden: true,
+        delete: true
+      }
+    }
+    DATA[:license].delete(:value)
+    table_html_structure(data, disabled)
   end
 
   def self.add_dynamic_table
-    operating_system_as_tables(nil).call
+    operating_system_as_tables(nil).first.call
   end
 end

@@ -2,6 +2,7 @@ class DynamicTableHelper
   extend(
     ActionView::Helpers::TagHelper,
     ActionView::Helpers::FormTagHelper,
+    ActionView::Helpers::FormOptionsHelper,
     ActionView::Helpers::UrlHelper,
     ApplicationHelper
   )
@@ -21,11 +22,11 @@ class DynamicTableHelper
   DATA = {
     name: {
       label: LABEL_TEXT[:name],
-      name: COLLUMN_NAME[:name],
+      name: COLLUMN_NAME[:name]
     },
     version: {
       label: LABEL_TEXT[:version],
-      name: COLLUMN_NAME[:version],
+      name: COLLUMN_NAME[:version]
     } ,
     license: {
       label: LABEL_TEXT[:license],
@@ -43,7 +44,7 @@ class DynamicTableHelper
   end
 
   def self.generate_table_lines data={}
-    @@model = data[:model_name].to_css_class
+    @@model = data[:model_name]
     @@field_name = data[:field_name]
     @@hidden_label = data[:name][:value]
     @@hidden_id = data[:name][:id]
@@ -66,7 +67,13 @@ class DynamicTableHelper
     unless row_data.blank?
       content_tag :tr, [
         self.label_collumn(row_data[:label]),
-        self.value_collumn(row_data[:value], row_data[:name], row_data[:autocomplete]),
+        self.value_collumn(
+          row_data[:value],
+          row_data[:name],
+          row_data[:autocomplete],
+          row_data[:select_field],
+          row_data[:options]
+        ),
         self.hidden_collumn(row_data[:delete], row_data[:hidden])
       ].join()
     end
@@ -76,7 +83,7 @@ class DynamicTableHelper
     content_tag :td, label_tag(label)
   end
 
-  def self.value_collumn value="", name="", autocomplete=false, disabled=false
+  def self.value_collumn value="", name="", autocomplete=false, select_field=false, options=[]
     html_options =
       if autocomplete
         {
@@ -88,11 +95,16 @@ class DynamicTableHelper
       end
 
     html_options[:disabled] = @@disabled
-    if autocomplete
-      content_tag :td, text_field_tag("#{@@model}_autocomplete", value, html_options)
+
+    content = if select_field
+      select_tag("#{@@model}[][#{@@field_name}]", options, html_options)
+    elsif autocomplete
+      text_field_tag("#{@@model}_autocomplete", value, html_options)
     else
-      content_tag :td, text_field_tag("#{@@model}[][#{name}]", value, html_options)
+      text_field_tag("#{@@model}[][#{name}]", value, html_options)
     end
+
+    content_tag :td, content
   end
 
   def self.hidden_collumn delete=false, hidden_data=false

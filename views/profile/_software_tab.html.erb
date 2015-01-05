@@ -112,9 +112,10 @@
     </td>
   </tr>
 
+
   <tr>
     <td>
-      <table class = "operating-system-info">
+      <table class="operating-system-info">
         <thead>
           <tr>
             <th colspan="2"><%= _("Operating System") %></th>
@@ -122,14 +123,17 @@
           </tr>
         </thead>
 
-       <tbody>
-         <% profile.software_info.operating_systems.each do |operating_system| %>
-           <%= display_mpog_field(_('Name:'), operating_system.operating_system_name , :name, true) %>
-           <%= display_mpog_field(_('Version:'), operating_system, :version, true) %>
-         <% end %>
-       </tbody>
-     </table>
-   </td>
- </tr>
+        <tbody>
+          <tr> <td>
+            <% operating_systems = profile.software_info.operating_systems %>
+            <% OperatingSystemHelper.operating_system_as_tables(operating_systems, true).each do |tab| %>
+              <%= tab.call %>
+            <%end%>
+          </td> </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
  </tr>
 </table>

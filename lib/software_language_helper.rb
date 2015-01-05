@@ -66,7 +66,8 @@ class SoftwareLanguageHelper < DynamicTableHelper
         value: language_name,
         id: language_id,
         hidden: true,
-        autocomplete: true
+        autocomplete: true,
+        select_field: false
       },
       version: {
         value: language_data[:version],

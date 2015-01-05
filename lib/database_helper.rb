@@ -67,7 +67,8 @@ class DatabaseHelper < DynamicTableHelper
         value: database_name,
         id: database_id,
         hidden: true,
-        autocomplete: true
+        autocomplete: true,
+        select_field: false
       },
       version: {
         value: database_data[:version],

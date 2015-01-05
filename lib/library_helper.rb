@@ -39,7 +39,8 @@ module LibraryHelper
       name: {
         value: library_data[:name],
         hidden: false,
-        autocomplete: false
+        autocomplete: false,
+        select_field: false
       },
       version: {
         value: library_data[:version],
