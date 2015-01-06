@@ -68,6 +68,8 @@ mkdir -p /var/lib/gitlab-shell/.ssh
 chown -R git:git /var/log/gitlab-shell
 chown -R git:git /var/lib/gitlab-shell
 
+ln -s /var/lib/gitlab/.gitlab_shell_secret /usr/lib/gitlab-shell/.gitlab_shell_secret
+
 sudo -u git -H /usr/lib/gitlab-shell/bin/install
 
 %files
