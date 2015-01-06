@@ -35,13 +35,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def profile_editor_transaction_extras
     single_hash_transactions = { :user => 'user',
-                                 :software_info => 'software_info',
-                                 :version => 'license', :language => 'generic_model',
-                                 :operating_system => 'generic_model',
-                                 :software_categories => 'software_categories',
-                                 :instituton => 'instituton',
-                                 :library => 'generic_model',
-                                 :database => 'generic_model' }
+                                 :instituton => 'instituton'
+                               }
 
     single_hash_transactions.each do |model, transaction|
       call_model_transaction(model, transaction)
@@ -298,34 +293,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     context.profile.institution.send(model + '_id = ',
                                      context.params[model.to_sym])
     context.profile.institution.save!
-  end
-
-  def generic_model_transaction
-    models_list = [
-                    [SoftwareLanguage, SoftwareLanguageHelper, 'language'],
-                    [SoftwareDatabase, DatabaseHelper, 'database'],
-                    [OperatingSystem, OperatingSystemHelper, 'operating_system'],
-                    [Library, LibraryHelper, 'library']
-                  ]
-    models_list.each do |model|
-      list_of_model = 'list_'+model[2].to_s
-      model[0].transaction do
-        list = model[1].send(list_of_model, context.params[model[2].to_sym])
-
-        if model[2].send('valid_'+list_of_model+'?', list_of_model)
-          model[0].where(
-            :software_info_id => context.profile.software_info.id
-          ).destroy_all
-
-          list.each do |model|
-            model.software_info = context.profile.software_info
-            model.save!
-          end
-        else
-          raise 'Invalid Software #{model[2]} fields'
-        end
-      end
-    end
   end
 
   def software_info_button
