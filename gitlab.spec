@@ -16,7 +16,7 @@ GitLab
 
 %prep
 %setup -q
-%patch0 -p 1
+#%patch0 -p 1
 
 %build
 cat > config/gitlab.yml <<EOF
@@ -109,14 +109,18 @@ mkdir -p /var/lib/gitlab/backups
 mkdir -p /var/lib/gitlab/repositories
 mkdir -p /var/lib/gitlab/satellites
 mkdir -p /var/lib/gitlab/tmp
+touch /var/lib/gitlab/.gitconfig
+ln -s /var/lib/gitlab/.gitconfig /usr/lib/gitlab/.gitconfig
 chown -R git:git /var/lib/gitlab
+chmod u+rwx,g=rx,o-rwx /var/lib/gitlab/satellites
+
 if [ /usr/bin/redis-server ]; then
   service redis start
 fi
 
-git config --global user.name "GitLab"
-git config --global user.email "example@example.com"
-git config --global core.autocrlf input
+sudo -u git -H "/usr/bin/git" config --global user.name  "GitLab"
+sudo -u git -H "/usr/bin/git" config --global user.email "example@example.com"
+sudo -u git -H "/usr/bin/git" config --global core.autocrlf "input"
 
 mkdir -p /var/lib/gitlab-assets
 
@@ -128,12 +132,12 @@ cp /usr/lib/gitlab/lib/support/init.d/gitlab /etc/init.d/gitlab
 cp /usr/lib/gitlab/lib/support/init.d/gitlab.default.example /etc/default/gitlab
 cp /usr/lib/gitlab/lib/support/logrotate/gitlab /etc/logrotate.d/gitlab
 
-sed -i 's/app_root="\/home\/\$app_user\/gitlab"/app_root="\/usr\/lib\/gitlab"/' /etc/init.d/gitlab
 sed -i 's/app_root="\/home\/\$app_user\/gitlab"/app_root="\/usr\/lib\/gitlab"/' /etc/default/gitlab
 sed -i 's/\/home\/\git/\/usr\/lib/' /etc/logrotate.d/gitlab
 
 %postun
 #TODO Remove
+service gitlab stop
 sudo -u postgres psql -d template1 << EOF 
 DROP DATABASE gitlabhq_production;
 DROP USER git;
