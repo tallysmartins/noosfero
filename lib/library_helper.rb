@@ -1,4 +1,6 @@
-module LibraryHelper
+class LibraryHelper < DynamicTableHelper
+  MODEL_NAME = "library"
+
   def self.list_library new_libraries
     return [] if new_libraries.nil? or new_libraries.length == 0
     list_libraries = []
