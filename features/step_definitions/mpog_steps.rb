@@ -120,6 +120,7 @@ Given /^the following softwares$/ do |table|
     software_info.objectives = item[:objectives] if item[:objectives]
     software_info.features = item[:features] if item[:features]
     software_info.public_software = item[:public_software] == "true" if item[:public_software]
+    software_info.license_info = LicenseInfo.create :version=>"GPL - 1.0"
 
     if item[:software_language]
       programming_language = ProgrammingLanguage.where(:name=>item[:software_language]).first
