@@ -1,5 +1,5 @@
 Name:    gitlab
-Version: 7.5.2
+Version: 7.6.2
 Release: 1%{?dist}
 Summary: Software Development Platform
 Group:   Development/Tools

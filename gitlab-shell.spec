@@ -65,6 +65,8 @@ fi
 mkdir -p /var/log/gitlab-shell
 mkdir -p /var/lib/gitlab-shell/.ssh
 
+ln -s /var/lib/gitlab-shell/.ssh /usr/lib/gitlab/.ssh
+
 chown -R git:git /var/log/gitlab-shell
 chown -R git:git /var/lib/gitlab-shell
 
