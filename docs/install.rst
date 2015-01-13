@@ -23,6 +23,7 @@ necessários. Os mesmos estão listados a seguir.
 
 * Noosfero
 * Gitlab
+* Gitlab-deps
 * Solr
 * Colab
 * Colab-deps
@@ -68,6 +69,13 @@ usuário do sistema.
 
    wget http://download.opensuse.org/repositories/isv:/spb:/colab/CentOS_7/isv:spb:colab.repo
    wget http://download.opensuse.org/repositories/isv:/spb:/mailman-api/CentOS_7/isv:spb:mailman-api.repo
+   wget http://download.opensuse.org/repositories/isv:/spb:/gitlab/CentOS_7/isv:spb:gitlab.repo
+
+4. Instalar repositório para instalação do servidor web Nginx:
+
+::
+
+   rpm -i http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 
 
 Instalação das Ferramentas (via pacote)
@@ -89,19 +97,38 @@ Procedimento:
 
 ::
 
-   yum install postgresql-server
+   yum install -y postgresql-server
 
-2. Instalar os pacotes do Colab, Noosfero e Gitlab
-
-::
-
-   yum install colab noosfero gitlab
-
-3. Instalar os pacotes Nginx
+2. Instalar o pacote do servidor de estrutura de dados Redis
 
 ::
 
-   yum install nginx
+   yum install -y redis
+
+3. Instalar os pacotes do source forge Gitlab e gerenciador de repositórios
+   Gitlab-shell
+
+::
+
+   yum install -y gitlab gitlab-shell
+
+4. Instalar o pacote da ferramenta Noosfero
+
+::
+
+   yum install -y noosfero
+
+5. Instalar o pacote da ferramenta de integração Colab
+
+::
+
+   yum install -y colab
+
+6. Instalar o pacote do servidor web Nginx
+
+::
+
+   yum install -y nginx
 
 Configurações
 --------------
@@ -110,7 +137,7 @@ Configurações
 Nginx
 +++++
 
-Para configurar o Nginx crie o arquivo ``/etc/nginx/sites-enabled/colab.conf`` com o conteúdo abaixo: 
+Para configurar o Nginx crie o arquivo ``/etc/nginx/conf.d/colab.conf`` com o conteúdo abaixo: 
 
 .. code-block:: nginx
 
@@ -144,7 +171,7 @@ Para configurar o Nginx crie o arquivo ``/etc/nginx/sites-enabled/colab.conf`` c
      error_log             /var/log/nginx/ssl-colab.error.log;
 
      location /gitlab/assets/ {
-       alias  /opt/gitlab/embedded/service/gitlab-rails/public/assets/;
+       alias  /var/lib/gitlab-assets/;
      }
 
      location / {
@@ -175,7 +202,7 @@ Reinicie o serviço do Nginx com o comando: ``sudo service nginx restart``.
 Colab
 +++++
 
-Crie/edite o arquivo ``/etc/colab/settings.d/admins.yaml`` e adicione o nome e e-mail dos administradores do sistema:
+Edite o arquivo ``/etc/colab/settings.yaml`` e adicione o nome e e-mail dos administradores do sistema:
 
 .. code-block:: yaml
 
@@ -191,7 +218,7 @@ Crie/edite o arquivo ``/etc/colab/settings.d/admins.yaml`` e adicione o nome e e
    MANAGERS: *admin
 
 
-Crie/edite o arquivo ``/etc/colab/settings.d/hosts.yaml`` e configure a URL principal da aplicação, quais hosts deverão aceitar requisições e quais hosts poderão ser utilizadas para que o login seja efetuado. Exemplo:
+Edite o arquivo ``/etc/colab/settings.yaml`` e configure a URL principal da aplicação, quais hosts deverão aceitar requisições e quais hosts poderão ser utilizadas para que o login seja efetuado. Exemplo:
 
 .. code-block:: yaml
 
@@ -205,7 +232,7 @@ Crie/edite o arquivo ``/etc/colab/settings.d/hosts.yaml`` e configure a URL prin
      - https://beta.softwarepublico.gov.br
 
 
-Crie/edite o arquivo ``/etc/colab/settings.d/email.yaml`` e configure o endereço que será utilizado no FROM dos e-mails enviados pelo Colab. Veja o exemplo:
+Edite o arquivo ``/etc/colab/settings.yaml`` e configure o endereço que será utilizado no FROM dos e-mails enviados pelo Colab. Veja o exemplo:
 
 .. code-block:: yaml
 
@@ -213,26 +240,15 @@ Crie/edite o arquivo ``/etc/colab/settings.d/email.yaml`` e configure o endereç
    SERVER_EMAIL: '"Portal do Software Publico" <noreply@beta.softwarepublico.gov.br>'
 
 
-Crie/edite o arquivo ``/etc/colab/settings.d/conversejs.yaml`` e desative o Converse.js:
+Edite o arquivo ``/etc/colab/settings.yaml`` e configure o endereço das ferramentas a serem integradas ao Colab. Veja o exemplo:
 
 .. code-block:: yaml
 
-   CONVERSEJS_ENABLED: False
-
-
-Crie/edite o arquivo ``/etc/colab/settings.d/feedzilla.yaml`` e desative o Feedzilla (blog planet):
-
-.. code-block:: yaml
-
-   FEEDZILLA_ENABLED: False
-
-
-*(opcional)* Crie/edite o arquivo ``/etc/colab/settings.d/raven.yaml`` e adicione a *string* de conexão da sua instancia do Sentry  como no exemplo abaixo:
-
-.. code-block:: yaml
-
-   ### Log errors to Sentry instance
-   RAVEN_DSN: 'https://<user>:<key>@sentry.example.com/<id>'
+   PROXIED_APPS:
+      gitlab:
+	 upstream: 'http://localhost:8080/gitlab'
+      noosfero:
+	 upstream: 'http://localhost:8090/noosfero'
 
 
 Após editar todos os arquivos desejados reinicie o processo do Colab com utilizando o comando ``service colab restart``.
@@ -241,31 +257,37 @@ Após editar todos os arquivos desejados reinicie o processo do Colab com utiliz
 Gitlab
 ++++++
 
-Crie/edite o arquivo ``/etc/gitlab/gitlab.rb`` com o seguinte conteúdo:
+Edite o arquivo ``/etc/gitlab/gitlab.yaml`` acrescentando o atributo relative_url_root após a linha ``email_from: example@example.com``. 
+Veja o exemplo a seguir:
+
+.. code-block:: yaml
+
+   email_from:example@example.com
+   relative_url_root: /gitlab
+
+
+Descomente a linha a seguir no arquivo ``/etc/gitlab/unicorn.rb``, veja o exemplo:
 
 .. code-block:: ruby
 
-   external_url 'https://beta.softwarepublico.gov.br'
-   gitlab_rails['internal_api_url'] = 'http://127.0.0.1:8090/gitlab'
-   nginx['enable'] = false
-   unicorn['enable'] = true
-   unicorn['port'] = 8090
-   postgresql['port'] = 5433
-   gitlab_rails['gitlab_https'] = true
-   gitlab_rails['env_enable'] = true
-   gitlab_rails['env_database_name'] = 'colab'
-   gitlab_rails['env_database_host'] = '127.0.0.1'
-   gitlab_rails['env_database_user'] = '<usuario_do_postgresql>'
-   gitlab_rails['env_database_password'] = '<senha_do_postgresql>'
-   gitlab_rails['omniauth_enabled'] = true
-   gitlab_rails['omniauth_allow_single_sign_on'] = true
-   gitlab_rails['omniauth_block_auto_created_users'] = false
+   ENV['RAILS_RELATIVE_URL_ROOT'] = "/gitlab"
 
 
-Substitua o domínio ``beta.softwarepublico.gov.br`` pelo desejado, e configure o usuário e senha que terão acesso ao banco de dados.
+Altere o atributo gitlab_url no arquivo ``/etc/gitlab-shell/config.yml``, acrescentando /gitlab a url existente. Veja o exemplo:
 
-Execute o comando para regerar a configuração do Gitlab: ``gitlab-ctl reconfigure``. Ao termino da reconfiguração o script irá reiniciar o serviço automaticamente.
+.. code-block:: yaml
 
+   gitlab_url: "http://localhost:8080/gitlab"
+
+
+Descomente a linha a seguir no arquivo ``/usr/lib/gitlab/config/application.rb``, veja o exemplo:
+
+.. code-block:: ruby
+
+   config.relative_url_root = "/gitlab"
+
+
+Após a configuração acima ter sido feita o serviço do gitlab precisa ser reiniciado utilizando o comando ``service gitlab restart``.
 
 Noosfero
 ++++++++
@@ -309,7 +331,7 @@ administrador do `mailman`, e ``PASSWORD`` pela senha de administração do
 
 .. code-block:: sh
 
-   $ sudo -u mailman newlist --quiet mailman USER@DOMAIN.COM PASSWORD
+   $ sudo -u mailman /usr/lib/mailman/bin/newlist --quiet mailman USER@DOMAIN.COM PASSWORD
    $ sudo service mailman restart
 
 
