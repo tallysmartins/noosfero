@@ -1,19 +1,29 @@
-<div>
-  <div id="catalog-list">
-    <br>
-    <ul>
-      <% @category_filters.each do |filter_id| %>
-        <li class="category_box"> <%= _(Category.find(filter_id).name) %>
-        <span class="catalog-remove-item" data-id="<%= filter_id %>" >x</span>
-        </li>
-      <% end %>
-    </ul>
+<div id="catalog-list">
+<br>
+<ul>
+  <% @category_filters.each do |filter_id| %>
+    <li class="category_box"> <%= _(Category.find(filter_id).name) %>
+    <span class="catalog-remove-item" data-id="<%= filter_id %>" >x</span>
+    </li>
+  <% end %>
+</ul>
+</div>
+
+<div id="catalog-filter">
+  <div id='selected-options'>
+    <span><%= _('Selected options: ') %> sagdhjasgdhjagsd</span>
   </div>
 
-  <div id="catalog-filter">
-    <h4>
-      <span><%= _("Categories filter") %>:</span>
-      <%= text_field(:software, :catalog, :id=>"software-catalog", :placeholder=>_("Type a category name here")) %>
-    </h4>
+  <div id='categories'>
+    <div id='categories-left'>
+      <ul>
+        <% @categories.each do |category| %>
+          <li>
+            <%= labelled_check_box category.name, "categories[]", category.id %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
+</div>
 </div>

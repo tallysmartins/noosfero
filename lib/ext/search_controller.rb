@@ -24,6 +24,7 @@ class SearchController
   def software_infos
     @titles[:software_infos] = _("Software Catalog")
     @category_filters = []
+    @categories = Category.all
 
     results = filter_software_infos_list
     results = results.paginate(:per_page => 24, :page => params[:page])
@@ -51,17 +52,13 @@ class SearchController
   end
 
   def filter_software_infos_list
-    unfiltered_software_infos_list = SoftwareInfo.like_search(params[:query])
+    filtered_communities_list = SoftwareInfo.like_search(params[:query])
 
-    filtered_communities_list = []
-    unfiltered_software_infos_list.each do |software|
-      filtered_communities_list << software.community
-    end
-
-    if not params[:filter].blank?
-      params[:filter].split(",").each{|f| @category_filters << f.to_i}
-      filtered_communities_list.select! do |community|
-        !(community.category_ids & @category_filters).blank?
+    if not params[:categories].blank?
+      @category_filters = params[:categories].select {|c| c.to_i != 0 }
+      
+      filtered_communities_list.select! do |software|
+        !(software.community.category_ids & @category_filters).blank?
       end
     end
 
