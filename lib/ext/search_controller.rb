@@ -52,16 +52,21 @@ class SearchController
   end
 
   def filter_software_infos_list
-    filtered_communities_list = SoftwareInfo.like_search(params[:query])
+    filtered_software_list = SoftwareInfo.like_search(params[:query])
 
     if not params[:categories].blank?
       @category_filters = params[:categories].select {|c| c.to_i != 0 }
-      
-      filtered_communities_list.select! do |software|
+
+      filtered_software_list.select! do |software|
         !(software.community.category_ids & @category_filters).blank?
       end
     end
 
-    filtered_communities_list
+    filtered_community_list = []
+    filtered_software_list.each do |software|
+      filtered_community_list << software.community
+    end
+
+    filtered_community_list
   end
 end
