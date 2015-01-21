@@ -15,7 +15,7 @@
         <% @categories_groupe_one.each do |category| %>
           <label>
             <%= check_box_tag("selected_categories[#{category.name}]", category.id, @selected_categories_name.include?(category.name), :class => "categories-catalog") %>
-                    <%= _("#{category.name}") %>
+            <span><%= _("#{category.name}") %></span>
           </label> <br>
         <% end %>
       </div>

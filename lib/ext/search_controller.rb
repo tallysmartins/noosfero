@@ -22,32 +22,7 @@ class SearchController
 
 
   def software_infos
-    @titles[:software_infos] = _("Public Software Catalog")
-    @category_filters = []
-    @categories = Category.all
-    @selected_categories = params[:selected_categories]
-
-    @selected_categories_name = []
-    @message_selected_options = "Most options"
-    unless @selected_categories.nil?
-      @message_selected_options = _("Selected options: ")
-      @selected_categories.each do |k, v|
-        @message_selected_options << "#{k}; "
-        @selected_categories_name << k
-      end
-    end
-
-    @categories.sort!{|a, b| a.name <=> b.name}
-    @categories_groupe_one = []
-    @categories_groupe_two = []
-    (0..(@categories.count - 1)).each do |i|
-      if i % 2 == 0
-        @categories_groupe_one << @categories[i]
-      else
-        @categories_groupe_two << @categories[i]
-      end
-    end
-
+    prepare_search_page
     results = filter_software_infos_list
     results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}
@@ -95,5 +70,54 @@ class SearchController
     end
 
     filtered_community_list
+  end
+
+  def get_search_result
+    redirect_to "/" unless request.xhr?
+
+    selected_categories = {}
+    params[:categories_ids].each do |id|
+      selected_categories[Category.find(id).name] = id
+    end
+    params[:selected_categories] = selected_categories
+
+    prepare_search_page
+
+    results = filter_software_infos_list
+    results = results.paginate(:per_page => 24, :page => params[:page])
+
+    @searches[@asset] = {:results => results}
+    @search = results
+    render "/software_infos", :layout=>false
+  end
+
+  protected
+
+  def prepare_search_page
+    @titles[:software_infos] = _("Public Software Catalog")
+    @category_filters = []
+    @categories = Category.all
+    @selected_categories = params[:selected_categories]
+
+    @selected_categories_name = []
+    @message_selected_options = "Most options"
+    unless @selected_categories.nil?
+      @message_selected_options = _("Selected options: ")
+      @selected_categories.each do |k, v|
+        @message_selected_options << "#{k}; "
+        @selected_categories_name << k
+      end
+    end
+
+    @categories.sort!{|a, b| a.name <=> b.name}
+    @categories_groupe_one = []
+    @categories_groupe_two = []
+    (0..(@categories.count - 1)).each do |i|
+      if i % 2 == 0
+        @categories_groupe_one << @categories[i]
+      else
+        @categories_groupe_two << @categories[i]
+      end
+    end
   end
 end
