@@ -130,7 +130,6 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       mpog-search.js
       software-catalog.js
       mpog-software-block.js
-      catalog-filter.js
     )
   end
 

@@ -55,6 +55,51 @@
     jQuery(this).parent().remove();
   }
 
+  function show_head_message() {
+    if (jQuery("#filter-categories-select-catalog").text().blank()){
+      jQuery("#filter-categories-select-catalog").hide();
+      jQuery("#filter-option-catalog-software").show();
+    }else{
+      jQuery("#filter-categories-select-catalog").show();
+      jQuery("#filter-option-catalog-software").hide();
+    }
+  }
+
+  function slideDowsCategoriesOptionAndHideOptionCatalog() {
+    jQuery("#filter-categories-option").slideDown();
+    jQuery("#filter-option-catalog-software").hide();
+  }
+
+  function slideDownCategoriesOptionAndHideCategoriesSelect() {
+    jQuery("#filter-categories-option").slideDown();
+    jQuery("#filter-categories-select-catalog").hide();
+  }
+
+  function slideUpCategoriesAndShowHeadMessage() {
+    jQuery("#filter-categories-option").slideUp();
+    show_head_message();
+  }
+
+  function clearCatalogCheckbox(){
+    jQuery("#filter-categories-option").slideUp();
+    jQuery("#filter-option-catalog-software").show();
+    jQuery("#group-categories input:checked").each(function() {
+      jQuery(this).prop('checked', false);
+    });
+  }
+
+  function selectCheckboxCategory() {
+    jQuery("#filter-categories-option").slideUp();
+    jQuery("#filter-categories-select-catalog").show();
+    jQuery("#filter-option-catalog-software").hide();
+  }
+
+  function selectProjectSoftwareCheckbox() {
+    jQuery("#filter-categories-option").slideUp();
+    jQuery("#filter-categories-select-catalog").show();
+    jQuery("#filter-option-catalog-software").hide();
+  }
+
   function set_autocomplate() {
     jQuery("#software-catalog").autocomplete({
       source : function(request, response){
@@ -84,10 +129,20 @@
 
   function set_events() {
     jQuery(".catalog-remove-item").click(remote_catalog_item);
+    jQuery("#filter-option-catalog-software").click(slideDowsCategoriesOptionAndHideOptionCatalog);
+    jQuery("#filter-categories-select-catalog").click(slideDownCategoriesOptionAndHideCategoriesSelect);
+    jQuery("#close-filter-catalog").click(slideUpCategoriesAndShowHeadMessage);
+    jQuery("#cleanup-filter-catalg").click(clearCatalogCheckbox);
+    jQuery(".categories-catalog").click(selectCheckboxCategory);
+    jQuery(".project-software").click(selectProjectSoftwareCheckbox);
   }
+
 
   jQuery(document).ready(function(){
     set_autocomplate();
     set_events();
+    show_head_message();
+    jQuery("#filter-categories-option").hide();
   });
+
 })();
