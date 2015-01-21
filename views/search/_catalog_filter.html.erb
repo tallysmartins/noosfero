@@ -1,29 +1,42 @@
-<div id="catalog-list">
-<br>
-<ul>
-  <% @category_filters.each do |filter_id| %>
-    <li class="category_box"> <%= _(Category.find(filter_id).name) %>
-    <span class="catalog-remove-item" data-id="<%= filter_id %>" >x</span>
-    </li>
-  <% end %>
-</ul>
-</div>
+<div id="main-content-wrapper-8"> <!-- id do Noosfero -->
 
-<div id="catalog-filter">
-  <div id='selected-options'>
-    <span><%= _('Selected options: ') %> sagdhjasgdhjagsd</span>
-  </div>
+<div id="filter-catalog-software">
 
-  <div id='categories'>
-    <div id='categories-left'>
-      <ul>
-        <% @categories.each do |category| %>
-          <li>
-            <%= labelled_check_box category.name, "categories[]", category.id %>
-          </li>
+  <div id="filter-option-catalog-software"> Mais opções </div>
+   <!--Quando tiver filtros(categorias)selecionados mostrar esta opção: Opções selecionadas-->
+
+  <div id="filter-categories-select-catalog"> <%= @message_selected_options %> </div>
+
+  <div id="filter-categories-option">
+
+  <div id="filter-categories-catalog"><h4> <%= _("Categories") %> </h4></div>
+    <div id="group-categories">
+      <div id="gruop-catalog-01">
+        <% @categories_groupe_one.each do |category| %>
+          <label>
+            <%= check_box_tag("selected_categories[#{category.name}]", category.id, @selected_categories_name.include?(category.name), :class => "categories-catalog") %>
+                    <%= _("#{category.name}") %>
+          </label> <br>
         <% end %>
-      </ul>
+      </div>
+      <div id="group-catalog-02">
+        <% @categories_groupe_two.each do |category| %>
+          <label>
+            <%= check_box_tag("selected_categories[#{category.name}]", category.id, @selected_categories_name.include?(category.name), :class => "categories-catalog") %>
+                    <%= _("#{category.name}") %>
+          </label> <br>
+        <% end %>
+      </div>
     </div>
-  </div>
+
+  <div class="project-software"> <%= _("Software Projects:") %>
+    <label><input type="checkbox" name="filter" value="Incluir nos resultados"> <%= _("Include in results") %> </label>
+    <span class"doubts-catalog-software" title="Incluir projetos de software em desenvolvimento que ainda não são oficialmente Software Público Brasileiro.">(?)</span>
+    <!--<p><acronym title="Incluir projetos de software em desenvolvimento que ainda não são oficialmente Software Público Brasileiro.">(?)
+    </acronym></p>-->
+  </div><br>
+  <%= button_tag _("Clean up"), :id => "cleanup-filter-catalg", :type => "button" %>
+  <%= button_tag _("Close"), :id => "close-filter-catalog", :type => "button" %>
+</div>
 </div>
 </div>

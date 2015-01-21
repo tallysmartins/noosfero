@@ -268,3 +268,194 @@
   background-color:rgba(255, 255, 255, 0.9);
 }
 /* End software block main area definitions */
+
+/* Software catalog definitions */
+
+#main-content-wrapper-8 h2{
+  margin:0px;
+  font-family: arial;
+  font-weight: normal;
+  font-size: 16px;
+  color: #F50054;
+  text-transform: uppercase;
+}
+
+#main-content-wrapper-8 h1{
+  font-family: arial;
+  color:#121D2B;
+}
+
+.search-form{
+  background:#EAEBEE; /*#1A397D;*/
+  /*padding:10px;*/
+  padding: 5px 5px 1px 10px;
+  border-top-left-radius:4px;
+  border-top-right-radius: 4px;
+}
+
+.search-form h3{
+  text-transform: uppercase;
+  font-family: arial;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color:#2B51A8;
+}
+
+#search-input{
+  width: 700px;
+  border-radius:3px;
+  font-size: 140%;
+  background: #ffffff;
+  border: medium none;
+}
+
+input.button.with-text.icon-search.submit{
+  font-size: 14px;
+  background:#2B51A8; /*#2B65CD;*#1A397D;*/
+  margin-top:8px;
+  color:#ffffff;
+  text-transform: uppercase;
+  border-radius: 4px;
+  /*border: 1px solid #ffffff;*/
+  border: 1px solid #2B51A8;
+  padding: 5px 15px;
+
+}
+
+#filter-option-catalog-software{
+  padding:8px;
+  color:#000;
+  text-transform: uppercase;
+  text-align: right;
+  border-top: 1px solid #ffffff;
+  background-color: #D4D5DC; /*#172857;*/
+  border-bottom-left-radius:4px;
+  border-bottom-right-radius: 4px;
+}
+
+#filter-option-catalog-software:hover{
+  background-color: #2B65CD;
+  border-bottom-left-radius:4px;
+  border-bottom-right-radius: 4px;
+  cursor:pointer;
+}
+
+#filter-categories-select-catalog{
+  border-top: 1px solid #ffffff;
+  margin:0px;
+  cursor:pointer;
+  padding: 8px;
+  /*color: #FFF;*/
+  text-transform: uppercase;
+}
+
+#filter-categories-option{
+  border-top: 1px solid #ffffff;
+  padding: 15px 10px;
+}
+
+/*#filter-categories{
+  margin:10px 5px;
+  color:#ffffff;
+}*/
+
+#filter-categories-catalog h4{
+  margin:10px 5px;
+  color:#000;
+}
+
+#group-categories{
+  line-height: 31px;
+}
+
+#gruop-catalog-01{
+  float:left;
+  width: 50%;
+}
+
+#gruop-catalog-02{
+  margin-left: 50%;
+  line-height: 31px;
+}
+
+.project-software{
+  border-top: 1px dashed;
+  border-bottom: 1px dashed;
+  margin-top:10px;
+  padding:10px;
+}
+
+
+#filter-catalog-software{
+  /*border: 1px solid #ffffff;*/
+  background-color: #D4D5DC; /*#ccc;#172857;*/
+  border-bottom-left-radius:4px;
+  border-bottom-right-radius: 4px;
+
+}
+
+#cleanup-filter-catalg{
+  margin-left:5px;
+}
+
+#cleanup-filter-catalg{
+  background:#2B65CD; /*#1A397D;*/
+  margin-top:5px;
+  color:#ffffff;
+  /*text-transform: uppercase;*/
+  border-radius: 4px;
+  /*border: 1px solid #ffffff;*/
+  border: 1px solid #2B65CD;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+#cleanup-filter-catalg:hover{
+  background-color: #172857;
+}
+
+#close-filter-catalog{
+  float:right;
+  border:none;
+  background: none;
+  font-size:12px;
+  margin-top: 5px;
+  color: #000;
+  text-transform: uppercase;
+  padding: 5px;
+
+}
+/*
+#close-filter-catalog:hover{
+  background:#2B65CD;
+  border-radius: 4px;
+  margin-top: 5px;
+  color: #FFF;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: 1px solid #2B65CD;
+  padding: 5px;
+}
+
+#close-filter-catalog:after{
+    content:"︿";
+    padding-left: 7px;
+    padding-right: 4px;
+    color: #172857;
+    background: none repeat scroll 0% 0% #EEE;
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    position: relative;
+    margin-left: 5px;
+    top: 2px;
+    margin-right: 15px;
+}
+*/
+
+input[type=checkbox] {
+  border:1px solid #000;
+  margin:8px;
+  cursor:pointer;
+}
+/* End software catalog definitions */

@@ -22,9 +22,31 @@ class SearchController
 
 
   def software_infos
-    @titles[:software_infos] = _("Software Catalog")
+    @titles[:software_infos] = _("Public Software Catalog")
     @category_filters = []
     @categories = Category.all
+    @selected_categories = params[:selected_categories]
+
+    @selected_categories_name = []
+    @message_selected_options = "Most options"
+    unless @selected_categories.nil?
+      @message_selected_options = _("Selected options: ")
+      @selected_categories.each do |k, v|
+        @message_selected_options << "#{k}; "
+        @selected_categories_name << k
+      end
+    end
+
+    @categories.sort!{|a, b| a.name <=> b.name}
+    @categories_groupe_one = []
+    @categories_groupe_two = []
+    (0..(@categories.count - 1)).each do |i|
+      if i % 2 == 0
+        @categories_groupe_one << @categories[i]
+      else
+        @categories_groupe_two << @categories[i]
+      end
+    end
 
     results = filter_software_infos_list
     results = results.paginate(:per_page => 24, :page => params[:page])
@@ -54,11 +76,16 @@ class SearchController
   def filter_software_infos_list
     filtered_software_list = SoftwareInfo.like_search(params[:query])
 
-    if not params[:categories].blank?
-      @category_filters = params[:categories].select {|c| c.to_i != 0 }
+    category_ids = []
+    unless params[:selected_categories].blank?
+      category_ids = params[:selected_categories].values
+    end
+    category_ids = category_ids.map(&:to_i)
 
+    unless category_ids.empty?
       filtered_software_list.select! do |software|
-        !(software.community.category_ids & @category_filters).blank?
+        result_ids = (software.community.category_ids & category_ids).sort
+        result_ids == category_ids.sort
       end
     end
 
