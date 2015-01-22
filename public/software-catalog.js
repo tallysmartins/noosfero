@@ -106,6 +106,8 @@
       selected_categories_ids.push(element.value);
     });
 
+    open_loading("Loading");
+
     $.ajax({
       url: AJAX_URL.software_infos,
       type: "GET",
@@ -113,19 +115,27 @@
         query: query_text,
         selected_categories: selected_categories_ids
       },
-      success: callback
+      success: callback,
+      error: function(){
+        close_loading();
+      }
     });
   }
 
   function update_search_page_on_ajax(response) {
+    close_loading();
+    response = $(response);
     var search_list = $("#search-results");
     var selected_categories_field = $("#filter-categories-select-catalog");
+    var pagination = $(".pagination");
 
-    var result_list = $(response).find("#search-results").html();
-    var result_categories = $(response).find("#filter-categories-select-catalog").html();
+    var result_list = response.find("#search-results").html();
+    var result_categories = response.find("#filter-categories-select-catalog").html();
+    var result_pagination = response.find(".pagination").html();
 
     search_list.html(result_list);
     selected_categories_field.html(result_categories);
+    pagination.html(result_pagination);
     show_head_message();
   }
 
