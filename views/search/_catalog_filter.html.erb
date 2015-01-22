@@ -2,7 +2,7 @@
 
 <div id="filter-catalog-software">
 
-  <div id="filter-option-catalog-software"> Mais opções </div>
+  <div id="filter-option-catalog-software"><%= _("More options") %></div>
    <!--Quando tiver filtros(categorias)selecionados mostrar esta opção: Opções selecionadas-->
 
   <div id="filter-categories-select-catalog"> <%= @message_selected_options %> </div>
@@ -14,7 +14,7 @@
       <div id="gruop-catalog-01">
         <% @categories_groupe_one.each do |category| %>
           <label>
-            <%= check_box_tag("selected_categories[#{category.name}]", category.id, @selected_categories_name.include?(category.name), :class => "categories-catalog") %>
+            <%= check_box_tag("selected_categories[]", category.id, @selected_categories.include?(category.id), :class => "categories-catalog") %>
             <span><%= _("#{category.name}") %></span>
           </label> <br>
         <% end %>
@@ -22,7 +22,7 @@
       <div id="group-catalog-02">
         <% @categories_groupe_two.each do |category| %>
           <label>
-            <%= check_box_tag("selected_categories[#{category.name}]", category.id, @selected_categories_name.include?(category.name), :class => "categories-catalog") %>
+            <%= check_box_tag("selected_categories[]", category.id, @selected_categories.include?(category.id), :class => "categories-catalog") %>
                     <%= _("#{category.name}") %>
           </label> <br>
         <% end %>

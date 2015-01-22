@@ -10,8 +10,7 @@
 
     <div class="search-field">
       <span class="formfield">
-        <%= text_field_tag 'query', @query, :id => 'search-input', :size => 50 %>
-        <%= javascript_tag "jQuery('#search-input').attr('title', \"#{hint}\").hint()" if defined?(hint) %>
+        <%= text_field_tag 'query', @query, :id => 'search-input', :size => 50, :placeholder=>_("Type words about the software_info you're looking for") %>
       </span>
 
       <%= submit_button(:search, _('Search'), :class => "button with-text icon-search submit") %>
@@ -30,4 +29,3 @@
 
   <div style="clear: both"></div>
 </div>
-<div>

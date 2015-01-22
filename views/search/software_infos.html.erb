@@ -1,18 +1,20 @@
-<%= search_page_title( @titles[@asset], @category ) %>
+<div id="software-search-container">
+  <%= search_page_title( @titles[@asset], @category ) %>
 
-<%= render :partial => 'mpog_search_form', :locals => { :hint => _("Type words about the %s you're looking for") % @asset.to_s.singularize } %>
+  <%= render :partial => 'mpog_search_form', :locals => { :hint => _("Type words about the %s you're looking for") % @asset.to_s.singularize } %>
 
-<%= render :partial => 'results_header' %>
+  <%= render :partial => 'results_header' %>
 
-<%= display_results(@searches, @asset) %>
-<% if params[:display] != 'map' %>
-  <%= pagination_links @searches[@asset][:results] %>
-<% end %>
-
-<div style="clear: both"></div>
-
-<% if @asset == :product %>
-  <%= javascript_tag do %>
-    jQuery('.search-product-price-details').altBeautify();
+  <%= display_results(@searches, @asset) %>
+  <% if params[:display] != 'map' %>
+    <%= pagination_links @searches[@asset][:results] %>
   <% end %>
-<% end %>
+
+  <div style="clear: both"></div>
+
+  <% if @asset == :product %>
+    <%= javascript_tag do %>
+      jQuery('.search-product-price-details').altBeautify();
+    <% end %>
+  <% end %>
+</div>

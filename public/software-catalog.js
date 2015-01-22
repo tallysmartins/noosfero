@@ -4,8 +4,8 @@
   var AJAX_URL = {
     get_categories:
       url_with_subdirectory("/plugin/mpog_software/get_categories"),
-    get_search_result:
-      url_with_subdirectory("/search/get_search_result")
+    software_infos:
+      url_with_subdirectory("/search/software_infos")
   };
 
   function create_catalog_element(first, value, id) {
@@ -90,6 +90,14 @@
     });
   }
 
+  function selectCheckboxCategory() {
+    $("#filter-categories-option").slideUp();
+    $("#filter-categories-select-catalog").show();
+    $("#filter-option-catalog-software").hide();
+
+    dispatch_search_ajax(update_search_page_on_ajax);
+  }
+
   function dispatch_search_ajax(callback) {
     var query_text = $("#search-input").val();
     var selected_categories_ids = [];
@@ -98,31 +106,27 @@
       selected_categories_ids.push(element.value);
     });
 
-
     $.ajax({
-      url: AJAX_URL.get_search_result,
+      url: AJAX_URL.software_infos,
       type: "GET",
       data: {
         query: query_text,
-        categories_ids: selected_categories_ids
+        selected_categories: selected_categories_ids
       },
-      success: function(response) {
-        console.log(response);
-        callback(response);
-      }
+      success: callback
     });
   }
 
-  function update_page_list() {
+  function update_search_page_on_ajax(response) {
+    var search_list = $("#search-results");
+    var selected_categories_field = $("#filter-categories-select-catalog");
 
-  }
+    var result_list = $(response).find("#search-results").html();
+    var result_categories = $(response).find("#filter-categories-select-catalog").html();
 
-  function selectCheckboxCategory() {
-    $("#filter-categories-option").slideUp();
-    $("#filter-categories-select-catalog").show();
-    $("#filter-option-catalog-software").hide();
-
-    dispatch_search_ajax(update_page_list);
+    search_list.html(result_list);
+    selected_categories_field.html(result_categories);
+    show_head_message();
   }
 
   function selectProjectSoftwareCheckbox() {
