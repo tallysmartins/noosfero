@@ -1,12 +1,12 @@
 <div id="mais-software-block">
   <div id="sbp-information-softwares">
 
-  <h2>Veja mais Software</h2>
+  <h2><%= _("See more Software") %></h2>
     <ul>
-      <li><a href="#">Mais baixados</a></li>
-      <li><a href="#">Melhores notas</a></li>
-      <li><a href="#">Atualizados recentemente</a></li>
-      <li><a href="#">Novos no Portal</a></li>
+      <li><a href="#"><%= _("Most downloaded") %></a></li>
+      <li><a href="#"><%= _("Top rated") %></a></li>
+      <li><a href="#"><%= _("Recently updated") %></a></li>
+      <li><a href="#"><%= _("New in portal") %></a></li>
     </ul>
   </div>
 
@@ -15,7 +15,7 @@
     <ul class="categories-mais-software">
 
       <% Category.where(:name => "Software").first.children.each do |category| %>
-        <li><%= link_to _("#{category.name}") + " (#{category.software_infos.count})", {:controller => :search, :action => :software_infos, :filter => category.id} %></li>
+        <li><%= link_to _("#{category.name}") + " (#{category.software_infos.count})", {:controller => :search, :action => :software_infos, :selected_categories => [category.id]} %></li>
       <% end %>
     </ul>
   </div>
