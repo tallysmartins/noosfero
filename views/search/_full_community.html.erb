@@ -14,33 +14,13 @@
             <%= link_to_homepage(link_name, community.identifier) %>
           </h4>
         </span>
-
         <span>
           <% body_stripped = strip_tags(software.finality) %>
-          <b>
-            <%= _("Finality") + ":" if body_stripped %>
-          </b>
           <%= excerpt(body_stripped, body_stripped.first(3), 200) if body_stripped %>
         </span>
       </div>
 
-      <div class="search-community-content-block">
-        <span>
-          <b>
-            <%= _("Software licence") %>:
-          </b>
-          <%= link_to(software.license_info.version, software.license_info.link, :target=>"blank") %>
-        </span>
-      </div>
-
-      <div class="search-community-content-block">
-        <span>
-          <b>
-            <%= _("Link software repository") %>:
-          </b>
-          <%= link_to(software.repository_link, software.repository_link, :target=>"blank") %>
-        </span>
-      </div>
+      <br />
 
       <div class="search-community-content-block">
         <span>
