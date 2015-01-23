@@ -1,7 +1,6 @@
-<% if @percentege < 100 then %>
-  <div id='complete_registration'>
-    <div id="complete_registration_message">
-      <div><%= _("Complete Profile")+": <span>#{@percentege}</span>%" %></div>
+<div id='complete_registration'>
+  <div id="complete_registration_message">
+    <div><%= _("Complete Profile")+": <span>#{@percentege}</span>%" %></div>
       <canvas id="complete_registration_percentage" width="100%" height="20"></canvas>
       <div>
         <%= link_to _("Complete your profile"), "#{Noosfero.root}/myprofile/#{@person.identifier}/profile_editor/edit" %> |
@@ -9,4 +8,16 @@
       </div>
     </div>
   </div>
-<% end %>
+</div>
+
+<script type="text/javascript">
+  (function($){
+    'use strict';
+
+    $(document).ready(function(){
+      var complete_message = $("#complete_registration").remove();
+
+      $(".profile-info-options").before(complete_message);
+    });
+  })(jQuery);
+</script>

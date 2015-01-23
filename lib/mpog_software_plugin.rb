@@ -17,6 +17,22 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     _('Add Public Software and MPOG features.')
   end
 
+  # Hotspot to insert html without an especific hotspot on view.
+  def body_beginning
+    return if context.session[:user].nil? or context.session[:hide_incomplete_percentage] == true
+
+    person = context.environment.people.where(:user_id=>context.session[:user]).first
+
+    if context.profile && context.profile.person? and !person.nil?
+      @person = person
+      @percentege = calc_percentage_registration(person)
+
+      if @percentege >= 0 and @percentege < 100
+        expanded_template('incomplete_registration.html.erb')
+      end
+    end
+  end
+
   def profile_editor_extras
     profile = context.profile
 
@@ -117,28 +133,9 @@ class MpogSoftwarePlugin < Noosfero::Plugin
     )
   end
 
-  def add_new_organization_buttons
-    proc do
-      button(
-        :add,
-        _('Create a new software'),
-        :controller => 'mpog_software_plugin_myprofile',
-        :action => 'new_software'
-      )
-    end
-  end
-
   # FIXME - if in error log apears has_permission?, try to use this method
   def has_permission?(person, permission, target)
     person.has_permission_without_plugins?(permission, target)
-  end
-
-  def profile_blocks_extra_content
-    return if context.session[:user].nil? ||
-      !context.session[:hide_incomplete_percentage].blank?
-
-    person = Person.where(:user_id => context.session[:user]).first
-    call_percentage_profile_template(person)
   end
 
   def custom_user_registration_attributes(user)
