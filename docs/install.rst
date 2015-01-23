@@ -192,9 +192,11 @@ Para configurar o Nginx crie o arquivo ``/etc/nginx/conf.d/colab.conf`` com o co
    }
 
 
-Substitua o domínio de exemplo ``beta.softwarepublico.gov.br`` pelo domínio desejado.
+Substitua o domínio de exemplo ``beta.softwarepublico.gov.br`` pelo domínio
+desejado.
 
-Certifique-se de instalar o certificado SSL (``/etc/nginx/colab.crt``) e sua chave privada (``/etc/nginx/colab.crt``).
+Certifique-se de instalar o certificado SSL (``/etc/nginx/colab.crt``) e sua
+chave privada (``/etc/nginx/colab.key``).
 
 Reinicie o serviço do Nginx com o comando: ``sudo service nginx restart``.
 
@@ -251,13 +253,15 @@ Edite o arquivo ``/etc/colab/settings.yaml`` e configure o endereço das ferrame
 	 upstream: 'http://localhost:8090/noosfero'
 
 
-Após editar todos os arquivos desejados reinicie o processo do Colab com utilizando o comando ``service colab restart``.
+Após editar todos os arquivos desejados reinicie o processo do Colab com
+utilizando o comando ``service colab restart``.
 
 
 Gitlab
 ++++++
 
-Edite o arquivo ``/etc/gitlab/gitlab.yaml`` acrescentando o atributo relative_url_root após a linha ``email_from: example@example.com``. 
+Edite o arquivo ``/etc/gitlab/gitlab.yml`` acrescentando o atributo
+relative_url_root após a linha ``email_from: example@example.com``. 
 Veja o exemplo a seguir:
 
 .. code-block:: yaml
@@ -302,7 +306,7 @@ seguinte conteúdo:
 Crie/edite o arquivo ``/etc/default/noosfero`` e adicione a seguinte
 linha:
 
-.. code-block:: sh
+.. code-block:: ruby
 
    export RAILS_RELATIVE_URL_ROOT=/social
 
@@ -322,7 +326,7 @@ Edite o arquivo de configuração do `mailman` em
 
    DEFAULT_EMAIL_HOST = 'listas.softwarepublico.gov.br'
    MTA = None
-   POSTFIX_STYLE_VIRTUAL_DOMAINS ['listas.softwarepublico.gov.br']
+   POSTFIX_STYLE_VIRTUAL_DOMAINS = ['listas.softwarepublico.gov.br']
 
 Crie a lista de discussão default, necessária para a inicialização do
 serviço. Substitua ``USER@DOMAIN.COM`` pelo email a ser usado como
@@ -335,6 +339,9 @@ administrador do `mailman`, e ``PASSWORD`` pela senha de administração do
    $ sudo service mailman restart
 
 
+Postfix
++++++++
+
 Configure o postfix:
 
 .. code-block:: sh
@@ -342,13 +349,50 @@ Configure o postfix:
    $ sudo postconf relay_domains=listas.softwarepublico.gov.br
    $ sudo postconf transport_maps=hash:/etc/postfix/transport
 
-Crie/edite ``/etc/postfix/transport`` com o seguinte conteúdo::
+Crie/edite ``/etc/postfix/transport`` com o seguinte conteúdo:
+
+.. code-block:: sh
 
    listas.softwarepublico.gov.br mailman:
 
-Gere o banco de dados para consulta, e reinicie o serviço::
+
+Faça o download do arquivo :download:`postfix-to-mailman-centos.py` e salve no
+diretório ``/etc/postfix``.
+
+Adicione o seguinte conteúdo no final do arquivo ``/etc/postfix/master.cf``:
+
+::
+
+   mailman   unix  -       n       n       -       -       pipe
+     flags=FR user=mailman:mailman
+     argv=/etc/postfix/postfix-to-mailman-centos.py ${nexthop} ${user}
+
+Gere o banco de dados para consulta, e reinicie o serviço:
 
 .. code-block:: sh
 
    $ sudo postmap /etc/postfix/transport
    $ sudo service postfix restart
+
+Inicie o serviço do mailman-api:
+
+.. code-block:: sh
+
+   $ sudo service mailman-api start
+
+
+Habilitar inicialização automática dos serviços
++++++++++++++++++++++++++++++++++++++++++++++++
+
+Para permitir que os serviços iniciem automaticamente, execute os comandos
+abaixo:
+
+.. code-block:: sh
+
+   $ sudo systemctl enable mailman
+   $ sudo systemctl enable mailman-api
+   $ sudo systemctl enable nginx
+   $ sudo systemctl enable colab
+   $ sudo systemctl enable noosfero
+   $ sudo chkconfig --add gitlab
+   $ sudo chkconfig --add solr
