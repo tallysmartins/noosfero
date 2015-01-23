@@ -231,3 +231,7 @@ Given /^I am logged in as mpog_admin$/ do
   fill_in("Password", :with => '123456')
   click_button("Log in")
 end
+
+Given /^I should see "([^"]*)" before "([^"]*)"$/ do |before, after|
+  assert page.body.index("#{before}") < page.body.index("#{after}")
+end

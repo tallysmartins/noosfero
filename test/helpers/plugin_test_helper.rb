@@ -17,6 +17,7 @@ module PluginTestHelper
     community = create_community(name)
     software_info = SoftwareInfo.new
     software_info.community = community
+    software_info.public_software = true
     software_info.save
     software_info
   end

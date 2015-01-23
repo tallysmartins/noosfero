@@ -66,9 +66,11 @@ class SearchController
     end
 
     filtered_community_list = []
-    filtered_software_list.each do |software|
-      filtered_community_list << software.community
-    end
+     filtered_software_list.each do |software|
+       if @include_non_public || software.public_software?
+         filtered_community_list << software.community
+       end
+     end
 
     filtered_community_list.sort!{|a, b| a.name <=> b.name}
     if params[:sort] && params[:sort] == "desc"
@@ -87,6 +89,7 @@ class SearchController
     @selected_categories = params[:selected_categories]
     @selected_categories ||= []
     @selected_categories = @selected_categories.map(&:to_i)
+    @include_non_public = params[:include_non_public] == "true"
 
     @message_selected_options = ""
     unless @selected_categories.empty?

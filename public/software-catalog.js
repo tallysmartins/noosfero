@@ -88,6 +88,8 @@
     params.software_display = $("#software_display").val();
     params.sort = $("#sort").val();
 
+    params.include_non_public = $("#include_non_public").is(":checked");
+
     return params;
   }
 

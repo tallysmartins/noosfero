@@ -33,7 +33,12 @@
           <ul id="categories-list">
             <% community.categories.each do |category| %>
               <li>
-                <%= category.name %>
+              <%= link_to _("#{category.name}"), {
+                :controller => :search,
+                :action => :software_infos,
+                :selected_categories => [category.id],
+                :include_non_public => !community.software_info.public_software?
+              } %>
               </li>
             <% end %>
           </ul>
