@@ -155,6 +155,16 @@ Given /^the following softwares$/ do |table|
       software_info.operating_systems << operating_system
     end
 
+    if item[:categories]
+      categories = item[:categories].split(",")
+      categories.map! {|category| category.strip}
+
+      categories.each do |category_name|
+        category = Category.find_by_name category_name
+        software_info.community.categories << category
+      end
+    end
+
     software_info.save!
   end
 end
