@@ -86,8 +86,8 @@ class MpogSoftwarePlugin < Noosfero::Plugin
 
   def profile_tabs
     if context.profile.community?
-      return profile_tabs_software if context.profile.software?
-      profile_tabs_institution
+      profile_tabs_software if context.profile.software?
+      profile_tabs_institution if context.profile.institution?
     end
   end
 
