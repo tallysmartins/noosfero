@@ -1,15 +1,15 @@
 function alignBlocks(containerIndex){
     //Needed to save the original reference to jQuery(this)
     jt = jQuery(this);
-    longerBlock = 0;	
+    longerBlock = 0;
     jt.find(".block-outer").each(function () {
         if(jQuery(this).height() > longerBlock)
                 longerBlock = jQuery(this).height();
     });
-    
+
     jt.find("#block-48504 .block-inner-2").height(492);
     jt.find("#block-55304 .block-inner-2").height(378);
-        
+
     //Aligns the blocks in the most common situations
     jt.find(".block-outer").height(longerBlock);
     //Only used for blocks with video, since it uses the size of the iframe
@@ -30,7 +30,7 @@ function alignBlocks(containerIndex){
 	$( "#siteaction-contraste a" ).click(function() {
 		$( "body" ).toggleClass( "contraste" );
 		if($('body').hasClass('contraste')){
-			$.cookie('high_contrast', 'true', {path: '/'});	
+			$.cookie('high_contrast', 'true', {path: '/'});
 		} else {
 			$.cookie('high_contrast', null, { path: '/' });
 		}
@@ -69,7 +69,7 @@ $('#link-buscar').click(function(e) {
 
   function show_finality() {
     var finality = $(this).children(".software-block-finality");
-    
+
     //finality.stop().fadeTo(TRANSITION_TIME,1);
     finality.stop().fadeTo('fast', 1);
     //finality.stop().animate({"top" : "0%"}, TRANSITION_TIME);
@@ -77,23 +77,34 @@ $('#link-buscar').click(function(e) {
 
   function hide_finality() {
     var finality = $(this).children(".software-block-finality");
-    
+
     //finality.stop().fadeTo(TRANSITION_TIME,0);
-    finality.stop().fadeTo('fast', 0); 
+    finality.stop().fadeTo('fast', 0);
     //finality.stop().animate({"top" : "100%"}, TRANSITION_TIME);
   }
 
   function set_events() {
     // Fade css
-    $('.software-block-finality').css('opacity', 0); 
+    $('.software-block-finality').css('opacity', 0);
     $('.software-block-finality').css('top', 0);
     // End Fade CSS
-  
+
     $(".software-block").mouseover(show_finality);
     $(".software-block").mouseout(hide_finality);
   }
 
+  function move_article_buttons(){
+    var article_actions = $('#article-actions').clone();
+    var report = $('.report-abuse-action').remove();
+    var suggest = $('.icon-suggest').remove();
+
+
+    $(article_actions).find('.icon-edit, .icon-new, .icon-delete, .icon-locale').remove();
+    $('.article-body').append(article_actions);
+  }
+
   $(document).ready(function(){
     set_events();
+    move_article_buttons();
     });
 })(jQuery);
