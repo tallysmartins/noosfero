@@ -13,7 +13,6 @@ class SearchController
 
   def institutions
     @titles[:institutions] = _("Institution Catalog")
-    @category_filters = []
     results = filter_communities_list{|community| community.institution?}
     results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}
@@ -50,13 +49,25 @@ class SearchController
   end
 
   def filter_software_infos_list
-    filtered_software_list = SoftwareInfo.like_search(params[:query])
+    filtered_software_list = get_filtered_software_list
+    filtered_community_list = get_communities_list(filtered_software_list)
+    sort_communities_list filtered_community_list
+  end
 
+  protected
+
+  def get_filter_category_ids
     category_ids = []
     unless params[:selected_categories].blank?
       category_ids = params[:selected_categories]
     end
-    category_ids = category_ids.map(&:to_i)
+    category_ids.map(&:to_i)
+  end
+
+  def get_filtered_software_list
+    filtered_software_list = SoftwareInfo.like_search(params[:query])
+
+    category_ids = get_filter_category_ids
 
     unless category_ids.empty?
       filtered_software_list.select! do |software|
@@ -65,32 +76,53 @@ class SearchController
       end
     end
 
+    filtered_software_list
+  end
+
+  def get_communities_list software_list
     filtered_community_list = []
-     filtered_software_list.each do |software|
+      software_list.each do |software|
        if @include_non_public || software.public_software?
          filtered_community_list << software.community
        end
-     end
-
-    filtered_community_list.sort!{|a, b| a.name <=> b.name}
-    if params[:sort] && params[:sort] == "desc"
-      filtered_community_list.reverse!
     end
-
     filtered_community_list
   end
 
-  protected
+  def sort_communities_list communities_list
+    communities_list.sort!{|a, b| a.name <=> b.name}
+    if params[:sort] && params[:sort] == "desc"
+      communities_list.reverse!
+    end
+    communities_list
+  end
 
   def prepare_software_search_page
+    prepare_software_infos_params
+    prepare_software_infos_message
+    prepare_software_infos_category_groups
+  end
+
+  def prepare_software_infos_params
     @titles[:software_infos] = _("Public Software Catalog")
-    @category_filters = []
-    @categories = Category.software_categories
     @selected_categories = params[:selected_categories]
     @selected_categories ||= []
     @selected_categories = @selected_categories.map(&:to_i)
     @include_non_public = params[:include_non_public] == "true"
+    @per_page = prepare_per_page
+  end
 
+  def prepare_per_page
+    return 15 if params[:software_display].nil?
+
+    if params[:software_display] == "all"
+      SoftwareInfo.count
+    else
+      params[:software_display].to_i
+    end
+  end
+
+  def prepare_software_infos_message
     @message_selected_options = ""
     unless @selected_categories.empty?
       @message_selected_options = _("Selected options: ")
@@ -100,25 +132,14 @@ class SearchController
         "#{category.name}; "
       }.join()
     end
+  end
 
-    @categories.sort!{|a, b| a.name <=> b.name}
-    @categories_groupe_one = []
-    @categories_groupe_two = []
-    @categories.count.times do |i|
-      if i % 2 == 0
-        @categories_groupe_one << @categories[i]
-      else
-        @categories_groupe_two << @categories[i]
-      end
-    end
+  def prepare_software_infos_category_groups
+    @categories = Category.software_categories.sort{|a, b| a.name <=> b.name}
 
-    @per_page = 15
-    if params[:software_display]
-      if params[:software_display] == "all"
-        @per_page = SoftwareInfo.count
-      else
-        @per_page = params[:software_display].to_i
-      end
-    end
+    categories_sliced = @categories.each_slice(@categories.count/2)
+
+    @categories_groupe_one = categories_sliced.next
+    @categories_groupe_two = categories_sliced.next
   end
 end
