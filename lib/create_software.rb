@@ -79,7 +79,7 @@ class CreateSoftware < Task
   def task_created_message
     _("Your request for registering software %{software} at %{environment} was
       just sent. Environment administrator will receive it and will approve or
-      reject your request according to his methods and creteria.
+      reject your request according to his methods and criteria.
 
       You will be notified as soon as environment administrator has a position
       about your request.") %
