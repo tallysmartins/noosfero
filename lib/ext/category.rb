@@ -14,8 +14,18 @@ class Category
     _('Education'),
     _('Government and Politics'),
     _('Justice and Legislation'),
-    _('International Relationships')
+    _('International Relationships'),
+    _('Transportation and Transit')
   ]
+
+  scope :software_categories, lambda {
+    software_category = Category.find_by_name("Software")
+    if software_category.nil?
+      []
+    else
+      software_category.children
+    end
+  }
 
   def software_infos
     software_list = self.communities

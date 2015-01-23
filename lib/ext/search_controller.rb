@@ -78,7 +78,7 @@ class SearchController
   def prepare_software_search_page
     @titles[:software_infos] = _("Public Software Catalog")
     @category_filters = []
-    @categories = Category.all
+    @categories = Category.software_categories
     @selected_categories = params[:selected_categories]
     @selected_categories ||= []
     @selected_categories = @selected_categories.map(&:to_i)
