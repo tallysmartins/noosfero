@@ -57,22 +57,16 @@
 
 
   function dispatch_search_ajax(callback) {
-    var query_text = $("#search-input").val();
-    var selected_categories_ids = [];
+    var search_params = get_search_params();
 
-    $(".categories-catalog:checked").each(function(index, element) {
-      selected_categories_ids.push(element.value);
-    });
+    console.log(search_params);
 
     open_loading("Loading");
 
     $.ajax({
       url: AJAX_URL.software_infos,
       type: "GET",
-      data: {
-        query: query_text,
-        selected_categories: selected_categories_ids
-      },
+      data: search_params,
       success: callback,
       error: function(){
         close_loading();
@@ -81,16 +75,33 @@
   }
 
 
+  function get_search_params() {
+    var params = {};
+
+    params.query = $("#search-input").val();
+    params.selected_categories = [];
+
+    $(".categories-catalog:checked").each(function(index, element) {
+      params.selected_categories.push(element.value);
+    });
+
+    params.software_display = $("#software_display").val();
+    params.sort = $("#sort").val();
+
+    return params;
+  }
+
+
   function update_search_page_on_ajax(response) {
     close_loading();
     response = $(response);
     var search_list = $("#search-results");
     var selected_categories_field = $("#filter-categories-select-catalog");
-    var pagination = $(".pagination");
+    var pagination = $("#software-pagination");
 
     var result_list = response.find("#search-results").html();
     var result_categories = response.find("#filter-categories-select-catalog").html();
-    var result_pagination = response.find(".pagination").html();
+    var result_pagination = response.find("#software-pagination").html();
 
     search_list.html(result_list);
     selected_categories_field.html(result_categories);
@@ -103,8 +114,14 @@
     $("#filter-categories-option").slideUp();
     $("#filter-categories-select-catalog").show();
     $("#filter-option-catalog-software").hide();
+
+    dispatch_search_ajax(update_search_page_on_ajax);
+    show_head_message();
   }
 
+  function update_page_by_ajax_on_select_change() {
+    dispatch_search_ajax(update_search_page_on_ajax);
+  }
 
   function set_events() {
     $("#filter-option-catalog-software").click(slideDowsCategoriesOptionAndHideOptionCatalog);
@@ -113,6 +130,8 @@
     $("#cleanup-filter-catalg").click(clearCatalogCheckbox);
     $(".categories-catalog").click(selectCheckboxCategory);
     $(".project-software").click(selectProjectSoftwareCheckbox);
+    $("#software_display").change(update_page_by_ajax_on_select_change);
+    $("#sort").change(update_page_by_ajax_on_select_change);
   }
 
 

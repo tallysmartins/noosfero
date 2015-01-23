@@ -32,10 +32,9 @@
 
   <div class="project-software"> <%= _("Software Projects:") %>
     <label><input type="checkbox" name="filter" value="Incluir nos resultados"> <%= _("Include in results") %> </label>
-    <span class"doubts-catalog-software" title="Incluir projetos de software em desenvolvimento que ainda não são oficialmente Software Público Brasileiro.">(?)</span>
-    <!--<p><acronym title="Incluir projetos de software em desenvolvimento que ainda não são oficialmente Software Público Brasileiro.">(?)
-    </acronym></p>-->
-  </div><br>
+    <span class"doubts-catalog-software" title="<%= _('Include software development projects that are not yet officially Brazilian Public Software.') %>">(?)</span>
+  </div>
+  <br />
   <%= button_tag _("Clean up"), :id => "cleanup-filter-catalg", :type => "button" %>
   <%= button_tag _("Close"), :id => "close-filter-catalog", :type => "button" %>
 </div>

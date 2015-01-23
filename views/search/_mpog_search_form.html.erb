@@ -1,5 +1,4 @@
 <div class='search-form'>
-
   <%= form_tag( { :controller => 'search', :action => @asset ? @asset : 'index', :asset => nil, :category_path => ( @category ? @category.path : nil ) },
                  :method => 'get', :class => 'search_form' ) do %>
 
@@ -13,11 +12,37 @@
         <%= text_field_tag 'query', @query, :id => 'search-input', :size => 50, :placeholder=>_("Type words about the software_info you're looking for") %>
       </span>
 
-      <%= submit_button(:search, _('Search')) %>
+      <%= submit_button(:search, _('Filter')) %>
     </div>
-
     <%= render :partial => 'search_form_extra_fields' %>
     <%= render :partial => 'catalog_filter' %>
+
+    <!-- #display-options sera substituido pelo html passado pela equipe de design -->
+    <div id="display-options" class="">
+      <div>
+        <strong><%= SoftwareInfo.count %> Softwares</strong>
+      </div>
+
+      <div>
+        <div>
+          Show:
+          <%= select_tag("software_display",
+            options_for_select(['15', '30', '90', 'All'], :selected=>params[:display])
+          ) %>
+        </div>
+
+        <div>
+          Sort by:
+          <%= select_tag("sort",
+            options_for_select(
+              [
+                [_("Name A-Z"), 'asc'],
+                [_("Name Z-A"), 'desc']
+              ], :selected=>params[:sort])
+          ) %>
+        </div>
+      </div>
+    </div>
   <% end %>
 
   <% if @empty_query %>

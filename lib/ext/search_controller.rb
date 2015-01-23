@@ -24,7 +24,7 @@ class SearchController
   def software_infos
     prepare_software_search_page
     results = filter_software_infos_list
-    results = results.paginate(:per_page => 24, :page => params[:page])
+    results = results.paginate(:per_page => @per_page, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
     render :layout=>false if request.xhr?
@@ -70,6 +70,11 @@ class SearchController
       filtered_community_list << software.community
     end
 
+    filtered_community_list.sort!{|a, b| a.name <=> b.name}
+    if params[:sort] && params[:sort] == "desc"
+      filtered_community_list.reverse!
+    end
+
     filtered_community_list
   end
 
@@ -101,6 +106,15 @@ class SearchController
         @categories_groupe_one << @categories[i]
       else
         @categories_groupe_two << @categories[i]
+      end
+    end
+
+    @per_page = 15
+    if params[:software_display]
+      if params[:software_display] == "all"
+        @per_page = SoftwareInfo.count
+      else
+        @per_page = params[:software_display].to_i
       end
     end
   end

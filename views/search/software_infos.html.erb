@@ -6,9 +6,12 @@
   <%= render :partial => 'results_header' %>
 
   <%= display_results(@searches, @asset) %>
-  <% if params[:display] != 'map' %>
-    <%= pagination_links @searches[@asset][:results] %>
-  <% end %>
+
+  <div id="software-pagination">
+    <% if params[:display] != 'map' %>
+      <%= pagination_links @searches[@asset][:results] %>
+    <% end %>
+  </div>
 
   <div style="clear: both"></div>
 
