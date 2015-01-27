@@ -1,25 +1,27 @@
 <%= block_title(block.title) %>
 <% profiles.each do |profile| %>
-  <div class="software-block">
-    <div class="software-block-content">
-      <div class="software-block-logo">
-        <%= link_to profile_image(profile, :big), profile.url %>
-      </div>
-
-      <div class="software-block-info">
-        <div class="software-block-title">
-          <h3> <%=profile.name%> </h3>
+  <%= link_to profile.url do %>
+    <div class="software-block">
+      <div class="software-block-content">
+        <div class="software-block-logo">
+          <%= profile_image(profile, :big) %>
         </div>
-        <div class="software-block-description"><%= profile.description %></div>
+
+        <div class="software-block-info">
+          <div class="software-block-title">
+            <h3> <%=profile.name%> </h3>
+          </div>
+          <div class="software-block-description"><%= profile.description %></div>
+        </div>
+      </div>
+
+      <div class="software-block-finality">
+        <p>
+          <%= profile.software_info.finality %>
+        </p>
+
+        <%= _("See More") %>
       </div>
     </div>
-
-    <div class="software-block-finality">
-      <p>
-        <%= profile.software_info.finality %>
-      </p>
-
-      <%= link_to _("See More"), profile.url %>
-    </div>
-  </div>
+  <% end %>
 <% end %>
