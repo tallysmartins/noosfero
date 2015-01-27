@@ -103,8 +103,24 @@ $('#link-buscar').click(function(e) {
     $('.article-body').append(article_actions);
   }
 
+  function add_link_to_article_div(){
+    var list = $('.display-content-block').find('li');
+
+    list.each(function(){
+      var link = $(this).find('.title').find('a').attr('href');
+      var text = $(this).find('.lead').find('p').text();
+      var leadLink = $('<a></a>');
+
+      leadLink.attr('href', link);
+      leadLink.text(text);
+
+      $(this).find('.lead').html(leadLink);
+    });
+  }
+
   $(document).ready(function(){
     set_events();
     move_article_buttons();
+    add_link_to_article_div();
     });
 })(jQuery);
