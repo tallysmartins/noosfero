@@ -137,13 +137,13 @@ ol li {
 
 .voltar-ao-topo a {
   padding-left: 20px;
-  background: url("++resource++brasil.gov.portal/img/voltar-topo.png") no-repeat left center;
-  color: #777;
+  background: url(images/voltar-topo.png) no-repeat left center !important;
+  color: #777 !important;
   font-size: 15px;    
 }
 
 .ancor {
-  text-decoration: none;
+  text-decoration: none !important;
   border-bottom: 1px dotted;
   margin-right: 5px;
 }
