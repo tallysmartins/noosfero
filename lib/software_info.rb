@@ -49,7 +49,7 @@ class SoftwareInfo < ActiveRecord::Base
   has_many :programming_languages, :through => :software_languages
   has_many :operating_system_names, :through => :operating_systems
 
-  belongs_to :community
+  belongs_to :community, :dependent => :destroy
   belongs_to :license_info
 
   has_one :software_categories
