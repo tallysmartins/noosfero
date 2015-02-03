@@ -111,11 +111,39 @@
     pagination.html(result_pagination);
     software_count.html(result_software_count);
     show_head_message();
+    highlight_searched_terms();
 
-    setTimeout(function(){
-      console.log("fgdjfgdsh");
+    hide_load_after_ajax();
+  }
+
+
+  function hide_load_after_ajax() {
+    if ($("#overlay_loading_modal").is(":visible")) {
       close_loading();
-    }, 1000);
+      setTimeout(hide_load_after_ajax, 1000);
+    }
+  }
+
+
+  function highlight_searched_terms() {
+    var searched_terms = $("#search-input").val();
+
+    if( searched_terms.length === 0 ) {
+      return undefined;
+    }
+
+    var content_result = $(".search-content-result");
+    var regex = new RegExp("("+searched_terms.replace(/\s/g, "|")+")", "gi");
+
+    content_result.each(function(i, e){
+      var element = $(e);
+
+      var new_text = element.text().replace(regex, function(text) {
+        return "<strong>"+text+"</strong>";
+      });
+
+      element.html(new_text);
+    });
   }
 
 

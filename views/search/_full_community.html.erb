@@ -10,11 +10,11 @@
       <div class="search-community-content-block">
         <span>
           <% link_name = software.acronym.blank? ? community.name : "#{software.acronym} - #{community.name}" %>
-          <h4>
+          <h4 class="search-content-result">
             <%= link_to_homepage(link_name, community.identifier) %>
           </h4>
         </span>
-        <span>
+        <span class="search-content-result">
           <% body_stripped = strip_tags(software.finality) %>
           <%= excerpt(body_stripped, body_stripped.first(3), 200) if body_stripped %>
         </span>
