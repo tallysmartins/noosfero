@@ -11,8 +11,6 @@
       <span class="formfield">
         <%= text_field_tag 'query', @query, :id => 'search-input', :size => 50, :placeholder=>_("Type words about the software_info you're looking for") %>
       </span>
-
-      <%= submit_button(:search, _('Filter')) %>
     </div>
     <%= render :partial => 'search_form_extra_fields' %>
     <%= render :partial => 'catalog_filter' %>

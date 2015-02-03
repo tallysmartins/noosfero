@@ -235,3 +235,8 @@ end
 Given /^I should see "([^"]*)" before "([^"]*)"$/ do |before, after|
   assert page.body.index("#{before}") < page.body.index("#{after}")
 end
+
+Given /^I keyup on selector "([^"]*)"$/ do |selector|
+  selector_founded = evaluate_script("jQuery('#{selector}').trigger('keyup').length != 0")
+  selector_founded.should be_true
+end

@@ -43,7 +43,7 @@
       $(this).prop('checked', false);
     });
 
-    dispatch_search_ajax(update_search_page_on_ajax);
+    dispatch_search_ajax(update_search_page_on_ajax, true);
   }
 
 
@@ -52,16 +52,16 @@
     $("#filter-categories-select-catalog").show();
     $("#filter-option-catalog-software").hide();
 
-    dispatch_search_ajax(update_search_page_on_ajax);
+    dispatch_search_ajax(update_search_page_on_ajax, true);
   }
 
 
-  function dispatch_search_ajax(callback) {
+  function dispatch_search_ajax(callback, enable_load) {
     var search_params = get_search_params();
 
-    console.log(search_params);
-
-    open_loading("Loading");
+    if(enable_load) {
+      open_loading("Loading");
+    }
 
     $.ajax({
       url: AJAX_URL.software_infos,
@@ -117,12 +117,20 @@
     $("#filter-categories-select-catalog").show();
     $("#filter-option-catalog-software").hide();
 
-    dispatch_search_ajax(update_search_page_on_ajax);
+    dispatch_search_ajax(update_search_page_on_ajax, true);
     show_head_message();
   }
 
   function update_page_by_ajax_on_select_change() {
-    dispatch_search_ajax(update_search_page_on_ajax);
+    dispatch_search_ajax(update_search_page_on_ajax, true);
+  }
+
+  function update_page_by_text_filter() {
+    var text = this.value;
+
+    if (text.length >= 3) {
+      dispatch_search_ajax(update_search_page_on_ajax, false);
+    }
   }
 
   function set_events() {
@@ -134,6 +142,7 @@
     $(".project-software").click(selectProjectSoftwareCheckbox);
     $("#software_display").change(update_page_by_ajax_on_select_change);
     $("#sort").change(update_page_by_ajax_on_select_change);
+    $("#search-input").keyup(update_page_by_text_filter);
   }
 
 

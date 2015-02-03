@@ -34,23 +34,24 @@ Feature: Search software
     Then I should see "Software One"
     Then I should see "Software Two"
 
+  @selenium
   Scenario: Show software "One" when searching for "Software One"
     Given I go to /search/software_infos
     And I fill in "search-input" with "Software One"
-    And I press "Filter"
+    And I keyup on selector "#search-input"
     Then I should see "Software One"
     Then I should not see "Software Two"
 
+  @selenium
   Scenario: Show software ordered by name when "Name A-Z" is selected
     Given I go to /search/software_infos
     And I select "Name A-Z" from "sort"
-    And I press "Filter"
     Then I should see "Software One" before "Software Two"
 
+  @selenium
   Scenario: Show software in reverse order by name when "Name Z-A" is selected
     Given I go to /search/software_infos
     And I select "Name Z-A" from "sort"
-    And I press "Filter"
     Then I should see "Software Two" before "Software One"
 
   Scenario: Show softwares with selected category in filter
