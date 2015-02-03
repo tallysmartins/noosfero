@@ -10,7 +10,7 @@
       <div class="search-community-content-block">
         <span>
           <% link_name = software.acronym.blank? ? community.name : "#{software.acronym} - #{community.name}" %>
-          <h4 class="search-content-result">
+          <h4>
             <%= link_to_homepage(link_name, community.identifier) %>
           </h4>
         </span>

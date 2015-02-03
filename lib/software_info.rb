@@ -6,6 +6,13 @@ class SoftwareInfo < ActiveRecord::Base
     :finality => 2,
   }
 
+  SEARCHABLE_SOFTWARE_CLASSES = [
+    SoftwareInfo,
+    Community,
+    ProgrammingLanguage,
+    DatabaseDescription
+  ]
+
   scope :search_by_query, lambda {|query = ""|
     filtered_query = query.gsub(/[\|\(\)\\\/\s\[\]'"*%&!:]/,' ').split.map{|w| w += ":*"}.join('|')
     search_fields = SoftwareInfo.pg_search_plugin_fields
@@ -13,15 +20,18 @@ class SoftwareInfo < ActiveRecord::Base
     if query.empty?
       SoftwareInfo.all
     else
-      joins(:community).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')")
+      includes(:community, :programming_languages, :database_descriptions).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')")
     end
   }
 
   def self.pg_search_plugin_fields
-    searchable_fields = Community::SEARCHABLE_SOFTWARE_FIELDS.keys.map(&:to_s).sort.map {|f| "coalesce(#{Community.table_name}.#{f}, '')"}.join(" || ' ' || ")
-    searchable_fields += " || ' ' || "
-    searchable_fields += self::SEARCHABLE_SOFTWARE_FIELDS.keys.map(&:to_s).sort.map {|f| "coalesce(#{table_name}.#{f}, '')"}.join(" || ' ' || ")
+    SEARCHABLE_SOFTWARE_CLASSES.collect { |one_class|
+      self.get_searchable_fields(one_class)
+    }.join(" || ' ' || ")
+  end
 
+  def self.get_searchable_fields one_class
+    searchable_fields = one_class::SEARCHABLE_SOFTWARE_FIELDS.keys.map(&:to_s).sort.map {|f| "coalesce(#{one_class.table_name}.#{f}, '')"}.join(" || ' ' || ")
     searchable_fields
   end
 

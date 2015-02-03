@@ -1,4 +1,9 @@
 class DatabaseDescription < ActiveRecord::Base
+
+  SEARCHABLE_SOFTWARE_FIELDS = {
+    :name => 1
+  }
+
   attr_accessible :name
 
   has_many :software_databases

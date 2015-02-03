@@ -1,4 +1,9 @@
 class ProgrammingLanguage < ActiveRecord::Base
+
+  SEARCHABLE_SOFTWARE_FIELDS = {
+    :name => 1
+  }
+
   attr_accessible :name
 
   validates_presence_of :name

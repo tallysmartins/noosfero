@@ -5,7 +5,7 @@ class Community
   SEARCHABLE_SOFTWARE_FIELDS = {
     :name => 1,
     :identifier => 2,
-    :nickname => 3,
+    :nickname => 3
   }
 
   attr_accessible :visible
