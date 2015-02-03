@@ -1,6 +1,30 @@
 class SoftwareInfo < ActiveRecord::Base
   acts_as_having_settings :field => :settings
 
+  SEARCHABLE_SOFTWARE_FIELDS = {
+    :acronym => 1,
+    :finality => 2,
+  }
+
+  scope :search_by_query, lambda {|query = ""|
+    filtered_query = query.gsub(/[\|\(\)\\\/\s\[\]'"*%&!:]/,' ').split.map{|w| w += ":*"}.join('|')
+    search_fields = SoftwareInfo.pg_search_plugin_fields
+
+    if query.empty?
+      SoftwareInfo.all
+    else
+      joins(:community).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')")
+    end
+  }
+
+  def self.pg_search_plugin_fields
+    searchable_fields = Community::SEARCHABLE_SOFTWARE_FIELDS.keys.map(&:to_s).sort.map {|f| "coalesce(#{Community.table_name}.#{f}, '')"}.join(" || ' ' || ")
+    searchable_fields += " || ' ' || "
+    searchable_fields += self::SEARCHABLE_SOFTWARE_FIELDS.keys.map(&:to_s).sort.map {|f| "coalesce(#{table_name}.#{f}, '')"}.join(" || ' ' || ")
+
+    searchable_fields
+  end
+
   SEARCH_FILTERS = []
   SEARCH_DISPLAYS = %w[full]
 
@@ -41,7 +65,7 @@ class SoftwareInfo < ActiveRecord::Base
   # used on find_by_contents
   scope :like_search, lambda{ |name|
     joins(:community).where(
-      "name ILIKE ? OR acronym ILIKE ? OR finality ILIKE ?", 
+      "name ILIKE ? OR acronym ILIKE ? OR finality ILIKE ?",
       "%#{name}%", "%#{name}%", "%#{name}%"
     )
   }

@@ -95,20 +95,27 @@
 
 
   function update_search_page_on_ajax(response) {
-    close_loading();
     response = $(response);
     var search_list = $("#search-results");
     var selected_categories_field = $("#filter-categories-select-catalog");
     var pagination = $("#software-pagination");
+    var software_count = $("#software-count");
 
     var result_list = response.find("#search-results").html();
     var result_categories = response.find("#filter-categories-select-catalog").html();
     var result_pagination = response.find("#software-pagination").html();
+    var result_software_count = response.find("#software-count").html();
 
     search_list.html(result_list);
     selected_categories_field.html(result_categories);
     pagination.html(result_pagination);
+    software_count.html(result_software_count);
     show_head_message();
+
+    setTimeout(function(){
+      console.log("fgdjfgdsh");
+      close_loading();
+    }, 1000);
   }
 
 
@@ -127,10 +134,17 @@
 
   function update_page_by_text_filter() {
     var text = this.value;
+    dispatch_search_ajax(update_search_page_on_ajax, false);
+  }
 
-    if (text.length >= 3) {
-      dispatch_search_ajax(update_search_page_on_ajax, false);
-    }
+  function search_input_keyup() {
+    var timer = null;
+
+    $("#search-input").keyup(function() {
+        timer = setTimeout(update_page_by_text_filter, 400);
+    }).keydown(function() {
+        clearTimeout(timer);
+    });
   }
 
   function set_events() {
@@ -142,7 +156,8 @@
     $(".project-software").click(selectProjectSoftwareCheckbox);
     $("#software_display").change(update_page_by_ajax_on_select_change);
     $("#sort").change(update_page_by_ajax_on_select_change);
-    $("#search-input").keyup(update_page_by_text_filter);
+
+    search_input_keyup();
   }
 
 

@@ -26,6 +26,7 @@ class SearchController
     results = results.paginate(:per_page => @per_page, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
+    @software_count = filter_software_infos_list.count
     render :layout=>false if request.xhr?
   end
 
@@ -65,7 +66,8 @@ class SearchController
   end
 
   def get_filtered_software_list
-    filtered_software_list = SoftwareInfo.like_search(params[:query])
+    params[:query] ||= ""
+    filtered_software_list = SoftwareInfo.search_by_query(params[:query])
 
     category_ids = get_filter_category_ids
 

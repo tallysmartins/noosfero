@@ -37,7 +37,7 @@ Feature: Search software
   @selenium
   Scenario: Show software "One" when searching for "Software One"
     Given I go to /search/software_infos
-    And I fill in "search-input" with "Software One"
+    And I fill in "search-input" with "One"
     And I keyup on selector "#search-input"
     Then I should see "Software One"
     Then I should not see "Software Two"
