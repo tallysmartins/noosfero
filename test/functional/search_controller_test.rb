@@ -133,6 +133,69 @@ class SearchControllerTest < ActionController::TestCase
     assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
   end
 
+  should "software_infos search by programming language" do
+    software_one = create_software_info("Software One")
+    software_two = create_software_info("Software Two")
+
+    software_one.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+    software_two.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+
+    software_one.software_languages << create_software_language("Python", "1.0")
+    software_two.software_languages << create_software_language("Java", "8.1")
+
+    software_one.save!
+    software_two.save!
+
+    get(
+      :software_infos,
+      :query => "python",
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], software_one.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
+  end
+
+  should "software_infos search by database description" do
+    software_one = create_software_info("Software One")
+    software_two = create_software_info("Software Two")
+
+    software_one.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+    software_two.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+
+    software_one.software_databases << create_software_database("MySQL", "1.0")
+    software_two.software_databases << create_software_database("Postgrees", "8.1")
+
+    software_one.save!
+    software_two.save!
+
+    get(
+      :software_infos,
+      :query => "mysql",
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], software_one.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
+  end
+
+  should "software_infos search by finality" do
+    software_one = create_software_info("Software One", :finality => "Help")
+    software_two = create_software_info("Software Two", :finality => "Task")
+
+    software_one.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+    software_two.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+
+    software_one.save!
+    software_two.save!
+
+    get(
+      :software_infos,
+      :query => "help",
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], software_one.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
+  end
+
   private
 
   def create_software_categories
@@ -151,4 +214,32 @@ class SearchControllerTest < ActionController::TestCase
       :parent => category_software
     )
   end
+
+  def create_software_language(name, version)
+    unless ProgrammingLanguage.find_by_name(name)
+      ProgrammingLanguage.create(:name => name)
+    end
+
+    software_language = SoftwareLanguage.new
+    software_language.programming_language = ProgrammingLanguage.find_by_name(name)
+    software_language.version = version
+    software_language.save!
+
+    software_language
+  end
+
+  def create_software_database(name, version)
+    unless DatabaseDescription.find_by_name(name)
+      DatabaseDescription.create(:name => name)
+    end
+
+    software_database = SoftwareDatabase.new
+    software_database.database_description = DatabaseDescription.find_by_name(name)
+    software_database.version = version
+    software_database.save!
+
+    software_database
+  end
+
+
 end

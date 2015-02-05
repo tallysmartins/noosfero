@@ -46,6 +46,7 @@ Feature: Search software
   Scenario: Show software ordered by name when "Name A-Z" is selected
     Given I go to /search/software_infos
     And I select "Name A-Z" from "sort"
+    And I press "Filter"
     Then I should see "Software One" before "Software Two"
 
   @selenium
