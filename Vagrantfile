@@ -9,10 +9,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   proxy = ENV['http_proxy'] || ENV['HTTP_PROXY']
   if proxy
-    config.vm.provision 'shell', path: 'proxy.sh', args: [proxy]
+    config.vm.provision 'shell', path: 'utils/proxy.sh', args: [proxy]
   end
 
-  config.vm.provision 'shell', path: 'vagrant/provision.sh'
-
-  config.vm.network :forwarded_port, guest: 8000, host: 8000 # Colab (runserver)
+  config.vm.network :forwarded_port, guest: 443, host: 8443
 end
