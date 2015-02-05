@@ -354,11 +354,6 @@ input.button.with-text.icon-search.submit{
   padding: 15px 10px;
 }
 
-/*#filter-categories{
-  margin:10px 5px;
-  color:#ffffff;
-}*/
-
 #filter-categories-catalog h4{
   margin:10px 5px;
   color:#000;
@@ -424,38 +419,29 @@ input.button.with-text.icon-search.submit{
   padding: 5px;
 
 }
-/*
-#close-filter-catalog:hover{
-  background:#2B65CD;
-  border-radius: 4px;
-  margin-top: 5px;
-  color: #FFF;
-  text-transform: uppercase;
-  border-radius: 4px;
-  border: 1px solid #2B65CD;
-  padding: 5px;
-}
-
-#close-filter-catalog:after{
-    content:"︿";
-    padding-left: 7px;
-    padding-right: 4px;
-    color: #172857;
-    background: none repeat scroll 0% 0% #EEE;
-    border-radius: 4px;
-    font-size: 15px;
-    line-height: 20px;
-    text-align: center;
-    position: relative;
-    margin-left: 5px;
-    top: 2px;
-    margin-right: 15px;
-}
-*/
 
 input[type=checkbox] {
   border:1px solid #000;
   margin:8px;
   cursor:pointer;
 }
+
+#catalog-display-options {
+  position: relative;
+  width: 100%;
+}
+
+#catalog-display-options-count, #catalog-display-options-show-and-sort {
+  position: relative;
+  float: left;
+  width: 50%;
+}
+
+#catalog-display-options-show, #catalog-display-options-sort {
+  position: relative;
+  float: left;
+  width: 50%;
+  text-align: right;
+}
+
 /* End software catalog definitions */
