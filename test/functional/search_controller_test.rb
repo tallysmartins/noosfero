@@ -196,6 +196,25 @@ class SearchControllerTest < ActionController::TestCase
     assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
   end
 
+  should "software_infos search by acronym" do
+    software_one = create_software_info("Software One", :acronym => "SFO", :finality => "Help")
+    software_two = create_software_info("Software Two", :acronym => "SFT", :finality => "Task")
+
+    software_one.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+    software_two.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+
+    software_one.save!
+    software_two.save!
+
+    get(
+      :software_infos,
+      :query => "SFO",
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], software_one.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
+  end
+
   private
 
   def create_software_categories
