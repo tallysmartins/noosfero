@@ -1,1 +1,4 @@
 /utils/obs/isv*
+/Gemfile.lock
+/.ssh_config
+/.tmp
