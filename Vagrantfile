@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = ENV.fetch("VAGRANT_BOX", 'debian-wheezy')
+  config.vm.box = ENV.fetch("VAGRANT_BOX", 'centos7')
 
   proxy = ENV['http_proxy'] || ENV['HTTP_PROXY']
   if proxy
