@@ -32,4 +32,15 @@ class Person
     false
   end
 
+  def softwares
+    softwares = []
+    self.communities.each do |community|
+      if community.software?
+        softwares << community
+      end
+    end
+
+    softwares
+  end
+
 end

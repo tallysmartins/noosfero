@@ -79,4 +79,17 @@ class MpogSoftwarePluginPersonTest < ActiveSupport::TestCase
 
     assert_equal(100, @plugin.calc_percentage_registration(@person))
   end
+
+  should 'get a list of softwares of a person' do
+    software1 = create_software_info "noosfero"
+    software2 = create_software_info "colab"
+    community = create_community "simple_community"
+
+    software1.community.add_member @person
+    software1.save!
+    community.add_member @person
+    community.save!
+
+    assert_equal 1, @person.softwares.count
+  end
 end
