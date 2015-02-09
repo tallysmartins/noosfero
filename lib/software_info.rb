@@ -1,5 +1,5 @@
 class SoftwareInfo < ActiveRecord::Base
-  acts_as_having_settings :field => :setting
+  acts_as_having_settings :field => :settings
 
   SEARCH_FILTERS = []
   SEARCH_DISPLAYS = %w[full]
@@ -83,6 +83,7 @@ class SoftwareInfo < ActiveRecord::Base
     self.another_license_version = version
     self.another_license_link = link
     self.license_info = LicenseInfo.find_by_version("Another")
+    self.save!
   end
 
   def validate_name_lenght
@@ -101,6 +102,9 @@ class SoftwareInfo < ActiveRecord::Base
     environment = attributes.delete(:environment)
     name = attributes.delete(:name)
     license_info = attributes.delete(:license_info)
+    another_license_version = attributes.delete(:another_license_version)
+    another_license_link = attributes.delete(:another_license_link)
+
     software_info = SoftwareInfo.new(attributes)
     if !environment.admins.include? requestor
       CreateSoftware.create!(
@@ -126,8 +130,20 @@ class SoftwareInfo < ActiveRecord::Base
       community.save!
       community.add_admin(requestor)
     end
+
+    software_info.verify_license_info(another_license_version, another_license_link)
+    software_info.save!
+    software_info
   end
 
+  def verify_license_info another_license_version, another_license_link
+    if self.license_info_id == LicenseInfo.find_by_version("Another").id
+      version = another_license_version
+      link = another_license_link
+
+      self.another_license(version, link)
+    end
+  end
 
 
   def validate_acronym

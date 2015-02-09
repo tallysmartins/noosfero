@@ -19,6 +19,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @community = Community.new(params[:community])
     @community.environment = environment
     @software_info = SoftwareInfo.new(params[:software_info])
+
     @license_info = if params[:license_info].nil?
       LicenseInfo.new
     else
@@ -122,6 +123,11 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @software_info.license_info = @license
     @software_info.update_attributes(params[:software])
 
+    another_license_version = params[:license][:version]
+    another_license_link = params[:license][:link]
+
+    @software_info.verify_license_info(another_license_version, another_license_link)
+
     create_list_model_helpers
 
     @software_info
@@ -139,7 +145,9 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
                         params[:software_info].merge({
                          :environment => environment,
                         :name => params[:community][:name],
-                        :license_info => @license_info }))
+                        :license_info => @license_info,
+                        :another_license_version => params[:license][:version],
+                        :another_license_link => params[:license][:link] }))
 
     add_admin_to_community
 
@@ -161,6 +169,14 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @list_languages = @software_info.software_languages
     @list_operating_systems = @software_info.operating_systems
     @disabled_public_software_field = disabled_public_software_field
+
+    @another_license_version = ""
+    @another_license_link = ""
+
+    if @software_info.license_info_id == LicenseInfo.find_by_version("Another").id
+      @another_license_version = @software_info.license_info.version
+      @another_license_link = @software_info.license_info.link
+    end
   end
 
   def set_software_as_template

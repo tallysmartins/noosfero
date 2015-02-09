@@ -90,11 +90,25 @@
   }
 
   function get_license_link(){
+    var selected_index = this.options.selectedIndex;
+    var selected = this.options[selected_index];
     var link = jQuery("#version_" + this.value).val();
+
+    if( selected.textContent == "Another" ) {
+      jQuery("#another_license").removeClass("hide-field");
+      jQuery("#version_link").addClass("hide-field");
+    } else {
+      jQuery("#another_license").addClass("hide-field");
+      jQuery("#version_link").removeClass("hide-field");
+    }
 
     jQuery("#version_link")
       .attr("href", link)
       .text(link);
+  }
+
+  function show_another_license_on_page_load() {
+    jQuery("#license_info_version").trigger("change");
   }
 
   function hide_infos() {
@@ -209,5 +223,6 @@
     replace_software_creations_step();
 
     jQuery("#license_info_version").change(get_license_link);
+    show_another_license_on_page_load();
   });
 })();
