@@ -1,4 +1,5 @@
 package 'vim'
+package 'rsyslog'
 
 if node['platform'] == 'centos'
   cookbook_file '/etc/yum.repos.d/softwarepublico.key' do

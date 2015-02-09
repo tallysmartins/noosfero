@@ -1,4 +1,34 @@
-vagrant@default:
+vagrant@integration:
   run_list:
     - role[server]
     - role[integration_server]
+  peers: &PEERS
+    integration:  10.1.1.1
+    email:        10.1.1.2
+    social:       10.1.1.3
+    database:     10.1.1.4
+    reverseproxy: 10.1.1.5
+vagrant@email:
+  run_list:
+    - role[server]
+    - role[email_server]
+  peers:
+    <<: *PEERS
+vagrant@social:
+  run_list:
+    - role[server]
+    - role[social_server]
+  peers:
+    <<: *PEERS
+vagrant@database:
+  run_list:
+    - role[server]
+    - role[database_server]
+  peers:
+    <<: *PEERS
+vagrant@reverseproxy:
+  run_list:
+    - role[server]
+    - role[reverse_proxy_server]
+  peers:
+    <<: *PEERS

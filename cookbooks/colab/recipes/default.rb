@@ -10,3 +10,7 @@ if node['platform'] == 'centos'
 end
 
 package 'colab'
+
+service 'colab' do
+  action :start
+end
