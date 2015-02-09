@@ -1,9 +1,7 @@
 require 'chake'
 
 task :test do
-  Dir.glob('test/*_test.sh').each do |t|
-    sh 'sh', t
-  end
+  sh './test/run_all'
 end
 
 task :default => :test
