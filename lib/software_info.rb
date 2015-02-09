@@ -1,4 +1,6 @@
 class SoftwareInfo < ActiveRecord::Base
+  acts_as_having_settings :field => :setting
+
   SEARCH_FILTERS = []
   SEARCH_DISPLAYS = %w[full]
 
@@ -34,6 +36,8 @@ class SoftwareInfo < ActiveRecord::Base
 
   validate :validate_acronym
 
+  settings_items :another_license_version, :another_license_link
+
   # used on find_by_contents
   scope :like_search, lambda{ |name|
     joins(:community).where(
@@ -61,6 +65,25 @@ class SoftwareInfo < ActiveRecord::Base
       :conditions=>[like_sql, *values]
     }
   }
+
+  def license_info
+    license = LicenseInfo.find_by_id self.license_info_id
+
+    if license == LicenseInfo.find_by_version("Another")
+      LicenseInfo.new(
+        :version => self.another_license_version,
+        :link => self.another_license_link
+      )
+    else
+      license
+    end
+  end
+
+  def another_license(version, link)
+    self.another_license_version = version
+    self.another_license_link = link
+    self.license_info = LicenseInfo.find_by_version("Another")
+  end
 
   def validate_name_lenght
     if self.community.name.size > 100
