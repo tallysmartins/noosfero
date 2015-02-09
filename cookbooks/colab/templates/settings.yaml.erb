@@ -1,0 +1,42 @@
+DATABASES:
+  default:
+    ENGINE: django.db.backends.postgresql_psycopg2
+    NAME: colab
+    USER: colab
+    HOST: <%= node['peers']['database'] %>
+
+## Set to false in production
+DEBUG: false
+TEMPLATE_DEBUG: false
+
+## System admins
+ADMINS: &admin
+<%- node['config']['admins'].each do |admin| %>
+  -
+  <%- admin.each do |item| %>
+    - <%= item %>
+  <%- end %>
+<% end %>
+
+MANAGERS: *admin
+
+COLAB_FROM_ADDRESS: '<%= node['config']['colab_from_address'] %>'
+SERVER_EMAIL: '<%= node['config']['server_email'] %>'
+
+EMAIL_HOST: localhost
+EMAIL_PORT: 25
+EMAIL_SUBJECT_PREFIX: <%= node['config']['email_subject_prefix'] %>
+
+SECRET_KEY: <%= File.read('/etc/colab/secret.key').strip %>
+
+SITE_URL: <%= node['config']['site_url'] %>
+BROWSERID_AUDIENCES:
+  - <%= node['config']['site_url'].sub('http:', 'https:') %>
+  - <%= node['config']['site_url'].sub('https:', 'http:') %>
+
+ALLOWED_HOSTS:
+  - localhost # for tests
+  - <%= node['config']['external_hostname'] %>
+
+## Disable indexing
+ROBOTS_NOINDEX: false
