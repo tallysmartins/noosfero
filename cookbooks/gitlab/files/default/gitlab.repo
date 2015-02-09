@@ -1,0 +1,7 @@
+[isv_spb_gitlab]
+name=Gitlab (CentOS_7)
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/isv:/spb:/gitlab/CentOS_7/
+gpgcheck=1
+gpgkey=file:///etc/yum.repos.d/softwarepublico.key
+enabled=1

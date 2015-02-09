@@ -1,0 +1,7 @@
+[isv_spb_noosfero]
+name=Noosfero (CentOS_7)
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/isv:/spb:/noosfero/CentOS_7/
+gpgcheck=1
+gpgkey=file:///etc/yum.repos.d/softwarepublico.key
+enabled=1

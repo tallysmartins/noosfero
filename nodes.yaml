@@ -1,3 +1,4 @@
 vagrant@default:
   run_list:
-    - recipe[basics]
+    - role[server]
+    - role[integration_server]
