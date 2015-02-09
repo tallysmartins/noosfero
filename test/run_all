@@ -6,7 +6,7 @@ failed=0
 for file in test/*_test.sh; do
   rc=0
   echo "$file"
-  mispipe "sh $file" "sed -e 's/^/  /'" || rc=$?
+  mispipe "sh $file" "sed -e 's/ASSERT:/FAILED:/; s/^/  /'" || rc=$?
   if [ $rc -ne 0 ]; then
     failed=1
   fi
