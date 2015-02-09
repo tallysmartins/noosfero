@@ -1,0 +1,15 @@
+Host *
+  User vagrant
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentitiesOnly yes
+  LogLevel FATAL
+
+<% $nodes.each do |node| %>
+Host <%= node.hostname %>
+  Hostname <%= node.data['peers'][node.hostname] %>
+  IdentityFile <%=  (Dir.glob(".vagrant/machines/#{node.hostname}/*/private_key") + [File.expand_path('~/.vagrant.d/insecure_private_key')]).find { |f| File.exists?(f) }.tap { |f| File.expand_path(f) } %>
+<% end %>
+
+# vim: ft=sshconfig

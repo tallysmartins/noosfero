@@ -3,11 +3,11 @@ vagrant@integration:
     - role[server]
     - role[integration_server]
   peers: &PEERS
-    integration:  10.1.1.1
-    email:        10.1.1.2
-    social:       10.1.1.3
-    database:     10.1.1.4
-    reverseproxy: 10.1.1.5
+    integration:  10.10.10.2
+    email:        10.10.10.3
+    social:       10.10.10.4
+    database:     10.10.10.5
+    reverseproxy: 10.10.10.6
 vagrant@email:
   run_list:
     - role[server]
