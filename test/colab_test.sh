@@ -16,4 +16,14 @@ test_colab_responds() {
   assertTrue 'colab responds' 'run_on integration curl --fail http://localhost:8001'
 }
 
+test_nginx_responds() {
+  assertTrue 'nginx reponds' 'run_on integration curl --fail http://localhost'
+}
+
+test_nginx_virtualhost() {
+  local ip="$(grep integration: nodes.yaml | cut -d : -f 2)"
+  local title="$(curl --silent --header 'Host: beta.softwarepublico.gov.br' http://$ip/dashboard | grep '<title>' | sed -e 's/^\s*//')"
+  assertEquals "<title>Home - Colab</title>" "$title"
+}
+
 . shunit2
