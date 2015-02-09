@@ -68,8 +68,9 @@ class SoftwareInfo < ActiveRecord::Base
 
   def license_info
     license = LicenseInfo.find_by_id self.license_info_id
+    license_another = LicenseInfo.find_by_version("Another")
 
-    if license == LicenseInfo.find_by_version("Another")
+    if license_another && license.id == license_another.id
       LicenseInfo.new(
         :version => self.another_license_version,
         :link => self.another_license_link
@@ -80,10 +81,14 @@ class SoftwareInfo < ActiveRecord::Base
   end
 
   def another_license(version, link)
-    self.another_license_version = version
-    self.another_license_link = link
-    self.license_info = LicenseInfo.find_by_version("Another")
-    self.save!
+    license_another = LicenseInfo.find_by_version("Another")
+
+    if license_another
+      self.another_license_version = version
+      self.another_license_link = link
+      self.license_info = license_another
+      self.save!
+    end
   end
 
   def validate_name_lenght
@@ -137,7 +142,9 @@ class SoftwareInfo < ActiveRecord::Base
   end
 
   def verify_license_info another_license_version, another_license_link
-    if self.license_info_id == LicenseInfo.find_by_version("Another").id
+    license_another = LicenseInfo.find_by_version("Another")
+
+    if license_another && self.license_info_id == license_another.id
       version = another_license_version
       link = another_license_link
 

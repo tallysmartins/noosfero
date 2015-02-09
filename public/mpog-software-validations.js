@@ -108,7 +108,7 @@
   }
 
   function show_another_license_on_page_load() {
-    jQuery("#license_info_version").trigger("change");
+    jQuery("#license_info_id").trigger("change");
   }
 
   function hide_infos() {
@@ -222,7 +222,7 @@
 
     replace_software_creations_step();
 
-    jQuery("#license_info_version").change(get_license_link);
+    jQuery("#license_info_id").change(get_license_link);
     show_another_license_on_page_load();
   });
 })();

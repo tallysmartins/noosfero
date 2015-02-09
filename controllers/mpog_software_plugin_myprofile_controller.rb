@@ -23,7 +23,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @license_info = if params[:license_info].nil?
       LicenseInfo.new
     else
-      LicenseInfo.find(params[:license_info][:version])
+      LicenseInfo.find(params[:license_info][:id])
     end
 
     control_software_creation
@@ -123,8 +123,12 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @software_info.license_info = @license
     @software_info.update_attributes(params[:software])
 
-    another_license_version = params[:license][:version]
-    another_license_link = params[:license][:link]
+    another_license_version = nil
+    another_license_link = nil
+    if params[:license]
+      another_license_version = params[:license][:version]
+      another_license_link = params[:license][:link]
+    end
 
     @software_info.verify_license_info(another_license_version, another_license_link)
 
@@ -141,13 +145,19 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
   end
 
   def send_software_to_moderation
+    another_license_version = ""
+    another_license_link = ""
+    if params[:license]
+      another_license_version = params[:license][:version]
+      another_license_link = params[:license][:link]
+    end
     @software_info = SoftwareInfo.create_after_moderation(user,
                         params[:software_info].merge({
                          :environment => environment,
                         :name => params[:community][:name],
                         :license_info => @license_info,
-                        :another_license_version => params[:license][:version],
-                        :another_license_link => params[:license][:link] }))
+                        :another_license_version => another_license_version,
+                        :another_license_link => another_license_link }))
 
     add_admin_to_community
 
@@ -173,7 +183,8 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @another_license_version = ""
     @another_license_link = ""
 
-    if @software_info.license_info_id == LicenseInfo.find_by_version("Another").id
+    license_another = LicenseInfo.find_by_version("Another")
+    if license_another && @software_info.license_info_id == license_another.id
       @another_license_version = @software_info.license_info.version
       @another_license_link = @software_info.license_info.link
     end

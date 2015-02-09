@@ -14,7 +14,7 @@
 
 <h3> <%= _("Licenses") %> </h3>
 <div id='licenses'>
-  <%= select_tag(:version, options_for_select(LicenseHelper.getListLicenses.collect{|l| [l.version, l.id]}, :selected => context.profile.software_info.license_info.id), :onchange => "get_license_link('version')") %>
+  <%= select_tag(:id, options_for_select(LicenseHelper.getListLicenses.collect{|l| [l.version, l.id]}, :selected => context.profile.software_info.license_info.id), :onchange => "get_license_link('version')") %>
   <br />
 
   <h4> <%= _("License link") %> </h4>

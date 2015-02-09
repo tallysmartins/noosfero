@@ -171,6 +171,7 @@ module SoftwareTestHelper
 
     #Fields for license info
     fields_license['version'] = LicenseInfo.last.version
+    fields_license['id'] = LicenseInfo.last.id
     hash_list << fields_license
 
     #Fields for community
