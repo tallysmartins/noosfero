@@ -7,3 +7,8 @@ if node['platform'] == 'centos'
     mode 0644
   end
 end
+
+template '/etc/hosts' do
+  owner 'root'
+  mode  0644
+end
