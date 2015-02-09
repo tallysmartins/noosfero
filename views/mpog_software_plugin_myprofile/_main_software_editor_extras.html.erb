@@ -12,14 +12,13 @@
 
 <h3> <%= _("Licenses") %> </h3>
 <div id='licenses'>
-  <%= select_tag("license[license_infos_id]", options_for_select(LicenseHelper.getListLicenses.collect{|l| [l.version, l.id]}, :selected => @profile.software_info.license_info.id), :onchange => "get_license_link('version')") %>
+  <%= select_tag("license[license_infos_id]", options_for_select(LicenseHelper.getListLicenses.collect{|l| [l.version, l.id]}, :selected => @profile.software_info.license_info.id), :id => "license_info_version") %>
   <br />
 
   <h4> <%= _("License link") %> </h4>
   <% LicenseHelper.getListLicenses.each do | license |  %>
     <input type="hidden" id = "version_<%=license.id %>" value = "<%=license.link%>">
   <% end %>
-
   <a id = "version_link" href="<%= @profile.software_info.license_info.link %>" target="BLANK"> <%= @profile.software_info.license_info.link %> </a>
 </div>
 

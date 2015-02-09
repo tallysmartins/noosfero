@@ -22,9 +22,7 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @license_info = if params[:license_info].nil?
       LicenseInfo.new
     else
-      LicenseInfo.find(:first,
-                       :conditions => ["version = ?",
-                                      "#{params[:license_info][:version]}"])
+      LicenseInfo.find(params[:license_info][:version])
     end
 
     control_software_creation

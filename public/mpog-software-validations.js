@@ -89,9 +89,8 @@
     Element.insert(element_id, {bottom: content});
   }
 
-  function get_license_link(select_id){
-    var selected = jQuery('#'+select_id).selected().val();
-    var link = jQuery("#version_" + selected).val();
+  function get_license_link(){
+    var link = jQuery("#version_" + this.value).val();
 
     jQuery("#version_link")
       .attr("href", link)
@@ -208,5 +207,7 @@
     jQuery("#software_public_software").click(hide_show_public_software_fields);
 
     replace_software_creations_step();
+
+    jQuery("#license_info_version").change(get_license_link);
   });
 })();
