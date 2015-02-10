@@ -78,4 +78,11 @@ module PluginTestHelper
     user
   end
 
+  def create_license_info version, link = ""
+    license = LicenseInfo.create(:version => version)
+    license.link = link
+    license.save
+
+    license
+  end
 end
