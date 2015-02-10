@@ -35,8 +35,10 @@ class SoftwareInfo < ActiveRecord::Base
     searchable_fields
   end
 
-  SEARCH_FILTERS = []
-  SEARCH_DISPLAYS = %w[full]
+  SEARCH_FILTERS = {
+    :order => %w[],
+    :display => %w[full]
+  }
 
   def self.default_search_display
     'full'

@@ -2,7 +2,7 @@
 <li class="search-profile-item">
   <div class="search-enterprise-item">
     <div class="search-enterprise-item-column-left">
-      <%= profile_image_link community, :portrait, 'div', community.send(@filter + '_label') + show_date(community.created_at) %>
+      <%= profile_image_link community, :portrait, 'div', community.send(@order + '_label') + show_date(community.created_at) %>
     </div>
 
     <div class="search-enterprise-item-column-right">

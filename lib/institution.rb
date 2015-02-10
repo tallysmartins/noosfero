@@ -1,7 +1,9 @@
 class Institution < ActiveRecord::Base
 
-  SEARCH_FILTERS = []
-  SEARCH_DISPLAYS = %w[compact]
+  SEARCH_FILTERS = {
+    :order => %w[],
+    :display => %w[compact]
+  }
 
   def self.default_search_display
     'compact'
