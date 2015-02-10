@@ -219,4 +219,42 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
     assert_equal "Ministerio Publico da Uniao", institution.community.name
     assert_equal "12.345.678/9012-45", institution.cnpj
   end
+
+  should "create software_info with existing license_info" do
+    @environment.add_admin(@person)
+
+    post(
+      :new_software,
+      :community => {:name =>"New Software"},
+      :software_info => {:finality => "", :repository_link => ""},
+      :license_info =>{:id => LicenseInfo.last.id},
+      :profile => @person.identifier
+    )
+
+    assert_equal SoftwareInfo.last.license_info, LicenseInfo.last
+  end
+
+  should "create software_info with 'Another' license_info" do
+    license_another = LicenseInfo.create(:version => "Another", :link => "#")
+    @environment.add_admin(@person)
+
+    another_license_version = "Different License"
+    another_license_link = "http://diferent.link"
+
+    post(
+      :new_software,
+      :community => { :name =>"New Software" },
+      :software_info => { :finality => "", :repository_link => "" },
+      :license_info =>{ :id => license_another.id },
+      :license => { :version => another_license_version,
+                    :link => another_license_link },
+      :profile => @person.identifier
+    )
+
+    assert_equal SoftwareInfo.last.license_info_id, license_another.id
+    assert_equal SoftwareInfo.last.license_info.id, nil
+    assert_equal SoftwareInfo.last.license_info.version, another_license_version
+    assert_equal SoftwareInfo.last.license_info.link, another_license_link
+  end
+
 end

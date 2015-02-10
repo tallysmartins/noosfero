@@ -153,11 +153,11 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     end
     @software_info = SoftwareInfo.create_after_moderation(user,
                         params[:software_info].merge({
-                         :environment => environment,
-                        :name => params[:community][:name],
-                        :license_info => @license_info,
-                        :another_license_version => another_license_version,
-                        :another_license_link => another_license_link }))
+                          :environment => environment,
+                          :name => params[:community][:name],
+                          :license_info => @license_info,
+                          :another_license_version => another_license_version,
+                          :another_license_link => another_license_link }))
 
     add_admin_to_community
 
