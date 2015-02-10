@@ -42,25 +42,14 @@
       </div>
     <% end %>
 
-  <%=  fields_for @license_info do |lcv| %>
     <div class="formfieldline">
-      <%= labelled_text_field _("License Version: "), "license_info[version]", "", :id=>"license_info_version" %>
-      <%= hidden_field_tag "license[license_infos_id]", "", :id=>"license_info_id" %>
-
-      <h4> <%= _("License link") %> </h4>
-      <% LicenseHelper.getListLicenses.each do | license |  %>
-        <input type="hidden" id = "version_<%=license.id %>" value = "<%=license.link%>">
-      <% end %>
-      <a id = "version_link" href="<%= LicenseInfo.first.link %>" target="_BLANK"> <%=LicenseInfo.first.link %> </a>
-
-      <div id="another_license" class="hide-field">
-        <%= labelled_text_field "Licence version", "license[version]", "", :id=>"licence_version" %>
-        <br />
-        <%= labelled_text_field "Licence link", "license[link]", "", :id=>"licence_link" %>
-      </div>
+      <%= render :partial => "license_info_fields", :locals => {
+        :license_version => "",
+        :license_id => "",
+        :another_version=>"",
+        :another_link=>""
+      } %>
     </div>
-  <% end %>
-
 
     <%= fields_for @software_info do |swf| %>
       <div class="formfieldline formfield type-text">

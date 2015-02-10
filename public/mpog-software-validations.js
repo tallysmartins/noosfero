@@ -21,7 +21,7 @@
 
     if( field.length === 0 || selected.val().length === 0 ) {
       message_error.removeClass("hide-field");
-      selected_value.val("");
+      selected.val("");
 
       message_error.show();
     } else {
@@ -32,21 +32,21 @@
 
 
   function database_autocomplete() {
-    enable_autocomplete("database", ".database_description_id", ".database_autocomplete");
+    enable_autocomplete("database", ".database_description_id", ".database_autocomplete", AJAX_URL.get_field_data);
   }
 
 
   function language_autocomplete() {
-    enable_autocomplete("software_language", ".programming_language_id", ".language_autocomplete");
+    enable_autocomplete("software_language", ".programming_language_id", ".language_autocomplete", AJAX_URL.get_field_data);
   }
 
 
-  function enable_autocomplete(field_name, field_value_class, autocomplete_class) {
+  function enable_autocomplete(field_name, field_value_class, autocomplete_class, ajax_url, select_callback) {
     $(autocomplete_class).autocomplete({
       source : function(request, response){
         $.ajax({
           type: "GET",
-          url: AJAX_URL.get_field_data,
+          url: ajax_url,
           data: {query: request.term, field: field_name},
           success: function(result){
             response(result);
@@ -60,6 +60,10 @@
         var description = get_hidden_description_field(this, field_value_class);
         description.val(selected.item.id);
         description.attr("data-label", selected.item.label);
+
+        if( select_callback !== undefined ) {
+          select_callback(selected);
+        }
       }
     }).blur(function(){
       verify_autocomplete(this, field_value_class);
@@ -135,39 +139,27 @@
     if( selected == "Another" ) {
       $("#another_license").removeClass("hide-field");
       $("#version_link").addClass("hide-field");
+      console.log($("#version_link"));
     } else {
       $("#another_license").addClass("hide-field");
       $("#version_link").removeClass("hide-field");
     }
   }
 
-  function trigger_license_info_events() {
-    $("#license_info_version").autocomplete({
-      source : function(request, response){
-        $.ajax({
-          type: "GET",
-          url: AJAX_URL.get_license_data,
-          data: {query: request.term},
-          success: function(result){
-            response(result);
-          }
-        });
-      },
 
-      minLength: 0,
+  function display_license_link_on_autocomplete(selected) {
+    var link = $("#version_" + selected.item.id).val();
+    $("#version_link").attr("href", link);
 
-      select : function (event, selected) {
-        $("#license_info_id").val(selected.item.id);
-        var link = $("#version_" + selected.item.id).val();
+    display_another_license_fields(selected.item.label);
+  }
 
-        console.log(link);
 
-        display_another_license_fields(selected.item.label);
-        $("#version_link").attr("href", link).text(link);
-      }
-    }).click(function(){
-      $(this).autocomplete("search", this.value);
-    });
+  function license_info_autocomplete() {
+    enable_autocomplete(
+      "license_info", ".license_info_id", ".license_info_version",
+      AJAX_URL.get_license_data, display_license_link_on_autocomplete
+    );
   }
 
 
@@ -195,6 +187,7 @@
       language_autocomplete();
       return false;
     });
+
 
     $(".language-button-hide").click(function(event){
       event.preventDefault();
@@ -257,6 +250,6 @@
 
     replace_software_creations_step();
 
-    trigger_license_info_events();
+    license_info_autocomplete();
   });
 })(jQuery);

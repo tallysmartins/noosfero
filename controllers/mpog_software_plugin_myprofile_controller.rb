@@ -180,11 +180,14 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @list_operating_systems = @software_info.operating_systems
     @disabled_public_software_field = disabled_public_software_field
 
+    @license_version = @software_info.license_info.version
+    @license_id = @software_info.license_info.id
     @another_license_version = ""
     @another_license_link = ""
 
     license_another = LicenseInfo.find_by_version("Another")
     if license_another && @software_info.license_info_id == license_another.id
+      @license_version = "Another"
       @another_license_version = @software_info.license_info.version
       @another_license_link = @software_info.license_info.link
     end

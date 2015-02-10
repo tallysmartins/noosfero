@@ -10,24 +10,14 @@
   <%= text_area_tag "software[finality]", @profile.software_info.finality, :placeholder => _("It is a software of..."), :cols => 40, :rows => 5, :maxlength => 140%>
 </div>
 
-<h3> <%= _("Licenses") %> </h3>
 <div id='licenses'>
-  <%= select_tag("license[license_infos_id]", options_for_select(LicenseHelper.getListLicenses.collect{|l| [l.version, l.id]}, :selected => @profile.software_info.license_info_id), :id => "license_info_id") %>
-
-  <%= labelled_text_field _("License Version: "), "license_info[version]", @profile.software_info.license_info.version, :id=>"license_info_version" %>
-  <%= hidden_field_tag "license[license_infos_id]", @profile.software_info.license_info_id, :id=>"license_info_id" %>
-  <br />
-
-  <h4> <%= _("License link") %> </h4>
-  <% LicenseHelper.getListLicenses.each do | license |  %>
-    <input type="hidden" id = "version_<%=license.id %>" value = "<%=license.link%>">
-  <% end %>
-  <a id = "version_link" href="<%= @profile.software_info.license_info.link %>" target="BLANK"> <%= @profile.software_info.license_info.link %> </a>
-  <div id="another_license" class="hide-field">
-    <%= labelled_text_field "Licence version", "license[version]", "#{@another_license_version}", :id=>"licence_version" %>
-    <br />
-    <%= labelled_text_field "Licence link", "license[link]", "#{@another_license_link}", :id=>"licence_link" %>
-  </div>
+  <%= render :partial => "license_info_fields", :locals => {
+      :license_version => @license_version,
+      :license_id => @license_id,
+      :another_version => @another_license_version,
+      :another_link => @another_license_link
+    }
+  %>
 </div>
 
 <h3> <%= _("Link to Repository") %> </h3>
