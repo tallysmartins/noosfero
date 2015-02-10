@@ -93,10 +93,35 @@ class SearchController
 
   def sort_communities_list communities_list
     communities_list.sort!{|a, b| a.name <=> b.name}
+
     if params[:sort] && params[:sort] == "desc"
       communities_list.reverse!
+    elsif params[:sort] && params[:sort] == "relevance"
+      communities_list = sort_by_relevance(communities_list, params[:query]){ |community| [community.software_info.finality, community.name] }
     end
     communities_list
+  end
+
+  def sort_by_relevance list, text
+    queries = text.split
+
+    list.sort! do |a, b|
+      found_in_a, found_in_b = 1, 1
+
+      relevance_list_a = yield(a)
+      relevance_list_b = yield(b)
+
+      queries.each do |q|
+        relevance_list_a.count.times do |i|
+          found_in_a = (i * -1) if relevance_list_a[i].downcase.include?(q.downcase)
+          found_in_b = (i * -1) if relevance_list_b[i].downcase.include?(q.downcase)
+        end
+      end
+
+      found_in_a <=> found_in_b
+    end
+
+    list
   end
 
   def prepare_software_search_page
