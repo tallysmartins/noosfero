@@ -53,6 +53,7 @@ Feature: Search software
   Scenario: Show software in reverse order by name when "Name Z-A" is selected
     Given I go to /search/software_infos
     And I select "Name Z-A" from "sort"
+    And I sleep for 3 seconds
     Then I should see "Software Two" before "Software One"
 
   Scenario: Show softwares with selected category in filter
