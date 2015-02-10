@@ -12,7 +12,7 @@
 
 <h3> <%= _("Licenses") %> </h3>
 <div id='licenses'>
-  <%= select_tag("license[license_infos_id]", options_for_select(LicenseHelper.getListLicenses.collect{|l| [l.version, l.id]}, :selected => @profile.software_info.license_info_id), :id => "license_info_version") %>
+  <%= select_tag("license[license_infos_id]", options_for_select(LicenseHelper.getListLicenses.collect{|l| [l.version, l.id]}, :selected => @profile.software_info.license_info_id), :id => "license_info_id") %>
   <br />
 
   <h4> <%= _("License link") %> </h4>

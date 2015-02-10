@@ -1,7 +1,7 @@
 namespace :software do
   desc "Create software licences"
 
-  task :create_licences => :environment do
+  task :create_licenses => :environment do
     Environment.all.each do |env|
       if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
         list_file = File.open "plugins/mpog_software/public/static/licences.txt", "r"

@@ -79,3 +79,17 @@ Feature: edit public software information
     Then I should see "Step 2/2 - Software Community Configuration"
     And I go to /myprofile/new-software/profile_editor/edit
     Then I should not see "Step 2/2 - Software Community Configuration"
+
+  @selenium
+  Scenario: Show license link when a license is selected
+    Given I am on mpog-admin's control panel
+    And I follow "Create a new software"
+    And I fill in "community_name" with "another software"
+    And I fill in "software_info_finality" with "another software finality"
+    And I select "GPL-2" from "license_info_id"
+    And I should see "www.gpl2.com" within "#version_link"
+    And I press "Create"
+    And I go to another-software's control panel
+    And I follow "Software Info"
+    And I select "GPL-3" from "license_info_id"
+    Then I should see "www.gpl3.com" within "#version_link"
