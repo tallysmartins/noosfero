@@ -44,8 +44,8 @@
 
   <%=  fields_for @license_info do |lcv| %>
     <div class="formfieldline">
-      <h4> <%= lcv.label _("License Version: ") %> </h4>
-        <%= lcv.select(:id, LicenseInfo.all.map {|l| [l.version, l.id]}, {:selected => 1}) %>
+      <%= labelled_text_field _("License Version: "), "license_info[version]", "", :id=>"license_info_version" %>
+      <%= hidden_field_tag "license[license_infos_id]", "", :id=>"license_info_id" %>
 
       <h4> <%= _("License link") %> </h4>
       <% LicenseHelper.getListLicenses.each do | license |  %>

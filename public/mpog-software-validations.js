@@ -1,20 +1,23 @@
-(function(){
+(function($){
   var AJAX_URL = {
     get_field_data:
-      url_with_subdirectory("/plugin/mpog_software/get_field_data")
+      url_with_subdirectory("/plugin/mpog_software/get_field_data"),
+    get_license_data:
+      url_with_subdirectory("/plugin/mpog_software/get_license_data")
   };
 
 
   function get_hidden_description_field(autocomplete_field, klass) {
-    var field = jQuery(autocomplete_field);
+    var field = $(autocomplete_field);
     field = field.parent().parent().find(klass);
     return field;
   }
 
+
   function verify_autocomplete(field, klass) {
-    var field = jQuery(field);
+    var field = $(field);
     var selected = get_hidden_description_field(field, klass);
-    var message_error = jQuery(field).parent().find(".autocomplete_validation_message");
+    var message_error = $(field).parent().find(".autocomplete_validation_message");
 
     if( field.length === 0 || selected.val().length === 0 ) {
       message_error.removeClass("hide-field");
@@ -27,6 +30,7 @@
     }
   }
 
+
   function database_autocomplete() {
     enable_autocomplete("database", ".database_description_id", ".database_autocomplete");
   }
@@ -36,10 +40,11 @@
     enable_autocomplete("software_language", ".programming_language_id", ".language_autocomplete");
   }
 
+
   function enable_autocomplete(field_name, field_value_class, autocomplete_class) {
-    jQuery(autocomplete_class).autocomplete({
+    $(autocomplete_class).autocomplete({
       source : function(request, response){
-        jQuery.ajax({
+        $.ajax({
           type: "GET",
           url: AJAX_URL.get_field_data,
           data: {query: request.term, field: field_name},
@@ -59,18 +64,19 @@
     }).blur(function(){
       verify_autocomplete(this, field_value_class);
     }).click(function(){
-      jQuery(this).autocomplete("search", "");
+      $(this).autocomplete("search", "");
     });
   }
 
+
   function delete_dynamic_table() {
-    var button = jQuery(".delete-dynamic-table");
+    var button = $(".delete-dynamic-table");
 
     button.each(function(){
-      var table = jQuery(this).parent().parent().parent().parent();
+      var table = $(this).parent().parent().parent().parent();
       var color = table.css("background-color");
 
-      jQuery(this).click(function(){
+      $(this).click(function(){
         table.remove();
         return false;
       }).mouseover(function(){
@@ -81,77 +87,105 @@
     });
   }
 
+
   function has_more_than_one(table_class) {
-    return (jQuery("."+table_class).length > 2); // One is always added by defaul and its hidden
+    return ($("."+table_class).length > 2); // One is always added by defaul and its hidden
   }
+
 
   function add_dynamic_table(element_id, content) {
     Element.insert(element_id, {bottom: content});
   }
 
-  function get_license_link(){
-    var selected_index = this.options.selectedIndex;
-    var selected = this.options[selected_index];
-    var link = jQuery("#version_" + this.value).val();
-
-    if( selected.textContent == "Another" ) {
-      jQuery("#another_license").removeClass("hide-field");
-      jQuery("#version_link").addClass("hide-field");
-    } else {
-      jQuery("#another_license").addClass("hide-field");
-      jQuery("#version_link").removeClass("hide-field");
-    }
-
-    jQuery("#version_link")
-      .attr("href", link)
-      .text(link);
-  }
 
   function show_another_license_on_page_load() {
-    jQuery("#license_info_id").trigger("change");
+    $("#license_info_id").trigger("change");
   }
 
+
   function hide_infos() {
-    jQuery(".language-info").hide();
-    jQuery(".database-info").hide();
-    jQuery(".libraries-info").hide();
-    jQuery(".operating-system-info").hide();
-    jQuery(".language-button-hide").hide();
-    jQuery(".database-button-hide").hide();
-    jQuery(".libraries-button-hide").hide();
-    jQuery(".operating-system-button-hide").hide();
+    $(".language-info").hide();
+    $(".database-info").hide();
+    $(".libraries-info").hide();
+    $(".operating-system-info").hide();
+    $(".language-button-hide").hide();
+    $(".database-button-hide").hide();
+    $(".libraries-button-hide").hide();
+    $(".operating-system-button-hide").hide();
   }
 
   function hide_show_public_software_fields() {
-    if (jQuery("#software_public_software").prop("checked"))
-      jQuery(".public-software-fields").show();
+    if ($("#software_public_software").prop("checked"))
+      $(".public-software-fields").show();
     else
-      jQuery(".public-software-fields").hide();
+      $(".public-software-fields").hide();
   }
 
+
   function replace_software_creations_step() {
-    var software_creation_step = jQuery("#software_creation_step").remove();
+    var software_creation_step = $("#software_creation_step").remove();
 
     if( software_creation_step.size() > 0 ) {
-      jQuery("#profile-data").parent().prepend(software_creation_step);
+      $("#profile-data").parent().prepend(software_creation_step);
     }
   }
 
-  jQuery(document).ready(function(){
+
+  function display_another_license_fields(selected) {
+    if( selected == "Another" ) {
+      $("#another_license").removeClass("hide-field");
+      $("#version_link").addClass("hide-field");
+    } else {
+      $("#another_license").addClass("hide-field");
+      $("#version_link").removeClass("hide-field");
+    }
+  }
+
+  function trigger_license_info_events() {
+    $("#license_info_version").autocomplete({
+      source : function(request, response){
+        $.ajax({
+          type: "GET",
+          url: AJAX_URL.get_license_data,
+          data: {query: request.term},
+          success: function(result){
+            response(result);
+          }
+        });
+      },
+
+      minLength: 0,
+
+      select : function (event, selected) {
+        $("#license_info_id").val(selected.item.id);
+        var link = $("#version_" + selected.item.id).val();
+
+        console.log(link);
+
+        display_another_license_fields(selected.item.label);
+        $("#version_link").attr("href", link).text(link);
+      }
+    }).click(function(){
+      $(this).autocomplete("search", this.value);
+    });
+  }
+
+
+  $(document).ready(function() {
     var dynamic_tables = ["dynamic-databases", "dynamic-languages", "dynamic-libraries","dynamic-operating_systems"];
 
     delete_dynamic_table();
     database_autocomplete();
     language_autocomplete();
 
-    jQuery(".new-dynamic-table").click(function(){
-      var link = jQuery(this);
+    $(".new-dynamic-table").click(function(){
+      var link = $(this);
 
       dynamic_tables.each(function(value){
         if( link.hasClass(value) ) {
           var table_id = value.split("-")[1];
 
-          var table_html = jQuery("#table_structure_"+table_id).html();
+          var table_html = $("#table_structure_"+table_id).html();
           add_dynamic_table(table_id, table_html);
         }
       });
@@ -162,67 +196,67 @@
       return false;
     });
 
-    jQuery(".language-button-hide").click(function(event){
+    $(".language-button-hide").click(function(event){
       event.preventDefault();
-      jQuery(".language-info").hide();
-      jQuery(".language-button-show").show();
-      jQuery(".language-button-hide").hide();
+      $(".language-info").hide();
+      $(".language-button-show").show();
+      $(".language-button-hide").hide();
     });
 
-    jQuery(".language-button-show").click(function(event){
+    $(".language-button-show").click(function(event){
       event.preventDefault();
-      jQuery(".language-info").show();
-      jQuery(".language-button-show").hide();
-      jQuery(".language-button-hide").show();
+      $(".language-info").show();
+      $(".language-button-show").hide();
+      $(".language-button-hide").show();
     });
 
-    jQuery(".operating-system-button-hide").click(function(event){
+    $(".operating-system-button-hide").click(function(event){
       event.preventDefault();
-      jQuery(".operating-system-info").hide();
-      jQuery(".operating-system-button-show").show();
-      jQuery(".operating-system-button-hide").hide();
+      $(".operating-system-info").hide();
+      $(".operating-system-button-show").show();
+      $(".operating-system-button-hide").hide();
     });
 
-    jQuery(".operating-system-button-show").click(function(event){
+    $(".operating-system-button-show").click(function(event){
       event.preventDefault();
-      jQuery(".operating-system-info").show();
-      jQuery(".operating-system-button-show").hide();
-      jQuery(".operating-system-button-hide").show();
+      $(".operating-system-info").show();
+      $(".operating-system-button-show").hide();
+      $(".operating-system-button-hide").show();
     });
 
-    jQuery(".database-button-hide").click(function(event){
+    $(".database-button-hide").click(function(event){
       event.preventDefault();
-      jQuery(".database-info").hide();
-      jQuery(".database-button-show").show();
-      jQuery(".database-button-hide").hide();
+      $(".database-info").hide();
+      $(".database-button-show").show();
+      $(".database-button-hide").hide();
     });
 
-    jQuery(".database-button-show").click(function(event){
+    $(".database-button-show").click(function(event){
       event.preventDefault();
-      jQuery(".database-info").show();
-      jQuery(".database-button-show").hide();
-      jQuery(".database-button-hide").show();
+      $(".database-info").show();
+      $(".database-button-show").hide();
+      $(".database-button-hide").show();
     });
 
-    jQuery(".libraries-button-hide").click(function(event){
+    $(".libraries-button-hide").click(function(event){
       event.preventDefault();
-      jQuery(".libraries-info").hide();
-      jQuery(".libraries-button-show").show();
-      jQuery(".libraries-button-hide").hide();
+      $(".libraries-info").hide();
+      $(".libraries-button-show").show();
+      $(".libraries-button-hide").hide();
     });
 
-    jQuery(".libraries-button-show").click(function(event){
+    $(".libraries-button-show").click(function(event){
       event.preventDefault();
-      jQuery(".libraries-info").show();
-      jQuery(".libraries-button-show").hide();
-      jQuery(".libraries-button-hide").show();
+      $(".libraries-info").show();
+      $(".libraries-button-show").hide();
+      $(".libraries-button-hide").show();
     });
+
     hide_show_public_software_fields();
-    jQuery("#software_public_software").click(hide_show_public_software_fields);
+    $("#software_public_software").click(hide_show_public_software_fields);
 
     replace_software_creations_step();
 
-    jQuery("#license_info_id").change(get_license_link);
-    show_another_license_on_page_load();
+    trigger_license_info_events();
   });
-})();
+})(jQuery);

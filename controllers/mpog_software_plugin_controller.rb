@@ -130,6 +130,20 @@ class MpogSoftwarePluginController < ApplicationController
     render :json=> data
   end
 
+  def get_license_data
+    return render :json=>{} if !request.xhr? || params[:query].nil?
+
+    data = if params[:query].empty?
+      LicenseInfo.all
+    else
+      LicenseInfo.where("version ILIKE ?", "%#{params[:query]}%").select("id, version")
+    end
+
+    render :json=> data.collect { |license|
+      {:id=>license.id, :label=>license.version}
+    }
+  end
+
   protected
 
   def get_state_list
