@@ -41,6 +41,11 @@ To create the categories that a software can have run
 
 rake software:create_categories
 
+Create Licenses
+-----------------
+
+This command populate the database with 71 licenses and it's links
+rake software:create_licenses
 
 Translate Plugin
 ------------------
