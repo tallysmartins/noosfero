@@ -102,28 +102,6 @@ class SearchController
     communities_list
   end
 
-  def sort_by_relevance list, text
-    queries = text.split
-
-    list.sort! do |a, b|
-      found_in_a, found_in_b = 1, 1
-
-      relevance_list_a = yield(a)
-      relevance_list_b = yield(b)
-
-      queries.each do |q|
-        relevance_list_a.count.times do |i|
-          found_in_a = (i * -1) if relevance_list_a[i].downcase.include?(q.downcase)
-          found_in_b = (i * -1) if relevance_list_b[i].downcase.include?(q.downcase)
-        end
-      end
-
-      found_in_a <=> found_in_b
-    end
-
-    list
-  end
-
   def prepare_software_search_page
     prepare_software_infos_params
     prepare_software_infos_message
