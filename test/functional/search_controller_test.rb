@@ -47,7 +47,7 @@ class SearchControllerTest < ActionController::TestCase
      software = create_software_info("New Software")
      institution = create_private_institution("New Private Institution", "NPI" , "Brazil", "DF", "Gama", "66.544.314/0001-63")
 
-     software.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+     software.license_info = LicenseInfo.create :version => "GPL - 1.0"
      software.save!
 
      get :software_infos, :query => "New"
@@ -117,8 +117,8 @@ class SearchControllerTest < ActionController::TestCase
     software_one.community.categories << Category.first
     software_two.community.categories << Category.last
 
-    software_one.license_info = LicenseInfo.create :version=>"GPL - 1.0"
-    software_two.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
+    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
 
     software_one.save!
     software_two.save!
@@ -137,8 +137,8 @@ class SearchControllerTest < ActionController::TestCase
     software_one = create_software_info("Software One")
     software_two = create_software_info("Software Two")
 
-    software_one.license_info = LicenseInfo.create :version=>"GPL - 1.0"
-    software_two.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
+    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
 
     software_one.software_languages << create_software_language("Python", "1.0")
     software_two.software_languages << create_software_language("Java", "8.1")
@@ -159,8 +159,8 @@ class SearchControllerTest < ActionController::TestCase
     software_one = create_software_info("Software One")
     software_two = create_software_info("Software Two")
 
-    software_one.license_info = LicenseInfo.create :version=>"GPL - 1.0"
-    software_two.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
+    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
 
     software_one.software_databases << create_software_database("MySQL", "1.0")
     software_two.software_databases << create_software_database("Postgrees", "8.1")
@@ -181,8 +181,8 @@ class SearchControllerTest < ActionController::TestCase
     software_one = create_software_info("Software One", :finality => "Help")
     software_two = create_software_info("Software Two", :finality => "Task")
 
-    software_one.license_info = LicenseInfo.create :version=>"GPL - 1.0"
-    software_two.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
+    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
 
     software_one.save!
     software_two.save!
@@ -200,8 +200,8 @@ class SearchControllerTest < ActionController::TestCase
     software_one = create_software_info("Software One", :acronym => "SFO", :finality => "Help")
     software_two = create_software_info("Software Two", :acronym => "SFT", :finality => "Task")
 
-    software_one.license_info = LicenseInfo.create :version=>"GPL - 1.0"
-    software_two.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
+    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
 
     software_one.save!
     software_two.save!
@@ -213,6 +213,32 @@ class SearchControllerTest < ActionController::TestCase
 
     assert_includes assigns(:searches)[:software_infos][:results], software_one.community
     assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
+  end
+
+  should "software_infos search by relevance" do
+    software_one = create_software_info("Software One", :acronym => "SFO", :finality => "Help")
+    software_two = create_software_info("Java", :acronym => "SFT", :finality => "Task")
+    software_three = create_software_info("Software Three", :acronym => "SFW", :finality => "Java")
+
+    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
+    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
+    software_three.license_info = LicenseInfo.create :version => "GPL - 1.0"
+
+    software_one.software_languages << create_software_language("Java", "8.0")
+
+    software_one.save!
+    software_two.save!
+    software_three.save!
+
+    get(
+      :software_infos,
+      :sort => "relevance",
+      :query => "Java"
+    )
+
+    assert_equal assigns(:searches)[:software_infos][:results][0], software_two.community
+    assert_equal assigns(:searches)[:software_infos][:results][1], software_three.community
+    assert_equal assigns(:searches)[:software_infos][:results][2], software_one.community
   end
 
   private
