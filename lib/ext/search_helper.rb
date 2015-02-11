@@ -9,26 +9,23 @@ module SearchHelper
   def sort_by_relevance list, text
     text_splited = text.split
 
-    relevance_map = {}
+    element_relevance = {}
+
     list.each do |element|
-      relevance_map[element] = yield(element)
-    end
+      relevance = 1
+      relevance_list = yield(element)
 
-    list.sort! do |a, b|
-      found_in_a, found_in_b = 1, 1
-
-      relevance_list_a = relevance_map[a]
-      relevance_list_b = relevance_map[b]
-
-      text_splited.each do |q|
-        relevance_list_a.count.times do |i|
-          relevance = i * -1
-          found_in_a = relevance if relevance_list_a[i].downcase.include?(q.downcase)
-          found_in_b = relevance if relevance_list_b[i].downcase.include?(q.downcase)
+      text_splited.each do |t|
+        relevance_list.count.times do |i|
+          relevance = -1 * i if relevance_list[i].downcase.include?(t.downcase)
         end
       end
 
-      found_in_a <=> found_in_b
+      element_relevance[element] = relevance
+    end
+
+    list.sort! do |a, b|
+      element_relevance[a] <=> element_relevance[b]
     end
 
     list
