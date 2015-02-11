@@ -85,7 +85,7 @@ class SearchController
     filtered_community_list = []
       software_list.each do |software|
        if @include_non_public || software.public_software?
-         filtered_community_list << software.community
+         filtered_community_list << software.community unless software.community.nil?
        end
     end
     filtered_community_list
