@@ -20,9 +20,24 @@ class SoftwareInfo < ActiveRecord::Base
     if query.empty?
       SoftwareInfo.all
     else
-      includes(:community, :programming_languages, :database_descriptions).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')")
+      searchable_software_objects = SoftwareInfo.transform_list_in_methods_list(SEARCHABLE_SOFTWARE_CLASSES)
+      includes(searchable_software_objects).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')")
     end
   }
+
+  def self.transform_list_in_methods_list list
+    methods_list = []
+
+    list.each do |element|
+      if SoftwareInfo.instance_methods.include?(element.to_s.underscore.to_sym)
+        methods_list << element.to_s.underscore.to_sym
+      elsif SoftwareInfo.instance_methods.include?(element.to_s.underscore.pluralize.to_sym)
+        methods_list << element.to_s.underscore.pluralize.to_sym
+      end
+    end
+
+    methods_list
+  end
 
   def self.pg_search_plugin_fields
     SEARCHABLE_SOFTWARE_CLASSES.collect { |one_class|
