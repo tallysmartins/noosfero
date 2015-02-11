@@ -14,6 +14,7 @@ Feature: edit public software information
     And I follow "Create a new software"
     And I fill in "community_name" with "basic software"
     And I fill in "software_info_finality" with "basic software finality"
+    And I type in "gp" in autocomplete list "#license_info_version" and I choose "GPL-2"
     And I press "Create"
 
   @selenium
@@ -41,7 +42,7 @@ Feature: edit public software information
     Given I go to /myprofile/basic-software/plugin/mpog_software/edit_software
     When I follow "Specifications"
     And I follow "New Database"
-    And I type in "my" into autocomplete list "database_autocomplete" and I choose "MySQL"
+    And I type in "my" in autocomplete list ".database_autocomplete" and I choose "MySQL"
     Then selector ".database_autocomplete" should have any "MySQL"
 
   @selenium
@@ -49,7 +50,7 @@ Feature: edit public software information
     Given I go to /myprofile/basic-software/plugin/mpog_software/edit_software
     When I follow "Specifications"
     And I follow "New language"
-    And I type in "py" into autocomplete list "language_autocomplete" and I choose "Python"
+    And I type in "py" in autocomplete list ".language_autocomplete" and I choose "Python"
     Then selector ".database_autocomplete" should have any "Python"
 
   @selenium
@@ -57,10 +58,10 @@ Feature: edit public software information
     Given I go to /myprofile/basic-software/plugin/mpog_software/edit_software
     When I follow "Specifications"
     And I follow "New language"
-    And I type in "py" into autocomplete list "language_autocomplete" and I choose "Python"
+    And I type in "py" in autocomplete list ".language_autocomplete" and I choose "Python"
     And I fill in "language__version" with "1.2.3"
     And I follow "New Database"
-    And I type in "my" into autocomplete list "database_autocomplete" and I choose "MySQL"
+    And I type in "my" in autocomplete list ".database_autocomplete" and I choose "MySQL"
     And I fill in "database__version" with "4.5.6"
     Then I press "Save"
     And I follow "Software Info"
@@ -86,10 +87,10 @@ Feature: edit public software information
     And I follow "Create a new software"
     And I fill in "community_name" with "another software"
     And I fill in "software_info_finality" with "another software finality"
-    And I select "GPL-2" from "license_info_id"
-    And I should see "www.gpl2.com" within "#version_link"
+    And I type in "gp" in autocomplete list "#license_info_version" and I choose "GPL-2"
+    And I should see "Read license" within "#version_link"
     And I press "Create"
     And I go to another-software's control panel
     And I follow "Software Info"
-    And I select "GPL-3" from "license_info_id"
-    Then I should see "www.gpl3.com" within "#version_link"
+    And I type in "gp" in autocomplete list "#license_info_version" and I choose "GPL-3"
+    Then I should see "Read license" within "#version_link"

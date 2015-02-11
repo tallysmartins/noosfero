@@ -20,10 +20,10 @@ class MpogSoftwarePluginMyprofileController < MyProfileController
     @community.environment = environment
     @software_info = SoftwareInfo.new(params[:software_info])
 
-    @license_info = if params[:license_info].nil?
+    @license_info = if params[:license].blank? or params[:license][:license_infos_id].blank?
       LicenseInfo.new
     else
-      LicenseInfo.find(params[:license_info][:id])
+      LicenseInfo.find(params[:license][:license_infos_id])
     end
 
     control_software_creation

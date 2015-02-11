@@ -41,12 +41,27 @@ Given /^Institutions has initial default values on database$/ do
   national_region.save
 end
 
-Given /^I type in "([^"]*)" into autocomplete list "([^"]*)" and I choose "([^"]*)"$/ do |typed, input_institution, should_select|
-   page.driver.browser.execute_script %Q{ jQuery('input[data-autocomplete]').trigger("focus") }
-   fill_in("#{input_institution}",:with => typed)
-   page.driver.browser.execute_script %Q{ jQuery('input[data-autocomplete]').trigger("keydown") }
-   sleep 1
-   page.driver.browser.execute_script %Q{ jQuery('.ui-menu-item a:contains("#{should_select}")').trigger("mouseenter").trigger("click"); }
+Given /^I type in "([^"]*)" in autocomplete list "([^"]*)" and I choose "([^"]*)"$/ do |typed, input_field_selector, should_select|
+  # Wait the page javascript load
+  sleep 1
+  # Basicaly it, search for the input field, type something, wait for ajax end select an item
+  page.driver.browser.execute_script %Q{
+    var search_query = "#{input_field_selector}.ui-autocomplete-input";
+    var input = jQuery(search_query).first();
+
+    input.trigger('click');
+    input.val('#{typed}');
+    input.trigger('keydown');
+
+    window.setTimeout(function(){
+      search_query = ".ui-menu-item a:contains('#{should_select}')";
+      var typed = jQuery(search_query).first();
+
+      typed.trigger('mouseenter').trigger('click');
+      console.log(jQuery('#license_info_id'));
+    }, 1000);
+  }
+  sleep 1
 end
 
 Given /^the following public institutions?$/ do |table|
