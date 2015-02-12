@@ -35,7 +35,7 @@ BROWSERID_AUDIENCES:
   - <%= node['config']['site_url'].sub('https:', 'http:') %>
 
 ALLOWED_HOSTS:
-  - localhost # for tests
+  - softwarepublico.dev # for development/tests
   - <%= node['config']['external_hostname'] %>
 
 ## Disable indexing

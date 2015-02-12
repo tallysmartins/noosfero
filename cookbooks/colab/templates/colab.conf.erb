@@ -5,7 +5,7 @@ upstream colab {
 server {
   listen                *:80;
 
-  server_name           <%= node['config']['external_hostname'] %> localhost;
+  server_name           <%= node['config']['external_hostname'] %> softwarepublico.dev;
 
   access_log            /var/log/nginx/colab.access.log;
   error_log             /var/log/nginx/colab.error.log;
