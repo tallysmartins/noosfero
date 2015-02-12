@@ -7,6 +7,6 @@ end
 package 'nginx'
 
 service 'nginx' do
-  action :start
+  action [:enable, :start]
   supports :restart => true
 end

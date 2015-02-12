@@ -17,6 +17,6 @@ template '/var/lib/pgsql/data/postgresql.conf' do
 end
 
 service 'postgresql' do
-  action :start
+  action [:enable, :start]
   supports :restart => true
 end

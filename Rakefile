@@ -17,3 +17,6 @@ file '.ssh_config' => ['nodes.yaml', 'ssh_config.erb'] do |t|
 end
 
 task :bootstrap_common => '.ssh_config'
+
+# dependencies
+task 'bootstrap:integration' => 'converge:database'

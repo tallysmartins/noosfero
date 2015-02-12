@@ -30,6 +30,6 @@ execute 'colab-admin migrate'
 execute 'colab-admin collectstatic --noinput'
 
 service 'colab' do
-  action :start
+  action [:enable, :start]
   supports :restart => true
 end
