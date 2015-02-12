@@ -6,3 +6,8 @@ if node['platform'] == 'centos'
 end
 
 package 'mailman-api'
+
+service 'mailman-api' do
+  action [:enable, :start]
+  supports :restart => true
+end
