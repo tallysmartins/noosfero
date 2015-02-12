@@ -357,7 +357,12 @@ Crie/edite ``/etc/postfix/transport`` com o seguinte conteúdo:
 
 
 Faça o download do arquivo :download:`postfix-to-mailman-centos.py` e salve no
-diretório ``/etc/postfix``.
+diretório ``/etc/postfix``, e altere as permissões para tornar o arquivo
+executável:
+
+.. code-block:: sh
+
+   $ sudo chmod +x /etc/postfix/postfix-to-mailman-centos.py
 
 Adicione o seguinte conteúdo no final do arquivo ``/etc/postfix/master.cf``:
 

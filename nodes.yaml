@@ -12,6 +12,8 @@ vagrant@integration:
     colab_from_address: '"Portal do Software Publico" <noreply@softwarepublico.dev>'
     server_email: '"Portal do Software Publico" <noreply@softwarepublico.dev>'
     email_subject_prefix: '[spb]'
+    lists_hostname: listas.softwarepublico.dev
+    lists_admin: paulo@softwarelivre.org
   peers: &PEERS
     integration:  10.10.10.2
     email:        10.10.10.3

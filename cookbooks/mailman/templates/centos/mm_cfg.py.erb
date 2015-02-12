@@ -1,0 +1,27 @@
+###############################################################
+# copied from default mailman config file
+###############################################################
+from Defaults import *
+import pwd, grp
+MAILMAN_UID = pwd.getpwnam('mailman')[2]
+MAILMAN_GID = grp.getgrnam('mailman')[2]
+from socket import *
+try:
+    fqdn = getfqdn()
+except:
+    fqdn = 'mm_cfg_has_unknown_host_domains'
+
+
+###############################################################
+# site-specific items
+###############################################################
+
+DEFAULT_URL_HOST   = '<%= node['config']['external_hostname'] %>'
+DEFAULT_EMAIL_HOST = '<%= node['config']['lists_hostname'] %>'
+MTA = None
+POSTFIX_STYLE_VIRTUAL_DOMAINS = ['<%= node['config']['lists_hostname']%>']
+
+###############################################################
+# copied from default mailman config file
+###############################################################
+add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
