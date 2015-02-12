@@ -21,8 +21,7 @@ test_nginx_responds() {
 }
 
 test_nginx_virtualhost() {
-  local ip="$(grep integration: nodes.yaml | cut -d : -f 2)"
-  local title="$(./test/bin/curl http://$ip/dashboard | grep '<title>' | sed -e 's/^\s*//')"
+  local title="$(./test/bin/curl http://$integration/dashboard | grep '<title>' | sed -e 's/^\s*//')"
   assertEquals "<title>Home - Colab</title>" "$title"
 }
 
