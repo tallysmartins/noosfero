@@ -29,7 +29,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   config.vm.define 'reverseproxy' do |reverseproxy|
     reverseproxy.vm.network 'private_network', ip: ips['reverseproxy']
-    reverseproxy.vm.network 'forwarded_port', guest: 80, host: 8080
-    reverseproxy.vm.network 'forwarded_port', guest: 443, host: 8443
   end
 end
