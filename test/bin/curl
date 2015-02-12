@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+unset http_proxy
+unset https_proxy
+
+/usr/bin/curl \
+  --silent \
+  --noproxy '*' \
+  --fail \
+  --header 'Host: softwarepublico.dev' \
+  "$@"

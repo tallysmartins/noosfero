@@ -3,3 +3,5 @@ run_on() {
   shift
   vagrant ssh "$vm" -- "$@"
 }
+
+curl=/vagrant/test/bin/curl

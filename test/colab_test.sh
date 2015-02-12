@@ -13,16 +13,16 @@ test_colab_running() {
 }
 
 test_colab_responds() {
-  assertTrue 'colab responds' 'run_on integration curl --fail http://localhost:8001'
+  assertTrue 'colab responds' "run_on integration $curl http://localhost:8001"
 }
 
 test_nginx_responds() {
-  assertTrue 'nginx reponds' 'run_on integration curl --fail http://localhost'
+  assertTrue 'nginx reponds' "run_on integration $curl http://localhost"
 }
 
 test_nginx_virtualhost() {
   local ip="$(grep integration: nodes.yaml | cut -d : -f 2)"
-  local title="$(curl --silent --header 'Host: beta.softwarepublico.gov.br' http://$ip/dashboard | grep '<title>' | sed -e 's/^\s*//')"
+  local title="$(./test/bin/curl http://$ip/dashboard | grep '<title>' | sed -e 's/^\s*//')"
   assertEquals "<title>Home - Colab</title>" "$title"
 }
 
