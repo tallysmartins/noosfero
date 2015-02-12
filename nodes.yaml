@@ -7,10 +7,10 @@ vagrant@integration:
       -
         - Paulo Meirelles
         - paulo@softwarelivre.org
-    external_hostname: beta.softwarepublico.gov.br
-    site_url: https://beta.softwarepublico.gov.br
-    colab_from_address: '"Portal do Software Publico" <noreply@beta.softwarepublico.gov.br>'
-    server_email: '"Portal do Software Publico" <noreply@beta.softwarepublico.gov.br>'
+    external_hostname: softwarepublico.dev
+    site_url: https://softwarepublico.dev
+    colab_from_address: '"Portal do Software Publico" <noreply@softwarepublico.dev>'
+    server_email: '"Portal do Software Publico" <noreply@softwarepublico.dev>'
     email_subject_prefix: '[spb]'
   peers: &PEERS
     integration:  10.10.10.2
