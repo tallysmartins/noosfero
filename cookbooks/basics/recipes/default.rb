@@ -1,4 +1,5 @@
 package 'vim'
+package 'bash-completion'
 package 'rsyslog'
 
 if node['platform'] == 'centos'
