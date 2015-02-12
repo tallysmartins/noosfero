@@ -1,6 +1,7 @@
 package 'vim'
 package 'bash-completion'
 package 'rsyslog'
+package 'tmux'
 
 if node['platform'] == 'centos'
   cookbook_file '/etc/yum.repos.d/softwarepublico.key' do
