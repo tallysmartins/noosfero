@@ -322,7 +322,7 @@ Edite o arquivo de configuração do `mailman` em
 
    DEFAULT_EMAIL_HOST = 'listas.softwarepublico.gov.br'
    MTA = None
-   POSTFIX_STYLE_VIRTUAL_DOMAINS ['listas.softwarepublico.gov.br']
+   POSTFIX_STYLE_VIRTUAL_DOMAINS = ['listas.softwarepublico.gov.br']
 
 Crie a lista de discussão default, necessária para a inicialização do
 serviço. Substitua ``USER@DOMAIN.COM`` pelo email a ser usado como
