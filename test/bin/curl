@@ -9,5 +9,6 @@ unset https_proxy
   --silent \
   --noproxy '*' \
   --fail \
+  --insecure \
   --header 'Host: softwarepublico.dev' \
   "$@"
