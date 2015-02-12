@@ -27,4 +27,9 @@ test_mailman_delivery() {
   assertEquals 'Message arrives at mailbox' "1" "$messages"
 }
 
+test_mailman_web_interface() {
+  local title="$(curl --silent --fail --location --header 'Host: listas.softwarepublico.dev' http://$integration/ | grep -i '<title>')"
+  assertEquals "<TITLE>listas.softwarepublico.dev Mailing Lists</TITLE>" "$title"
+}
+
 . shunit2
