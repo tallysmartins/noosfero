@@ -1,11 +1,11 @@
-cookbook_file "/etc/nginx/#{node['config']['external_hostname']}.crt" do
+cookbook_file "/etc/nginx/#{node['config']['lists_hostname']}.crt" do
   owner 'root'
   group 'root'
   mode 0600
   notifies :restart, 'service[nginx]'
 end
 
-cookbook_file "/etc/nginx/#{node['config']['external_hostname']}.key" do
+cookbook_file "/etc/nginx/#{node['config']['lists_hostname']}.key" do
   owner 'root'
   group 'root'
   mode 0600
