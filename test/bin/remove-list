@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eu
+
+listname="$1"
+
+sudo -u mailman /usr/lib/mailman/bin/rmlist -a "$listname" > /dev/null

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -eu
+
+file="$1"
+
+total=0
+while [ "$total" -lt 10 ]; do
+  if sudo test -f "$file"; then
+    exit 0
+  fi
+  sleep 1
+  total=$(($total + 1))
+done
+echo "E: $file not found! Other files in the same directory:" >&2
+sudo ls -1d $(dirname $file)/* >&2
+exit 1

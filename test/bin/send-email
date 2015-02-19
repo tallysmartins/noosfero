@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -eu
+
+from="$1"
+to="$2"
+
+date | mail -r "$from" -s test "$to"

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -eu
+
+listname="$1"
+
+mbox=/var/lib/mailman/archives/private/$listname.mbox/$listname.mbox
+if wait-for-file $mbox; then
+  sudo grep -i -c ^Message-ID: $mbox
+else
+  echo 0
+fi
+

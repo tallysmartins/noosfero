@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -eu
+
+listname="$1"
+owner="$2"
+
+sudo -u mailman /usr/lib/mailman/bin/newlist --quiet "$listname" "$owner" PASSWORD
+
+echo "$owner" | sudo -u mailman /usr/lib/mailman/bin/add_members -r - --welcome-msg=n "$listname" > /dev/null
