@@ -1,3 +1,5 @@
+export PATH="$(dirname $0)/bin:$PATH"
+
 run_on() {
   local vm="$1"
   shift
@@ -19,15 +21,4 @@ wait_for() {
   return 1
 }
 
-
-curl=/vagrant/test/bin/curl
-
-# make IP addresses avaliable at the environment so we can refer to hosts by
-# name, e.g.
-#
-#   curl http://$reverseproxy
-#   nmap -p 5423 $database
-#
-# Each node in the `peers:` entry in nodes.yaml will have its own variable
-#
-eval $(ruby -ryaml -e 'YAML.load_file("nodes.yaml").first[1]["peers"].each { |k,v| puts "#{k}=#{v}" }')
+. $(dirname $0)/ip_helper.sh

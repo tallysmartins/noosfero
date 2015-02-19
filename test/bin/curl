@@ -5,10 +5,15 @@ set -e
 unset http_proxy
 unset https_proxy
 
+. $(dirname $0)/../ip_helper.sh
+
 /usr/bin/curl \
   --silent \
   --noproxy '*' \
   --fail \
   --insecure \
-  --header 'Host: softwarepublico.dev' \
+  --resolve softwarepublico.dev:80:$reverseproxy \
+  --resolve softwarepublico.dev:443:$reverseproxy \
+  --resolve listas.softwarepublico.dev:80:$reverseproxy \
+  --resolve listas.softwarepublico.dev:443:$reverseproxy \
   "$@"
