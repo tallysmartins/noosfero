@@ -3,7 +3,7 @@ export PATH="$(dirname $0)/bin:$PATH"
 run_on() {
   local vm="$1"
   shift
-  vagrant ssh "$vm" -- "$@"
+  ssh -F .ssh_config "$vm" -- "$@"
 }
 
 # waits until a file exists
