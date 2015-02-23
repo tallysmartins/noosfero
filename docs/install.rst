@@ -44,7 +44,7 @@ Repositório do SPB
 Para instalação dos pacotes existentes no repositório do SPB através do
 gerenciador de instalação e remoção de pacotes do CentOS (o *Yum*), é preciso
 adicionar o arquivo de configuração desse repositório no diretório
-`/etc/yum.repos./` do Sistema Operacional onde o Portal do Software Público deve
+`/etc/yum.repos.d/` do Sistema Operacional onde o Portal do Software Público deve
 Procedimento:
 
 Os comandos a seguir devem ser executados via terminal, com permissões de super
@@ -57,11 +57,11 @@ usuário do sistema.
 
    yum install -y wget
 
-2. Ir para o diretório `/etc/yum.repos./`
+2. Ir para o diretório `/etc/yum.repos.d/`
 
 ::
 
-   cd /etc/yum.repos./
+   cd /etc/yum.repos.d/
 
 3. Fazer o *download* dos arquivos de configuração nesse diretório:
 
