@@ -6,5 +6,6 @@
 #
 # Each node in the `peers:` entry in nodes.yaml will have its own variable
 #
-eval $(ruby -ryaml -e 'YAML.load_file("nodes.yaml").first[1]["peers"].each { |k,v| puts "#{k}=#{v}" }')
+
+eval $(sed -e '/\S*:\s*[0-9]\+\./!d; s/^\s*//; s/:\s*/=/' ${ROOTDIR:-/vagrant}/nodes.yaml)
 

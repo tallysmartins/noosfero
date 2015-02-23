@@ -13,11 +13,11 @@ test_colab_running() {
 }
 
 test_colab_responds() {
-  assertTrue 'colab responds' "run_on integration curl --header 'Host: softwarepublico.dev' http://localhost:8001"
+  assertTrue 'colab responds' "run_on integration curl-host 'softwarepublico.dev' http://localhost:8001"
 }
 
 test_nginx_responds() {
-  assertTrue 'nginx reponds' "run_on integration curl --header 'Host: softwarepublico.dev' http://localhost"
+  assertTrue 'nginx reponds' "run_on integration curl-host 'softwarepublico.dev' http://localhost"
 }
 
 test_nginx_virtualhost() {
