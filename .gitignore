@@ -3,3 +3,4 @@
 /.ssh_config
 /.tmp
 /docs/_build
+/.*.html
