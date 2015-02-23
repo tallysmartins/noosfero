@@ -22,15 +22,17 @@ service 'mailman' do
   supports :restart => true
 end
 
-package 'postfix'
-package 'mailx' # for testing, etc
-
-execute 'postfix-config' do
+execute 'postfix:config' do
   command [
     "postconf relay_domains=#{node['config']['lists_hostname']}",
     "postconf transport_maps=hash:/etc/postfix/transport",
   ].join(' && ')
-  only_if { !system('grep', node['config']['lists_hostname'], '/etc/postfix/main.cf') }
+  notifies :reload, 'service[postfix]'
+end
+
+execute 'postfix:interfaces' do
+  command "postconf inet_interfaces=\"$(cat /etc/hostname), localhost\""
+  not_if { system('postconf inet_interfaces | grep -q \'=\s*localhost\s*$\'') }
   notifies :restart, 'service[postfix]'
 end
 
@@ -69,6 +71,3 @@ ruby_block 'configure-mailman-transport' do
   only_if { !system('grep', '^mailman', '/etc/postfix/master.cf')}
 end
 
-service 'postfix' do
-  action [:enable, :reload]
-end

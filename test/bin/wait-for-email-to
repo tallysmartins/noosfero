@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -eu
+
+to="$1"
+
+waited=0
+
+while [ $waited -lt 10 ]; do
+  if (sudo postqueue -p | grep -q "$to"); then
+    sudo postqueue -p | grep -c "$to"
+    exit
+  fi
+  sleep 1
+  waited=$(($waited + 1))
+done
+
+echo "E: no message for $to arrived at the mail realy" >&2
+echo 0
+exit 1
+

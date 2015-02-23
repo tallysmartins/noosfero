@@ -1,3 +1,3 @@
-name 'database_server'
+name 'email_server'
 description 'E-mail server'
-run_list 'recipe[postfix]'
+run_list 'recipe[email::relay]'

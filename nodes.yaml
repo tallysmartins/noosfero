@@ -14,6 +14,7 @@ vagrant@integration:
     email_subject_prefix: '[spb]'
     lists_hostname: listas.softwarepublico.dev
     lists_admin: paulo@softwarelivre.org
+    relay_hostname: relay.softwarepublico.dev
   peers: &PEERS
     integration:  10.10.10.2
     email:        10.10.10.3

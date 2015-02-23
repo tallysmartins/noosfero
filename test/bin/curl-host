@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -eu
+
+host="$1"
+shift
+
+$(dirname $0)/curl --header "Host: $host" "$@"
