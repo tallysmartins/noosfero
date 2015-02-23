@@ -24,6 +24,7 @@ template '/etc/colab/settings.yaml' do
   owner  'root'
   group  'colab'
   mode   0640
+  notifies :restart, 'service[colab]'
 end
 
 execute 'colab-admin migrate'
