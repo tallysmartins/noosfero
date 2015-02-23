@@ -15,6 +15,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   ips = YAML.load_file('nodes.yaml').first[1]['peers']
 
+  config.vm.define 'database' do |database|
+    database.vm.network 'private_network', ip: ips['database']
+  end
   config.vm.define 'integration' do |integration|
     integration.vm.network 'private_network', ip: ips['integration']
   end
@@ -23,9 +26,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   config.vm.define 'social' do |social|
     social.vm.network 'private_network', ip: ips['social']
-  end
-  config.vm.define 'database' do |database|
-    database.vm.network 'private_network', ip: ips['database']
   end
   config.vm.define 'reverseproxy' do |reverseproxy|
     reverseproxy.vm.network 'private_network', ip: ips['reverseproxy']
