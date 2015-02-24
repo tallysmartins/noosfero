@@ -6,7 +6,7 @@ class CreateGovernmentalPowers < ActiveRecord::Migration
       t.timestamps
     end
 
-    path_to_file = "plugins/mpog_software/public/static/governmental_powers.txt"
+    path_to_file = "plugins/software_communities/public/static/governmental_powers.txt"
     SoftwareHelper.create_list_with_file(path_to_file, GovernmentalPower)
   end
 end

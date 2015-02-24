@@ -1,7 +1,7 @@
 (function() {
   var AJAX_URL = {
     hide_registration_incomplete_percentage:
-      url_with_subdirectory("/plugin/mpog_software/hide_registration_incomplete_percentage")
+      url_with_subdirectory("/plugin/software_communities/hide_registration_incomplete_percentage")
   };
 
 

@@ -12,7 +12,7 @@ class SearchControllerTest < ActionController::TestCase
 
   def setup
     @environment = Environment.default
-    @environment.enabled_plugins = ['MpogSoftwarePlugin']
+    @environment.enabled_plugins = ['SoftwareCommunitiesPlugin']
     @environment.save
 
     @controller = SearchController.new

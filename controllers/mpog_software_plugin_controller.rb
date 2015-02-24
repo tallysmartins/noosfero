@@ -1,5 +1,5 @@
 require 'csv'
-class MpogSoftwarePluginController < ApplicationController
+class SoftwareCommunitiesPluginController < ApplicationController
 
   def check_reactivate_account
     if request.xhr? && params[:email]
@@ -242,7 +242,7 @@ class MpogSoftwarePluginController < ApplicationController
       redirect_to :controller => "/admin_panel", :action => "index"
     else
       flash[:errors] = response_message[:errors]
-      redirect_to :controller => "mpog_software_plugin", :action => "create_institution_admin"
+      redirect_to :controller => "software_communities_plugin", :action => "create_institution_admin"
     end
   end
 

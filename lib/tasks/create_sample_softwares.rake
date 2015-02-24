@@ -4,7 +4,7 @@ namespace :software do
   desc "Create sample softwares"
   task :create_sample_softwares => :environment do
     Environment.all.each do |env|
-      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
+      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
 
         print "Creating softwares: "
 

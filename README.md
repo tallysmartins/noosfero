@@ -16,7 +16,7 @@ Enable Plugin
 Also, you need to enable MPOG Software Plugin on your Noosfero:
 
 cd <your_noosfero_dir>
-./script/noosfero-plugins enable mpog_software
+./script/noosfero-plugins enable software_communities
 
 Activate Plugin
 ---------------
@@ -31,7 +31,7 @@ As a Noosfero administrator user, go to administrator panel:
 Schedule Institutions Update
 ----------------------------
 
-./plugins/mpog_software/script/schedule_institution_update.sh
+./plugins/software_communities/script/schedule_institution_update.sh
 
 
 Create Categories
@@ -59,8 +59,8 @@ rake noosfero:translations:compile
 
 Running MPOG Software tests
 --------------------
-$ ruby plugins/mpog_software/test/unit/name_of_file.rb
-$ cucumber plugins/mpog_software/features/
+$ ruby plugins/software_communities/test/unit/name_of_file.rb
+$ cucumber plugins/software_communities/features/
 
 Get Involved
 ============

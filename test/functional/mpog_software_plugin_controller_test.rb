@@ -1,10 +1,10 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
 require File.dirname(__FILE__) + '/../helpers/institution_test_helper'
-require File.dirname(__FILE__) + '/../../controllers/mpog_software_plugin_controller'
+require File.dirname(__FILE__) + '/../../controllers/software_communities_plugin_controller'
 
-class MpogSoftwarePluginController; def rescue_action(e) raise e end; end
+class SoftwareCommunitiesPluginController; def rescue_action(e) raise e end; end
 
-class MpogSoftwarePluginControllerTest < ActionController::TestCase
+class SoftwareCommunitiesPluginControllerTest < ActionController::TestCase
 
   def setup
     @admin = create_user("adminuser").person
@@ -12,7 +12,7 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
     @controller.stubs(:current_user).returns(@admin.user)
 
     @environment = Environment.default
-    @environment.enabled_plugins = ['MpogSoftwarePlugin']
+    @environment.enabled_plugins = ['SoftwareCommunitiesPlugin']
     @environment.add_admin(@admin)
     @environment.save
 
@@ -192,7 +192,7 @@ class MpogSoftwarePluginControllerTest < ActionController::TestCase
 
     post :new_institution, fields
 
-    assert_redirected_to(controller: "mpog_software_plugin", action: "create_institution_admin")
+    assert_redirected_to(controller: "software_communities_plugin", action: "create_institution_admin")
   end
 
   should "Create foreign institution without city, state and cnpj by post" do

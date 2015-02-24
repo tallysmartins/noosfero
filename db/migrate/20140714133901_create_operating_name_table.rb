@@ -4,7 +4,7 @@ class CreateOperatingNameTable < ActiveRecord::Migration
       t.string :name
     end
 
-    path_to_file = "plugins/mpog_software/public/static/operating_systems.txt"
+    path_to_file = "plugins/software_communities/public/static/operating_systems.txt"
     SoftwareHelper.create_list_with_file(path_to_file, OperatingSystemName)
   end
 

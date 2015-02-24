@@ -72,7 +72,7 @@
   height: auto;
 }
 
-.mpog_search_form_fields {
+.software_search_form_fields {
   margin-top: 10px;
   width: 80%;
   height: auto;
@@ -80,16 +80,16 @@
   float: left;
 }
 
-.mpog_search_form_button {
+.software_search_form_button {
   margin-top: 10px;
 }
 
-.mpog_search_form_fields input[type='text'] {
+.software_search_form_fields input[type='text'] {
   width: 90%;
 
 }
 
-.mpog_search_form_table tr td:first-child {
+.software_search_form_table tr td:first-child {
   width: 22%;
 }
 

@@ -3,16 +3,16 @@ require File.dirname(__FILE__) + '/../helpers/software_test_helper'
 require File.dirname(__FILE__) + '/../helpers/institution_test_helper'
 require(
   File.dirname(__FILE__) +
-  '/../../controllers/mpog_software_plugin_myprofile_controller'
+  '/../../controllers/software_communities_plugin_myprofile_controller'
 )
 
-class MpogSoftwarePluginMyprofileController; def rescue_action(e) raise e end;
+class SoftwareCommunitiesPluginMyprofileController; def rescue_action(e) raise e end;
 end
 
-class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
+class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestCase
   include SoftwareTestHelper
   def setup
-    @controller = MpogSoftwarePluginMyprofileController.new
+    @controller = SoftwareCommunitiesPluginMyprofileController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     @person = create_user('person').person
@@ -31,7 +31,7 @@ class MpogSoftwarePluginMyprofileControllerTest < ActionController::TestCase
 
     login_as(@person.user_login)
     @environment = Environment.default
-    @environment.enable_plugin('MpogSoftwarePlugin')
+    @environment.enable_plugin('SoftwareCommunitiesPlugin')
     @environment.save!
   end
 

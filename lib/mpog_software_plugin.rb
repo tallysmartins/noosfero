@@ -1,4 +1,4 @@
-class MpogSoftwarePlugin < Noosfero::Plugin
+class SoftwareCommunitiesPlugin < Noosfero::Plugin
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::FormTagHelper
   include ActionView::Helpers::FormOptionsHelper
@@ -10,7 +10,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
   include Rails.application.routes.url_helpers
 
   def self.plugin_name
-    'MpogSoftwarePlugin'
+    'SoftwareCommunitiesPlugin'
   end
 
   def self.plugin_description
@@ -166,7 +166,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       {
         :title => _('Create Institution'),
         :url => {
-          :controller => 'mpog_software_plugin',
+          :controller => 'software_communities_plugin',
           :action => 'create_institution_admin'
         }
       }
@@ -297,7 +297,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       :title => _('Software Info'),
       :icon => 'edit-profile-group control-panel-software-link',
       :url => {
-        :controller => 'mpog_software_plugin_myprofile',
+        :controller => 'software_communities_plugin_myprofile',
         :action => 'edit_software'
       }
     }
@@ -308,7 +308,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       :title => _('Create a new software'),
       :icon => 'design-editor',
       :url => {
-        :controller => 'mpog_software_plugin_myprofile',
+        :controller => 'software_communities_plugin_myprofile',
         :action => 'new_software'
       }
     }
@@ -319,7 +319,7 @@ class MpogSoftwarePlugin < Noosfero::Plugin
       :title => _('Institution Info'),
       :icon => 'edit-profile-group control-panel-instituton-link',
       :url => {
-        :controller => 'mpog_software_plugin_myprofile',
+        :controller => 'software_communities_plugin_myprofile',
         :action => 'edit_institution'
       }
     }

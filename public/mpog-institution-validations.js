@@ -1,13 +1,13 @@
 (function(){
   var AJAX_URL = {
     create_institution_modal:
-      url_with_subdirectory("/plugin/mpog_software/create_institution"),
+      url_with_subdirectory("/plugin/software_communities/create_institution"),
     new_institution:
-      url_with_subdirectory("/plugin/mpog_software/new_institution"),
+      url_with_subdirectory("/plugin/software_communities/new_institution"),
     institution_already_exists:
-      url_with_subdirectory("/plugin/mpog_software/institution_already_exists"),
+      url_with_subdirectory("/plugin/software_communities/institution_already_exists"),
     get_institutions:
-      url_with_subdirectory("/plugin/mpog_software/get_institutions")
+      url_with_subdirectory("/plugin/software_communities/get_institutions")
   };
 
 

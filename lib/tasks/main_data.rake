@@ -19,7 +19,7 @@ namespace :main_data do
   desc "Create the main community"
   task :community => :environment do
     Environment.all.each do |env|
-      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
+      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
         identifier = "spb"
         community = Community.create!(:name => "SPB", :identifier => identifier)
         community.layout_template = "leftbar"
@@ -58,7 +58,7 @@ namespace :main_data do
   desc "Create the home page blocks"
   task :home => :environment do
     Environment.all.each do |env|
-      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
+      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
         identifier = "spb"
 
         box2 = env.boxes.where(:position => 2).first
@@ -72,7 +72,7 @@ namespace :main_data do
   desc "Destroy all main content created by this namespace"
   task :destroy => :environment do
     Environment.all.each do |env|
-      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
+      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
         Community["spb"].destroy unless Community["spb"].nil?
         puts "Main Community destoyed with success!"
       end

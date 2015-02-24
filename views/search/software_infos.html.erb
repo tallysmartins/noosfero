@@ -1,7 +1,7 @@
 <div id="software-search-container">
   <%= search_page_title( @titles[@asset], @category ) %>
 
-  <%= render :partial => 'mpog_search_form', :locals => { :hint => _("Type words about the %s you're looking for") % @asset.to_s.singularize } %>
+  <%= render :partial => 'software_search_form', :locals => { :hint => _("Type words about the %s you're looking for") % @asset.to_s.singularize } %>
 
   <%= display_results(@searches, @asset) %>
 

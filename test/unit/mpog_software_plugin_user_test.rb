@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
 require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
-class MpogSoftwarePluginUserTest < ActiveSupport::TestCase
+class SoftwareCommunitiesPluginUserTest < ActiveSupport::TestCase
   include PluginTestHelper
 
   should 'not save user whose both email and secondary email are the same' do

@@ -3,10 +3,10 @@ Feature: Search software
   I want to be able to search catalogued software
   So that I find a software that fit my needs
   Background:
-    Given "MpogSoftwarePlugin" plugin is enabled
+    Given "SoftwareCommunitiesPlugin" plugin is enabled
     And I am logged in as mpog_admin
     And I go to /admin/plugins
-    And I check "MpogSoftwarePlugin"
+    And I check "SoftwareCommunitiesPlugin"
     And I press "Save changes"
     And I go to /account/logout
     And the following categories

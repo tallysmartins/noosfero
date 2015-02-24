@@ -1,9 +1,9 @@
 (function($){
   var AJAX_URL = {
     get_field_data:
-      url_with_subdirectory("/plugin/mpog_software/get_field_data"),
+      url_with_subdirectory("/plugin/software_communities/get_field_data"),
     get_license_data:
-      url_with_subdirectory("/plugin/mpog_software/get_license_data")
+      url_with_subdirectory("/plugin/software_communities/get_license_data")
   };
 
 

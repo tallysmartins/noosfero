@@ -1,15 +1,14 @@
-A
 Feature: edit public software information
   As a user
   I want to add public software information to a software
   So that I can have software communities on my network
 
   Background:
-    Given "MpogSoftwarePlugin" plugin is enabled
+    Given "SoftwareCommunitiesPlugin" plugin is enabled
     And SoftwareInfo has initial default values on database
     And I am logged in as mpog_admin
     And I go to /admin/plugins
-    And I check "MpogSoftwarePlugin"
+    And I check "SoftwareCommunitiesPlugin"
     And I press "Save changes"
     And I go to /myprofile/mpog-admin
     And I follow "Create a new software"
@@ -20,7 +19,7 @@ Feature: edit public software information
 
   @selenium
   Scenario: Show SoftwareLangue fields when click in New Language
-    Given I go to /myprofile/basic-software/plugin/mpog_software/edit_software
+    Given I go to /myprofile/basic-software/plugin/software_communities/edit_software
     When I follow "Specifications"
     And I follow "New language"
     And I should see "3" of this selector ".software-language-table"
@@ -30,7 +29,7 @@ Feature: edit public software information
 
   @selenium
   Scenario: Show databasefields when click in New database
-    Given I go to /myprofile/basic-software/plugin/mpog_software/edit_software
+    Given I go to /myprofile/basic-software/plugin/software_communities/edit_software
     When I follow "Specifications"
     And I follow "New Database"
     And I should see "3" of this selector ".database-table"
@@ -40,7 +39,7 @@ Feature: edit public software information
 
   @selenium
   Scenario: Software database name should be an autocomplete
-    Given I go to /myprofile/basic-software/plugin/mpog_software/edit_software
+    Given I go to /myprofile/basic-software/plugin/software_communities/edit_software
     When I follow "Specifications"
     And I follow "New Database"
     And I type in "my" in autocomplete list ".database_autocomplete" and I choose "MySQL"
@@ -48,7 +47,7 @@ Feature: edit public software information
 
   @selenium
   Scenario: Software database name should be an autocomplete
-    Given I go to /myprofile/basic-software/plugin/mpog_software/edit_software
+    Given I go to /myprofile/basic-software/plugin/software_communities/edit_software
     When I follow "Specifications"
     And I follow "New language"
     And I type in "py" in autocomplete list ".language_autocomplete" and I choose "Python"
@@ -56,7 +55,7 @@ Feature: edit public software information
 
   @selenium
   Scenario: Create software with all dynamic table fields filled
-    Given I go to /myprofile/basic-software/plugin/mpog_software/edit_software
+    Given I go to /myprofile/basic-software/plugin/software_communities/edit_software
     When I follow "Specifications"
     And I follow "New language"
     And I type in "py" in autocomplete list ".language_autocomplete" and I choose "Python"

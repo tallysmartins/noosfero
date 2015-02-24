@@ -15,7 +15,7 @@ namespace :templates do
     desc "Create new templates of software"
     task :software => :environment do
       Environment.all.each do |env|
-        if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
+        if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
           software = Community["software"]
 
           if software.nil?
@@ -172,7 +172,7 @@ namespace :templates do
     desc "Create new templates of people"
     task :people => :environment do
       Environment.all.each do |env|
-        if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
+        if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
           person = Person.where(:identifier => "noosfero_person_template").first
 
           if person.nil?
@@ -224,7 +224,7 @@ namespace :templates do
     desc "Create new templates of community"
     task :community => :environment do
       Environment.all.each do |env|
-        if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
+        if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
           puts "Community successfully created!"
         end
       end
@@ -233,7 +233,7 @@ namespace :templates do
     desc "Create new templates of intitution"
     task :institution => :environment do
       Environment.all.each do |env|
-        if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
+        if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
           community = Community.create!(:name => "institution", :is_template => true, :moderated_articles => true, :environment => env)
           community.layout_template = "leftbar"
 
@@ -278,7 +278,7 @@ namespace :templates do
   desc "Destroy all templates created by this namespace"
   task :destroy => :environment do
     Environment.all.each do |env|
-      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("MpogSoftwarePlugin")
+      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
         Community["institution"].destroy unless Community["institution"].nil?
         puts "Institution template destoyed with success!"
 

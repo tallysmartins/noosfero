@@ -22,7 +22,7 @@ class ProfileEditorControllerTest < ActionController::TestCase
     )
 
     @environment = Environment.default
-    @environment.enabled_plugins = ['MpogSoftwarePlugin']
+    @environment.enabled_plugins = ['SoftwareCommunitiesPlugin']
     admin = create_user("adminuser").person
     admin.stubs(:has_permission?).returns("true")
     login_as('adminuser')

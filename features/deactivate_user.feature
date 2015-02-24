@@ -4,10 +4,10 @@ Feature: deactivate user
   So that user data remains persisted and allows the reactivation of the account
 
   Background:
-    Given "MpogSoftwarePlugin" plugin is enabled
+    Given "SoftwareCommunitiesPlugin" plugin is enabled
     And I am logged in as mpog_admin
     And I go to /admin/plugins
-    And I check "MpogSoftwarePlugin"
+    And I check "SoftwareCommunitiesPlugin"
     And I press "Save changes"
     And I go to /account/logout
     And the following users

@@ -2,7 +2,7 @@
 
 <%= error_messages_for :software_info %>
 
-<%= labelled_form_for :mpog_software_plugin_myprofile, :html => { :multipart => true, :id => 'edit-form' } do |f| %>
+<%= labelled_form_for :software_communities_plugin_myprofile, :html => { :multipart => true, :id => 'edit-form' } do |f| %>
 
 <% tabs << {:title => _("Software"), :id => 'basic-info',
   :content => (render :partial => 'main_software_editor_extras')} %>

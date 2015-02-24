@@ -4,7 +4,7 @@ class CreateProgrammingLanguagesTable < ActiveRecord::Migration
       t.string :name
     end
 
-    SoftwareHelper.create_list_with_file("plugins/mpog_software/public/static/languages.txt", ProgrammingLanguage)
+    SoftwareHelper.create_list_with_file("plugins/software_communities/public/static/languages.txt", ProgrammingLanguage)
   end
 
   def self.down

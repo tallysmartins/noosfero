@@ -1,7 +1,7 @@
 (function(){
   var AJAX_URL = {
     check_reactivate_account:
-      url_with_subdirectory("/plugin/mpog_software/check_reactivate_account")
+      url_with_subdirectory("/plugin/software_communities/check_reactivate_account")
   };
 
 
@@ -290,7 +290,7 @@
   jQuery(document).ready(function(){
     change_edit_fields_order(); // To change the fields order, it MUST be the first function executed
 
-    var selectFieldChoices = new SelectFieldChoices("#state_field", "#city_field", "/plugin/mpog_software/get_brazil_states");
+    var selectFieldChoices = new SelectFieldChoices("#state_field", "#city_field", "/plugin/software_communities/get_brazil_states");
     set_initial_form_custom_data(selectFieldChoices);
 
     jQuery('#secondary_email_field').blur(validate_email_format);

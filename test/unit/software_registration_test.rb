@@ -4,7 +4,7 @@ class SoftwareRegistrationTest < ActiveSupport::TestCase
 
   def setup
     @environment = Environment.default
-    @environment.enable_plugin(MpogSoftwarePlugin)
+    @environment.enable_plugin(SoftwareCommunitiesPlugin)
   end
 
   def teardown

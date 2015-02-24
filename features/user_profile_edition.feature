@@ -4,10 +4,10 @@ Feature: Institution Field
   So I can maintain my personal data updated
 
   Background:
-    Given "MpogSoftwarePlugin" plugin is enabled
+    Given "SoftwareCommunitiesPlugin" plugin is enabled
     And I am logged in as mpog_admin
     And I go to /admin/plugins
-    And I check "MpogSoftwarePlugin"
+    And I check "SoftwareCommunitiesPlugin"
     And I press "Save changes"
     And feature "skip_new_user_email_confirmation" is enabled on environment
     And I go to /admin/features/manage_fields
