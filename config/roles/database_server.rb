@@ -3,4 +3,5 @@ description 'Database server'
 run_list *[
   'recipe[postgresql]',
   'recipe[postgresql::colab]',
+  'recipe[postgresql::gitlab]',
 ]

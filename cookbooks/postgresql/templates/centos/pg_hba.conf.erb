@@ -8,3 +8,4 @@ host    all             all             ::1/128                 ident
 
 # TYPE  DATABASE  USER        ADDRESS                                 METHOD
 host    colab     colab       <%= node['peers']['integration'] %>/32  trust
+host    gitlab    gitlab      <%= node['peers']['integration'] %>/32  trust

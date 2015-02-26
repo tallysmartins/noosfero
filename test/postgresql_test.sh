@@ -8,5 +8,9 @@ test_colab_database_created() {
   assertTrue 'colab database created in PostgreSQL' 'run_on database sudo -u postgres -i psql colab < /dev/null'
 }
 
+test_gitlab_database_created() {
+  assertTrue 'gitlab database created in PostgreSQL' 'run_on database sudo -u postgres -i psql gitlab < /dev/null'
+}
+
 . shunit2
 
