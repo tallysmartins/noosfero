@@ -77,6 +77,12 @@ mkdir -p                          %{buildroot}/etc/gitlab
 mv config/gitlab.yml              %{buildroot}/etc/gitlab/gitlab.yml
 cp config/unicorn.rb.example      %{buildroot}/etc/gitlab/unicorn.rb
 cp config/database.yml.postgresql %{buildroot}/etc/gitlab/database.yml 
+cat > config/initializers/no_asset_compile.rb <<EOF
+Gitlab::Application.configure do
+  # assets already compiled
+  config.assets.compile = false
+end
+EOF
 
 sed -i 's/\/home\/\git/\/usr\/lib/' %{buildroot}/etc/gitlab/unicorn.rb
 
