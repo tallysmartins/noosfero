@@ -7,7 +7,7 @@ all:
 
 $(packages):
 	@spec=$$(find specs/ -name $@.spec); \
-		project=isb:spb:$$(basename $$(dirname $$spec)); \
+		project=isv:spb:$$(basename $$(dirname $$spec)); \
 		$(MAKE) upload package=$@ spec=$$spec project=$$project
 
 upload:
