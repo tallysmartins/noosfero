@@ -9,7 +9,7 @@ Source0: %{name}-%{version}.tar.gz
 Patch0: gitlab-7.5.2-jquery-ui-5.patch
 BuildArch: noarch
 BuildRequires: gitlab-deps
-Requires: gitlab-deps, git
+Requires: gitlab-deps, gitlab-shell, git
 
 %description
 GitLab
