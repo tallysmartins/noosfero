@@ -1,9 +1,3 @@
-DATABASES:
-  default:
-    ENGINE: django.db.backends.postgresql_psycopg2
-    NAME: colab
-    USER: colab
-    HOST: <%= node['peers']['database'] %>
 
 ## Set to false in production
 DEBUG: false

@@ -27,6 +27,13 @@ template '/etc/colab/settings.yaml' do
   notifies :restart, 'service[colab]'
 end
 
+template '/etc/colab/settings.d/00-database.yaml' do
+  owner  'root'
+  group  'colab'
+  mode   0640
+  notifies :restart, 'service[colab]'
+end
+
 cookbook_file '/usr/lib/colab/lib/python2.7/site-packages/colab/static/img/logo.svg' do
   owner 'root'
   group 'root'
