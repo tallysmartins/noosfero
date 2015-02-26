@@ -1,17 +1,17 @@
+packages = $(shell basename --suffix=.spec specs/*/*.spec)
+
 all:
 	@echo "Usage:"
 	@echo
-	@echo 'make gitlab       # uploads gitlab.spec to obs'
-	@echo 'make gitlab-shell # uploads gitlab-shell.spec to obs'
+	@for pkg in $(packages); do printf 'make %-20s # uploads %s.spec to obs\n' $$pkg $$pkg; done
 
-gitlab gitlab-shell:
-	$(MAKE) upload PACKAGE=$@
-
-obs_project = isv:spb:gitlab
+$(packages):
+	@spec=$$(find specs/ -name $@.spec); \
+		project=isb:spb:$$(basename $$(dirname $$spec)); \
+		$(MAKE) upload package=$@ spec=$$spec project=$$project
 
 upload:
-	test -n "$(PACKAGE)"
 	mkdir -p obs
-	if test -d obs/$(obs_project)/$(PACKAGE); then (cd obs/$(obs_project)/$(PACKAGE) && osc update); else (cd obs && osc checkout $(obs_project) $(PACKAGE)); fi
-	cp $(PACKAGE).spec obs/isv:spb:gitlab/$(PACKAGE)/
-	cd obs/isv:spb:gitlab/$(PACKAGE) && osc commit -m 'Update $(PACKAGE)'
+	if test -d obs/$(project)/$(package); then (cd obs/$(project)/$(package) && osc update); else (cd obs && osc checkout $(project) $(PACKAGE)); fi
+	cp $(spec) obs/$(project)/$(package)/
+	cd obs/$(project)/$(PACKAGE) && osc commit -m 'Update $(package)'
