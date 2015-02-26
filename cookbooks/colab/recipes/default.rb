@@ -27,8 +27,17 @@ template '/etc/colab/settings.yaml' do
   notifies :restart, 'service[colab]'
 end
 
+cookbook_file '/usr/lib/colab/lib/python2.7/site-packages/colab/static/img/logo.svg' do
+  owner 'root'
+  group 'root'
+  mode 0644
+  notifies :run, 'execute[colab-admin:collectstatic]'
+end
+
 execute 'colab-admin migrate'
-execute 'colab-admin collectstatic --noinput'
+execute 'colab-admin:collectstatic' do
+  command 'colab-admin collectstatic --noinput'
+end
 
 service 'colab' do
   action [:enable, :start]
