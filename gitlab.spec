@@ -136,13 +136,7 @@ sed -i 's/app_root="\/home\/\$app_user\/gitlab"/app_root="\/usr\/lib\/gitlab"/' 
 sed -i 's/\/home\/\git/\/usr\/lib/' /etc/logrotate.d/gitlab
 
 %postun
-#TODO Remove
 service gitlab stop
-sudo -u postgres psql -d template1 << EOF 
-DROP DATABASE gitlabhq_production;
-DROP USER git;
-\q
-EOF
 
 %files
 /usr/lib/gitlab
