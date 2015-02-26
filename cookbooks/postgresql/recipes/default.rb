@@ -1,3 +1,4 @@
+# FIXME on Debian it's postgresql
 package 'postgresql-server'
 
 execute 'postgresql-setup initdb || true'

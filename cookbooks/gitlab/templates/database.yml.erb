@@ -1,0 +1,7 @@
+# MANAGED WITH CHEF. DO NOT MAKE MANUAL CHANGES
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: gitlab
+  host: <%= node['peers']['database'] %>
+  user: gitlab

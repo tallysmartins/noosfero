@@ -1,0 +1,25 @@
+user: git
+gitlab_url: "http://localhost:8080/gitlab"
+
+http_settings:
+#  user: someone
+#  password: somepass
+#  ca_file: /etc/ssl/cert.pem
+#  ca_path: /etc/pki/tls/certs
+  self_signed_cert: false
+
+repos_path: "/var/lib/gitlab/repositories/"
+auth_file: "/var/lib/gitlab-shell/.ssh/authorized_keys"
+
+redis:
+  bin: /usr/bin/redis-cli
+  host: <%= node['peers']['database'] %>
+  port: 6379
+  # pass: redispass # Allows you to specify the password for Redis
+  #database: 0
+  #socket: /var/run/redis/redis.sock # Comment out this line if you want to use TCP
+  #namespace: resque:gitlab
+
+log_file: "/var/log/gitlab-shell/gitlab-shell.log"
+log_level: INFO
+audit_usernames: false

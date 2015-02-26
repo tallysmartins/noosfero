@@ -25,4 +25,8 @@ test_nginx_virtualhost() {
   assertEquals "<title>Home - Colab</title>" "$title"
 }
 
+test_reverse_proxy_gitlab() {
+  assertTrue 'Reverse proxy for gitlab' "curl --header 'Host: softwarepublico.dev' http://$integration/gitlab/public/projects | grep -i '<meta.*gitlab.*>'"
+}
+
 . shunit2
