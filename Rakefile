@@ -18,5 +18,6 @@ end
 
 task :bootstrap_common => '.ssh_config'
 
-# dependencies
-task 'converge:integration' => 'converge:database'
+unless ENV['nodeps']
+  task 'converge:integration' => 'converge:database'
+end
