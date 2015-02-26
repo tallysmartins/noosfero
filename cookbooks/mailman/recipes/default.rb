@@ -32,7 +32,7 @@ end
 
 execute 'postfix:interfaces' do
   command "postconf inet_interfaces=\"$(cat /etc/hostname), localhost\""
-  not_if { system('postconf inet_interfaces | grep -q \'=\s*localhost\s*$\'') }
+  only_if { `postconf -h inet_interfaces`.strip == 'localhost' }
   notifies :restart, 'service[postfix]'
 end
 
