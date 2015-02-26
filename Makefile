@@ -14,4 +14,4 @@ upload:
 	mkdir -p obs
 	if test -d obs/$(project)/$(package); then (cd obs/$(project)/$(package) && osc update); else (cd obs && osc checkout $(project) $(PACKAGE)); fi
 	cp $(spec) obs/$(project)/$(package)/
-	cd obs/$(project)/$(PACKAGE) && osc commit -m 'Update $(package)'
+	cd obs/$(project)/$(package) && osc commit -m 'Update $(package)'
