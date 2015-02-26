@@ -1,6 +1,6 @@
 Name:		gitlab-shell
 Version:	2.4.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Software Development Platform
 
 Group:		Development/Tools
@@ -10,7 +10,7 @@ Source0:	%{name}-%{version}.tar.gz
 BuildArch:	noarch
 
 # BuildRequires:
-Requires:	ruby >= 1.9
+Requires:	ruby >= 1.9, redis
 
 %description
 Gitlab-shell
