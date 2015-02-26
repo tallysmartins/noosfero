@@ -1,12 +1,11 @@
 Name:    gitlab
 Version: 7.6.2
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Software Development Platform
 Group:   Development/Tools
 License: Expat
 URL:     https://beta.softwarepublico.gov.br/gitlab/softwarepublico/gitlab
 Source0: %{name}-%{version}.tar.gz
-Patch0: gitlab-7.5.2-jquery-ui-5.patch
 BuildArch: noarch
 BuildRequires: gitlab-deps
 Requires: gitlab-deps, gitlab-shell, git
