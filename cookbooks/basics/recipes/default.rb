@@ -3,6 +3,9 @@ package 'bash-completion'
 package 'rsyslog'
 package 'tmux'
 
+# FIXME on Debian it's postgresql-client
+package 'postgresql'
+
 # enable EPEL repository by default
 package 'epel-release'
 
