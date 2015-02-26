@@ -1,6 +1,6 @@
 Name:    gitlab
 Version: 7.6.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Software Development Platform
 Group:   Development/Tools
 License: Expat
