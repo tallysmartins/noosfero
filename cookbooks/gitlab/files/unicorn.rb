@@ -34,7 +34,6 @@ working_directory "/usr/lib/gitlab" # available in 0.94.0+
 # setting to e.g. 64 for faster failover.
 listen "/usr/lib/gitlab/tmp/sockets/gitlab.socket", :backlog => 1024
 listen "127.0.0.1:8080", :tcp_nopush => true
-listen "<%= node['peers']['integration'] %>:8080", :tcp_nopush => true
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 #

@@ -12,4 +12,9 @@ test_gitlab_responds() {
   assertTrue 'gitlab responds on HTTP' 'run_on integration curl http://localhost:8080/gitlab/public/projects'
 }
 
+test_static_content_served_correctly() {
+  file=$(run_on integration ls -1 '/usr/lib/gitlab/public/assets/*.css' | head -1 | xargs basename)
+  assertTrue 'gitlab static content served by nginx' "run_on integration curl --head http://localhost:8081/gitlab/assets/$file | grep 'Content-Type: text/css'"
+}
+
 . shunit2

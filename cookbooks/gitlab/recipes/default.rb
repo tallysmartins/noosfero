@@ -56,7 +56,7 @@ cookbook_file '/usr/lib/gitlab/config/initializers/gitlab_path.rb' do
   mode 0644
   notifies :restart, 'service[gitlab]'
 end
-template '/etc/gitlab/unicorn.rb' do
+cookbook_file '/etc/gitlab/unicorn.rb' do
   owner 'root'
   group 'root'
   mode 0644
@@ -66,6 +66,13 @@ end
 ####################################################
 # Run under /gitlab (END)
 ####################################################
+
+# serve static files with nginx
+template '/etc/nginx/conf.d/gitlab.conf' do
+  source 'nginx.conf.erb'
+  mode 0644
+  notifies :reload, 'service[nginx]'
+end
 
 # TODO: Remote-User authentication
 
