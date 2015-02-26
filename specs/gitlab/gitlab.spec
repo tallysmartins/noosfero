@@ -1,6 +1,6 @@
 Name:    gitlab
 Version: 7.6.2
-Release: 7%{?dist}
+Release: 8%{?dist}
 Summary: Software Development Platform
 Group:   Development/Tools
 License: Expat
@@ -146,4 +146,7 @@ service gitlab stop
 %files
 /usr/lib/gitlab
 /etc/gitlab
+%config(noreplace) %{_sysconfdir}/gitlab/database.yml
+%config(noreplace) %{_sysconfdir}/gitlab/gitlab.yml
+%config(noreplace) %{_sysconfdir}/gitlab/unicorn.rb
 %doc
