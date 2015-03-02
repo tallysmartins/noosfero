@@ -107,7 +107,7 @@ class CreateSoftware < Task
     identifier = Community.where(:name => self.name).first.identifier
     # The use of url_for doesn't allow the /social within the Public Software
     # portal. That's why the url is mounted so 'hard coded'
-    url = "#{environment.top_url}/myprofile/#{identifier}/profile_editor/edit"
+    url = "#{environment.top_url}/myprofile/#{identifier}/profile_editor/edit_software_community"
   end
 
 end
