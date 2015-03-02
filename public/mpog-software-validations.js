@@ -170,6 +170,19 @@
     database_autocomplete();
     language_autocomplete();
 
+    $("#community_name_id").blur(function(){
+      var community_name =  $("#community_name_id").val();
+      var domain = $("#software-hostname").text();
+
+      var slug_name = community_name.replace(/\s+/g, '-').toLowerCase();
+
+      var custom_domain = domain.concat('/');
+      custom_domain = domain.concat(slug_name);
+
+      $("#community_name").val(slug_name);
+      $("#software_info_repository_link").val(custom_domain);
+    });
+
     $(".new-dynamic-table").click(function(){
       var link = $(this);
 
