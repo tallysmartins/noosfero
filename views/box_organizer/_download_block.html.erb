@@ -1,4 +1,3 @@
-<%= javascript_include_tag "edit-link-list.js" %>
 <div id='edit-download-block'>
   <ul class="link-list-header">
     <li class='download-list-name'><%= _('Name') %></li>
@@ -10,15 +9,22 @@
   </ul>
 
   <ul id="droppable-list-downloads">
-    <% for download in @block.downloads %>
-      <%= render :partial => 'download_list', :locals => {:download => download} %>
+    <% if @block.downloads.count > 0 %>
+      <% for download in @block.downloads %>
+        <%= render :partial => 'download_list', :locals => {:download => download} %>
+      <% end %>
+    <% else %>
+      <div id = "new">
+        <% new = {'icon' => 'ok'} %>
+        <%= render :partial => 'download_list', :locals => {:download => new} %>
+      </div>
     <% end %>
   </ul>
 
-  <div id = "new" >
-    <% new = {'icon' => 'ok'} %>
-    <%= render :partial => 'download_list', :locals => {:download => new} %>
-  </div>
+<div id ="new-template" style="display: none">
+  <% new = {'icon' => 'ok'} %>
+  <%= render :partial => 'download_list', :locals => {:download => new} %>
+</div>
 
-<%= link_to_function(_('New link'), 'add_new_link();', :class => 'button icon-add with-text') %>
+<%= link_to_function _('New link'), 'add_new_link(); return false', :class => 'button icon-add with-text download-new-link-button' %>
 </div>
