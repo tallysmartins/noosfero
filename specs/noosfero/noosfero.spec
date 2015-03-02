@@ -7,6 +7,7 @@ License: GNU GPLv3
 URL:     http://noosfero.org
 Source0: %{name}-%{version}.tar.gz
 Patch0:  %{name}p0.patch
+Patch1:  %{name}p1.patch
 BuildArch: noarch
 BuildRequires: noosfero-deps
 Requires: noosfero-deps, po4a, tango-icon-theme
@@ -21,6 +22,7 @@ participate and contribute to this free software project!
 %setup -q
 grep -rl '/usr/bin/ruby1.8' . | xargs --no-run-if-empty sed -i -e '1 s|.*|#!/usr/bin/ruby|'
 %patch0 -p1
+%patch1 -p1
 
 %build
 
