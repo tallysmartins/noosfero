@@ -2,6 +2,7 @@ package 'vim'
 package 'bash-completion'
 package 'rsyslog'
 package 'tmux'
+package 'less'
 
 # FIXME on Debian it's postgresql-client
 package 'postgresql'
