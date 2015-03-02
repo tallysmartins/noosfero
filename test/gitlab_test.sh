@@ -17,4 +17,9 @@ test_static_content_served_correctly() {
   assertTrue 'gitlab static content served by nginx' "run_on integration curl --head http://localhost:8081/gitlab/assets/$file | grep 'Content-Type: text/css'"
 }
 
+test_redirects_to_the_correct_host() {
+  redirect=$(curl-host softwarepublico.dev --head https://softwarepublico.dev/gitlab/dashboard/projects | grep Location:)
+  assertEquals "Location: https://softwarepublico.dev/gitlab/users/sign_in" "$redirect"
+}
+
 . shunit2
