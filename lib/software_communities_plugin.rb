@@ -120,7 +120,8 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
 
   def js_files
     %w(
-      jquery.maskedinput.min.js
+      vendor/jquery.maskedinput.min.js
+      vendor/modulejs-1.5.0.min.js
       spb-utils.js
       mpog-software.js
       mpog-software-validations.js
