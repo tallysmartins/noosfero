@@ -74,8 +74,6 @@ template '/etc/nginx/conf.d/gitlab.conf' do
   notifies :reload, 'service[nginx]'
 end
 
-# TODO: Remote-User authentication
-
 service 'gitlab' do
   action :enable
   supports :restart => true

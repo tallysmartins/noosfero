@@ -17,14 +17,11 @@ production: &base
     plain_url: "http://cdn.libravatar.org/avatar/%{hash}?s=%{size}&d=identicon"
     ssl_url: "https://seccdn.libravatar.org/avatar/%{hash}?s=%{size}&d=identicon"
   omniauth:
-    # Allow login via Twitter, Google, etc. using OmniAuth providers
-    enabled: false
-    allow_single_sign_on: false
-    block_auto_created_users: true
+    enabled: true
+    allow_single_sign_on: true
+    block_auto_created_users: false
     providers:
-      # - { name: 'google_oauth2', app_id: 'YOUR APP ID',
-      #     app_secret: 'YOUR APP SECRET',
-      #     args: { access_type: 'offline', approval_prompt: '' } }
+      - { name: 'RemoteUser' }
   satellites:
     path: /var/lib/gitlab/satellites
     timeout: 30
