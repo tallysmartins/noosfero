@@ -78,7 +78,7 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :new_software,
       :profile => @person.identifier,
       :community => fields[1],
-      :license_info => fields[0],
+      :license => fields[0],
       :software_info => fields[2]
     )
     assert_equal SoftwareInfo.last.community.name, "Debian"
@@ -227,7 +227,7 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :new_software,
       :community => {:name =>"New Software"},
       :software_info => {:finality => "", :repository_link => ""},
-      :license_info =>{:id => LicenseInfo.last.id},
+      :license =>{:license_infos_id => LicenseInfo.last.id},
       :profile => @person.identifier
     )
 
@@ -245,9 +245,10 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :new_software,
       :community => { :name =>"New Software" },
       :software_info => { :finality => "", :repository_link => "" },
-      :license_info =>{ :id => license_another.id },
-      :license => { :version => another_license_version,
-                    :link => another_license_link },
+      :license => { :license_infos_id => license_another.id,
+        :version => another_license_version,
+        :link=> another_license_link
+      },
       :profile => @person.identifier
     )
 

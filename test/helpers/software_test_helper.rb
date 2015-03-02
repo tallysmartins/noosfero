@@ -80,9 +80,10 @@ module SoftwareTestHelper
 
     community.save!
     software.community = community
-    software.license_info_id = license_system_hash
+    software.license_info_id = license_system_hash[:license_infos_id]
 
-    software.save
+    software.save!
+
     software
   end
 
@@ -164,25 +165,29 @@ module SoftwareTestHelper
   end
 
   def software_fields
-    fields = Hash.new
-    fields_community = Hash.new
-    fields_license = Hash.new
     hash_list = []
 
     #Fields for license info
-    fields_license['version'] = LicenseInfo.last.version
-    fields_license['id'] = LicenseInfo.last.id
+    fields_license = {
+      license_infos_id: LicenseInfo.last.id
+    }
     hash_list << fields_license
 
     #Fields for community
-    fields_community['name'] = 'Debian'
-    fields_community['identifier'] = 'debian'
+    fields_community = {
+      name: 'Debian',
+      identifier: 'debian'
+    }
     hash_list << fields_community
 
     #Fields for basic information
-    fields['finality'] = 'This is the finality of the software'
+    fields = {
+      finality: 'This is the finality of the software'
+    }
     hash_list << fields
 
     hash_list
   end
 end
+#version: LicenseInfo.last.version,
+#id: LicenseInfo.last.id

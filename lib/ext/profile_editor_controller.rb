@@ -13,7 +13,6 @@ class ProfileEditorController
 
   protected
 
-
   def redirect_to_edit_software_community
     if profile.class == Community && profile.software?
       redirect_to :action => 'edit_software_community'
