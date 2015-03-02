@@ -30,6 +30,7 @@ First you have to bring up the development virtual machines:
 
 ```bash
 $ vagrant up
+$ rake bootstrap_common
 ```
 
 Right now there are 5 VM's, so this might take a while. The basic commands for
