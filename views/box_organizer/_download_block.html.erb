@@ -1,7 +1,24 @@
+<%= javascript_include_tag "edit-link-list.js" %>
 <div id='edit-download-block'>
-  <%= labelled_form_field _('Name:'), text_field_tag('block[name]', @block.name) %>
-  <%= labelled_form_field _('Link:'), text_field_tag('block[link]', @block.link) %>
-  <%= labelled_form_field _('Software Description:'), text_field_tag('block[software_description]', @block.software_description) %>
-  <%= labelled_form_field _('Link to Version News:'), text_field_tag('block[version_news]', @block.version_news) %>
-  <%= labelled_form_field _('Link to Minimum Requirements:'), text_field_tag('block[minimum_requirements]', @block.minimum_requirements) %>
+  <ul class="link-list-header">
+    <li class='download-list-name'><%= _('Name') %></li>
+    <li class='download-list-link'><%= _('Link') %></li>
+    <li class='download-list-software-description'><%= _('Software Description') %></li>
+    <li class='download-list-version-news'><%= _('Link to Versio News') %></li>
+    <li class='download-list-minimum-requirements'><%= _('Link to Minimum Requirements') %></li>
+    <li class='download-list-size'><%= _('Size:') %></li>
+  </ul>
+
+  <ul id="droppable-list-downloads">
+    <% for download in @block.downloads %>
+      <%= render :partial => 'download_list', :locals => {:download => download} %>
+    <% end %>
+  </ul>
+
+  <div id = "new" >
+    <% new = {'icon' => 'ok'} %>
+    <%= render :partial => 'download_list', :locals => {:download => new} %>
+  </div>
+
+<%= link_to_function(_('New link'), 'add_new_link();', :class => 'button icon-add with-text') %>
 </div>

@@ -1,0 +1,11 @@
+<li>
+  <ul class="download-item-row">
+    <li><%= text_field_tag('block[downloads][][name]', download[:name]) %></li>
+    <li><%= text_field_tag('block[downloads][][link]', download[:link]) %></li>
+    <li><%= text_field_tag('block[downloads][][software_description]', download[:software_description]) %></li>
+    <li><%= text_field_tag('block[downloads][][version_news]', download[:version_news]) %></li>
+    <li><%= text_field_tag('block[downloads][][minimum_requirements]', download[:minimum_requirements]) %></li>
+    <li><%= text_field_tag('block[downloads][][size]', download[:size]) %></li>
+    <li><%= button_without_text(:delete, _('Delete'), "#" , :class=>"delete-link-list-row") %></li>
+  </ul>
+</li>
