@@ -8,6 +8,9 @@
 For development
 
 * vagrant
+* shunit2
+* moreutils
+* redir
 
 ## Configuration parameters
 
