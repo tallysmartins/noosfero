@@ -92,6 +92,15 @@ class ProfileEditorControllerTest < ActionController::TestCase
     assert_equal 0, User.last.institutions.count
   end
 
+  should "redirect to edit_software_community on edit community of software" do
+    software = create_software_info("Test Software")
+
+    post :edit, :profile => software.community.identifier
+
+    assert_redirected_to :controller => 'profile_editor', :action => 'edit_software_community'
+  end
+
+
   protected
 
   def create_basic_user
@@ -102,4 +111,23 @@ class ProfileEditorControllerTest < ActionController::TestCase
     user.person.save!
     user
   end
+
+  def create_community name
+    community = fast_create(Community)
+    community.name = name
+    community.save
+    community
+  end
+
+  def create_software_info name, finality = "", acronym = ""
+    community = create_community(name)
+    software_info = SoftwareInfo.new
+    software_info.community = community
+    software_info.finality = finality
+    software_info.acronym = acronym
+    software_info.public_software = true
+    software_info.save
+    software_info
+  end
+
 end
