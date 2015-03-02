@@ -1,23 +1,20 @@
 var dependencies = [
-  'ControlPanel'
+  'ControlPanel',
+  'EditSoftware'
 ];
 
 
-modulejs.define('Initializer', dependencies, function(cp) {
-  if( cp.isControlPanel() ) {
-    cp.init();
-  }
+modulejs.define('Initializer', dependencies, function(cp, es) {
+  return {
+    init: function() {
+      if( cp.isControlPanel() ) {
+        cp.init();
+      }
+
+
+      if( es.isEditSoftware() ) {
+        es.init();
+      }
+    }
+  };
 });
-
-
-(function() {
-  'use strict';
-
-  var $ = modulejs.require('jquery');
-  Initializer = modulejs.require('Initializer');
-
-
-  $(document).ready(function() {
-    Initializer();
-  });
-})();

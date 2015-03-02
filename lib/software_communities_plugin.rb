@@ -125,9 +125,11 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       vendor/jquery.js
       lib/noosfero-root.js
       lib/select-element.js
+      lib/auto-complete.js
       views/control-panel.js
+      views/edit-software.js
       initializer.js
-      mpog-software-validations.js
+      app.js
       mpog-user-validations.js
       mpog-institution-validations.js
       mpog-incomplete-registration.js

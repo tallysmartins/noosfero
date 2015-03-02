@@ -41,7 +41,7 @@ modulejs.define('ControlPanel', ['jquery'], function($) {
 
   return {
     isControlPanel: function() {
-      return $("#profile-editor-index").length == 1;
+      return $("#profile-editor-index").length === 1;
     },
 
 
