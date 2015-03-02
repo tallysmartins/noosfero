@@ -1,7 +1,12 @@
 #!/bin/sh
 
-ROOTDIR="$(readlink -f $(dirname $0))"
-. $ROOTDIR/test/ip_helper.sh
+if [ -f test/ip_helper.sh ]; then
+  ROOTDIR=$(dirname $0)
+  . test/ip_helper.sh
+else
+  echo "E: must run $0 from the root of the repository!"
+  exit 1
+fi
 
 sudo -v
 sudo redir --lport 80  --cport 80  --caddr $reverseproxy &

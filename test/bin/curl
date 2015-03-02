@@ -5,7 +5,7 @@ set -e
 unset http_proxy
 unset https_proxy
 
-ROOTDIR=$(readlink -f $(dirname $0)/../..)
+ROOTDIR=$(dirname $0)/../..
 . $(dirname $0)/../ip_helper.sh
 
 /usr/bin/curl \
