@@ -1,7 +1,7 @@
 . $(dirname $0)/test_helper.sh
 
 test_redirect_http_to_https() {
-  local redirect="$(curl --header 'Host: softwarepublico.dev' --head http://$reverseproxy/ | sed -e '/Location:/ !d; s/\r//')"
+  local redirect="$(curl --header 'Host: softwarepublico.dev' --head http://$reverseproxy/ | grep-header Location)"
   assertEquals "Location: https://softwarepublico.dev/" "$redirect"
 }
 

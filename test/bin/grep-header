@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -eu
+
+header="$1"
+
+sed -e "/^$header:/ !d; s/\r//"
+

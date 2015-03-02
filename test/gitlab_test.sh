@@ -18,7 +18,7 @@ test_static_content_served_correctly() {
 }
 
 test_redirects_to_the_correct_host() {
-  redirect=$(curl-host softwarepublico.dev --head https://softwarepublico.dev/gitlab/dashboard/projects | grep Location:)
+  redirect=$(curl-host softwarepublico.dev --head https://softwarepublico.dev/gitlab/dashboard/projects | grep-header Location)
   assertEquals "Location: https://softwarepublico.dev/gitlab/users/sign_in" "$redirect"
 }
 
