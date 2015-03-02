@@ -122,8 +122,11 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     %w(
       vendor/jquery.maskedinput.min.js
       vendor/modulejs-1.5.0.min.js
-      spb-utils.js
-      mpog-software.js
+      vendor/jquery.js
+      lib/noosfero-root.js
+      lib/select-element.js
+      views/control-panel.js
+      initializer.js
       mpog-software-validations.js
       mpog-user-validations.js
       mpog-institution-validations.js

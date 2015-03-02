@@ -8,7 +8,7 @@
 
 
   function show_head_message() {
-    if ($("#filter-categories-select-catalog").text().blank()){
+    if ($("#filter-categories-select-catalog").text()){
       $("#filter-categories-select-catalog").hide();
       $("#filter-option-catalog-software").show();
     }else{

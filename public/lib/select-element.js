@@ -1,22 +1,23 @@
-/*
-* "Class" for select and option html generation
-*/
-var SelectElement = (function() {
+modulejs.define('SelectElement', function() {
   function SelectElement(name, id) {
     this.select = document.createElement("select");
   }
+
 
   SelectElement.prototype.setAttr = function(attr, value) {
     return this.select.setAttribute(attr, value);
   };
 
+
   SelectElement.prototype.addOption = function(option) {
     return this.select.add(option);
   };
 
+
   SelectElement.prototype.getSelect = function() {
     return this.select;
   };
+
 
   SelectElement.generateOption = function(value, text) {
     var option;
@@ -26,12 +27,6 @@ var SelectElement = (function() {
     return option;
   };
 
+
   return SelectElement;
-})();
-
-
-function url_with_subdirectory(url) {
-  var subdirectory = jQuery("meta[property='noosfero:root']").attr("content");
-
-  return subdirectory+url;
-}
+});
