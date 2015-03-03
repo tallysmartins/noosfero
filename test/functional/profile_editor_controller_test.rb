@@ -119,7 +119,7 @@ class ProfileEditorControllerTest < ActionController::TestCase
     community
   end
 
-  def create_software_info name, finality = "", acronym = ""
+  def create_software_info name, finality = "something", acronym = ""
     community = create_community(name)
     software_info = SoftwareInfo.new
     software_info.community = community

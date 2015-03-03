@@ -2,7 +2,6 @@
   <input type="hidden" id = "version_<%=license.id %>" value = "<%=license.link%>">
 <% end %>
 
-<h3><%= _("License Version: ") %></h3>
 <%= text_field_tag "license_info[version]", license_version, :id=>"license_info_version", :class=>"license_info_version", :placeholder=>_('Autocomplete field, type some license') %>
 <%= hidden_field_tag "license[license_infos_id]", license_id, :id=>"license_info_id", :class=>"license_info_id", :data => {:label=>license_version} %>
 

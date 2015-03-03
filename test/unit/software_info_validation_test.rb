@@ -40,7 +40,8 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
                       :e_arq => true,
                       :operating_platform => true,
                       :objectives => "",
-                      :features => ""
+                      :features => "",
+                      :finality => "something"
                     )
     @software_info.software_languages << @software_language
     @software_info.software_databases << @software_database

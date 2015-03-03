@@ -40,6 +40,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
     update_software_atributes
 
     return unless request.post?
+
     @software_info = constroy_software
     software_info_insert_models.call(@list_libraries, 'libraries')
     software_info_insert_models.call(@list_languages, 'software_languages')
@@ -48,6 +49,10 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
     begin
       @software_info.save!
+
+      @community = @software_info.community
+      @community.update_attributes!(params[:community])
+
       if params[:commit] == _('Save and Configure Community')
         redirect_to :controller => 'profile_editor', :action => 'edit'
       else
@@ -155,6 +160,8 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
                         params[:software_info].merge({
                           :environment => environment,
                           :name => params[:community][:name],
+                          :identifier => params[:community][:identifier],
+                          :image_builder => params[:community][:image_builder],
                           :license_info => @license_info,
                           :another_license_version => another_license_version,
                           :another_license_link => another_license_link }))

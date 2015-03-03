@@ -225,8 +225,8 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
 
     post(
       :new_software,
-      :community => {:name =>"New Software"},
-      :software_info => {:finality => "", :repository_link => ""},
+      :community => {:name =>"New Software", :identifier => "new-software"},
+      :software_info => {:finality => "something", :repository_link => ""},
       :license =>{:license_infos_id => LicenseInfo.last.id},
       :profile => @person.identifier
     )
@@ -243,8 +243,8 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
 
     post(
       :new_software,
-      :community => { :name =>"New Software" },
-      :software_info => { :finality => "", :repository_link => "" },
+      :community => { :name => "New Software", :identifier => "new-software" },
+      :software_info => { :finality => "something", :repository_link => "" },
       :license => { :license_infos_id => license_another.id,
         :version => another_license_version,
         :link=> another_license_link

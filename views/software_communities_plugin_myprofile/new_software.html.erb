@@ -43,23 +43,37 @@
     <div id='software-name-field' class='formfield'>
 
       <span id='software-hostname'><%= environment.default_hostname %>/</span>
-      <%= required text_field(:community, :name, :size => 30, :maxlength => 100) %>
+      <%= required text_field(:community, :identifier, :size => 30, :maxlength => 100) %>
     </div>
 
     <%= fields_for @software_info do |swf| %>
-      <div class="formfield type-text">
+      <div id="finality" class="formfield type-text">
         <%= swf.label("finality" ,_("Finality"), :class=>"formlabel") %>
-        <%= required swf.text_area(:finality, :placeholder => _("What is the software?"), :cols => 40, :rows => 5, :maxlength => 140) %>
+        <%= required swf.text_area(:finality, :placeholder => _("What is the software for?"), :maxlength => 120) %>
       </div>
     <% end %>
 
-    <div class="formfieldline">
-      <%= render :partial => "license_info_fields", :locals => {
-        :license_version => "",
-        :license_id => "",
-        :another_version=>"",
-        :another_link=>""
-      } %>
+    <div id="profile_change_picture_title" class="formlabel">
+      <label>
+        <%= _('Software Logo') %>
+      </label>
+    </div>
+    <div id="profile_change_picture">
+        <%= f.fields_for :image_builder, @community.image do |i| %>
+          <%= file_field_or_thumbnail(_('Image:'), @community.image, i) %><%= _("Max size: %s (.jpg, .gif, .png)")% Image.max_size.to_humanreadable %>
+        <% end %>
+    </div>
+
+    <div id="profile_change_picture_title" class="formlabel formfieldline">
+      <label>
+        <%= _("License Version: ") %>
+      </label>
+        <%= render :partial => "license_info_fields", :locals => {
+          :license_version => "",
+          :license_id => "",
+          :another_version=>"",
+          :another_link=>""
+        } %>
     </div>
 
     <%= fields_for @software_info do |swf| %>

@@ -13,14 +13,15 @@ module PluginTestHelper
     community
   end
 
-  def create_software_info name, finality = "", acronym = ""
+  def create_software_info name, finality = "something", acronym = ""
     community = create_community(name)
     software_info = SoftwareInfo.new
     software_info.community = community
     software_info.finality = finality
     software_info.acronym = acronym
     software_info.public_software = true
-    software_info.save
+    software_info.save!
+
     software_info
   end
 

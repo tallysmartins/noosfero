@@ -528,3 +528,8 @@ div.step-explanation {
   margin-top: 2px;
   margin-bottom: 15px;
 }
+
+div#finality textarea {
+  resize: none;
+  height: 100px;
+}

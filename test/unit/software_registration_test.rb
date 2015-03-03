@@ -30,7 +30,8 @@ class SoftwareRegistrationTest < ActiveSupport::TestCase
     task = CreateSoftware.create!(
             :name => "Teste Two",
             :requestor => person,
-            :environment => @environment
+            :environment => @environment,
+            :finality => "something"
            )
 
     software_count = SoftwareInfo.count

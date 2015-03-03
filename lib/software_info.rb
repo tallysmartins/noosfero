@@ -159,6 +159,8 @@ class SoftwareInfo < ActiveRecord::Base
   def self.create_after_moderation(requestor, attributes = {})
     environment = attributes.delete(:environment)
     name = attributes.delete(:name)
+    identifier = attributes.delete(:identifier)
+    image_builder = attributes.delete(:image_builder)
     license_info = attributes.delete(:license_info)
     another_license_version = attributes.delete(:another_license_version)
     another_license_link = attributes.delete(:another_license_link)
@@ -175,7 +177,12 @@ class SoftwareInfo < ActiveRecord::Base
       )
     else
       software_template = Community["software"]
-      community = Community.new(:name => name)
+
+      community_hash = {:name => name}
+      community_hash[:identifier] = identifier
+      community_hash[:image_builder] = image_builder if image_builder
+
+      community = Community.new(community_hash)
       community.environment = environment
 
       if (!software_template.blank? && software_template.is_template)

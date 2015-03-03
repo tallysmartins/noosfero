@@ -12,7 +12,7 @@ Feature: edit public software information
     And I press "Save changes"
     And I go to /myprofile/mpog-admin
     And I follow "Create a new software"
-    And I fill in "community_name" with "basic software"
+    And I fill in "community_name_id" with "basic software"
     And I fill in "software_info_finality" with "basic software finality"
     And I type in "gp" in autocomplete list "#license_info_version" and I choose "GPL-2"
     And I press "Create"
