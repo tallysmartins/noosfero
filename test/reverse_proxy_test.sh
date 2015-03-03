@@ -15,4 +15,4 @@ test_redirect_http_to_mailman() {
   assertEquals "<TITLE>listas.softwarepublico.dev Mailing Lists</TITLE>" "$title"
 }
 
-. shunit2
+load_shunit2

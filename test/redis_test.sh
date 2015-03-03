@@ -8,4 +8,4 @@ test_redis_listens_on_local_network() {
   assertTrue 'redis listening on local network' 'nc -z -w 1 $database 6379'
 }
 
-. shunit2
+load_shunit2

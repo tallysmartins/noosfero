@@ -40,5 +40,5 @@ test_outbound_email_reverseproxy() {
   _test_outbound_email reverseproxy
 }
 
-. shunit2
+load_shunit2
 
