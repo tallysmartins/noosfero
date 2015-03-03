@@ -1,10 +1,10 @@
 <li>
-  <ul class="download-list-row">
-    <li><%= text_field_tag('block[downloads][][name]', download[:name], :class => "block_download_name") %></li>
-    <li><%= text_field_tag('block[downloads][][link]', download[:link], :class => "block_download_link") %></li>
-    <li><%= text_field_tag('block[downloads][][software_description]', download[:software_description], :class => "block_download_software_description") %></li>
-    <li><%= text_field_tag('block[downloads][][minimum_requirements]', download[:minimum_requirements], :class => "block_download_minimum_requirements") %></li>
-    <li><%= text_field_tag('block[downloads][][size]', download[:size], :class => "block_download_size") %></li>
-    <li><%= button_without_text(:delete, _('Delete'), "#" , :class=>"delete-link-list-row") %></li>
-  </ul>
+<ul class="download-list-row">
+  <li><%= text_field_tag('block[downloads][][name]', download[:name], :class => "block_download_name") %></li>
+  <li><%= text_field_tag('block[downloads][][link]', download[:link], :class => "block_download_link") %></li>
+  <li><%= text_field_tag('block[downloads][][software_description]', download[:software_description], :class => "block_download_software_description") %></li>
+  <li><%= text_field_tag('block[downloads][][minimum_requirements]', download[:minimum_requirements], :class => "block_download_minimum_requirements") %></li>
+  <li><%= text_field_tag('block[downloads][][size]', download[:size], :class => "block_download_size") %></li>
+  <li><%= button_without_text(:delete, _('Delete'), "#" , { :onclick => 'delete_link(this); return false', :class=>"delete-link-list-row" }) %></li>
+</ul>
 </li>
