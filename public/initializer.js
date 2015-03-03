@@ -1,10 +1,11 @@
 var dependencies = [
   'ControlPanel',
-  'EditSoftware'
+  'EditSoftware',
+  'NewSoftware'
 ];
 
 
-modulejs.define('Initializer', dependencies, function(cp, es) {
+modulejs.define('Initializer', dependencies, function(cp, es, ns) {
   'use strict';
 
 
@@ -17,6 +18,11 @@ modulejs.define('Initializer', dependencies, function(cp, es) {
 
       if( es.isEditSoftware() ) {
         es.init();
+      }
+
+
+      if( ns.isNewSoftware() ) {
+        ns.init();
       }
     }
   };

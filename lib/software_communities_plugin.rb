@@ -128,6 +128,7 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       lib/auto-complete.js
       views/control-panel.js
       views/edit-software.js
+      views/new-software.js
       initializer.js
       app.js
       mpog-user-validations.js
