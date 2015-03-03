@@ -13,6 +13,12 @@ directory '/etc/colab' do
   mode   0755
 end
 
+directory '/var/log/colab' do
+  owner  'colab'
+  group  'colab'
+  mode   0755
+end
+
 execute 'secret-key' do
   f = '/etc/colab/secret.key'
   command "openssl rand -hex 32 -out #{f} && chown root:colab #{f} && chmod 0640 #{f}"
@@ -35,6 +41,13 @@ template '/etc/colab/settings.d/00-database.yaml' do
 end
 
 template '/etc/colab/settings.d/01-apps.yaml' do
+  owner  'root'
+  group  'colab'
+  mode   0640
+  notifies :restart, 'service[colab]'
+end
+
+template '/etc/colab/settings.d/02-logging.yaml' do
   owner  'root'
   group  'colab'
   mode   0640
