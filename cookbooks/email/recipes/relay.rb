@@ -26,7 +26,7 @@ end
 execute 'postfix:interfaces:all' do
   command "postconf inet_interfaces=all"
   notifies :restart, 'service[postfix]'
-  not_if { system('grep -q "inet_interfaces\s*=\s*all" /etc/postfix/main.cf') }
+  only_if { `postconf -h inet_interfaces`.strip != 'all' }
 end
 
 transport = {
