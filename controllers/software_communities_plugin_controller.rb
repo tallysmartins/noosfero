@@ -1,19 +1,6 @@
 require 'csv'
 class SoftwareCommunitiesPluginController < ApplicationController
 
-  def check_reactivate_account
-    if request.xhr? && params[:email]
-      result = ""
-      user = User.where(:email => params[:email])
-
-      if user.length == 1 && !user[0].person.visible
-        result = "<span id='forgot_link'><a href='/account/forgot_password'> Reactive account</a></span>"
-      end
-
-      render :json => result.to_json
-    end
-  end
-
   def hide_registration_incomplete_percentage
     response = false
 

@@ -1,11 +1,5 @@
-modulejs.define('UserEditProfile', ['jquery', 'NoosferoRoot', 'SelectElement', 'SelectFieldChoices'], function($, NoosferoRoot, SelectElement, SelectFieldChoices) {
+modulejs.define('UserEditProfile', ['jquery', 'SelectElement', 'SelectFieldChoices'], function($, SelectElement, SelectFieldChoices) {
   'use strict';
-
-  var AJAX_URL = {
-    check_reactivate_account:
-      NoosferoRoot.urlWithSubDirectory("/plugin/software_communities/check_reactivate_account")
-  };
-
 
   function set_form_count_custom_data() {
     var divisor_option = SelectElement.generateOption("-1", "--------------------------------");
@@ -28,71 +22,26 @@ modulejs.define('UserEditProfile', ['jquery', 'NoosferoRoot', 'SelectElement', '
   }
 
 
-  function check_reactivate_account(value, input_object){
-    $.ajax({
-      url : AJAX_URL.check_reactivate_account,
-      type: "GET",
-      data: { "email": value },
-      success: function(response) {
-        if( $("#forgot_link").length === 0 )
-          $(input_object).parent().append(response);
-        else
-          $("#forgot_link").html(response);
-      },
-      error: function(type, err, message) {
-        console.log(type+" -- "+err+" -- "+message);
+  function show_state_if_country_is_brazil() {
+    var selectFieldChoices = new SelectFieldChoices("#state_field", "#city_field", "/plugin/software_communities/get_brazil_states");
+    set_initial_form_custom_data(selectFieldChoices);
+
+    $("#profile_data_country").change(function(){
+      if( this.value === "-1" ) $(this).val("BR");
+
+      if( this.value === "BR" && selectFieldChoices.actualFieldIsInput() ) {
+        selectFieldChoices.replaceStateWithSelectElement();
+        selectFieldChoices.showCity();
+      } else if( this.value !== "BR" && !selectFieldChoices.actualFieldIsInput() ) {
+        selectFieldChoices.replaceStateWithInputElement();
+        selectFieldChoices.hideCity();
       }
     });
-  }
-
-
-  function put_brazil_based_on_email(){
-    var suffixes = ['gov.br', 'jus.br', 'leg.br', 'mp.br'];
-    var value = this.value;
-    var input_object = this;
-    var gov_suffix = false;
-
-    suffixes.each(function(suffix){
-      var has_suffix = new RegExp("(.*)"+suffix+"$", "i");
-
-      if( has_suffix.test(value) ) {
-        gov_suffix = true;
-        $("#profile_data_country").val("BR");
-      }
-    });
-
-    $("#profile_data_country").find(':not(:selected)').css('display', (gov_suffix?'none':'block'));
-
-    check_reactivate_account(value, input_object);
-  }
-
-
-  function validate_email_format(){
-    var correct_format_regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-
-    if( this.value.length > 0 ) {
-      if(correct_format_regex.test(this.value)) {
-        this.className = "validated";
-      } else {
-        this.className = "invalid";
-      }
-    } else {
-      this.className = "";
-    }
-  }
-
-
-  function verify_user_password_size() {
-    if( this.value.length < 6 ) {
-      $(this).switchClass("validated", "invalid");
-    } else {
-      $(this).switchClass("invalid", "validated");
-    }
   }
 
 
   function show_or_hide_phone_mask() {
-    if($("#profile_data_country").val() == "BR") {
+    if($("#profile_data_country").val() === "BR") {
       if( (typeof $("#profile_data_cell_phone").data("rawMaskFn") === 'undefined') ) {
         $("#profile_data_cell_phone").mask("(99) 9999?9-9999");
         $("#profile_data_comercial_phone").mask("(99) 9999?9-9999");
@@ -110,7 +59,7 @@ modulejs.define('UserEditProfile', ['jquery', 'NoosferoRoot', 'SelectElement', '
     $(id).blur(function() {
       var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
 
-      if( last.length == 3 ) {
+      if( last.length === 3 ) {
         var move = $(this).val().substr( $(this).val().indexOf("-") - 1, 1 );
         var lastfour = move + last;
         var first = $(this).val().substr( 0, 9 );
@@ -231,13 +180,18 @@ modulejs.define('UserEditProfile', ['jquery', 'NoosferoRoot', 'SelectElement', '
 
 
   function set_fields_validations() {
-    $('#secondary_email_field').blur(validate_email_format);
-
-    $("#user_email").blur(put_brazil_based_on_email);
-
-    $("#user_pw").blur(verify_user_password_size);
-
     $("#profile_data_country").blur(show_or_hide_phone_mask);
+
+    $("#profile_data_birth_date").mask("99/99/9999");
+
+    fix_phone_mask_format("#profile_data_cell_phone");
+    fix_phone_mask_format("#profile_data_comercial_phone");
+    fix_phone_mask_format("#profile_data_contact_phone");
+
+    add_blur_fields("#profile_data_email", "email_error", invalid_email_validation);
+    add_blur_fields("#user_secondary_email", "email_error", invalid_email_validation, true);
+    add_blur_fields("#profile_data_personal_website", "site_error", invalid_site_validation);
+    add_blur_fields("#profile_data_organization_website", "site_error", invalid_site_validation);
   }
 
 
@@ -250,35 +204,11 @@ modulejs.define('UserEditProfile', ['jquery', 'NoosferoRoot', 'SelectElement', '
     init: function() {
       change_edit_fields_order(); // To change the fields order, it MUST be the first function executed
 
-      var selectFieldChoices = new SelectFieldChoices("#state_field", "#city_field", "/plugin/software_communities/get_brazil_states");
-      set_initial_form_custom_data(selectFieldChoices);
-
-
-
-      // Event that calls the "Class" to siwtch state field types
-      $("#profile_data_country").change(function(){
-        if( this.value == "-1" ) $(this).val("BR");
-
-        if( this.value == "BR" && selectFieldChoices.actualFieldIsInput() ) {
-          selectFieldChoices.replaceStateWithSelectElement();
-          selectFieldChoices.showCity();
-        } else if( this.value != "BR" && !selectFieldChoices.actualFieldIsInput() ) {
-          selectFieldChoices.replaceStateWithInputElement();
-          selectFieldChoices.hideCity();
-        }
-      });
+      show_state_if_country_is_brazil();
 
       show_or_hide_phone_mask();
-      $("#profile_data_birth_date").mask("99/99/9999");
 
-      fix_phone_mask_format("#profile_data_cell_phone");
-      fix_phone_mask_format("#profile_data_comercial_phone");
-      fix_phone_mask_format("#profile_data_contact_phone");
-
-      add_blur_fields("#profile_data_email", "email_error", invalid_email_validation);
-      add_blur_fields("#user_secondary_email", "email_error", invalid_email_validation, true);
-      add_blur_fields("#profile_data_personal_website", "site_error", invalid_site_validation);
-      add_blur_fields("#profile_data_organization_website", "site_error", invalid_site_validation);
+      set_fields_validations();
     }
   }
 });

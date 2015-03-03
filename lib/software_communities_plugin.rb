@@ -119,7 +119,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   end
 
   def js_files
-    #mpog-user-validations.js
     %w(
       vendor/jquery.maskedinput.min.js
       vendor/modulejs-1.5.0.min.js
@@ -134,7 +133,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       views/user-edit-profile.js
       initializer.js
       app.js
-
       mpog-institution-validations.js
       mpog-incomplete-registration.js
       mpog-search.js
