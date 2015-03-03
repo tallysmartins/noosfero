@@ -119,19 +119,22 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   end
 
   def js_files
+    #mpog-user-validations.js
     %w(
       vendor/jquery.maskedinput.min.js
       vendor/modulejs-1.5.0.min.js
       vendor/jquery.js
       lib/noosfero-root.js
       lib/select-element.js
+      lib/select-field-choices
       lib/auto-complete.js
       views/control-panel.js
       views/edit-software.js
       views/new-software.js
+      views/user-edit-profile.js
       initializer.js
       app.js
-      mpog-user-validations.js
+
       mpog-institution-validations.js
       mpog-incomplete-registration.js
       mpog-search.js
