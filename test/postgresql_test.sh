@@ -12,5 +12,5 @@ test_gitlab_database_created() {
   assertTrue 'gitlab database created in PostgreSQL' 'run_on database sudo -u postgres -i psql gitlab < /dev/null'
 }
 
-. shunit2
+load_shunit2
 

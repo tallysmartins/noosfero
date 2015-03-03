@@ -22,4 +22,4 @@ test_redirects_to_the_correct_host() {
   assertEquals "Location: https://softwarepublico.dev/gitlab/users/sign_in" "$redirect"
 }
 
-. shunit2
+load_shunit2

@@ -25,4 +25,4 @@ test_mailman_web_interface() {
   assertEquals "<TITLE>listas.softwarepublico.dev Mailing Lists</TITLE>" "$title"
 }
 
-. shunit2
+load_shunit2
