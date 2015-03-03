@@ -1,4 +1,7 @@
 modulejs.define('SelectElement', function() {
+  'use strict';
+
+
   function SelectElement(name, id) {
     this.select = document.createElement("select");
   }

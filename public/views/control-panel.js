@@ -1,4 +1,6 @@
 modulejs.define('ControlPanel', ['jquery'], function($) {
+  'use strict';
+
   function hide_infos(){
     $(".language-info").hide();
     $(".database-info").hide();

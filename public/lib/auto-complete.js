@@ -1,4 +1,7 @@
 modulejs.define('AutoComplete', ['jquery'], function($) {
+  'use strict';
+
+
   function get_hidden_description_field(autocomplete_field, klass) {
     var field = $(autocomplete_field);
     field = field.parent().parent().find(klass);

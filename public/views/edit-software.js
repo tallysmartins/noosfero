@@ -1,4 +1,6 @@
 modulejs.define('EditSoftware', ['jquery', 'NoosferoRoot', 'AutoComplete'], function($, NoosferoRoot, AutoComplete) {
+  'use strict';
+
   var AJAX_URL = {
     get_field_data:
       NoosferoRoot.urlWithSubDirectory("/plugin/software_communities/get_field_data"),
@@ -70,7 +72,7 @@ modulejs.define('EditSoftware', ['jquery', 'NoosferoRoot', 'AutoComplete'], func
 
 
   function display_another_license_fields(selected) {
-    if( selected == "Another" ) {
+    if( selected === "Another" ) {
       $("#another_license").removeClass("hide-field");
       $("#version_link").addClass("hide-field");
       console.log($("#version_link"));
