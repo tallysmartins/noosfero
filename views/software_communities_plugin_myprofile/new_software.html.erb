@@ -1,18 +1,15 @@
 <span id="new-software-page"></span>
 
-<div class="software-step-info">
-  <h3><%= _("Step 1 - Software Creation")%></h3>
-  <h3 style="color: rgba(0, 0, 0, 0.2)"><%= _("Step 2 - Edit Community info ")%></h3>
-
-  <p>
-    <spam class = 'software-message' >Enter the basic information about the software.<br>
-      You can add the details after you create it.
-    </spam>
-  </p>
-
-</div>
+<%= render :partial => 'profile_editor/first_edit_software_community_extras', :locals => {:class_step_one => "current-step", :class_step_two => "another-step"} %>
 
 <h1><%= _('Creating new software') %></h1>
+
+<div class='step-explanation'>
+  <spam>
+    <%= _('Enter the basic information about the software.<br>
+    You can add the details after you create it.') %>
+  </spam>
+</div>
 
 <% if environment.enabled?('admin_must_approve_new_communities') %>
   <div class='explanation'>

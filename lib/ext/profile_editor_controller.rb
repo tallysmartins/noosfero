@@ -7,6 +7,12 @@ class ProfileEditorController
   def edit_software_community
     @profile_data = profile
     @possible_domains = profile.possible_domains
+    @first_edit = profile.software_info.first_edit?
+
+    if @first_edit
+      profile.software_info.first_edit = false
+      profile.software_info.save!
+    end
 
     edit if request.post?
   end

@@ -38,14 +38,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
 
     if profile.person?
       expanded_template('person_editor_extras.html.erb')
-    elsif profile.respond_to?(:software_info) &&
-      !profile.software_info.nil?
-
-      if profile.software_info.first_edit?
-        profile.software_info.first_edit = false
-        profile.software_info.save!
-        expanded_template('first_edit_software_community_extras.html.erb')
-      end
     end
   end
 
