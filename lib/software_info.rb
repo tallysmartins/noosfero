@@ -81,9 +81,10 @@ class SoftwareInfo < ActiveRecord::Base
 
   has_one :software_categories
 
-  validates_length_of :finality, :maximum => 140
+  validates_length_of :finality, :maximum => 120
   validates_length_of :objectives, :maximum => 4000
   validates_length_of :features, :maximum => 4000
+  validates_presence_of :finality
 
   validate :validate_acronym
 
