@@ -4,7 +4,8 @@ var dependencies = [
   'NewSoftware',
   'UserEditProfile',
   'CreateInstitution',
-  'CompleteRegistration'
+  'CompleteRegistration',
+  'SearchSoftwareCatalog'
 ];
 
 
