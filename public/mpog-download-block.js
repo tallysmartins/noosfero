@@ -15,9 +15,11 @@
 
 
   function get_download_list_template() {
-    if(sessionStorage.getItem('download_list_block_template')) {
-      window.download_list_template = sessionStorage.getItem('download_list_block_template');
-    } {
+    var blockTemplate = JSON.parse(sessionStorage.getItem('download_list_block_template'));
+
+    if(blockTemplate) {
+      window.download_list_template = blockTemplate;
+    } else {
       $.get('/plugin/software_communities/get_block_template', function(response) {
         window.download_list_template = response;
         sessionStorage.setItem('download_list_block_template', response);
