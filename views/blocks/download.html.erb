@@ -2,21 +2,24 @@
   <%= _("This community needs a software to use this block") %>
 <% else %>
   <div id="download-block-2">
-    <div id="download_spb-2">
-      <h3> <%= _("Download #{block.owner.software_info.community.name}") %> </h3>
-    </div>
+    <div id="download_spb-2"><h3> <%= _("Download #{block.owner.software_info.community.name}") %> </h3></div>
 
     <% block.downloads.each_with_index do |download, index| %>
-      <div id="download-info-<%=index%>">
-      <div id="version01">
-        <%= link_to _(""), download[:link], {:id => "image-download", :title => "Baixar o software"} %>
-        <%= link_to _(download[:size]), download[:link], {:id => "size-download", :title => "Baixar o software"} %>
-      <div id="info-software-download">
-        <span class="download-name"><%= _("#{download[:name]}") %></span>
-        <span class="download-system"><%= _("#{download[:software_description]}") %> </span>
-        <span class="req_min_spb"><%= link_to _("Minimum Requirements"), download[:minimum_requirements] %></span>
-      </div>
-    </div>
+        <div id="download-info-<%=(index+1)%>">
+          <div id="version01">
+            <%= link_to _(""), download[:link], {:id => "image-download", :title => "Baixar o software"} %>
+            <%= link_to _(download[:size]), download[:link], {:id => "size-download", :title => "Baixar o software"} %>
+          </div>
+          <div id="info-software-download">
+            <span class="download-name"><%= _("#{download[:name]}") %></span>
+            <span class="download-system"><%= _("Platform:#{download[:software_description]}") %> </span>
+            <span class="req_min_spb"><%= link_to _("Minimum Requirements"), download[:minimum_requirements] %></span>
+          </div>
+        </div>
+    <% end %>
 
-  <% end %>
+    <div id="licensed-software">
+      <%= link_to _("License: #{block.owner.software_info.license_info.version}"), block.owner.software_info.license_info.link %>
+    </div>
+  </div>
 <% end %>
