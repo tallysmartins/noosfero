@@ -18,12 +18,17 @@ class DownloadBlockTest < ActiveSupport::TestCase
 
   should 'have software info to download it' do
 
-    link = "gitlab.com/teste"
-    name = "Test Software"
+    link1 = "gitlab.com/teste"
+    name1 = "Test Software"
 
-    block = DownloadBlock.create(:name => name, :link => link)
+    link2 = "gitlab.com/teste/2"
+    name2 = "Test Software2"
 
-    assert_equal block.link, link, "Link should not be empty"
-    assert_equal block.name, name, "Name should not be empty"
+    block = DownloadBlock.create(:downloads => [{:name => name1, :link => link1}, {:name => name2, :link => link2}])
+
+    assert_equal block.downloads[0][:link], link1, "Link should not be empty"
+    assert_equal block.downloads[0][:name], name1, "Name should not be empty"
+    assert_equal block.downloads[1][:link], link2, "Link should not be empty"
+    assert_equal block.downloads[1][:name], name2, "Name should not be empty"
   end
 end
