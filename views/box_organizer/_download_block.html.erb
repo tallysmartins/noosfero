@@ -2,24 +2,23 @@
   <ul class="link-list-header">
     <li class='download-list-name'><%= _('Name') %></li>
     <li class='download-list-link'><%= _('Link') %></li>
-    <li class='download-list-software-description'><%= _('Software Description') %></li>
-    <li class='download-list-version-news'><%= _('Link to Versio News') %></li>
-    <li class='download-list-minimum-requirements'><%= _('Link to Minimum Requirements') %></li>
+    <li class='download-list-software-description'><%= _('Platforms') %></li>
+    <li class='download-list-minimum-requirements'><%= _('Minimum Requirements') %></li>
     <li class='download-list-size'><%= _('Size:') %></li>
   </ul>
 
-  <ul id="droppable-list-downloads">
-    <% if @block.downloads.count > 0 %>
-      <% for download in @block.downloads %>
-        <%= render :partial => 'download_list', :locals => {:download => download} %>
+  <div id ="droppable-list-downloads">
+      <% if @block.downloads.count > 0 %>
+        <% for download in @block.downloads %>
+          <%= render :partial => 'download_list', :locals => {:download => download} %>
+        <% end %>
+      <% else %>
+        <div id = "new">
+          <% new = {'icon' => 'ok'} %>
+          <%= render :partial => 'download_list', :locals => {:download => new} %>
+        </div>
       <% end %>
-    <% else %>
-      <div id = "new">
-        <% new = {'icon' => 'ok'} %>
-        <%= render :partial => 'download_list', :locals => {:download => new} %>
-      </div>
-    <% end %>
-  </ul>
+  </div>
 
 <div id ="new-template" style="display: none">
   <% new = {'icon' => 'ok'} %>

@@ -2,6 +2,84 @@
   display: none;
 }
 
+#edit-download-block{
+  width: 820px;
+  position: relative;
+  left: -24px;
+}
+.download-list-name{
+  margin-left: 40px;
+}
+
+.download-list-link{
+  margin-left: 150px;
+}
+
+.download-list-software-description{
+  margin-left: 100px;
+}
+
+.download-list-minimum-requirements{
+  margin-left: 70px;
+}
+
+.download-list-size{
+  margin-left: 35px;
+}
+
+#droppable-list-downloads{
+  padding-left: 23px;
+  margin-top: -12px;
+}
+#droppable-list-downloads li{
+  list-style-type: none;
+}
+
+.download-list-row{
+  line-height: 25px;
+  margin-bottom: 5px;
+  padding: 10px 1px 10px 0px;
+  cursor: pointer;
+  width: 97%;
+}
+.download-list-row li{
+  list-style-type: none;
+  display: inline;
+  margin-left: 5px;
+}
+
+.download-list-row li div{
+  float: left;
+  margin-top: 4px;
+}
+
+.download-list-row li a{
+  line-height: 27px !important;
+  padding-right: 5px;
+}
+
+.block_download_name {
+  width: 100px;
+}
+
+.block_download_link {
+  width: 200px;
+  margin-left: 10px;
+}
+
+.block_download_minimum_requirements {
+  width: 200px;
+  margin-left: 10px;
+}
+
+.block_download_software_description {
+  width: 100px;
+}
+
+.block_download_size {
+  width: 50px;
+}
+
 #signup-form small#secondary-email-balloon ,
 #signup-form small#area-interest-balloon {
   display: none;
