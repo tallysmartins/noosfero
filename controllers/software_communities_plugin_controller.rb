@@ -131,6 +131,10 @@ class SoftwareCommunitiesPluginController < ApplicationController
     }
   end
 
+  def get_block_template
+    render 'box_organizer/_download_list_template', :layout => false
+  end
+
   protected
 
   def get_state_list
