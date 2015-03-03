@@ -3,11 +3,12 @@ var dependencies = [
   'EditSoftware',
   'NewSoftware',
   'UserEditProfile',
-  'CreateInstitution'
+  'CreateInstitution',
+  'CompleteRegistration'
 ];
 
 
-modulejs.define('Initializer', dependencies, function(cp, es, ns, uep, ci) {
+modulejs.define('Initializer', dependencies, function(cp, es, ns, uep, ci, cr) {
   'use strict';
 
 
@@ -35,6 +36,11 @@ modulejs.define('Initializer', dependencies, function(cp, es, ns, uep, ci) {
 
       if( ci.isCreateInstitution() ) {
         ci.init();
+      }
+
+
+      if( cr.isCompleteRegistration() ) {
+        cr.init();
       }
     }
   };
