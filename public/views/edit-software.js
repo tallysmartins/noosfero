@@ -65,7 +65,7 @@ modulejs.define('EditSoftware', ['jquery', 'NoosferoRoot', 'AutoComplete', 'NewS
 
 
   return {
-    isEditSoftware: function() {
+    isCurrentPage: function() {
       return $("#especific-info").length === 1;
     },
 

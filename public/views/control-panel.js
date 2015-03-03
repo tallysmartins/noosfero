@@ -42,7 +42,7 @@ modulejs.define('ControlPanel', ['jquery'], function($) {
 
 
   return {
-    isControlPanel: function() {
+    isCurrentPage: function() {
       return $("#profile-editor-index").length === 1;
     },
 

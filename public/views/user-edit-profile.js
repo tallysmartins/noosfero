@@ -196,7 +196,7 @@ modulejs.define('UserEditProfile', ['jquery', 'SelectElement', 'SelectFieldChoic
 
 
   return {
-    isUserEditProfile: function() {
+    isCurrentPage: function() {
       return $('#profile_data_email').length === 1;
     },
 

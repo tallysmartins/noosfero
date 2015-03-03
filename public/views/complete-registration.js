@@ -44,7 +44,7 @@ modulejs.define('CompleteRegistration', ['jquery', 'NoosferoRoot'], function($, 
 
 
   return {
-    isCompleteRegistration: function() {
+    isCurrentPage: function() {
       return $("#complete_registration").length === 1;
     },
 

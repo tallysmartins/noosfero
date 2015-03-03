@@ -8,39 +8,23 @@ var dependencies = [
 ];
 
 
-modulejs.define('Initializer', dependencies, function(cp, es, ns, uep, ci, cr) {
+modulejs.define('Initializer', dependencies, function() {
   'use strict';
+
+  var __dependencies = arguments;
+
+
+  function call_dependency(dependency) {
+    if( dependency.isCurrentPage() ) {
+      dependency.init();
+    }
+  }
 
 
   return {
     init: function() {
-      if( cp.isControlPanel() ) {
-        cp.init();
-      }
-
-
-      if( es.isEditSoftware() ) {
-        es.init();
-      }
-
-
-      if( ns.isNewSoftware() ) {
-        ns.init();
-      }
-
-
-      if( uep.isUserEditProfile() ) {
-        uep.init();
-      }
-
-
-      if( ci.isCreateInstitution() ) {
-        ci.init();
-      }
-
-
-      if( cr.isCompleteRegistration() ) {
-        cr.init();
+      for(var i=0, len = __dependencies.length; i < len; i++) {
+        call_dependency(__dependencies[i]);
       }
     }
   };

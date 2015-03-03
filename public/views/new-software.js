@@ -40,13 +40,13 @@ modulejs.define('NewSoftware', ['jquery', 'NoosferoRoot', 'AutoComplete'], funct
 
 
   return {
-    init: function() {
-      license_info_autocomplete();
+    isCurrentPage: function() {
+      return $('#new-software-page').length === 1;
     },
 
 
-    isNewSoftware: function() {
-      return $('#new-software-page').length === 1;
+    init: function() {
+      license_info_autocomplete();
     }
   }
 });

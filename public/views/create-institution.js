@@ -299,7 +299,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
 
   return {
-    isCreateInstitution: function() {
+    isCurrentPage: function() {
       return $("#institution_form").length === 1;
     },
 
