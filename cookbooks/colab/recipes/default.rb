@@ -41,11 +41,22 @@ template '/etc/colab/settings.d/01-apps.yaml' do
   notifies :restart, 'service[colab]'
 end
 
-cookbook_file '/usr/lib/colab/lib/python2.7/site-packages/colab/static/img/logo.svg' do
+directory '/var/lib/colab-assets/spb/' do
+  owner  'root'
+  group  'root'
+  mode   0755
+end
+
+cookbook_file '/var/lib/colab-assets/spb/logo.svg' do
   owner 'root'
   group 'root'
   mode 0644
-  notifies :run, 'execute[colab-admin:collectstatic]'
+end
+
+cookbook_file '/var/lib/colab-assets/spb/fav.ico' do
+  owner 'root'
+  group 'root'
+  mode 0644
 end
 
 execute 'colab-admin migrate'
