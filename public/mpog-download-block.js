@@ -15,9 +15,9 @@
 
 
   function get_download_list_template() {
-    var blockTemplate = JSON.parse(sessionStorage.getItem('download_list_block_template'));
+    var blockTemplate = sessionStorage.getItem('download_list_block_template');
 
-    if(blockTemplate) {
+    if(blockTemplate && blockTemplate.length > 0) {
       window.download_list_template = blockTemplate;
     } else {
       $.get('/plugin/software_communities/get_block_template', function(response) {
