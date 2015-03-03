@@ -10,8 +10,8 @@ test_reverse_proxy_to_colab() {
   assertEquals "<title>Home - Colab</title>" "$title"
 }
 
-test_redirect_http_to_mailman() {
-  local title="$(curl --silent --fail --location --header 'Host: listas.softwarepublico.dev' --insecure https://$reverseproxy/ | grep -i '<title>')"
+test_reverse_proxy_for_mailman() {
+  local title="$(curl --location --header 'Host: listas.softwarepublico.dev' --insecure https://$reverseproxy/ | grep -i '<title>')"
   assertEquals "<TITLE>listas.softwarepublico.dev Mailing Lists</TITLE>" "$title"
 }
 
