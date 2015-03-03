@@ -135,7 +135,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       views/complete-registration.js
       initializer.js
       app.js
-      mpog-search.js
       software-catalog.js
       mpog-software-block.js
       mpog-download-block.js
