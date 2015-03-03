@@ -2,11 +2,12 @@ var dependencies = [
   'ControlPanel',
   'EditSoftware',
   'NewSoftware',
-  'UserEditProfile'
+  'UserEditProfile',
+  'CreateInstitution'
 ];
 
 
-modulejs.define('Initializer', dependencies, function(cp, es, ns, uep) {
+modulejs.define('Initializer', dependencies, function(cp, es, ns, uep, ci) {
   'use strict';
 
 
@@ -29,6 +30,11 @@ modulejs.define('Initializer', dependencies, function(cp, es, ns, uep) {
 
       if( uep.isUserEditProfile() ) {
         uep.init();
+      }
+
+
+      if( ci.isCreateInstitution() ) {
+        ci.init();
       }
     }
   };

@@ -1,4 +1,4 @@
-modulejs.define('UserEditProfile', ['jquery', 'SelectElement', 'SelectFieldChoices'], function($, SelectElement, SelectFieldChoices) {
+modulejs.define('UserEditProfile', ['jquery', 'SelectElement', 'SelectFieldChoices', 'CreateInstitution'], function($, SelectElement, SelectFieldChoices, CreateInstitution) {
   'use strict';
 
   function set_form_count_custom_data() {
@@ -209,6 +209,8 @@ modulejs.define('UserEditProfile', ['jquery', 'SelectElement', 'SelectFieldChoic
       show_or_hide_phone_mask();
 
       set_fields_validations();
+
+      CreateInstitution.init();
     }
   }
 });

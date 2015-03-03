@@ -131,9 +131,9 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       views/edit-software.js
       views/new-software.js
       views/user-edit-profile.js
+      views/create-institution.js
       initializer.js
       app.js
-      mpog-institution-validations.js
       mpog-incomplete-registration.js
       mpog-search.js
       software-catalog.js
