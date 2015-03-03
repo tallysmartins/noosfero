@@ -1,15 +1,19 @@
 class DownloadBlock < Block
 
-  attr_accessible :name, :link, :software_description, :show_name,
-                  :version_news, :minimum_requirements, :downloads
+  attr_accessible :show_name, :downloads
 
-  settings_items :name, :type => :string, :default => ''
-  settings_items :link, :type => :string, :default => ''
-  settings_items :software_description, :type => :string, :default => ''
   settings_items :show_name, :type => :boolean, :default => false
-  settings_items :version_news, :type => :string, :default => ''
-  settings_items :minimum_requirements, :type => :string, :default => ''
   settings_items :downloads, :type => Array, :default => []
+
+  validate :download_values
+
+  def download_values
+    self.downloads.each do |download|
+      if download[:name] == ""
+        downloads.delete(download)
+      end
+    end
+  end
 
   def self.description
     _('Download Stable Version')
