@@ -93,6 +93,23 @@
     return params;
   }
 
+  function get_result_div_core(message){
+    var div_result = $(".search-results-type-empty");
+    var html = '<div class="search-results-innerbox search-results-type-empty"> <div>'+message+' </div></div>'
+
+    div_result.replaceWith('<div class="search-results-innerbox search-results-type-empty"> <div>Nenhum software encontrado</div> '+message+'</div>')
+  }
+
+  function catalog_message(){
+    var result_list = $("#search-results").find('.search-results-empty').html();
+    var selected_categories_field = $("#filter-categories-select-catalog");
+
+    if(result_list.length > 1 && selected_categories_field.html().length < 1){
+      get_result_div_core("Tente filtros mais abrangentes");
+    }else if (result_list.length > 1 && selected_categories_field.html().length >= 1) {
+      get_result_div_core("Tente filtros mais abrangentes ou confira os <mudar>softwares das categorias individualmente</mudar>");
+    }
+  }
 
   function update_search_page_on_ajax(response) {
     response = $(response);
@@ -105,6 +122,8 @@
     var result_categories = response.find("#filter-categories-select-catalog").html();
     var result_pagination = response.find("#software-pagination").html();
     var result_software_count = response.find("#software-count").html();
+
+    catalog_message()
 
     search_list.html(result_list);
     selected_categories_field.html(result_categories);
@@ -188,10 +207,13 @@
     search_input_keyup();
   }
 
-
   $(document).ready(function(){
     set_events();
+    catalog_message();
     show_head_message();
+
+
+
     $("#filter-categories-option").hide();
   });
 })(jQuery);
