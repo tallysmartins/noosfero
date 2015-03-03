@@ -14,13 +14,16 @@ For development
 
 ## Configuration parameters
 
-For development, all configuration parameters are defined in the file
-`nodes.yaml`.
+All configuration parameters are defined in `nodes.yaml`, with exception of IP
+addresses, which are defined in different files:
 
-For production, create a new file based on `nodes.yaml`, e.g.
-`prod.yaml`.
+- for development, the IP addresses of the Vagrant VMs are defined in
+  ips.development.yaml.
 
-Todos os parâmetros de configuração estão definidos no arquivo nodes.yaml
+- for production, you need to create a new file called `ips.production.yaml`
+
+You will probably not need to change nodes.yaml unless you are developing the
+deployment process.
 
 ## Deploy
 
@@ -49,13 +52,13 @@ $ rake converge:$server                 # deploys only $server
 * TODO: document SSH configuration
 
 ```bash
-$ rake NODES=prod.yaml                  # deploys all servers
-$ rake nodes NODES=prod.yaml            # lists all servers
-$ rake converge:$server NODES=prod.yaml # deploys only $server
+$ rake SPB_ENV=production                   # deploys all servers
+$ rake nodes SPB_ENV=production             # lists all servers
+$ rake converge:$server SPB_ENV=production  # deploys only $server
 ```
 
-You can also do `export NODES=prod.yaml` in your shell and omit the
-`NODES=prod.yaml` parameter in the `rake` calls.
+You can also do `export SPB_ENV=production` in your shell and omit it in the
+`rake` calls.
 
 See the output of `rake -T` for other tasks.
 

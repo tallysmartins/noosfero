@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision 'shell', path: 'utils/proxy.sh', args: [proxy]
   end
 
-  ips = YAML.load_file('nodes.yaml').first[1]['peers']
+  ips = YAML.load_file('ips.development.yaml')
 
   config.vm.define 'database' do |database|
     database.vm.network 'private_network', ip: ips['database']

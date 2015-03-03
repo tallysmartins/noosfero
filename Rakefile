@@ -1,5 +1,18 @@
 require 'chake'
 
+$SPB_ENV = ENV.fetch('SPB_ENV', 'development')
+$SPB_IPS = "ips.#{$SPB_ENV}.yaml"
+
+ips = YAML.load_file($SPB_IPS)
+$nodes.each do |node|
+  node.data['peers'] = ips
+end
+
+task :console do
+  require 'pry'
+  binding.pry
+end
+
 task :test do
   sh './test/run_all'
 end
@@ -7,7 +20,7 @@ end
 task :default => :test
 
 file 'ssh_config.erb'
-file '.ssh_config' => ['nodes.yaml', 'ssh_config.erb'] do |t|
+file '.ssh_config' => ['nodes.yaml', $SPB_IPS,'ssh_config.erb'] do |t|
   require 'erb'
   template = ERB.new(File.read('ssh_config.erb'))
   File.open(t.name, 'w') do |f|

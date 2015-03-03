@@ -1,0 +1,6 @@
+integration:  10.10.10.2
+email:        10.10.10.3
+social:       10.10.10.4
+database:     10.10.10.5
+reverseproxy: 10.10.10.6
+

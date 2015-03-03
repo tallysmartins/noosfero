@@ -15,41 +15,27 @@ vagrant@integration:
     lists_hostname: listas.softwarepublico.dev
     lists_admin: paulo@softwarelivre.org
     relay_hostname: relay.softwarepublico.dev
-  peers: &PEERS
-    integration:  10.10.10.2
-    email:        10.10.10.3
-    social:       10.10.10.4
-    database:     10.10.10.5
-    reverseproxy: 10.10.10.6
 vagrant@email:
   run_list:
     - role[server]
     - role[email_server]
   config:
     <<: *CONFIG
-  peers:
-    <<: *PEERS
 vagrant@social:
   run_list:
     - role[server]
     - role[social_server]
   config:
     <<: *CONFIG
-  peers:
-    <<: *PEERS
 vagrant@database:
   run_list:
     - role[server]
     - role[database_server]
   config:
     <<: *CONFIG
-  peers:
-    <<: *PEERS
 vagrant@reverseproxy:
   run_list:
     - role[server]
     - role[reverse_proxy_server]
   config:
     <<: *CONFIG
-  peers:
-    <<: *PEERS
