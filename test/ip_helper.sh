@@ -7,5 +7,4 @@
 # Each node in the `peers:` entry in nodes.yaml will have its own variable
 #
 
-eval $(sed -e '/\S*:\s*[0-9]\+\./!d; s/^\s*//; s/:\s*/=/' ${ROOTDIR:-/vagrant}/nodes.yaml)
-
+eval $(sed -E '/[0-9]{1,3}\./!d; s/^ *//; s/: */=/' ${ROOTDIR:-/vagrant}/nodes.yaml)
