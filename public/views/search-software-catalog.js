@@ -8,7 +8,7 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
 
 
   function show_head_message() {
-    if ($("#filter-categories-select-catalog").text()){
+    if ($("#filter-categories-select-catalog").text().length === 0){
       $("#filter-categories-select-catalog").hide();
       $("#filter-option-catalog-software").show();
     }else{
@@ -94,28 +94,26 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
   }
 
 
-  function get_result_div_core(message){
-    var div_result = $(".search-results-type-empty");
-    var html = '<div class="search-results-innerbox search-results-type-empty"> <div>'+message+' </div></div>'
-
-    div_result.replaceWith('<div class="search-results-innerbox search-results-type-empty"> <div>Nenhum software encontrado</div> '+message+'</div>')
+  function get_result_div_core(message) {
+    $("#search-results-empty").html(message);
   }
 
 
-  function catalog_message(){
-    var result_list = $("#search-results").find('.search-results-empty');
-    var selected_categories_field = $("#filter-categories-select-catalog");
+  function catalog_message() {
+    var empty_result = $('#empty_result').val() === 'true';
+    var user_selected_categories = $('.categories-catalog:checked').length !== 0;
 
-    if(result_list.length > 1 && selected_categories_field.html().length < 1){
-      get_result_div_core("Tente filtros mais abrangentes");
-    }else if (result_list.length > 1 && selected_categories_field.html().length >= 1) {
-      get_result_div_core("Tente filtros mais abrangentes ou confira os softwares das categorias individualmente");
+    if(empty_result && !user_selected_categories) {
+      get_result_div_core($('#message-no-catalog-selected').val());
+    } else if (empty_result && user_selected_categories) {
+      get_result_div_core($('#message-catalog-selected').val());
     }
   }
 
 
   function update_search_page_on_ajax(response) {
     response = $(response);
+
     var search_list = $("#search-results");
     var selected_categories_field = $("#filter-categories-select-catalog");
     var pagination = $("#software-pagination");
@@ -126,7 +124,7 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
     var result_pagination = response.find("#software-pagination").html();
     var result_software_count = response.find("#software-count").html();
 
-    catalog_message()
+
 
     search_list.html(result_list);
     selected_categories_field.html(result_categories);
@@ -134,6 +132,7 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
     software_count.html(result_software_count);
     show_head_message();
     highlight_searched_terms();
+    catalog_message();
 
     hide_load_after_ajax();
   }
