@@ -1,4 +1,4 @@
-(function($) {
+modulejs.define('SoftwareDownload', ['jquery'], function($) {
   'use strict';
 
   function add_new_link(){
@@ -27,12 +27,20 @@
     }
   }
 
-  $(document).ready(function() {
-    window.add_new_link = add_new_link;
-    window.delete_link = delete_link;
 
-    if( window.download_list_template === undefined ) {
-      get_download_list_template();
+  return {
+    isCurrentPage: function() {
+      return $('.download-block').length !== 0;
+    },
+
+
+    init: function() {
+      window.add_new_link = add_new_link;
+      window.delete_link = delete_link;
+
+      if( window.download_list_template === undefined ) {
+        get_download_list_template();
+      }
     }
-  });
-})(jQuery);
+  }
+});

@@ -1,32 +1,35 @@
-var dependencies = [
-  'ControlPanel',
-  'EditSoftware',
-  'NewSoftware',
-  'UserEditProfile',
-  'CreateInstitution',
-  'CompleteRegistration',
-  'SearchSoftwareCatalog'
-];
-
-
-modulejs.define('Initializer', dependencies, function() {
+(function() {
   'use strict';
 
-  var __dependencies = arguments;
+  var dependencies = [
+    'ControlPanel',
+    'EditSoftware',
+    'NewSoftware',
+    'UserEditProfile',
+    'CreateInstitution',
+    'CompleteRegistration',
+    'SearchSoftwareCatalog',
+    'SoftwareDownload'
+  ];
 
 
-  function call_dependency(dependency) {
-    if( dependency.isCurrentPage() ) {
-      dependency.init();
-    }
-  }
+  modulejs.define('Initializer', dependencies, function() {
+    var __dependencies = arguments;
 
 
-  return {
-    init: function() {
-      for(var i=0, len = __dependencies.length; i < len; i++) {
-        call_dependency(__dependencies[i]);
+    function call_dependency(dependency) {
+      if( dependency.isCurrentPage() ) {
+        dependency.init();
       }
     }
-  };
-});
+
+
+    return {
+      init: function() {
+        for(var i=0, len = __dependencies.length; i < len; i++) {
+          call_dependency(__dependencies[i]);
+        }
+      }
+    };
+  });
+})();

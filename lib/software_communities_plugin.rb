@@ -126,9 +126,9 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       views/create-institution.js
       views/complete-registration.js
       views/search-software-catalog.js
+      blocks/software-download.js
       initializer.js
       app.js
-      mpog-download-block.js
     )
   end
 
