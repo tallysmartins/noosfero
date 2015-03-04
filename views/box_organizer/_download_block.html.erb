@@ -8,22 +8,10 @@
   </ul>
 
   <div id ="droppable-list-downloads">
-      <% if @block.downloads.count > 0 %>
-        <% for download in @block.downloads %>
-          <%= render :partial => 'download_list', :locals => {:download => download} %>
-        <% end %>
-      <% else %>
-        <div id = "new">
-          <% new = {'icon' => 'ok'} %>
-          <%= render :partial => 'download_list', :locals => {:download => new} %>
-        </div>
-      <% end %>
+    <% @block.downloads.each do |download| %>
+      <%= render :partial => 'download_list', :locals => {:download => download} %>
+    <% end %>
   </div>
 
-<div id ="new-template" style="display: none">
-  <% new = {'icon' => 'ok'} %>
-  <%= render :partial => 'download_list', :locals => {:download => new} %>
-</div>
-
-<%= link_to_function _('New link'), 'add_new_link(); return false', :class => 'button icon-add with-text download-new-link-button' %>
+  <%= link_to_function _('New link'), 'softwareDownload.addNewDonwload(); return false', :class => 'button icon-add with-text download-new-link-button' %>
 </div>
