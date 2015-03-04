@@ -128,7 +128,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       views/search-software-catalog.js
       initializer.js
       app.js
-      mpog-software-block.js
       mpog-download-block.js
     )
   end
