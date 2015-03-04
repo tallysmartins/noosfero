@@ -125,10 +125,9 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       views/user-edit-profile.js
       views/create-institution.js
       views/complete-registration.js
+      views/search-software-catalog.js
       initializer.js
       app.js
-      mpog-search.js
-      software-catalog.js
       mpog-software-block.js
       mpog-download-block.js
     )

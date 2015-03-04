@@ -73,8 +73,12 @@ class SearchController
 
     unless category_ids.empty?
       filtered_software_list.select! do |software|
-        result_ids = (software.community.category_ids & category_ids).sort
-        result_ids == category_ids.sort
+        if software.nil? || software.community.nil?
+          false
+        else
+          result_ids = (software.community.category_ids & category_ids).sort
+          result_ids == category_ids.sort
+        end
       end
     end
 
@@ -150,4 +154,5 @@ class SearchController
       @categories_groupe_two = categories_sliced.next
     end
   end
+
 end

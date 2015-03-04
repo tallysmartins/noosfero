@@ -1,33 +1,45 @@
 <div id="main-content-wrapper-8"> <!-- id do Noosfero -->
 
-<div id="filter-catalog-software">
+  <div id="filter-catalog-software">
 
-  <div id="filter-option-catalog-software"><%= _("More options") %></div>
-   <!--Quando tiver filtros(categorias)selecionados mostrar esta opção: Opções selecionadas-->
+    <div id="filter-option-catalog-software"><%= _("More options") %></div>
+     <!--Quando tiver filtros(categorias)selecionados mostrar esta opção: Opções selecionadas-->
 
-  <div id="filter-categories-select-catalog"><%= @message_selected_options %></div>
+    <div id="filter-categories-select-catalog"><%= @message_selected_options %></div>
 
-  <div id="filter-categories-option">
+    <div id="filter-categories-option">
 
-  <div id="filter-categories-catalog"><h4> <%= _("Categories") %> </h4></div>
-    <div id="group-categories">
-      <div id="gruop-catalog-01">
-        <% @categories_groupe_one.each do |category| %>
-          <label>
-            <%= check_box_tag("selected_categories[]", category.id, @selected_categories.include?(category.id), :class => "categories-catalog") %>
-            <span><%= _("#{category.name}") %></span>
-          </label> <br>
-        <% end %>
+      <div id="filter-categories-catalog"><h4> <%= _("Categories") %> </h4></div>
+        <div id="group-categories">
+          <div id="gruop-catalog-01">
+            <% @categories_groupe_one.each do |category| %>
+              <label>
+                <%= check_box_tag("selected_categories[]", category.id, @selected_categories.include?(category.id), :class => "categories-catalog") %>
+                <span><%= _("#{category.name}") %></span>
+              </label> <br>
+            <% end %>
+          </div>
+          <div id="group-catalog-02">
+            <% @categories_groupe_two.each do |category| %>
+              <label>
+                <%= check_box_tag("selected_categories[]", category.id, @selected_categories.include?(category.id), :class => "categories-catalog") %>
+                <%= _("#{category.name}") %>
+              </label> <br>
+            <% end %>
+            <br />
+          </div>
+        </div>
+
+      <div class="project-software"> <%= _("Software Projects:") %>
+        <label>
+          <%= check_box_tag("include_non_public", true, @include_non_public) %>
+          <%= _("Include in results") %>
+        </label>
+        <span class"doubts-catalog-software" title="<%= _('Include software development projects that are not yet officially Brazilian Public Software.') %>">(?)</span>
       </div>
-      <div id="group-catalog-02">
-        <% @categories_groupe_two.each do |category| %>
-          <label>
-            <%= check_box_tag("selected_categories[]", category.id, @selected_categories.include?(category.id), :class => "categories-catalog") %>
-            <%= _("#{category.name}") %>
-          </label> <br>
-        <% end %>
-        <br />
-      </div>
+      <br />
+      <%= button_tag _("Clean up"), :id => "cleanup-filter-catalg", :type => "button" %>
+      <%= button_tag _("Close"), :id => "close-filter-catalog", :type => "button" %>
     </div>
 
   <div class="project-software"> <%= _("All Software Projects:") %>
@@ -37,9 +49,4 @@
     </label>
     <span class"doubts-catalog-software" title="<%= _('Include software development projects that are not yet officially Brazilian Public Software.') %>">(?)</span>
   </div>
-  <br />
-  <%= button_tag _("Clean up"), :id => "cleanup-filter-catalg", :type => "button" %>
-  <%= button_tag _("Close"), :id => "close-filter-catalog", :type => "button" %>
-</div>
-</div>
 </div>
