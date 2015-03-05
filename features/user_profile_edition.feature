@@ -32,9 +32,9 @@ Feature: Institution Field
   Scenario: Add more then one instituion on profile editor
     Given I follow "Edit Profile"
     And I follow "Add new institution"
-    And I type in "Minis" in autocomplete list "input_institution" and I choose "Ministerio do Planejamento"
+    And I type in "Minis" in autocomplete list "#input_institution" and I choose "Ministerio do Planejamento"
     And I follow "Add new institution"
-    And I type in "Gover" in autocomplete list "input_institution" and I choose "Governo do DF"
+    And I type in "Gover" in autocomplete list "#input_institution" and I choose "Governo do DF"
     And I follow "Add new institution"
     Then I should see "Ministerio do Planejamento" within ".institutions_added"
     And I should see "Governo do DF" within ".institutions_added"
