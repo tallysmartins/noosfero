@@ -12,5 +12,9 @@ test_gitlab_database_created() {
   assertTrue 'gitlab database created in PostgreSQL' 'run_on database sudo -u postgres -i psql gitlab < /dev/null'
 }
 
+test_noosfero_database_created() {
+  assertTrue 'noosfero database created in PostgreSQL' 'run_on database sudo -u postgres -i psql noosfero < /dev/null'
+}
+
 load_shunit2
 

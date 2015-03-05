@@ -5,4 +5,5 @@ run_list *[
   'recipe[redis]',
   'recipe[postgresql::colab]',
   'recipe[postgresql::gitlab]',
+  'recipe[postgresql::noosfero]',
 ]

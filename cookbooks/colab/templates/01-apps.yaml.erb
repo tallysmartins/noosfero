@@ -2,3 +2,5 @@
 PROXIED_APPS:
   gitlab:
     upstream: 'http://<%= node['peers']['integration'] %>:8081/gitlab/'
+  noosfero:
+    upstream: 'http://<%= node['peers']['social'] %>:8080/social/'

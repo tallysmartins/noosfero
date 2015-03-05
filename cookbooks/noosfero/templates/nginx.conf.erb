@@ -1,0 +1,31 @@
+upstream noosfero {
+<% (1..(`nproc`.strip.to_i)).each do |p| %>
+  server 127.0.0.1:<%= 9000 + p - 1 %> fail_timeout=10s;
+<% end %>
+}
+
+server {
+  listen *:8080;
+  server_name <%= node['config']['external_hostname'] %>;
+
+  access_log            /var/log/nginx/noosfero.access.log;
+  error_log             /var/log/nginx/noosfero.error.log;
+
+  root /usr/lib/noosfero/public;
+  location /social/ {
+    alias /usr/lib/noosfero/public/;
+    try_files $uri @noosfero_proxy;
+  }
+  try_files $uri @noosfero_proxy;
+
+  location @noosfero_proxy {
+    proxy_pass              http://noosfero;
+    proxy_read_timeout      90;
+    proxy_connect_timeout   90;
+    proxy_redirect          off;
+    proxy_set_header        Host $host;
+    proxy_set_header        X-Real-IP $remote_addr;
+    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+
+}

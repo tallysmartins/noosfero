@@ -1,0 +1,7 @@
+# MANAGED WITH CHEF; DO NOT MAKE MANUAL CHANGES
+
+export RAILS_RELATIVE_URL_ROOT=/social
+
+NOOSFERO_DIR="/usr/lib/noosfero"
+NOOSFERO_USER="noosfero"
+NOOSFERO_DATA_DIR="/var/lib/noosfero"

@@ -29,4 +29,8 @@ test_reverse_proxy_gitlab() {
   assertTrue 'Reverse proxy for gitlab' "curl --header 'Host: softwarepublico.dev' http://$integration/gitlab/public/projects | grep -i '<meta.*gitlab.*>'"
 }
 
+test_reverse_proxy_noosfero() {
+  assertTrue 'Reverse proxy for noosfero' "curl --header 'Host: softwarepublico.dev' http://$integration/social/search/people | grep -i '<meta.*noosfero.*>'"
+}
+
 load_shunit2
