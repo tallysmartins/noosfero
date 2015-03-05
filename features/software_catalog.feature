@@ -17,10 +17,10 @@ Feature: Search software
       | Software | Health      | true            |
       | Software | Education   | true            |
     And the following softwares
-      | name           | public_software | categories        |
-      | Software One   | true            | Health            |
-      | Software Two   | true            | Health, Education |
-      | Software Three | false           | Education         |
+      | name           | public_software | categories        | finality      |
+      | Software One   | true            | Health            | some finality |
+      | Software Two   | true            | Health, Education | some finality |
+      | Software Three | false           | Education         | some finality |
 
 
   Scenario: Show all "public_software" softwares when open search page

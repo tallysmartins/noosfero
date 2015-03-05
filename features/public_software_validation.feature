@@ -9,16 +9,14 @@ Feature: edit adherent fields
       | login      | name        | email                  |
       | joaosilva  | Joao Silva  | joaosilva@example.com  |
       | mariasilva | Maria Silva | mariasilva@example.com |
+    And the following softwares
+      | name           | public_software | finality                |
+      | basic software | true            | basic software finality |
     And SoftwareInfo has initial default values on database
     And I am logged in as mpog_admin
     And I go to /admin/plugins
     And I check "SoftwareCommunitiesPlugin"
-    And I press "Save changes"
-    And I go to /myprofile/mpog-admin
-    And I follow "Create a new software"
-    And I fill in "community_name_id" with "basic software"
-    And I fill in "software_info_finality" with "basic software finality"
-    And I press "Create"
+    Then I press "Save changes"
 
   Scenario: Disable public software checkbox to non admin users
     Given I am logged in as "joaosilva"

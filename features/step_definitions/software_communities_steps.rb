@@ -130,6 +130,7 @@ Given /^the following softwares$/ do |table|
     software_info = SoftwareInfo.new
     software_info.community = Community.create(:name=>item[:name])
 
+    software_info.finality = item[:finality] if item[:finality]
     software_info.acronym = item[:acronym] if item[:acronym]
     software_info.finality = item[:finality] if item[:finality]
     software_info.finality ||= "something"

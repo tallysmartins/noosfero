@@ -10,9 +10,9 @@ Feature: edit adherent fields
     And I check "SoftwareCommunitiesPlugin"
     And I press "Save changes"
     And the following softwares
-    | name             | public_software |
-    | Public Software  | true            |
-    | Generic Software | false           |
+    | name             | public_software | finality      |
+    | Public Software  | true            | some finality |
+    | Generic Software | false           | some finality |
 
   Scenario: Add software block
     Given I am logged in as mpog_admin

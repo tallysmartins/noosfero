@@ -74,8 +74,8 @@ Feature: edit public software information
   @selenium
   Scenario: Message second step of creation in edit software community
     Given the following softwares
-    | name          |
-    | New Software  |
+    | name          | finality      |
+    | New Software  | some finality |
     And I go to /myprofile/new-software/profile_editor/edit
     Then I should see "Step 2/2 - Software Community Configuration"
     And I go to /myprofile/new-software/profile_editor/edit
