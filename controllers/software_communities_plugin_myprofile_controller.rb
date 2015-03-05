@@ -57,7 +57,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
         redirect_to :controller => 'profile_editor', :action => 'edit'
       else
         redirect_to :controller => 'profile_editor', :action => 'index'
-        session[:notice] = _('Software updated sucessefuly')
+        session[:notice] = _('Software updated successfully')
       end
     rescue ActiveRecord::RecordInvalid => invalid
       session[:notice] = _('Could not update software')
