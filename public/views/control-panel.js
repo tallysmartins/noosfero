@@ -1,18 +1,6 @@
 modulejs.define('ControlPanel', ['jquery'], function($) {
   'use strict';
 
-  function hide_infos(){
-    $(".language-info").hide();
-    $(".database-info").hide();
-    $(".libraries-info").hide();
-    $(".operating-system-info").hide();
-    $(".language-button-hide").hide();
-    $(".database-button-hide").hide();
-    $(".libraries-button-hide").hide();
-    $(".operating-system-button-hide").hide();
-  }
-
-
   function add_software_on_control_panel(control_panel) {
     var software_link = $(".control-panel-software-link").remove();
 
@@ -49,7 +37,6 @@ modulejs.define('ControlPanel', ['jquery'], function($) {
 
     init: function() {
       add_itens_on_controla_panel();
-      hide_infos();
     }
   }
 });

@@ -9,7 +9,8 @@
     'CreateInstitution',
     'CompleteRegistration',
     'SearchSoftwareCatalog',
-    'SoftwareDownload'
+    'SoftwareDownload',
+    "ProfileTabsSoftware"
   ];
 
 

@@ -78,8 +78,8 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
 
   def profile_tabs
     if context.profile.community?
-      profile_tabs_software if context.profile.software?
-      profile_tabs_institution if context.profile.institution?
+      return profile_tabs_software if context.profile.software?
+      return profile_tabs_institution if context.profile.institution?
     end
   end
 
@@ -126,6 +126,7 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       views/create-institution.js
       views/complete-registration.js
       views/search-software-catalog.js
+      views/profile-tabs-software.js
       blocks/software-download.js
       initializer.js
       app.js
@@ -341,15 +342,15 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
 
   def profile_tabs_software
     { :title => _('Software'),
-      :id => 'mpog-fields',
-      :content => proc do render :partial => 'software_tab' end,
+      :id => 'software-fields',
+      :content => Proc::new do render :partial => 'profile/software_tab' end,
       :start => true }
   end
 
   def profile_tabs_institution
     { :title => _('Institution'),
-      :id => 'mpog-fields',
-      :content => Proc::new do render :partial => 'institution_tab' end,
+      :id => 'intitution-fields',
+      :content => Proc::new do render :partial => 'profile/institution_tab' end,
       :start => true
     }
   end
