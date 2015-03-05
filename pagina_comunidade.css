@@ -104,10 +104,52 @@
 /******************************************************/
 /******************* Bloco Membros*********************/
 .members-block{
-  background-color:#D3D6DE;
+  background-color:#ECEDF1;
+  border:1px solid #D3D6DE !important;
+  border-radius: 4px;
 }
 .members-block .block-title{
-  border:1px solid #D3D6DE;
+  /*background-color:#ECEDF1;*/
+  border-bottom:1px solid #D3D6DE !important;
+  border-top:none !important;
+  /*border-top-right-radius: 4px !important;
+  border-top-left-radius: 4px !important;*/
+  color:#172738 !important;
+  font-size:14px !important;
+  padding:12px !important;
+}
+
+.members-block .block-footer-content{
+  background-color:#ECEDF1;
+  padding:8px 10px 15px 0px;
+  margin-right:0px !important;
+  border-top:1px solid #D3D6DE;
+}
+#content .members-block .block-footer-content a{
+  padding-right: 0px !important;
+}
+
+#content .members-block .block-footer-content a.view-all{
+  background-image:none;
+  border:none;
+  text-transform: uppercase;
+  line-height: 21px;
+}
+#content .members-block .block-footer-content a.view-all::after{
+content: '>';
+padding-left: 7px;
+padding-right: 4px;
+color:#ffffff;
+background: #3E67B1;
+border-radius: 4px;
+font-size: 15px;
+line-height: 20px;
+text-align: center;
+margin-left: 5px;
+position: relative;
+margin-left: 5px;
+top: 2px;
+/*margin-right:0px;*/
 }
 
 /*****************************************************/
@@ -138,6 +180,28 @@
 
 #infor-temporary span:last-child {
   border-bottom:none;
+}
+.calendar-infor-temp::before{
+  content: url("images/calendar-icon.png");
+  line-height: 20px;
+  margin-right: 10px;
+  margin-top: 4px;
+  float: left;
+}
+.search-infor-temp::before{
+  content: url("images/docs-board-icon.png");
+  line-height: 20px;
+  margin-right: 10px;
+  margin-top: 4px;
+  float: left;
+}
+
+.chat-infor-temp::before{
+  content: url("images/chat-icon.png");
+  line-height: 20px;
+  margin-right: 10px;
+  margin-top: 4px;
+  float: left;
 }
 
 /**************************************************/
