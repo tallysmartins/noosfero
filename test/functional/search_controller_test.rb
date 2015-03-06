@@ -126,7 +126,7 @@ class SearchControllerTest < ActionController::TestCase
     get(
       :software_infos,
       :query => "",
-      :selected_categories => [Category.first.id]
+      :selected_categories_id => [Category.first.id]
     )
 
     assert_includes assigns(:searches)[:software_infos][:results], software_one.community
