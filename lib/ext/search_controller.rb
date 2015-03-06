@@ -110,6 +110,7 @@ class SearchController
     prepare_software_infos_params
     prepare_software_infos_message
     prepare_software_infos_category_groups
+    prepare_software_infos_category_enable
   end
 
   def prepare_software_infos_params
@@ -152,6 +153,19 @@ class SearchController
       categories_sliced = @categories.each_slice(@categories.count/2)
       @categories_groupe_one = categories_sliced.next
       @categories_groupe_two = categories_sliced.next
+    end
+  end
+
+  def prepare_software_infos_category_enable
+    @enabled_check_box = Hash.new
+    categories = Category.software_categories
+
+    categories.each do |category|
+      if category.software_infos.count > 0
+        @enabled_check_box[category] = :enabled
+      else
+        @enabled_check_box[category] = :disabled
+      end
     end
   end
 
