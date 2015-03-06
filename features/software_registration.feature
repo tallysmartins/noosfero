@@ -11,11 +11,9 @@ Feature: edit public software information
     And I check "SoftwareCommunitiesPlugin"
     And I press "Save changes"
     And I go to /myprofile/mpog-admin
-    And I follow "Create a new software"
-    And I fill in "community_name_id" with "basic software"
-    And I fill in "software_info_finality" with "basic software finality"
-    And I type in "gp" in autocomplete list "#license_info_version" and I choose "GPL-2"
-    And I press "Create"
+    And the following softwares
+      | name           | public_software | finality                |
+      | basic software | true            | basic software finality |
 
   @selenium
   Scenario: Show SoftwareLangue fields when click in New Language
@@ -72,20 +70,11 @@ Feature: edit public software information
     And selector "#database__version" should have any "4.5.6"
 
   @selenium
-  Scenario: Message second step of creation in edit software community
-    Given the following softwares
-    | name          | finality      |
-    | New Software  | some finality |
-    And I go to /myprofile/new-software/profile_editor/edit
-    Then I should see "Step 2/2 - Software Community Configuration"
-    And I go to /myprofile/new-software/profile_editor/edit
-    Then I should not see "Step 2/2 - Software Community Configuration"
-
-  @selenium
   Scenario: Show license link when a license is selected
     Given I am on mpog-admin's control panel
     And I follow "Create a new software"
-    And I fill in "community_name" with "another software"
+    And I fill in "community_name_id" with "another software"
+    And I fill in "community_identifier" with "another-software"
     And I fill in "software_info_finality" with "another software finality"
     And I type in "gp" in autocomplete list "#license_info_version" and I choose "GPL-2"
     And I should see "Read license" within "#version_link"
