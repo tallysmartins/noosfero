@@ -204,4 +204,220 @@ top: 2px;
   float: left;
 }
 
-/**************************************************/
+/********************CSS DO BLOCO DE ABAS******************************/
+
+/*********************** ABA 01 - Atividades *********************/
+#aba1{
+  border: 1px solid #D3D6DE;
+  border-radius: 4px;
+  width: 450px;
+  
+}
+
+#grafic{
+  width: 450px;
+  height: 300px;
+}
+
+#legend-grafic-ativit{
+  border-top:1px solid #D3D6DE;
+  background-color:#ECEDF1;
+  padding:10px;
+  font-size:12px;
+
+}
+/*
+#itens-legend-grafic{
+  text-align: :left;
+  /*float:right;
+  margin:0px;*/
+}*/
+
+ul#itens-legend-grafic{
+  text-align: left;
+    margin: 0px;
+    padding: 10px;
+}
+
+#itens-legend-grafic li{
+  list-style:none;
+  display: inline;
+  padding: 5px;
+}
+
+.legend-itens-grafic{
+  color: #172738;
+}
+
+.members-itens-grafic{
+  background-color: #FF4F38;
+  color:#ffffff;
+  border:1px solid #FF4F38;
+  border-radius: 4px;
+}
+
+.emails-itens-grafic{
+  background-color: #00A1F8;
+  color:#ffffff;
+  border:1px solid #00A1F8;
+  border-radius: 4px;
+}
+.commits-itens-grafic{
+  background-color: #ED9941;
+  color:#ffffff;
+  border:1px solid #ED9941;
+  border-radius: 4px;
+
+}
+.events-itens-grafic{
+  background-color: #ffffff;
+  color:#C0BF5A;
+  border:1px solid #C0BF5A;
+  border-radius: 4px;
+
+}
+
+/********************** ABA02 - Discussões ***************************/
+#discussions{
+  color:#172738;
+}
+
+#discussions h3{
+  padding:12px 0px 3px 0px;
+  margin:0px;
+}
+
+.tidings{
+  border-top: 1px solid #ECEDF1;
+  padding:10px;
+}
+
+.date-list-discussion,
+.subject-list-discussion{
+  display: block;
+    line-height: 21px;
+    padding: 0px 0px 10px 0px;
+    position: relative;
+}
+
+.date-list-discussion{
+  font-size:12px;
+}
+
+.date-list-discussion a{
+  text-decoration: none;
+  color:#5E82C6;
+}
+.see-more-discussion{
+text-align: right;
+  padding: 10px;
+  text-transform: uppercase;
+  line-height: 21px;
+  font-size: 12px;
+  border-top: 1px solid #ECEDF1;
+}
+
+.see-more-discussion::after {
+  background: none repeat scroll 0 0 #3e67b1;
+  border-radius: 4px;
+  color: #ffffff;
+  content: ">";
+  font-size: 15px;
+  line-height: 20px;
+  margin-left: 5px;
+  padding-left: 7px;
+  padding-right: 4px;
+  position: relative;
+  text-align: center;
+  top: 2px;
+}
+
+/********************** ABA03 - BLOG ********************************/
+
+
+/********************** ABA04 - Wiki ********************************/
+#aba4 h3{
+  color:#172738;
+  border-bottom: 2px solid #ECEDF1;
+  padding:10px;
+}
+
+#aba4 span{
+  line-height: 21px;
+  font-size: 13px;
+}
+
+
+/*********************** ABA05 - Feed do repostório *******************/
+
+.information-repository-activ{
+  border-bottom: 1px solid #D3D6DE;
+  padding:40px 20px 40px 20px;
+  color:#172738;
+}
+
+.about-commit{
+  display:block;
+  position:absolute;
+  float:left;
+  border-right:1px dotted #D3D6DE;
+  padding-right: 40px;
+}
+.about-commit span{
+  position: relative;
+  display:block;
+  line-height: 21px;
+    padding: 5px;
+}
+
+.information-member-repository{
+  margin-left:150px;
+  display:block;
+
+}
+
+.information-member-repository span{
+  display:block;
+  position:relative;
+  line-height: 21px;
+    padding: 5px;
+}
+
+.commit-historic::before {
+    content: url("images/calendar-icon.png");
+    float: left;
+    line-height: 20px;
+    margin-right: 10px;
+    margin-top: 4px;
+}
+
+.calendar-commit::before {
+    content: url("images/calendar-icon.png");
+    float: left;
+    line-height: 20px;
+    margin-right: 10px;
+    margin-top: 4px;
+}
+
+.see-more-repository{
+  text-align: right;
+  padding:10px;
+  text-transform: uppercase;
+  line-height: 21px;
+  font-size:12px;
+}
+
+.see-more-repository::after {
+    background: none repeat scroll 0 0 #3e67b1;
+    border-radius: 4px;
+    color: #ffffff;
+    content: ">";
+    font-size: 15px;
+    line-height: 20px;
+    margin-left: 5px;
+    padding-left: 7px;
+    padding-right: 4px;
+    position: relative;
+    text-align: center;
+    top: 2px;
+}
