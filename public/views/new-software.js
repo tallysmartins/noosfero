@@ -6,6 +6,20 @@ modulejs.define('NewSoftware', ['jquery', 'NoosferoRoot', 'AutoComplete'], funct
       NoosferoRoot.urlWithSubDirectory("/plugin/software_communities/get_license_data")
   };
 
+  function replace_domain_and_repository_link(){
+    var community_name = $("#community_name_id").val();
+    var domain =  'https://';
+    domain = domain.concat($("#software-hostname").text());
+
+    var slug_name = community_name.replace(/\s+/g, '-').toLowerCase();
+
+    var custom_domain = domain.concat('<your-repository>');
+    custom_domain = custom_domain.concat('/');
+    custom_domain = custom_domain.concat(slug_name);
+
+    $("#community-identifier").val(slug_name);
+    $("#software-info-repository-link").val(custom_domain);
+  }
 
   function show_another_license_on_page_load() {
     $("#license_info_id").trigger("change");
@@ -47,6 +61,8 @@ modulejs.define('NewSoftware', ['jquery', 'NoosferoRoot', 'AutoComplete'], funct
 
     init: function() {
       license_info_autocomplete();
+
+      $("#community_name_id").blur(replace_domain_and_repository_link);
     }
   }
 });

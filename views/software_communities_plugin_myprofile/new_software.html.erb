@@ -43,7 +43,7 @@
     <div id='software-name-field' class='formfield'>
 
       <span id='software-hostname'><%= environment.default_hostname %>/</span>
-      <%= required text_field(:community, :identifier, :size => 30, :maxlength => 100) %>
+      <%= required text_field(:community, :identifier, :size => 30, :maxlength => 100, :id => 'community-identifier') %>
     </div>
 
     <%= fields_for @software_info do |swf| %>
@@ -79,7 +79,7 @@
     <%= fields_for @software_info do |swf| %>
       <div class="formfieldline formfield type-text">
         <%= swf.label "repository_url", _("Link to Repository: "), :class => "formlabel"%>
-        <%= swf.text_field :repository_link, :class => "improve_input_size" %>
+        <%= swf.text_field :repository_link, :class => "improve_input_size", :id => "software-info-repository-link" %>
       </div>
     <% end %>
 
