@@ -59,8 +59,8 @@ class SearchController
 
   def get_filter_category_ids
     category_ids = []
-    unless params[:selected_categories].blank?
-      category_ids = params[:selected_categories]
+    unless params[:selected_categories_id].blank?
+      category_ids = params[:selected_categories_id]
     end
     category_ids.map(&:to_i)
   end
@@ -115,9 +115,9 @@ class SearchController
 
   def prepare_software_infos_params
     @titles[:software_infos] = _("Public Software Catalog")
-    @selected_categories = params[:selected_categories]
-    @selected_categories ||= []
-    @selected_categories = @selected_categories.map(&:to_i)
+    @selected_categories_id = params[:selected_categories_id]
+    @selected_categories_id ||= []
+    @selected_categories_id = @selected_categories_id.map(&:to_i)
     @include_non_public = params[:include_non_public] == "true"
     @per_page = prepare_per_page
   end
@@ -134,11 +134,13 @@ class SearchController
 
   def prepare_software_infos_message
     @message_selected_options = ""
-    unless @selected_categories.empty?
+
+    @selected_categories = []
+    unless @selected_categories_id.empty?
       @message_selected_options = _("Selected options: ")
 
-      categories = Category.find(@selected_categories)
-      @message_selected_options += categories.collect { |category|
+      @selected_categories = Category.find(@selected_categories_id)
+      @message_selected_options += @selected_categories.collect { |category|
         "#{category.name}; "
       }.join()
     end

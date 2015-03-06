@@ -14,7 +14,7 @@
           <div id="gruop-catalog-01">
             <% @categories_groupe_one.each do |category| %>
               <label>
-                <%= check_box_tag("selected_categories[]", category.id, @selected_categories.include?(category.id), :class => "categories-catalog", @enabled_check_box[category] => "true") %>
+                <%= check_box_tag("selected_categories_id[]", category.id, @selected_categories_id.include?(category.id), :class => "categories-catalog", @enabled_check_box[category] => "true") %>
                 <span><%= _("#{category.name}") %></span>
               </label> <br>
             <% end %>
@@ -22,7 +22,7 @@
           <div id="group-catalog-02">
             <% @categories_groupe_two.each do |category| %>
               <label>
-                <%= check_box_tag("selected_categories[]", category.id, @selected_categories.include?(category.id), :class => "categories-catalog", @enabled_check_box[category] => "true") %>
+                <%= check_box_tag("selected_categories_id[]", category.id, @selected_categories_id.include?(category.id), :class => "categories-catalog", @enabled_check_box[category] => "true") %>
                 <%= _("#{category.name}") %>
               </label> <br>
             <% end %>

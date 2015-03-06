@@ -30,10 +30,10 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot', 'SoftwareCat
     var params = {};
 
     params.query = $("#search-input").val();
-    params.selected_categories = [];
+    params.selected_categories_id = [];
 
     $(".categories-catalog:checked").each(function(index, element) {
-      params.selected_categories.push(element.value);
+      params.selected_categories_id.push(element.value);
     });
 
     params.software_display = $("#software_display").val();
@@ -69,18 +69,20 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot', 'SoftwareCat
     var selected_categories_field = $("#filter-categories-select-catalog");
     var pagination = $("#software-pagination");
     var software_count = $("#software-count");
+    var individually_category = $("#individually-category");
 
     var result_list = response.find("#search-results").html();
     var result_categories = response.find("#filter-categories-select-catalog").html();
     var result_pagination = response.find("#software-pagination").html();
     var result_software_count = response.find("#software-count").html();
-
-
+    var result_individually_category = response.find("#individually-category").html();
 
     search_list.html(result_list);
     selected_categories_field.html(result_categories);
     pagination.html(result_pagination);
     software_count.html(result_software_count);
+    individually_category.html(result_individually_category);
+
     highlight_searched_terms();
     catalog_message();
 

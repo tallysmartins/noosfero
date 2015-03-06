@@ -33,7 +33,16 @@
         <div id="search-results-empty"></div>
 
         <input type="hidden" id="message-no-catalog-selected" value="<%= _('No software found. Try more general filters') %>" />
+
         <input type="hidden" id="message-catalog-selected" value="<%= _('No software found. Try more general filters or check the software category individually') %>" />
+
+        <div id="individually-category">
+          <% @selected_categories.each do |category| %>
+            <br />
+            <%= link_to _("#{category.name}") + " (#{category.software_infos.count})", {:controller => :search, :action => :software_infos, :selected_categories_id => [category.id]} %>
+          <% end %>
+        </div>
+
       <% end %>
     </div>
   <% end %>
