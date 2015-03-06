@@ -141,7 +141,7 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
   function hide_load_after_ajax() {
     if ($("#overlay_loading_modal").is(":visible")) {
       close_loading();
-      setTimeout(hide_load_after_ajax, 1000);
+      setTimeout(hide_load_after_ajax, 2000);
     }
   }
 

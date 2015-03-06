@@ -17,10 +17,9 @@
     <%= render :partial => 'search_form_extra_fields' %>
     <%= render :partial => 'catalog_filter' %>
 
-    <!-- #display-options sera substituido pelo html passado pela equipe de design -->
     <div id="catalog-display-options">
       <div id="catalog-display-options-count">
-        <strong><%= "#{@software_count} Software(s)" %> </strong>
+        <strong id="software-count"><%= "#{@software_count} Software(s)" %></strong>
       </div>
 
       <div id="catalog-display-options-show-and-sort">
