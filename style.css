@@ -24,6 +24,8 @@
 
 /****************** pagina de software ********************/
 @import url(pagina_software.css);
+/****************** Pagina comunidade ********************/
+@import url(pagina_comunidade.css);
 
 @import url(page-inicial.css);
 @import url(page-catalog-software.css);
@@ -38,6 +40,8 @@
 
 @import url(../../icons/tango/style.css);
 
+/****************** Font awesome ****s****************/
+@import url(font-awesome.min.css);
 
 /* - css/main.css - */
 @media screen {

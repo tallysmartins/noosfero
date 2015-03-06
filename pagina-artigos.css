@@ -238,6 +238,10 @@ ol li {
   margin-right: 6px;
 }
 
+.article-body .etapas-publicacao-2{
+  font-weight: bold;
+}
+
 #content .main-block .created-at {
   font-family: arial !important;
 }

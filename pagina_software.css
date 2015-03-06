@@ -147,7 +147,141 @@ border: none;
 #content span.req_spb a:hover , #content span.nov_spb a:hover, #content span.licensed a:hover {
   color: #8ECBF7;
 }
+/************Bloco de download de Software**************/
+#download-block-2{
+  border:1px solid #D3D6DE;
+  border-radius: 10px;
+  /*width: 490px;*/
+  margin: 0px 15px;
+}
 
+#download_spb-2{
+  font-family: arial;
+  /*border-bottom: 1px solid #ccc;*/
+  background-color: #D3D6DE;
+  border-top-left-radius:8px;
+  border-top-right-radius:8px;
+  padding:5px 10px; /*3px 11px;*/
+}
+
+#download_spb-2 h3{
+  margin:6px 0px 2px 10px;
+  font-size: 20px;
+}
+
+#download-info-1,
+#download-info-2,
+#download-info-3{
+  /*padding: 20px 15px 20px 15px;*/
+  padding:30px 10px 30px 10px;
+  clear: both;
+  border-top: 1px solid #D3D6DE;
+}
+
+#download-info-2{
+  background: #ECEDF1;
+}
+
+#version01{
+  /*background-image:url("download-icon.png");
+  background-repeat: no-repeat;*/
+  /*border:1px solid #2c66ce;/*#5E82C6;*/
+  /*border-radius: 8px;
+  /*background-color: #2c66ce;/*#5E82C6;*/
+  /*padding: 20px 10px;*/
+  width:80px;
+  float:left;
+  margin-right: 20px;
+  margin-left: 15px;
+  clear:both;
+
+}
+
+
+#image-download{
+  background-color: #2c66ce;/*#5E82C6;*/
+  border:1px solid #2c66ce;/*#5E82C6;*/
+  border-top-right-radius:8px;
+  border-top-left-radius: 8px;
+  background-image: url("images/download-icon.png");
+  background-repeat: no-repeat;
+  background-position: center; /*15px;*/
+  padding:50px 0px 8px 0px; /*20px;*/ /*15px 15px;*/ /*5px 10px;*/
+  /*margin: 0px 9px; */
+  /*width: 45px;*/
+  /*height: 25px;*/
+  display:block;
+}
+
+#size-download{
+  text-align:center;
+  color:#ffffff;
+  font-size: 12px;
+  background-color: #1a397d; /*#3E67B1;*/
+  border:1px solid #1a397d;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  display:block;
+  /*padding: 0px 10px 3px 6px; /*3px 22px;*/
+ /* width: 45px;
+  height: 17px;
+  margin:0px 9px;
+  line-height: 20px; */
+}
+
+/*
+#version01{
+  border:1px solid blue;
+  border-radius: 8px;
+  /*background-color: blue;
+  padding: 20px 10px;
+  width:40px;
+  float:left;
+  margin-right: 20px;
+
+}*/
+
+#info-software-download{
+  font-size: 16px;
+  position: relative;
+  margin: 5px 0px 0px 100px;
+}
+
+.download-name{
+  font-weight: bold;
+  display: block;
+}
+
+.download-system{
+  font-size: 14px;
+  display: block;
+
+}
+
+.req_min_spb{
+  font-size: 12px;
+}
+
+.req_min_spb a{
+  line-height: 40px;
+  color:#3E67B1;
+  text-decoration: underline;
+}
+
+#licensed-software{
+  border-top: 1px solid #D3D6DE;
+  background-color: #D3D6DE;
+  text-align: right;
+  padding:14px;
+  border-bottom-right-radius:8px;
+  border-bottom-left-radius:8px;
+  font-size: 12px;
+}
+#licensed-software a{
+  color: #3e67b1;
+}
+
+/**************fim do bloco de software versao 2**********/
 
 /************* Artigos ****************/
 
@@ -374,4 +508,23 @@ border:
 	text-decoration:none;
 }
 
+/*****Bloco Information software -area 3 *************/
+/*
+#content .box-3 #col-software-name h1{
+  font-size:14px;
+}
 
+#content .box-3 #col-software-name B{
+  display:none;
+}
+
+#content .box-3 #software-information-block-table td#col-software-name {
+    display: block;
+    padding-top: 16px;
+    position: absolut;
+    float:right;
+    width: 90px;
+}
+*/
+
+/****************Fim bloco Software information -area 3****************/
