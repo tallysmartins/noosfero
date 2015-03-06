@@ -10,7 +10,7 @@
     'CompleteRegistration',
     'SearchSoftwareCatalog',
     'SoftwareDownload',
-    "ProfileTabsSoftware"
+    'ProfileTabsSoftware'
   ];
 
 

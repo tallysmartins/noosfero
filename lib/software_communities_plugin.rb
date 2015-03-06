@@ -119,6 +119,7 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       lib/select-element.js
       lib/select-field-choices
       lib/auto-complete.js
+      lib/software-catalog-component.js
       views/control-panel.js
       views/edit-software.js
       views/new-software.js

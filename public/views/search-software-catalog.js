@@ -1,4 +1,4 @@
-modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($, NoosferoRoot) {
+modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot', 'SoftwareCatalogComponent'], function($, NoosferoRoot, SoftwareCatalogComponent) {
   'use strict';
 
   var AJAX_URL = {
@@ -7,56 +7,7 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
   };
 
 
-  function show_head_message() {
-    if ($("#filter-categories-select-catalog").text().length === 0){
-      $("#filter-categories-select-catalog").hide();
-      $("#filter-option-catalog-software").show();
-    }else{
-      $("#filter-categories-select-catalog").show();
-      $("#filter-option-catalog-software").hide();
-    }
-  }
-
-
-  function slideDowsCategoriesOptionAndHideOptionCatalog() {
-    $("#filter-categories-option").slideDown();
-    $("#filter-option-catalog-software").hide();
-  }
-
-
-  function slideDownCategoriesOptionAndHideCategoriesSelect() {
-    $("#filter-categories-option").slideDown();
-    $("#filter-categories-select-catalog").hide();
-  }
-
-
-  function slideUpCategoriesAndShowHeadMessage() {
-    $("#filter-categories-option").slideUp();
-    show_head_message();
-  }
-
-
-  function clearCatalogCheckbox(){
-    $("#filter-categories-option").slideUp();
-    $("#filter-option-catalog-software").show();
-    $("#group-categories input:checked").each(function() {
-      $(this).prop('checked', false);
-    });
-
-    dispatch_search_ajax(update_search_page_on_ajax, true);
-  }
-
-
-  function selectCheckboxCategory() {
-    $("#filter-categories-option").slideUp();
-    $("#filter-categories-select-catalog").show();
-    $("#filter-option-catalog-software").hide();
-
-    dispatch_search_ajax(update_search_page_on_ajax, true);
-  }
-
-
-  function dispatch_search_ajax(callback, enable_load) {
+  function dispatch_search_ajax(enable_load) {
     var search_params = get_search_params();
 
     if(enable_load) {
@@ -67,7 +18,7 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
       url: AJAX_URL.software_infos,
       type: "GET",
       data: search_params,
-      success: callback,
+      success: update_search_page_on_ajax,
       error: function(){
         close_loading();
       }
@@ -130,7 +81,6 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
     selected_categories_field.html(result_categories);
     pagination.html(result_pagination);
     software_count.html(result_software_count);
-    show_head_message();
     highlight_searched_terms();
     catalog_message();
 
@@ -141,7 +91,7 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
   function hide_load_after_ajax() {
     if ($("#overlay_loading_modal").is(":visible")) {
       close_loading();
-      setTimeout(hide_load_after_ajax, 2000);
+      setTimeout(hide_load_after_ajax, 1500);
     }
   }
 
@@ -168,16 +118,6 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
   }
 
 
-  function selectProjectSoftwareCheckbox() {
-    $("#filter-categories-option").slideUp();
-    $("#filter-categories-select-catalog").show();
-    $("#filter-option-catalog-software").hide();
-
-    dispatch_search_ajax(update_search_page_on_ajax, true);
-    show_head_message();
-  }
-
-
   function update_page_by_ajax_on_select_change() {
     dispatch_search_ajax(update_search_page_on_ajax, true);
   }
@@ -200,12 +140,6 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
 
 
   function set_events() {
-    $("#filter-option-catalog-software").click(slideDowsCategoriesOptionAndHideOptionCatalog);
-    $("#filter-categories-select-catalog").click(slideDownCategoriesOptionAndHideCategoriesSelect);
-    $("#close-filter-catalog").click(slideUpCategoriesAndShowHeadMessage);
-    $("#cleanup-filter-catalg").click(clearCatalogCheckbox);
-    $(".categories-catalog").click(selectCheckboxCategory);
-    $(".project-software").click(selectProjectSoftwareCheckbox);
     $("#software_display").change(update_page_by_ajax_on_select_change);
     $("#sort").change(update_page_by_ajax_on_select_change);
 
@@ -222,9 +156,10 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot'], function($,
     init: function() {
       set_events();
       catalog_message();
-      show_head_message();
 
       $("#filter-categories-option").hide();
+
+      SoftwareCatalogComponent.init(dispatch_search_ajax);
     }
   }
 });
