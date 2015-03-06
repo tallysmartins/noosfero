@@ -56,13 +56,6 @@ Feature: Search software
     And I sleep for 3 seconds
     Then I should see "Software Two" before "Software One"
 
-  Scenario: Show softwares with selected category in filter
-    Given I go to /search/software_infos
-    And I follow "Education"
-    Then I should see "Software Two"
-    And I should not see "Software One"
-
-
   @selenium
   Scenario: Show only "Software Two" when searching for "Education" category
     Given I go to /search/software_infos
