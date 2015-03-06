@@ -119,12 +119,12 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot', 'SoftwareCat
 
 
   function update_page_by_ajax_on_select_change() {
-    dispatch_search_ajax(update_search_page_on_ajax, true);
+    dispatch_search_ajax(true);
   }
 
   function update_page_by_text_filter() {
     var text = this.value;
-    dispatch_search_ajax(update_search_page_on_ajax, false);
+    dispatch_search_ajax(false);
   }
 
 
