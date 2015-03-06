@@ -1,13 +1,13 @@
+%define writable_dirs javascripts/cache stylesheets/cache articles image_uploads thumbnails
+
 Name:    noosfero
-Version: 1.0
+Version: 1.1~rc1
 Release: 1%{?dist}
-Summary: Software Development Platform
-Group:   Development/Tools
-License: GNU GPLv3
+Summary: Social Networking Platform
+Group:   Applications/Publishing
+License: AGPLv3
 URL:     http://noosfero.org
 Source0: %{name}-%{version}.tar.gz
-Patch0:  %{name}p0.patch
-Patch1:  %{name}p1.patch
 BuildArch: noarch
 BuildRequires: noosfero-deps
 Requires: noosfero-deps, po4a, tango-icon-theme
@@ -20,49 +20,57 @@ participate and contribute to this free software project!
 
 %prep
 %setup -q
-grep -rl '/usr/bin/ruby1.8' . | xargs --no-run-if-empty sed -i -e '1 s|.*|#!/usr/bin/ruby|'
-%patch0 -p1
-%patch1 -p1
 
 %build
 
+# FIXME build .mo
+# FIXME docs
+
 %install
-mkdir -p %{buildroot}/var/lib/noosfero/plugins
-mkdir -p %{buildroot}/var/lib/noosfero/public
 mkdir -p %{buildroot}/usr/lib/noosfero
-mv plugins %{buildroot}/var/lib/noosfero/
-mv doc %{buildroot}/var/lib/noosfero/
-mv public %{buildroot}/var/lib/noosfero/
-rm Gemfile Vagrantfile *.md gitignore.example
+
+# install noosfero tree
 cp -r . %{buildroot}/usr/lib/noosfero/
+rm %{buildroot}/usr/lib/noosfero/{Gemfile,Vagrantfile,*.md,gitignore.example,public/dispatch.fcgi,public/dispatch.cgi,public/dispatch.rb}
+
+# install config files
+mkdir -p %{buildroot}/etc/init.d
+cp etc/init.d/noosfero %{buildroot}/etc/init.d/
+
+mkdir -p %{buildroot}/etc/noosfero/plugins
+ln -sf /etc/noosfero/database.yml %{buildroot}/usr/lib/noosfero/config/database.yml
+ln -sf /etc/noosfero/thin.yml %{buildroot}/usr/lib/noosfero/config/thin.yml
+ln -sf /etc/noosfero/plugins %{buildroot}/usr/lib/noosfero/config/plugins
+
+# symlink needed bits in public/
+for dir in %{writable_dirs}; do
+  ln -s /var/lib/noosfero/public/$dir %{buildroot}/usr/lib/noosfero/public/$dir
+done
+ln -s /var/tmp/noosfero %{buildroot}/usr/lib/noosfero/tmp
+ln -s /var/log/noosfero %{buildroot}/usr/lib/noosfero/log
+
+# default themes
+ln -s noosfero   %{buildroot}/usr/lib/noosfero/public/designs/themes/default
+ln -s tango      %{buildroot}/usr/lib/noosfero/public/designs/icons/default
 
 
-%post
-groupadd noosfero || true
-if ! id noosfero; then
-  adduser noosfero --system -g noosfero --shell /bin/sh --home-dir /usr/lib/noosfero
-fi
+cat > %{buildroot}/etc/noosfero/thin.yml <<EOF
+---
+chdir: /usr/lib/noosfero
+environment: production
+address: 0.0.0.0
+port: 3000
+timeout: 30
+log: log/thin.log
+pid: tmp/pids/thin.pid
+max_conns: 1024
+max_persistent_conns: 512
+require: []
+wait: 30
+daemonize: true
+EOF
 
-cp /usr/lib/noosfero/etc/init.d/noosfero /etc/init.d/
-/etc/init.d/noosfero setup
-
-mkdir -p /var/lib/noosfero/locale
-mkdir -p /etc/noosfero
-
-chown -R noosfero:noosfero /var/lib/noosfero
-
-ln -s /var/lib/noosfero/locale /usr/lib/noosfero/locale
-ln -s /var/lib/noosfero/plugins /usr/lib/noosfero/plugins
-ln -s /var/lib/noosfero/doc /usr/lib/noosfero/doc
-ln -s /var/lib/noosfero/public /usr/lib/noosfero/public
-
-ln -s /etc/noosfero/database.yml /usr/lib/noosfero/config/
-ln -s /etc/noosfero/thin.yml /usr/lib/noosfero/config/
-
-cd /usr/lib/noosfero/
-bundle exec thin -C /etc/noosfero/thin.yml -e production config
-
-cat > /etc/noosfero/database.yml <<EOF
+cat > %{buildroot}/etc/noosfero/database.yml <<EOF
 production:
   adapter: postgresql
   encoding: unicode
@@ -72,10 +80,32 @@ production:
   port: 5432
 EOF
 
+mkdir -p %{buildroot}/etc/default
+cat > %{buildroot}/etc/default/noosfero <<EOF
+NOOSFERO_DIR="/usr/lib/noosfero"
+NOOSFERO_USER="noosfero"
+NOOSFERO_DATA_DIR="/var/lib/noosfero"
+EOF
+
+%post
+groupadd noosfero || true
+if ! id noosfero; then
+  adduser noosfero --system -g noosfero --shell /bin/sh --home-dir /usr/lib/noosfero
+fi
+
+for dir in %{writable_dirs}; do
+  mkdir -p /var/lib/noosfero/public/$dir
+done
+chown -R noosfero:noosfero /var/lib/noosfero
+
+/etc/init.d/noosfero setup
+
+cd /usr/lib/noosfero/
+
 if [ -x /usr/bin/postgres ]; then
   if [ `systemctl is-active postgresql`!="active" ]; then
     postgresql-setup initdb || true
-    systemctl start postgresql 
+    systemctl start postgresql
   fi
 
   su postgres -c "createuser noosfero -S -d -R"
@@ -93,5 +123,8 @@ chkconfig --del noosfero
 
 %files
 /usr/lib/noosfero
-/var/lib/noosfero
+/etc/init.d/noosfero
+%config(noreplace) /etc/default/noosfero
+%config(noreplace) /etc/noosfero/database.yml
+%config(noreplace) /etc/noosfero/thin.yml
 %doc
