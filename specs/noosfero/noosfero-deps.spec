@@ -1,5 +1,5 @@
 Name:    noosfero-deps
-Version: 1.0
+Version: 1.1
 Release: 1%{?dist}
 Summary: Ruby dependencies for Noosfero
 Group:   Development/Tools
@@ -7,7 +7,7 @@ License: Various
 URL:     http://noosfero.org
 Source0: %{name}-%{version}.tar.gz
 
-BuildRequires: make, gcc, gcc-c++, ruby, ruby-devel, rubygem-bundler, libicu-devel, cmake, mysql-devel, postgresql-devel, ImageMagick-devel
+BuildRequires: make, gcc, gcc-c++, ruby, ruby-devel, rubygem-bundler, libicu-devel, cmake, mysql-devel, postgresql-devel, ImageMagick-devel, libxml2-devel, libxslt-devel
 Requires: ruby, rubygem-bundler
 
 %description
