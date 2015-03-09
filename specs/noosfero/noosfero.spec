@@ -37,6 +37,8 @@ mkdir -p %{buildroot}/usr/lib/noosfero
 # install noosfero tree
 cp -r * %{buildroot}/usr/lib/noosfero/
 rm %{buildroot}/usr/lib/noosfero/{COPY*,Vagrantfile,*.md,gitignore.example,public/dispatch.fcgi,public/dispatch.cgi,public/dispatch.rb}
+# no point in installing debian/ as part of the RPM
+rm -rf %{buildroot}/usr/lib/noosfero/debian
 
 # install config files
 mkdir -p %{buildroot}/etc/init.d
