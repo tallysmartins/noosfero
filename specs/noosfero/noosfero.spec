@@ -1,7 +1,7 @@
 %define writable_dirs javascripts/cache stylesheets/cache articles image_uploads thumbnails
 
 Name:    noosfero
-Version: 1.1~rc1
+Version: 1.1~rc2
 Release: 1%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
@@ -23,8 +23,11 @@ participate and contribute to this free software project!
 
 %build
 
-# FIXME build .mo
-# FIXME docs
+ln -sf /usr/lib/noosfero/Gemfile .
+ln -sf /usr/lib/noosfero/Gemfile.lock .
+ln -sf /usr/lib/noosfero/.bundle .
+ln -sfT /usr/lib/noosfero/vendor/bundle vendor/bundle
+bundle exec rake -f Rakefile.release noosfero:translations:compile
 
 %install
 mkdir -p %{buildroot}/usr/lib/noosfero
