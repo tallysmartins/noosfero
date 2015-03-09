@@ -23,5 +23,10 @@ test_reverse_proxy_static_files() {
   assertEquals "Content-Type: image/png" "$content_type"
 }
 
+test_redirect_with_correct_hostname_behind_proxy() {
+  local redirect="$(curl-host softwarepublico.dev --head https://softwarepublico.dev/social/search/contents | grep-header Location)"
+  assertEquals "Location: https://softwarepublico.dev/social/search/articles" "$redirect"
+}
+
 
 load_shunit2
