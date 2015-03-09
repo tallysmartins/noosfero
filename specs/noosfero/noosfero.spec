@@ -27,15 +27,16 @@ ln -sf /usr/lib/noosfero/Gemfile .
 ln -sf /usr/lib/noosfero/Gemfile.lock .
 ln -sf /usr/lib/noosfero/.bundle .
 ln -sfT /usr/lib/noosfero/vendor/bundle vendor/bundle
-bundle exec rake -f Rakefile.release noosfero:translations:compile
-rm -f Gemfile Gemfile.lock .bundle vendor/bundle
+bundle exec rake -f Rakefile.release noosfero:translations:compile > build.log 2>&1 || (cat build.log; exit 1)
+rm -f build.log Gemfile Gemfile.lock .bundle vendor/bundle
+rm -rf tmp log
 
 %install
 mkdir -p %{buildroot}/usr/lib/noosfero
 
 # install noosfero tree
 cp -r . %{buildroot}/usr/lib/noosfero/
-rm %{buildroot}/usr/lib/noosfero/{Gemfile,Vagrantfile,*.md,gitignore.example,public/dispatch.fcgi,public/dispatch.cgi,public/dispatch.rb}
+rm %{buildroot}/usr/lib/noosfero/{COPY*,Vagrantfile,*.md,gitignore.example,public/dispatch.fcgi,public/dispatch.cgi,public/dispatch.rb}
 
 # install config files
 mkdir -p %{buildroot}/etc/init.d
@@ -48,14 +49,14 @@ ln -sf /etc/noosfero/plugins %{buildroot}/usr/lib/noosfero/config/plugins
 
 # symlink needed bits in public/
 for dir in %{writable_dirs}; do
-  ln -s /var/lib/noosfero/public/$dir %{buildroot}/usr/lib/noosfero/public/$dir
+  ln -sfT /var/lib/noosfero/public/$dir %{buildroot}/usr/lib/noosfero/public/$dir
 done
-ln -s /var/tmp/noosfero %{buildroot}/usr/lib/noosfero/tmp
-ln -s /var/log/noosfero %{buildroot}/usr/lib/noosfero/log
+ln -sfT /var/tmp/noosfero %{buildroot}/usr/lib/noosfero/tmp
+ln -sfT /var/log/noosfero %{buildroot}/usr/lib/noosfero/log
 
 # default themes
-ln -s noosfero   %{buildroot}/usr/lib/noosfero/public/designs/themes/default
-ln -s tango      %{buildroot}/usr/lib/noosfero/public/designs/icons/default
+ln -sfT noosfero   %{buildroot}/usr/lib/noosfero/public/designs/themes/default
+ln -sfT tango      %{buildroot}/usr/lib/noosfero/public/designs/icons/default
 
 
 cat > %{buildroot}/etc/noosfero/thin.yml <<EOF
