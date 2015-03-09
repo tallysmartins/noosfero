@@ -1,6 +1,7 @@
 PACKAGE = noosfero-spb
 VERSION = 3
-TARBALL = $(PACKAGE)-$(VERSION).tar.gz
+DISTDIR = $(PACKAGE)-$(VERSION)
+TARBALL = $(DISTDIR).tar.gz
 
 all:
 	@echo Nothing to be $@, all good.
@@ -9,10 +10,13 @@ plugins_dir=/usr/lib/noosfero/plugins
 themes_dir=/usr/lib/noosfero/public/designs/themes
 
 dist: clean
-	tar --exclude=.git -caf $(TARBALL) *
+	mkdir $(DISTDIR)
+	tar --exclude=.git --exclude=$(DISTDIR) -cf - * | (cd $(DISTDIR) && tar xaf -)
+	tar --exclude=.git -caf $(TARBALL) $(DISTDIR)
 
 clean:
 	$(RM) $(TARBALL)
+	$(RM) -r $(DISTDIR)
 
 install:
 	install -d -m 0755 $(DESTDIR)/$(plugins_dir)/software_communities
