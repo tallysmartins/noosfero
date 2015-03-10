@@ -128,6 +128,7 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       views/complete-registration.js
       views/search-software-catalog.js
       views/profile-tabs-software.js
+      views/new-community.js
       blocks/software-download.js
       initializer.js
       app.js

@@ -10,7 +10,8 @@
     'CompleteRegistration',
     'SearchSoftwareCatalog',
     'SoftwareDownload',
-    'ProfileTabsSoftware'
+    'ProfileTabsSoftware',
+    'NewCommunity'
   ];
 
 

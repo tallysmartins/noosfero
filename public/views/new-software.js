@@ -1,4 +1,4 @@
-modulejs.define('NewSoftware', ['jquery', 'NoosferoRoot', 'AutoComplete'], function($, NoosferoRoot, AutoComplete) {
+modulejs.define('NewSoftware', ['jquery', 'NoosferoRoot', 'AutoComplete', 'NewCommunity'], function($, NoosferoRoot, AutoComplete, Community) {
   'use strict';
 
   var AJAX_URL = {
@@ -61,6 +61,7 @@ modulejs.define('NewSoftware', ['jquery', 'NoosferoRoot', 'AutoComplete'], funct
 
     init: function() {
       license_info_autocomplete();
+      Community.init();
 
       $("#community_name_id").blur(replace_domain_and_repository_link);
     }
