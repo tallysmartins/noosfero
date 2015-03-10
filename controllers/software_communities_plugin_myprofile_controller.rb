@@ -27,6 +27,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
     end
 
     control_software_creation
+    update_new_software_errors
   end
 
   def search_offerers
@@ -216,5 +217,19 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
         @community.add_admin(admin)
       end
     end
+  end
+
+  def update_new_software_errors
+    if request.post?
+      @community.valid?
+      @software_info.valid?
+      @license_info.valid?
+      add_software_erros
+    end
+
+    @error_community_name = @community.errors.include?(:name) ? "highlight-error" : ""
+    @error_software_domain = @software_info.errors.include?(:domain) ? "highlight-error" : ""
+    @error_software_finality = @software_info.errors.include?(:finality) ? "highlight-error" : ""
+    @error_software_license = @license_info.errors.include?(:version) ? "highlight-error" : ""
   end
 end
