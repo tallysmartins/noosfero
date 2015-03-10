@@ -26,9 +26,24 @@ execute 'noosfero:schema' do
   notifies :restart, 'service[noosfero]'
 end
 
-# TODO remote user auth
-# TODO spb plugin
-# TODO theme
+package 'noosfero-spb'
+
+plugins = [
+  'breadcrumbs',
+  'container_block',
+  'display_content',
+  'people_block',
+  'recent_content',
+  'remote_user',
+  'software_communities', # from noosfero-spb
+  'statistics',
+  'sub_organizations',
+  'video',
+]
+
+execute 'plugins:enable' do
+  command '/usr/lib/noosfero/script/noosfero-plugins enable ' + plugins.join(' ')
+end
 
 template '/etc/noosfero/thin.yml' do
   owner 'root'; group 'root'; mode 0644
