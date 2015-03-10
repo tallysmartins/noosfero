@@ -1,7 +1,7 @@
 %define writable_dirs javascripts/cache stylesheets/cache articles image_uploads thumbnails
 
 Name:    noosfero
-Version: 1.1~rc2.1
+Version: 1.1~rc2.2
 Release: 1%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
@@ -39,6 +39,8 @@ cp -r * %{buildroot}/usr/lib/noosfero/
 rm %{buildroot}/usr/lib/noosfero/{COPY*,Vagrantfile,*.md,gitignore.example,public/dispatch.fcgi,public/dispatch.cgi,public/dispatch.rb}
 # no point in installing debian/ as part of the RPM
 rm -rf %{buildroot}/usr/lib/noosfero/debian
+# installed plugins should be in /etc
+rm -rf %{buildroot}/usr/lib/noosfero/config/plugins
 
 # install config files
 mkdir -p %{buildroot}/etc/init.d
@@ -47,7 +49,10 @@ cp etc/init.d/noosfero %{buildroot}/etc/init.d/
 mkdir -p %{buildroot}/etc/noosfero/plugins
 ln -sf /etc/noosfero/database.yml %{buildroot}/usr/lib/noosfero/config/database.yml
 ln -sf /etc/noosfero/thin.yml %{buildroot}/usr/lib/noosfero/config/thin.yml
-ln -sf /etc/noosfero/plugins %{buildroot}/usr/lib/noosfero/config/plugins
+
+mkdir -p %{buildroot}/etc/noosfero/plugins
+cp config/plugins/README %{buildroot}/etc/noosfero/plugins
+ln -sfT /etc/noosfero/plugins %{buildroot}/usr/lib/noosfero/config/plugins
 
 # symlink needed bits in public/
 for dir in %{writable_dirs}; do
@@ -131,6 +136,7 @@ chkconfig --del noosfero
 %files
 /usr/lib/noosfero
 /etc/init.d/noosfero
+/etc/noosfero/plugins/README
 %config(noreplace) /etc/default/noosfero
 %config(noreplace) /etc/noosfero/database.yml
 %config(noreplace) /etc/noosfero/thin.yml
