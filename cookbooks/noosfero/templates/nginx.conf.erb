@@ -7,7 +7,7 @@ upstream noosfero {
 server {
   listen *:8080;
   server_name <%= node['config']['external_hostname'] %>;
-
+  underscores_in_headers  on;
   access_log            /var/log/nginx/noosfero.access.log;
   error_log             /var/log/nginx/noosfero.error.log;
 

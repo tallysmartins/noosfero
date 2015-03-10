@@ -6,7 +6,7 @@ server {
   listen                *:8081;
 
   server_name           <%= node['config']['external_hostname'] %>;
-
+  underscores_in_headers  on; 
   access_log            /var/log/nginx/gitlab.access.log;
   error_log             /var/log/nginx/gitlab.error.log;
 
