@@ -1,4 +1,6 @@
 <div class='search-form'>
+  <h3> <%= _("Search Public Software Catalog") %> </h3>
+
   <%= form_tag( { :controller => 'search', :action => @asset ? @asset : 'index', :asset => nil, :category_path => ( @category ? @category.path : nil ) },
                  :method => 'get', :class => 'search_form' ) do %>
 
@@ -16,6 +18,8 @@
     </div>
     <%= render :partial => 'search_form_extra_fields' %>
     <%= render :partial => 'catalog_filter' %>
+
+    <br />
 
     <div id="catalog-display-options">
       <div id="catalog-display-options-count">

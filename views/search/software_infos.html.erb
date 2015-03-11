@@ -1,15 +1,9 @@
+<h2>Catálogo de Software Público</h2>
+
 <div id="software-search-container">
   <%= search_page_title( @titles[@asset], @category ) %>
 
   <%= render :partial => 'software_search_form', :locals => { :hint => _("Type words about the %s you're looking for") % @asset.to_s.singularize } %>
-
-  <%= render partial:"catalog_result_list" %>
-
-  <div id="software-pagination">
-    <% if params[:display] != 'map' %>
-      <%= pagination_links @searches[@asset][:results] %>
-    <% end %>
-  </div>
 
   <div style="clear: both"></div>
 
@@ -17,5 +11,13 @@
     <%= javascript_tag do %>
       jQuery('.search-product-price-details').altBeautify();
     <% end %>
+  <% end %>
+</div>
+
+<%= render partial:"catalog_result_list" %>
+
+<div id="software-pagination">
+  <% if params[:display] != 'map' %>
+    <%= pagination_links @searches[@asset][:results] %>
   <% end %>
 </div>

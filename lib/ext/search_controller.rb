@@ -114,7 +114,7 @@ class SearchController
   end
 
   def prepare_software_infos_params
-    @titles[:software_infos] = _("Public Software Catalog")
+    @titles[:software_infos] = _("Result Search")
     @selected_categories_id = params[:selected_categories_id]
     @selected_categories_id ||= []
     @selected_categories_id = @selected_categories_id.map(&:to_i)

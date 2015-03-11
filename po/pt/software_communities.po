@@ -408,15 +408,15 @@ msgstr "Categorias"
 
 #: plugins/software_communities/views/search/_catalog_filter.html.erb:33
 msgid "Clean up"
-msgstr "Limpe formulário"
+msgstr "Limpar"
 
 #: plugins/software_communities/views/search/_catalog_filter.html.erb:34
 msgid "Close"
-msgstr "Feche"
+msgstr "Fechar"
 
 #: plugins/software_communities/views/search/_catalog_filter.html.erb:37
-msgid "All Software Projects:"
-msgstr "Todos os Projetos de Software"
+msgid "Software Projects:"
+msgstr "Projetos de Software:"
 
 #: plugins/software_communities/views/search/_catalog_filter.html.erb:40
 msgid "Include in results"
