@@ -227,9 +227,12 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
       add_software_erros
     end
 
+
     @error_community_name = @community.errors.include?(:name) ? "highlight-error" : ""
-    @error_software_domain = @software_info.errors.include?(:domain) ? "highlight-error" : ""
+    @error_software_domain = @community.errors.include?(:identifier) ? "highlight-error" : ""
     @error_software_finality = @software_info.errors.include?(:finality) ? "highlight-error" : ""
     @error_software_license = @license_info.errors.include?(:version) ? "highlight-error" : ""
+
+    puts '='*80, @community.errors.include?(:identifier), '='*80
   end
 end

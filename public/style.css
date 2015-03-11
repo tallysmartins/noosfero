@@ -534,6 +534,6 @@ div#finality textarea {
   height: 100px;
 }
 
-.highlight-error {
-  background-color: #FF0000;
+.highlight-error label {
+  color: #FF0000 !important;
 }
