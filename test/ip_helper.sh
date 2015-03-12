@@ -4,7 +4,7 @@
 #   curl http://$reverseproxy
 #   nmap -p 5423 $database
 #
-# Each entry in ips.${SPB_ENV}.yaml will have its own variable
+# Each entry in config/${SPB_ENV}/ips.yaml will have its own variable
 #
 
-eval $(sed -E '/[0-9]{1,3}\./!d; s/^ *//; s/: */=/' ${ROOTDIR:-.}/ips.${SPB_ENV:-development}.yaml)
+eval $(sed -E '/[0-9]{1,3}\./!d; s/^ *//; s/: */=/' ${ROOTDIR:-.}/config/${SPB_ENV:-development}/ips.yaml)

@@ -18,9 +18,10 @@ All configuration parameters are defined in `nodes.yaml`, with exception of IP
 addresses, which are defined in different files:
 
 - for development, the IP addresses of the Vagrant VMs are defined in
-  ips.development.yaml.
+  config/development/ips.yaml.
 
-- for production, you need to create a new file called `ips.production.yaml`
+- for production, you need to create a new file called
+  `config/production/ips.yaml`
 
 You will probably not need to change nodes.yaml unless you are developing the
 deployment process.
