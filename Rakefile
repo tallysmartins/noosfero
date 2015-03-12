@@ -12,6 +12,12 @@ if Chake::VERSION < '0.4'
   fail "Please upgrade to chake 0.4+"
 end
 
+begin
+  load 'local.rake'
+rescue LoadError
+  # nothing
+end
+
 config = YAML.load_file(config_file)
 ips = YAML.load_file(ips_file)
 $nodes.each do |node|

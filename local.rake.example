@@ -1,0 +1,2 @@
+# copy this file to local.rake and adjust to your local environment
+ENV['CHAKE_RSYNC_OPTIONS'] = '--exclude tmp/dump'
