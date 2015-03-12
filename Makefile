@@ -1,4 +1,4 @@
-packages = $(shell basename --suffix=.spec specs/*/*.spec)
+packages = $(shell basename -s .spec specs/*/*.spec)
 checkout_packages = $(patsubst %, checkout-%, $(packages))
 build_packages = $(patsubst %, build-%, $(packages))
 
