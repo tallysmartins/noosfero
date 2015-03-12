@@ -4,6 +4,11 @@ package 'rsyslog'
 package 'tmux'
 package 'less'
 package 'htop'
+package 'ntp'
+
+service 'ntpd' do
+  action [:enable, :start]
+end
 
 # FIXME on Debian it's postgresql-client
 package 'postgresql'
