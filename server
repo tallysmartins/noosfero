@@ -15,6 +15,7 @@ sudo redir --lport 80  --cport 80  --caddr $reverseproxy &
 sudo redir --lport 443 --cport 443 --caddr $reverseproxy &
 
 cleanup() {
+  sudo -v
   sudo pkill -9 redir
 }
 
