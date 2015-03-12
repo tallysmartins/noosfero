@@ -1,50 +1,3 @@
-<h1><%= _('Edit  software') %></h1>
-
-<div class="formfieldline">
-  <h4> <%= _("Operating Platform") %> </h4>
-  <%= text_area_tag "software[operating_platform]", @software_info.operating_platform, :cols => 40, :rows => 5%>
-</div>
-
-<div class="formfieldline">
-  <h4> <%= _("Features") %> </h4>
-  <%= text_area_tag "software[features]", @software_info.features, :maxlength=>"4000", :cols => 40, :rows => 5%>
-</div>
-
-<div id='libraries_fields'>
-  <h4> <%= _("Libraries") %> </h4>
-
-  <%= render :partial => 'library_fields', :locals => {:object_name => 'community', :profile => @community, :libraries => @list_libraries } %>
-</div>
-<br />
-
-<div id='operating_system_fields'>
-  <h4> <%= _("Operating Systems") %> </h4>
-
-  <%= render :partial => 'operating_system_fields', :locals => {:object_name => 'community', :profile => @community, :operating_systems_fields => @list_operating_systems} %>
-</div>
-<br />
-
-<br />
-<div id='programming_languages_fields'>
-  <h4> <%= _("Programming languages") %> </h4>
-
-  <%= render :partial => 'language_fields', :locals => { :object_name => 'community', :profile => @community, :languages => @list_languages } %>
-</div>
-
-<br />
-<div id='database_fields'>
-  <h4> <%= _("Databases") %> </h4>
-
-  <%= render :partial => 'database_fields', :locals => {:object_name => 'community', :profile => @community, :database => @list_databases } %>
-</div>
-
-<div id = "demonstration_url">
-  <h4> <%= _("Demonstration url") %> </h4>
-  <%= text_field_tag("software[demonstration_url]", @software_info.demonstration_url) %>
-</div>
-
-<br>
-
 <div id = "public_software">
   <% if @disabled_public_software_field == true %>
     <%= check_box_tag("software[public_software]", "true", @software_info.public_software?, :disabled => "disabled") %>
@@ -101,3 +54,49 @@
     </div>
   </div>
 </div>
+
+<div class="formfieldline">
+  <h4> <%= _("Operating Platform") %> </h4>
+  <%= text_area_tag "software[operating_platform]", @software_info.operating_platform, :cols => 40, :rows => 5%>
+</div>
+
+<div class="formfieldline">
+  <h4> <%= _("Features") %> </h4>
+  <%= text_area_tag "software[features]", @software_info.features, :maxlength=>"4000", :cols => 40, :rows => 5%>
+</div>
+
+<div id = "demonstration_url">
+  <h4> <%= _("Demonstration url") %> </h4>
+  <%= text_field_tag("software[demonstration_url]", @software_info.demonstration_url) %>
+</div>
+
+<div id='libraries_fields'>
+  <h4> <%= _("Libraries") %> </h4>
+
+  <%= render :partial => 'library_fields', :locals => {:object_name => 'community', :profile => @community, :libraries => @list_libraries } %>
+</div>
+
+<br />
+
+<div id='operating_system_fields'>
+  <h4> <%= _("Operating Systems") %> </h4>
+
+  <%= render :partial => 'operating_system_fields', :locals => {:object_name => 'community', :profile => @community, :operating_systems_fields => @list_operating_systems} %>
+</div>
+<br />
+
+<br />
+<div id='programming_languages_fields'>
+  <h4> <%= _("Programming languages") %> </h4>
+
+  <%= render :partial => 'language_fields', :locals => { :object_name => 'community', :profile => @community, :languages => @list_languages } %>
+</div>
+
+<br />
+<div id='database_fields'>
+  <h4> <%= _("Databases") %> </h4>
+
+  <%= render :partial => 'database_fields', :locals => {:object_name => 'community', :profile => @community, :database => @list_databases } %>
+</div>
+
+<br>

@@ -4,7 +4,7 @@
 
 <%= labelled_form_for :community, :html => { :multipart => true, :id => 'edit-form' } do |f| %>
 
-  <% tabs << {:title => _("Software"), :id => 'basic-info',
+  <% tabs << {:title => _("Main Information"), :id => 'basic-info',
     :content => (render :partial => 'main_software_editor_extras', :locals => {:f => f})} %>
 
   <% tabs << {:title => _("Specifications"), :id => 'especific-info',
