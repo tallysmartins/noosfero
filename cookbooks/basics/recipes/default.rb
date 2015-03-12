@@ -3,6 +3,7 @@ package 'bash-completion'
 package 'rsyslog'
 package 'tmux'
 package 'less'
+package 'htop'
 
 # FIXME on Debian it's postgresql-client
 package 'postgresql'
