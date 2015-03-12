@@ -8,6 +8,10 @@ modulejs.define("NewCommunity", ['jquery'], function($) {
   function remove_image_builder_text() {
     $("label:contains('Image builder')").hide();
   }
+  
+  function hide_organization_template_fields(){
+    $('#template-options').hide();
+  }
 
   return {
 
@@ -18,6 +22,7 @@ modulejs.define("NewCommunity", ['jquery'], function($) {
     init: function() {
       replace_mandatory_message();
       remove_image_builder_text();
+      hide_organization_template_fields();
     }
   }
 })
