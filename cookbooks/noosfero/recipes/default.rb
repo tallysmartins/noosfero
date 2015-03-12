@@ -16,7 +16,7 @@ end
 
 # create DB schema
 execute 'noosfero:schema' do
-  command 'RAILS_ENV=production bundle exec rake db:schema:load && RAILS_ENV=production bundle exec rake db:data:minimal'
+  command "RAILS_ENV=production bundle exec rake db:schema:load && RAILS_ENV=production NOOSFERO_DOMAIN=#{node['conf']['external_hostname']} bundle exec rake db:data:minimal"
   cwd '/usr/lib/noosfero'
   user 'noosfero'
   not_if do
