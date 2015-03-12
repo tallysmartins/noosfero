@@ -1,4 +1,4 @@
-$SPB_ENV = ENV.fetch('SPB_ENV', 'development')
+$SPB_ENV = ENV.fetch('SPB_ENV', 'local')
 
 ssh_config_file = "config/#{$SPB_ENV}/ssh_config"
 ips_file = "config/#{$SPB_ENV}/ips.yaml"
@@ -37,7 +37,7 @@ end
 task :default => :test
 
 file 'ssh_config.erb'
-file 'config/development/ssh_config' => ['nodes.yaml', 'config/development/ips.yaml', 'ssh_config.erb'] do |t|
+file 'config/local/ssh_config' => ['nodes.yaml', 'config/local/ips.yaml', 'ssh_config.erb'] do |t|
   require 'erb'
   template = ERB.new(File.read('ssh_config.erb'))
   File.open(t.name, 'w') do |f|
@@ -46,7 +46,7 @@ file 'config/development/ssh_config' => ['nodes.yaml', 'config/development/ips.y
   puts 'ERB %s' % t.name
 end
 
-task :bootstrap_common => 'config/development/ssh_config'
+task :bootstrap_common => 'config/local/ssh_config'
 
 unless ENV['nodeps']
   task 'converge:integration' => 'converge:database'

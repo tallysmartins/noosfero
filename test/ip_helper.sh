@@ -7,4 +7,4 @@
 # Each entry in config/${SPB_ENV}/ips.yaml will have its own variable
 #
 
-eval $(sed -E '/[0-9]{1,3}\./!d; s/^ *//; s/: */=/' ${ROOTDIR:-.}/config/${SPB_ENV:-development}/ips.yaml)
+eval $(sed -E '/[0-9]{1,3}\./!d; s/^ *//; s/: */=/' ${ROOTDIR:-.}/config/${SPB_ENV:-local}/ips.yaml)

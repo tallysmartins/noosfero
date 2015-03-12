@@ -17,8 +17,8 @@ For development
 All configuration parameters are defined in `nodes.yaml`, with exception of IP
 addresses, which are defined in different files:
 
-- for development, the IP addresses of the Vagrant VMs are defined in
-  config/development/ips.yaml.
+- for local development, the IP addresses of the Vagrant VMs are defined in
+  config/local/ips.yaml.
 
 - for production, you need to create a new file called
   `config/production/ips.yaml`
@@ -63,7 +63,7 @@ You can also do `export SPB_ENV=production` in your shell and omit it in the
 
 See the output of `rake -T` for other tasks.
 
-## Viewing the running site in development
+## Viewing the running site when developping locally
 
 Run:
 
