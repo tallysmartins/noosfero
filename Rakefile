@@ -3,8 +3,10 @@ require 'chake'
 $SPB_ENV = ENV.fetch('SPB_ENV', 'development')
 $SPB_IPS = "ips.#{$SPB_ENV}.yaml"
 
+config = YAML.load_file("config/#{$SPB_ENV}/config.yaml")
 ips = YAML.load_file($SPB_IPS)
 $nodes.each do |node|
+  node.data['config'] = config
   node.data['peers'] = ips
 end
 

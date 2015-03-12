@@ -2,40 +2,19 @@ vagrant@integration:
   run_list:
     - role[server]
     - role[integration_server]
-  config: &CONFIG
-    admins:
-      -
-        - Paulo Meirelles
-        - paulo@softwarelivre.org
-    external_hostname: softwarepublico.dev
-    site_url: https://softwarepublico.dev
-    colab_from_address: '"Portal do Software Publico" <noreply@softwarepublico.dev>'
-    server_email: '"Portal do Software Publico" <noreply@softwarepublico.dev>'
-    email_subject_prefix: '[spb]'
-    lists_hostname: listas.softwarepublico.dev
-    lists_admin: paulo@softwarelivre.org
-    relay_hostname: relay.softwarepublico.dev
 vagrant@email:
   run_list:
     - role[server]
     - role[email_server]
-  config:
-    <<: *CONFIG
 vagrant@social:
   run_list:
     - role[server]
     - role[social_server]
-  config:
-    <<: *CONFIG
 vagrant@database:
   run_list:
     - role[server]
     - role[database_server]
-  config:
-    <<: *CONFIG
 vagrant@reverseproxy:
   run_list:
     - role[server]
     - role[reverse_proxy_server]
-  config:
-    <<: *CONFIG
