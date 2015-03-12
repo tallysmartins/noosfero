@@ -1,0 +1,13 @@
+admins:
+  -
+    - Paulo Meirelles
+    - paulo@softwarelivre.org
+external_hostname: dev.softwarepublico.gov.br
+site_url: https://dev.softwarepublico.gov.br
+colab_from_address: '"Portal do Software Publico (dev)" <noreply@dev.softwarepublico.gov.br>'
+server_email: '"Portal do Software Publico (dev)" <noreply@dev.softwarepublico.gov.br>'
+email_subject_prefix: '[spb|dev]'
+lists_hostname: listas.dev.softwarepublico.gov.br
+lists_admin: paulo@softwarelivre.org
+relay_hostname: relay.dev.softwarepublico.gov.br
+

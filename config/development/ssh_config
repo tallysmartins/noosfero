@@ -1,0 +1,30 @@
+Host *
+  ForwardAgent yes
+
+Host reverseproxy
+  Hostname 189.9.151.16
+  User spb
+
+Host database
+  Hostname 10.18.0.16
+  User spb
+  # connect via reverseproxy host
+  ProxyCommand ssh spb@189.9.151.16 nc %h %p
+
+Host social
+  Hostname 10.18.0.17
+  User spb
+  # connect via reverseproxy host
+  ProxyCommand ssh spb@189.9.151.16 nc %h %p
+
+Host email
+  Hostname 10.18.0.18
+  User spb
+  # connect via reverseproxy host
+  ProxyCommand ssh spb@189.9.151.16 nc %h %p
+
+Host integration
+  Hostname 10.18.0.19
+  User spb
+  # connect via reverseproxy host
+  ProxyCommand ssh spb@189.9.151.16 nc %h %p
