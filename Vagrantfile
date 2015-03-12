@@ -20,6 +20,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   config.vm.define 'integration' do |integration|
     integration.vm.network 'private_network', ip: ips['integration']
+    integration.vm.provider "virtualbox" do |v|
+      v.memory = 1024
+      v.cpus = 2
+    end
   end
   config.vm.define 'email' do |email|
     email.vm.network 'private_network', ip: ips['email']
