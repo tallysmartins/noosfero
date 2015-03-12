@@ -8,8 +8,8 @@ ENV['CHAKE_SSH_CONFIG'] = ssh_config_file
 
 require 'chake'
 
-if Chake::VERSION < '0.4'
-  fail "Please upgrade to chake 0.4+"
+if Chake::VERSION < '0.4.1'
+  fail "Please upgrade to chake 0.4.1+"
 end
 
 begin

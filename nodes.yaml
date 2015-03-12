@@ -1,20 +1,20 @@
-vagrant@integration:
+integration:
   run_list:
     - role[server]
     - role[integration_server]
-vagrant@email:
+email:
   run_list:
     - role[server]
     - role[email_server]
-vagrant@social:
+social:
   run_list:
     - role[server]
     - role[social_server]
-vagrant@database:
+database:
   run_list:
     - role[server]
     - role[database_server]
-vagrant@reverseproxy:
+reverseproxy:
   run_list:
     - role[server]
     - role[reverse_proxy_server]
