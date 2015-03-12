@@ -1,9 +1,16 @@
-require 'chake'
-
 $SPB_ENV = ENV.fetch('SPB_ENV', 'development')
 
+ssh_config_file = "config/#{$SPB_ENV}/ssh_config"
 ips_file = "config/#{$SPB_ENV}/ips.yaml"
 config_file = "config/#{$SPB_ENV}/config.yaml"
+
+ENV['CHAKE_SSH_CONFIG'] = ssh_config_file
+
+require 'chake'
+
+if Chake::VERSION < '0.4'
+  fail "Please upgrade to chake 0.4+"
+end
 
 config = YAML.load_file(config_file)
 ips = YAML.load_file(ips_file)
@@ -24,7 +31,7 @@ end
 task :default => :test
 
 file 'ssh_config.erb'
-file '.ssh_config' => ['nodes.yaml', ips_file,'ssh_config.erb'] do |t|
+file 'config/development/ssh_config' => ['nodes.yaml', 'config/development/ips.yaml', 'ssh_config.erb'] do |t|
   require 'erb'
   template = ERB.new(File.read('ssh_config.erb'))
   File.open(t.name, 'w') do |f|
@@ -33,7 +40,7 @@ file '.ssh_config' => ['nodes.yaml', ips_file,'ssh_config.erb'] do |t|
   puts 'ERB %s' % t.name
 end
 
-task :bootstrap_common => '.ssh_config'
+task :bootstrap_common => 'config/development/ssh_config'
 
 unless ENV['nodeps']
   task 'converge:integration' => 'converge:database'
