@@ -14,7 +14,7 @@
 
 <%= labelled_form_for :profile_data, :html => { :id => 'profile-data', :multipart => true } do |f| %>
 
-  <% if user.has_permission?('manage_environment_templates', profile.environment) %>
+  <% if environment.admins.include?(user) %>
     <div id="profile-is-template">
       <%= labelled_check_box(_('This profile is a template'), 'profile_data[is_template]', true, @profile.is_template) %>
     </div>
