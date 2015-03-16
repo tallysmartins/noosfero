@@ -1,3 +1,6 @@
+# enable EPEL repository by default
+package 'epel-release'
+
 package 'vim'
 package 'bash-completion'
 package 'rsyslog'
@@ -12,9 +15,6 @@ end
 
 # FIXME on Debian it's postgresql-client
 package 'postgresql'
-
-# enable EPEL repository by default
-package 'epel-release'
 
 # key for our custom repositories
 if node['platform'] == 'centos'
