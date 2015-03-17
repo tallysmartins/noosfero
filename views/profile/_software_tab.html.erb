@@ -11,7 +11,7 @@
   <%= content_tag('tr', content_tag('td', _("Internacionalizable:")) + content_tag('td', profile.software_info.intern ? _("Yes") : _("No"))) %>
   <%= display_mpog_field(_('Operating Platform:'), profile.software_info, :operating_platform, true) %>
   <%= display_mpog_field(_('Demonstration URL:'), profile.software_info, :demonstration_url, true) %>
-  <%= display_mpog_field(_('Acronym:'), profile.software_info, :acronym, true) %>
+  <%= display_mpog_field(_('Short Name:'), profile.software_info, :acronym, true) %
   <%= display_mpog_field(_('Objectives:'), profile.software_info, :objectives, true) %>
   <%= display_mpog_field(_('Features:'), profile.software_info, :features, true) %>
 

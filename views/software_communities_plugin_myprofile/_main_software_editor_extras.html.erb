@@ -3,7 +3,7 @@
   <%= text_field_tag("community[name]", @profile.name) %>
 </div>
 
-<h3> <%= _("Acronym") %> </h3>
+<h3> <%= _("Short Name") %> </h3>
 <div id="acronym">
   <%= text_field_tag("software[acronym]", @profile.software_info.acronym, :maxlength=>"10") %>
 </div>
