@@ -61,6 +61,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
         session[:notice] = _('Software updated successfully')
       end
     rescue ActiveRecord::RecordInvalid => invalid
+      update_new_software_errors
       session[:notice] = _('Could not update software')
     end
   end
@@ -76,9 +77,9 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
   def add_software_erros
       @errors = []
-      @errors |= @community.errors.full_messages
-      @errors |= @software_info.errors.full_messages
-      @errors |= @license_info.errors.full_messages
+      @errors |= @community.errors.full_messages if @community
+      @errors |= @software_info.errors.full_messages if @software_info
+      @errors |= @license_info.errors.full_messages if @license_info
   end
 
   def control_software_creation
@@ -221,18 +222,17 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
   def update_new_software_errors
     if request.post?
-      @community.valid?
-      @software_info.valid?
-      @license_info.valid?
+      @community.valid? if @community
+      @software_info.valid? if @software_info
+      @license_info.valid? if @license_info
       add_software_erros
     end
 
 
-    @error_community_name = @community.errors.include?(:name) ? "highlight-error" : ""
-    @error_software_domain = @community.errors.include?(:identifier) ? "highlight-error" : ""
-    @error_software_finality = @software_info.errors.include?(:finality) ? "highlight-error" : ""
-    @error_software_license = @license_info.errors.include?(:version) ? "highlight-error" : ""
-
-    puts '='*80, @community.errors.include?(:identifier), '='*80
+    @error_community_name = @community.errors.include?(:name) ? "highlight-error" : "" if @community
+    @error_software_acronym = @software_info.errors.include?(:acronym) ? "highlight-error" : "" if @software_info
+    @error_software_domain = @community.errors.include?(:identifier) ? "highlight-error" : "" if @community
+    @error_software_finality = @software_info.errors.include?(:finality) ? "highlight-error" : "" if @software_info
+    @error_software_license = @license_info.errors.include?(:version) ? "highlight-error" : "" if @license_info
   end
 end
