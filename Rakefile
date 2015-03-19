@@ -31,7 +31,7 @@ task :console do
 end
 
 task :test do
-  sh './test/run_all'
+  sh "SPB_ENV=#{$SPB_ENV} ./test/run_all"
 end
 
 task :default => :test

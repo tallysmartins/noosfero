@@ -4,7 +4,7 @@ export ROOTDIR="$(dirname $0)/.."
 run_on() {
   local vm="$1"
   shift
-  echo 'export PATH=/vagrant/test/bin:$PATH;' "$@" | ssh -F .ssh_config "$vm"
+  echo 'export PATH=/vagrant/test/bin:$PATH;' "$@" | ssh -F config/$SPB_ENV/ssh_config "$vm"
 }
 
 load_shunit2() {
