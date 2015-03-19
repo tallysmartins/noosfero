@@ -19,10 +19,7 @@ execute 'noosfero:schema' do
   command "RAILS_ENV=production bundle exec rake db:schema:load && RAILS_ENV=production NOOSFERO_DOMAIN=#{node['config']['external_hostname']} bundle exec rake db:data:minimal"
   cwd '/usr/lib/noosfero'
   user 'noosfero'
-  not_if do
-    # if the profiles table already exists, the schema was already loaded
-    system("psql -h database -U noosfero --no-align --tuples-only -q -c 'select count(*) from profiles'")
-  end
+  not_if "psql -h database -U noosfero --no-align --tuples-only -q -c 'select count(*) from profiles'", :user => 'noosfero'
   notifies :restart, 'service[noosfero]'
 end
 
