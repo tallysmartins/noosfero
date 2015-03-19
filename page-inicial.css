@@ -427,6 +427,18 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 
 /* Tela de Noticias Antigas */
 
+#content .block.display-last-news-block {
+    font-family: open_sansregular, Arial, Helvetica, sans-serif;
+    padding-right: 14px;
+}
+
+#content .block.display-last-news-block .title_top {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 9px;
+    margin-bottom: 26px;
+    text-transform: none;
+}
+
 #content .block.display-last-news-block .block-title {
     border-top: 4px solid #643C67;
     background: #eee;
@@ -434,13 +446,15 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 }
 
 .block.display-last-news-block li {
-    min-height: 88px;
+    min-height: 92px;
     border-top: 1px solid #eee;
-    padding-top: 24px;
+    padding-top: 20px;
+    list-style: none;
 }
 
 .block.display-last-news-block li:first-child  {
     border-top: 0px solid #eee;
+    padding-top: 0px;
 }
 
 .block.display-last-news-block .image {
@@ -450,7 +464,7 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
     float:left;
     border: 0px solid #c0c1c1;
     border-radius: 8px;
-    margin: 2px 20px 25px 0;
+    margin: 2px 19px 25px 0;
 }
 
 .block.display-last-news-block .image img {
@@ -461,20 +475,22 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 }
 
 .block.display-last-news-block .published-at {
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     color: #172738;
+    font-size: 13px;
 }
 
 .block.display-last-news-block .title {
     padding-left: 0px;
     padding-right: 0px;
-    max-height: 40px;
+    max-height: 44px;
     overflow: hidden;
     color: #172738;
 }
 
 #content .block.display-last-news-block .title {
     padding-right: 0px;
+    margin-bottom: 1px;
 }
 
 .block.display-last-news-block .title a {
@@ -482,8 +498,8 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: bold;
-    line-height: 1.3em;
-    color: #172738
+    line-height: 1.4em;
+    color: #172738;
     padding: 0;
 }
 
@@ -506,8 +522,21 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
     display: none;
 }
 
-.block.display-last-news-block a:visited, #content .block.display-last-news-block a:visited, .block.display-last-news-block dl.portlet a:visited {
+.block.display-last-news-block a:visited, 
+.block.display-last-news-block a:link, 
+.block.display-last-news-block a:hover, 
+.block.display-last-news-block a,
+.block.display-last-news-block dl.portlet a:visited {
     color: #172738;
+    text-decoration: none;
+}
+
+#content .block.display-last-news-block a:visited, 
+#content .block.display-last-news-block a:link, 
+#content .block.display-last-news-block a:hover, 
+#content .block.display-last-news-block a {
+    color: #172738;
+    text-decoration: none;
 }
 
 /*
