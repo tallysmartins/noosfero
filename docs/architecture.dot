@@ -1,0 +1,27 @@
+digraph architecture {
+
+  subgraph cluster_0 {
+    style=filled;
+    color="#d3d7cf";
+    label = "Local network";
+    node [style=filled,fillcolor=white];
+
+    reverseproxy  [shape=box];
+    social        [shape=box];
+    email         [shape=box];
+    integration   [shape=box];
+    database      [shape=box];
+
+    reverseproxy -> social    [label="HTTP"];
+    social -> integration     [label="HTTP"];
+    social -> database        [label="PostgreSQL (5432)"];
+    integration -> database   [label="PostgreSQL (5432)"];
+    email -> integration      [label="SMTP"];
+
+  }
+
+  internet  -> reverseproxy   [label="HTTP"];
+  internet  -> email          [label="SMTP"];
+  email     -> internet       [label="SMTP"];
+
+}
