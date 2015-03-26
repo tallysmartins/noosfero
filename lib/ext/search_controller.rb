@@ -3,9 +3,11 @@ require_dependency 'search_controller'
 class SearchController
 
   def communities
-    results = filter_communities_list do |community|
-      !community.software?
-    end
+    @scope = visible_profiles(Community)
+    full_text_search
+    results = @searches[@asset][:results]
+
+    results = results.each {|community| !community.software?}
     results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
@@ -13,11 +15,15 @@ class SearchController
 
   def software_infos
     prepare_software_search_page
-    results = filter_software_infos_list
+    @scope = visible_profiles(Community)
+    full_text_search
+    results = @searches[@asset][:results]
+
+    results = results.select {|community| community if community.software?}
     results = results.paginate(:per_page => @per_page, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
-    @software_count = filter_software_infos_list.count
+    @software_count = results.count
     render :layout=>false if request.xhr?
   end
 
