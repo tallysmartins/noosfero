@@ -6,6 +6,7 @@ Group:   Development/Tools
 License: Expat
 URL:     https://beta.softwarepublico.gov.br/gitlab/softwarepublico/gitlab
 Source0: %{name}-%{version}.tar.gz
+Patch0: avatar_url.patch
 BuildArch: noarch
 BuildRequires: gitlab-deps
 Requires: gitlab-deps, gitlab-shell, git
@@ -15,7 +16,7 @@ GitLab
 
 %prep
 %setup -q
-#%patch0 -p 1
+%patch0 -p 1
 
 %build
 cat > config/gitlab.yml <<EOF
@@ -97,6 +98,7 @@ ln -s /var/lib/gitlab/tmp  %{buildroot}/usr/lib/gitlab/tmp
 ln -s /var/lib/gitlab/.gitlab_shell_secret %{buildroot}/usr/lib/gitlab/.gitlab_shell_secret
 ln -s /var/lib/gitlab/.secret %{buildroot}/usr/lib/gitlab/.secret
 ln -s /var/lib/gitlab-assets %{buildroot}/usr/lib/gitlab/public/assets
+ln -s /var/lib/gitlab-uploads %{buildroot}/usr/lib/gitlab/public/uploads
 
 %post
 groupadd git || true
@@ -114,6 +116,7 @@ mkdir -p /var/lib/gitlab/backups
 mkdir -p /var/lib/gitlab/repositories
 mkdir -p /var/lib/gitlab/satellites
 mkdir -p /var/lib/gitlab/tmp
+mkdir -p /var/lib/gitlab-uploads
 touch /var/lib/gitlab/.gitconfig
 ln -s /var/lib/gitlab/.gitconfig /usr/lib/gitlab/.gitconfig
 chown -R git:git /var/lib/gitlab
