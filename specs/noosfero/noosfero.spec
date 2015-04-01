@@ -2,7 +2,7 @@
 
 Name:    noosfero
 Version: 1.1~rc2.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
 License: AGPLv3
@@ -10,7 +10,7 @@ URL:     http://noosfero.org
 Source0: %{name}-%{version}.tar.gz
 BuildArch: noarch
 BuildRequires: noosfero-deps, gettext, po4a
-Requires: noosfero-deps, po4a, tango-icon-theme
+Requires: noosfero-deps, po4a, tango-icon-theme, memcached
 
 %description
 Noosfero is a web platform for social and solidarity economy networks with blog,
