@@ -14,7 +14,7 @@ test_gitlab_responds() {
 
 test_static_content_served_correctly() {
   file=$(run_on integration ls -1 '/usr/lib/gitlab/public/assets/*.css' | head -1 | xargs basename)
-  assertTrue 'gitlab static content served by nginx' "run_on integration curl --head http://localhost:8081/gitlab/assets/$file | grep 'Content-Type: text/css'"
+  assertTrue 'gitlab static content served by nginx' "run_on integration curl --head http://localhost:81/gitlab/assets/$file | grep 'Content-Type: text/css'"
 }
 
 test_redirects_to_the_correct_host() {

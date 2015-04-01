@@ -3,7 +3,7 @@ upstream gitlab {
 }
 
 server {
-  listen                *:8081;
+  listen                *:81;
 
   server_name           <%= node['config']['external_hostname'] %>;
   underscores_in_headers  on; 
