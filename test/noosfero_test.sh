@@ -14,12 +14,12 @@ test_noosfero_on_subdir() {
 }
 
 test_reverse_proxy_noosfero() {
-  local meta="$(run_on social curl-host softwarepublico.dev http://localhost:8080/social | sed -e '/noosfero:root/ !d; s/^\s*//')"
+  local meta="$(run_on social curl-host softwarepublico.dev http://localhost/social | sed -e '/noosfero:root/ !d; s/^\s*//')"
   assertEquals '<meta property="noosfero:root" content="/social"/>' "$meta"
 }
 
 test_reverse_proxy_static_files() {
-  local content_type="$(curl-host softwarepublico.dev --head http://$social:8080/social/images/noosfero-network.png | grep-header Content-Type)"
+  local content_type="$(curl-host softwarepublico.dev --head http://$social/social/images/noosfero-network.png | grep-header Content-Type)"
   assertEquals "Content-Type: image/png" "$content_type"
 }
 
