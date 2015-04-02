@@ -34,8 +34,6 @@ task :test do
   sh "SPB_ENV=#{$SPB_ENV} ./test/run_all"
 end
 
-task :default => :test
-
 file 'ssh_config.erb'
 file 'config/local/ssh_config' => ['nodes.yaml', 'config/local/ips.yaml', 'ssh_config.erb'] do |t|
   require 'erb'
