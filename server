@@ -24,6 +24,6 @@ echo "Hit ctrl-c to stop"
 echo "Browse to: https://softwarepublico.dev/"
 echo "Browse to: https://listas.softwarepublico.dev/"
 echo
-trap cleanup INT TERM
+trap cleanup INT TERM EXIT
 tail -f /dev/null
 echo
