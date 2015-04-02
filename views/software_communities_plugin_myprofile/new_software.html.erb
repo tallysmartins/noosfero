@@ -33,25 +33,31 @@
 
     <%= required_fields_message %>
 
-    <%= label("name", _('Name'), {:class => 'formlabel mandatory'}) %>
-    <%= required text_field(:community, :name, :size => 30, :maxlength => 100, :id => 'community_name_id') %>
-
-    <br>
-    <br>
-
-    <%= label("domain", _('Domain'), {:class => "formlabel mandatory"}) %>
-    <div id='software-name-field' class='formfield'>
-
-      <span id='software-hostname'><%= environment.default_hostname %>/</span>
-      <%= required text_field(:community, :identifier, :size => 30, :maxlength => 100, :id => 'community-identifier') %>
+    <div class= <%= @error_community_name %> >
+      <%= label("name", _('Name'), {:class => 'formlabel mandatory'}) %>
+      <%= required text_field(:community, :name, :size => 30, :maxlength => 100, :id => 'community_name_id') %>
     </div>
 
-    <%= fields_for @software_info do |swf| %>
-      <div id="finality" class="formfield type-text">
-        <%= swf.label("finality" ,_("Finality"), :class=>"formlabel mandatory") %>
-        <%= required swf.text_area(:finality, :placeholder => _("What is the software for?"), :maxlength => 120) %>
+    <br>
+    <br>
+
+    <div class= <%= @error_software_domain %> >
+      <%= label("domain", _('Domain'), {:class => "formlabel mandatory"}) %>
+      <div id='software-name-field' class='formfield'>
+
+        <span id='software-hostname'><%= environment.default_hostname %>/</span>
+        <%= required text_field(:community, :identifier, :size => 30, :maxlength => 100, :id => 'community-identifier') %>
       </div>
-    <% end %>
+    </div>
+
+    <div class= <%= @error_software_finality %> >
+      <%= fields_for @software_info do |swf| %>
+        <div id="finality" class="formfield type-text">
+          <%= swf.label("finality" ,_("Finality"), :class=>"formlabel mandatory") %>
+          <%= required swf.text_area(:finality, :placeholder => _("What is the software for?"), :maxlength => 120) %>
+        </div>
+      <% end %>
+    </div>
 
     <div id="profile_change_picture_title" class="formlabel">
       <label>
@@ -64,16 +70,18 @@
         <% end %>
     </div>
 
-    <div id="profile_change_picture_title" class="formlabel formfieldline">
-      <label class="formlabel mandatory">
-        <%= _("License Version: ") %>
-      </label>
-        <%= render :partial => "license_info_fields", :locals => {
-          :license_version => "",
-          :license_id => "",
-          :another_version=>"",
-          :another_link=>""
-        } %>
+    <div class= <%= @error_software_license %> >
+      <div id="profile_change_picture_title" class="formlabel formfieldline">
+        <label class="formlabel mandatory">
+          <%= _("License Version: ") %>
+        </label>
+          <%= render :partial => "license_info_fields", :locals => {
+            :license_version => "",
+            :license_id => "",
+            :another_version=>"",
+            :another_link=>""
+          } %>
+      </div>
     </div>
 
     <%= fields_for @software_info do |swf| %>

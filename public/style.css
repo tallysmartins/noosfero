@@ -533,3 +533,7 @@ div#finality textarea {
   resize: none;
   height: 100px;
 }
+
+.highlight-error label {
+  color: #FF0000 !important;
+}
