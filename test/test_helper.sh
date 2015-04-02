@@ -1,5 +1,8 @@
 export PATH="$(dirname $0)/bin:$PATH"
 export ROOTDIR="$(dirname $0)/.."
+if [ -z "$SPB_ENV" ]; then
+  export SPB_ENV='local'
+fi
 
 run_on() {
   local vm="$1"
