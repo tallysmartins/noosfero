@@ -60,5 +60,5 @@ end
 template '/etc/nginx/conf.d/noosfero.conf' do
   owner 'root'; group 'root'; mode 0644
   source 'nginx.conf.erb'
-  notifies :reload, 'service[nginx]'
+  notifies :restart, 'service[nginx]'
 end
