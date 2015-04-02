@@ -49,25 +49,29 @@ execute 'compile-postfix-transport' do
   action :nothing
 end
 
-cookbook_file '/etc/postfix/postfix-to-mailman-centos.py' do
+# FIXME remove this after 2015-05-01
+file '/etc/postfix/postfix-to-mailman-centos.py' do
+  action :delete
+end
+
+cookbook_file '/usr/lib/mailman/bin/postfix-to-mailman.py' do
   owner 'root'
   group 'root'
   mode 0755
 end
 
-ruby_block 'configure-mailman-transport' do
-  block do
-    lines = [
-      'mailman   unix  -       n       n       -       -       pipe',
-      '  flags=FR user=mailman:mailman',
-      '  argv=/etc/postfix/postfix-to-mailman-centos.py ${nexthop} ${user}',
-    ]
-    File.open('/etc/postfix/master.cf', 'a') do |f|
-      lines.each do |line|
-        f.puts line
-      end
-    end
-  end
-  only_if { !system('grep', '^mailman', '/etc/postfix/master.cf')}
+#######################################################################
+# SELinux: allow Postfix pipe process to write to Mailman data
+#######################################################################
+cookbook_file '/etc/selinux/local/spb_postfix_mailman.te' do
+  notifies :run, 'execute[selinux-postfix-mailman]'
 end
+execute 'selinux-postfix-mailman' do
+  command 'selinux-install-module /etc/selinux/local/spb_postfix_mailman.te'
+  action :nothing
+end
+#######################################################################
 
+cookbook_file '/etc/postfix/master.cf' do
+  notifies :reload, 'service[postfix]'
+end

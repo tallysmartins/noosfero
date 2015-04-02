@@ -11,6 +11,18 @@ cookbook_file '/etc/selinux/config' do
   mode    0644
 end
 execute 'setenforce Enforcing'
+execute 'setsebool httpd_can_network_connect 1'
+# directory for local type enforcements
+directory '/etc/selinux/local' do
+  owner   'root'
+  group   'root'
+  mode    '0755'
+end
+cookbook_file '/usr/local/bin/selinux-install-module' do
+  owner   'root'
+  group   'root'
+  mode    '0755'
+end
 
 package 'vim'
 package 'bash-completion'

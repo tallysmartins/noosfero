@@ -1,0 +1,20 @@
+# MANAGED WITH CHEF; DO NOT CHANGE BY HAND
+
+module spb_postfix_mailman 1.0;
+
+require {
+	type postfix_etc_t;
+	type mailman_log_t;
+	type postfix_pipe_t;
+	type mailman_data_t;
+	class dir { write remove_name getattr search add_name };
+	class file { rename execute read create write getattr open append };
+}
+
+#============= postfix_pipe_t ==============
+
+allow postfix_pipe_t mailman_data_t:dir search;
+allow postfix_pipe_t mailman_data_t:dir { write remove_name getattr add_name };
+allow postfix_pipe_t mailman_data_t:file { rename write getattr read create open };
+allow postfix_pipe_t mailman_log_t:file { read getattr open append };
+allow postfix_pipe_t postfix_etc_t:file execute;
