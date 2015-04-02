@@ -2,6 +2,9 @@ server {
   server_name <%= node['config']['lists_hostname'] %>;
   listen 80;
 
+  access_log            /var/log/nginx/mailman.access.log;
+  error_log             /var/log/nginx/mailman.error.log;
+
   location = / {
     rewrite ^ /mailman/cgi-bin/listinfo permanent;
   }
