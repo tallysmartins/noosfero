@@ -1,6 +1,17 @@
 # enable EPEL repository by default
 package 'epel-release'
 
+# replicate production security setup
+package 'selinux-policy'
+package 'policycoreutils-python'
+cookbook_file '/etc/selinux/config' do
+  source  'selinux_config'
+  owner   'root'
+  group   'root'
+  mode    0644
+end
+execute 'setenforce Enforcing'
+
 package 'vim'
 package 'bash-completion'
 package 'rsyslog'
