@@ -1,0 +1,35 @@
+From 288dcead638c2c5597c6ce150d16bd5de6e1ff85 Mon Sep 17 00:00:00 2001
+From: Igor Gnatenko <i.gnatenko.brain@gmail.com>
+Date: Sun, 8 Sep 2013 09:40:30 +0400
+Subject: [PATCH 3/3] Respect the CFLAGS if defined
+
+https://bugzilla.redhat.com/show_bug.cgi?id=908096
+
+Signed-off-by: Igor Gnatenko <i.gnatenko.brain@gmail.com>
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index aa83142..3a8164b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,13 +1,13 @@
+ AC_INIT([libev], [4.15])
+ 
+-orig_CFLAGS="$CFLAGS"
+-
+ AC_CONFIG_SRCDIR([ev_epoll.c])
+ 
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_HEADERS([config.h])
+ AM_MAINTAINER_MODE
+ 
++orig_CFLAGS="$CFLAGS"
++
+ AC_PROG_CC
+ 
+ dnl Supply default CFLAGS, if not specified
+-- 
+1.8.3.1
+

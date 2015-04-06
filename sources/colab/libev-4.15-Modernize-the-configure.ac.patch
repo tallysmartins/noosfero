@@ -1,0 +1,35 @@
+From c681304443714aabf4ede3682074dd95a6ee6a5c Mon Sep 17 00:00:00 2001
+From: Igor Gnatenko <i.gnatenko.brain@gmail.com>
+Date: Sun, 8 Sep 2013 09:39:25 +0400
+Subject: [PATCH 2/3] Modernize the configure.ac
+
+Without it, Automake 1.13 and above will refuse it.
+
+See the details for AM_INIT_AUTOMAKE at:
+   http://www.gnu.org/software/automake/manual/automake.html#Public-Macros
+
+Signed-off-by: Igor Gnatenko <i.gnatenko.brain@gmail.com>
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f0c6d2b..aa83142 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,10 +1,10 @@
+-AC_INIT
++AC_INIT([libev], [4.15])
+ 
+ orig_CFLAGS="$CFLAGS"
+ 
+ AC_CONFIG_SRCDIR([ev_epoll.c])
+ 
+-AM_INIT_AUTOMAKE(libev,4.15) dnl also update ev.h!
++AM_INIT_AUTOMAKE
+ AC_CONFIG_HEADERS([config.h])
+ AM_MAINTAINER_MODE
+ 
+-- 
+1.8.3.1
+

@@ -1,0 +1,24 @@
+diff -Nru gitlab-7.6.2/app/models/user.rb gitlab/app/models/user.rb
+--- gitlab-7.6.2/app/models/user.rb	2015-02-05 16:58:28.000000000 -0200
++++ gitlab/app/models/user.rb	2015-03-26 11:37:51.994377572 -0300
+@@ -495,7 +495,7 @@
+ 
+   def avatar_url(size = nil)
+     if avatar.present?
+-      [gitlab_config.url, avatar.url].join("/")
++      [gitlab_config.url, avatar.url].join
+     else
+       GravatarService.new.execute(email, size)
+     end
+diff -Nru gitlab-7.6.2/spec/helpers/application_helper_spec.rb gitlab/spec/helpers/application_helper_spec.rb
+--- gitlab-7.6.2/spec/helpers/application_helper_spec.rb	2015-02-05 16:58:28.000000000 -0200
++++ gitlab/spec/helpers/application_helper_spec.rb	2015-03-26 11:38:17.070378297 -0300
+@@ -73,7 +73,7 @@
+       user = create(:user)
+       user.avatar = File.open(avatar_file_path)
+       user.save!
+-      avatar_icon(user.email).to_s.should match("/gitlab//uploads/user/avatar/#{ user.id }/gitlab_logo.png")
++      avatar_icon(user.email).to_s.should match("/gitlab/uploads/user/avatar/#{ user.id }/gitlab_logo.png")
+     end
+ 
+     it "should call gravatar_icon when no avatar is present" do
