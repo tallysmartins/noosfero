@@ -77,18 +77,6 @@ class SoftwareCommunitiesPluginController < ApplicationController
     render :json => list.to_json
   end
 
-  def get_categories
-    redirect_to "/" if !request.xhr? || params[:query].blank?
-
-    list = []
-
-    Category.where("name ILIKE ?", "%#{params[:query]}%").collect { |c|
-      list << {:label=>c.name, :id=>c.id} if c.name != "Software"
-    }
-
-    render :json => list.to_json
-  end
-
   def get_brazil_states
     redirect_to "/" unless request.xhr?
 

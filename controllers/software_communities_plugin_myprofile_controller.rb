@@ -30,13 +30,6 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
     update_new_software_errors
   end
 
-  def search_offerers
-    arg = params[:q].downcase
-    result = environment.people.find(:all,
-                                     :conditions => [ 'LOWER(name) LIKE ?', "%#{arg}%"])
-    render :text => prepare_to_token_input(result).to_json
-  end
-
   def edit_software
     update_software_atributes
 
@@ -68,9 +61,6 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
   def disabled_public_software_field
     !environment.admins.include?(current_user.person)
-  end
-
-  def community_must_be_approved
   end
 
   private

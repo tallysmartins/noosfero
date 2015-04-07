@@ -177,13 +177,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
 
   protected
 
-  def create_url_to_edit_profile person
-    new_url = person.public_profile_url
-    new_url[:controller] = 'profile_editor'
-    new_url[:action] = 'edit'
-    new_url
-  end
-
   def profile_required_list
     fields = {}
     fields[:person_fields] = %w(cell_phone
@@ -279,11 +272,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     manage_user_institutions(user, old_communities, new_communities)
   end
 
-  def show_sisp_field
-    current_person = User.find(context.session[:user]).person
-    context.environment.admins.include?(current_person)
-  end
-
   def call_model_transaction(model,name)
     send(name + '_transaction') if context.params.key?(model.to_sym)
   end
@@ -355,17 +343,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       :content => Proc::new do render :partial => 'profile/institution_tab' end,
       :start => true
     }
-  end
-
-  def call_percentage_profile_template(person)
-    if context.profile && context.profile.person? && !person.nil?
-      @person = person
-      @percentege = calc_percentage_registration(person)
-
-      if @percentege >= 0 && @percentege <= 100
-        expanded_template('incomplete_registration.html.erb')
-      end
-    end
   end
 
   def update_user_institutions(user)
