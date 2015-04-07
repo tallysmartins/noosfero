@@ -2,111 +2,6 @@
   display: none;
 }
 
-#edit-download-block{
-  width: 820px;
-  position: relative;
-  left: -24px;
-}
-.download-list-name{
-  margin-left: 40px;
-}
-
-.download-list-link{
-  margin-left: 150px;
-}
-
-.download-list-software-description{
-  margin-left: 100px;
-}
-
-.download-list-minimum-requirements{
-  margin-left: 70px;
-}
-
-.download-list-size{
-  margin-left: 35px;
-}
-
-#droppable-list-downloads{
-  padding-left: 23px;
-  margin-top: -12px;
-}
-#droppable-list-downloads li{
-  list-style-type: none;
-}
-
-.download-list-row{
-  line-height: 25px;
-  margin-bottom: 5px;
-  padding: 10px 1px 10px 0px;
-  cursor: pointer;
-  width: 97%;
-}
-.download-list-row li{
-  list-style-type: none;
-  display: inline;
-  margin-left: 5px;
-}
-
-.download-list-row li div{
-  float: left;
-  margin-top: 4px;
-}
-
-.download-list-row li a{
-  line-height: 27px !important;
-  padding-right: 5px;
-}
-
-.block_download_name {
-  width: 100px;
-}
-
-.block_download_link {
-  width: 200px;
-  margin-left: 10px;
-}
-
-.block_download_minimum_requirements {
-  width: 200px;
-  margin-left: 10px;
-}
-
-.block_download_software_description {
-  width: 100px;
-}
-
-.block_download_size {
-  width: 50px;
-}
-
-#signup-form small#secondary-email-balloon ,
-#signup-form small#area-interest-balloon {
-  display: none;
-  width: 142px;
-  height: 69px;
-  color: #FFFFFF;
-  font-weight: bold;
-  font-size: 11px;
-  padding: 5px 10px 45px 10px;
-  margin: 0;
-  line-height: 1.5em;
-  background: transparent url(/images/gray-balloon.png) bottom center no-repeat;
-  position: absolute;
-  z-index: 2;
-  right: -150px;
-}
-
-#signup-form #signup-secondary-email,
-#signup-form #signup-area-interest {
-  position: relative;
-}
-
-#signup-form small#secondary-email-balloon,
-#signup-form small#area-interest-balloon {
-  top: -80px;
-}
-
 .dynamic-table {
   border: solid 1px #000;
   margin-top: 5px;
@@ -117,14 +12,6 @@
 }
 .dynamic-table input {
   width: 220px;
-}
-
-.mpog-incomplete-percentage img {
-  margin-left: 5px;
-}
-
-.mpog-incomplete-percentage img:hover {
-  cursor: pointer;
 }
 
 #institution_dialog {
@@ -142,33 +29,6 @@
 
 .show-field {
   display: block !important;
-}
-
-#user_filter_content {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.software_search_form_fields {
-  margin-top: 10px;
-  width: 80%;
-  height: auto;
-  position: relative;
-  float: left;
-}
-
-.software_search_form_button {
-  margin-top: 10px;
-}
-
-.software_search_form_fields input[type='text'] {
-  width: 90%;
-
-}
-
-.software_search_form_table tr td:first-child {
-  width: 22%;
 }
 
 .formfieldline {
@@ -242,8 +102,6 @@
   color: red;
 }
 
-
-#content .institutions-block ul,
 #content .softwares-block ul {
   min-width: 196px;
   width: 192px;
@@ -251,13 +109,11 @@
   padding: 0px;
 }
 
-#content .box-1 .institutions-block ul,
 #content .box-1 .softwares-block ul {
   width: auto;
   display: block;
 }
 
-#content .institutions-block .block-footer-content a,
 #content .softwares-block .block-footer-content a {
   position: absolute;
   top: 2px;
@@ -268,7 +124,6 @@
   padding-right: 15px;
 }
 
-#content .institutions-block .block-footer-content a,
 #content .softwares-block .block-footer-content a {
   background: url(../../../designs/themes/base/imgs/arrow-right-p.png) 100% 50% no-repeat;
 }
@@ -291,249 +146,4 @@
 #catalog-list ul li span {
   cursor: pointer;
   margin-left: 5px;
-}
-
-.catalog-remove-item {
-  padding: 3px;
-  border: solid 1px #999;
-  border-radius: 3px;
-}
-
-.category_box {
-  font-size: 11px;
-  border:1px solid #e9e8ed;
-  border-radius:8px;
-  background-color:#e9e8ed;
-  padding:3px 6px;
-  margin: 10px 3px;
-  color: blue;
-}
-
-.search-results-type-software_info li {
-  width: 100% !important;
-  display: block !important;
-}
-
-/* Start software block main area definitions */
-.software-block {
-  position: relative;
-  float: left;
-  margin: 0px 10px 10px 0px;
-  width: 30%;
-  height: 200px;
-  word-wrap: break-word;
-  overflow: hidden;
-}
-
-.software-block-logo {
-  width: 150px;
-  height: 150px;
-  margin: 0px auto;
-}
-
-.software-block-content, .software-block-finality {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-}
-
-.software-block-finality {
-  background-color: #fff;
-  top: 100%;
-  display: block;
-  background-color:rgba(255, 255, 255, 0.9);
-}
-/* End software block main area definitions */
-
-/* Software catalog definitions */
-
-#main-content-wrapper-8 h2{
-  margin:0px;
-  font-family: arial;
-  font-weight: normal;
-  font-size: 16px;
-  color: #F50054;
-  text-transform: uppercase;
-}
-
-#main-content-wrapper-8 h1{
-  font-family: arial;
-  color:#121D2B;
-}
-
-.search-form{
-  background:#EAEBEE; /*#1A397D;*/
-  /*padding:10px;*/
-  padding: 5px 5px 1px 10px;
-  border-top-left-radius:4px;
-  border-top-right-radius: 4px;
-}
-
-.search-form h3{
-  text-transform: uppercase;
-  font-family: arial;
-  font-size: 14px;
-  margin-bottom: 5px;
-  color:#2B51A8;
-}
-
-#search-input{
-  width: 700px;
-  border-radius:3px;
-  font-size: 140%;
-  background: #ffffff;
-  border: medium none;
-}
-
-input.button.with-text.icon-search.submit{
-  font-size: 14px;
-  background:#2B51A8; /*#2B65CD;*#1A397D;*/
-  margin-top:8px;
-  color:#ffffff;
-  text-transform: uppercase;
-  border-radius: 4px;
-  /*border: 1px solid #ffffff;*/
-  border: 1px solid #2B51A8;
-  padding: 5px 15px;
-
-}
-
-#filter-option-catalog-software{
-  padding:8px;
-  color:#000;
-  text-transform: uppercase;
-  text-align: right;
-  border-top: 1px solid #ffffff;
-  background-color: #D4D5DC; /*#172857;*/
-  border-bottom-left-radius:4px;
-  border-bottom-right-radius: 4px;
-}
-
-#filter-option-catalog-software:hover{
-  background-color: #2B65CD;
-  border-bottom-left-radius:4px;
-  border-bottom-right-radius: 4px;
-  cursor:pointer;
-}
-
-#filter-categories-select-catalog{
-  border-top: 1px solid #ffffff;
-  margin:0px;
-  cursor:pointer;
-  padding: 8px;
-  /*color: #FFF;*/
-  text-transform: uppercase;
-}
-
-#filter-categories-option{
-  border-top: 1px solid #ffffff;
-  padding: 15px 10px;
-}
-
-#filter-categories-catalog h4{
-  margin:10px 5px;
-  color:#000;
-}
-
-#group-categories{
-  line-height: 31px;
-}
-
-#gruop-catalog-01{
-  float:left;
-  width: 50%;
-}
-
-#gruop-catalog-02{
-  margin-left: 50%;
-  line-height: 31px;
-}
-
-.project-software{
-  border-top: 1px dashed;
-  border-bottom: 1px dashed;
-  margin-top:10px;
-  padding:10px;
-}
-
-
-#filter-catalog-software{
-  /*border: 1px solid #ffffff;*/
-  background-color: #D4D5DC; /*#ccc;#172857;*/
-  border-bottom-left-radius:4px;
-  border-bottom-right-radius: 4px;
-
-}
-
-#cleanup-filter-catalg{
-  margin-left:5px;
-}
-
-#cleanup-filter-catalg{
-  background:#2B65CD; /*#1A397D;*/
-  margin-top:5px;
-  color:#ffffff;
-  /*text-transform: uppercase;*/
-  border-radius: 4px;
-  /*border: 1px solid #ffffff;*/
-  border: 1px solid #2B65CD;
-  padding: 5px 10px;
-  font-size: 12px;
-}
-#cleanup-filter-catalg:hover{
-  background-color: #172857;
-}
-
-#close-filter-catalog{
-  float:right;
-  border:none;
-  background: none;
-  font-size:12px;
-  margin-top: 5px;
-  color: #000;
-  text-transform: uppercase;
-  padding: 5px;
-
-}
-
-input[type=checkbox] {
-  border:1px solid #000;
-  margin:8px;
-  cursor:pointer;
-}
-
-#catalog-display-options {
-  position: relative;
-  width: 100%;
-}
-
-#catalog-display-options-count, #catalog-display-options-show-and-sort {
-  position: relative;
-  float: left;
-  width: 50%;
-}
-
-#catalog-display-options-show, #catalog-display-options-sort {
-  position: relative;
-  float: left;
-  width: 50%;
-  text-align: right;
-}
-
-/* End software catalog definitions */
-
-div.step-explanation {
-  margin-top: 2px;
-  margin-bottom: 15px;
-}
-
-div#finality textarea {
-  resize: none;
-  height: 100px;
-}
-
-.highlight-error label {
-  color: #FF0000 !important;
 }
