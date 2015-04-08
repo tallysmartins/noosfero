@@ -1,0 +1,12 @@
+<div class="formfieldline">
+  <%= label_tag "user[secondary_email]", _('Secondary e-mail')+":", :class=>"formlabel" %>
+
+  <div class="formfield type-text">
+    <%= text_field_tag "user[secondary_email]", context.profile.user.secondary_email %>
+  </div>
+</div>
+
+<%= hidden_field_tag("full_name_error", _("Should begin with a capital letter and no special characters")) %>
+<%= hidden_field_tag("email_error", _("Email should have the following format: name@host.br")) %>
+<%= hidden_field_tag("site_error", _("Site should have a valid format: http://name.hosts")) %>
+<div id="email_public_message"><%= _("If you work in a public agency use your government e-Mail") %> </div>
