@@ -17,22 +17,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     _('Add Public Software and MPOG features.')
   end
 
-  # Hotspot to insert html without an especific hotspot on view.
-  def body_beginning
-    return if context.session[:user].nil? or context.session[:hide_incomplete_percentage] == true
-
-    person = context.environment.people.where(:user_id=>context.session[:user]).first
-
-    if context.profile && context.profile.person? and !person.nil?
-      @person = person
-      @percentege = calc_percentage_registration(person)
-
-      if @percentege >= 0 and @percentege < 100
-        expanded_template('incomplete_registration.html.erb')
-      end
-    end
-  end
-
   def profile_editor_extras
     profile = context.profile
 
@@ -125,7 +109,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       views/new-software.js
       views/user-edit-profile.js
       views/create-institution.js
-      views/complete-registration.js
       views/search-software-catalog.js
       views/profile-tabs-software.js
       views/new-community.js
@@ -152,17 +135,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     end
   end
 
-  def calc_percentage_registration(person)
-    required_list = profile_required_list
-    empty_fields = profile_required_empty_list person
-    count = required_list[:person_fields].count +
-            required_list[:user_fields].count
-    percentege = 100 - ((empty_fields.count * 100) / count)
-    person.percentage_incomplete = percentege
-    person.save(validate: false)
-    percentege
-  end
-
   def admin_panel_links
     [
       {
@@ -176,37 +148,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   end
 
   protected
-
-  def profile_required_list
-    fields = {}
-    fields[:person_fields] = %w(cell_phone
-                                contact_phone
-                                comercial_phone
-                                country
-                                city
-                                state
-                                organization_website
-                                image
-                                identifier
-                                name)
-
-    fields[:user_fields] = %w(secondary_email email)
-    fields
-  end
-
-
-  def profile_required_empty_list(person)
-    empty_fields = []
-    required_list = profile_required_list
-
-    required_list[:person_fields].each do |field|
-      empty_fields << field.sub('_',' ') if person.send(field).blank?
-    end
-    required_list[:user_fields].each do |field|
-      empty_fields << field.sub('_',' ') if person.user.send(field).blank?
-    end
-    empty_fields
-  end
 
   def user_transaction
     user_editor_institution_actions

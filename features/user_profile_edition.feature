@@ -23,11 +23,6 @@ Feature: Institution Field
       | Ministerio do Planejamento | MP      | BR      | DF    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             | Ministerio do Planejamento |
     And I am logged in as mpog_admin
 
-  Scenario: Go to control panel when clicked on 'Complete your profile' link
-    When I follow "Complete your profile"
-    Then I should see "Profile settings for "
-    And I should see "Personal information"
-
   @selenium
   Scenario: Add more then one instituion on profile editor
     Given I follow "Edit Profile"
@@ -38,11 +33,6 @@ Feature: Institution Field
     And I follow "Add new institution"
     Then I should see "Ministerio do Planejamento" within ".institutions_added"
     And I should see "Governo do DF" within ".institutions_added"
-
-  @selenium
-  Scenario: Verify text information to use governmental e-mail
-    Given I follow "Edit Profile"
-    Then I should see "If you work in a public agency use your government e-Mail"
 
   @selenium
   Scenario: Verify if field 'city' is shown when Brazil is selected
@@ -61,4 +51,3 @@ Feature: Institution Field
     And I fill in "input_institution" with "Some Nonexistent Institution"
     And I sleep for 1 seconds
     Then I should see "No institution found"
-

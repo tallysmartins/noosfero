@@ -46,13 +46,12 @@ module PluginTestHelper
     community
   end
 
-  def create_person name, email, password, password_confirmation, secondary_email, state, city
+  def create_person name, email, password, password_confirmation, state, city
     user = create_user(
       name.to_slug,
       email,
       password,
       password_confirmation,
-      secondary_email
     )
     person = Person::new
 
@@ -70,14 +69,13 @@ module PluginTestHelper
     person
   end
 
-  def create_user login, email, password, password_confirmation, secondary_email
+  def create_user login, email, password, password_confirmation
     user = User.new
 
     user.login = login
     user.email = email
     user.password = password
     user.password_confirmation = password_confirmation
-    user.secondary_email = secondary_email
 
     user
   end

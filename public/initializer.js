@@ -7,7 +7,6 @@
     'NewSoftware',
     'UserEditProfile',
     'CreateInstitution',
-    'CompleteRegistration',
     'SearchSoftwareCatalog',
     'SoftwareDownload',
     'ProfileTabsSoftware',

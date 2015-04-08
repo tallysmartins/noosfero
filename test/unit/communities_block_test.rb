@@ -5,7 +5,7 @@ require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 class CommunitiesBlockTest < ActiveSupport::TestCase
   include PluginTestHelper
   def setup
-    @person = create_person("My Name", "user@email.com", "123456", "123456", "user@secondary_email.com", "Any State", "Some City")
+    @person = create_person("My Name", "user@email.com", "123456", "123456", "Any State", "Some City")
 
     @gov_power = GovernmentalPower.create(:name=>"Some Gov Power")
     @gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")

@@ -27,7 +27,6 @@ class SoftwaresBlockTest < ActiveSupport::TestCase
             "jose_augusto@email.com",
             "aaaaaaa",
             "aaaaaaa",
-            "jose_silva@email.com",
             "DF",
             "Gama"
           )
