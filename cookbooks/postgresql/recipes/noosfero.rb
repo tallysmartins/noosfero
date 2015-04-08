@@ -14,4 +14,3 @@ execute 'createdb:noosfero' do
   end
 end
 
-
