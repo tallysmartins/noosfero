@@ -11,7 +11,6 @@ class Community
   attr_accessible :visible
 
   has_one :software_info, :dependent=>:destroy
-  has_one :institution, :dependent=>:destroy
 
   def self.create_after_moderation(requestor, attributes = {})
     community = Community.new(attributes)
@@ -29,10 +28,6 @@ class Community
 
   def software?
     return !software_info.nil?
-  end
-
-  def institution?
-    return !institution.nil?
   end
 
   def deactivate

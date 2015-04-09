@@ -4,15 +4,6 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
   def index
   end
 
-  def edit_institution
-    @show_sisp_field = environment.admins.include?(current_user.person)
-    @state_list = NationalRegion.find(:all, :conditions =>
-                                            { :national_region_type_id =>  2 },
-                                             :order => 'name')
-    @institution = @profile.institution
-    update_institution if request.post?
-  end
-
   def new_software
     set_software_as_template
 
@@ -79,31 +70,6 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
     else
       add_software_erros
     end
-  end
-
-  def update_institution
-    @institution.community.update_attributes(params[:community])
-    @institution.update_attributes(params[:institutions].except(:governmental_power, :governmental_sphere, :juridical_nature))
-    if @institution.type == "PublicInstitution"
-      begin
-        governmental_updates
-      rescue
-        @institution.errors.add(:governmental_fields,
-                                _("Could not find Governmental Power or Governmental Sphere"))
-      end
-    end
-    flash[:errors] = @institution.errors.full_messages unless @institution.valid?
-  end
-
-  def governmental_updates
-    gov_power = GovernmentalPower.find params[:institutions][:governmental_power]
-    gov_sphere = GovernmentalSphere.find params[:institutions][:governmental_sphere]
-    jur_nature = JuridicalNature.find params[:institutions][:juridical_nature]
-
-    @institution.juridical_nature = jur_nature
-    @institution.governmental_power = gov_power
-    @institution.governmental_sphere = gov_sphere
-    @institution.save
   end
 
   def software_info_insert_models

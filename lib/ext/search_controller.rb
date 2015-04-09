@@ -4,21 +4,12 @@ class SearchController
 
   def communities
     results = filter_communities_list do |community|
-      !community.software? and !community.institution?
+      !community.software?
     end
     results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
   end
-
-  def institutions
-    @titles[:institutions] = _("Institution Catalog")
-    results = filter_communities_list{|community| community.institution?}
-    results = results.paginate(:per_page => 24, :page => params[:page])
-    @searches[@asset] = {:results => results}
-    @search = results
-  end
-
 
   def software_infos
     prepare_software_search_page

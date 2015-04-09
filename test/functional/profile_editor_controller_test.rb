@@ -28,68 +28,6 @@ class ProfileEditorControllerTest < ActionController::TestCase
     login_as('adminuser')
     @environment.add_admin(admin)
     @environment.save
-
-    @govPower = GovernmentalPower.create(:name=>"Some Gov Power")
-    @govSphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
-    @juridical_nature = JuridicalNature.create(:name => "Autarquia")
-
-    @institution_list = []
-    @institution_list << InstitutionTestHelper.create_public_institution(
-      "Ministerio Publico da Uniao",
-      "MPU",
-      "BR",
-      "DF",
-      "Gama",
-      @juridical_nature,
-      @govPower,
-      @govSphere,
-      "12.345.678/9012-45"
-    )
-
-    @institution_list << InstitutionTestHelper.create_public_institution(
-      "Tribunal Regional da Uniao",
-      "TRU",
-      "BR",
-      "DF",
-      "Brasilia",
-      @juridical_nature,
-      @govPower,
-      @govSphere,
-      "12.345.678/9012-90"
-    )
-  end
-
-  should "add new institution for user into edit profile" do
-    user = create_basic_user
-
-    params_user = Hash.new
-    params_user[:institution_ids] = []
-
-    @institution_list.each do |institution|
-      params_user[:institution_ids] << institution.id
-    end
-
-    post :edit, :profile => User.last.person.identifier, :user => params_user
-
-    assert_equal @institution_list.count, User.last.institutions.count
-  end
-
-  should "remove institutions for user into edit profile" do
-    user = create_basic_user
-
-    @institution_list.each do |institution|
-      user.institutions << institution
-    end
-    user.save!
-
-    params_user = Hash.new
-    params_user[:institution_ids] = []
-
-    assert_equal @institution_list.count, User.last.institutions.count
-
-    post :edit, :profile => User.last.person.identifier, :user => params_user
-
-    assert_equal 0, User.last.institutions.count
   end
 
   should "redirect to edit_software_community on edit community of software" do
