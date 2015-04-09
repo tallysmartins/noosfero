@@ -18,4 +18,14 @@ class Person
     self.user.secondary_email = value unless self.user.nil?
   end
 
+  def institutions
+    institutions = []
+    unless self.user.institutions.nil?
+      self.user.institutions.each do |institution|
+        institutions << institution.name
+      end
+    end
+    institutions
+  end
+
 end

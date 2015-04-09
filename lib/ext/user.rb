@@ -4,6 +4,8 @@ class User
 
   GOV_SUFFIX = /^.*@[gov.br|jus.br|leg.br|mp.br]+$/
 
+  has_and_belongs_to_many :institutions
+
   validate :email_different_secondary?, :email_has_already_been_used?,
   :secondary_email_format, :email_suffix_is_gov?
 
