@@ -125,13 +125,15 @@ class GovUserPlugin < Noosfero::Plugin
     vendor/modulejs-1.5.0.min.js
     vendor/jquery.js
     lib/noosfero-root.js
+    lib/select-element.js
+    lib/select-field-choices.js
     views/complete-registration.js
-    initializer.js
-    app.js
     views/control-panel.js
     views/create-institution.js
     views/new-community.js
     views/user-edit-profile.js
+    initializer.js
+    app.js
     )
   end
 

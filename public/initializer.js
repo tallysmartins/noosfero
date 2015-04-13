@@ -2,9 +2,11 @@
   'use strict';
 
   var dependencies = [
-  'CompleteRegistration',
-  'UserEditProfile',
-  'CreateInstitution'
+    'ControlPanel',
+    'CreateInstitution',
+    'CompleteRegistration',
+    'UserEditProfile',
+    'NewCommunity'
   ];
 
 

@@ -3,13 +3,13 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
   var AJAX_URL = {
     create_institution_modal:
-      NoosferoRoot.urlWithSubDirectory("/plugin/software_communities/create_institution"),
+      NoosferoRoot.urlWithSubDirectory("/plugin/gov_user/create_institution"),
     new_institution:
-      NoosferoRoot.urlWithSubDirectory("/plugin/software_communities/new_institution"),
+      NoosferoRoot.urlWithSubDirectory("/plugin/gov_user/new_institution"),
     institution_already_exists:
-      NoosferoRoot.urlWithSubDirectory("/plugin/software_communities/institution_already_exists"),
+      NoosferoRoot.urlWithSubDirectory("/plugin/gov_user/institution_already_exists"),
     get_institutions:
-      NoosferoRoot.urlWithSubDirectory("/plugin/software_communities/get_institutions")
+      NoosferoRoot.urlWithSubDirectory("/plugin/gov_user/get_institutions")
   };
 
 
@@ -43,7 +43,6 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
   function show_private_institutions_fields() {
     $(".public-institutions-fields").hide();
-
     $("#institutions_governmental_power option").selected(0);
     $("#institutions_governmental_sphere option").selected(0);
   }
@@ -188,6 +187,8 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
 
   function add_new_institution(evt) {
+    (" JAJAjAjAJAJaJ ADD NEW INST")
+
     evt.preventDefault();
     var selected = $("#institution_selected");
     var institution_already_added = $(".institutions_added li[data-institution='"+selected.val()+"']").length;
@@ -218,7 +219,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
 
   function add_mask_to_form_items() {
-    $(".intitution_cnpj_field").mask("99.999.999/9999-99");
+//    $(".intitution_cnpj_field").mask("99.999.999/9999-99");
   }
 
 

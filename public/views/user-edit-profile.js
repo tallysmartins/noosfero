@@ -23,7 +23,7 @@ modulejs.define('UserEditProfile', ['jquery', 'SelectElement', 'SelectFieldChoic
 
 
   function show_state_if_country_is_brazil() {
-    var selectFieldChoices = new SelectFieldChoices("#state_field", "#city_field", "/plugin/software_communities/get_brazil_states");
+    var selectFieldChoices = new SelectFieldChoices("#state_field", "#city_field", "/plugin/gov_user/get_brazil_states");
     set_initial_form_custom_data(selectFieldChoices);
 
     $("#profile_data_country").change(function(){
@@ -43,14 +43,14 @@ modulejs.define('UserEditProfile', ['jquery', 'SelectElement', 'SelectFieldChoic
   function show_or_hide_phone_mask() {
     if($("#profile_data_country").val() === "BR") {
       if( (typeof $("#profile_data_cell_phone").data("rawMaskFn") === 'undefined') ) {
-        $("#profile_data_cell_phone").mask("(99) 9999?9-9999");
-        $("#profile_data_comercial_phone").mask("(99) 9999?9-9999");
-        $("#profile_data_contact_phone").mask("(99) 9999?9-9999");
+        // $("#profile_data_cell_phone").mask("(99) 9999?9-9999");
+        // $("#profile_data_comercial_phone").mask("(99) 9999?9-9999");
+        // $("#profile_data_contact_phone").mask("(99) 9999?9-9999");
       }
     } else {
-      $("#profile_data_cell_phone").unmask();
-      $("#profile_data_comercial_phone").unmask();
-      $("#profile_data_contact_phone").unmask();
+      // $("#profile_data_cell_phone").unmask();
+      // $("#profile_data_comercial_phone").unmask();
+      // $("#profile_data_contact_phone").unmask();
     }
   }
 
@@ -182,7 +182,7 @@ modulejs.define('UserEditProfile', ['jquery', 'SelectElement', 'SelectFieldChoic
   function set_fields_validations() {
     $("#profile_data_country").blur(show_or_hide_phone_mask);
 
-    $("#profile_data_birth_date").mask("99/99/9999");
+    // $("#profile_data_birth_date").mask("99/99/9999");
 
     fix_phone_mask_format("#profile_data_cell_phone");
     fix_phone_mask_format("#profile_data_comercial_phone");

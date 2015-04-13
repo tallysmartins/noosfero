@@ -4,7 +4,7 @@ modulejs.define('CompleteRegistration', ['jquery', 'NoosferoRoot'], function($, 
 
   var AJAX_URL = {
     hide_registration_incomplete_percentage:
-    NoosferoRoot.urlWithSubDirectory("/plugin/software_communities/hide_registration_incomplete_percentage")
+    NoosferoRoot.urlWithSubDirectory("/plugin/gov_user/hide_registration_incomplete_percentage")
   };
 
 

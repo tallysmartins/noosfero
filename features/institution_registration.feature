@@ -4,10 +4,10 @@ Feature: Institution Field
   So others users can use it
 
   Background:
-    Given "SoftwareCommunitiesPlugin" plugin is enabled
+    Given "GovUserPlugin" plugin is enabled
     And I am logged in as mpog_admin
     And I go to /admin/plugins
-    And I check "SoftwareCommunitiesPlugin"
+    And I check "GovUserPlugin"
     And I press "Save changes"
     And Institutions has initial default values on database
     And I am logged in as mpog_admin
