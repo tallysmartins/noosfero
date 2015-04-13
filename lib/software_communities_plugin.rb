@@ -73,14 +73,12 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       vendor/jquery.js
       lib/noosfero-root.js
       lib/select-element.js
-      lib/select-field-choices
+      lib/select-field-choices.js
       lib/auto-complete.js
       lib/software-catalog-component.js
       views/control-panel.js
       views/edit-software.js
       views/new-software.js
-      views/user-edit-profile.js
-      views/create-institution.js
       views/search-software-catalog.js
       views/profile-tabs-software.js
       views/new-community.js

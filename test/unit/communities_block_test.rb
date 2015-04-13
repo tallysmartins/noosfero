@@ -1,18 +1,10 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
-require File.dirname(__FILE__) + '/../helpers/institution_test_helper'
 require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
 class CommunitiesBlockTest < ActiveSupport::TestCase
   include PluginTestHelper
   def setup
     @person = create_person("My Name", "user@email.com", "123456", "123456", "Any State", "Some City")
-
-    @gov_power = GovernmentalPower.create(:name=>"Some Gov Power")
-    @gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
-    @juridical_nature = JuridicalNature.create(:name => "Autarquia")
-
-    @institution = InstitutionTestHelper.create_public_institution("Ministerio Publico da Uniao", "MPU", "BR", "DF", "Gama", @juridical_nature, @gov_power, @gov_sphere, "12.345.678/9012-45")
-    @institution.community.add_member(@person)
 
     @software_info = create_software_info("Novo Software")
     @software_info.community.add_member(@person)
@@ -26,12 +18,8 @@ class CommunitiesBlockTest < ActiveSupport::TestCase
   end
 
   def teardown
-    GovernmentalPower.destroy_all
-    GovernmentalSphere.destroy_all
-    JuridicalNature.destroy_all
     CommunitiesBlock.destroy_all
     @person = nil
-    @institution = nil
     @community = nil
     @software_info = nil
   end

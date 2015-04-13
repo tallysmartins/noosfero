@@ -47,6 +47,3 @@ Feature: edit adherent fields
     And I check "software[public_software]"
     And I uncheck "software[public_software]"
     Then I should not see "Adherent to e-ping ?"
-
-
-

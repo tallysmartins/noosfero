@@ -5,8 +5,6 @@
     'ControlPanel',
     'EditSoftware',
     'NewSoftware',
-    'UserEditProfile',
-    'CreateInstitution',
     'SearchSoftwareCatalog',
     'SoftwareDownload',
     'ProfileTabsSoftware',

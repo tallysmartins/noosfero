@@ -1,5 +1,4 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
-require File.dirname(__FILE__) + '/../helpers/institution_test_helper'
 require(
   File.dirname(__FILE__) +
   '/../../../../app/controllers/my_profile/profile_editor_controller'
