@@ -26,3 +26,32 @@ Feature: Institution Field
   Scenario: Verify text information to use governmental e-mail
     Given I follow "Edit Profile"
     Then I should see "If you work in a public agency use your government e-Mail"
+
+  @selenium
+  Scenario: Add more then one instituion on profile editor
+    Given I follow "Edit Profile"
+    And I follow "Add new institution"
+    And I type in "Minis" in autocomplete list "#input_institution" and I choose "Ministerio do Planejamento"
+    And I follow "Add new institution"
+    And I type in "Gover" in autocomplete list "#input_institution" and I choose "Governo do DF"
+    And I follow "Add new institution"
+    Then I should see "Ministerio do Planejamento" within ".institutions_added"
+    And I should see "Governo do DF" within ".institutions_added"
+
+  @selenium
+  Scenario: Verify if field 'city' is shown when Brazil is selected
+    Given I follow "Edit Profile"
+    Then I should see "City"
+
+  @selenium
+  Scenario: Verify if field 'city' does not appear when Brazil is not selected as country
+    Given I follow "Edit Profile"
+    When I select "United States" from "profile_data_country"
+    Then I should not see "City" within ".type-text"
+
+  @selenium
+  Scenario: Show message of institution not found
+    Given I follow "Edit Profile"
+    And I fill in "input_institution" with "Some Nonexistent Institution"
+    And I sleep for 1 seconds
+    Then I should see "No institution found"

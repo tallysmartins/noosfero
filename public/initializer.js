@@ -3,6 +3,8 @@
 
   var dependencies = [
   'CompleteRegistration',
+  'UserEditProfile',
+  'CreateInstitution'
   ];
 
 

@@ -128,6 +128,10 @@ class GovUserPlugin < Noosfero::Plugin
     views/complete-registration.js
     initializer.js
     app.js
+    views/control-panel.js
+    views/create-institution.js
+    views/new-community.js
+    views/user-edit-profile.js
     )
   end
 
