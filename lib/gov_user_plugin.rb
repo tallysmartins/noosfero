@@ -137,6 +137,18 @@ class GovUserPlugin < Noosfero::Plugin
     )
   end
 
+  def admin_panel_links
+    [
+      {
+        :title => _('Create Institution'),
+        :url => {
+          :controller => 'gov_user_plugin',
+          :action => 'create_institution_admin'
+        }
+      }
+    ]
+  end
+
   protected
 
   def profile_required_list

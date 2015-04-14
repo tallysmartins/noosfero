@@ -64,7 +64,7 @@
       <span class='required-field'>
         <div class="formfield">
           <label for="community_state" class="formlabel"><%= _("State") %></label>
-          <%= f.select(:state, @state_list.collect {|state| [state.name, state.name]}) %>
+          <%= f.select(:state, [[_('Select a state'), '-1']] | @state_list.collect {|state| [state.name, state.name]}) %>
         </div>
       </span>
 
@@ -115,9 +115,11 @@
 
       <% if @url_token == "create_institution_admin" %>
         <%= submit_button :save, _('Save') %>
+        <%= button(:cancel, _("Cancel"), {:controller => "admin_panel", :action => 'index'}) %>
       <%else%>
         <div>
          <%= link_to(_('Save'), '#', :id=>'save_institution_button', :class=>'button with-text icon-add') %>
+         <%= link_to(_('Cancel'), '#', :id=>"cancel_institution_button", :class=>'button with-text icon-cancel') %>
         </div>
         <%= hidden_field_tag :institution_error_message, _("Could not send the form data to the server") %>
       <%end%>

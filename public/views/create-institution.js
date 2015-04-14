@@ -125,6 +125,11 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     });
   }
 
+  function cancel_institution(evt){
+    evt.preventDefault();
+    $('#institution_dialog').dialog('close');
+  }
+
 
   function institution_already_exists(){
     if( this.value.length >= 3 ) {
@@ -187,8 +192,6 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
 
   function add_new_institution(evt) {
-    (" JAJAjAjAJAJaJ ADD NEW INST")
-
     evt.preventDefault();
     var selected = $("#institution_selected");
     var institution_already_added = $(".institutions_added li[data-institution='"+selected.val()+"']").length;
@@ -227,6 +230,8 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     var cnpj = $("#institutions_cnpj").parent().parent();
     var city = $("#community_city").parent().parent();
     var state = $("#community_state").parent().parent();
+    var inst_type = $("input[name='institutions[type]']:checked").val();
+    institution_type_actions(inst_type)
 
     if( country === "-1" ) $("#community_country").val("BR");
 
@@ -243,7 +248,8 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
 
   function institution_type_actions(type) {
-    if( type === "PublicInstitution" ) {
+    var country = $("#community_country").val();
+    if( type === "PublicInstitution" && country == "BR") {
       show_public_institutions_fields();
     } else {
       show_private_institutions_fields();
@@ -254,6 +260,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
   function set_form_count_custom_data() {
     var divisor_option = SelectElement.generateOption("-1", "--------------------------------");
     var default_option = SelectElement.generateOption("BR", "Brazil");
+
 
     var inst_type = $("input[name='institutions[type]']:checked").val();
     var country = $("#community_country").val();
@@ -282,6 +289,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     });
 
     $('#save_institution_button').click(save_institution);
+    $('#cancel_institution_button').click(cancel_institution);
 
     $("#community_name").keyup(institution_already_exists);
 
