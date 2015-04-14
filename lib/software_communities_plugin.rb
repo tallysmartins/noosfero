@@ -53,7 +53,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     {
       SoftwaresBlock => { :type => [Environment, Person]  },
       SoftwareInformationBlock => {  :type => [Community]  },
-      InstitutionsBlock => {  :type => [Environment, Person] },
       DownloadBlock => { :type => [Community] },
       RepositoryBlock => { :type => [Community] },
       CategoriesAndTagsBlock => { :type => [Community] },

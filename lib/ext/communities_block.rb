@@ -5,15 +5,15 @@ class CommunitiesBlock
   def profile_list
     result = get_visible_profiles
 
-    list_without_software_and_institution = []
+    list_without_software = []
 
     result.each do |profile|
-			if profile.class == Community && !profile.software? && !profile.institution?
-				list_without_software_and_institution << profile
+			if profile.class == Community && !profile.software?
+				list_without_software << profile
 			end
     end
 
-    result = list_without_software_and_institution
+    result = list_without_software
 
     result.slice(0..get_limit-1)
   end
