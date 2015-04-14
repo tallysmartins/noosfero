@@ -92,18 +92,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     person.has_permission_without_plugins?(permission, target)
   end
 
-  def admin_panel_links
-    [
-      {
-        :title => _('Create Institution'),
-        :url => {
-          :controller => 'software_communities_plugin',
-          :action => 'create_institution_admin'
-        }
-      }
-    ]
-  end
-
   protected
 
   def software_info_transaction
