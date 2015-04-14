@@ -29,13 +29,13 @@
     <%= fields_for :institutions do |inst| %>
       <span class=''>
           <div class='formfield type-radio'>
-            <label> <%= _("Public Institution") %>
-              <%= radio_button_tag("institutions[type]", "PublicInstitution") %>
-            </label>
-
             <label>
               <%= _("Private Institution") %>
               <%= radio_button_tag("institutions[type]" ,"PrivateInstitution", true)%>
+            </label>
+
+            <label> <%= _("Public Institution") %>
+              <%= radio_button_tag("institutions[type]", "PublicInstitution") %>
             </label>
           </div>
         </span>
@@ -47,6 +47,15 @@
         <div class="formfield type-text">
           <%= inst.label "corporate_name", _("Corporate Name"), :class=>"formlabel" %>
           <%= required inst.text_field(:corporate_name) %>
+        </div>
+      </span>
+
+      <span class='optional-field'>
+        <div class="formfield type-text">
+          <%= hidden_field_tag "acronym_translate", _("Acronym") %>
+          <%= hidden_field_tag "fantasy_name_translate", _("Fantasy name") %>
+          <%= inst.label("acronym" ,_("Acronym"), :class=>"formlabel") %>
+          <%= inst.text_field(:acronym) %>
         </div>
       </span>
 
@@ -66,15 +75,6 @@
         <div class="formfield type-text">
           <%= inst.label("cnpj" ,_("CNPJ"), :class=>"formlabel") %>
           <%= required inst.text_field(:cnpj, :placeholder=>"99.999.999/9999-99", :class=>"intitution_cnpj_field") %>
-        </div>
-      </span>
-
-      <span class='optional-field'>
-        <div class="formfield type-text">
-          <%= hidden_field_tag "acronym_translate", _("Acronym") %>
-          <%= hidden_field_tag "fantasy_name_translate", _("Fantasy name") %>
-          <%= inst.label("acronym" ,_("Acronym"), :class=>"formlabel") %>
-          <%= inst.text_field(:acronym) %>
         </div>
       </span>
 
