@@ -102,10 +102,10 @@
         <div class="formfield type-text">
           <%= _("SISP?") %>
           <% if @show_sisp_field %>
-            <%= inst.label("sisp" ,_("Yes")) %>
             <%= inst.radio_button(:sisp, true) %>
-            <%= inst.label("sisp" ,_("No")) %>
+            <%= inst.label :sisp ,_("Yes"), :value => true %>
             <%= inst.radio_button(:sisp, false, :checked=>"checked") %>
+            <%= inst.label :sisp ,_("No"), :value => false %>
           <% else %>
             <%= inst.label("sisp", _("No")) %>
           <% end %>

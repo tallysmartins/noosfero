@@ -203,7 +203,7 @@ class GovUserPluginController < ApplicationController
       redirect_to :controller => "/admin_panel", :action => "index"
     else
       flash[:errors] = response_message[:errors]
-      redirect_to :controller => "software_communities_plugin", :action => "create_institution_admin"
+      render :controller => "gov_user_plugin", :action => "create_institution_admin"
     end
   end
 
