@@ -16,6 +16,14 @@ class GovUserPluginController < ApplicationController
     @show_sisp_field = environment.admins.include?(current_user.person)
     @state_list = get_state_list()
 
+    params[:community] ||= {}
+    params[:institutions] ||= {}
+
+    @state_options = [[_('Select a state'), '-1']] | @state_list.collect {|state| [state.name, state.name]}
+    @governmental_sphere_options = [[_("Select a Governmental Sphere"), 0]]|GovernmentalSphere.all.map {|s| [s.name, s.id]}
+    @governmental_power_options = [[_("Select a Governmental Power"), 0]]|GovernmentalPower.all.map {|g| [g.name, g.id]}
+    @juridical_nature_options = [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}
+
     if request.xhr?
       render :layout=>false
     else
@@ -35,6 +43,14 @@ class GovUserPluginController < ApplicationController
     @state_list = get_state_list()
 
     @url_token = split_http_referer request.original_url()
+
+    params[:community] ||= {}
+    params[:institutions] ||= {}
+
+    @state_options = [[_('Select a state'), '-1']] | @state_list.collect {|state| [state.name, state.name]}
+    @governmental_sphere_options = [[_("Select a Governmental Sphere"), 0]]|GovernmentalSphere.all.map {|s| [s.name, s.id]}
+    @governmental_power_options = [[_("Select a Governmental Power"), 0]]|GovernmentalPower.all.map {|g| [g.name, g.id]}
+    @juridical_nature_options = [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}
   end
 
   def new_institution
@@ -45,10 +61,10 @@ class GovUserPluginController < ApplicationController
     institution_template = Community["institution"]
     add_template_in_params institution_template
 
-    institution = private_create_institution
-    add_environment_admins_to_institution institution
+    @institutions = private_create_institution
+    add_environment_admins_to_institution @institutions
 
-    response_message = save_institution institution
+    response_message = save_institution @institutions
 
     if request.xhr? #User create institution
       render :json => response_message.to_json
@@ -203,7 +219,7 @@ class GovUserPluginController < ApplicationController
       redirect_to :controller => "/admin_panel", :action => "index"
     else
       flash[:errors] = response_message[:errors]
-      render :controller => "gov_user_plugin", :action => "create_institution_admin"
+      redirect_to :controller => "gov_user_plugin", :action => "create_institution_admin", :params => params
     end
   end
 

@@ -102,8 +102,12 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
         errors += "<li>"+response.errors[i]+"</li>";
       }
       errors += "</ul>";
-
-      $("#create_institution_errors").switchClass("hide-field", "show-field").html("<h2>"+response.message+"</h2>"+errors);
+      if($('#institution_dialog') != []){
+        $('#create_institution_errors').switchClass("show-field", "hide-field");
+        $('#errorExplanation').html("<h2>"+response.message+"</h2>"+errors);
+      }else{
+        $("#create_institution_errors").switchClass("hide-field", "show-field").html("<h2>"+response.message+"</h2>"+errors);
+      }
     }
   }
 
