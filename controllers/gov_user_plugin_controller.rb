@@ -123,6 +123,15 @@ class GovUserPluginController < ApplicationController
 
   protected
 
+  def get_model_by_params_field
+    case params[:field]
+    when "software_language"
+      return ProgrammingLanguage
+    else
+      return DatabaseDescription
+    end
+  end
+
   def get_state_list
     NationalRegion.find(
     :all,

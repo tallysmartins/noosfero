@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../helpers/institution_test_helper'
 
 module PluginTestHelper
 
-  def create_person name, email, password, password_confirmation, secondary_email, state, city
+  def create_person name, email, password, password_confirmation, secondary_email, state="state", city="city"
     user = create_user(
             name.to_slug,
             email,

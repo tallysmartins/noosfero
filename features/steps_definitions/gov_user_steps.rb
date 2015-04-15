@@ -44,7 +44,6 @@ page.driver.browser.execute_script %Q{
   sleep 1
 end
 
-
 Given /^the following public institutions?$/ do |table|
   # table is a Cucumber::Ast::Table
   table.hashes.each do |item|
@@ -65,4 +64,27 @@ Given /^the following public institutions?$/ do |table|
     institution.corporate_name = item[:corporate_name]
     institution.save!
   end
+end
+
+
+Given /^I sleep for (\d+) seconds$/ do |time|
+  sleep time.to_i
+end
+
+Given /^I am logged in as mpog_admin$/ do
+  visit('/account/logout')
+
+  user = User.new(:login => 'admin_user', :password => '123456', :password_confirmation => '123456', :email => 'admin_user@example.com')
+  person = Person.new :name=>"Mpog Admin", :identifier=>"mpog-admin"
+  user.person = person
+  user.save!
+
+  user.activate
+  e = Environment.default
+  e.add_admin(user.person)
+
+  visit('/account/login')
+  fill_in("Username", :with => user.login)
+  fill_in("Password", :with => '123456')
+  click_button("Log in")
 end
