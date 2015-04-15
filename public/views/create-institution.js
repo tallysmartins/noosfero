@@ -239,6 +239,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       cnpj.hide();
       city.hide();
       state.hide();
+      autocomplete_city();
     } else {
       cnpj.show();
       city.show();
@@ -246,11 +247,32 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     }
   }
 
+  function autocomplete_city(){
+    $('#city_field').autocomplete({
+      source : function(request, response){
+        $.ajax({
+          type: "GET",
+          url: '/account/search_cities',
+          data: {city_name: request.term, state_name: $("#community_state").val()},
+          success: function(result){
+            response(result);
+          },
+          error: function(ajax, stat, errorThrown) {
+            console.log('Link not found : ' + errorThrown);
+          }
+        });
+      },
+
+      minLength: 3
+    });
+  }
+
 
   function institution_type_actions(type) {
     var country = $("#community_country").val();
     if( type === "PublicInstitution" && country == "BR") {
       show_public_institutions_fields();
+      autocomplete_city();
     } else {
       show_private_institutions_fields();
     }
