@@ -1,0 +1,11 @@
+
+module gitlab 1.0;
+
+require {
+	type initrc_tmp_t;
+	type ssh_keygen_t;
+	class file open;
+}
+
+#============= ssh_keygen_t ==============
+allow ssh_keygen_t initrc_tmp_t:file open;
