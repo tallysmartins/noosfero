@@ -217,6 +217,12 @@ class GovUserPlugin < Noosfero::Plugin
     send(name + '_transaction') if context.params.key?(model.to_sym)
   end
 
+  def call_institution_transaction(model)
+    context.profile.institution.send(model + '_id = ',
+    context.params[model.to_sym])
+    context.profile.institution.save!
+  end
+
   # Add and remove the user from it's institutions communities
   def user_editor_institution_actions
     user = context.profile.user
