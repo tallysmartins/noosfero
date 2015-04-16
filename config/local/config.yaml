@@ -10,4 +10,4 @@ email_subject_prefix: '[spb]'
 lists_hostname: listas.softwarepublico.dev
 lists_admin: paulo@softwarelivre.org
 relay_hostname: relay.softwarepublico.dev
-
+alt_ssh_port: 5555

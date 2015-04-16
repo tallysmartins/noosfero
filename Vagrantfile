@@ -33,5 +33,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   config.vm.define 'reverseproxy' do |reverseproxy|
     reverseproxy.vm.network 'private_network', ip: ips['reverseproxy']
+    if File.exist?('tmp/preconfig.local.stamp')
+      reverseproxy.ssh.port =  File.read('tmp/preconfig.local.stamp').strip.to_i
+      reverseproxy.ssh.host = ips['reverseproxy']
+    end
   end
 end
