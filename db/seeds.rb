@@ -1,8 +1,8 @@
 # encoding: UTF-8
-powers = ["Executivo", "Legislativo", "Judiciario", "Não se aplica"]
+powers = ["Executivo", "Legislativo", "Judiciário", "Não se Aplica"]
 spheres = ["Federal", "Estadual", "Distrital", "Municipal"]
-jur_natures = ["Administracao Direta", "Autarquia", "Empresa Publica", "Fundacao",
-               "Orgao Autonomo", "Sociedade", "Sociedade Civil",
+jur_natures = ["Administração Direta", "Autarquia", "Empresa Pública", "Fundação",
+               "Orgão Autônomo", "Sociedade", "Sociedade Civil",
                "Sociedade de Economia Mista"
               ]
 
