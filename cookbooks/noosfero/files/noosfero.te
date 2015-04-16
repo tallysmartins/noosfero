@@ -1,0 +1,11 @@
+
+module noosfero 1.0;
+
+require {
+	type initrc_tmp_t;
+	type httpd_t;
+	class file open;
+}
+
+#============= httpd_t ==============
+allow httpd_t initrc_tmp_t:file open;

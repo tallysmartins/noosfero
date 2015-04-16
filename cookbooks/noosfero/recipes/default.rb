@@ -66,3 +66,16 @@ template '/etc/nginx/conf.d/noosfero.conf' do
   source 'nginx.conf.erb'
   notifies :restart, 'service[nginx]'
 end
+
+###############################################
+#  SELinux: permission to access static files noosfero
+################################################
+
+cookbook_file '/etc/selinux/local/noosfero.te' do
+  notifies :run, 'execute[selinux-noosfero]'
+end
+
+execute 'selinux-noosfero' do
+  command 'selinux-install-module /etc/selinux/local/noosfero.te'
+  action :nothing
+end
