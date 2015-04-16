@@ -13,6 +13,7 @@ fi
 sudo -v
 sudo redir --lport 80  --cport 80  --caddr $reverseproxy &
 sudo redir --lport 443 --cport 443 --caddr $reverseproxy &
+sudo redir --lport 22 --cport 22 --caddr $reverseproxy &
 
 cleanup() {
   sudo -v
