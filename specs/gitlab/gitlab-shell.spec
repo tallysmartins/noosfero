@@ -1,6 +1,6 @@
 Name:		gitlab-shell
 Version:	2.4.0
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Software Development Platform
 
 Group:		Development/Tools
@@ -30,7 +30,7 @@ http_settings:
 #  ca_path: /etc/pki/tls/certs
   self_signed_cert: false
 
-repos_path: "/var/lib/gitlab/repositories/"
+repos_path: "/var/lib/gitlab-shell/repositories/"
 auth_file: "/var/lib/gitlab-shell/.ssh/authorized_keys"
 
 redis:
@@ -59,18 +59,15 @@ cp -r .  %{buildroot}/usr/lib/gitlab-shell
 %post
 groupadd git || true
 if ! id git; then
-  adduser --system --home-dir /usr/lib/gitlab --no-create-home --gid git git
+  adduser --system --home-dir /usr/lib/gitlab --gid git git
 fi
 
 mkdir -p /var/log/gitlab-shell
 mkdir -p /var/lib/gitlab-shell/.ssh
-
-ln -s /var/lib/gitlab-shell/.ssh /usr/lib/gitlab/.ssh
+mkdir -p /var/lib/gitlab-shell/repositories
 
 chown -R git:git /var/log/gitlab-shell
 chown -R git:git /var/lib/gitlab-shell
-
-ln -s /var/lib/gitlab/.gitlab_shell_secret /usr/lib/gitlab-shell/.gitlab_shell_secret
 
 sudo -u git -H /usr/lib/gitlab-shell/bin/install
 
