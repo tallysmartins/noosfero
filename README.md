@@ -34,6 +34,7 @@ First you have to bring up the development virtual machines:
 
 ```bash
 $ vagrant up
+$ rake preconfig
 $ rake bootstrap_common
 ```
 
@@ -51,6 +52,17 @@ $ rake converge:$server                 # deploys only $server
 * TODO: document adding the SSL key and certificate
 * TODO: document creation of `prod.yaml`.
 * TODO: document SSH configuration
+
+The very first step is
+
+```
+$ rake preconfig SPB_ENV=production
+```
+
+This will perform some initial configuration to the system that is required
+before doing the actual deployment.
+
+After that:
 
 ```bash
 $ rake SPB_ENV=production                   # deploys all servers

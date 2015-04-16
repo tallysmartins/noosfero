@@ -9,7 +9,13 @@ Host *
 <% $nodes.each do |node| %>
 Host <%= node.hostname %>
   Hostname <%= node.data['peers'][node.hostname] %>
+  Port <%= node.data.fetch('ssh_port', 22) %>
   IdentityFile <%=  (Dir.glob(".vagrant/machines/#{node.hostname}/*/private_key") + [File.expand_path('~/.vagrant.d/insecure_private_key')]).find { |f| File.exists?(f) }.tap { |f| File.expand_path(f) } %>
 <% end %>
+
+Host reverseproxy.unconfigured
+  Hostname <%= $nodes.first.data['peers']['reverseproxy'] %>
+  Port 22
+  IdentityFile <%=  (Dir.glob(".vagrant/machines/reverseproxy/*/private_key") + [File.expand_path('~/.vagrant.d/insecure_private_key')]).find { |f| File.exists?(f) }.tap { |f| File.expand_path(f) } %>
 
 # vim: ft=sshconfig

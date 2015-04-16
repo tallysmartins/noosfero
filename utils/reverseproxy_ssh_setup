@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+port="$1"
+
+# switch SSH to port $port
+sed -i -e 's/^#\?\s*Port\s*[0-9]\+\s*$/Port '$port'/g' /etc/ssh/sshd_config
+
+# Install SELinux
+yum install -y selinux-policy policycoreutils-python
+
+# Tell SELinux to allow the new port
+semanage port -a -t ssh_port_t -p tcp "$port"
+
+# Restart SSH
+systemctl restart sshd
