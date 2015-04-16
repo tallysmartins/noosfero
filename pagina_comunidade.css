@@ -5,10 +5,23 @@
   margin:0px 20px 0px 0px;
 
 }
+
 #infor-community-geral h1{
   text-align: left;
+  font-size: 23px;
 }
+
 #infor-community-geral p{
+  /*font-size: 12px;*/
+}
+
+#buttons-infor-community input{
+  border:1px solid #D3D6DE;
+  border-radius:4px;
+  background:none;
+  color: #5E82C6;
+  margin:2px;
+  padding:3px 10px;
 
 }
 
@@ -229,14 +242,14 @@ top: 2px;
 /*
 #itens-legend-grafic{
   text-align: :left;
-  /*float:right;
-  margin:0px;*/
+  float:right;
+  margin:0px;
 }*/
 
 ul#itens-legend-grafic{
   text-align: left;
     margin: 0px;
-    padding: 10px;
+    /*padding: 50px;*/
 }
 
 #itens-legend-grafic li{
@@ -333,13 +346,48 @@ text-align: right;
 }
 
 /********************** ABA03 - BLOG ********************************/
+#block-news-community{
+  padding-top:20px;
+}
+
+#block-news-community .news_principal_title{
+  color:#172738;
+  font-size: 22px;
+  line-height: 23px;
+  font-weight: 700;
+}
+#block-news-community .news_principal_date{
+  text-transform: uppercase;
+}
+
+#block-news-community .news_principal_text{
+  color:#172738;
+  margin-top:10px;
+}
+
+#block-news-community .published-at{
+  margin:0px 125px;
+  text-transform: uppercase;
+}
+
+#content #block-news-community .read-more{
+  background: none;
+  border-top: none;
+}
+
+#content .box #block-news-community .read-more a::after{
+  background:#3E67B1;
+}
+#content #block-news-community .read-more a:hover{
+  background: none;
+}
 
 
 /********************** ABA04 - Wiki ********************************/
 #aba4 h3{
   color:#172738;
   border-bottom: 2px solid #ECEDF1;
-  padding:10px;
+  padding:10px 0px;
 }
 
 #aba4 span{
