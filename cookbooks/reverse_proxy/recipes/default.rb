@@ -1,3 +1,5 @@
+package 'iptables-services'
+
 cookbook_file "/etc/nginx/#{node['config']['external_hostname']}.crt" do
   owner 'root'
   group 'root'
