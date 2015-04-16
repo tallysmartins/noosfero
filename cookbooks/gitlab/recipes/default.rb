@@ -83,7 +83,6 @@ end
 ####################################################
 #  SELinux: allow gitlab to use '/tmp'
 ####################################################
-
 cookbook_file '/etc/selinux/local/gitlab.te' do
   notifies :run, 'execute[selinux-gitlab]'
 end
@@ -91,17 +90,3 @@ execute 'selinux-gitlab' do
   command 'selinux-install-module /etc/selinux/local/gitlab.te'
   action :nothing
 end
-
-
-####################################################
-#  SELinux: allow nginx to use gitlab upstream
-####################################################
-
-cookbook_file '/etc/selinux/local/nginx.te' do
-  notifies :run, 'execute[selinux-nginx]'
-end
-execute 'selinux-nginx' do
-  command 'selinux-install-module /etc/selinux/local/nginx.te'
-  action :nothing
-end
-
