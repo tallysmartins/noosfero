@@ -40,14 +40,14 @@
           </div>
         </span>
 
-      <%= required f.text_field(:name, :value => params[:community][:name]) %>
+      <%= required f.text_field(:name, :value => params[:community][:name], :size => 55) %>
       <%= content_tag :span, _("Institution name already exists"), :id=>"already_exists_text", :class=>"errorExplanation hide-field" %>
 
       <div class= <%= @error_corporate_name %> >
         <span class='required-field'>
           <div class="formfield type-text">
             <%= inst.label "corporate_name", _("Corporate Name"), :class=>"formlabel" %>
-            <%= required inst.text_field(:corporate_name, :value => params[:institutions][:corporate_name]) %>
+            <%= required inst.text_field(:corporate_name, :value => params[:institutions][:corporate_name], :size => 55) %>
           </div>
         </span>
       </div>
