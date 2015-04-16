@@ -67,6 +67,7 @@ class GovUserPluginController < ApplicationController
     response_message = save_institution @institutions
 
     if request.xhr? #User create institution
+      puts "-"*80, response_message
       render :json => response_message.to_json
     else #Admin create institution
       session[:notice] = response_message[:message] # consume the notice

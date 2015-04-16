@@ -53,7 +53,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       name : $("#community_name").val(),
       country : $("#community_country").val(),
       state : $("#community_state").val(),
-      city : $("#community_city").val()
+      city : $("#city_field").val()
     }
   }
 
@@ -102,7 +102,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
         errors += "<li>"+response.errors[i]+"</li>";
       }
       errors += "</ul>";
-      if($('#institution_dialog') != []){
+      if($('#institution_dialog') == 0){
         $('#create_institution_errors').switchClass("show-field", "hide-field");
         $('#errorExplanation').html("<h2>"+response.message+"</h2>"+errors);
       }else{
