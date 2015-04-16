@@ -17,4 +17,5 @@ allow postfix_pipe_t mailman_data_t:dir search;
 allow postfix_pipe_t mailman_data_t:dir { write remove_name getattr add_name };
 allow postfix_pipe_t mailman_data_t:file { rename write getattr read create open };
 allow postfix_pipe_t mailman_log_t:file { read getattr open append };
+allow postfix_pipe_t mailman_log_t:dir search;
 allow postfix_pipe_t postfix_etc_t:file execute;
