@@ -19,6 +19,10 @@ class GovUserPlugin < Noosfero::Plugin
     _("A plugin that does this and that.")
   end
 
+  def stylesheet?
+    true
+  end
+
   # Hotspot to insert html without an especific hotspot on view.
   def body_beginning
     return if context.session[:user].nil? or context.session[:hide_incomplete_percentage] == true

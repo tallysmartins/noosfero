@@ -18,3 +18,9 @@
   background: #fff;
   border: solid 1px #000;
 }
+
+.highlight-error {
+  outline: none;
+  border-color: #FF0000;
+  box-shadow: 0 0 10px #FF0000;
+}

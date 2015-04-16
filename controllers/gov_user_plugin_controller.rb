@@ -23,7 +23,6 @@ class GovUserPluginController < ApplicationController
     @governmental_sphere_options = [[_("Select a Governmental Sphere"), 0]]|GovernmentalSphere.all.map {|s| [s.name, s.id]}
     @governmental_power_options = [[_("Select a Governmental Power"), 0]]|GovernmentalPower.all.map {|g| [g.name, g.id]}
     @juridical_nature_options = [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}
-
     if request.xhr?
       render :layout=>false
     else
@@ -67,7 +66,6 @@ class GovUserPluginController < ApplicationController
     response_message = save_institution @institutions
 
     if request.xhr? #User create institution
-      puts "-"*80, response_message
       render :json => response_message.to_json
     else #Admin create institution
       session[:notice] = response_message[:message] # consume the notice
@@ -187,7 +185,6 @@ class GovUserPluginController < ApplicationController
 
     institution.date_modification = DateTime.now
     institution.save
-
     institution
   end
 
@@ -208,8 +205,11 @@ class GovUserPluginController < ApplicationController
   end
 
   def save_institution institution
+
     inst_errors = institution.errors.full_messages
     com_errors = institution.community.errors.full_messages
+
+    set_error_css institution
 
     if inst_errors.empty? && com_errors.empty? && institution.valid? && institution.save
       { :success => true,
@@ -233,4 +233,19 @@ class GovUserPluginController < ApplicationController
     end
   end
 
+  def set_error_css institution
+    institution.valid?
+    institution.community.valid?
+    params[:error_community_name] = institution.community.errors.include?(:name) ? "highlight-error" : ""
+    params[:error_community_country] = institution.community.errors.include?(:country) ? "highlight-error" : ""
+    params[:error_community_city] = institution.errors.include?(:city) ? "highlight-error" : ""
+    params[:error_community_state] = institution.errors.include?(:state) ? "highlight-error" : ""
+    params[:error_institution_corporate_name] = institution.errors.include?(:corporate_name) ? "highlight-error" : ""
+    params[:error_institution_acronym] = institution.errors.include?(:acronym) ? "highlight-error" : ""
+    params[:error_institution_cnpj] = institution.errors.include?(:cnpj) ? "highlight-error" : ""
+    params[:error_institution_governmental_sphere] = institution.errors.include?(:governmental_sphere) ? "highlight-error" : ""
+    params[:error_institution_governmental_power] = institution.errors.include?(:governmental_power) ? "highlight-error" : ""
+    params[:error_institution_juridical_nature] = institution.errors.include?(:juridical_nature) ? "highlight-error" : ""
+    params[:error_institution_sisp] = institution.errors.include?(:sisp) ? "highlight-error" : ""
+  end
 end
