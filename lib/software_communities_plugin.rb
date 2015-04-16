@@ -17,24 +17,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     _('Add Public Software and MPOG features.')
   end
 
-  def profile_editor_extras
-    profile = context.profile
-
-    if profile.person?
-      expanded_template('person_editor_extras.html.erb')
-    end
-  end
-
-  def profile_editor_transaction_extras
-    single_hash_transactions = { :user => 'user',
-                                 :instituton => 'instituton'
-                               }
-
-    single_hash_transactions.each do |model, transaction|
-      call_model_transaction(model, transaction)
-    end
-  end
-
   def profile_tabs
     if context.profile.community?
       return profile_tabs_software if context.profile.software?
@@ -109,16 +91,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   end
 
   private
-
-  def call_model_transaction(model,name)
-    send(name + '_transaction') if context.params.key?(model.to_sym)
-  end
-
-  def call_institution_transaction(model)
-    context.profile.institution.send(model + '_id = ',
-                                     context.params[model.to_sym])
-    context.profile.institution.save!
-  end
 
   def software_info_button
     {
