@@ -54,6 +54,11 @@ file '/etc/postfix/postfix-to-mailman-centos.py' do
   action :delete
 end
 
+# Add mailman group to nginx user
+execute 'nginx-mailman-group' do
+  command "usermod -a -G mailman nginx"
+end
+
 cookbook_file '/usr/lib/mailman/bin/postfix-to-mailman.py' do
   owner 'root'
   group 'root'

@@ -19,6 +19,12 @@ directory '/var/log/colab' do
   mode   0755
 end
 
+directory '/var/lock/colab' do
+  owner 'root'
+  group 'colab'
+  mode 0755
+end
+
 execute 'secret-key' do
   f = '/etc/colab/secret.key'
   command "openssl rand -hex 32 -out #{f} && chown root:colab #{f} && chmod 0640 #{f}"
@@ -54,6 +60,7 @@ template '/etc/colab/settings.d/02-logging.yaml' do
   notifies :restart, 'service[colab]'
 end
 
+
 directory '/var/lib/colab-assets/spb/' do
   owner  'root'
   group  'root'
@@ -70,6 +77,11 @@ cookbook_file '/var/lib/colab-assets/spb/fav.ico' do
   owner 'root'
   group 'root'
   mode 0644
+end
+
+# Add mailman group to colab user
+execute 'colab-mailman-group' do
+  command "usermod -a -G mailman colab"
 end
 
 execute 'colab-admin migrate'
