@@ -20,7 +20,7 @@ directory '/var/log/colab' do
 end
 
 directory '/var/lock/colab' do
-  owner 'root'
+  owner 'colab'
   group 'colab'
   mode 0755
 end
