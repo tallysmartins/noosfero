@@ -185,17 +185,13 @@ class GovUserPluginControllerTest < ActionController::TestCase
       "BR",
       "DF",
       "Brasilia",
-      "",
+      "56.366.790/0001-88",
       "PrivateInstitution"
     )
-    fields[:institutions][:acronym] = "SPI"
-
-    fields[:action] = "new_institution"
-    fields[:controller] ="gov_user_plugin"
 
     post :new_institution, fields
 
-    assert_redirected_to(controller: "gov_user_plugin", action: "create_institution_admin", params: fields)
+    assert_redirected_to(controller: "admin_panel", action: "index")
   end
 
   should "Create foreign institution without city, state and cnpj by post" do
