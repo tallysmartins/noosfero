@@ -1,6 +1,6 @@
 Name:    gitlab
 Version: 7.6.2
-Release: 8%{?dist}
+Release: 9%{?dist}
 Summary: Software Development Platform
 Group:   Development/Tools
 License: Expat
@@ -53,7 +53,7 @@ production: &base
     path: /var/lib/gitlab/backups
   gitlab_shell:
     path: /usr/lib/gitlab-shell
-    repos_path: /var/lib/gitlab/repositories/
+    repos_path: /var/lib/gitlab-shell/repositories/
     hooks_path: /usr/lib/gitlab-shell/hooks/
     # Git over HTTP
     upload_pack: true
@@ -95,16 +95,11 @@ for configfile in gitlab.yml unicorn.rb database.yml; do
 done
 ln -s /var/log/gitlab      %{buildroot}/usr/lib/gitlab/log
 ln -s /var/lib/gitlab/tmp  %{buildroot}/usr/lib/gitlab/tmp
-ln -s /var/lib/gitlab/.gitlab_shell_secret %{buildroot}/usr/lib/gitlab/.gitlab_shell_secret
 ln -s /var/lib/gitlab/.secret %{buildroot}/usr/lib/gitlab/.secret
 ln -s /var/lib/gitlab-assets %{buildroot}/usr/lib/gitlab/public/assets
 ln -s /var/lib/gitlab-uploads %{buildroot}/usr/lib/gitlab/public/uploads
 
 %post
-groupadd git || true
-if ! id git; then
-  adduser --system --home-dir /usr/lib/gitlab --no-create-home --gid git git
-fi
 if [ -x /usr/bin/postgres ]; then
   service postgresql initdb || true
   service postgresql start
@@ -113,7 +108,6 @@ fi
 mkdir -p /var/log/gitlab
 chown -R git:git /var/log/gitlab
 mkdir -p /var/lib/gitlab/backups
-mkdir -p /var/lib/gitlab/repositories
 mkdir -p /var/lib/gitlab/satellites
 mkdir -p /var/lib/gitlab/tmp
 mkdir -p /var/lib/gitlab-uploads
