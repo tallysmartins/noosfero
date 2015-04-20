@@ -77,8 +77,10 @@ execute 'selinux-postfix-mailman' do
 end
 #######################################################################
 
-cookbook_file '/etc/cron.d/mailman' do
-  action :create
+cookbook_file '/etc/cron.d/mailman-spb' do
+  owner 'root'
+  group 'root'
+  mode 0644
 end
 
 cookbook_file '/etc/postfix/master.cf' do
