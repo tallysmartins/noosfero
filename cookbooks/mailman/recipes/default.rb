@@ -77,6 +77,10 @@ execute 'selinux-postfix-mailman' do
 end
 #######################################################################
 
+cookbook_file '/etc/cron.d/mailman' do
+  action :create
+end
+
 cookbook_file '/etc/postfix/master.cf' do
   notifies :reload, 'service[postfix]'
 end

@@ -1,0 +1,15 @@
+0   8   *   *   *   mailman /usr/lib/mailman/cron/checkdbs
+
+0   9   *   *   *   mailman /usr/lib/mailman/cron/disabled
+
+0   12  *   *   *   mailman /usr/lib/mailman/cron/senddigests
+
+0   5   1   *   *   mailman /usr/lib/mailman/cron/mailpasswds
+
+*/5 *   *   *   *   mailman /usr/lib/mailman/cron/gate_news
+
+27  3   *   *   *   mailman /usr/lib/mailman/cron/nightly_gzip
+
+30  4   *   *   *   mailman /usr/lib/mailman/cron/cull_bad_shunt
+
+*   *   *   *   *   root    /usr/lib/mailman/bin/check_perms -f
