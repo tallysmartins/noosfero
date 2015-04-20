@@ -20,7 +20,7 @@ cleanup() {
   sudo pkill -9 redir
 }
 
-echo "Forwarding ports 80 and 443"
+echo "Forwarding ports 22, 80 and 443"
 echo "Hit ctrl-c to stop"
 echo "Browse to: https://softwarepublico.dev/"
 echo "Browse to: https://listas.softwarepublico.dev/"
