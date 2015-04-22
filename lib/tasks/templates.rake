@@ -55,10 +55,12 @@ namespace :templates do
 
           download_block = DownloadBlock.new
           download_block.position = 2
-          download_block.name = "Versão  X.Y"
-          download_block.link = "#"
-          download_block.software_description = "(Windows X, Ubuntu Y, Debian Z)"
-          download_block.version_news = "#"
+          download_info = Hash.new
+          download_info[:name] = "Versão  X.Y"
+          download_info[:link] = "#"
+          download_info[:software_description] = "(Windows X, Ubuntu Y, Debian Z)"
+          download_info[:version_news] = "#"
+          download_block.downloads << download_info
           download_block.display = "home_page_only"
           download_block.save!
           box1.blocks << download_block
