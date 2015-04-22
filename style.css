@@ -2881,3 +2881,10 @@ body.action-embed-index {
   padding-right: 150px;
 }
 
+div.software-step-info div.current-step h3 {
+  color: #F50054;
+}
+
+#content .main-block div.software-step-info div.another-step h3 {
+  font-size: 12px !important;
+}
