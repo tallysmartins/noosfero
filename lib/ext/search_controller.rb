@@ -8,7 +8,6 @@ class SearchController
     results = @searches[@asset][:results]
 
     results = results.each {|community| !community.software?}
-    results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
   end
