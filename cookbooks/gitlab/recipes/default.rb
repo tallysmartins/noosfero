@@ -5,11 +5,6 @@ if node['platform'] == 'centos'
   end
 end
 
-package 'redis'
-service 'redis' do
-  action [:enable, :start]
-end
-
 package 'gitlab'
 
 template '/etc/gitlab/database.yml' do
@@ -33,6 +28,15 @@ end
 template '/etc/gitlab-shell/config.yml' do
   source 'gitlab-shell.yml.erb'
 
+  owner 'root'
+  group 'root'
+  mode 0644
+
+  notifies :restart, 'service[gitlab]'
+end
+
+# gitlab redis configuration
+template '/usr/lib/gitlab/config/resque.yml' do
   owner 'root'
   group 'root'
   mode 0644
