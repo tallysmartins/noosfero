@@ -10,4 +10,4 @@ email_subject_prefix: '[spb|dev]'
 lists_hostname: listas.dev.softwarepublico.gov.br
 lists_admin: paulo@softwarelivre.org
 relay_hostname: relay.dev.softwarepublico.gov.br
-
+from_address: noreply@dev.softwarepublico.gov.br

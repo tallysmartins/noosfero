@@ -1,10 +1,10 @@
 production: &base
   gitlab:
-    host: softwarepublico.dev
+    host: <%= node['config']['external_hostname'] %>
     relative_url_root: /gitlab
     port: 80 # Set to 443 if using HTTPS
     https: false # Set to true if using HTTPS
-    email_from: example@example.com
+    email_from: <%= node['config']['from_address'] %>
     default_projects_limit: 10
     default_projects_features:
       issues: true
