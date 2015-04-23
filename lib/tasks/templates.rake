@@ -191,12 +191,14 @@ namespace :templates do
           person.save!
           puts "Person successfully created!"
 
-          institution_block = InstitutionsBlock.new
-          institution_block.position = 4
-          institution_block.save!
-          box1.blocks << institution_block
-          box1.save!
-          puts "InstitutionBlock successfully added to person!"
+          if env.plugin_enabled?("GovUserPlugin")
+            institution_block = InstitutionsBlock.new
+            institution_block.position = 4
+            institution_block.save!
+            box1.blocks << institution_block
+            box1.save!
+            puts "InstitutionBlock successfully added to person!"
+          end
 
           software_block = SoftwaresBlock.new
           software_block.position = 2
@@ -235,7 +237,7 @@ namespace :templates do
     desc "Create new templates of intitution"
     task :institution => :environment do
       Environment.all.each do |env|
-        if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
+        if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("GovUserPlugin")
           community = Community.create!(:name => "institution", :is_template => true, :moderated_articles => true, :environment => env)
           community.layout_template = "leftbar"
 
