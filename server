@@ -13,13 +13,14 @@ fi
 sudo -v
 sudo redir --lport 80  --cport 80  --caddr $reverseproxy &
 sudo redir --lport 443 --cport 443 --caddr $reverseproxy &
+sudo redir --lport 22 --cport 22 --caddr $reverseproxy &
 
 cleanup() {
   sudo -v
   sudo pkill -9 redir
 }
 
-echo "Forwarding ports 80 and 443"
+echo "Forwarding ports 22, 80 and 443"
 echo "Hit ctrl-c to stop"
 echo "Browse to: https://softwarepublico.dev/"
 echo "Browse to: https://listas.softwarepublico.dev/"
