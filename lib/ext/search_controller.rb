@@ -3,28 +3,27 @@ require_dependency 'search_controller'
 class SearchController
 
   def communities
-    @scope = visible_profiles(Community)
-    full_text_search
-    results = @searches[@asset][:results]
-
-    results = results.each {|community| !community.software?}
+    results = filter_communities_list do |community|
+      !community.software?
+    end
+    results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
   end
 
   def software_infos
     prepare_software_search_page
-    @scope = visible_profiles(Community)
-    full_text_search
-    results = @searches[@asset][:results]
-
-    results = results.select {|community| community if community.software?}
+    results = filter_software_infos_list
     results = results.paginate(:per_page => @per_page, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
-    @software_count = results.count
+    @software_count = filter_software_infos_list.count
+
+
     render :layout=>false if request.xhr?
   end
+
+  protected
 
   def filter_communities_list
     unfiltered_list = visible_profiles(Community)
@@ -50,8 +49,6 @@ class SearchController
     filtered_community_list = get_communities_list(filtered_software_list)
     sort_communities_list filtered_community_list
   end
-
-  protected
 
   def get_filter_category_ids
     category_ids = []

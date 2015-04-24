@@ -20,44 +20,57 @@ class SearchControllerTest < ActionController::TestCase
     @request.stubs(:ssl?).returns(:false)
     @response = ActionController::TestResponse.new
 
+    @licenses = [
+      LicenseInfo.create(:version => "GPL - 1"),
+      LicenseInfo.create(:version => "GPL - 2")
+    ]
+
     create_software_categories
+
+    @softwares = []
+
+    @softwares << create_software_info("Software One", :acronym => "SFO", :finality => "Help")
+    @softwares << create_software_info("Software Two", :acronym => "SFT", :finality => "Task")
+
+    @softwares[0].community.categories << Category.first
+    @softwares[1].community.categories << Category.last
+
+    @softwares[0].license_info = @licenses.first
+    @softwares[1].license_info = @licenses.last
+
+    @softwares[0].save!
+    @softwares[1].save!
   end
 
   should "communities searches don't have software" do
-    community = create_community("New Community")
-    software = create_software_info("New Software")
+    community = create_community("Community One")
 
-    get :communities, :query => "New"
+    get :communities, :query => "One"
 
     assert_includes assigns(:searches)[:communities][:results], community
-    assert_not_includes assigns(:searches)[:communities][:results], software
+    assert_not_includes assigns(:searches)[:communities][:results], @softwares.first.community
   end
 
   should "software_infos search don't have community" do
-     community = create_community("New Community")
-     software = create_software_info("New Software")
+     community = create_community("Community One")
 
-     software.license_info = LicenseInfo.create :version => "GPL - 1.0"
-     software.save!
+     get :software_infos, :query => "One"
 
-     get :software_infos, :query => "New"
-
-     assert_includes assigns(:searches)[:software_infos][:results], software.community
+     assert_includes assigns(:searches)[:software_infos][:results], @softwares.first.community
      assert_not_includes assigns(:searches)[:software_infos][:results], community
   end
 
 
-  should "Don't found template in communities search" do
-    community = create_community("New Community")
-    software = create_software_info("New Software")
-    software.license_info = LicenseInfo.create(:version => "GPL")
-    software.save!
+  should "Don't have template in communities search result" do
+    communities = []
+    communities << create_community("Community One")
+    communities << create_community("Community Two")
 
-    community_template = create_community("New Community Template")
+    community_template = create_community("Community Template")
     community_template.is_template = true
     community_template.save!
 
-    get :communities, :query => "New"
+    get :communities, :query => "Comm"
 
     assert_not_includes(
       assigns(:searches)[:communities][:results],
@@ -66,124 +79,79 @@ class SearchControllerTest < ActionController::TestCase
   end
 
   should "software_infos search by category" do
-    software_one = create_software_info("Software One")
-    software_two = create_software_info("Software Two")
-
-    software_one.community.categories << Category.first
-    software_two.community.categories << Category.last
-
-    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
-    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
-
-    software_one.save!
-    software_two.save!
-
     get(
       :software_infos,
       :query => "",
       :selected_categories_id => [Category.first.id]
     )
 
-    assert_includes assigns(:searches)[:software_infos][:results], software_one.community
-    assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
+    assert_includes assigns(:searches)[:software_infos][:results], @softwares.first.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], @softwares.last.community
   end
 
   should "software_infos search by programming language" do
-    software_one = create_software_info("Software One")
-    software_two = create_software_info("Software Two")
+    @softwares.first.software_languages << create_software_language("Python", "1.0")
+    @softwares.last.software_languages << create_software_language("Java", "8.1")
 
-    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
-    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
-
-    software_one.software_languages << create_software_language("Python", "1.0")
-    software_two.software_languages << create_software_language("Java", "8.1")
-
-    software_one.save!
-    software_two.save!
+    @softwares.first.save!
+    @softwares.last.save!
 
     get(
       :software_infos,
       :query => "python",
     )
 
-    assert_includes assigns(:searches)[:software_infos][:results], software_one.community
-    assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
+    assert_includes assigns(:searches)[:software_infos][:results], @softwares.first.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], @softwares.last.community
   end
 
   should "software_infos search by database description" do
-    software_one = create_software_info("Software One")
-    software_two = create_software_info("Software Two")
+    @softwares.first.software_databases << create_software_database("MySQL", "1.0")
+    @softwares.last.software_databases << create_software_database("Postgrees", "8.1")
 
-    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
-    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
-
-    software_one.software_databases << create_software_database("MySQL", "1.0")
-    software_two.software_databases << create_software_database("Postgrees", "8.1")
-
-    software_one.save!
-    software_two.save!
+    @softwares.first.save!
+    @softwares.last.save!
 
     get(
       :software_infos,
       :query => "mysql",
     )
 
-    assert_includes assigns(:searches)[:software_infos][:results], software_one.community
-    assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
+    assert_includes assigns(:searches)[:software_infos][:results], @softwares.first.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], @softwares.last.community
   end
 
   should "software_infos search by finality" do
-    software_one = create_software_info("Software One", :finality => "Help")
-    software_two = create_software_info("Software Two", :finality => "Task")
-
-    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
-    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
-
-    software_one.save!
-    software_two.save!
-
     get(
       :software_infos,
       :query => "help",
     )
 
-    assert_includes assigns(:searches)[:software_infos][:results], software_one.community
-    assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
+
+    assert_includes assigns(:searches)[:software_infos][:results], @softwares.first.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], @softwares.last.community
   end
 
   should "software_infos search by acronym" do
-    software_one = create_software_info("Software One", :acronym => "SFO", :finality => "Help")
-    software_two = create_software_info("Software Two", :acronym => "SFT", :finality => "Task")
-
-    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
-    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
-
-    software_one.save!
-    software_two.save!
-
     get(
       :software_infos,
       :query => "SFO",
     )
 
-    assert_includes assigns(:searches)[:software_infos][:results], software_one.community
-    assert_not_includes assigns(:searches)[:software_infos][:results], software_two.community
+    assert_includes assigns(:searches)[:software_infos][:results], @softwares.first.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], @softwares.last.community
   end
 
   should "software_infos search by relevance" do
-    software_one = create_software_info("Software One", :acronym => "SFO", :finality => "Help")
-    software_two = create_software_info("Java", :acronym => "SFT", :finality => "Task")
-    software_three = create_software_info("Software Three", :acronym => "SFW", :finality => "Java")
+    @softwares << create_software_info("Software Three", :acronym => "SFW", :finality => "Java")
+    @softwares.last.license_info = LicenseInfo.create :version => "GPL - 3.0"
 
-    software_one.license_info = LicenseInfo.create :version => "GPL - 1.0"
-    software_two.license_info = LicenseInfo.create :version => "GPL - 1.0"
-    software_three.license_info = LicenseInfo.create :version => "GPL - 1.0"
 
-    software_one.software_languages << create_software_language("Java", "8.0")
+    @softwares.first.software_languages << create_software_language("Java", "8.0")
+    @softwares.first.save!
 
-    software_one.save!
-    software_two.save!
-    software_three.save!
+    @softwares[1].community.name = "Java"
+    @softwares[1].community.save!
 
     get(
       :software_infos,
@@ -191,9 +159,9 @@ class SearchControllerTest < ActionController::TestCase
       :query => "Java"
     )
 
-    assert_equal assigns(:searches)[:software_infos][:results][0], software_two.community
-    assert_equal assigns(:searches)[:software_infos][:results][1], software_three.community
-    assert_equal assigns(:searches)[:software_infos][:results][2], software_one.community
+    assert_equal assigns(:searches)[:software_infos][:results][0], @softwares[1].community
+    assert_equal assigns(:searches)[:software_infos][:results][1], @softwares[2].community
+    assert_equal assigns(:searches)[:software_infos][:results][2], @softwares[0].community
   end
 
   private
@@ -240,6 +208,5 @@ class SearchControllerTest < ActionController::TestCase
 
     software_database
   end
-
 
 end
