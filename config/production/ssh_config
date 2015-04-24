@@ -1,0 +1,40 @@
+Host *
+  ForwardAgent yes
+
+Host reverseproxy
+  Hostname 164.41.9.49
+  Port 55555
+  User athos
+
+Host database
+  Hostname 10.10.40.47
+  #Hostname 164.41.9.47
+  Port 55555
+  User athos
+  # connect via reverseproxy host
+  ProxyCommand ssh athos@164.41.9.49 -p %p nc %h %p
+  #ProxyCommand ssh athos@164.41.9.49 nc %h %p
+
+Host social
+  Hostname 10.10.40.46
+  #Hostname 164.41.9.46
+  Port 55555
+  User athos
+  # connect via reverseproxy host
+  ProxyCommand ssh athos@164.41.9.49 -p %p nc %h %p
+
+Host email
+  Hostname 10.10.40.48
+  #Hostname 164.41.9.48
+  Port 55555
+  User athos
+  # connect via reverseproxy host
+  ProxyCommand ssh athos@164.41.9.49 -p %p nc %h %p
+
+Host integration
+  Hostname 10.10.40.45
+  #Hostname 164.41.9.45
+  Port 55555
+  User athos
+  # connect via reverseproxy host
+  ProxyCommand ssh athos@164.41.9.49 -p %p nc %h %p
