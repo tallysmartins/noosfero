@@ -296,21 +296,36 @@ ul#itens-legend-grafic{
 }
 
 #discussions h3{
-  padding:12px 0px 3px 0px;
+  font-size: 20px;
+  padding:25px 0px 5px 0px;
   margin:0px;
 }
 
 .tidings{
-  border-top: 1px solid #ECEDF1;
+  border-top: 1px solid #D3D6DE;
   padding:10px;
+  padding-bottom: 23px;
 }
 
 .date-list-discussion,
 .subject-list-discussion{
   display: block;
-    line-height: 21px;
-    padding: 0px 0px 10px 0px;
-    position: relative;
+  line-height: 21px;
+  padding: 10px 0px 0px 0px;
+  position: relative;
+}
+
+.date-list-discussion {
+  letter-spacing: -0.1px;
+}
+
+.subject-list-title {
+  line-height: 18px !important;
+}
+
+.subject-list-discussion {
+  font-size: 16px;
+  padding-top: 3px;
 }
 
 .date-list-discussion{
@@ -321,28 +336,43 @@ ul#itens-legend-grafic{
   text-decoration: none;
   color:#5E82C6;
 }
-.see-more-discussion{
-text-align: right;
-  padding: 10px;
+
+.see-more-discussion {
+  text-align: right;
+  padding: 15px 0px 0px 0px;
   text-transform: uppercase;
   line-height: 21px;
-  font-size: 12px;
-  border-top: 1px solid #ECEDF1;
+  font-size: 11px;
+  border-top: 1px solid #D3D6DE;
+  margin-bottom: 2px;
+  letter-spacing: -0.12px;
 }
 
 .see-more-discussion::after {
   background: none repeat scroll 0 0 #3e67b1;
-  border-radius: 4px;
+  border-radius: 2px;
   color: #ffffff;
-  content: ">";
+  content: url('images/left-arrow.png');
   font-size: 15px;
   line-height: 20px;
   margin-left: 5px;
-  padding-left: 7px;
-  padding-right: 4px;
+  padding: 2px 7px 1px 7px;
   position: relative;
   text-align: center;
   top: 2px;
+}
+
+.tidings {
+  padding-left: 0px;
+}
+
+#mais-relevantes h3 {
+  letter-spacing: 0.2px;
+  padding-bottom: 16px;
+}
+
+#mais-relevantes span {
+  letter-spacing: 0px;
 }
 
 /********************** ABA03 - BLOG ********************************/
@@ -384,6 +414,11 @@ text-align: right;
 
 
 /********************** ABA04 - Wiki ********************************/
+#aba4 {
+  border-bottom: 3px solid #172738;
+  padding-bottom: 40px;
+}
+
 #aba4 h3{
   color:#172738;
   border-bottom: 2px solid #ECEDF1;
@@ -392,7 +427,12 @@ text-align: right;
 
 #aba4 span{
   line-height: 21px;
-  font-size: 13px;
+  font-size: 15px;
+  display: block;
+  padding-left: 3px;
+  font-weight: 400;
+  color: black;
+  padding-top: 10px;
 }
 
 
@@ -400,72 +440,92 @@ text-align: right;
 
 .information-repository-activ{
   border-bottom: 1px solid #D3D6DE;
-  padding:40px 20px 40px 20px;
+  /*padding:40px 20px 40px 20px; #D3D6DE*/
+  margin: 0px;
   color:#172738;
 }
 
 .about-commit{
+  font-size: 12px;
   display:block;
   position:absolute;
   float:left;
+  margin-top: 27px;
   border-right:1px dotted #D3D6DE;
-  padding-right: 40px;
+  padding: 0px 23px 13px 0px;
 }
+
+.calendar-commit {
+  margin-top: 10px;
+}
+
 .about-commit span{
   position: relative;
-  display:block;
+  display: block;
   line-height: 21px;
-    padding: 5px;
+  padding: 0px;
 }
 
 .information-member-repository{
-  margin-left:150px;
+  padding-top: 28px;
+  margin-left: 127px;
   display:block;
 
+}
+
+.name-information-repository {
+  font-size: 12px;
+}
+
+.information-member-repository {
+  margin-bottom: 20px;
 }
 
 .information-member-repository span{
   display:block;
   position:relative;
-  line-height: 21px;
-    padding: 5px;
+  line-height: 15px;
+  padding: 5px;
 }
 
 .commit-historic::before {
-    content: url("images/calendar-icon.png");
-    float: left;
+    content: url("images/upload-icon.png");
+    /*float: left;*/
     line-height: 20px;
-    margin-right: 10px;
+    margin-right: 11px;
     margin-top: 4px;
 }
 
 .calendar-commit::before {
     content: url("images/calendar-icon.png");
-    float: left;
+    /*float: left;*/
     line-height: 20px;
-    margin-right: 10px;
+    margin-right: 11px;
     margin-top: 4px;
 }
 
 .see-more-repository{
+  color: black !important;
   text-align: right;
-  padding:10px;
+  padding: 15px 0px 0px 0px;
   text-transform: uppercase;
   line-height: 21px;
-  font-size:12px;
+  font-size: 11px;
+/*  border-top: 1px solid #D3D6DE; */
+  margin-bottom: 2px;
+  letter-spacing: -0.12px;
 }
 
 .see-more-repository::after {
-    background: none repeat scroll 0 0 #3e67b1;
-    border-radius: 4px;
-    color: #ffffff;
-    content: ">";
-    font-size: 15px;
-    line-height: 20px;
-    margin-left: 5px;
-    padding-left: 7px;
-    padding-right: 4px;
-    position: relative;
-    text-align: center;
-    top: 2px;
+  background: none repeat scroll 0 0 #3e67b1;
+  border-radius: 2px;
+  color: #ffffff;
+  content: url('images/left-arrow.png');
+  font-size: 15px;
+  line-height: 20px;
+  margin-left: 5px;
+  padding: 2px 7px 1px 7px;
+  position: relative;
+  text-align: center;
+  top: 2px;
 }
