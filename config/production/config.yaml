@@ -7,8 +7,8 @@ site_url: https://beta.softwarepublico.gov.br
 colab_from_address: '"Portal do Software Publico" <noreply@beta.softwarepublico.gov.br>'
 server_email: '"Portal do Software Publico" <noreply@beta.softwarepublico.gov.br>'
 email_subject_prefix: '[spb]'
-lists_hostname: listas.beta.softwarepublico.gov.br
+lists_hostname: listas.softwarepublico.gov.br
 lists_admin: paulo@softwarelivre.org
-relay_hostname: relay.beta.softwarepublico.gov.br
-from_address: noreply@beta.softwarepublico.gov.br
+relay_hostname: relay.softwarepublico.gov.br
+from_address: noreply@softwarepublico.gov.br
 
