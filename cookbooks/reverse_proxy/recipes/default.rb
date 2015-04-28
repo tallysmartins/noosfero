@@ -1,7 +1,7 @@
 package 'iptables-services'
 
 service 'iptables' do
-  action :enable
+  action [:enable, :start]
   supports :restart => true
 end
 
