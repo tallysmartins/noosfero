@@ -10,5 +10,5 @@ email_subject_prefix: '[spb]'
 lists_hostname: listas.softwarepublico.gov.br
 lists_admin: paulo@softwarelivre.org
 relay_hostname: relay.softwarepublico.gov.br
+alt_ssh_port: 55555
 from_address: noreply@softwarepublico.gov.br
-
