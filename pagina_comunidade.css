@@ -529,3 +529,81 @@ ul#itens-legend-grafic{
   text-align: center;
   top: 2px;
 }
+
+
+/*********************** Página de eventos da comunidade *******************/
+
+#event-card {
+  border-top: 1px dotted #D3D6D3;
+  padding-top: 35px;
+  width: 494px;
+  height: 216px;
+  background-image: url('images/evento-teste.jpg');
+  background-repeat: no-repeat;
+}
+
+#event-card #event-image {
+  position: relative;
+  float: left;
+  content: url('images/comunidade-evento-imagem-evento.png');
+  border-right:1px dotted #D3D6DE;
+  padding-right: 21px;
+}
+
+.about-event {
+  position: relative;
+  float: left;
+  width: 300px;
+  max-width: 300px;
+  height: inherit;
+}
+
+.about-event span {
+  font-family: arial;
+  display: block;
+  max-width: inherit;
+  margin-left: 40px;
+}
+
+.about-event .event-date {
+  font-weight: bold;
+  letter-spacing: 0.45px;
+  margin-top: 2px;
+}
+
+.about-event .event-link {
+  margin-top: 17px;
+  letter-spacing: 0.5px;
+}
+
+.about-event .event-address {
+  margin-top: 19px;
+}
+
+.about-event .event-address span {
+  display: block;
+  margin-left: 0px;
+  margin-top: 5px;
+}
+
+.about-event .event-address #area {
+  letter-spacing: 0.6px;
+}
+
+.about-event .event-address #district {
+  letter-spacing: 0.7px;
+}
+
+.about-event .event-address #city {
+  letter-spacing: 0.5px;
+}
+
+.about-event .event-address #cep {
+  letter-spacing: 0.5px;
+}
+
+/*
+.event-date::before {
+  content: url("images/calendar-icon.png");
+}
+*/
