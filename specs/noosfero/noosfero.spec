@@ -1,7 +1,7 @@
 %define writable_dirs javascripts/cache stylesheets/cache articles image_uploads thumbnails
 
 Name:    noosfero
-Version: 1.1~rc2.3
+Version: 1.1~rc2.4
 Release: 2%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
