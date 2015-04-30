@@ -1,5 +1,5 @@
 Name:    gitlab-deps
-Version: 7.5.3
+Version: 7.5.4
 Release: 1%{?dist}
 Summary: Ruby dependencies for Gitlab
 Group:   Development/Tools
