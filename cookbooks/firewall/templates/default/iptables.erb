@@ -18,7 +18,8 @@
 
 -A INPUT -i lo -j ACCEPT
 
-<%= yield :iptables_filter %>
+<%= node['firewall'] %>
+<%= render 'iptables-filter.erb' %>
 
 -A INPUT -j LOG --log-prefix "Firewall INPUT: "
 -A INPUT -j DROP
@@ -28,10 +29,6 @@
 COMMIT
 
 
-### NAT Rules ###
-
 *nat
-
-<%= yield :iptables_nat %>
-
+<%= render 'iptables-nat.erb' %>
 COMMIT
