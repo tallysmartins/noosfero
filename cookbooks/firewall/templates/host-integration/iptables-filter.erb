@@ -1,0 +1,3 @@
+
+# Allow HTTP access
+-A INPUT -s <%= node['peers']['reverseproxy'] %> -p tcp -m state --state NEW -m multiport --dports 80,443 -j ACCEPT
