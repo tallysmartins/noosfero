@@ -1,3 +1,3 @@
 name 'server'
 description 'Common configuration for all servers'
-run_list 'recipe[basics]', 'recipe[email::client]'
+run_list 'recipe[basics]', 'recipe[firewall]', 'recipe[email::client]'

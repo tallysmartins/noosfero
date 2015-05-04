@@ -1,0 +1,35 @@
+
+<% content_for :iptables_filter do %>
+
+-A INPUT -s 200.198.196.192/26 -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 200.198.196.192/26 -p tcp -m state --state NEW -m tcp --dport 5432 -j ACCEPT
+-A INPUT -s 200.198.196.192/26 -p icmp --icmp-type 8 -j ACCEPT
+-A INPUT -s 200.198.196.201/32 -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+-A INPUT -s 200.198.196.206/32 -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+
+-A INPUT -s 189.9.150.85/32 -p tcp -m state --state NEW -m multiport --dports 22,80,5432 -j ACCEPT
+
+
+# UnB
+-A INPUT -s 164.41.86.12/32 -p tcp -m state --state NEW -m multiport --dports 22,80,443 -j ACCEPT
+-A INPUT -s 164.41.9.36/32  -p tcp -m state --state NEW -m multiport --dports 22,80,5432 -j ACCEPT
+
+
+# Sergio Oliveira
+-A INPUT -s 179.111.229.232/32 -p tcp -m state --state NEW -m multiport --dports 22,80,5432 -j ACCEPT
+-A INPUT -s 189.5.248.31/32 -p tcp -m state --state NEW -m multiport --dports 22,80,5432 -j ACCEPT
+
+
+#i Antonio Terceiro
+-A INPUT -s 198.58.116.17/32 -p tcp -m state --state NEW -m multiport --dports 22,80,5432 -j ACCEPT
+-A INPUT -s 189.4.54.241/32 -p tcp -m state --state NEW -m multiport --dports 22,80,443 -j ACCEPT
+
+
+-A INPUT -s 10.18.0.0/16 -p tcp -m state --state NEW -m multiport --dports 22,80,5432 -j ACCEPT
+-A INPUT -s 10.18.0.0/16 -p icmp --icmp-type 8 -j ACCEPT
+-A INPUT -s 189.9.137.239/32 -p tcp -m state --state NEW -m tcp --dport 10050 -j ACCEPT
+-A INPUT -s 189.9.137.239/32 -p icmp --icmp-type 8 -j ACCEPT
+
+<% end %>
+
+<%= render 'firewall-common.erb' %>
