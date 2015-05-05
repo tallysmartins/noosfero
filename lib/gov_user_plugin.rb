@@ -124,6 +124,23 @@ class GovUserPlugin < Noosfero::Plugin
     percentege
   end
 
+  def stylesheet?
+    true
+  end
+
+  def admin_panel_links
+    [
+      {
+        :title => _('Create Institution'),
+        :url => {
+            :controller => 'gov_user_plugin',
+            :action => 'create_institution_admin'
+          }
+      }
+    ]
+  end
+
+
   def js_files
     %w(
     vendor/modulejs-1.5.0.min.js

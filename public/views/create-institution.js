@@ -9,7 +9,9 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     institution_already_exists:
       NoosferoRoot.urlWithSubDirectory("/plugin/gov_user/institution_already_exists"),
     get_institutions:
-      NoosferoRoot.urlWithSubDirectory("/plugin/gov_user/get_institutions")
+      NoosferoRoot.urlWithSubDirectory("/plugin/gov_user/get_institutions"),
+    auto_complete_city:
+      NoosferoRoot.urlWithSubDirectory("/account/search_cities")
   };
 
 
@@ -96,19 +98,49 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
       $(".remove-institution").click(remove_institution);
     } else {
-      var errors = "<ul>";
+      var errors = create_error_list(response);
+      $("#create_institution_errors").switchClass("hide-field", "show-field").html("<h2>"+response.message+"</h2>"+errors);
 
-      for(var i = 0; i < response.errors.length; i++) {
-        errors += "<li>"+response.errors[i]+"</li>";
-      }
-      errors += "</ul>";
-      if($('#institution_dialog') == 0){
-        $('#create_institution_errors').switchClass("show-field", "hide-field");
-        $('#errorExplanation').html("<h2>"+response.message+"</h2>"+errors);
-      }else{
-        $("#create_institution_errors").switchClass("hide-field", "show-field").html("<h2>"+response.message+"</h2>"+errors);
+      show_errors_in_each_field(response.errors);
+    }
+  }
+
+  function create_error_list(response){
+    var errors = "<ul>";
+    var field_name;
+
+    for(var error_key in response.errors) {
+      field_name = adjust_error_key(error_key);
+
+      if(response.errors[error_key].length > 0){
+        errors += "<li><b>"+field_name+"</b>: "+response.errors[error_key]+"</li>";
       }
     }
+
+    errors += "</ul>";
+    return errors;
+  }
+
+
+  function show_errors_in_each_field(errors) {
+    var error_keys = Object.keys(errors);
+
+    // (field)|(field)|...
+    var verify_error = new RegExp("(" + error_keys.join(")|(") + ")" );
+
+    var fields_with_errors = $("#institution_dialog .formfield input").filter(function(index, field) {
+      return verify_error.test(field.getAttribute("name"));
+    });
+
+    fields_with_errors.addClass("highlight-error");
+  }
+
+
+  function adjust_error_key(error_key) {
+    var text = error_key.replace(/_/, " ");
+    text = text.charAt(0).toUpperCase() + text.slice(1);
+
+    return text;
   }
 
 
@@ -306,6 +338,41 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     }
   }
 
+  function autoCompleteCity() {
+    var country_selected = $('#community_country').val()
+
+    if(country_selected == "BR")
+    {
+      $('#community_city').autocomplete({
+        source : function(request, response){
+          $.ajax({
+            type: "GET",
+            url: AJAX_URL.auto_complete_city,
+            data: {city_name: request.term, state_name: $("#community_state").val()},
+            success: function(result){
+              response(result);
+
+              // There are two autocompletes in this page, the last one is modal
+              // autocomplete just put it above the modal
+              $(".ui-autocomplete").last().css("z-index", 1000);
+            },
+            error: function(ajax, stat, errorThrown) {
+              console.log('Link not found : ' + errorThrown);
+            }
+          });
+        },
+
+        minLength: 3
+      });
+    }
+    else
+    {
+      if ($('#community_city').data('autocomplete')) {
+        $('#community_city').autocomplete("destroy");
+        $('#community_city').removeData('autocomplete');
+      }
+    }
+  }
 
   function set_events() {
     $("#create_institution_link").click(open_create_institution_modal);
@@ -330,6 +397,11 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     add_mask_to_form_items();
 
     institution_autocomplete();
+
+    autoCompleteCity();
+    $('#community_country').change(function(){
+      autoCompleteCity();
+    })
   }
 
 

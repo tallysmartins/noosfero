@@ -15,6 +15,9 @@ class GovUserPluginController < ApplicationController
   def create_institution
     @show_sisp_field = environment.admins.include?(current_user.person)
     @state_list = get_state_list()
+    @governmental_sphere = [[_("Select a Governmental Sphere"), 0]]|GovernmentalSphere.all.map {|s| [s.name, s.id]}
+    @governmental_power = [[_("Select a Governmental Power"), 0]]|GovernmentalPower.all.map {|g| [g.name, g.id]}
+    @juridical_nature = [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}
 
     params[:community] ||= {}
     params[:institutions] ||= {}
@@ -40,6 +43,9 @@ class GovUserPluginController < ApplicationController
   def create_institution_admin
     @show_sisp_field = environment.admins.include?(current_user.person)
     @state_list = get_state_list()
+    @governmental_sphere = [[_("Select a Governmental Sphere"), 0]]|GovernmentalSphere.all.map {|s| [s.name, s.id]}
+    @governmental_power = [[_("Select a Governmental Power"), 0]]|GovernmentalPower.all.map {|g| [g.name, g.id]}
+    @juridical_nature = [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}
 
     @url_token = split_http_referer request.original_url()
 
@@ -205,9 +211,10 @@ class GovUserPluginController < ApplicationController
   end
 
   def save_institution institution
+    inst_errors = institution.errors.messages
+    com_errors = institution.community.errors.messages
 
-    inst_errors = institution.errors.full_messages
-    com_errors = institution.community.errors.full_messages
+    set_errors institution
 
     set_error_css institution
 
@@ -219,7 +226,7 @@ class GovUserPluginController < ApplicationController
     else
       { :success => false,
         :message => _("Institution could not be created!"),
-        :errors => inst_errors << com_errors
+        :errors => inst_errors.merge(com_errors)
       }
     end
   end
@@ -229,23 +236,24 @@ class GovUserPluginController < ApplicationController
       redirect_to :controller => "/admin_panel", :action => "index"
     else
       flash[:errors] = response_message[:errors]
-      redirect_to :controller => "gov_user_plugin", :action => "create_institution_admin", :params => params
+
+      redirect_to :controller => "gov_user_plugin", :action => "create_institution_admin"
     end
   end
 
-  def set_error_css institution
-    institution.valid?
-    institution.community.valid?
-    params[:error_community_name] = institution.community.errors.include?(:name) ? "highlight-error" : ""
-    params[:error_community_country] = institution.community.errors.include?(:country) ? "highlight-error" : ""
-    params[:error_community_city] = institution.errors.include?(:city) ? "highlight-error" : ""
-    params[:error_community_state] = institution.errors.include?(:state) ? "highlight-error" : ""
-    params[:error_institution_corporate_name] = institution.errors.include?(:corporate_name) ? "highlight-error" : ""
-    params[:error_institution_acronym] = institution.errors.include?(:acronym) ? "highlight-error" : ""
-    params[:error_institution_cnpj] = institution.errors.include?(:cnpj) ? "highlight-error" : ""
-    params[:error_institution_governmental_sphere] = institution.errors.include?(:governmental_sphere) ? "highlight-error" : ""
-    params[:error_institution_governmental_power] = institution.errors.include?(:governmental_power) ? "highlight-error" : ""
-    params[:error_institution_juridical_nature] = institution.errors.include?(:juridical_nature) ? "highlight-error" : ""
-    params[:error_institution_sisp] = institution.errors.include?(:sisp) ? "highlight-error" : ""
+  def set_errors institution
+    institution.valid? if institution
+    institution.community.valid? if institution.community
+
+    flash[:error_community_name] = institution.community.errors.include?(:name) ? "highlight-error" : ""
+    flash[:error_community_country] = institution.errors.include?(:country) ? "highlight-error" : ""
+    flash[:error_community_state] = institution.errors.include?(:state) ? "highlight-error" : ""
+    flash[:error_community_city] = institution.errors.include?(:city) ? "highlight-error" : ""
+    flash[:error_institution_corporate_name] = institution.errors.include?(:corporate_name) ? "highlight-error" : ""
+    flash[:error_institution_cnpj] = institution.errors.include?(:cnpj) ? "highlight-error" : ""
+    flash[:error_institution_governmental_sphere] = institution.errors.include?(:governmental_sphere) ? "highlight-error" : ""
+    flash[:error_institution_governmental_power] = institution.errors.include?(:governmental_power) ? "highlight-error" : ""
+    flash[:error_institution_juridical_nature] = institution.errors.include?(:juridical_nature) ? "highlight-error" : ""
   end
+
 end
