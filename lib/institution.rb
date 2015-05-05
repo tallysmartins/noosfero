@@ -67,7 +67,7 @@ class Institution < ActiveRecord::Base
   def validate_state
     if(self.community.blank? ||
        self.errors[:state].blank? &&
-       self.community.state.blank?)
+       (self.community.state.blank? || self.community.state == "-1"))
 
       if self.community.country == "BR"
         self.errors.add(:state, _("can't be blank"))

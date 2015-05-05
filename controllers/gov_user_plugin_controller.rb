@@ -18,14 +18,11 @@ class GovUserPluginController < ApplicationController
     @governmental_sphere = [[_("Select a Governmental Sphere"), 0]]|GovernmentalSphere.all.map {|s| [s.name, s.id]}
     @governmental_power = [[_("Select a Governmental Power"), 0]]|GovernmentalPower.all.map {|g| [g.name, g.id]}
     @juridical_nature = [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}
+    @state_options = [[_('Select a state'), '-1']] | @state_list.collect {|state| [state.name, state.name]}
 
     params[:community] ||= {}
     params[:institutions] ||= {}
 
-    @state_options = [[_('Select a state'), '-1']] | @state_list.collect {|state| [state.name, state.name]}
-    @governmental_sphere_options = [[_("Select a Governmental Sphere"), 0]]|GovernmentalSphere.all.map {|s| [s.name, s.id]}
-    @governmental_power_options = [[_("Select a Governmental Power"), 0]]|GovernmentalPower.all.map {|g| [g.name, g.id]}
-    @juridical_nature_options = [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}
     if request.xhr?
       render :layout=>false
     else
@@ -46,16 +43,13 @@ class GovUserPluginController < ApplicationController
     @governmental_sphere = [[_("Select a Governmental Sphere"), 0]]|GovernmentalSphere.all.map {|s| [s.name, s.id]}
     @governmental_power = [[_("Select a Governmental Power"), 0]]|GovernmentalPower.all.map {|g| [g.name, g.id]}
     @juridical_nature = [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}
+    @state_options = [[_('Select a state'), '-1']] | @state_list.collect {|state| [state.name, state.name]}
 
     @url_token = split_http_referer request.original_url()
 
     params[:community] ||= {}
     params[:institutions] ||= {}
 
-    @state_options = [[_('Select a state'), '-1']] | @state_list.collect {|state| [state.name, state.name]}
-    @governmental_sphere_options = [[_("Select a Governmental Sphere"), 0]]|GovernmentalSphere.all.map {|s| [s.name, s.id]}
-    @governmental_power_options = [[_("Select a Governmental Power"), 0]]|GovernmentalPower.all.map {|g| [g.name, g.id]}
-    @juridical_nature_options = [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}
   end
 
   def new_institution
@@ -216,8 +210,6 @@ class GovUserPluginController < ApplicationController
 
     set_errors institution
 
-    set_error_css institution
-
     if inst_errors.empty? && com_errors.empty? && institution.valid? && institution.save
       { :success => true,
         :message => _("Institution successful created!"),
@@ -237,7 +229,7 @@ class GovUserPluginController < ApplicationController
     else
       flash[:errors] = response_message[:errors]
 
-      redirect_to :controller => "gov_user_plugin", :action => "create_institution_admin"
+      redirect_to :controller => "gov_user_plugin", :action => "create_institution_admin", :params => params
     end
   end
 
@@ -254,6 +246,7 @@ class GovUserPluginController < ApplicationController
     flash[:error_institution_governmental_sphere] = institution.errors.include?(:governmental_sphere) ? "highlight-error" : ""
     flash[:error_institution_governmental_power] = institution.errors.include?(:governmental_power) ? "highlight-error" : ""
     flash[:error_institution_juridical_nature] = institution.errors.include?(:juridical_nature) ? "highlight-error" : ""
+    flash[:error_institution_sisp] = institution.errors.include?(:sisp) ? "highlight-error" : ""
   end
 
 end
