@@ -50,47 +50,45 @@ class Institution < ActiveRecord::Base
 
       return false
     end
+
     return true
   end
 
   def validate_country
-    if(self.community.blank? ||
-       self.community.country.blank? &&
-       self.errors[:country].blank?)
-
-      self.errors.add(:country, _("can't be blank"))
-      return false
+    unless self.community.blank?
+       if self.community.country.blank? && self.errors[:country].blank?
+        self.errors.add(:country, _("can't be blank"))
+        return false
+      end
     end
+
     return true
   end
 
   def validate_state
-    if(self.community.blank? ||
-       self.errors[:state].blank? &&
-       (self.community.state.blank? || self.community.state == "-1"))
+    unless self.community.blank?
+      if self.community.country == "BR" &&
+        (self.community.state.blank? || self.community.state == "-1") &&
+        self.errors[:state].blank?
 
-      if self.community.country == "BR"
         self.errors.add(:state, _("can't be blank"))
         return false
-      else
-        return true
       end
     end
+
     return true
   end
 
   def validate_city
-    if(self.community.blank? ||
-       self.errors[:city].blank? &&
-       self.community.city.blank?)
+    unless self.community.blank?
+      if self.community.country == "BR" && self.community.city.blank? &&
+        self.errors[:city].blank?
 
-      if self.community.country == "BR"
         self.errors.add(:city, _("can't be blank"))
         return false
-      else
-        return true
       end
     end
+
     return true
   end
 
@@ -109,14 +107,12 @@ class Institution < ActiveRecord::Base
 
   def validate_cnpj
     if !self.community.blank? && self.community.country == "BR"
-      if self.errors[:cnpj].blank? && self.cnpj.blank?
+      if self.cnpj.blank? && self.errors[:cnpj].blank?
         self.errors.add(:cnpj, _("can't be blank"))
         return false
-      else
-        return true
       end
-    else
-      return true
     end
+
+    return true
   end
 end

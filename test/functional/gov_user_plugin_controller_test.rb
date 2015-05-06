@@ -44,6 +44,7 @@ class GovUserPluginControllerTest < ActionController::TestCase
       @gov_sphere,
       "12.345.678/9012-90"
     )
+
   end
 
   should "Search for institution with acronym" do
@@ -228,6 +229,7 @@ class GovUserPluginControllerTest < ActionController::TestCase
     xhr :post, :new_institution, fields
 
     json_response = ActiveSupport::JSON.decode(@response.body)
+
     assert json_response["success"]
   end
 

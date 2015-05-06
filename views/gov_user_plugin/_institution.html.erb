@@ -58,7 +58,7 @@
       <span class='required-field'>
         <div class="formfield">
           <label for="community_state" class="formlabel"><%= _("State") %></label>
-          <%= f.select(:state, @state_options, {}, {:class => flash[:error_community_state]}) %>
+          <%= f.select(:state, @state_options, {:selected => params[:community][:state]}, {:class => flash[:error_community_state]}) %>
         </div>
       </span>
 
@@ -77,27 +77,27 @@
           <%= hidden_field_tag "acronym_translate", _("Acronym") %>
           <%= hidden_field_tag "fantasy_name_translate", _("Fantasy name") %>
           <%= inst.label("acronym" ,_("Acronym"), :class=>"formlabel") %>
-          <%= inst.text_field(:acronym) %>
+          <%= inst.text_field(:acronym, :value => params[:institutions][:acronym]) %>
         </div>
       </span>
 
       <span class='required-field public-institutions-fields'>
         <div class="formfield type-text">
           <%= inst.label("governmental_sphere_id" ,_("Governmental Sphere:"), :class=>"formlabel") %>
-          <%= inst.select(:governmental_sphere, @governmental_sphere, {:selected=>0}, :class => flash[:error_institution_governmental_sphere])%>
+          <%= inst.select(:governmental_sphere, @governmental_sphere, :selected=>params[:institutions][:governmental_sphere], :class => flash[:error_institution_governmental_sphere])%>
         </div>
       </span>
 
       <span class='required-field public-institutions-fields'>
         <div class="formfield type-text">
           <%= inst.label("governmental_power_id" ,_("Governmental Power:"), :class=>"formlabel") %>
-          <%= inst.select(:governmental_power, @governmental_power, {:selected=>0}, {:class => flash[:error_institution_governmental_power]})%>
+          <%= inst.select(:governmental_power, @governmental_power, :selected=>params[:institutions][:governmental_sphere], :class => flash[:error_institution_governmental_power])%>
         </div>
       </span>
       <span class='required-field public-institutions-fields'>
         <div class="formfield type-text">
           <%= inst.label("juridical_nature_id" ,_("Juridical Nature:"), :class=>"formlabel") %>
-          <%= inst.select(:juridical_nature, @juridical_nature, {:selected=>0}, {:class => flash[:error_institution_juridical_nature]})%>
+          <%= inst.select(:juridical_nature, @juridical_nature, :selected=>params[:institutions][:juridical_nature], :class => flash[:error_institution_juridical_nature])%>
         </div>
       </span>
 

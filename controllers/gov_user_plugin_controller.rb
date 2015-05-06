@@ -140,11 +140,10 @@ class GovUserPluginController < ApplicationController
   end
 
   def set_institution_type
-    institution_params = params[:institutions].except(
-    :governmental_power,
-    :governmental_sphere,
-    :juridical_nature
-    )
+    institution_params = params[:institutions].except(:governmental_power,
+                                                      :governmental_sphere,
+                                                      :juridical_nature
+                                                     )
     if params[:institutions][:type] == "PublicInstitution"
       PublicInstitution::new institution_params
     else
@@ -165,8 +164,8 @@ class GovUserPluginController < ApplicationController
       institution.governmental_sphere = gov_sphere
     rescue
       institution.errors.add(
-      :governmental_fields,
-      _("Could not find Governmental Power or Governmental Sphere")
+        :governmental_fields,
+        _("Could not find Governmental Power or Governmental Sphere")
       )
     end
   end
