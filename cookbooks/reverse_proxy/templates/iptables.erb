@@ -1,7 +1,0 @@
-*nat
-
-# Forward reverseproxy:22 to integration:22. Required to enable git pushes over SSH
--A PREROUTING -d <%= node['peers']['reverseproxy'] %>/32 -p tcp -m tcp --dport 22 -j DNAT --to-destination <%= node['peers']['integration'] %>:22
--A POSTROUTING -d <%= node['peers']['integration'] %>/32 -p tcp -m tcp --dport 22 -j SNAT --to-source <%= node['peers']['reverseproxy'] %>
-
-COMMIT

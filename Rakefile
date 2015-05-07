@@ -9,6 +9,7 @@ $SPB_ENV = ENV.fetch('SPB_ENV', 'local')
 ssh_config_file = "config/#{$SPB_ENV}/ssh_config"
 ips_file = "config/#{$SPB_ENV}/ips.yaml"
 config_file = "config/#{$SPB_ENV}/config.yaml"
+iptables_file = "config/#{$SPB_ENV}/iptables-filter-rules"
 
 ENV['CHAKE_SSH_CONFIG'] = ssh_config_file
 
@@ -20,9 +21,11 @@ end
 
 config = YAML.load_file(config_file)
 ips = YAML.load_file(ips_file)
+firewall = File.open(iptables_file).read
 $nodes.each do |node|
   node.data['config'] = config
   node.data['peers'] = ips
+  node.data['firewall'] = firewall
 end
 
 task :console do
