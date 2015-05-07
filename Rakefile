@@ -1,3 +1,9 @@
+begin
+  load 'local.rake'
+rescue LoadError
+  # nothing
+end
+
 $SPB_ENV = ENV.fetch('SPB_ENV', 'local')
 
 ssh_config_file = "config/#{$SPB_ENV}/ssh_config"
@@ -10,12 +16,6 @@ require 'chake'
 
 if Chake::VERSION < '0.4.3'
   fail "Please upgrade to chake 0.4.3+"
-end
-
-begin
-  load 'local.rake'
-rescue LoadError
-  # nothing
 end
 
 config = YAML.load_file(config_file)
