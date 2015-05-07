@@ -4,9 +4,11 @@ class ProfileController
 
   def communities
     type = []
-    if params[:type] == "Software"
+    params[:type].downcase! unless params[:type].nil?
+
+    if params[:type] == "software"
       type = profile.softwares
-    elsif params[:type] == "Institution"
+    elsif params[:type] == "institution"
       type = profile.institutions
     else
       profile.communities.select do |community|
