@@ -37,3 +37,4 @@ Conteúdos
 
    install
    dependencies
+   dns
