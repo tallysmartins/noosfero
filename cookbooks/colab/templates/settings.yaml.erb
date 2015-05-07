@@ -14,6 +14,10 @@ ADMINS: &admin
 
 MANAGERS: *admin
 
+# general Django settings
+DEFAULT_FROM_EMAIL: '<%= node['config']['colab_from_address'] %>'
+
+# colab-specific
 COLAB_FROM_ADDRESS: '<%= node['config']['colab_from_address'] %>'
 SERVER_EMAIL: '<%= node['config']['server_email'] %>'
 
