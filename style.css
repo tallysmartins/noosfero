@@ -753,6 +753,7 @@ p {
 }
 
 .block-outer {
+    float: left;
     margin-bottom: 45px;
     clear: both;
 }

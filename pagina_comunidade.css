@@ -534,10 +534,11 @@ ul#itens-legend-grafic{
 /*********************** Página de eventos da comunidade *******************/
 
 #event-card {
+  float: left;
   border-top: 1px dotted #D3D6D3;
   padding-top: 33px;
   width: 494px;
-  height: 216px;
+  height: 173px;
   /*background-image: url('images/evento-teste.jpg');*/
   background-repeat: no-repeat;
 }
@@ -553,27 +554,25 @@ ul#itens-legend-grafic{
 .about-event {
   position: relative;
   float: left;
+  height: 160px;
   width: 300px;
   max-width: 300px;
-  height: inherit;
 }
 
-.about-event span {
+.about-event > span {
   font-family: arial;
   display: block;
   max-width: inherit;
-  margin-left: 40px;
+  margin-left: 20px;
+  padding-left: 21px; 
+  line-height: 13px;
+  margin-right: 11px;
 }
 
 .about-event .event-date {
   font-weight: bold;
-  letter-spacing: 0.56px;
+  letter-spacing: 0.49px;
   margin-top: 3px;
-}
-
-.about-event .event-link {
-  margin-top: 16px;
-  letter-spacing: 0.34px;
 }
 
 .about-event .event-address {
@@ -584,22 +583,8 @@ ul#itens-legend-grafic{
   display: block;
   margin-left: 0px;
   margin-top: 4.4px;
-}
-
-.about-event .event-address #area {
-  letter-spacing: 0.54px;
-}
-
-.about-event .event-address #district {
-  letter-spacing: 0.7px;
-}
-
-.about-event .event-address #city {
-  letter-spacing: 0.68px;
-}
-
-.about-event .event-address #cep {
-  letter-spacing: 0.65px;
+  line-height: 14px;
+  letter-spacing: 0.5px;
 }
 
 /*
@@ -609,15 +594,125 @@ ul#itens-legend-grafic{
 */
 
 #community-page {
+  width: 494px;
   height: 716px;
-  background-image: url('images/teste.png');
+  /*background-image: url('images/pagina-comunidade-teste.png');*/
   background-repeat: no-repeat;
 }
 
 #community-page h1 {
-  margin-bottom: 16px;
+  margin-bottom: 17px;
   text-align: left;
   font-size: 32px;
   line-height: 30px;
-  letter-spacing: 0.1px;
+  padding-left: 1px;
+}
+
+.event-date {
+  background: url('images/calendar-icon.png') no-repeat left center;
+}
+
+.event-link {
+  background: url('images/calendar-icon.png') no-repeat left center;
+  margin-top: 18px;
+  letter-spacing: 0.48px;
+}
+
+.event-address {
+  background: url('images/icone_pin.png') no-repeat left top;
+}
+
+.event-body {
+  float: left;
+}
+
+.event-body h2 {
+  margin-left: 2px !important;
+  width: 494px;
+  letter-spacing: -0.4px;
+  line-height: 26px;
+  margin-bottom: -3px !important;
+}
+
+.event-body .event-content p {
+  font-size: 15px;
+  font-family: Arial;
+  margin-top: 20px;
+  width: 494px;
+  padding-left: 2px;
+  line-height: 22px;
+}
+
+/********** event side box **********/
+
+.community-side-box {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #D3D6DE;
+  border-radius: 7px;
+  margin-bottom: 27px;
+  overflow: hidden;
+}
+
+.community-logo {
+  content: url('images/logo-participa.png'); /* LOGOTIPO DA COMUNIDADE */
+  /*content: url('images/bg-bloco-de-trilhas.png');*/
+  width: 100%;
+  border-bottom: 3px solid #3E67B1;
+}
+
+.community-name {
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: 700;
+  padding-top: 13px;
+  text-align: center; 
+  height: 100%;
+  background-color: #ECEDF1;
+}
+
+.community-name p {
+  line-height: 17px;
+  letter-spacing: 0px;
+}
+
+.community-side-box table {
+  background-color: #ECEDF1;
+}
+
+.community-side-box table th {
+  font-weight: 700;
+  text-align: left;
+  font-family: Arial;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-top: 9px;
+  padding-left: 13px;
+  padding-bottom: 0px;
+  letter-spacing: -1px;
+  border-bottom: 1px solid #D3D6DE;
+}
+
+.community-side-box table td {
+  text-align: left;
+  border-bottom: 1px solid #D3D6DE;
+  height: 42px;
+  padding-top: 9px;
+  padding-left: 13px;
+}
+
+.another-events-date {
+  color: #2C4B6B;
+  font-weight: 700;
+}
+
+.another-event {
+  color: #172738;
+}
+
+/************************** PÁGINA BLOG **************************/
+
+#community-blog {
+  background-image: url('images/blog-teste.png');
+  background-repeat: no-repeat; 
 }
