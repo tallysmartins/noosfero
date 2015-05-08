@@ -1,13 +1,15 @@
 %define writable_dirs javascripts/cache stylesheets/cache articles image_uploads thumbnails
 
 Name:    noosfero
-Version: 1.1~rc2.3
+Version: 1.1~rc2.4
 Release: 2%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
 License: AGPLv3
 URL:     http://noosfero.org
 Source0: %{name}-%{version}.tar.gz
+Patch0: 0001-Use-as-placeholder-for-current-user-in-URLs.patch 
+Patch1: 0001-Enhance-existing-backup-task-and-add-a-restore-one.patch
 BuildArch: noarch
 BuildRequires: noosfero-deps, gettext, po4a
 Requires: noosfero-deps, po4a, tango-icon-theme, memcached
@@ -20,6 +22,9 @@ participate and contribute to this free software project!
 
 %prep
 %setup -q
+
+%patch0 -p1
+%patch1 -p1
 
 %build
 
