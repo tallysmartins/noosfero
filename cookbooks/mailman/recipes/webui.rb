@@ -36,6 +36,13 @@ cookbook_file '/etc/sysconfig/spawn-fcgi' do
   notifies :restart, 'service[spawn-fcgi]'
 end
 
+group 'apache' do
+  action 'manage'
+  append true
+  members ['nginx']
+  notifies :restart, 'service[nginx]'
+end
+
 service 'spawn-fcgi' do
   action [:enable, :start]
   supports :restart => true
