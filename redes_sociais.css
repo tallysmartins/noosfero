@@ -1,59 +1,62 @@
 .ui-widget-header
 {
-	background: none;
-	border: 0px solid #aaaaaa;
-	color: none;
-	font-weight: bold;
+  background: none;
+  border: 0px solid #aaaaaa;
+  color: none;
+  font-weight: bold;
 }
 .ui-tabs .ui-tabs-panel
 {
-	background-color: #eeeff1;
-	border-width: 1px;
-	color: #777;
-	display: block;
-	font-size: 13px;
-	padding: 1em 1.4em;
-	text-decoration: none;
+  background-color: #eeeff1;
+  border-width: 1px;
+  color: #777;
+  display: block;
+  font-size: 13px;
+  padding: 1em 1.4em;
+  text-decoration: none;
 }
 .ui-tabs .ui-tabs-nav
 {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default
 {
-	background: #d5d5d5 none;
-	border: 1px solid #d4d5d7;
-	color: #555555;
-	font-weight: normal;
+  background: #d5d5d5 none;
+  border: 1px solid #d4d5d7;
+  color: #555555;
+  font-weight: normal;
 }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active
 {
-	background: #eeeff1 none;
-	background-color: #eeeff1;
-	border: 1px solid #aaaaaa;
-	color: #212121;
-	font-weight: normal;
+  background: #eeeff1 none;
+  background-color: #eeeff1;
+  border: 1px solid #aaaaaa;
+  color: #212121;
+  font-weight: normal;
 }
 .ui-widget-content
 {
-	border: 0px solid #aaaaaa;
+  border: 0px solid #aaaaaa;
 }
 
 /********Novas abas - pagina de comunidade*********/
 #block-community-tabs{
-	font-family:arial;
+  font-family:arial;
 }
 
 #block-community-tabs .ui-widget-header{
-	background:#ECEDF1;
-	border-radius:0px;
-	border:none;
-	border-bottom: 3px solid #D3D6DE;
-	color: none;
-	font-weight: bold;
+  background:#ECEDF1;
+  border-radius:0px;
+  border:none;
+  border-bottom: 3px solid #D3D6DE;
+  color: none;
+  font-weight: bold;
 }
 
+.information-repository-activ {
+  height: 117px !important;
+}
 
 #block-community-tabs .ui-tabs .ui-tabs-panel{
 	background-color: #ffffff;
@@ -61,47 +64,78 @@
 	color: #777;
 	display: block;
 	font-size: 13px;
-	padding: 1em 1.4em;
+	padding: 0px; /*padding: 1em 1.4em;*/
 	text-decoration: none;
 }
+
+#block-community-tabs .ui-tabs .ui-tabs-panel {
+  padding: 0px;
+}
+
 #block-community-tabs .ui-tabs .ui-tabs-nav{
-	margin: 0;
-	padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
 #block-community-tabs .ui-state-default,#block-community-tabs .ui-widget-content .ui-state-default,#block-community-tabs .ui-widget-header .ui-state-default{
-	/*background: #d5d5d5 none;
-	border: 1px solid #d4d5d7;
-	color: #555555;*/
-	font-weight: normal;
+  /*background: #d5d5d5 none;
+  border: 1px solid #d4d5d7;
+  color: #555555;*/
+  font-weight: normal;
 }
 #block-community-tabs .ui-state-active,#block-community-tabs .ui-widget-content .ui-state-active,#block-community-tabs .ui-widget-header .ui-state-active{
-	/*background: #eeeff1 none;
-	background-color: #eeeff1;
-	border: 1px solid #aaaaaa;
-	color: #212121;*/
-	font-weight: normal;
+  /*background: #eeeff1 none;
+  background-color: #eeeff1;
+  border: 1px solid #aaaaaa;
+  color: #212121;*/
+  font-weight: normal;
 }
 
 #block-community-tabs .ui-widget-content{
-	border: 0px solid #aaaaaa;
+  border: 0px solid #aaaaaa;
 }
 
 #block-community-tabs .ui-state-default,#block-community-tabs .ui-widget-content .ui-state-default,#block-community-tabs .ui-widget-header .ui-state-default {
-	border: none;
-	background:#ECEDF1 ;
-	font-weight: normal;
-	color: #172738;
+  border: none;
+  background:#ECEDF1 ;
+  font-weight: normal;
+  color: #172738;
 }
 
-#block-community-tabs .ui-state-default a:hover,
-#block-community-tabs .ui-state-default a:link,
-#block-community-tabs .ui-state-default a:active{
-	color:#172738;
+#block-community-tabs .ui-state-default a{
+   color: #172738;
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-nav {
+  font-size: 15px;
 }
 
 #block-community-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active {
-margin-bottom: -3px;
-padding-bottom: 1px;
-border-bottom: 3px solid #FF0366;
+  margin-bottom: -3px;
+  padding-bottom: 1px;
+  border-bottom: 3px solid #FF0366;
+  font-weight: 700;
+  
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active a{
+  color: #FF0366;
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-nav li .triangle {
+  position: absolute;
+  margin-top: 38px;
+  margin-left: 45%;
+  width: 0;
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #FF0366;
+  font-size: 0;
+  line-height: 0;
+  display: none;
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active .triangle {
+  display: block;
 }

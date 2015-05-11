@@ -5,10 +5,23 @@
   margin:0px 20px 0px 0px;
 
 }
+
 #infor-community-geral h1{
   text-align: left;
+  font-size: 23px;
 }
+
 #infor-community-geral p{
+  /*font-size: 12px;*/
+}
+
+#buttons-infor-community input{
+  border:1px solid #D3D6DE;
+  border-radius:4px;
+  background:none;
+  color: #5E82C6;
+  margin:2px;
+  padding:3px 10px;
 
 }
 
@@ -229,14 +242,14 @@ top: 2px;
 /*
 #itens-legend-grafic{
   text-align: :left;
-  /*float:right;
-  margin:0px;*/
+  float:right;
+  margin:0px;
 }*/
 
 ul#itens-legend-grafic{
   text-align: left;
     margin: 0px;
-    padding: 10px;
+    /*padding: 50px;*/
 }
 
 #itens-legend-grafic li{
@@ -283,21 +296,36 @@ ul#itens-legend-grafic{
 }
 
 #discussions h3{
-  padding:12px 0px 3px 0px;
+  font-size: 20px;
+  padding:25px 0px 5px 0px;
   margin:0px;
 }
 
 .tidings{
-  border-top: 1px solid #ECEDF1;
+  border-top: 1px solid #D3D6DE;
   padding:10px;
+  padding-bottom: 23px;
 }
 
 .date-list-discussion,
 .subject-list-discussion{
   display: block;
-    line-height: 21px;
-    padding: 0px 0px 10px 0px;
-    position: relative;
+  line-height: 21px;
+  padding: 10px 0px 0px 0px;
+  position: relative;
+}
+
+.date-list-discussion {
+  letter-spacing: -0.1px;
+}
+
+.subject-list-title {
+  line-height: 18px !important;
+}
+
+.subject-list-discussion {
+  font-size: 16px;
+  padding-top: 3px;
 }
 
 .date-list-discussion{
@@ -308,43 +336,103 @@ ul#itens-legend-grafic{
   text-decoration: none;
   color:#5E82C6;
 }
-.see-more-discussion{
-text-align: right;
-  padding: 10px;
+
+.see-more-discussion {
+  text-align: right;
+  padding: 15px 0px 0px 0px;
   text-transform: uppercase;
   line-height: 21px;
-  font-size: 12px;
-  border-top: 1px solid #ECEDF1;
+  font-size: 11px;
+  border-top: 1px solid #D3D6DE;
+  margin-bottom: 2px;
+  letter-spacing: -0.12px;
 }
 
 .see-more-discussion::after {
   background: none repeat scroll 0 0 #3e67b1;
-  border-radius: 4px;
+  border-radius: 2px;
   color: #ffffff;
-  content: ">";
+  content: url('images/left-arrow.png');
   font-size: 15px;
   line-height: 20px;
   margin-left: 5px;
-  padding-left: 7px;
-  padding-right: 4px;
+  padding: 2px 7px 1px 7px;
   position: relative;
   text-align: center;
   top: 2px;
 }
 
+.tidings {
+  padding-left: 0px;
+}
+
+#mais-relevantes h3 {
+  letter-spacing: 0.2px;
+  padding-bottom: 16px;
+}
+
+#mais-relevantes span {
+  letter-spacing: 0px;
+}
+
 /********************** ABA03 - BLOG ********************************/
+#block-news-community{
+  padding-top:20px;
+}
+
+#block-news-community .news_principal_title{
+  color:#172738;
+  font-size: 22px;
+  line-height: 23px;
+  font-weight: 700;
+}
+#block-news-community .news_principal_date{
+  text-transform: uppercase;
+}
+
+#block-news-community .news_principal_text{
+  color:#172738;
+  margin-top:10px;
+}
+
+#block-news-community .published-at{
+  margin:0px 125px;
+  text-transform: uppercase;
+}
+
+#content #block-news-community .read-more{
+  background: none;
+  border-top: none;
+}
+
+#content .box #block-news-community .read-more a::after{
+  background:#3E67B1;
+}
+#content #block-news-community .read-more a:hover{
+  background: none;
+}
 
 
 /********************** ABA04 - Wiki ********************************/
+#aba4 {
+  border-bottom: 3px solid #172738;
+  padding-bottom: 40px;
+}
+
 #aba4 h3{
   color:#172738;
   border-bottom: 2px solid #ECEDF1;
-  padding:10px;
+  padding:10px 0px;
 }
 
 #aba4 span{
   line-height: 21px;
-  font-size: 13px;
+  font-size: 15px;
+  display: block;
+  padding-left: 3px;
+  font-weight: 400;
+  color: black;
+  padding-top: 10px;
 }
 
 
@@ -352,72 +440,184 @@ text-align: right;
 
 .information-repository-activ{
   border-bottom: 1px solid #D3D6DE;
-  padding:40px 20px 40px 20px;
+  /*padding:40px 20px 40px 20px; #D3D6DE*/
+  margin: 0px;
   color:#172738;
 }
 
 .about-commit{
+  font-size: 12px;
   display:block;
   position:absolute;
   float:left;
+  margin-top: 27px;
   border-right:1px dotted #D3D6DE;
-  padding-right: 40px;
+  padding: 0px 23px 13px 0px;
 }
+
+.calendar-commit {
+  margin-top: 10px;
+}
+
 .about-commit span{
   position: relative;
-  display:block;
+  display: block;
   line-height: 21px;
-    padding: 5px;
+  padding: 0px;
 }
 
 .information-member-repository{
-  margin-left:150px;
+  padding-top: 28px;
+  margin-left: 127px;
   display:block;
 
+}
+
+.name-information-repository {
+  font-size: 12px;
+}
+
+.information-member-repository {
+  margin-bottom: 20px;
 }
 
 .information-member-repository span{
   display:block;
   position:relative;
-  line-height: 21px;
-    padding: 5px;
+  line-height: 15px;
+  padding: 5px;
 }
 
 .commit-historic::before {
-    content: url("images/calendar-icon.png");
-    float: left;
+    content: url("images/upload-icon.png");
+    /*float: left;*/
     line-height: 20px;
-    margin-right: 10px;
+    margin-right: 11px;
     margin-top: 4px;
 }
 
 .calendar-commit::before {
     content: url("images/calendar-icon.png");
-    float: left;
+    /*float: left;*/
     line-height: 20px;
-    margin-right: 10px;
+    margin-right: 11px;
     margin-top: 4px;
 }
 
 .see-more-repository{
+  color: black !important;
   text-align: right;
-  padding:10px;
+  padding: 15px 0px 0px 0px;
   text-transform: uppercase;
   line-height: 21px;
-  font-size:12px;
+  font-size: 11px;
+/*  border-top: 1px solid #D3D6DE; */
+  margin-bottom: 2px;
+  letter-spacing: -0.12px;
 }
 
 .see-more-repository::after {
-    background: none repeat scroll 0 0 #3e67b1;
-    border-radius: 4px;
-    color: #ffffff;
-    content: ">";
-    font-size: 15px;
-    line-height: 20px;
-    margin-left: 5px;
-    padding-left: 7px;
-    padding-right: 4px;
-    position: relative;
-    text-align: center;
-    top: 2px;
+  background: none repeat scroll 0 0 #3e67b1;
+  border-radius: 2px;
+  color: #ffffff;
+  content: url('images/left-arrow.png');
+  font-size: 15px;
+  line-height: 20px;
+  margin-left: 5px;
+  padding: 2px 7px 1px 7px;
+  position: relative;
+  text-align: center;
+  top: 2px;
+}
+
+
+/*********************** Página de eventos da comunidade *******************/
+
+#event-card {
+  border-top: 1px dotted #D3D6D3;
+  padding-top: 33px;
+  width: 494px;
+  height: 216px;
+  /*background-image: url('images/evento-teste.jpg');*/
+  background-repeat: no-repeat;
+}
+
+#event-card #event-image {
+  position: relative;
+  float: left;
+  content: url('images/comunidade-evento-imagem-evento.png');
+  border-right:1px dotted #D3D6DE;
+  padding-right: 22px;
+}
+
+.about-event {
+  position: relative;
+  float: left;
+  width: 300px;
+  max-width: 300px;
+  height: inherit;
+}
+
+.about-event span {
+  font-family: arial;
+  display: block;
+  max-width: inherit;
+  margin-left: 40px;
+}
+
+.about-event .event-date {
+  font-weight: bold;
+  letter-spacing: 0.56px;
+  margin-top: 3px;
+}
+
+.about-event .event-link {
+  margin-top: 16px;
+  letter-spacing: 0.34px;
+}
+
+.about-event .event-address {
+  margin-top: 19px;
+}
+
+.about-event .event-address span {
+  display: block;
+  margin-left: 0px;
+  margin-top: 4.4px;
+}
+
+.about-event .event-address #area {
+  letter-spacing: 0.54px;
+}
+
+.about-event .event-address #district {
+  letter-spacing: 0.7px;
+}
+
+.about-event .event-address #city {
+  letter-spacing: 0.68px;
+}
+
+.about-event .event-address #cep {
+  letter-spacing: 0.65px;
+}
+
+/*
+.event-date::before {
+  content: url("images/calendar-icon.png");
+}
+*/
+
+#community-page {
+  height: 716px;
+  background-image: url('images/teste.png');
+  background-repeat: no-repeat;
+}
+
+#community-page h1 {
+  margin-bottom: 16px;
+  text-align: left;
+  font-size: 32px;
+  line-height: 30px;
+  letter-spacing: 0.1px;
 }

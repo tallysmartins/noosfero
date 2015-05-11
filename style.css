@@ -26,7 +26,7 @@
 @import url(pagina_software.css);
 /****************** Pagina comunidade ********************/
 @import url(pagina_comunidade.css);
-
+/*********************************************/
 @import url(page-inicial.css);
 @import url(page-catalog-software.css);
 
@@ -2881,3 +2881,10 @@ body.action-embed-index {
   padding-right: 150px;
 }
 
+div.software-step-info div.current-step h3 {
+  color: #F50054;
+}
+
+#content .main-block div.software-step-info div.another-step h3 {
+  font-size: 12px !important;
+}
