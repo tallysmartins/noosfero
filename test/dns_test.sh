@@ -64,25 +64,40 @@ test_reverse_dns_relay() {
 
 if [ "$1" = '--doc' ]; then
   check_hostname() {
-    echo "| ❏ A | $1 | $2 |"
+    echo '   * - A'
+    echo "     - $1"
+    echo "     - ${2}"
   }
   check_mx() {
-    echo "| ❏ MX | $1 | ${2}. |"
+    echo '   * - MX'
+    echo "     - $1"
+    echo "     - ${2}."
   }
   check_reverse_dns() {
-    echo "| ❏ PTR  | $1 | ${2}. |"
+    echo '   * - PTR'
+    echo "     - $1"
+    echo "     - ${2}."
   }
   header() {
-    echo "## $1"
+    echo "$1"
+    echo '=============='
     echo
-    echo '| Tipo | Entrada | Aponta para |'
-    echo '|:-----|:------|:----------|'
+    echo '.. list-table::'
+    echo '   :header-rows: 1'
+    echo
+    echo '   * - Tipo'
+    echo '     - Entrada'
+    echo '     - Aponta para'
   }
   footer() {
     echo
   }
   (
-    echo "# Entradas de DNS necessárias"
+    echo
+    echo "Entradas de DNS necessárias"
+    echo '---------------------------'
+    echo
+    echo
     header 'DNS(A)'
     test_dns_web
     test_dns_lists

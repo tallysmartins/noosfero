@@ -51,7 +51,7 @@ clean:
 	rm -f dns.rst
 
 dns.rst: ../test/dns_test.sh
-	(cd .. && sh test/dns_test.sh --doc) | pandoc -f markdown --to rst --output $@
+	(cd .. && sh test/dns_test.sh --doc) > $@
 
 html: dns.rst
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
