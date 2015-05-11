@@ -1,40 +1,66 @@
-
-Documentação do Software Público Brasileiro (SPB)
-=================================================
+Software Público Brasileiro: Manual de Operação
+***********************************************
 
 Introdução
-----------
+==========
 
 Bem-vindo a documentação do Portal do Software Público Brasileiro.
 
-O Portal do Software Público Brasileiro (SPB), na prática, é um sistema Web
-que se consolidou como um ambiente de compartilhamento de softwares. O projeto
-de evolução deste portal está sendo desenvolvido pela Universidade de Brasília.
+O Portal do Software Público Brasileiro (SPB) é uma plataforma de
+compartilhamento e colaboração no desenvolvimento de softwares. O
+projeto de evolução deste portal está sendo desenvolvido pela
+Universidade de Brasília.
 
-Hoje o SPB é um sistema Web composto por ferramentas livres integradas porém com
-desenvolvimento e comunidades independentes.
+O SPB é composto de um conjunto de ferramentas com funcionalidades
+complementares, que são desenvolvidas de forma independentes pelas suas
+respectivas comunidades. Estas ferramentas estão sendo integradas pela
+nossa equipe de forma a apresentar uma experiência de usuário
+consistente.
 
-As ferramentas que compõe o Software Público são:
+* O Colab_ é uma ferramenta especializada na integração de outras
+  ferramentas. O Colab fornece um ponto central de autenticação de
+  usuários para as demais ferramentas da plataforma, indexa informações
+  das demais ferramentas para busca e gamificação, e fornece integração
+  visual entre as diferentes ferramentas que compõem o SOB. O Colab é um
+  software livre criado no Brasil, que teve sua origem no
+  Programa `Interlegis` do Senado Federal.
 
-* **Mailman**: Para lista de e-mail estamos utilizando o Mailman na versão 2, que é um software gratuito para gerenciamento de discussão eletrônica de e-mail e listas *e-newsletter*;
+.. _Colab: https://github.com/colab-community
+.. _`Programa Interlegis do Senado Federal`: http://www.interlegis.leg.br/
 
-* **Noosfero**: Para rede social estamos utilizando o Noosfero que é uma plataforma web livre para criação de redes sociais com blog, e-Portifólios, CMS, RSS, discussão temática, agenda de eventos, galeria de imagens, chat, entre outros. Ele foi desenvolvido pela Cooperativa de Tecnologias Livres – Colivre 3 em 2007, sob a licença AGPL v.3, com a proposta de permitir ao usuário criar sua própria rede social personalizada, livre e autônoma;
+* O Noosfero_ é uma plataforma para criação de redes sociais que conta com
+  diversas funcionalidades de gestão de conteúdo como blogs, galeria de
+  imagens e vídeos, entre outros. O Noosfero também é um software livre
+  criado no Brasil, iniciado em 2007 pela COLIVRE_ e que hoje conta com
+  uma comunidade de desenvolvimento que inclui o SERPRO, a Universidade de
+  Brasília e o Fórum Brasileiro de Economia Solidária.
 
-* **Gitlab**: Para Forge para Git estamos utilizando o GitLab, que é um software livre de colaboração de código *online* que utiliza a ferramenta de gerência de código fonte Git;
+.. _Noosfero: http://www.noosfero.org/
+.. _COLIVRE: http://www.colivre.coop.br/
 
-* **Solr**: Para Plataforma de Buscas estamos utilizando Apache Solr, que é uma plataforma de busca open source da Apache Lucene escrita em Java;
+* O Gitlab_ é uma plataforma para desenvolvimento colaborativo. Projetos
+  no gitlab são mantidos em repositorios ``git``, com gestão de tarefas
+  (*issue tracker*), *merge requests*, gestão de marcos (*milestones*),
+  suporte a integração com plataformas de integração contínua e
+  notificações.
 
-* **Persona**: Para suporte a autentição Federada estamos utilizando o Mozilla Persona, que foi desenvolvido pela Mozilla Foundation.
+.. _Gitlab: https://www.gitlab.com/
 
-* **Colab**: Para integrar todas estas ferramentas estamos utilizando o Colab, que é uma plataforma de integração de ferramentas. Nele, são também integradas as interfaces das ferramentas para que, ao navegar, o usuário tenha a sensação de estar navegando em uma única ferramenta.
+* O `GNU Mailman`_ é uma gerenciador de listas de email tradicionalmente
+  usado por diversas organizações no Brasil e no mundo.
 
+.. _`GNU Mailman`: http://www.gnu.org/software/mailman/
 
-Conteúdos
-----------
+O restando deste manual descreve a arquitetura do SPB bem como os
+procedimentos necessários para sua implantação, manutenção, backup e
+restauração e gestão de firewall.
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
 
-   install
-   dependencies
-   dns
+
+.. include:: arquitetura.rst
+.. include:: implantacao.rst
+.. include:: manutencao.rst
+.. include:: backup.rst
+.. include:: firewall.rst
