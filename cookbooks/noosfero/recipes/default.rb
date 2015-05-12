@@ -47,7 +47,9 @@ execute 'theme:enable' do
 end
 
 execute 'translations:enable' do
-  command 'rake noosfero:translations:compile --quiet'
+  cwd '/usr/lib/noosfero'
+  user 'noosfero'
+  command 'RAILS_ENV=production bundle exec rake noosfero:translations:compile --quiet'
 end
 
 template '/etc/noosfero/thin.yml' do
