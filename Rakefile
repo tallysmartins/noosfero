@@ -48,20 +48,18 @@ file 'config/local/ssh_config' => ['nodes.yaml', 'config/local/ips.yaml', 'ssh_c
 end
 
 task :backup => ssh_config_file do
-  #cleanup before
+  # setup
   sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', 'rm -rf /tmp/backups'
   sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', 'rm -rf /tmp/backups'
   sh 'mkdir', '-p', 'backups'
-  #integration
+  # integration
   sh 'scp', '-F', ssh_config_file, 'utils/migration/backup_integration.sh', 'integration:/tmp'
   sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', '/tmp/backup_integration.sh'
   sh 'scp', '-F', ssh_config_file, 'integration:/tmp/backups/*', 'backups/'
-  sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', 'rm -rf /tmp/backups'
-  #social
+  # social
   sh 'scp', '-F', ssh_config_file, 'utils/migration/backup_social.sh', 'social:/tmp'
   sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', '/tmp/backup_social.sh'
   sh 'scp', '-F', ssh_config_file, 'social:/tmp/backups/*', 'backups/'
-  sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', 'rm -rf /tmp/backups'
 end
 
 task :restore => ssh_config_file do

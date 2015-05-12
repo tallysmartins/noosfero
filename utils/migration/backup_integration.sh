@@ -10,8 +10,10 @@ echo 'I: dumping colab data'
 colab-admin dumpdata > /tmp/backups/colab_dump.json
 
 # GitLab Backup
-cd /usr/lib/gitlab
+echo 'cleaning gitlab backups directory'
+sudo rm -rf /var/lib/gitlab/backups/*
 echo 'I: creating gitlab backup'
+cd /usr/lib/gitlab
 sudo -u git bundle exec rake gitlab:backup:create RAILS_ENV=production > /dev/null
 # TODO fix regular expression
 mv /var/lib/gitlab/backups/*_gitlab_backup.tar /tmp/backups

@@ -7,9 +7,9 @@ colab-admin loaddata /tmp/backups/colab_dump.json > /dev/null
 echo 'done.'
 
 # Gitlab Restore
-echo 'restoring gitlab...'
 echo 'cleaning gitlab backups directory'
 sudo rm -rf /var/lib/gitlab/backups/*
+echo 'restoring gitlab...'
 #TODO: fix wildcard
 mv /tmp/backups/*_gitlab_backup.tar /var/lib/gitlab/backups/
 cd /usr/lib/gitlab
