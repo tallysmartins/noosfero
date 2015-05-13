@@ -18,7 +18,8 @@ end
 execute 'gitlab:setup' do
   user 'git'
   cwd '/usr/lib/gitlab'
-  command 'yes yes | bundle exec rake db:setup RAILS_ENV=production'
+  command 'yes yes | bundle exec rake db:setup RAILS_ENV=production && touch /etc/gitlab/setup.done'
+  not_if { File.exists?('/etc/gitlab/setup.done') }
 
   action :nothing
   notifies :restart, 'service[gitlab]'
