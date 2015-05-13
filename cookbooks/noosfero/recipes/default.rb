@@ -45,7 +45,8 @@ end
 execute 'plugins:activate' do
   plugins.each do |plugin|
     plugin_name = plugin.split("_").collect(&:capitalize).join() + 'Plugin'
-    command 'rails runner "Environment.default.enable_plugin "' + plugin_name + '""'
+    rails_command = "rails runner Environment.default.enable_plugin "
+    command "#{rails_command} #{plugin_name}"
   end
 end
 
