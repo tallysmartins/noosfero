@@ -46,12 +46,6 @@ execute 'theme:enable' do
   command 'psql -h database -U noosfero --no-align --tuples-only -q -c "update environments set theme=\'noosfero-spb-theme\' where id=1;"'
 end
 
-execute 'translations:enable' do
-  cwd '/usr/lib/noosfero'
-  user 'noosfero'
-  command 'RAILS_ENV=production bundle exec rake noosfero:translations:compile --quiet'
-end
-
 template '/etc/noosfero/thin.yml' do
   owner 'root'; group 'root'; mode 0644
   notifies :restart, 'service[noosfero]'
