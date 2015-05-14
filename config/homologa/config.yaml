@@ -1,0 +1,15 @@
+admins:
+  - ["Nayanne Araújo", "nayanne.bonifacio@planejamento.gov.br"]
+  - ["Marisa Souza dos Santos", "marisa.santos@planejamento.gov.br"]
+external_hostname: homologa.softwarepublico.gov.br
+external_ip: 189.9.151.65
+site_url: https://homologa.softwarepublico.gov.br
+colab_from_address: '"Portal do Software Publico (homologação)" <noreply@homologa.softwarepublico.gov.br>'
+server_email: '"Portal do Software Publico (homologação)" <noreply@homologa.softwarepublico.gov.br>'
+email_subject_prefix: '[spb]'
+lists_hostname: listas.homologa.softwarepublico.gov.br
+lists_admin: nayanne.bonifacio@planejamento.gov.br
+relay_hostname: relay.homologa.softwarepublico.gov.br
+relay_ip: 189.9.151.66
+alt_ssh_port: 55555
+from_address: noreply@homologa.softwarepublico.gov.br

@@ -1,0 +1,5 @@
+reverseproxy: 10.0.13.2
+database: 10.0.13.6
+social: 10.0.13.4
+email: 10.0.13.5
+integration: 10.0.13.7

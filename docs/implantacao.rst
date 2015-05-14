@@ -1,4 +1,0 @@
-Implantação
-===========
-
-.. include:: dns.rst

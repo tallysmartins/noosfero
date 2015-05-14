@@ -1,0 +1,200 @@
+Implantação
+===========
+
+Preparação da estação de trabalho
+---------------------------------
+
+Para gerenciar o SPB, é necessária uma estação de trabalho GNU/Linux,
+que pode ser Debian 8 ou posterior, Ubuntu 14.04 ou superior, ou CentOS
+7 ou superior (e equivalentes como RHEL 7 ou superior, ou Fedora).
+
+As seguintes ferramentas serão necessárias:
+
+* git_: ferramenta de controle de versão.
+* chake_: ferramenta de gestão de configuração.
+
+.. _chake: https://gitlab.com/terceiro/chake
+.. _git: http://git-scm.com/
+
+Para instalar em Debian/Ubuntu::
+
+    $ sudo apt-get install git ruby
+    $ sudo gem install chake
+
+Para instalar em CentOS/RHEL/Fedora::
+
+    $ sudo yum install git ruby
+    $ sudo gem install chake
+
+Além dessas ferramentas, será necessário um emulador de terminal. O
+emulador de terminal padrão do seu ambiente de trabalho, ou qualquer
+outro, vai servir.
+
+Obtendo o repositório de configuração
+-------------------------------------
+
+Para iniciar, é necessário uma conta e usuário no SPB, com uma chave SSH
+configurada.
+
+Para obter o repositório de configuração, é necessário clonar o
+repositório com ``git``::
+
+    $ git clone git@beta.softwarepublico.gov.br:softwarepublico/softwarepublico.git
+
+A partir daqui, todos os passos serão executados de dentro do
+repositório, então se certifique que o seu *shell* está no diretório
+onde foi clonado o repositório::
+
+    $ cd softwarepublico/
+
+
+Preparação dos servidores
+-------------------------
+
+* Os servidores precisam estar acessíveis por SSH. Caso necessário,
+  podem ser feitas configurações do SSH em
+  ``config/@@SPB_ENV@@/ssh_config`` para isso.
+* O usuário que vai conectar via SSH nos servidores precisa:
+  * ter acesso SSH configurado via chave SSH para evitar digitar senha.
+  * ter permissão de usar ``sudo`` sem a necessidade de digitar senha.
+
+Configuração do ambiente alvo
+-----------------------------
+
+O SPB tem o conceito de "ambientes", que são diferentes instalações da
+mesma plataforma. Todas as informações específicas sobre um determinado
+ambiente estão centralizadas em arquivos dentro do diretório
+``config/${ambiente}/``. Por exemplo, o ambiente "local", que se destina
+ao uso para desenvolvimento local com máquinas virtuais, possui o
+seguinte conteúdo::
+
+    $ find config/local/ | sort
+    config/local/config.yaml
+    config/local/ips.yaml
+    config/local/ssh_config
+
+Cada um destes arquivos possui uma finalidade:
+
+=============== =======================================================
+Arquivo         Finalidade
+=============== =======================================================
+``config.yaml`` Parâmetros gerais de configuração
+``ips.yaml``    Tabela de IP's (na rede local) das máquinas que compõem
+                o ambiente.
+``ssh_config``  Configuração necessária para o SSH. Pode ser um arquivo
+                caso não seja necessária nenhuma configuração especial
+                para acessar as máquinas (e.g. se você está na mesma
+                rede local que elas).
+=============== =======================================================
+
+Vamos agora verificar o conteúdo de cada arquivo no ambiente
+**@@SPB_ENV@@**. Primeiro, ``config.yaml``:
+
+.. code-block:: yaml
+
+    @@config(config.yaml)@@
+
+Para nossa sorte, o significado de cada um dos campo acima deve ser
+autoexplicativo.
+
+O arquivo ``ips.yaml`` contém uma tabela com os endereços IP de cada
+servidor da plataforma na rede local. Exemplo:
+
+.. code-block:: yaml
+
+    @@config(ips.yaml)@@
+
+Já o arquivo ``ssh_config`` contém opções padrão de configuração do
+``ssh`` para conexão às máquinas::
+
+    @@config(ssh_config)@@
+
+Configuração do DNS
+-------------------
+
+A tabela a seguir foi gerada dinamicamente a partir da configuração do
+ambiente **@@SPB_ENV@@**. As seguintes entradas precisam ser configuradas no
+DNS:
+
+.. include:: dns.rst
+
+Verificando o ambiente
+----------------------
+
+Para listar as máquinas do ambiente::
+
+    $ rake nodes SPB_ENV=@@SPB_ENV@@
+
+O comando acima deve dar o seguinte resultado::
+
+    integration                              ssh
+    email                                    ssh
+    social                                   ssh
+    database                                 ssh
+    reverseproxy                             ssh
+
+Note que todas as vezes que formos chamar ``rake``, será preciso
+informar sobre qual ambiente desejamos operar (``SPB_ENV=@@SPB_ENV@@``).
+Caso você for operar sobre apenas um ambiente, ou caso você queira
+evitar digitação, você pode criar um arquivo ``local.rake`` na raiz do
+repositório com o seguinte conteúdo::
+
+    ENV['SPB_ENV'] ||= '@@SPB_ENV@@'
+
+Isto fará com que o valor e ``SPB_ENV`` seja sempre ``@@SPB_ENV@@``, a
+não ser que você informe na linha de comando. Daqui para frente, vamos
+representar o parâmetro ``SPB_ENV=@@SPB_ENV@@`` entre ``[]`` pra lembrar
+que se ele estiver configurado no ``local.rake``, pode ser omitido.
+
+Para testar a conectividade às máquinas, podemos executar um comando
+nelas::
+
+    $ rake nodes [SPB_ENV=@@SPB_ENV@@]
+    $ <PROMPT PARA VOCÊ DIGITAR>
+
+No prompt, entre um comando simples como ``sudo date``. O resultado deve ser
+parecido com o seguinte::
+
+    $ rake run
+    $ sudo date
+     integration: $ sudo date
+     integration: Qui Mai 14 18:59:19 BRT 2015
+           email: $ sudo date
+           email: Qui Mai 14 18:59:22 BRT 2015
+          social: $ sudo date
+          social: Qui Mai 14 18:59:24 BRT 2015
+        database: $ sudo date
+        database: Qui Mai 14 18:59:27 BRT 2015
+    reverseproxy: $ sudo date
+    reverseproxy: Qui Mai 14 18:59:28 BRT 2015
+
+Se o resultado se parece com o exemplo acima, e você não precisou digitar a sua
+senha nehuma vez, significa que 1) você conseguiu conectar em todas as máquinas
+e 2) o sudo sem senha está configurado corretamente. Está tudo certo para
+começar!
+
+Primeira instalação
+-------------------
+
+Uma vez configurados os parâmetros em ``config/@@SPB_ENV@@/``, podemos
+dar início à instalação. O primeiro passo é uma preconfiguração que
+precisamos fazer::
+
+    $ rake preconfig [SPB_ENV=@@SPB_ENV@@]
+
+
+This will perform some initial configuration to the system that is required
+before doing the actual deployment.
+
+After that:
+
+```bash
+$ rake SPB_ENV=production                   # deploys all servers
+$ rake nodes SPB_ENV=production             # lists all servers
+$ rake converge:$server SPB_ENV=production  # deploys only $server
+```
+
+You can also do `export SPB_ENV=production` in your shell and omit it in the
+`rake` calls.
+
+See the output of `rake -T` for other tasks.

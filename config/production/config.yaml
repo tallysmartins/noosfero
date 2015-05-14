@@ -1,7 +1,5 @@
 admins:
-  -
-    - Paulo Meirelles
-    - paulo@softwarelivre.org
+  - ["Paulo Meirelles", "paulo@softwarelivre.org"]
 external_hostname: beta.softwarepublico.gov.br
 external_ip: 164.41.9.49
 site_url: https://beta.softwarepublico.gov.br
