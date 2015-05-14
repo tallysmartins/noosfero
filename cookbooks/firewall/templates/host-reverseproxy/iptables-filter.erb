@@ -6,4 +6,4 @@
 -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
 # Real SSH connection
--A INPUT -p tcp -m state --state NEW --dport <%= node['config']['alt_ssh_port'] %> -j ACCEPT
+-A INPUT -s <%= node['peers']['integration'] %> -p tcp -m state --state NEW --dport <%= node['config']['alt_ssh_port'] %> -j ACCEPT

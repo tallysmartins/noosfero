@@ -18,8 +18,8 @@
 
 -A INPUT -i lo -j ACCEPT
 
-# Everybody need to accept SSH from reverseproxy
--A INPUT -s <%= node['peers']['reverseproxy'] %> -p tcp -m state --state NEW --dport 22 -j ACCEPT
+# Everybody need to accept SSH from integration
+-A INPUT -s <%= node['peers']['integration'] %> -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
 <%= node['firewall'] %>
 <%= render 'iptables-filter.erb' %>
