@@ -43,11 +43,7 @@ execute 'plugins:enable' do
 end
 
 execute 'plugins:activate' do
-  plugins.each do |plugin|
-    plugin_name = plugin.split("_").collect(&:capitalize).join() + 'Plugin'
-    rails_command = "rails runner Environment.default.enable_plugin "
-    command "#{rails_command} #{plugin_name}"
-  end
+    command "RAILS_ENV=production bundle exec rake noosfero:plugins:enable_all_plugins"
 end
 
 execute 'theme:enable' do
