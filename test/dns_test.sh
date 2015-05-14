@@ -79,9 +79,6 @@ if [ "$1" = '--doc' ]; then
     echo "     - ${2}."
   }
   header() {
-    echo "$1"
-    echo '..............'
-    echo
     echo '.. list-table::'
     echo '   :header-rows: 1'
     echo
