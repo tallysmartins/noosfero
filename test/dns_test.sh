@@ -28,8 +28,8 @@ check_reverse_dns() {
   local ip="$1"
   local hostname="$2"
   local results="$(host $ip)"
-  local expected=".*in-addr.arpa domain name pointer $hostname"
-  assertTrue "Reverse DNS of $ip must be $hostname (found: $results)" "expr match \"$results\$\" \"$expected\$\""
+  local expected=".*in-addr.arpa domain name pointer ${hostname}."
+  assertTrue "Reverse DNS of $ip must be $hostname (found: $results)" "expr match '$results' '$expected\$'"
 }
 
 test_dns_web() {
