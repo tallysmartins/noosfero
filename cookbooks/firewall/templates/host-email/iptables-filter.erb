@@ -1,6 +1,3 @@
 
 # Allow access to Postfix
--A INPUT -s <%= node['peers']['integration'] %> -p tcp -m state --state NEW --dport 25 -j ACCEPT
--A INPUT -s <%= node['peers']['social'] %> -p tcp -m state --state NEW --dport 25 -j ACCEPT
--A INPUT -s <%= node['peers']['database'] %> -p tcp -m state --state NEW --dport 25 -j ACCEPT
--A INPUT -s <%= node['peers']['reverseproxy'] %> -p tcp -m state --state NEW --dport 25 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW --dport 25 -j ACCEPT
