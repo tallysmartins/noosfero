@@ -23,7 +23,7 @@ task :pdfupload => :pdf do
   commit = `git commit-tree -m #{tag} #{tree}`.strip
 
   sh 'git', 'tag', tag, commit
-  sh 'git', 'push'
+  sh 'git', 'push', 'origin', tag
 end
 
 desc 'Removes generated files'
