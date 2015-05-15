@@ -1,12 +1,39 @@
-Procedimentos de Backup
-=======================
-
 Backup
-------
+======
 
-*Esta seção é um trabalho em andamento.*
+O SPB possui rotinas automatizadas para backup e restore dos dados de
+todos os seus componentes. As seções a seguir descrevem estas rotinas.
+Ambos os procedimentos devem ser realizados num *shell* onde o diretório
+atual é o repositório de controle de versão do SPB.
 
-Restore
--------
+Procedimento de backup
+----------------------
 
-*Esta seção é um trabalho em andamento.*
+Suponha que estamos realizando um backup do ambiente de produção,
+chamado de ``prod``; o comando para realizar um *backup* é o seguinte
+(note ``SPB_ENV=prod``)::
+
+    $ rake backup SPB_ENV=prod
+
+Esta operação vai copiar arquivos e *dumps* dos bancos de dados do
+Noosfero, GitLab, Colab e Mailman, e copiá-los para um subdiretório
+chamado ``backups`` na sua estação de trabalho.
+
+Procedimento de restauração
+---------------------------
+
+**Importante:** o procedimento de restauração é suportado apenas para uma
+versão idêntica da plataforma, ou seja, não é possível fazer um *backup*
+de uma versão mais antiga da plataforma e restaurar esse *backup* numa
+versão mais recente da plataforma, e nem vice-versa.
+
+O comando para restaurar um backup no ambiente **@@SPB_ENV@@** é o seguinte::
+
+    $ rake restore SPB_ENV=@@SPB_ENV@@
+
+Esta operação vai restaurar o último backup realizado no ambiente
+chamado **@@SPB_ENV@@**.
+
+**Importante:** a restauração do backup irá apagar os dados existes no
+ambiente @@SPB_ENV@@. Confira duas vezes antes de iniciar o
+procedimento.
