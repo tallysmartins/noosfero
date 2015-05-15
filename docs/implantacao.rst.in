@@ -73,19 +73,14 @@ seguinte conteúdo::
     config/local/ips.yaml
     config/local/ssh_config
 
-Cada um destes arquivos possui uma finalidade:
+Estes arquivos possuem a seguinte finalidade:
 
-=============== =======================================================
-Arquivo         Finalidade
-=============== =======================================================
-``config.yaml`` Parâmetros gerais de configuração
-``ips.yaml``    Tabela de IP's (na rede local) das máquinas que compõem
-                o ambiente.
-``ssh_config``  Configuração necessária para o SSH. Pode ser um arquivo
-                caso não seja necessária nenhuma configuração especial
-                para acessar as máquinas (e.g. se você está na mesma
-                rede local que elas).
-=============== =======================================================
+* ``config.yaml``: Parâmetros gerais de configuração
+* ``ips.yaml``: Tabela de IP's (na rede local) das máquinas que compõem
+  o ambiente.
+* ``ssh_config``: Configuração necessária para o SSH. Pode ser um
+  arquivo caso não seja necessária nenhuma configuração especial para
+  acessar as máquinas (e.g. se você está na mesma rede local que elas.
 
 Vamos agora verificar o conteúdo de cada arquivo no ambiente
 **@@SPB_ENV@@**. Primeiro, ``config.yaml``:
