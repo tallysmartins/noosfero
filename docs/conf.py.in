@@ -197,7 +197,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'softwarepublico.tex',
-   u'Software Público Brasileiro: Manual de Operação',
+   u'Software Público Brasileiro: Manual de Operação (@@SPB_ENV@@)',
    u'Universidade de Brasília', 'manual'),
 ]
 

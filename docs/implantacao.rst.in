@@ -6,7 +6,9 @@ Preparação da estação de trabalho
 
 Para gerenciar o SPB, é necessária uma estação de trabalho GNU/Linux,
 que pode ser Debian 8 ou posterior, Ubuntu 14.04 ou superior, ou CentOS
-7 ou superior (e equivalentes como RHEL 7 ou superior, ou Fedora).
+7 ou superior (e equivalentes como RHEL 7 ou superior, ou Fedora).  O
+processo também pode ser feito em outros sistemas, desde que os pacotes
+equivalentes estejam instalados.
 
 As seguintes ferramentas serão necessárias:
 
@@ -138,13 +140,12 @@ repositório com o seguinte conteúdo::
 
 Isto fará com que o valor e ``SPB_ENV`` seja sempre ``@@SPB_ENV@@``, a
 não ser que você informe na linha de comando. Daqui para frente, vamos
-representar o parâmetro ``SPB_ENV=@@SPB_ENV@@`` entre ``[]`` pra lembrar
-que se ele estiver configurado no ``local.rake``, pode ser omitido.
+sempre exibir o parâmetro ``SPB_ENV=@@SPB_ENV@@``, mas lembre-se que ele pode ser omitido se você tiver configurado o *default* em ``local.rake``.
 
 Para testar a conectividade às máquinas, podemos executar um comando
 nelas::
 
-    $ rake nodes [SPB_ENV=@@SPB_ENV@@]
+    $ rake nodes SPB_ENV=@@SPB_ENV@@
     $ <PROMPT PARA VOCÊ DIGITAR>
 
 No prompt, entre um comando simples como ``sudo date``. O resultado deve ser
@@ -175,21 +176,27 @@ Uma vez configurados os parâmetros em ``config/@@SPB_ENV@@/``, podemos
 dar início à instalação. O primeiro passo é uma preconfiguração que
 precisamos fazer::
 
-    $ rake preconfig [SPB_ENV=@@SPB_ENV@@]
+    $ rake preconfig SPB_ENV=@@SPB_ENV@@
 
 
-This will perform some initial configuration to the system that is required
-before doing the actual deployment.
+Este comando vai fazer uma configuração inicial que é necessária para o
+resto do processo, e **só é necessária fazer uma vez**.
 
-After that:
+Depois de completo o procedimento acima, para aplicar as configurações a
+todos os servidores basta executar::
 
-```bash
-$ rake SPB_ENV=production                   # deploys all servers
-$ rake nodes SPB_ENV=production             # lists all servers
-$ rake converge:$server SPB_ENV=production  # deploys only $server
-```
+    $ rake converge SPB_ENV=@@SPB_ENV@@
 
-You can also do `export SPB_ENV=production` in your shell and omit it in the
-`rake` calls.
+O comando ``converge`` na verdade é o *default*, então o seguinte é
+equivalente::
 
-See the output of `rake -T` for other tasks.
+    $ rake SPB_ENV=@@SPB_ENV@@
+
+Se você tiver configurado o ambiente **@@SPB_ENV@@** no ``local.rake``
+(ver instruções acima), então o comando seguinte, também equivalente, é
+muito mais simples::
+
+    $ rake
+
+Todas as possibilidades de comandos serão listados se você executar
+``rake -T``. Consulte também a documentação do chake_.

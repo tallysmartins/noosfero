@@ -10,8 +10,8 @@ architecture.png: architecture.dot
 
 SPB_ENV ?= local
 
-BUILT += $(patsubst %.in, %, $(wildcard *.rst.in))
-%.rst: %.rst.in build.rb
+BUILT += $(patsubst %.in, %, $(wildcard *.in))
+%: %.in build.rb
 	ruby -p build.rb $< > $@ || ($(RM) $@; false)
 
 CLEAN_FILES += $(BUILT)
