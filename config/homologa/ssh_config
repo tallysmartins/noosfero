@@ -1,0 +1,33 @@
+Host *
+  ForwardAgent yes
+
+Host reverseproxy
+  Hostname 164.41.9.49
+  Port 55555
+
+Host reverseproxy.unconfigured
+  Hostname 164.41.9.49
+
+Host database
+  Hostname 10.10.40.47
+  Port 55555
+  # connect via reverseproxy host
+  ProxyCommand ssh 164.41.9.49 -p %p nc %h 22
+
+Host social
+  Hostname 10.10.40.46
+  Port 55555
+  # connect via reverseproxy host
+  ProxyCommand ssh 164.41.9.49 -p %p nc %h 22
+
+Host email
+  Hostname 10.10.40.48
+  Port 55555
+  # connect via reverseproxy host
+  ProxyCommand ssh 164.41.9.49 -p %p nc %h 22
+
+Host integration
+  Hostname 10.10.40.45
+  Port 55555
+  # connect via reverseproxy host
+  ProxyCommand ssh 164.41.9.49 -p %p nc %h 22
