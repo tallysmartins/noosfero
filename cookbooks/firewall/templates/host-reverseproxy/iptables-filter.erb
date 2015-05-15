@@ -7,3 +7,7 @@
 
 # Real SSH connection
 -A INPUT -s <%= node['peers']['integration'] %> -p tcp -m state --state NEW --dport <%= node['config']['alt_ssh_port'] %> -j ACCEPT
+
+# Allow forwarding to integration on port 22
+-A FORWARD -p tcp -d <%= node['peers']['integration'] %> --dport 22 -j ACCEPT
+-A FORWARD -s <%= node['peers']['integration'] %> -p tcp --sport 22 -j ACCEPT
