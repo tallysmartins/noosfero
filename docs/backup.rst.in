@@ -23,7 +23,7 @@ Procedimento de restauração
 ---------------------------
 
 **Importante:** o procedimento de restauração é suportado apenas para uma
-versão idêntica da plataforma, ou seja, não é possível fazer um *backup*
+versão idêntica da plataforma, ou seja, não é suportado fazer um *backup*
 de uma versão mais antiga da plataforma e restaurar esse *backup* numa
 versão mais recente da plataforma, e nem vice-versa.
 
