@@ -3,6 +3,8 @@
 set -e
 
 port="$1"
+reverseproxy_ip="$2"
+integration_ip="$3"
 
 # switch SSH to port $port
 sed -i -e 's/^#\?\s*Port\s*[0-9]\+\s*$/Port '$port'/g' /etc/ssh/sshd_config
@@ -15,3 +17,8 @@ semanage port -a -t ssh_port_t -p tcp "$port"
 
 # Restart SSH
 systemctl restart sshd
+
+# Setup port redirect
+iptables -A PREROUTING -d $reverseproxy_ip/32 -p tcp -m tcp --dport 22 -j DNAT --to-destination $integration_ip:22
+iptables -A POSTROUTING -d $integration_ip/32 -p tcp -m tcp --dport 22 -j SNAT --to-source $reverseproxy_ip
+sysctl -w net.ipv4.ip_forward=1
