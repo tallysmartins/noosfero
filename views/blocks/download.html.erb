@@ -7,7 +7,7 @@
     <% block.downloads.each_with_index do |download, index| %>
         <div id="download-info-<%=(index+1)%>">
           <div id="version01">
-          <%= link_to download[:link], title: _("Download the software"), download: block.owner.name do %>
+          <%= link_to download[:link], title: _("Download the software") do %>
             <span id="image-download"></span>
             <span id="size-download"><%= download[:size] %></span>
           <% end %>
