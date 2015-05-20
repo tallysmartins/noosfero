@@ -669,7 +669,7 @@ ul#itens-legend-grafic{
   font-family: Arial;
   font-size: 14px;
   font-weight: 700;
-  padding-top: 13px;
+  padding: 13px 15px 0px 15px;
   text-align: center; 
   height: 100%;
   background-color: #ECEDF1;
@@ -707,12 +707,12 @@ ul#itens-legend-grafic{
 }
 
 .another-events-date {
-  color: #4562b1;
+  color: #2C4B6B;
   font-weight: 700;
 }
 
 .another-event {
-  color: #2C66CE;
+  color: #2C4B6B;
 }
 
 /************************** PÁGINA BLOG **************************/
@@ -810,7 +810,7 @@ ul#itens-legend-grafic{
 .blog-event-item{
   width: 500px;
   height: 110px;
-  border-top: solid 1px;
+  border-top: 1px solid #D3D6DE;
   padding-top: 25px;
 }
 
@@ -845,4 +845,55 @@ ul#itens-legend-grafic{
   border-radius: 5px;
   padding-left: 4px;
 
+}
+
+.community-content-footer {
+  margin-top: 783px;
+  padding-left: 2px;
+  width: 100%;
+  border-top: 1px solid #D3D6DE;
+  padding-top: 37px;
+  padding-bottom: 56px;
+}
+
+.community-content-footer ul li {
+  display: inline;
+  border: 1px solid #D3D6DE;
+}
+
+.community-content-footer ul .index {
+  padding: 7px 11px 7px 11px;
+  border-radius: 4px;
+  margin-right: 4px;
+  font-family: Arial;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.community-content-footer ul #previous {
+  padding: 7px 11px 7px 11px;
+  border-radius: 4px;
+  margin-right: 38px;
+  font-family: Arial;
+  font-size: 14px;
+  padding-left: 35px;
+}
+
+.community-content-footer ul #next {
+  padding: 7px 11px 7px 11px;
+  border-radius: 4px;
+  margin-left: 30px;
+  padding-left: 14px;
+  padding-right: 32px;
+  font-family: Arial;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+}
+
+.community-content-footer #indexes li a{
+  color: black;
+} 
+
+.community-content-footer li:active .index {
+  background-color: #ECEDF1;
 }
