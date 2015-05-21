@@ -17,7 +17,7 @@ desc 'Publishes PDF'
 task :pdfupload => :pdf do
   require 'date'
 
-  tag = Date.today.strftime('doc-%Y-%m-%d')
+  tag = Date.today.strftime('doc-%Y-%m-%d-') + $SPB_ENV
   blob = `git hash-object -w docs/_build/latex/softwarepublico.pdf`.strip
   tree = `printf '100644 blob #{blob}\tsoftwarepublico-#{$SPB_ENV}.pdf\n' | git mktree`.strip
   commit = `git commit-tree -m #{tag} #{tree}`.strip
