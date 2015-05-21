@@ -1,19 +1,20 @@
-%define writable_dirs javascripts/cache stylesheets/cache articles image_uploads thumbnails
+%define writable_dirs articles image_uploads thumbnails
+%define cache_dirs javascripts/cache stylesheets/cache
 
 Name:    noosfero
 Version: 1.1~rc2.5
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
 License: AGPLv3
 URL:     http://noosfero.org
 Source0: %{name}-%{version}.tar.gz
-Patch0: 0001-Use-as-placeholder-for-current-user-in-URLs.patch 
+Patch0: 0001-Use-as-placeholder-for-current-user-in-URLs.patch
 Patch1: 0001-Enhance-existing-backup-task-and-add-a-restore-one.patch
 Patch2: 0001-Fix-backup-task.patch
 BuildArch: noarch
 BuildRequires: noosfero-deps, gettext, po4a
-Requires: noosfero-deps, po4a, tango-icon-theme, memcached
+Requires: noosfero-deps, po4a, tango-icon-theme, memcached,cron
 
 %description
 Noosfero is a web platform for social and solidarity economy networks with blog,
@@ -64,6 +65,10 @@ ln -sfT /etc/noosfero/plugins %{buildroot}/usr/lib/noosfero/config/plugins
 # symlink needed bits in public/
 for dir in %{writable_dirs}; do
   ln -sfT /var/lib/noosfero/public/$dir %{buildroot}/usr/lib/noosfero/public/$dir
+done
+# symlink needed to cache
+for dir in %{cache_dirs}; do
+  ln -sfT /var/lib/noosfero/cache %{buildroot}/usr/lib/noosfero/public/$dir
 done
 ln -sfT /var/tmp/noosfero %{buildroot}/usr/lib/noosfero/tmp
 ln -sfT /var/log/noosfero %{buildroot}/usr/lib/noosfero/log
