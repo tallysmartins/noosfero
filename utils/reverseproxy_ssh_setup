@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -e
+set -x
 
 port="$1"
 reverseproxy_ip="$2"
@@ -19,6 +20,6 @@ semanage port -a -t ssh_port_t -p tcp "$port"
 systemctl restart sshd
 
 # Setup port redirect
-iptables -A PREROUTING -d $reverseproxy_ip/32 -p tcp -m tcp --dport 22 -j DNAT --to-destination $integration_ip:22
-iptables -A POSTROUTING -d $integration_ip/32 -p tcp -m tcp --dport 22 -j SNAT --to-source $reverseproxy_ip
+iptables -t nat -A PREROUTING -d $reverseproxy_ip/32 -p tcp -m tcp --dport 22 -j DNAT --to-destination $integration_ip:22
+iptables -t nat -A POSTROUTING -d $integration_ip/32 -p tcp -m tcp --dport 22 -j SNAT --to-source $reverseproxy_ip
 sysctl -w net.ipv4.ip_forward=1
