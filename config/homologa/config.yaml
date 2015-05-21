@@ -11,5 +11,6 @@ lists_hostname: listas.homologa.softwarepublico.gov.br
 lists_admin: nayanne.bonifacio@planejamento.gov.br
 relay_hostname: relay.homologa.softwarepublico.gov.br
 relay_ip: 189.9.151.66
+external_outgoing_mail_relay: 189.9.150.53
 alt_ssh_port: 55555
 from_address: noreply@homologa.softwarepublico.gov.br
