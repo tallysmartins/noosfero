@@ -11,7 +11,15 @@ sed -i -e 's/^#\?\s*Port\s*[0-9]\+\s*$/Port '$port'/g' /etc/ssh/sshd_config
 yum install -y selinux-policy policycoreutils-python
 
 # Tell SELinux to allow the new port
-semanage port -a -t ssh_port_t -p tcp "$port"
+if grep -q '/$' /proc/1/cgroup; then
+  # not in a container
+  semanage port -a -t ssh_port_t -p tcp "$port"
+else
+  # in container; will fail if host does not have SELinux enabled
+  if ! semanage port -a -t ssh_port_t -p tcp "$port"; then
+    echo "I: can't use SELinux, your host probably does not have it enabled"
+  fi
+fi
 
 # Restart SSH
 systemctl restart sshd

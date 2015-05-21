@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# MANAGED WITH CHEF; DO NOT CHANGE BY HAND
+
+set -e
+
+if grep -q '/$' /proc/1/cgroup; then
+  # "Real" system
+  exit 1
+else
+  # container
+  exit 0
+fi

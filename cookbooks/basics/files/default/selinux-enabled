@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# MANAGED WITH CHEF; DO NOT CHANGE BY HAND
+
+set -e
+
+selinux_status=$(sestatus | sed -e '/^SELinux status:/ !d; s/.*\s//')
+[ "$selinux_status" = 'enabled' ]

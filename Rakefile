@@ -1,3 +1,5 @@
+require 'yaml'
+
 begin
   load 'local.rake'
 rescue LoadError
@@ -13,15 +15,40 @@ iptables_file = "config/#{$SPB_ENV}/iptables-filter-rules"
 
 ENV['CHAKE_SSH_CONFIG'] = ssh_config_file
 
+if $SPB_ENV == 'lxc'
+  system("mkdir -p config/lxc; sudo lxc-ls -f -F name,ipv4 | sed -e '/^softwarepublico/ !d; s/softwarepublico_//; s/_[0-9_]*/:/ ' > #{ips_file}.new")
+  begin
+    ips = YAML.load_file("#{ips_file}.new")
+    raise ArgumentError unless ips.is_a?(Hash)
+    FileUtils.mv ips_file + '.new', ips_file
+  rescue Exception => ex
+    puts ex.message
+    puts
+    puts "Q: did you boot the containers first?"
+    exit
+  end
+  config = YAML.load_file('config/local/config.yaml')
+  config['external_ip'] = ips['reverseproxy']
+  config['relay_ip'] = ips['email']
+  File.open(config_file, 'w') do |f|
+    f.puts(YAML.dump(config))
+  end
+
+  File.open('config/lxc/iptables-filter-rules', 'w') do |f|
+    lxc_host_bridge_ip = '192.168.122.1' # FIXME don't hardcode
+    f.puts "-A INPUT -s #{lxc_host_bridge_ip} -p tcp -m state --state NEW --dport 22 -j ACCEPT"
+  end
+end
+
 require 'chake'
 
 if Chake::VERSION < '0.4.3'
   fail "Please upgrade to chake 0.4.3+"
 end
 
-config = YAML.load_file(config_file)
-ips = YAML.load_file(ips_file)
-firewall = File.open(iptables_file).read
+ips ||= YAML.load_file(ips_file)
+config ||= YAML.load_file(config_file)
+firewall ||= File.open(iptables_file).read
 $nodes.each do |node|
   node.data['config'] = config
   node.data['peers'] = ips
@@ -38,13 +65,15 @@ task :test do
 end
 
 file 'ssh_config.erb'
-file 'config/local/ssh_config' => ['nodes.yaml', 'config/local/ips.yaml', 'ssh_config.erb', 'Rakefile'] do |t|
-  require 'erb'
-  template = ERB.new(File.read('ssh_config.erb'))
-  File.open(t.name, 'w') do |f|
-    f.write(template.result(binding))
+if ['local', 'lxc'].include?($SPB_ENV)
+  file ssh_config_file => ['nodes.yaml', ips_file, 'ssh_config.erb', 'Rakefile'] do |t|
+    require 'erb'
+    template = ERB.new(File.read('ssh_config.erb'))
+    File.open(t.name, 'w') do |f|
+      f.write(template.result(binding))
+    end
+    puts 'ERB %s' % t.name
   end
-  puts 'ERB %s' % t.name
 end
 
 task :backup => ssh_config_file do

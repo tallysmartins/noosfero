@@ -1,6 +1,6 @@
 . $(dirname $0)/test_helper.sh
 
-if [ "$SPB_ENV" = local ]; then
+if [ "$SPB_ENV" = local -o "$SPB_ENV" = lxc ]; then
   echo "_No DNS for local environment_"
   exit
 fi
