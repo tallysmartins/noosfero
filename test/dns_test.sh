@@ -29,7 +29,14 @@ check_reverse_dns() {
   local hostname="$2"
   local results="$(host $ip)"
   local expected=".*in-addr.arpa domain name pointer ${hostname}."
-  assertTrue "Reverse DNS of $ip must be $hostname (found: $results)" "expr match '$results' '$expected\$'"
+  assertTrue "Reverse DNS of $ip must be $hostname (found: $results)" "expr match '$results' 'include:$expected\$'"
+}
+
+check_spf() {
+  domain="$1"
+  spf_domain="$2"
+  local results="$(host -t TXT "$domain")"
+  assertTrue "TXT entry for $domain must have include:$spf_domain (found: $results)" "expr match '$results' 'include:$spf_domain'"
 }
 
 test_dns_web() {
@@ -60,7 +67,14 @@ test_reverse_dns_relay() {
   check_reverse_dns "$config_relay_ip" "$config_relay_hostname"
 }
 
-# TODO test_spf_external_relay
+if [ -n "$config_external_outgoing_mail_domain" ]; then
+  test_spf_domain() {
+    check_spf "$config_external_hostname" "$config_external_outgoing_mail_domain"
+  }
+  test_spf_lists() {
+    check_spf "$config_lists_hostname" "$config_external_outgoing_mail_domain"
+  }
+fi
 
 if [ "$1" = '--doc' ]; then
   check_hostname() {
@@ -78,13 +92,19 @@ if [ "$1" = '--doc' ]; then
     echo "     - $1"
     echo "     - ${2}."
   }
+  check_spf() {
+    echo "   * - TXT (SPF: \"v=spf1 ...\")"
+    echo "     - $1 "
+    echo "     - include:${2} "
+  }
   header() {
+    local aponta="${2:-Aponta para}"
     echo '.. list-table::'
     echo '   :header-rows: 1'
     echo
     echo '   * - Tipo'
     echo '     - Entrada'
-    echo '     - Aponta para'
+    echo "     - $aponta"
   }
   footer() {
     echo
@@ -106,7 +126,10 @@ if [ "$1" = '--doc' ]; then
     test_reverse_dns_relay
     footer
 
-    # FIXME test_spf_external_relay
+    header 'SPF' 'Deve conter'
+    test_spf_domain
+    test_spf_lists
+    footer
 
   )
 else
