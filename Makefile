@@ -24,4 +24,4 @@ install:
 	cp -vr software_communities/* $(DESTDIR)/$(plugins_dir)/software_communities/
 	install -d -m 0755 $(DESTDIR)/$(themes_dir)/noosfero-spb-theme
 	cp -vr noosfero-spb-theme/* $(DESTDIR)/$(themes_dir)/noosfero-spb-theme/
-	cd $(noosfero_dir) && bundle exec rake -f $(plugins_dir)/software_communities/Rakefile
+	cd $(noosfero_dir) && sudo bundle exec rake -f $(plugins_dir)/software_communities/Rakefile
