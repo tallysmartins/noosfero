@@ -21,7 +21,7 @@ test_mailman_delivery() {
 }
 
 test_mailman_web_interface() {
-  local title="$(curl --location --header 'Host: listas.softwarepublico.dev' http://$integration/mailman/cgi-bin/listinfo | grep -i '<title>')"
+  local title="$(curl --location --header 'Host: listas.softwarepublico.dev' http://$config_external_hostname/mailman/cgi-bin/listinfo | grep -i '<title>')"
   assertEquals "<TITLE>listas.softwarepublico.dev Mailing Lists</TITLE>" "$title"
 }
 

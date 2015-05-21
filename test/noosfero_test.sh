@@ -19,12 +19,12 @@ test_reverse_proxy_noosfero() {
 }
 
 test_reverse_proxy_static_files() {
-  local content_type="$(curl-host softwarepublico.dev --head http://$social/social/images/noosfero-network.png | grep-header Content-Type)"
+  local content_type="$(curl-host softwarepublico.dev --head http://$config_external_hostname/social/images/noosfero-network.png | grep-header Content-Type)"
   assertEquals "Content-Type: image/png" "$content_type"
 }
 
 test_redirect_with_correct_hostname_behind_proxy() {
-  local redirect="$(curl-host softwarepublico.dev --head https://softwarepublico.dev/social/search/contents | grep-header Location)"
+  local redirect="$(curl-host softwarepublico.dev --head https://$config_external_hostname/social/search/contents | grep-header Location)"
   assertEquals "Location: https://softwarepublico.dev/social/search/articles" "$redirect"
 }
 
