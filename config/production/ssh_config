@@ -4,7 +4,7 @@ Host *
 Host reverseproxy
   Hostname 10.10.40.49
   Port 55555
-  ProxyCommand ssh 164.41.9.49 -p %p nc %h 22
+  ProxyCommand ssh 164.41.9.49 -p 22 nc %h 55555
 
 Host reverseproxy.unconfigured
   Hostname 164.41.9.49
