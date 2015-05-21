@@ -19,7 +19,7 @@ task :pdfupload => :pdf do
 
   tag = Date.today.strftime('doc-%Y-%m-%d')
   blob = `git hash-object -w docs/_build/latex/softwarepublico.pdf`.strip
-  tree = `printf '100644 blob #{blob}\tsoftwarepublico.pdf\n' | git mktree`.strip
+  tree = `printf '100644 blob #{blob}\tsoftwarepublico-#{$SPB_ENV}.pdf\n' | git mktree`.strip
   commit = `git commit-tree -m #{tag} #{tree}`.strip
 
   sh 'git', 'tag', tag, commit
