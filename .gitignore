@@ -4,6 +4,7 @@
 /.tmp
 /tmp
 /docs/_build
+/docs/dns.rst
 /.*.html
 /local.rake
 *.swp

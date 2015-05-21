@@ -99,3 +99,5 @@ task :preconfig => ssh_config_file do
     end
   end
 end
+
+Dir.glob('tasks/*.rake').each { |f| load f }

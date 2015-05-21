@@ -1,1 +1,0 @@
-../cookbooks/mailman/files/centos/postfix-to-mailman-centos.py

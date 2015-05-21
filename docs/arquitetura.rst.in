@@ -1,0 +1,25 @@
+Arquitetura
+===========
+
+A arquitetura do SPB consiste em 5 servidores, representados na figura
+a seguir.
+
+.. image:: arquitetura.png
+
+Servidores e serviços
+---------------------
+
+*Esta seção é um trabalho em andamento. Ela cobrirá:*
+
+* descrever arquitetura
+* descrever papel de cada máquina
+* descrever conexões
+
+Gestão de configuração
+----------------------
+
+*Esta seção é um trabalho em andamento. Ela cobrirá:*
+
+* adicionar links com o repositório de gestão de configuração
+* descrever repositório de gestão de configuração
+* descrever como o chake funciona

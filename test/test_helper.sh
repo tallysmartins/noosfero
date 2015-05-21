@@ -19,4 +19,5 @@ load_shunit2() {
 }
 
 . $(dirname $0)/ip_helper.sh
+. $(dirname $0)/config_helper.sh
 

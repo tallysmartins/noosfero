@@ -1,8 +1,7 @@
 admins:
-  -
-    - Paulo Meirelles
-    - paulo@softwarelivre.org
+  - ["Paulo Meirelles", "paulo@softwarelivre.org"]
 external_hostname: beta.softwarepublico.gov.br
+external_ip: 164.41.9.49
 site_url: https://beta.softwarepublico.gov.br
 colab_from_address: '"Portal do Software Publico" <noreply@beta.softwarepublico.gov.br>'
 server_email: '"Portal do Software Publico" <noreply@beta.softwarepublico.gov.br>'
@@ -10,5 +9,6 @@ email_subject_prefix: '[spb]'
 lists_hostname: listas.softwarepublico.gov.br
 lists_admin: paulo@softwarelivre.org
 relay_hostname: relay.softwarepublico.gov.br
+relay_ip: 164.41.9.48
 alt_ssh_port: 55555
 from_address: noreply@softwarepublico.gov.br
