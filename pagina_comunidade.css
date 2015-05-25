@@ -658,24 +658,33 @@ ul#itens-legend-grafic{
   overflow: hidden;
 }
 
-.community-logo {
-  content: url('images/logo-participa.png'); /* LOGOTIPO DA COMUNIDADE */
-  /*content: url('images/bg-bloco-de-trilhas.png');*/
-  width: 100%;
+.community-logo-container {
+  height: 150px;
+  width: 200px;
   border-bottom: 4px solid #3E67B1;
+  overflow: hidden;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.community-logo-container img {
+  height: auto;
+  width: 70%;
 }
 
 .community-name {
   font-family: Arial;
   font-size: 14px;
   font-weight: 700;
-  padding: 13px 15px 0px 15px;
-  text-align: center; 
+  padding: 13px 10px 0px 10px;
+  text-align: center;
   height: 100%;
   background-color: #ECEDF1;
 }
 
 .community-name p {
+  font-family: open sans;
   font-size: 16px;
   line-height: 17px;
   letter-spacing: 0px;
@@ -720,7 +729,7 @@ ul#itens-legend-grafic{
 #community-blog {
   width: 500px;
   height: 2200px;
-  background-image: url('images/blog-teste.png');
+  /*background-image: url('images/blog-teste.png');*/
   background-repeat: no-repeat; 
 }
 
@@ -761,29 +770,19 @@ ul#itens-legend-grafic{
   float: left;
   margin-right: 9px;
   padding: 5px 12px 4px 9px;
-  border: 1px solid #ECEDF1;
+  border: 1px solid #D3D6DE;
   border-radius: 4px;
   color: #2C66CE;
 }
 
 .blog-main-content {
   font-family: Arial;
+  color: #172738;
   margin-top: 46px;
 }
 
-.blog-main-content img {
-  margin-left: auto;
-  margin-right: auto;
-  max-height: 208px;
-  width: 100%;
-  height: 100%;
-  margin-top: 13px;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
 .blog-main-content #date {
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
 }
 
@@ -793,6 +792,19 @@ ul#itens-legend-grafic{
   margin-top: 9px;
   line-height: 25px;
   letter-spacing: 0.4px;
+}
+
+.blog-main-content #image-container {
+  border-radius: 6px;
+  margin-top: 13px;
+  overflow: hidden;
+  height: 210px;
+  width: 490px;
+}
+
+.blog-main-content #image-container img {
+  height: auto;
+  width: 490px;
 }
 
 .blog-main-content #description {
@@ -808,32 +820,39 @@ ul#itens-legend-grafic{
 }
 
 .blog-event-item{
+  position: relative;
+  float: left;
   width: 500px;
-  height: 110px;
   border-top: 1px solid #D3D6DE;
   padding-top: 25px;
+  margin-bottom: 25px;
 }
 
-.blog-event-item #date {
+.blog-event-item .blog-event-information .date {
   font-size: 12px;
   margin-top: -1px;
   text-transform: uppercase;
 }
 
-.blog-event-item #title {
-  font-weight: 700;
+.blog-event-item .blog-event-information .title {
+  font-weight: 700 !important;
   font-size: 15px;
   margin-top: 6px;
   letter-spacing: 0.5px;
 }
 
-.blog-event-item #description {
+.blog-event-item .blog-event-information .description {
   font-size: 14px;
   margin-top: 5px;
   letter-spacing: -0.2px;
 }
 
-.blog-event-item #item-image {
+.blog-event-item .blog-event-information {
+  float: left;
+  width: 370px;
+}
+
+.blog-event-item .item-image {
   float: left;
   height: 100%;
   margin-right: 20px;
@@ -844,11 +863,11 @@ ul#itens-legend-grafic{
   height: 63px;
   border-radius: 5px;
   padding-left: 4px;
-
 }
 
 .community-content-footer {
-  margin-top: 783px;
+  position: relative;
+  float: left;
   padding-left: 2px;
   width: 100%;
   border-top: 1px solid #D3D6DE;
@@ -861,7 +880,7 @@ ul#itens-legend-grafic{
   border: 1px solid #D3D6DE;
 }
 
-.community-content-footer ul .index {
+.community-content-footer ul .default-index {
   padding: 7px 11px 7px 11px;
   border-radius: 4px;
   margin-right: 4px;
@@ -890,10 +909,30 @@ ul#itens-legend-grafic{
   letter-spacing: 0.6px;
 }
 
-.community-content-footer #indexes li a{
-  color: black;
+.community-content-footer #indexes li a {
+  color: #172738;
 } 
 
-.community-content-footer li:active .index {
+.community-content-footer #indexes .active-index {
   background-color: #ECEDF1;
+  padding: 7px 11px 7px 11px;
+  border-radius: 4px;
+  margin-right: 4px;
+  font-family: Arial;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.community-content-footer #indexes #previous #left-arrow {
+  position: absolute;
+  content: url('images/left-arrow-black.png');
+  margin-left: -25px;
+  margin-top: 3px;
+}
+
+.community-content-footer #indexes #next #right-arrow {
+  position: absolute;
+  content: url('images/right-arrow-black.png');
+  margin-left: 18px;
+  margin-top: 3px;
 }
