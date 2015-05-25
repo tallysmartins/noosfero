@@ -16,7 +16,7 @@ except:
 # site-specific items
 ###############################################################
 
-DEFAULT_URL_HOST   = '<%= node['config']['external_hostname'] %>'
+DEFAULT_URL_HOST   = '<%= node['config']['lists_hostname'] %>'
 DEFAULT_EMAIL_HOST = '<%= node['config']['lists_hostname'] %>'
 MTA = None
 POSTFIX_STYLE_VIRTUAL_DOMAINS = ['<%= node['config']['lists_hostname']%>']
