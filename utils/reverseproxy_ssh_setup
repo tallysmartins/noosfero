@@ -30,6 +30,7 @@ systemctl restart sshd
 # Clean iptables before adding our rules
 systemctl stop iptables || echo "Not Installed"
 iptables -F
+iptables -F -t nat
 
 # Setup port redirect
 iptables -t nat -A PREROUTING -d $reverseproxy_ip/32 -p tcp -m tcp --dport 22 -j DNAT --to-destination $integration_ip:22
