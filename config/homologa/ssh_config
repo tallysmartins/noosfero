@@ -8,8 +8,9 @@ Host reverseproxy.unconfigured
 Host reverseproxy
   Hostname 10.0.13.2
   User spb
+  Port 55555
   # connect via reverseproxy host
-  ProxyCommand ssh spb@189.9.151.65 nc %h %p
+  ProxyCommand ssh spb@189.9.151.65 -p 22 nc %h 55555
 
 Host database
   Hostname 10.0.13.6
@@ -30,6 +31,6 @@ Host email
   ProxyCommand ssh spb@189.9.151.65 nc %h %p
 
 Host integration
-  Hostname 10.0.13.7
+  Hostname 189.9.151.65
   User spb
   # Porta 22 de 189.9.151.65 cai aqui entao nao precisa de ProxyCommand

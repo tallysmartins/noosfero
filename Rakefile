@@ -114,13 +114,14 @@ $ALT_SSH_PORT = config.fetch('alt_ssh_port', 2222)
 $nodes.find { |n| n.hostname == 'reverseproxy' }.data['ssh_port'] = $ALT_SSH_PORT
 desc 'Makes configurations needed before the bootstrap phase'
 task :preconfig => ssh_config_file do
+  sh 'mkdir', '-p', 'tmp/'
   preconfig_file = "tmp/preconfig.#{$SPB_ENV}.stamp"
   if File.exist?(preconfig_file)
     puts "I: preconfig already done."
     puts "I: delete #{preconfig_file} to force running again"
   else
     sh 'scp', '-F', ssh_config_file, 'utils/reverseproxy_ssh_setup', 'reverseproxy.unconfigured:/tmp'
-    sh 'ssh', '-F', ssh_config_file, 'reverseproxy.unconfigured', 'sudo', '/tmp/reverseproxy_ssh_setup', $ALT_SSH_PORT.to_s
+    sh 'ssh', '-F', ssh_config_file, 'reverseproxy.unconfigured', 'sudo', '/tmp/reverseproxy_ssh_setup', $ALT_SSH_PORT.to_s, ips['reverseproxy'], ips['integration']
 
     File.open(preconfig_file, 'w') do |f|
       f.puts($ALT_SSH_PORT)
