@@ -65,6 +65,10 @@ service 'noosfero' do
   action [:enable, :start]
 end
 
+service 'memcached' do
+  action [:enable, :start]
+end
+
 template '/etc/nginx/conf.d/noosfero.conf' do
   owner 'root'; group 'root'; mode 0644
   source 'nginx.conf.erb'

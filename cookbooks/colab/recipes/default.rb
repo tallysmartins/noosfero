@@ -1,3 +1,10 @@
+
+package 'memcached'
+
+service 'memcached' do
+  action [:enable, :start]
+end
+
 if node['platform'] == 'centos'
   cookbook_file '/etc/yum.repos.d/colab.repo' do
     owner 'root'
