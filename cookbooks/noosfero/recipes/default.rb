@@ -42,6 +42,10 @@ execute 'plugins:enable' do
   command '/usr/lib/noosfero/script/noosfero-plugins enable ' + plugins.join(' ')
 end
 
+execute 'plugins:activate' do
+    command "RAILS_ENV=production bundle exec rake noosfero:plugins:enable_all_plugins"
+end
+
 execute 'theme:enable' do
   command 'psql -h database -U noosfero --no-align --tuples-only -q -c "update environments set theme=\'noosfero-spb-theme\' where id=1;"'
 end
