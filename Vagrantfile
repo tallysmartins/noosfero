@@ -3,6 +3,11 @@
 
 require 'yaml'
 
+load './local.rake' if File.exists?('local.rake')
+if ENV['SPB_ENV'] == 'lxc'
+  system('sudo', '-v')
+end
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -13,7 +18,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision 'shell', path: 'utils/proxy.sh', args: [proxy]
   end
 
-  load './local.rake' if File.exists?('local.rake')
   env = ENV.fetch('SPB_ENV', 'local')
 
   if File.exist?("config/#{env}/ips.yaml")
