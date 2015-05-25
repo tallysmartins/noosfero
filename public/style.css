@@ -126,3 +126,8 @@
   cursor: pointer;
   margin-left: 5px;
 }
+
+/* Fix software catalog list bug(it does not happen in fix_for_beta) */
+.search-results-type-software_info .search-profile-item {
+  width: 100% !important;
+}

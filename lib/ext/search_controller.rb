@@ -14,11 +14,10 @@ class SearchController
   def software_infos
     prepare_software_search_page
     results = filter_software_infos_list
+    @software_count = results.count
     results = results.paginate(:per_page => @per_page, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
-    @software_count = filter_software_infos_list.count
-
 
     render :layout=>false if request.xhr?
   end
@@ -89,7 +88,7 @@ class SearchController
   end
 
   def sort_communities_list communities_list
-    communities_list.sort!{|a, b| a.name <=> b.name}
+    communities_list.sort! {|a, b| a.name.downcase <=> b.name.downcase}
 
     if params[:sort] && params[:sort] == "desc"
       communities_list.reverse!
