@@ -56,7 +56,17 @@ if node['platform'] == 'centos'
   end
 end
 
+# reload node[:fqdn] to make sure it reflects the contents of /etc/hosts
+# without that the variable :fqdn would not be available on first run
+ruby_block 'fqdn:update' do
+  block do
+    node.default[:fqdn] = `hostname --fqdn`.strip
+  end
+  action :nothing
+end
+
 template '/etc/hosts' do
   owner 'root'
   mode  0644
+  notifies :run, 'ruby_block[fqdn:update]', :immediately
 end
