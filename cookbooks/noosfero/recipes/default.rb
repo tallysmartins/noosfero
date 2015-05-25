@@ -64,6 +64,11 @@ cookbook_file '/etc/default/noosfero' do
   notifies :restart, 'service[noosfero]'
 end
 
+package 'cronie'
+service 'crond' do
+  action [:enable, :start]
+end
+
 service 'noosfero' do
   action [:enable, :start]
 end
