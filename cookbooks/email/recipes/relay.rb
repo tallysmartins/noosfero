@@ -46,3 +46,10 @@ execute 'transport:postmap' do
   command "postmap /etc/postfix/transport"
   action :nothing
 end
+
+external_relay = node['config']['external_outgoing_mail_relay']
+if external_relay
+  execute "postconf relayhost=#{external_relay}"
+else
+  execute 'postconf -X relayhost'
+end

@@ -9,6 +9,12 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
+selinux_status=$(sestatus | sed -e '/^SELinux status:/ !d; s/.*\s//')
+if ! selinux-enabled; then
+  echo "I: SELinux disabled, skipping"
+  exit 0
+fi
+
 input="$1"
 
 directory=$(dirname "$input")

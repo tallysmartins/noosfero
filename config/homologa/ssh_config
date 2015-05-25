@@ -1,33 +1,35 @@
 Host *
   ForwardAgent yes
 
-Host reverseproxy
-  Hostname 164.41.9.49
-  Port 55555
-
 Host reverseproxy.unconfigured
-  Hostname 164.41.9.49
+  Hostname 189.9.151.65
+  User spb
+
+Host reverseproxy
+  Hostname 10.0.13.2
+  User spb
+  # connect via reverseproxy host
+  ProxyCommand ssh spb@189.9.151.65 nc %h %p
 
 Host database
-  Hostname 10.10.40.47
-  Port 55555
+  Hostname 10.0.13.6
+  User spb
   # connect via reverseproxy host
-  ProxyCommand ssh 164.41.9.49 -p %p nc %h 22
+  ProxyCommand ssh spb@189.9.151.65 nc %h %p
 
 Host social
-  Hostname 10.10.40.46
-  Port 55555
+  Hostname 10.0.13.4
+  User spb
   # connect via reverseproxy host
-  ProxyCommand ssh 164.41.9.49 -p %p nc %h 22
+  ProxyCommand ssh spb@189.9.151.65 nc %h %p
 
 Host email
-  Hostname 10.10.40.48
-  Port 55555
+  Hostname 10.0.13.5
+  User spb
   # connect via reverseproxy host
-  ProxyCommand ssh 164.41.9.49 -p %p nc %h 22
+  ProxyCommand ssh spb@189.9.151.65 nc %h %p
 
 Host integration
-  Hostname 10.10.40.45
-  Port 55555
-  # connect via reverseproxy host
-  ProxyCommand ssh 164.41.9.49 -p %p nc %h 22
+  Hostname 10.0.13.7
+  User spb
+  # Porta 22 de 189.9.151.65 cai aqui entao nao precisa de ProxyCommand

@@ -1,6 +1,7 @@
 /utils/obs/isv*
 /Gemfile.lock
 /config/local/ssh_config
+/config/lxc/
 /.tmp
 /tmp
 /docs/_build

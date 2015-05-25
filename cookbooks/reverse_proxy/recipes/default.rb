@@ -12,7 +12,9 @@ cookbook_file "/etc/sysctl.d/ip_forward.conf" do
   mode 0644
 end
 
-execute 'sysctl -w net.ipv4.ip_forward=1'
+execute 'sysctl -w net.ipv4.ip_forward=1' do
+  not_if 'is-a-container'
+end
 
 cookbook_file "/etc/nginx/#{node['config']['external_hostname']}.key" do
   owner 'root'

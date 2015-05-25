@@ -10,8 +10,19 @@ cookbook_file '/etc/selinux/config' do
   group   'root'
   mode    0644
 end
-execute 'setenforce Enforcing'
-execute 'setsebool httpd_can_network_connect 1'
+
+cookbook_file '/usr/local/bin/selinux-enabled' do
+  owner   'root'
+  group   'root'
+  mode    '0755'
+end
+
+execute 'setenforce Enforcing' do
+  only_if 'selinux-enabled'
+end
+execute 'setsebool httpd_can_network_connect 1' do
+  only_if 'selinux-enabled'
+end
 # directory for local type enforcements
 directory '/etc/selinux/local' do
   owner   'root'
@@ -32,8 +43,14 @@ package 'less'
 package 'htop'
 package 'ntp'
 
+cookbook_file '/usr/local/bin/is-a-container' do
+  owner   'root'
+  group   'root'
+  mode    '0755'
+end
 service 'ntpd' do
   action [:enable, :start]
+  not_if 'is-a-container'
 end
 
 service 'firewalld' do

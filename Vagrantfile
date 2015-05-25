@@ -13,28 +13,43 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision 'shell', path: 'utils/proxy.sh', args: [proxy]
   end
 
-  ips = YAML.load_file('config/local/ips.yaml')
+  load './local.rake' if File.exists?('local.rake')
+  env = ENV.fetch('SPB_ENV', 'local')
+
+  if File.exist?("config/#{env}/ips.yaml")
+    ips = YAML.load_file("config/#{env}/ips.yaml")
+  else
+    ips = nil
+  end
 
   config.vm.define 'database' do |database|
-    database.vm.network 'private_network', ip: ips['database']
+    database.vm.provider "virtualbox" do |vm|
+      database.vm.network 'private_network', ip: ips['database'] if ips
+    end
   end
   config.vm.define 'integration' do |integration|
-    integration.vm.network 'private_network', ip: ips['integration']
-    integration.vm.provider "virtualbox" do |v|
-      v.memory = 1024
-      v.cpus = 2
+    integration.vm.provider "virtualbox" do |vm|
+      integration.vm.network 'private_network', ip: ips['integration'] if ips
+      vm.memory = 1024
+      vm.cpus = 2
     end
   end
   config.vm.define 'email' do |email|
-    email.vm.network 'private_network', ip: ips['email']
+    email.vm.provider "virtualbox" do |vm|
+      email.vm.network 'private_network', ip: ips['email'] if ips
+    end
   end
   config.vm.define 'social' do |social|
-    social.vm.network 'private_network', ip: ips['social']
+    social.vm.provider "virtualbox" do |vm|
+      social.vm.network 'private_network', ip: ips['social'] if ips
+    end
   end
   config.vm.define 'reverseproxy' do |reverseproxy|
-    reverseproxy.vm.network 'private_network', ip: ips['reverseproxy']
-    if File.exist?('tmp/preconfig.local.stamp')
-      reverseproxy.ssh.port =  File.read('tmp/preconfig.local.stamp').strip.to_i
+    reverseproxy.vm.provider "virtualbox" do |vm|
+      reverseproxy.vm.network 'private_network', ip: ips['reverseproxy'] if ips
+    end
+    if File.exist?("tmp/preconfig.#{env}.stamp")
+      reverseproxy.ssh.port =  File.read("tmp/preconfig.#{env}.stamp").strip.to_i
       reverseproxy.ssh.host = ips['reverseproxy']
     end
   end
