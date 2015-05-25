@@ -134,7 +134,10 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot', 'SoftwareCat
     var timer = null;
 
     $("#search-input").keyup(function() {
-        timer = setTimeout(update_page_by_text_filter, 400);
+        // Only start the search(with ajax) after 3 characters
+        if(this.value.length >= 3) {
+          timer = setTimeout(update_page_by_text_filter, 400);
+        }
     }).keydown(function() {
         clearTimeout(timer);
     });
