@@ -27,6 +27,10 @@ fi
 # Restart SSH
 systemctl restart sshd
 
+# Clean iptables before adding our rules
+systemctl stop iptables || echo "Not Installed"
+iptables -F
+
 # Setup port redirect
 iptables -t nat -A PREROUTING -d $reverseproxy_ip/32 -p tcp -m tcp --dport 22 -j DNAT --to-destination $integration_ip:22
 iptables -t nat -A POSTROUTING -d $integration_ip/32 -p tcp -m tcp --dport 22 -j SNAT --to-source $reverseproxy_ip
