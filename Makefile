@@ -6,7 +6,7 @@ TARBALL = $(DISTDIR).tar.gz
 all:
 	@echo Nothing to be $@, all good.
 
-plugins_dir=/usr/lib/noosfero/plugins
+plugin_dir=/usr/lib/noosfero/plugins/software_communities
 themes_dir=/usr/lib/noosfero/public/designs/themes
 noosfero_dir=/usr/lib/noosfero
 
@@ -24,4 +24,4 @@ install:
 	cp -vr software_communities/* $(DESTDIR)/$(plugins_dir)/software_communities/
 	install -d -m 0755 $(DESTDIR)/$(themes_dir)/noosfero-spb-theme
 	cp -vr noosfero-spb-theme/* $(DESTDIR)/$(themes_dir)/noosfero-spb-theme/
-	cd $(noosfero_dir) && sudo bundle exec rake -f $(plugins_dir)/software_communities/Rakefile
+	cd $(plugin_dir) && sudo bundle exec rake
