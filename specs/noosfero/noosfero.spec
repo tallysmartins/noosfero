@@ -3,7 +3,7 @@
 
 Name:    noosfero
 Version: 1.1~rc2.5
-Release: 3%{?dist}
+Release: 6%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
 License: AGPLv3
@@ -14,7 +14,7 @@ Patch1: 0001-Enhance-existing-backup-task-and-add-a-restore-one.patch
 Patch2: 0001-Fix-backup-task.patch
 BuildArch: noarch
 BuildRequires: noosfero-deps, gettext, po4a
-Requires: noosfero-deps, po4a, tango-icon-theme, memcached,cron
+Requires: noosfero-deps, po4a, tango-icon-theme, memcached,crontabs
 
 %description
 Noosfero is a web platform for social and solidarity economy networks with blog,
@@ -120,6 +120,8 @@ fi
 for dir in %{writable_dirs}; do
   mkdir -p /var/lib/noosfero/public/$dir
 done
+mkdir -p /var/lib/noosfero/cache
+
 chown -R noosfero:noosfero /var/lib/noosfero
 
 /etc/init.d/noosfero setup
