@@ -236,15 +236,15 @@
   height: auto;
 }
 
-.software-block-logo{
-  display:block;
-  text-align: center;
-  width:140px;
-  height:90px;
-  padding-top:20px;
-  padding-bottom:20px;
-  overflow: hidden;
+.software-block-logo {
+ display: table-cell;
+ vertical-align: middle;
+ text-align: center;
+ width: 140px;
+ height: 150px;
+ overflow: hidden;
 }
+
 
 /*
 .box-1 .software-block-title h3 {
@@ -258,7 +258,7 @@
 }
 
 .box-1 .softwares-block .common-profile-list-block .vcard {
-  border: none; 
+  border: none;
 }
 
 .box-1 .softwares-block .common-profile-list-block .vcard:hover .menu-submenu-trigger{
@@ -406,7 +406,7 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 
 .block.display-content-block .lead {
     padding-left: 160px;
-    padding-right: 0px; 
+    padding-right: 0px;
     max-height: 60px;
 }
 
@@ -414,7 +414,7 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
     font-size: 15px;
     font-family: Arial;
     line-height: 1.3em;
-    color: #000000;    
+    color: #000000;
 }
 
 .block.display-content-block .read_more, .block.display-content-block .tags {
@@ -506,7 +506,7 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 
 .block.display-last-news-block .lead {
     padding-left: 0px;
-    padding-right: 0px; 
+    padding-right: 0px;
     max-height: 23px;
     overflow: hidden;
 }
@@ -515,25 +515,25 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
     font-size: 15px;
     font-family: Arial;
     line-height: 1.3em;
-    color: #172738;    
+    color: #172738;
 }
 
 .block.display-last-news-block .read_more, .block.display-last-news-block .tags {
     display: none;
 }
 
-.block.display-last-news-block a:visited, 
-.block.display-last-news-block a:link, 
-.block.display-last-news-block a:hover, 
+.block.display-last-news-block a:visited,
+.block.display-last-news-block a:link,
+.block.display-last-news-block a:hover,
 .block.display-last-news-block a,
 .block.display-last-news-block dl.portlet a:visited {
     color: #172738;
     text-decoration: none;
 }
 
-#content .block.display-last-news-block a:visited, 
-#content .block.display-last-news-block a:link, 
-#content .block.display-last-news-block a:hover, 
+#content .block.display-last-news-block a:visited,
+#content .block.display-last-news-block a:link,
+#content .block.display-last-news-block a:hover,
 #content .block.display-last-news-block a {
     color: #172738;
     text-decoration: none;
