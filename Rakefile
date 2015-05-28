@@ -37,6 +37,7 @@ if $SPB_ENV == 'lxc'
   File.open('config/lxc/iptables-filter-rules', 'w') do |f|
     lxc_host_bridge_ip = '192.168.122.1' # FIXME don't hardcode
     f.puts "-A INPUT -s #{lxc_host_bridge_ip} -p tcp -m state --state NEW --dport 22 -j ACCEPT"
+    f.puts "-A INPUT -s #{lxc_host_bridge_ip} -p tcp -m state --state NEW --dport 5555 -j ACCEPT"
   end
 end
 
