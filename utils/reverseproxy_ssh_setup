@@ -35,7 +35,7 @@ iptables -F -t nat
 # Setup port redirect
 iptables -t nat -A PREROUTING -d $reverseproxy_ip/32 -p tcp -m tcp --dport 22 -j DNAT --to-destination $integration_ip:22
 iptables -t nat -A POSTROUTING -d $integration_ip/32 -p tcp -m tcp --dport 22 -j SNAT --to-source $reverseproxy_ip
-if ! grep -q '/$' /proc/1/cgroup; then
+if grep -q '/$' /proc/1/cgroup; then
   # only on non-containers
   sysctl -w net.ipv4.ip_forward=1
 fi
