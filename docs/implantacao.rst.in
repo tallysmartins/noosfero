@@ -169,6 +169,38 @@ senha nehuma vez, significa que 1) você conseguiu conectar em todas as máquina
 e 2) o sudo sem senha está configurado corretamente. Está tudo certo para
 começar!
 
+Nota sobre certificado SSL
+--------------------------
+
+O repositório de gestão de configuração **não** contém os par de chaves
+do cerficado SSL para o domínio **@@external_hostname@@**. Antes de
+realizar a implantação, você deve colocar o par de chaves nos seguintes
+locais:
+
+* `cookbooks/reverse_proxy/files/host-reverseproxy/@@external_hostname@@.crt`: certificado (chave pública), em formato PEM.
+* `cookbooks/reverse_proxy/files/host-reverseproxy/@@external_hostname@@.key`: chave privada, em formato PEM.
+
+Para uma melhor segurança da chave privada, e recomendado que a mesma
+seja criptografada com GnuPG, o que é suportado pela ferramente de
+implantação `chake`. Isso pode ser feito da seguinte maneira::
+
+    $ cd cookbooks/reverse_proxy/files/host-reverseproxy/
+    # criptografar:
+    $ gpg --encrypt --recipient XXXXXXXX --output @@external_hostname@@.key.gpg @@external_hostname@@.key
+    # conferir que o conteúdo descriptografado está OK:
+    $ gpg --decrypt @@external_hostname@@.key.gpg
+    # apagar o arquivo sem criptografia:
+    $ rm @@external_hostname@@.key
+    # retornar ao diretório de origem
+    $ cd -
+
+`XXXXXXXX` deve ser substituído pelo ID da chave que está sendo usada
+para criptografar.
+
+Antes de fazer a implantação, o `chake` vai enviar a chave privada
+descriptografada apenas à máquina que vai ser o frontend HTTPS. Caso sua
+chave GnuPG necessite de uma senha para ser usada, ela será solicitada.
+
 Primeira instalação
 -------------------
 
