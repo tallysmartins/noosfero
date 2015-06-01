@@ -1,0 +1,17 @@
+admins:
+  - ["Nayanne Araújo", "nayanne.bonifacio@planejamento.gov.br"]
+  - ["Marisa Souza dos Santos", "marisa.santos@planejamento.gov.br"]
+external_hostname: www2.softwarepublico.gov.br
+external_ip: 189.9.151.64
+alt_ssh_port: 55555
+site_url: https://www2.softwarepublico.gov.br
+colab_from_address: '"Portal do Software Publico" <noreply@softwarepublico.gov.br>'
+server_email: '"Portal do Software Publico" <noreply@softwarepublico.gov.br>'
+email_subject_prefix: '[spb]'
+lists_hostname: listas.softwarepublico.gov.br
+lists_admin: nayanne.bonifacio@planejamento.gov.br
+from_address: noreply@softwarepublico.gov.br
+relay_hostname: relay.softwarepublico.gov.br
+relay_ip: 189.9.151.68
+external_outgoing_mail_relay: 189.9.150.53
+external_outgoing_mail_domain: serpro.gov.br
