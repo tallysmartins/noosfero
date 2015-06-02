@@ -100,3 +100,11 @@ service 'colab' do
   action [:enable, :start]
   supports :restart => true
 end
+
+execute 'create token-admin' do
+  user = "admin-gitlab"
+  email = "admin-gitlab@admin.com"
+  password = SecureRandom.random_number.to_s
+
+  command "echo \"from colab.accounts.models import User; User.objects.create_superuser(\'#{user}\', \'#{email}\', \'#{password}\')\" | colab-admin shell"
+end

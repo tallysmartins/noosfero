@@ -95,3 +95,19 @@ execute 'selinux-gitlab' do
   command 'selinux-install-module /etc/selinux/local/gitlab.te'
   action :nothing
 end
+
+execute 'admin-token' do
+  user = "admin-gitlab"
+  email = "admin-gitlab@admin.com"
+  password = SecureRandom.random_number.to_s
+
+  command "bundle exec rails c production << EOF
+          user = User.create(name: \'#{name}\', username: \'#{name}\', email: \'#{email}\', password: \'#{password}\')
+          user.admin = true
+          user.save
+          exit
+          EOF"
+
+  cwd '/usr/lib/gitlab'
+  user 'git'
+end
