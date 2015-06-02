@@ -93,6 +93,12 @@ task :backup => ssh_config_file do
 end
 
 task :restore => ssh_config_file do
+  # setup
+  sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', 'rm -rf /tmp/backups'
+  sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', 'rm -rf /tmp/backups'
+  sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', 'systemctl stop noosfero'
+  sh 'ssh', '-F', ssh_config_file, 'database', 'sudo', 'sudo -u postgres dropdb noosfero 2> /dev/null'
+  sh 'ssh', '-F', ssh_config_file, 'database', 'sudo', 'sudo -u postgres createdb noosfero --owner noosfero 2> /dev/null'
   #integration
   sh 'scp', '-r', '-F', ssh_config_file, 'backups', 'integration:/tmp'
   sh 'scp', '-F', ssh_config_file, 'utils/migration/restore_integration.sh', 'integration:/tmp'
@@ -101,6 +107,7 @@ task :restore => ssh_config_file do
   sh 'scp', '-r', '-F', ssh_config_file, 'backups', 'social:/tmp'
   sh 'scp', '-F', ssh_config_file, 'utils/migration/restore_social.sh', 'social:/tmp'
   sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', '/tmp/restore_social.sh'
+  sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', 'systemctl start noosfero'
 end
 
 task :bootstrap_common => 'config/local/ssh_config'
