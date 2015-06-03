@@ -1,0 +1,3 @@
+ENV['CHAKE_NODES'] = 'nodes-ci.yaml'
+ENV['CHAKE_RSYNC_OPTIONS'] = '--exclude .vagrant/ --exclude docs/_build'
+require 'chake'

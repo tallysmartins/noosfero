@@ -1,0 +1,3 @@
+ci.spb.lappis:
+  run_list:
+    - role[ci_server]
