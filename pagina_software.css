@@ -240,6 +240,22 @@ border: none;
   margin-right: 20px;
 
 }*/
+.item-icon a {
+  display: none;
+}
+
+.item-icon {
+  background-color: #2C66CE;
+  background-image: url("images/download-icon.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 1px solid #2C66CE;
+  border-radius: 8px;
+  display: block;
+  padding: 45px 45px 5px 10px;
+  float: left;
+  margin-right: 20px;
+}
 
 #info-software-download{
   font-size: 16px;
