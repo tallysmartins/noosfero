@@ -826,6 +826,7 @@ ul#itens-legend-grafic{
   border-top: 1px solid #D3D6DE;
   padding-top: 25px;
   margin-bottom: 25px;
+  display: table;
 }
 
 .blog-event-item .blog-event-information .date {
@@ -835,6 +836,7 @@ ul#itens-legend-grafic{
 }
 
 .blog-event-item .blog-event-information .title {
+  padding-right: 0px !important;
   font-weight: 700 !important;
   font-size: 15px;
   margin-top: 6px;
@@ -848,14 +850,14 @@ ul#itens-legend-grafic{
 }
 
 .blog-event-item .blog-event-information {
-  float: left;
-  width: 370px;
+  display: table-cell;
+  width: 100%;
 }
 
 .blog-event-item .item-image {
-  float: left;
-  height: 100%;
-  margin-right: 20px;
+  display: table-cell;
+  vertical-align: top;
+  padding-right: 20px;
 }
 
 .blog-event-item img {
