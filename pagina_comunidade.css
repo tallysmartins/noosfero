@@ -827,6 +827,7 @@ ul#itens-legend-grafic{
   padding-top: 25px;
   margin-bottom: 25px;
   display: table;
+  overflow: hidden;
 }
 
 .blog-event-item .blog-event-information .date {
@@ -835,9 +836,9 @@ ul#itens-legend-grafic{
   text-transform: uppercase;
 }
 
-.blog-event-item .blog-event-information .title {
-  padding-right: 0px !important;
-  font-weight: 700 !important;
+.blog-event-item .blog-event-information .event-title {
+  padding-right: 0px;
+  font-weight: 700;
   font-size: 15px;
   margin-top: 6px;
   letter-spacing: 0.5px;
@@ -847,6 +848,8 @@ ul#itens-legend-grafic{
   font-size: 14px;
   margin-top: 5px;
   letter-spacing: -0.2px;
+  max-height: 57px;
+  overflow: hidden;
 }
 
 .blog-event-item .blog-event-information {
