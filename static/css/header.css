@@ -1,0 +1,229 @@
+#barra-brasil #wrapper-barra-brasil .brasil-flag{
+  height: auto;
+}
+
+#first-nav{
+  background-color:#f0f2f1;
+  background-color:#ecedf1;
+  background-image: -webkit-radial-gradient(center, ellipse cover, #f0f2f1 1%, #ecedf1 100%)
+}
+
+/* Accessibility */
+
+#accessibility {
+  font-family: arial;
+  font-size: 10px;
+}
+
+#accessibility a{
+  padding-left: 4px;
+  padding-right: 4px;
+  color: #2c66ce;
+}
+
+#accessibility span{
+  background-color: #2c66ce;
+}
+
+#portal-siteactions{
+  font-size: 10px;
+  text-align: center;
+}
+
+#portal-siteactions li{
+  display: inline-block;
+}
+
+#portal-siteactions a {
+  color:#2c66ce;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+#portal-siteactions #siteaction-mapadosite a{
+  padding-right: 0;
+}
+
+#portal-siteactions a:hover {
+  color: #03316f;
+}
+
+#portal-siteactions span {
+  border-bottom: 1px dotted #2c66ce;
+}
+
+/* User-bar */
+
+#user-menu a.btn {
+  font-size: 13px;
+  padding: 10px;
+  background-color: #2c66ce;
+  border-color: #2c66ce;
+  color: #FFF;
+}
+
+#user-menu .dropdown-menu{
+  border-radius: 5px;
+}
+
+#user-menu .dropdown-toggle img{
+  border-radius: 20px;
+}
+
+#user-menu .user .caret, #menu-spb a .caret {
+  border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid #2c66ce;
+}
+
+#user-menu a:hover .caret, #menu-spb a:hover .caret, #user-menu a:focus .caret, #menu-spb a:focus .caret{
+  border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid #03316f;
+
+}
+
+/* Brand and search */
+
+#spb-logo-search {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#spb-logo-search  .logo-box{
+  padding-bottom: 20px;
+}
+
+#portal-logo img{
+  max-height: 50px;
+}
+
+.box-search{
+  margin: auto;
+  margin-top: 10px;
+}
+
+#search-form .form-group{
+  float: left;
+}
+
+#search-form button.btn.btn-default{
+  float: left;
+  border-radius: 0px 5px 5px 0px;
+  border-left: none;
+  color: #2c66ce;
+}
+
+#search-form button.btn.btn-default:hover{
+  background: #fff;
+  border: 1px solid #cccccc;
+  border-left: none;
+  color: #03316f;
+}
+
+#search-form #header-searchbox{
+  width: 100%;
+  border-radius: 5px 0px 0px 5px;
+  border-right: none;
+  background: #fff;
+}
+
+/* Menu */
+
+#second-nav {
+  background-color:#CFD0D2;
+  min-height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+#second-nav a {
+  color: #2c66ce;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+#menu-spb > li > a{
+  padding: 5px 15px 5px 5px;
+}
+
+#menu-spb ul.dropdown-menu {
+  background: #CFD0D2;
+  border-color: #CFD0D2;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  font-size: 12px;
+}
+
+#menu-spb ul.dropdown-menu a{
+  color: #03316f;
+}
+
+#menu-spb ul.dropdown-menu a:hover{
+  color:#2c66ce;
+}
+
+#menu-spb .open > a,  #menu-spb .open > a:hover,  #menu-spb .open > a:focus{
+  background: none;
+}
+
+#quick-links{
+  padding-right: 30px
+}
+
+#quick-links > li > a{
+  margin: 5px 0;
+  padding: 0 15px;
+  border-right: 1px solid #2c66ce;
+}
+
+#quick-links li:last-child > a{
+  padding-right: 5px;
+  border-right: none;
+}
+
+#quick-links a:hover, #menu-spb a:focus , #menu-spb a:hover {
+  color: #03316f;
+  background: none;
+}
+
+/* Menu collapsed elements */
+.navbar-toggle .icon-bar{
+  background-color: #2c66ce;
+  margin: auto;
+}
+
+.navbar-header.logo .navbar-toggle{
+  float: left;
+  margin: 0;
+}
+
+#quick-links-sm{
+  list-style: none;
+  float: right;
+  margin: 0;
+}
+
+#quick-links-sm li{
+  display: inline-block;
+}
+
+#quick-links-sm > li > a{
+  margin: 5px 0;
+  padding: 0 15px;
+  border-right: 1px solid #2c66ce;
+  text-decoration: none;
+}
+
+#quick-links-sm li:last-child > a{
+  padding-right: 5px;
+  border-right: none;
+}
+
+#quick-links-sm a:hover{
+  color: #03316f;
+  background: none;
+}

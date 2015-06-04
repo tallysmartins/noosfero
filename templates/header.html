@@ -1,0 +1,148 @@
+{% load i18n browserid conversejs gravatar plugins %}
+{% load static from staticfiles %}
+
+<header>
+<div class="navbar navbar-static-top">
+<!-- begin of barra-brasil -->
+<div id="barra-brasil">
+  <a href="http://brasil.gov.br" style="background:#7F7F7F; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">{% trans "Brazilian Government Portal" %}</a>
+</div>
+<script src="http://barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
+<!-- end of barra-brasil -->
+  <div id="first-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul id="accessibility" class="nav navbar-nav hidden-xs hidden-sm">
+            <li>
+              <a id="link-conteudo" href="#main-content" accesskey="1">{% trans "Go to content" %} <span class="label label-primary">1</span></a>
+            </li>
+            <li>
+              <a id="link-navegacao" href="#menu-spb" accesskey="2">{% trans "Go to menu" %} <span class="label label-primary">2</span></a>
+            </li>
+            <li> <a id="link-buscar" accesskey="3" href="#header-searchbox" title="Go to search">{% trans "Go to search" %} <span class="label label-primary">3</span></a>
+            </li>
+            <li>
+              <a id="link-rodape" href="#link-top" accesskey="4">{% trans "Go to bottom" %} <span class="label label-primary">4</span></a>
+            </li>
+          </ul> <!-- end of accesskeys -->
+          <ul id="portal-siteactions" class="nav navbar-nav navbar-right">
+            <li id="siteaction-accessibility">
+              <a href="/software-publico-brasileiro/acessibilidade"><span>{% trans "Accessibility" %}</span></a>
+            </li>
+            <li id="siteaction-contraste">
+              <a href="#"><span>{% trans "High contrast" %}</span></a>
+            </li>
+            <li id="siteaction-mapadosite">
+              <a href="/search"><span>{% trans "Site map" %}</span></a>
+            </li>
+            <!-- begin of user-menu -->
+            {% if not user.is_authenticated %}
+            <li class="dropdown hidden-xs hidden-lg">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Access" %} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              {% trans 'Login' as login_text %}
+              {% if BROWSERID_ENABLED %}
+                <li>{% browserid_login text=login_text %}</li>
+              {% else %}
+                <li><a href="{% url 'signup' %}">{% trans "Register" %}</a></li>
+                <li><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
+              {% endif %}
+              </ul>
+            </li>
+            {% trans 'Login' as login_text %}
+            {% if BROWSERID_ENABLED %}
+            <li class="visible-xs hidden-sm hidden-md">{% browserid_login text=login_text %}</li>
+            {% else %}
+            <li class="visible-xs hidden-sm hidden-md"><a href="{% url 'signup' %}">{% trans "Register" %}</a></li>
+            <li class="visible-xs hidden-sm hidden-md"><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
+            {% endif %}
+            {% else %}
+            <li id="user-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle user" data-toggle="dropdown">{% gravatar user.email 40 %} <b class="caret"></b>&nbsp;&nbsp;</a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <div class="wrapper">
+                    <div class="thumbnail">{% gravatar user.email 100 %}</div>
+                      <div class="user-info">
+                        <span><b>{{ user.get_full_name }}</b></span>
+                        <span class="quiet">{{ user.email }}</span>
+                      </div>
+                      <div>
+                        <a class="btn btn-info pull-left" href="{% url 'user_profile' user.username %}">{% trans "My Profile" %}</a>
+                        {% trans 'Logout' as logout_text %}
+                        {% if BROWSERID_ENABLED %}
+                         {% browserid_logout text=logout_text link_class='btn btn-default pull-right' %}
+                        {% else %}
+                        <a class="btn btn-default pull-right" href="{% url 'logout' %}"> {% trans "Logout" %}</a>                         {% endif %}
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li> <!-- end of user-menu -->
+            {% endif %}
+          </ul>
+        </div>
+      </div> <!-- end of access-menu -->
+      <div class="row" id="spb-logo-search">
+        <div class="col-md-6 logo-box">
+          <div id="logo">
+            <a href="#" id="portal-logo">
+                  <img class="img-responsive pull-left" src="{% static 'img/logo.svg' %}" />
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input-group box-search navbar-right">
+              <form action="{% url 'haystack_search' %}" method="GET" id="search-form" class="navbar-form" role="search">
+              <div class="form-group">
+                <label class="sr-only" for="header-searchbox">{% trans 'Search...' %}</label>
+                <input name="q" id="header-searchbox"
+                      class="form-control" value="{{ request.GET.q }}"
+                      type="search" placeholder="{% trans 'Search...' %}" />
+              </div>
+              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end of first-nav -->
+  <div id="second-nav">
+    <div class="container">
+      <div class="row">
+        <ul id="quick-links-sm" class="hidden-md hidden-lg">
+          <li id="link-faq">
+            <a href="/ajuda/ajuda/duvidas-frequentes">{% trans "Frequently Asked Questions" %}</a>
+          </li>
+          <li id="link-contact">
+            <a href="/contact/portal/new">{% trans "Contact" %}</a>
+          </li>
+        </ul>
+        <div class="navbar-header logo">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="menu-spb" class="nav navbar-nav navbar-collapse collapse ">
+          <li>
+            <a href="{% url 'thread_list' %}">{% trans "Groups" %}</a>
+          </li>
+          {% plugins_menu %}
+        </ul>
+        <ul id="quick-links" class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+          <li id="link-faq">
+            <a href="/ajuda/ajuda/duvidas-frequentes">{% trans "Frequently Asked Questions" %}</a>
+          </li>
+          <li id="link-contact">
+            <a href="/contact/portal/new">{% trans "Contact" %}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+

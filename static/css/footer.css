@@ -1,0 +1,85 @@
+/*Footer*/
+
+
+.footer-content{
+  background: rgb(213,213,213);
+  padding: 50px 0;
+  font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+}
+
+.footer-links a{
+  color:#2c66ce;
+  font-size: 13px;
+  line-height: 1.7em;
+}
+
+.footer-links a:hover{
+  background: none;
+  text-decoration: underline;
+}
+
+.footer-links{
+  color:#2c66ce;
+  border-left:1px dotted #2c66ce;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-links dt{
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3em;
+  margin-bottom: 8px;
+  font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+}
+
+.footer-links dd{
+  padding-bottom: 3px
+}
+
+.footer-gov{
+  background: #0042b2;
+}
+
+.footer-gov > .container{
+  padding: 2em 0;
+}
+
+.footer-gov .institucionais a{
+  display:table-cell;
+  vertical-align: middle;
+}
+
+.footer-gov a:hover{
+  text-decoration: none;
+}
+
+.footer-gov span{
+  display: none;
+}
+
+.footer-gov .logo-sgpr img, .logo-acesso img{
+  padding-top: 10px;
+  padding-right: 15%;
+  padding-bottom: 10px;
+}
+
+.go-top{
+  font-size: 13px;
+  height: 2em;
+}
+
+.go-top a{
+  color: #717782;
+  line-height: 2em;
+}
+
+.go-top .icon-chevron-up{
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+.spb-definitions{
+  font-size: 10px;
+  padding: 10px 0;
+}
