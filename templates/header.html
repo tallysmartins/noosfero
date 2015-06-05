@@ -34,7 +34,7 @@
               <a href="#"><span>{% trans "High contrast" %}</span></a>
             </li>
             <li id="siteaction-mapadosite">
-              <a href="/search"><span>{% trans "Site map" %}</span></a>
+              <a href="/social/spb/mapa-do-site"><span>{% trans "Site map" %}</span></a>
             </li>
             <!-- begin of user-menu -->
             {% if not user.is_authenticated %}
@@ -87,7 +87,7 @@
       <div class="row" id="spb-logo-search">
         <div class="col-md-6 logo-box">
           <div id="logo">
-            <a href="#" id="portal-logo">
+            <a href="/" id="portal-logo">
                   <img class="img-responsive pull-left" src="{% static 'img/logo.svg' %}" />
             </a>
           </div>
@@ -113,10 +113,10 @@
       <div class="row">
         <ul id="quick-links-sm" class="hidden-md hidden-lg">
           <li id="link-faq">
-            <a href="/ajuda/ajuda/duvidas-frequentes">{% trans "Frequently Asked Questions" %}</a>
+            <a href="/social/spb/ajuda">{% trans "Frequently Asked Questions" %}</a>
           </li>
           <li id="link-contact">
-            <a href="/contact/portal/new">{% trans "Contact" %}</a>
+            <a href="/social/spb/contato">{% trans "Contact" %}</a>
           </li>
         </ul>
         <div class="navbar-header logo">
@@ -134,10 +134,10 @@
         </ul>
         <ul id="quick-links" class="nav navbar-nav navbar-right hidden-xs hidden-sm">
           <li id="link-faq">
-            <a href="/ajuda/ajuda/duvidas-frequentes">{% trans "Frequently Asked Questions" %}</a>
+            <a href="/social/spb/ajuda">{% trans "Frequently Asked Questions" %}</a>
           </li>
           <li id="link-contact">
-            <a href="/contact/portal/new">{% trans "Contact" %}</a>
+            <a href="/social/spb/contato">{% trans "Contact" %}</a>
           </li>
         </ul>
       </div>

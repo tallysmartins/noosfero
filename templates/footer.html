@@ -13,7 +13,7 @@
       <div class="row">
         <dl class="col-md-3 footer-links">
           <dt>{% trans "Topics" %}</dt>
-          <dd><a href="http://www.softwarepublico.gov.br/O_que_e_o_SPB" title="SPB">{% trans "SPB" %}</a></dd>
+          <dd><a href="/social/spb/o-que-e-o-software-publico" title="SPB">{% trans "SPB" %}</a></dd>
           <dd><a href="http://pagina.softwarepublico.gov.br/sisp" title="SISP-SPB">{% trans "SISP-SPB" %}</a></dd>
           <dd><a href="http://www.softwarepublico.gov.br/5cqualibr/avaliaspb/wiki/Sobre" title="AvaliaSPB">{% trans "AvaliaSPB" %}</a></dd>
           <dd><a href="http://www.softwarepublico.gov.br/4cmbr/xowiki/Principal" title="4CMBr">{% trans "4CMBr" %}</a></dd>
@@ -22,19 +22,10 @@
         <dl class="col-md-3 footer-links">
           <dt>{% trans "Services" %}</dt>
             <dd class="portalservicos-item">
-                <a title="Perguntas frequentes" href="#">{% trans "Frequently Asked Questions" %}</a>
+                <a title="Perguntas frequentes" href="/social/spb/ajuda">{% trans "Frequently Asked Questions" %}</a>
             </dd>
             <dd class="portalservicos-item">
-                <a title="Contato" href="#">{% trans "Contact" %}</a>
-            </dd>
-            <dd class="portalservicos-item">
-                <a title="Serviços da [Denominação]" href="#">{% trans " [Denomination's] services" %}</a>
-            </dd>
-            <dd class="portalservicos-item">
-                <a title="Dados abertos" href="#">{% trans "Open data" %}</a>
-            </dd>
-            <dd class="portalservicos-item">
-                <a title="Área de imprensa" href="#">{% trans "Press area" %}</a>
+                <a title="Contato" href="/social/spb/contato">{% trans "Contact" %}</a>
             </dd>
         </dl>
         <dl class="col-md-3 footer-links">
@@ -45,10 +36,8 @@
         <dl class="col-md-3 footer-links">
           <dt>{% trans "Navigation" %}</dt>
             <dd><a href="#">{% trans "Accessibility" %}</a></dd>
-            <dd><a href="#">{% trans "Site map" %}</a></dd>
-            <dd><a href="#">Versión en Español</a></dd>
+            <dd><a href="/social/spb/mapa-do-site">{% trans "Site map" %}</a></dd>
             <dd><a href="#">Versão em Português</a></dd>
-            <dd><a href="#">English version</a></dd>
         </dl>
       </div>
     </div>
@@ -59,7 +48,8 @@
         <a class="logo-acesso" href="http://www.acessoainformacao.gov.br/" target="_blank"><img class="img-responsive pull-left" src="{% static 'img/acesso-a-informacao.png' %}" ><span>{% trans "Information access" %}</span></a>
       </div>
       <div class="col-md-5 institucionais">
-        <a class="logo-sgpr" href="http://www.secretariageral.gov.br/" target="_blank"><img class="img-responsive" src="{% static 'img/sgpr.png' %}" ><span>{% trans "Republic Presidency General Secretary" %}<a class="logo-brasil" href="http://www.brasil.gov.br/" target="_blank"><img class="img-responsive" src="{% static 'img/brasil.png' %}" ><span>{% trans "Brazil - Federal Government" %}</span></a>
+        <a class="logo-brasil" href="http://www.brasil.gov.br/" target="_blank"><img class="img-responsive" src="{% static 'img/brasil.png' %}" ><span>{% trans "Brazil - Federal Government" %}</span></a>
+        <a class="logo-sgpr" href="http://www.secretariageral.gov.br/" target="_blank"><img class="img-responsive" src="{% static 'img/sgpr.png' %}" ><span>{% trans "Republic Presidency General Secretary" %}</span></a>
       </div>
     </div>
   </div><!-- end footer-gov -->

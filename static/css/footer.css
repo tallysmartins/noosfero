@@ -48,6 +48,7 @@
 .footer-gov .institucionais a{
   display:table-cell;
   vertical-align: middle;
+  float: right;
 }
 
 .footer-gov a:hover{
@@ -62,6 +63,10 @@
   padding-top: 10px;
   padding-right: 15%;
   padding-bottom: 10px;
+}
+
+.footer-gov .logo-brasil img{
+  padding-right: 0;
 }
 
 .go-top{
