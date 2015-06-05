@@ -53,11 +53,40 @@ template '/etc/colab/settings.d/00-database.yaml' do
   notifies :restart, 'service[colab]'
 end
 
+execute 'create token-admin' do
+  user = "admin-gitlab"
+  email = "admin-gitlab@admin.com"
+  password = SecureRandom.random_number.to_s
+
+  command "echo \"from colab.accounts.models import User; User.objects.create_superuser(\'#{user}\', \'#{email}\', \'#{password}\')\" | colab-admin shell"
+end
+
+execute 'admin-token' do
+  user = "admin-gitlab"
+  email = "admin-gitlab@admin.com"
+  password = SecureRandom.random_number.to_s
+
+  command "sudo -u git RAILS_ENV=production bundle exec rails runner \"User.create(name: \'#{name}\', username: \'#{name}\', email: \'#{email}\', password: \'#{password}\', admin: \'true\')\""
+
+  cwd '/usr/lib/gitlab'
+  user 'root'
+end
+
 template '/etc/colab/settings.d/01-apps.yaml' do
   owner  'root'
   group  'colab'
   mode   0640
   notifies :restart, 'service[colab]'
+
+  get_private_token =  lambda do
+    Dir.chdir '/usr/lib/gitlab' do
+      `sudo -u git RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@admin.com\').private_token\"`.strip
+    end
+  end
+
+  variables(
+    :get_private_token => get_private_token
+  )
 end
 
 template '/etc/colab/settings.d/02-logging.yaml' do
@@ -99,12 +128,4 @@ end
 service 'colab' do
   action [:enable, :start]
   supports :restart => true
-end
-
-execute 'create token-admin' do
-  user = "admin-gitlab"
-  email = "admin-gitlab@admin.com"
-  password = SecureRandom.random_number.to_s
-
-  command "echo \"from colab.accounts.models import User; User.objects.create_superuser(\'#{user}\', \'#{email}\', \'#{password}\')\" | colab-admin shell"
 end

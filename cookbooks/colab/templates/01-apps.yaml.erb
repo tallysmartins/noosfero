@@ -2,5 +2,6 @@
 PROXIED_APPS:
   gitlab:
     upstream: 'http://<%= node['peers']['integration'] %>:81/gitlab/'
+    private_token: '<%= @get_private_token.call %>'
   noosfero:
     upstream: 'http://<%= node['peers']['social'] %>:80/social/'
