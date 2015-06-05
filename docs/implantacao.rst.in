@@ -57,6 +57,7 @@ Preparação dos servidores
   podem ser feitas configurações do SSH em
   ``config/@@SPB_ENV@@/ssh_config`` para isso.
 * O usuário que vai conectar via SSH nos servidores precisa:
+
   * ter acesso SSH configurado via chave SSH para evitar digitar senha.
   * ter permissão de usar ``sudo`` sem a necessidade de digitar senha.
 
@@ -145,13 +146,13 @@ sempre exibir o parâmetro ``SPB_ENV=@@SPB_ENV@@``, mas lembre-se que ele pode s
 Para testar a conectividade às máquinas, podemos executar um comando
 nelas::
 
-    $ rake nodes SPB_ENV=@@SPB_ENV@@
+    $ rake run SPB_ENV=@@SPB_ENV@@
     $ <PROMPT PARA VOCÊ DIGITAR>
 
 No prompt, entre um comando simples como ``sudo date``. O resultado deve ser
 parecido com o seguinte::
 
-    $ rake run
+    $ rake run SPB_ENV=@@SPB_ENV@@
     $ sudo date
      integration: $ sudo date
      integration: Qui Mai 14 18:59:19 BRT 2015
