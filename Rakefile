@@ -13,6 +13,8 @@ ips_file = "config/#{$SPB_ENV}/ips.yaml"
 config_file = "config/#{$SPB_ENV}/config.yaml"
 iptables_file = "config/#{$SPB_ENV}/iptables-filter-rules"
 
+ENV['CHAKE_TMPDIR'] = "tmp/chake.#{$SPB_ENV}"
+
 ENV['CHAKE_SSH_CONFIG'] = ssh_config_file
 
 if $SPB_ENV == 'lxc'
@@ -43,8 +45,8 @@ end
 
 require 'chake'
 
-if Chake::VERSION < '0.4.3'
-  fail "Please upgrade to chake 0.4.3+"
+if Chake::VERSION < '0.7'
+  fail "Please upgrade to chake 0.7+"
 end
 
 ips ||= YAML.load_file(ips_file)
