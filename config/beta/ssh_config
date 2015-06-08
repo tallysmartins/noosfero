@@ -15,11 +15,13 @@ Host integration
 Host database
   Hostname 10.10.40.47
   # connect via reverseproxy host
+  Port 55555
   ProxyCommand ssh 164.41.9.49 -p %p nc %h 22
 
 Host social
   Hostname 10.10.40.46
   # connect via reverseproxy host
+  Port 55555
   ProxyCommand ssh 164.41.9.49 -p %p nc %h 22
 
 Host email
