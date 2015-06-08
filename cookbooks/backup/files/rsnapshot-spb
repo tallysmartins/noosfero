@@ -1,0 +1,4 @@
+0   */6   *   *   *   root    rsnapshot hourly
+59   23   *   *   *   root    rsnapshot daily
+40   23   *   *   7   root    rsnapshot weekly
+20   23   1   *   *   root    rsnapshot monthly

@@ -81,35 +81,35 @@ end
 
 task :backup => ssh_config_file do
   # setup
-  sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', 'rm -rf /tmp/backups'
-  sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', 'rm -rf /tmp/backups'
   sh 'mkdir', '-p', 'backups'
   # integration
-  sh 'scp', '-F', ssh_config_file, 'utils/migration/backup_integration.sh', 'integration:/tmp'
-  sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', '/tmp/backup_integration.sh'
-  sh 'scp', '-F', ssh_config_file, 'integration:/tmp/backups/*', 'backups/'
+  sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', 'chmod a+xr /.snapshots'
+  sh 'scp', '-F', ssh_config_file, 'integration:/.snapshots/hourly.0/spb/*', 'backups/'
   # social
-  sh 'scp', '-F', ssh_config_file, 'utils/migration/backup_social.sh', 'social:/tmp'
-  sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', '/tmp/backup_social.sh'
-  sh 'scp', '-F', ssh_config_file, 'social:/tmp/backups/*', 'backups/'
+  sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', 'chmod a+xr /.snapshots'
+  sh 'scp', '-F', ssh_config_file, 'social:/.snapshots/hourly.0/spb/*', 'backups/'
 end
 
-task :restore => ssh_config_file do
+task :restore => [ssh_config_file, config_file] do
   # setup
   sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', 'rm -rf /tmp/backups'
+  sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', 'systemctl stop colab'
   sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', 'rm -rf /tmp/backups'
   sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', 'systemctl stop noosfero'
+  sh 'ssh', '-F', ssh_config_file, 'database', 'sudo', 'sudo -u postgres dropdb colab 2> /dev/null'
+  sh 'ssh', '-F', ssh_config_file, 'database', 'sudo', 'sudo -u postgres createdb colab --owner colab 2> /dev/null'
   sh 'ssh', '-F', ssh_config_file, 'database', 'sudo', 'sudo -u postgres dropdb noosfero 2> /dev/null'
   sh 'ssh', '-F', ssh_config_file, 'database', 'sudo', 'sudo -u postgres createdb noosfero --owner noosfero 2> /dev/null'
   #integration
   sh 'scp', '-r', '-F', ssh_config_file, 'backups', 'integration:/tmp'
   sh 'scp', '-F', ssh_config_file, 'utils/migration/restore_integration.sh', 'integration:/tmp'
-  sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', '/tmp/restore_integration.sh'
+  sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', "env SPB_URL=#{config['lists_hostname']} /tmp/restore_integration.sh"
   #social
   sh 'scp', '-r', '-F', ssh_config_file, 'backups', 'social:/tmp'
   sh 'scp', '-F', ssh_config_file, 'utils/migration/restore_social.sh', 'social:/tmp'
   sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', '/tmp/restore_social.sh'
   sh 'ssh', '-F', ssh_config_file, 'social', 'sudo', 'systemctl start noosfero'
+  sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', 'systemctl start colab'
 end
 
 task :bootstrap_common => 'config/local/ssh_config'
