@@ -38,4 +38,6 @@ COLAB_TEMPLATES = ('/vagrant/theme/colab-spb-theme/templates',)
 
 9. Logue no virtualenv do Colab (workon colab)
 
-10. Execute o servidor de desenvolvimento do Colab (colab-admin runserver 0.0.0.0:8000)
+10. Faça o servidor reconhecer seus arquivos estáticos(CSS, imagens, JS, HTML) (sudo `which colab-admin` collectstatic)
+
+11. Execute o servidor de desenvolvimento do Colab (colab-admin runserver 0.0.0.0:8000)
