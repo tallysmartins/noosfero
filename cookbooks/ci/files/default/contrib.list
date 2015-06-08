@@ -1,0 +1,2 @@
+deb http://ftp.br.debian.org/debian/ jessie contrib
+deb-src http://ftp.br.debian.org/debian/ jessie contrib

@@ -1,3 +1,4 @@
 ENV['CHAKE_NODES'] = 'nodes-ci.yaml'
 ENV['CHAKE_RSYNC_OPTIONS'] = '--exclude .vagrant/ --exclude docs/_build'
+ENV['CHAKE_TMPDIR'] = 'tmp/chake.ci'
 require 'chake'

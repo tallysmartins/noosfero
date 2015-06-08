@@ -1,1 +1,1 @@
-# nothing yet
+include_recipe 'ci::spb'
