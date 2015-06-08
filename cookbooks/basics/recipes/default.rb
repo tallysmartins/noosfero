@@ -82,8 +82,14 @@ ruby_block 'fqdn:update' do
   action :nothing
 end
 
+execute 'avoid_etc_hosts_being_overwriten' do
+  command 'sed -i -e \'/^\s*-\s*update_etc_hosts/d\' /etc/cloud/cloud.cfg'
+  only_if { File.exist?('/etc/cloud/cloud.cfg') }
+end
+
 template '/etc/hosts' do
   owner 'root'
   mode  0644
   notifies :run, 'ruby_block[fqdn:update]', :immediately
+  notifies :run, 'execute[avoid_etc_hosts_being_overwriten]', :immediately
 end
