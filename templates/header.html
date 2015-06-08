@@ -1,11 +1,11 @@
-{% load i18n browserid conversejs gravatar plugins %}
+{% load i18n gravatar plugins %}
 {% load static from staticfiles %}
 
 <header>
 <div class="navbar navbar-static-top">
 <!-- begin of barra-brasil -->
 <div id="barra-brasil">
-  <a href="http://brasil.gov.br" style="background:#7F7F7F; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">{% trans "Brazilian Government Portal" %}</a>
+  <a href="http://brasil.gov.br" style="background:#7F7F7F; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">Portal do Governo Brasileiro</a>
 </div>
 <script src="http://barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
 <!-- end of barra-brasil -->
@@ -15,48 +15,40 @@
         <div class="col-md-12">
           <ul id="accessibility" class="nav navbar-nav hidden-xs hidden-sm">
             <li>
-              <a id="link-conteudo" href="#main-content" accesskey="1">{% trans "Go to content" %} <span class="label label-primary">1</span></a>
+              <a id="link-conteudo" href="#main-content" accesskey="1">Ir para o conteúdo <span class="label label-primary">1</span></a>
             </li>
             <li>
-              <a id="link-navegacao" href="#menu-spb" accesskey="2">{% trans "Go to menu" %} <span class="label label-primary">2</span></a>
+              <a id="link-navegacao" href="#menu-spb" accesskey="2">Ir para o menu <span class="label label-primary">2</span></a>
             </li>
-            <li> <a id="link-buscar" accesskey="3" href="#header-searchbox" title="Go to search">{% trans "Go to search" %} <span class="label label-primary">3</span></a>
+            <li> <a id="link-buscar" accesskey="3" href="#header-searchbox" title="Go to search">Ir para a busca <span class="label label-primary">3</span></a>
             </li>
             <li>
-              <a id="link-rodape" href="#link-top" accesskey="4">{% trans "Go to bottom" %} <span class="label label-primary">4</span></a>
+              <a id="link-rodape" href="#link-top" accesskey="4">Ir para o rodapé <span class="label label-primary">4</span></a>
             </li>
           </ul> <!-- end of accesskeys -->
           <ul id="portal-siteactions" class="nav navbar-nav navbar-right">
             <li id="siteaction-accessibility">
-              <a href="/software-publico-brasileiro/acessibilidade"><span>{% trans "Accessibility" %}</span></a>
+              <a href="/software-publico-brasileiro/acessibilidade"><span>Acessibilidade</span></a>
             </li>
             <li id="siteaction-contraste">
-              <a href="#"><span>{% trans "High contrast" %}</span></a>
+              <a href="#"><span>Alto Contraste</span></a>
             </li>
             <li id="siteaction-mapadosite">
-              <a href="/social/spb/mapa-do-site"><span>{% trans "Site map" %}</span></a>
+              <a href="/social/spb/mapa-do-site"><span>Mapa do site</span></a>
             </li>
             <!-- begin of user-menu -->
             {% if not user.is_authenticated %}
             <li class="dropdown hidden-xs hidden-lg">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Access" %} <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Acesso <b class="caret"></b></a>
               <ul class="dropdown-menu">
               {% trans 'Login' as login_text %}
-              {% if BROWSERID_ENABLED %}
-                <li>{% browserid_login text=login_text %}</li>
-              {% else %}
                 <li><a href="{% url 'signup' %}">{% trans "Register" %}</a></li>
                 <li><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
-              {% endif %}
               </ul>
             </li>
             {% trans 'Login' as login_text %}
-            {% if BROWSERID_ENABLED %}
-            <li class="visible-xs hidden-sm hidden-md">{% browserid_login text=login_text %}</li>
-            {% else %}
             <li class="visible-xs hidden-sm hidden-md"><a href="{% url 'signup' %}">{% trans "Register" %}</a></li>
             <li class="visible-xs hidden-sm hidden-md"><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
-            {% endif %}
             {% else %}
             <li id="user-menu" class="dropdown">
               <a href="#" class="dropdown-toggle user" data-toggle="dropdown">{% gravatar user.email 40 %} <b class="caret"></b>&nbsp;&nbsp;</a>
@@ -71,10 +63,7 @@
                       <div>
                         <a class="btn btn-info pull-left" href="{% url 'user_profile' user.username %}">{% trans "My Profile" %}</a>
                         {% trans 'Logout' as logout_text %}
-                        {% if BROWSERID_ENABLED %}
-                         {% browserid_logout text=logout_text link_class='btn btn-default pull-right' %}
-                        {% else %}
-                        <a class="btn btn-default pull-right" href="{% url 'logout' %}"> {% trans "Logout" %}</a>                         {% endif %}
+                        <a class="btn btn-default pull-right" href="{% url 'logout' %}"> {% trans "Logout" %}</a>
                     </div>
                   </div>
                 </li>
@@ -113,10 +102,10 @@
       <div class="row">
         <ul id="quick-links-sm" class="hidden-md hidden-lg">
           <li id="link-faq">
-            <a href="/social/spb/ajuda">{% trans "Frequently Asked Questions" %}</a>
+            <a href="/social/spb/ajuda">FAQ</a>
           </li>
           <li id="link-contact">
-            <a href="/social/spb/contato">{% trans "Contact" %}</a>
+            <a href="/social/spb/contato">Contato</a>
           </li>
         </ul>
         <div class="navbar-header logo">
@@ -134,10 +123,10 @@
         </ul>
         <ul id="quick-links" class="nav navbar-nav navbar-right hidden-xs hidden-sm">
           <li id="link-faq">
-            <a href="/social/spb/ajuda">{% trans "Frequently Asked Questions" %}</a>
+            <a href="/social/spb/ajuda">Perguntas Frequentes</a>
           </li>
           <li id="link-contact">
-            <a href="/social/spb/contato">{% trans "Contact" %}</a>
+            <a href="/social/spb/contato">Contato</a>
           </li>
         </ul>
       </div>
@@ -145,4 +134,3 @@
   </div>
 </div>
 </header>
-
