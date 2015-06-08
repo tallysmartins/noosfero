@@ -4,9 +4,6 @@
 require 'yaml'
 
 load './local.rake' if File.exists?('local.rake')
-if ENV['SPB_ENV'] == 'lxc'
-  system('sudo', '-v')
-end
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
