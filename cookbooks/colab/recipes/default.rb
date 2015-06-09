@@ -53,7 +53,7 @@ template '/etc/colab/settings.d/00-database.yaml' do
   notifies :restart, 'service[colab]'
 end
 
-execute 'create token-admin' do
+execute 'create-admin-token-colab' do
   user = "admin-gitlab"
   email = "admin-gitlab@admin.com"
   password = SecureRandom.random_number.to_s
@@ -61,15 +61,15 @@ execute 'create token-admin' do
   command "echo \"from colab.accounts.models import User; User.objects.create_superuser(\'#{user}\', \'#{email}\', \'#{password}\')\" | colab-admin shell"
 end
 
-execute 'admin-token' do
+execute 'create-admin-token-gitlab' do
   user = "admin-gitlab"
   email = "admin-gitlab@admin.com"
   password = SecureRandom.random_number.to_s
 
-  command "sudo -u git RAILS_ENV=production bundle exec rails runner \"User.create(name: \'#{name}\', username: \'#{name}\', email: \'#{email}\', password: \'#{password}\', admin: \'true\')\""
+  command "RAILS_ENV=production bundle exec rails runner \"User.create(name: \'#{name}\', username: \'#{name}\', email: \'#{email}\', password: \'#{password}\', admin: \'true\')\""
 
   cwd '/usr/lib/gitlab'
-  user 'root'
+  user 'git'
 end
 
 template '/etc/colab/settings.d/01-apps.yaml' do
