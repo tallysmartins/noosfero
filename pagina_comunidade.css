@@ -837,6 +837,7 @@ ul#itens-legend-grafic{
 }
 
 .blog-event-item .blog-event-information .event-title {
+  max-height: 40px;
   padding-right: 0px;
   font-weight: 700;
   font-size: 15px;

@@ -498,7 +498,7 @@ p {
 }
 
 #content .box .read-more a::after {
-	content:'>';
+	content: url('images/right-arrow.png');
 	padding-left: 8px;
 	padding-right: 5px;
 	margin-left: 7px;
@@ -798,9 +798,9 @@ p {
     font-size: 16px;
     font-style: normal;
     font-weight: bold;
-    line-height: 1em;
+    line-height: 1.3em;
     padding: 0;
-     color: #000;
+    color: #172738 !important ;
 }
 
 #content .main-block h1,
@@ -2888,4 +2888,12 @@ div.software-step-info div.current-step h3 {
 
 #content .main-block div.software-step-info div.another-step h3 {
   font-size: 12px !important;
+}
+
+
+/************************* MAIN PAGE REVIEW *******************************/
+
+#content ul li.news-call .title {
+    font-weight: 700;
+    padding-right: 0px;
 }

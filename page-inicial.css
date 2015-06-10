@@ -50,7 +50,7 @@
 }
 
 #bt_catalog-search::after {
-    content:'>';
+    content: url('images/right-arrow-black.png');
     padding-left: 7px;
     padding-right: 4px;
     color: #172857;
@@ -214,7 +214,7 @@
 }
 
 .software-block-finality::after {
-    content:'>';
+    content: url('images/right-arrow.png');
     padding-left: 7px;
     padding-right: 4px;
     color: #FFF;
@@ -372,12 +372,10 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 }
 
 .block.display-content-block .image {
-    width: 150px;
-    height: 90px;
-    position: absolute;
-    margin-top: 35px;
     border: 0px solid #c0c1c1;
     border-radius: 8px;
+    display: table-cell;
+    padding-right: 25px;
 }
 
 .block.display-content-block .image img {
@@ -393,10 +391,11 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 }
 
 .block.display-content-block .title {
-    padding-left: 160px;
-    padding-right: 0px;
-    max-height: 33px;
+    padding-right: 0px !important;
+    max-height: 35px;
     overflow: hidden;
+    margin-bottom: 4px !important;
+    text-align: justify !important;
 }
 
 .block.display-content-block .title a {
@@ -407,7 +406,6 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 }
 
 .block.display-content-block .lead {
-    padding-left: 160px;
     padding-right: 0px;
     max-height: 56px;
 }
@@ -424,7 +422,12 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 }
 
 .lead a:visited, #content .lead a:visited, .lead dl.portlet a:visited {
-    color: #000000;
+    color: #172738;
+}
+
+.notice-info {
+  display: table-cell;
+  vertical-align: top;
 }
 
 /* Tela de Noticias Antigas */
