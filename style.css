@@ -1239,9 +1239,10 @@ div#article-parent {
 }
 .pagination {
     font-size: 120%;
+    margin-bottom: 30px;
 }
 
-.pagination .prev_page{margin-right: 0.5em; font-weight: bold;}
+.pagination .previous_page{margin-right: 0.5em; font-weight: bold;}
 .pagination .next_page{margin-left: 0.5em; font-weight: bold;}
 
 #profile-header {
