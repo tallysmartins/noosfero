@@ -1073,10 +1073,10 @@ ul.profile-list .common-profile-list-block {
 }
 
 .common-profile-list-block .profile-image {
-    display: block;
+    display: table-cell;
     height: 56px;
     max-height: 100%;
-    width: 100%;
+    text-align: center;
 }
 
 /*.box-2 .common-profile-list-block .vcard a.profile_link,
