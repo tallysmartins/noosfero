@@ -118,9 +118,26 @@ $('#link-buscar').click(function(e) {
     });
   }
 
+  function insert_notice_div(){
+    var notice = $('.display-content-block').find('li');
+      notice.each(function(){
+        var $set = $(this).children();    
+        for(var i=1, len = $set.length; i < len; i+=5){
+          $set.slice(i, i+5).wrapAll('<div class="notice-item"/>');
+        } 
+        for(var i=2, len = $set.length; i < len; i+=3){
+          $set.slice(i, i+3).wrapAll('<div class="notice-info"/>');
+        }
+      //$('<div class="notice-item"></div>').wrap($(this).find( '.image', '.title', '.lead', '.read_more'));
+    });
+
+
+  }
+
   $(document).ready(function(){
     set_events();
     move_article_buttons();
     add_link_to_article_div();
+    insert_notice_div();
     });
 })(jQuery);
