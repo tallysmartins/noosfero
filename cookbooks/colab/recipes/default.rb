@@ -53,12 +53,20 @@ template '/etc/colab/settings.d/00-database.yaml' do
   notifies :restart, 'service[colab]'
 end
 
-execute 'create-admin-token-colab' do
-  user = "admin-gitlab"
-  email = "admin-gitlab@admin.com"
+template '/tmp/admin-gitlab.json' do
+
   password = SecureRandom.random_number.to_s
 
-  command "echo \"from colab.accounts.models import User; User.objects.create_superuser(\'#{user}\', \'#{email}\', \'#{password}\')\" | colab-admin shell"
+  variables(
+    :password => password
+  )
+end
+
+execute 'create-admin-token-colab' do
+  command "colab-admin loaddata admin-gitlab.json"
+
+  cwd '/tmp'
+  user 'root'
 end
 
 execute 'create-admin-token-gitlab' do
