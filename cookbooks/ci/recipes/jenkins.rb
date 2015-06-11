@@ -2,22 +2,19 @@ JENKINS_CLI = '/var/cache/jenkins/war/WEB-INF/jenkins-cli.jar'
 
 execute 'jenkins_repo' do
   command 'wget -q -O - http://pkg.jenkins-ci.org/debian-stable/jenkins-ci.org.key | sudo apt-key add -'
+  not_if 'apt-key list | grep D50582E6'
 end
 
 execute 'apt_sources' do
-  command 'echo "deb http://pkg.jenkins-ci.org/debian-stable binary/" >> /etc/apt/sources.list'
+  command 'echo "deb http://pkg.jenkins-ci.org/debian-stable binary/" >> /etc/apt/sources.list && apt-get update'
   not_if 'cat /etc/apt/sources.list | grep jenkins-ci'
 end
-
-execute 'apt-get update'
 
 package 'jenkins'
 
 service 'jenkins' do
-  action :enable
+  action [:enable, :start]
 end
-
-execute 'service jenkins restart'
 
 package 'nginx'
 
@@ -40,10 +37,7 @@ end
 link '/etc/nginx/sites-enabled/jenkins' do
   to '/etc/nginx/sites-available/jenkins'
   not_if 'test -L /etc/nginx/sites-enabled/jenkins'
-end
-
-service 'nginx' do
-  action :restart
+  notifies :restart, 'service[nginx]'
 end
 
 package 'git'
@@ -55,7 +49,7 @@ plugins.each do |plugin|
     command "java -jar #{JENKINS_CLI} -s http://localhost/ install-plugin #{plugin}"
     retries 5
     retry_delay 10
+    not_if "java -jar #{JENKINS_CLI} -s http://localhost/ list-plugins | grep ^#{plugin}"
+    notifies :restart, 'service[jenkins]'
   end
 end
-
-execute 'service jenkins restart'
