@@ -10,6 +10,7 @@ package 'virtualbox'
 
 package 'vagrant'
 package 'rake'
+package 'shunit2'
 
 # FIXME not in the archive yet
 # package 'chake'
