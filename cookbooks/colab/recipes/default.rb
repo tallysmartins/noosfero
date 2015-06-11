@@ -76,6 +76,12 @@ execute 'create-admin-token-gitlab' do
 
   command "RAILS_ENV=production bundle exec rails runner \"User.create(name: \'#{name}\', username: \'#{name}\', email: \'#{email}\', password: \'#{password}\', admin: \'true\')\""
 
+  user_exist = Dir.chdir '/usr/lib/gitlab' do
+    `RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@admin.com\').nil?\"`.strip
+  end
+
+  not_if {user_exist == "false"}
+
   cwd '/usr/lib/gitlab'
   user 'git'
 end
