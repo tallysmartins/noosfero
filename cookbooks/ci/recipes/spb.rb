@@ -11,7 +11,21 @@ package 'virtualbox'
 package 'vagrant'
 package 'rake'
 package 'shunit2'
-package 'python-virtualenv' # for building colab-deps
+
+# for building colab-deps:
+package 'python-virtualenv'
+package 'libpq-dev'
+package 'gettext'
+package 'libxml2-dev'
+package 'libxslt1-dev'
+package 'libssl-dev'
+package 'libffi-dev'
+package 'libjpeg-dev'
+package 'zlib1g-dev'
+package 'libfreetype6-dev'
+package 'python-dev'
+package 'libyaml-dev'
+package 'libev-dev'
 
 # FIXME not in the archive yet
 # package 'chake'
