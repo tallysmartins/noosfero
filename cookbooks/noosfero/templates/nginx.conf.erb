@@ -12,6 +12,7 @@ server {
   underscores_in_headers  on;
   access_log            /var/log/nginx/noosfero.access.log;
   error_log             /var/log/nginx/noosfero.error.log;
+  client_max_body_size  150m;
 
   root /usr/lib/noosfero/public;
   location /social/ {

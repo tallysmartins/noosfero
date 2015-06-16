@@ -6,9 +6,10 @@ server {
   listen                *:81;
 
   server_name           <%= node['config']['external_hostname'] %>;
-  underscores_in_headers  on; 
+  underscores_in_headers  on;
   access_log            /var/log/nginx/gitlab.access.log;
   error_log             /var/log/nginx/gitlab.error.log;
+  client_max_body_size  20m;
 
   location /gitlab/assets/ {
     alias /usr/lib/gitlab/public/assets/;
