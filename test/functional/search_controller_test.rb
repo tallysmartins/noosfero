@@ -68,6 +68,7 @@ class SearchControllerTest < ActionController::TestCase
 
     community_template = create_community("Community Template")
     community_template.is_template = true
+    community_template.visible = false
     community_template.save!
 
     get :communities, :query => "Comm"
