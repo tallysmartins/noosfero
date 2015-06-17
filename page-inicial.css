@@ -376,6 +376,7 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
     border-radius: 8px;
     display: table-cell;
     padding-right: 25px;
+    width: 150px;
 }
 
 .block.display-content-block .image img {
@@ -392,10 +393,9 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 
 .block.display-content-block .title {
     padding-right: 0px !important;
-    max-height: 35px;
+    max-height: 40px;
     overflow: hidden;
     margin-bottom: 4px !important;
-    text-align: justify !important;
 }
 
 .block.display-content-block .title a {
