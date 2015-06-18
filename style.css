@@ -2883,16 +2883,64 @@ div.software-step-info div.current-step h3 {
   font-size: 12px !important;
 }
 
-<<<<<<< Updated upstream
-
 /************************* MAIN PAGE REVIEW *******************************/
 
 #content ul li.news-call .title {
     font-weight: 700;
     padding-right: 0px;
 }
-=======
-#search-header{
-  border: 1px solid red !important;
+
+/** Blog temporary adjusts**/
+
+#content .blog-posts{
+  margin-top: 0;
 }
->>>>>>> Stashed changes
+
+#content .blog-post{
+  background: none;
+}
+
+#content .blog-post h1.title {
+  margin-top: 0 !important;
+}
+
+#content .blog-post .publishing-info{
+  border-top: 1px solid #D7D7D7;
+  padding-top: 25px;
+  margin-top: 25px;
+  font-size: 12px;
+  color: #2C66CE;
+  font-family: arial;
+}
+
+#content .main-block .publishing-info a{
+  color: #2C66CE;
+  font-family: arial;
+}
+
+#content .main-content {
+  border: none;
+  box-shadow: none;
+}
+
+#content .main-block .blog-post p {
+  text-align: justify;
+}
+
+/** Software pages - temporary adjusts **/
+
+.controller-content_viewer.profile-homepage #article hr{
+  display: none;
+}
+
+#content .main-block #article p{
+  text-align: justify;
+}
+
+.action-cms-upload_files #content .main-block .button-bar .icon-add {
+  color: #fff;
+}
+
+.action-cms-upload_files #content .main-block .icon-add:before{
+  display: none;
+}
