@@ -71,13 +71,13 @@ end
 
 execute 'create-admin-token-gitlab' do
   user = "admin-gitlab"
-  email = "admin-gitlab@admin.com"
+  email = "admin-gitlab@example.com"
   password = SecureRandom.random_number.to_s
 
-  command "RAILS_ENV=production bundle exec rails runner \"User.create(name: \'#{name}\', username: \'#{name}\', email: \'#{email}\', password: \'#{password}\', admin: \'true\')\""
+  command "RAILS_ENV=production bundle exec rails runner \"User.create(name: \'#{user}\', username: \'#{user}\', email: \'#{email}\', password: \'#{password}\', admin: \'true\')\""
 
   user_exist = Dir.chdir '/usr/lib/gitlab' do
-    `RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@admin.com\').nil?\"`.strip
+    `RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@example.com\').nil?\"`.strip
   end
 
   not_if {user_exist == "false"}
@@ -94,7 +94,7 @@ template '/etc/colab/settings.d/01-apps.yaml' do
 
   get_private_token =  lambda do
     Dir.chdir '/usr/lib/gitlab' do
-      `sudo -u git RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@admin.com\').private_token\"`.strip
+      `sudo -u git RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@example.com\').private_token\"`.strip
     end
   end
 
