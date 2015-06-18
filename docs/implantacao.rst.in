@@ -56,10 +56,30 @@ Preparação dos servidores
 * Os servidores precisam estar acessíveis por SSH. Caso necessário,
   podem ser feitas configurações do SSH em
   ``config/@@SPB_ENV@@/ssh_config`` para isso.
+
 * O usuário que vai conectar via SSH nos servidores precisa:
 
-  * ter acesso SSH configurado via chave SSH para evitar digitar senha.
   * ter permissão de usar ``sudo`` sem a necessidade de digitar senha.
+
+  * ter acesso SSH configurado via chave SSH para evitar digitar senha,
+    a partir da estação de trabalho utilizada. Ou seja, a chave pública
+    SSH **da estação de trabalho** deve ser copiada para cada servidor,
+    e.g.::
+
+    $ ssh-copy-id reverseproxy
+    $ ssh-copy-id integration
+    $ ssh-copy-id social
+    $ ssh-copy-id database
+    $ ssh-copy-id email
+
+* O ``sudo`` não deve estar configurado com a opção ``requiretty``. Se
+  houver uma linha como a seguinte em ``/etc/sudoers``, ela deve ser
+  removida (ou comentada, como preferir)::
+
+    $ Defaults requiretty
+
+* A máquina ``integration`` precisa ter o utilitário ``netcat``. No
+  CentOS 7, pode ser instalado o pacote ``nmap-ncat``.
 
 Configuração do ambiente alvo
 -----------------------------
@@ -233,3 +253,16 @@ muito mais simples::
 
 Todas as possibilidades de comandos serão listados se você executar
 ``rake -T``. Consulte também a documentação do chake_.
+
+
+Atualizações
+------------
+
+Para atualizar o sistema, primeiro atualize o repositório de gestão de
+configuração::
+
+    $ git pull
+
+Após isso, basta executar o comando ``converge`` novamente::
+
+    $ rake converge SPB_ENV=@@SPB_ENV@@
