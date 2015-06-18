@@ -8,8 +8,8 @@ run_list *[
   'recipe[mailman-api]',
   'recipe[mailman]',
   'recipe[mailman::webui]',
+  'recipe[gitlab]',
   'recipe[colab]',
   'recipe[colab::nginx]',
-  'recipe[gitlab]',
   'recipe[backup]',
 ]

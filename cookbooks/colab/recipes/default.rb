@@ -53,11 +53,54 @@ template '/etc/colab/settings.d/00-database.yaml' do
   notifies :restart, 'service[colab]'
 end
 
+template '/tmp/admin-gitlab.json' do
+
+  password = SecureRandom.random_number.to_s
+
+  variables(
+    :password => password
+  )
+end
+
+execute 'create-admin-token-colab' do
+  command "colab-admin loaddata admin-gitlab.json"
+
+  cwd '/tmp'
+  user 'root'
+end
+
+execute 'create-admin-token-gitlab' do
+  user = "admin-gitlab"
+  email = "admin-gitlab@example.com"
+  password = SecureRandom.random_number.to_s
+
+  command "RAILS_ENV=production bundle exec rails runner \"User.create(name: \'#{user}\', username: \'#{user}\', email: \'#{email}\', password: \'#{password}\', admin: \'true\')\""
+
+  user_exist = Dir.chdir '/usr/lib/gitlab' do
+    `RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@example.com\').nil?\"`.strip
+  end
+
+  not_if {user_exist == "false"}
+
+  cwd '/usr/lib/gitlab'
+  user 'git'
+end
+
 template '/etc/colab/settings.d/01-apps.yaml' do
   owner  'root'
   group  'colab'
   mode   0640
   notifies :restart, 'service[colab]'
+
+  get_private_token =  lambda do
+    Dir.chdir '/usr/lib/gitlab' do
+      `sudo -u git RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@example.com\').private_token\"`.strip
+    end
+  end
+
+  variables(
+    :get_private_token => get_private_token
+  )
 end
 
 template '/etc/colab/settings.d/02-logging.yaml' do
