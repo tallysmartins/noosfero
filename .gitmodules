@@ -1,6 +1,6 @@
 [submodule "software_communities"]
 	path = software_communities
-	url = git@beta.softwarepublico.gov.br:softwarepublico/mpog_software.git
+	url = git@portal.softwarepublico.gov.br:softwarepublico/mpog_software.git
 [submodule "noosfero-spb-theme"]
 	path = noosfero-spb-theme
-	url = git@beta.softwarepublico.gov.br:softwarepublico/noosfero-spb-theme.git
+	url = git@portal.softwarepublico.gov.br:softwarepublico/noosfero-spb-theme.git
