@@ -2,27 +2,33 @@ Host *
   ForwardAgent yes
 
 Host reverseproxy
+  User spb
   Hostname 10.21.0.4
   Port 55555
-  ProxyCommand ssh 189.9.151.64 -p 22 nc %h 55555
+  ProxyCommand ssh spb@189.9.151.64 -p 22 nc %h 55555
 
 Host reverseproxy.unconfigured
+  User spb
   Hostname 189.9.151.64
 
 Host integration
+  User spb
   Hostname 189.9.151.64
 
 Host database
+  User spb
   Hostname 10.21.0.6
   # connect via reverseproxy host
-  ProxyCommand ssh 189.9.151.64 -p %p nc %h 22
+  ProxyCommand ssh spb@189.9.151.64 -p %p nc %h 22
 
 Host social
+  User spb
   Hostname 10.21.0.5
   # connect via reverseproxy host
-  ProxyCommand ssh 189.9.151.64 -p %p nc %h 22
+  ProxyCommand ssh spb@189.9.151.64 -p %p nc %h 22
 
 Host email
+  User spb
   Hostname 10.21.0.7
   # connect via reverseproxy host
-  ProxyCommand ssh 189.9.151.64 -p %p nc %h 22
+  ProxyCommand ssh spb@189.9.151.64 -p %p nc %h 22
