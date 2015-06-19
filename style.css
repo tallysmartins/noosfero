@@ -819,6 +819,7 @@ p {
 .article-body ul {
     list-style-position: inside;
     list-style-type: disc;
+    background-repeat: no-repeat;
 }
 
 .article-body ol {
@@ -2935,6 +2936,43 @@ div.software-step-info div.current-step h3 {
 
 #content .main-block #article p{
   text-align: justify;
+}
+
+#content .main-block #article #article-header,
+#content .main-block #article .folder-content .item-info {
+  border-top: none;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: -1px;
+}
+
+#content .main-block #article .folder-content .item-icon {
+  background-image: url("images/download-mini_icon.png");
+  border-radius: 4px;
+  margin-right: 0px;
+  margin-top: 2px;
+  padding: 45px 40px 4px 10px;
+}
+
+#content .main-block #article .folder-content .item-info {
+  padding: 30px 20px 32px 0px;
+}
+
+#content .main-block #article .folder-content .item-info a {
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: 700;
+  color: #172938;
+  letter-spacing: -0.1px;
+}
+
+#content .main-block #article .folder-content .item-description {
+  padding-left: 0px;
+  margin-left: 65px;
+}
+
+#content .main-block #article .folder-content .item-date {
+  padding-left: 0px;
+  margin-left: 65px;
 }
 
 .action-cms-upload_files #content .main-block .button-bar .icon-add {
