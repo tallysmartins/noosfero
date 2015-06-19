@@ -62,13 +62,6 @@ template '/tmp/admin-gitlab.json' do
   )
 end
 
-execute 'create-admin-token-colab' do
-  command "colab-admin loaddata admin-gitlab.json"
-
-  cwd '/tmp'
-  user 'root'
-end
-
 execute 'create-admin-token-gitlab' do
   user = "admin-gitlab"
   email = "admin-gitlab@example.com"
@@ -76,11 +69,13 @@ execute 'create-admin-token-gitlab' do
 
   command "RAILS_ENV=production bundle exec rails runner \"User.create(name: \'#{user}\', username: \'#{user}\', email: \'#{email}\', password: \'#{password}\', admin: \'true\')\""
 
-  user_exist = Dir.chdir '/usr/lib/gitlab' do
-    `RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@example.com\').nil?\"`.strip
+  user_exist = lambda do
+    Dir.chdir '/usr/lib/gitlab' do
+      `RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@example.com\').nil?\"`.strip
+    end
   end
 
-  not_if {user_exist == "false"}
+  not_if {user_exist.call == "false"}
 
   cwd '/usr/lib/gitlab'
   user 'git'
@@ -142,4 +137,11 @@ end
 service 'colab' do
   action [:enable, :start]
   supports :restart => true
+end
+
+execute 'create-admin-token-colab' do
+  command "colab-admin loaddata admin-gitlab.json"
+
+  cwd '/tmp'
+  user 'root'
 end
