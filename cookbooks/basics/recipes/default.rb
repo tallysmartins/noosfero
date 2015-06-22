@@ -65,9 +65,13 @@ end
 # FIXME on Debian it's postgresql-client
 package 'postgresql'
 
-# key for our custom repositories
+# our custom repositories
 if node['platform'] == 'centos'
   cookbook_file '/etc/yum.repos.d/softwarepublico.key' do
+    owner 'root'
+    mode 0644
+  end
+  cookbook_file '/etc/yum.repos.d/softwarepublico.repo' do
     owner 'root'
     mode 0644
   end

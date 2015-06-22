@@ -7,8 +7,7 @@ end
 
 if node['platform'] == 'centos'
   cookbook_file '/etc/yum.repos.d/colab.repo' do
-    owner 'root'
-    mode 0644
+    action :delete
   end
 end
 
