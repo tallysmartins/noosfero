@@ -2938,7 +2938,6 @@ div.software-step-info div.current-step h3 {
   text-align: justify;
 }
 
-#content .main-block #article #article-header,
 #content .main-block #article .folder-content .item-info {
   border-top: none;
   border-bottom: 1px solid #ccc;
@@ -2981,4 +2980,8 @@ div.software-step-info div.current-step h3 {
 
 .action-cms-upload_files #content .main-block .icon-add:before{
   display: none;
+}
+
+li.folder-item:first-child {
+  border-top: 1px solid #ccc;
 }
