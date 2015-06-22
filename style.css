@@ -975,50 +975,6 @@ p {
 
 /* fim de comentário*/
 
-/*paginação*/
-
-.pagination {
-    border-top: 0 none;
-}
-
-#content .pagination a {
-    padding: 7px 11px 7px 11px;
-    border-radius: 4px;
-    margin-right: 4px;
-    letter-spacing: 0.6px;
-    color: #172738;
-    border: 1px solid #D3D6DE;
-}
-
-.pagination .current {
-    background-color: #ECEDF1;
-    padding: 8px 11px 8px 11px;
-    border-radius: 4px;
-    margin-right: 4px;
-    font-family: Arial;
-    font-weight: 700;
-    font-size: 16px;
-    border: 1px solid #D3D6DE;
-}
-
-#content .pagination a.previous_page,
-#content .pagination a.next_page{
-    background-image: none;
-    color: #888888;
-    font-size: 14px;
-    width: auto;
-}
-
-
-#content #article .pagination .next_page,
-#content #article .pagination .previous_page{
-    background-image: none;
-    color: #ccc;
-    width: auto;
-    font-size: 16px;
-}
-
-/*fim paginação*/
 
 /*borda dos wrappers*/
 /**/
@@ -1235,15 +1191,85 @@ div#article-parent {
 /*paginação*/
 
 .pagination {
-
-}
-.pagination {
-    font-size: 120%;
     margin-bottom: 30px;
+    border-top: 0 none;
+    margin-top: 48px;
+    font-family: Arial;
 }
 
-.pagination .previous_page{margin-right: 0.5em; font-weight: bold;}
-.pagination .next_page{margin-left: 0.5em; font-weight: bold;}
+#content .pagination a {
+    padding: 7px 11px 7px 11px;
+    border-radius: 4px;
+    margin-right: 4px;
+    letter-spacing: 0.6px;
+    font-size: 15px;
+    border: 1px solid #D3D6DE;
+    color: #172738;
+    font-weight: 700;
+}
+
+.pagination .current {
+    background-color: #ECEDF1;
+    padding: 7px 11px 7px 11px;
+    border-radius: 4px;
+    margin-right: 4px;
+    font-weight: 700;
+    font-size: 15px;
+    border: 1px solid #D3D6DE;
+    font-style: normal;
+}
+
+#content .pagination .next_page.disabled,
+#content .pagination .previous_page.disabled,
+#content .pagination a.previous_page,
+#content .pagination a.next_page{
+    border-radius: 4px;
+    margin-top: -9px;
+    letter-spacing: 0.6px;
+    border: 1px solid #D3D6DE;
+    color: #172738;
+    background-image: none;
+    font-size: 15px;
+    width: auto;
+    font-weight: 500;
+    position: relative;
+}
+
+#content .pagination .previous_page{
+    float: left;
+    padding: 7px 11px 7px 30px;
+}
+
+#content .pagination .next_page.disabled,
+#content .pagination .previous_page.disabled{
+    opacity: 0.5;
+}
+
+#content .pagination .next_page{
+    float: right;
+    padding: 7px 30px 7px 11px;
+}
+
+#content .pagination .previous_page.disabled::before,
+#content .pagination a.previous_page::before {
+    display: none;
+    position: absolute;
+    content: url('images/left-arrow-black.png');
+    left: 8px;
+    top: 11px;
+}
+
+#content .pagination .next_page.disabled::before,
+#content .pagination a.next_page::before {
+    display: none;
+    position: absolute;
+    content: url('images/right-arrow-black.png');
+    left: 97px;
+    top: 11px;
+}
+
+/*fim paginação*/
+
 
 #profile-header {
 	position: absolute; /* Corrige link de login  */
