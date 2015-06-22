@@ -1198,6 +1198,7 @@ div#article-parent {
 }
 
 #content .pagination a {
+    text-decoration: none;
     padding: 7px 11px 7px 11px;
     border-radius: 4px;
     margin-right: 4px;
@@ -3006,6 +3007,12 @@ div.software-step-info div.current-step h3 {
 
 .action-cms-upload_files #content .main-block .icon-add:before{
   display: none;
+}
+
+#content .main-block #article .pagination {
+  margin-top: 50px;
+  padding-top: 35px;
+  border-top: 3px solid #2C4B6B;
 }
 
 li.folder-item:first-child {
