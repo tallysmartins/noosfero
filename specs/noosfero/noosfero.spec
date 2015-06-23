@@ -2,8 +2,8 @@
 %define cache_dirs javascripts/cache stylesheets/cache
 
 Name:    noosfero
-Version: 1.1~rc2.5
-Release: 6%{?dist}
+Version: 1.2~rc0
+Release: 7%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
 License: AGPLv3
