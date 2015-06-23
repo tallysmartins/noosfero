@@ -46,7 +46,7 @@ execute 'plugins:activate' do
   command "RAILS_ENV=production bundle exec rake noosfero:plugins:enable_all"
   cwd '/usr/lib/noosfero'
   user 'noosfero'
-  only_if 'bundle rake -T | grep enable_all'
+  only_if 'bundle exec rake -P | grep enable_all'
 end
 
 execute 'theme:enable' do
