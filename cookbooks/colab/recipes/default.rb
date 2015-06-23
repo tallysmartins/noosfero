@@ -112,12 +112,6 @@ directory '/var/lib/colab-assets/spb/' do
   mode   0755
 end
 
-cookbook_file '/var/lib/colab-assets/spb/logo.svg' do
-  owner 'root'
-  group 'root'
-  mode 0644
-end
-
 cookbook_file '/var/lib/colab-assets/spb/fav.ico' do
   owner 'root'
   group 'root'
