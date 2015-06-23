@@ -9,12 +9,9 @@ Group:   Applications/Publishing
 License: AGPLv3
 URL:     http://noosfero.org
 Source0: %{name}-%{version}.tar.gz
-Patch0: 0001-Use-as-placeholder-for-current-user-in-URLs.patch
-Patch1: 0001-Enhance-existing-backup-task-and-add-a-restore-one.patch
-Patch2: 0001-Fix-backup-task.patch
 BuildArch: noarch
 BuildRequires: noosfero-deps, gettext, po4a
-Requires: noosfero-deps, po4a, tango-icon-theme, memcached,crontabs
+Requires: noosfero-deps, po4a, tango-icon-theme, memcached,crontabs, nodejs
 
 %description
 Noosfero is a web platform for social and solidarity economy networks with blog,
@@ -24,10 +21,6 @@ participate and contribute to this free software project!
 
 %prep
 %setup -q
-
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 
