@@ -10,10 +10,6 @@ server {
   access_log            /var/log/nginx/colab.access.log;
   error_log             /var/log/nginx/colab.error.log;
 
-  location ~ ^/static/img/logo\.[^.]+\.svg$ {
-    alias /var/lib/colab-assets/spb/logo.svg;
-  }
-
   location ~ ^/static/img/fav\.[^.]+\.ico$ {
     alias /var/lib/colab-assets/spb/fav.ico;
   }

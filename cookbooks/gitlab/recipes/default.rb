@@ -12,7 +12,7 @@ template '/etc/gitlab/database.yml' do
   group 'root'
   mode 0644
 
-  notifies :run, 'execute[gitlab:setup]'
+  notifies :run, 'execute[gitlab:setup]', :immediately
 end
 
 execute 'gitlab:setup' do
