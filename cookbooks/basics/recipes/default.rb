@@ -1,6 +1,3 @@
-# update environment
-execute "yum update -y"
-
 # enable EPEL repository by default
 package 'epel-release'
 

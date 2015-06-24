@@ -12,7 +12,15 @@ if node['platform'] == 'centos'
   end
 end
 
-package 'colab'
+# FIXME should not be needed; colab should depend on the right version of
+# colab-deps
+package 'colab-deps' do
+  action :upgrade
+end
+
+package 'colab' do
+  action :upgrade
+end
 
 directory '/etc/colab' do
   owner  'root'

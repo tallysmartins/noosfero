@@ -5,7 +5,14 @@ if node['platform'] == 'centos'
   end
 end
 
-package 'noosfero'
+# FIXME should not be needed. noosfero should depend on the right version
+package 'noosfero-deps' do
+  action :upgrade
+end
+
+package 'noosfero' do
+  action :upgrade
+end
 
 template '/etc/noosfero/database.yml' do
   owner 'noosfero'
@@ -23,7 +30,9 @@ execute 'noosfero:schema' do
   notifies :restart, 'service[noosfero]'
 end
 
-package 'noosfero-spb'
+package 'noosfero-spb' do
+  action :upgrade
+end
 
 plugins = [
   'breadcrumbs',
