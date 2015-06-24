@@ -53,6 +53,11 @@ execute 'theme:enable' do
   command 'psql -h database -U noosfero --no-align --tuples-only -q -c "update environments set theme=\'noosfero-spb-theme\' where id=1;"'
 end
 
+execute 'software:create_licenses' do
+  cwd '/usr/lib/noosfero'
+  command 'sudo -u noosfero bundle exec rake software:create_licenses RAILS_ENV=production'
+end
+
 template '/etc/noosfero/thin.yml' do
   owner 'root'; group 'root'; mode 0644
   notifies :restart, 'service[noosfero]'
