@@ -692,7 +692,9 @@ body #content .main-block form .button-bar a.button{
   border: 0;
   margin-right: 10px;
   display: inline-block;
-  width: 100px;
+  min-width: 100px;
+  padding-right: 5px;
+  padding-left: 5px;
   text-align: center;
 }
 
