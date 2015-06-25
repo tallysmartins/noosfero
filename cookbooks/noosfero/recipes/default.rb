@@ -103,6 +103,11 @@ template '/etc/nginx/conf.d/noosfero.conf' do
   notifies :restart, 'service[nginx]'
 end
 
+cookbook_file '/usr/lib/noosfero/config/noosfero.yml' do
+  owner 'root'; group 'root'; mode 0644
+  source 'noosfero.yml'
+  notifies :restart, 'service[noosfero]'
+end
 ###############################################
 #  SELinux: permission to access static files noosfero
 ################################################

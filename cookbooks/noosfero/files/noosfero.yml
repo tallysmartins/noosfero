@@ -1,0 +1,2 @@
+production:
+  max_upload_size: 150MB

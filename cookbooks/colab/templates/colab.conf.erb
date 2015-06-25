@@ -9,6 +9,7 @@ server {
 
   access_log            /var/log/nginx/colab.access.log;
   error_log             /var/log/nginx/colab.error.log;
+  client_max_body_size  150m;
 
   location ~ ^/static/img/fav\.[^.]+\.ico$ {
     alias /var/lib/colab-assets/spb/fav.ico;
