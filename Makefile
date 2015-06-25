@@ -29,6 +29,7 @@ $(checkout_packages): %-checkout : %
 		(cd $(obsdir) && osc checkout $(OBSPROJECT) $*)
 
 $(build_packages): %-build : %
+	mkdir -p ~/rpmbuild/SOURCES
 	cp $(obsdir)/$(OBSPROJECT)/$*/*.tar.* ~/rpmbuild/SOURCES/
 	cp $*/*.patch ~/rpmbuild/SOURCES/ || true
 	cd $* && $(BUILD_PREFIX) rpmbuild -bb $*.spec
