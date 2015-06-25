@@ -34,7 +34,7 @@ $(build_packages): %-build : %
 	cp $*/*.patch ~/rpmbuild/SOURCES/ || true
 	cd $* && $(BUILD_PREFIX) rpmbuild -bb $*.spec
 
-$(upload_packages): %-upload : % checkout-%
+$(upload_packages): %-upload : % %
 	(cd $(obsdir)/$(OBSPROJECT)/$* && osc remove *)
 	cp $*/* $(obsdir)/$(OBSPROJECT)/$*
 	(cd $(obsdir)/$(OBSPROJECT)/$* && osc add * && osc commit -m "update $*")
