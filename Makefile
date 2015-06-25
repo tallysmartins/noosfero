@@ -1,33 +1,38 @@
-packages = $(shell basename -s .spec specs/*/*.spec)
-checkout_packages = $(patsubst %, checkout-%, $(packages))
-build_packages = $(patsubst %, build-%, $(packages))
+OBSPROJECT = isv:spb:v4
 
--include config.mk
+#############################################################################
+
+packages = $(shell basename -s .spec */*.spec)
+obsdir = .obs
+
+-include .config.mk
 
 all:
 	@echo "Usage:"
 	@echo
 	@for pkg in $(packages); do printf 'make %-20s # uploads %s.spec to obs\n' $$pkg $$pkg; done
 
-.PHONY: $(packages) $(checkout_packages) $(build_packages)
+checkout_packages = $(patsubst %, %-checkout, $(packages))
+build_packages = $(patsubst %, %-build, $(packages))
+upload_packages = $(patsubst %, %-upload, $(packages))
 
-$(checkout_packages):
-	mkdir -p obs
-	package=$(patsubst checkout-%,%,$@); \
-		spec=$$(find specs/ -name $$package.spec); \
-		project=isv:spb:$$(basename $$(dirname $$spec)); \
-		if test -d obs/$$project/$$package; then (cd obs/$$project/$$package && osc update); else (cd obs && osc checkout $$project $$package); fi
+.PHONY: $(checkout_packages) $(build_packages) $(upload_packages)
 
-$(packages): % : checkout-%
-	spec=$$(find specs/ -name $@.spec); \
-		project=isv:spb:$$(basename $$(dirname $$spec)); \
-		cp $$spec obs/$$project/$@ && \
-		cd obs/$$project/$@ && osc commit -m 'Update $@'
+checkout-all: $(checkout_packages)
+build-all: $(build_packages)
 
-$(build_packages): build-%: checkout-%
-	mkdir -p ~/rpmbuild/SOURCES
-	package=$*; \
-		spec=$$(find specs/ -name $$package.spec); \
-		project=isv:spb:$$(basename $$(dirname $$spec)); \
-		cp obs/$$project/$$package/*.tar.* ~/rpmbuild/SOURCES && \
-		$(BUILD_PREFIX) rpmbuild -bb $$spec
+$(checkout_packages): %-checkout : %
+	mkdir -p $(obsdir)
+	[ -d $(obsdir)/$(OBSPROJECT)/$* ] && \
+		(cd $(obsdir)/$(OBSPROJECT)/$* && osc update) || \
+		(cd $(obsdir) && osc checkout $(OBSPROJECT) $*)
+
+$(build_packages): %-build : %
+	cp $(obsdir)/$(OBSPROJECT)/$*/*.tar.* ~/rpmbuild/SOURCES/
+	cp $*/*.patch ~/rpmbuild/SOURCES/ || true
+	cd $* && $(BUILD_PREFIX) rpmbuild -bb $*.spec
+
+$(upload_packages): %-upload : % checkout-%
+	(cd $(obsdir)/$(OBSPROJECT)/$* && osc remove *)
+	cp $*/* $(obsdir)/$(OBSPROJECT)/$*
+	(cd $(obsdir)/$(OBSPROJECT)/$* && osc add * && osc commit -m "update $*")
