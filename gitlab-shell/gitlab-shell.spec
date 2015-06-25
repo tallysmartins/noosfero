@@ -1,6 +1,6 @@
 Name:		gitlab-shell
 Version:	2.4.0
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Software Development Platform
 
 Group:		Development/Tools
@@ -59,7 +59,7 @@ cp -r .  %{buildroot}/usr/lib/gitlab-shell
 %post
 groupadd git || true
 if ! id git; then
-  adduser --system --home-dir /usr/lib/gitlab --gid git git
+  adduser --system --home-dir /var/lib/gitlab-shell --gid git git
 fi
 
 mkdir -p /var/log/gitlab-shell
