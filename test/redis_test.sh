@@ -5,7 +5,7 @@ test_redis_running() {
 }
 
 test_redis_listens_on_local_network() {
-  assertTrue 'redis listening on local network' 'netcat -z -w 1 $database 6379'
+  assertTrue 'redis listening on local network' 'run_on integration redis-cli -h database get foo'
 }
 
 load_shunit2

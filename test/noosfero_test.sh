@@ -19,7 +19,7 @@ test_reverse_proxy_noosfero() {
 }
 
 test_reverse_proxy_static_files() {
-  local content_type="$(curl-host softwarepublico.dev --head http://$config_external_hostname/social/images/noosfero-network.png | grep-header Content-Type)"
+  local content_type="$(curl-host softwarepublico.dev --head https://$config_external_hostname/social/images/noosfero-network.png | grep-header Content-Type)"
   assertEquals "Content-Type: image/png" "$content_type"
 }
 

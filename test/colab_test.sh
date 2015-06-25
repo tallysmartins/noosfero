@@ -21,16 +21,16 @@ test_nginx_responds() {
 }
 
 test_nginx_virtualhost() {
-  local title="$(curl --header 'Host: softwarepublico.dev' http://$config_external_hostname/dashboard | grep '<title>' | sed -e 's/^\s*//')"
+  local title="$(curl --header 'Host: softwarepublico.dev' https://$config_external_hostname/dashboard | grep '<title>' | sed -e 's/^\s*//')"
   assertEquals "<title>Home - Colab</title>" "$title"
 }
 
 test_reverse_proxy_gitlab() {
-  assertTrue 'Reverse proxy for gitlab' "curl --header 'Host: softwarepublico.dev' http://$config_external_hostname/gitlab/public/projects | grep -i '<meta.*gitlab.*>'"
+  assertTrue 'Reverse proxy for gitlab' "curl --header 'Host: softwarepublico.dev' https://$config_external_hostname/gitlab/public/projects | grep -i '<meta.*gitlab.*>'"
 }
 
 test_reverse_proxy_noosfero() {
-  assertTrue 'Reverse proxy for noosfero' "curl --header 'Host: softwarepublico.dev' http://$config_external_hostname/social/search/people | grep -i '<meta.*noosfero.*>'"
+  assertTrue 'Reverse proxy for noosfero' "curl --header 'Host: softwarepublico.dev' https://$config_external_hostname/social/search/people | grep -i '<meta.*noosfero.*>'"
 }
 
 load_shunit2
