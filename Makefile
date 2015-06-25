@@ -40,7 +40,7 @@ $(upload_packages): %-upload : % %
 	(cd $(obsdir)/$(OBSPROJECT)/$* && osc add * && osc commit -m "update $*")
 
 $(diff_packages): %-diff : %
-	git diff --no-index $(obsdir)/$(OBSPROJECT)/$*/$*.spec $*/$*.spec || true
+	@git diff --no-index $(obsdir)/$(OBSPROJECT)/$*/$*.spec $*/$*.spec || true
 
 diff: $(diff_packages)
 
