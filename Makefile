@@ -34,10 +34,11 @@ $(build_packages): %-build : %
 	cp $*/*.patch ~/rpmbuild/SOURCES/ || true
 	cd $* && $(BUILD_PREFIX) rpmbuild -bb $*.spec
 
-$(upload_packages): %-upload : % checkout-%
-	(cd $(obsdir)/$(OBSPROJECT)/$* && osc remove *)
+$(upload_packages): %-upload : %-checkout
+	$(MAKE) $*-diff
+	@printf "Confirm upload? [y/N] "; read confirm; test "$$confirm" = y -o "$$confirm" = Y
 	cp $*/* $(obsdir)/$(OBSPROJECT)/$*
-	(cd $(obsdir)/$(OBSPROJECT)/$* && osc add * && osc commit -m "update $*")
+	(cd $(obsdir)/$(OBSPROJECT)/$*; osc add *; osc commit -m "update $*")
 
 $(diff_packages): %-diff : %
 	@git diff --no-index $(obsdir)/$(OBSPROJECT)/$*/$*.spec $*/$*.spec || true
