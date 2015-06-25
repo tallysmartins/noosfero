@@ -15,8 +15,9 @@ all:
 checkout_packages = $(patsubst %, %-checkout, $(packages))
 build_packages = $(patsubst %, %-build, $(packages))
 upload_packages = $(patsubst %, %-upload, $(packages))
+diff_packages = $(patsubst %, %-diff, $(packages))
 
-.PHONY: $(checkout_packages) $(build_packages) $(upload_packages)
+.PHONY: $(checkout_packages) $(build_packages) $(upload_packages) $(diff_packages)
 
 checkout-all: $(checkout_packages)
 build-all: $(build_packages)
@@ -36,3 +37,11 @@ $(upload_packages): %-upload : % checkout-%
 	(cd $(obsdir)/$(OBSPROJECT)/$* && osc remove *)
 	cp $*/* $(obsdir)/$(OBSPROJECT)/$*
 	(cd $(obsdir)/$(OBSPROJECT)/$* && osc add * && osc commit -m "update $*")
+
+$(diff_packages): %-diff : %
+	git diff --no-index $(obsdir)/$(OBSPROJECT)/$*/$*.spec $*/$*.spec || true
+
+diff: $(diff_packages)
+
+status st:
+	@$(MAKE) diff | diffstat -C
