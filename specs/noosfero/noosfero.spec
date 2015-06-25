@@ -3,7 +3,7 @@
 
 Name:    noosfero
 Version: 1.2~rc0
-Release: 7%{?dist}
+Release: 1%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
 License: AGPLv3
