@@ -1,7 +1,8 @@
 %define name colab
-%define version 2.0a2
-%define unmangled_version 2.0a2
-%define release 7
+%define version 1.10
+%define unmangled_version 1.10
+%define default_release 1
+%{!?release: %define release %{default_release}}
 %define buildvenv /var/tmp/%{name}-%{version}
 
 Summary: Collaboration platform for communities
@@ -174,6 +175,9 @@ if [ -x /usr/bin/postgres ]; then
   colab-admin migrate
 fi
 
+mkdir -p /var/lock/colab
+chown colab:colab /var/lock/colab
+
 mkdir -p /var/lib/colab-assets
 chown colab:colab /var/lib/colab-assets
 
@@ -183,3 +187,6 @@ ln -s /var/lib/colab-assets /usr/share/nginx/colab
 
 yes yes | colab-admin collectstatic
 
+%preun
+systemctl stop colab
+systemctl disable colab

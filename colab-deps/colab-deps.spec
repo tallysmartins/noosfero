@@ -1,5 +1,5 @@
 %define name colab-deps
-%define version 1.3
+%define version 1.4
 %define release 1
 
 Summary: Collaboration platform for communities (Pyton dependencies)
@@ -13,7 +13,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Prefix: %{_prefix}
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://gitlab.com/softwarepublico/colab-deps
-BuildRequires: gettext, libxml2-devel, libxslt-devel, openssl-devel, libffi-devel, libjpeg-turbo-devel, zlib-devel, freetype-devel, postgresql-devel, python-devel, libyaml-devel, python-virtualenv, libev-devel
+BuildRequires: gettext, libxml2-devel, libxslt-devel, openssl-devel, libffi-devel, libjpeg-turbo-devel, zlib-devel, freetype-devel, postgresql-devel, python-devel, libyaml-devel, python-virtualenv, libev-devel, gcc
 
 %description
 Integrated software development platform (Python dependencies).
