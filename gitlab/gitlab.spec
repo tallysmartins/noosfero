@@ -1,6 +1,6 @@
 Name:    gitlab
 Version: 7.6.2
-Release: 9%{?dist}
+Release: 12%{?dist}
 Summary: Software Development Platform
 Group:   Development/Tools
 License: Expat
@@ -89,6 +89,7 @@ sed -i 's/\/home\/\git/\/usr\/lib/' %{buildroot}/etc/gitlab/unicorn.rb
 
 mkdir -p %{buildroot}/usr/lib/gitlab
 cp -r app bin config config.ru db doc GITLAB_SHELL_VERSION lib Procfile public Rakefile vendor VERSION %{buildroot}/usr/lib/gitlab/
+rm -rf %{buildroot}/usr/lib/gitlab/public/uploads
 mv %{buildroot}/usr/lib/gitlab/config/initializers/rack_attack.rb.example %{buildroot}/usr/lib/gitlab/config/initializers/rack_attack.rb
 for configfile in gitlab.yml unicorn.rb database.yml; do
   ln -s /etc/gitlab/$configfile %{buildroot}/usr/lib/gitlab/config
@@ -97,20 +98,22 @@ ln -s /var/log/gitlab      %{buildroot}/usr/lib/gitlab/log
 ln -s /var/lib/gitlab/tmp  %{buildroot}/usr/lib/gitlab/tmp
 ln -s /var/lib/gitlab/.secret %{buildroot}/usr/lib/gitlab/.secret
 ln -s /var/lib/gitlab-assets %{buildroot}/usr/lib/gitlab/public/assets
-ln -s /var/lib/gitlab-uploads %{buildroot}/usr/lib/gitlab/public/uploads
+ln -s /var/lib/gitlab/uploads %{buildroot}/usr/lib/gitlab/public/uploads
 
 %post
+
 if [ -x /usr/bin/postgres ]; then
   service postgresql initdb || true
   service postgresql start
   sudo -u postgres createuser --createdb git || true
 fi
+
 mkdir -p /var/log/gitlab
 chown -R git:git /var/log/gitlab
 mkdir -p /var/lib/gitlab/backups
 mkdir -p /var/lib/gitlab/satellites
 mkdir -p /var/lib/gitlab/tmp
-mkdir -p /var/lib/gitlab-uploads
+mkdir -p /var/lib/gitlab/uploads
 touch /var/lib/gitlab/.gitconfig
 ln -s /var/lib/gitlab/.gitconfig /usr/lib/gitlab/.gitconfig
 chown -R git:git /var/lib/gitlab
@@ -127,7 +130,13 @@ sudo -u git -H "/usr/bin/git" config --global core.autocrlf "input"
 mkdir -p /var/lib/gitlab-assets
 
 cd /usr/lib/gitlab/
-yes yes | sudo -u git bundle exec rake gitlab:setup RAILS_ENV=production
+
+rc=`sudo -u git bundle exec rake db:migrate:status RAILS_ENV=production | wc -l`
+
+if [ $rc -le 1 ];then
+  yes yes | sudo -u git bundle exec rake gitlab:setup RAILS_ENV=production
+fi
+
 bundle exec rake assets:precompile RAILS_ENV=production
 
 cp /usr/lib/gitlab/lib/support/init.d/gitlab /etc/init.d/gitlab
@@ -137,8 +146,9 @@ cp /usr/lib/gitlab/lib/support/logrotate/gitlab /etc/logrotate.d/gitlab
 sed -i 's/app_root="\/home\/\$app_user\/gitlab"/app_root="\/usr\/lib\/gitlab"/' /etc/default/gitlab
 sed -i 's/\/home\/\git/\/usr\/lib/' /etc/logrotate.d/gitlab
 
-%postun
-service gitlab stop
+%preun
+systemctl stop gitlab
+systemctl disable gitlab
 
 %files
 /usr/lib/gitlab
