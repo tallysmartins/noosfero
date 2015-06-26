@@ -1,0 +1,351 @@
+/******************removidos do style.css***************************/
+/*****************Organizacao geral dos blocos**********************/
+.box-1 {
+   /* display: inline-block;*/
+   /*width: 490px;*/
+}
+
+.box-2 {
+   display: inline-block;
+    vertical-align: top;
+}
+.box-3{
+  width: 190px; /*230px;*/
+}
+
+
+.box-2 .block .block-inner-2,
+.box-3 .block .block-inner-2 {
+/*    padding: 0 0 1em;*/
+}
+
+/*organizacao dos blocos especifico para a pagina inicial*/
+/* Tamanho das colunas customizados na pagina inicial */
+.action-home-index .box-3{
+  width: 230px;
+}
+
+.action-home-index .box-1 {
+   /* display: inline-block;*/
+    width: 490px;
+    margin: 0 0 0 210px;
+}
+
+/**********************fim pagina inicial************************/
+
+/*label dos radio buttons da busca*/
+#content .search-field label {
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+#public-profile-search .formfield, #public-profile-search .submit {
+    margin-bottom: 5px;
+}
+
+#content .profile ul{
+    margin-left: 1em;
+}
+/****************************************************************/
+
+/*paginação*/
+
+.pagination {
+    border-top: 0 none;
+}
+
+.pagination {
+    font-size: 120%;
+    margin-bottom: 30px;
+}
+
+.pagination .previous_page {
+    margin-right: 0.5em; font-weight: bold;
+}
+.pagination .next_page {
+    margin-left: 0.5em; font-weight: bold;
+}
+
+#content .pagination a {
+    padding: 7px 11px 7px 11px;
+    border-radius: 4px;
+    margin-right: 4px;
+    letter-spacing: 0.6px;
+    color: #172738;
+    border: 1px solid #D3D6DE;
+}
+
+.pagination .current {
+    background-color: #ECEDF1;
+    padding: 8px 11px 8px 11px;
+    border-radius: 4px;
+    margin-right: 4px;
+    font-family: Arial;
+    font-weight: 700;
+    font-size: 16px;
+    border: 1px solid #D3D6DE;
+}
+
+#content .pagination a.previous_page,
+#content .pagination a.next_page{
+    background-image: none;
+    color: #888888;
+    font-size: 14px;
+    width: auto;
+}
+
+
+#content #article .pagination .next_page,
+#content #article .pagination .previous_page{
+    background-image: none;
+    color: #ccc;
+    width: auto;
+    font-size: 16px;
+}
+
+/*fim paginação*/
+
+
+/*botão ver todos*/
+.more_button,
+.read_more {
+    margin-bottom: 15px;
+    margin-top: -5px;
+    color: #000000;
+    font-size: 11px;
+    text-align: left;
+}
+
+#content .more_button .view_all a,
+#content .read_more a{
+    background: url("images/button-read-more-vazio.png") no-repeat scroll left 50% transparent;
+    color: #333;
+    display: inline-block;
+    font-weight: bold;
+     padding: 10px 20px 10px 50px;
+    text-align: left;
+     font-family: Arial, sans-serif;
+}
+
+.community-track-plugin_track-card-list-block .more_button{
+    text-align: right;
+}
+
+.community-track-plugin_track-card-list-block .more_button .view_all a{
+    margin-right: 12px;
+}
+
+/*área do rodapé do bloco onde fica o botão ver todos*/
+.block-footer-content {
+    text-align: right;
+    margin-top: 0.5em;
+}
+.box-2 .block-footer-content,
+.box-3 .block-footer-content {
+    margin-right: 8px;
+}
+
+/*#content .tags-block .block-footer-content a, */
+
+#content .tags-block .block-footer-content a,
+#content .people-block .block-footer-content a,
+#content .profile-list-block .block-footer-content a,
+#content .enterprises-block .block-footer-content a,
+#content .members-block .block-footer-content a,
+#content .communities-block .block-footer-content a,
+#content .softwares-block .block-footer-content a,
+#content .institutions-block .block-footer-content a,
+#content .friends-block .block-footer-content a {
+    background: url("images/bg-btn-ver-mais-1px.png") repeat-x scroll 0 0 #EEEEEE;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px 5px 5px 5px;
+    display: inline;
+    margin: 14px 0 14px 14px;
+    padding: 5px 15px;
+    position: relative;
+    top: 5px;
+}
+
+/*fim botoes ver todos*/
+
+
+/*************fim - removidos do style.css*******************/
+
+
+/*******removidos do cabecalho-cinza-theme.css****************/
+/***************** padrao dos titulos para os boxes *************/
+#content .box .block-title {
+    font-size: 12px;
+    text-align: left;
+    border-bottom: none;
+    padding: 5px 8px 18px 7px;
+    text-transform: uppercase;
+    font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+    font-variant: normal;
+    margin: 0px 0px 2px 0px;
+    border-top: 4px solid #3E67B1;
+    background: #eee;
+    color: #3E67B1;
+}
+
+/*****************fim padrao dos titulos dos blocos********************/
+
+/*****************Registro de usuário*************************/
+.action-account-signup .no-boxes form {
+    margin: 0px;
+}
+
+.action-account-signup .singup_text {
+     display: inline-block;
+    float: left;
+    margin-right: 5%;
+    margin-top: 70px;
+    width: 30%;
+}
+
+.action-account-signup #signup-form-header,
+.action-account-signup #signup-form-profile {
+    float: center;
+    margin: 1px auto 5px;
+    width: 60%;
+}
+
+.action-account-signup form>p {
+    clear: both;
+}
+
+/**************Fim Registro de usuário*********************/
+
+/********************* PopUp Login*************************/
+
+#TB_window {
+    left: -350px;
+    margin-left: 50% !important;
+    width: 700px !important;
+}
+
+#TB_ajaxContent.TB_modal {
+    padding: 15px;
+    position: relative;
+    width: auto !important;
+     height: auto !important;
+}
+
+#TB_window .login-box{
+    width: 100%;
+   background: url("images/img_login_popUp.png") no-repeat scroll 90% 30% #FFFFFF;
+}
+
+#TB_window .login-box h2{
+    background: url("images/bg-titulo-login.png") no-repeat scroll 70px 7px #FFFFFF;
+    color: #757575;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: normal;
+    width: 45%;
+}
+
+#TB_window .login-box form {
+    margin: 0;
+    width: 45%;
+    /*background: url("images/img_login_popUp.png") no-repeat scroll 70% 30% #FFFFFF;*/
+}
+/*
+#TB_window .login-box .formfieldline input {
+    width: 95%;
+}
+
+#TB_window .login-box .button-bar input.icon-login {
+    background: url("images/btn_entrar_login.png") no-repeat scroll 0 0 #FFFFFF;
+    border: 0px none;
+    font-family: arial,sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    height: 50px !important;
+    max-height: 50px !important;
+    padding: 0;
+    text-transform: uppercase;
+    width: 145px;
+     cursor: pointer;
+}
+
+#TB_window .login-box .button-bar input.icon-login:hover {
+    background-image: url("images/btn_entrar_login_hover.png");
+}
+
+#TB_window .login-box .button-bar a.icon-close {
+  /*background: url("images/btn_cancelar_login.png") repeat-x scroll 0 0 #FFFFFF;*/
+   /* background-color: #FCE9E8;
+    background-image: none;
+    border: 0 none;
+    border-radius: 5px 5px 5px 5px;
+    color: #CE5E5E;
+    font-size: 16px;
+    font-weight: bold;
+    height: 35px;
+    padding: 14px 13px 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 115px;
+}
+#TB_window .login-box .button-bar a.icon-close:hover {
+    background-color: #FFD1CF;
+}
+
+#TB_window .login-box .button-bar input.submit,
+#TB_window .login-box .button-bar a.icon-close {
+    border: 0px none;
+}
+
+#TB_window .login-box .button-bar {
+    float: none;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    width: 100%;
+}
+
+#TB_window .login-box .button-bar .icon-add{
+    background-color: #F7E074;
+    background-image: none;
+    color: #004B82;
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 75px;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    top: -3em;
+    width: 30%;
+}
+
+#TB_window .login-box .button-bar .icon-add span{
+    border-bottom: 1px solid #F7E074;
+}
+
+#TB_window .login-box .button-bar .icon-help{
+
+}
+
+#TB_window .login-box form .button-bar {
+    float: none;
+    width: 100%
+}
+
+#email-check, #fake-check, #password-rate, #password-check {
+    width: 375px;
+}
+
+#signup-form small#signup-balloon,
+#signup-form small#password-balloon,
+#signup-form small#password-confirmation-balloon,
+#signup-form small#email-balloon,
+#signup-form small#name-balloon {
+    right: 0;
+}
+
+/***********************Fim PopUp Login**************************/
+
+/*******fim - removidos do cabecalho-cinza-theme.css****************/
