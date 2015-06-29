@@ -10,7 +10,24 @@ obsdir = .obs
 all:
 	@echo "Usage:"
 	@echo
-	@for pkg in $(packages); do printf 'make %-20s # uploads %s.spec to obs\n' $$pkg $$pkg; done
+	@echo '$$ make $${pkg}-upload     uploads package $${pkg}'
+	@echo '$$ make $${pkg}-build      builds package $${pkg} locally'
+	@echo '$$ make $${pkg}-diff       diff from OBS to git for package $${pkg}'
+	@echo
+	@echo '$${pkg} can be one of: $(packages)'
+	@echo
+	@echo Use OBSPROJECT=project:name to control where to upload to.
+	@echo '(currently: $(OBSPROJECT))'. Example:
+	@echo
+	@echo \ \ \ \ $$ make colab-upload OBSPROJECT=isv:spb:v3
+	@echo
+	@echo 'Operations on all packages:'
+	@echo
+	@echo '$$ make diff               diff of all packages from OBS to git'
+	@echo '$$ make status|st          diffstat of all packages from OBS to git'
+	@echo '$$ make checkout-all       checks out all packages from OBS'
+	@echo '$$ make build-all          builds all packages locally'
+
 
 checkout_packages = $(patsubst %, %-checkout, $(packages))
 build_packages = $(patsubst %, %-build, $(packages))
