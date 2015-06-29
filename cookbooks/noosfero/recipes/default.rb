@@ -29,12 +29,6 @@ execute 'noosfero:schema' do
   notifies :restart, 'service[noosfero]'
 end
 
-execute 'noosfero:migrate' do
-  command 'RAILS_ENV=production SCHEMA=/dev/null bundle exec rake db:migrate'
-  cwd '/usr/lib/noosfero'
-  user 'noosfero'
-end
-
 package 'noosfero-spb' do
   action :upgrade
 end
@@ -54,6 +48,12 @@ plugins = [
 
 execute 'plugins:enable' do
   command '/usr/lib/noosfero/script/noosfero-plugins enable ' + plugins.join(' ')
+end
+
+execute 'noosfero:migrate' do
+  command 'RAILS_ENV=production SCHEMA=/dev/null bundle exec rake db:migrate'
+  cwd '/usr/lib/noosfero'
+  user 'noosfero'
 end
 
 execute 'plugins:activate' do
