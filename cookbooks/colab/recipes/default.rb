@@ -19,6 +19,7 @@ end
 
 package 'colab' do
   action :upgrade
+  notifies :restart, 'service[colab]'
 end
 
 directory '/etc/colab' do
