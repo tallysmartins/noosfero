@@ -41,7 +41,7 @@ configurada.
 Para obter o repositório de configuração, é necessário clonar o
 repositório com ``git``::
 
-    $ git clone git@beta.softwarepublico.gov.br:softwarepublico/softwarepublico.git
+    $ git clone git@portal.softwarepublico.gov.br:softwarepublico/softwarepublico.git
 
 A partir daqui, todos os passos serão executados de dentro do
 repositório, então se certifique que o seu *shell* está no diretório
@@ -63,14 +63,7 @@ Preparação dos servidores
 
   * ter acesso SSH configurado via chave SSH para evitar digitar senha,
     a partir da estação de trabalho utilizada. Ou seja, a chave pública
-    SSH **da estação de trabalho** deve ser copiada para cada servidor,
-    e.g.::
-
-    $ ssh-copy-id reverseproxy
-    $ ssh-copy-id integration
-    $ ssh-copy-id social
-    $ ssh-copy-id database
-    $ ssh-copy-id email
+    SSH **da estação de trabalho** deve ser copiada para cada servidor.
 
 * O ``sudo`` não deve estar configurado com a opção ``requiretty``. Se
   houver uma linha como a seguinte em ``/etc/sudoers``, ela deve ser
@@ -161,10 +154,17 @@ repositório com o seguinte conteúdo::
 
 Isto fará com que o valor e ``SPB_ENV`` seja sempre ``@@SPB_ENV@@``, a
 não ser que você informe na linha de comando. Daqui para frente, vamos
-sempre exibir o parâmetro ``SPB_ENV=@@SPB_ENV@@``, mas lembre-se que ele pode ser omitido se você tiver configurado o *default* em ``local.rake``.
+sempre exibir o parâmetro ``SPB_ENV=@@SPB_ENV@@``, mas lembre-se que ele pode
+ser omitido se você tiver configurado o *default* em ``local.rake``.
 
-Para testar a conectividade às máquinas, podemos executar um comando
-nelas::
+Para testar a conectividade às máquinas, devemos antes realizar a
+preconfiguração das máquinas, caso o sistema nunca tenha sido instalado.
+Note que se este passo só deve ser realizado uma única vez::
+
+    $ rake preconfig SPB_ENV=@@SPB_ENV@@
+
+Finalmente, para testar a conectividade às máquinas, podemos executar um
+comando nelas::
 
     $ rake run SPB_ENV=@@SPB_ENV@@
     $ <PROMPT PARA VOCÊ DIGITAR>
@@ -201,7 +201,7 @@ locais:
 * `cookbooks/reverse_proxy/files/host-reverseproxy/@@external_hostname@@.crt`: certificado (chave pública), em formato PEM.
 * `cookbooks/reverse_proxy/files/host-reverseproxy/@@external_hostname@@.key`: chave privada, em formato PEM.
 
-Para uma melhor segurança da chave privada, e recomendado que a mesma
+Para uma melhor segurança da chave privada, é recomendado que a mesma
 seja criptografada com GnuPG, o que é suportado pela ferramente de
 implantação `chake`. Isso pode ser feito da seguinte maneira::
 
@@ -227,10 +227,9 @@ Primeira instalação
 
 Uma vez configurados os parâmetros em ``config/@@SPB_ENV@@/``, podemos
 dar início à instalação. O primeiro passo é uma preconfiguração que
-precisamos fazer::
+precisamos fazer, caso não tenha sido feito em "Verificando o Ambiente"::
 
     $ rake preconfig SPB_ENV=@@SPB_ENV@@
-
 
 Este comando vai fazer uma configuração inicial que é necessária para o
 resto do processo, e **só é necessária fazer uma vez**.

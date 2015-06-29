@@ -4,9 +4,38 @@ Manutenção
 Mantendo o sistema atualizado
 -----------------------------
 
-*Esta seção é um trabalho em andamento.*
+É importante que não apenas os software relacionados ao Portal do SPB sejam
+mantidos atualizados, mas também outros pacotes do sistema provenientes dos
+repositórios oficiais da distribuição utilizada. Tais atualizações são
+tratadas pelos scripts de gestão de configuração do ambiente, de modo que
+para que se mantenha todo o sistema atualizado, basta seguir os passos de
+atualização do Portal do SPB na seção de Implantação, ou seja::
+
+    $ git pull
+    $ rake converge SPB_ENV=@@SPB_ENV@@
 
 Modificando configurações
 -------------------------
 
-*Esta seção é um trabalho em andamento.*
+Como descrito na seção de Implantação, as configurações específicas de
+um determinado ambiente se encontram centralizadas nos arquivos presentes em
+``config/${ambiente}/``, de modo que em caso de necessidade de alterações nas
+configurações, deve-se recorrer a tais arquivos.
+
+* ``config.yaml``
+  * Administradores do sistema
+  * Nome dos domínios (Portal, relay e mailman)
+  * IP's externos para reverseproxy e relay
+  * Porta de SSH para conexão interna à reverseproxy
+  * Outras configurações relevantes para o sistema
+
+* ``ips.yaml``
+  * IP's (rede local) das máquinas descritas na seção de Arquitetura
+
+* ``ssh_config``
+  * Arquivo de configuração para conexões SSH.
+
+Ao se modificarem configurações do ambiente que sejam permanentes, é
+interessante que as mesmas sejam refletidas também nos repositórios de
+gestão de configuração, para tal, contate os mantenedores do portal em
+spb-dev@listas.softwarepublico.gov.br.
