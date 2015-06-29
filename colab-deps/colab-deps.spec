@@ -1,5 +1,5 @@
 %define name colab-deps
-%define version 1.4
+%define version 1.10
 %define release 1
 
 Summary: Collaboration platform for communities (Pyton dependencies)
