@@ -1,7 +1,6 @@
 if node['platform'] == 'centos'
   cookbook_file '/etc/yum.repos.d/noosfero.repo' do
-    owner 'root'
-    mode 0644
+    action :delete
   end
 end
 

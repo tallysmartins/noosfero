@@ -1,8 +1,0 @@
-[isv_spb_mailman-api]
-name=mailman-api (CentOS_7)
-type=rpm-md
-#baseurl=http://download.opensuse.org/repositories/isv:/spb:/mailman-api/CentOS_7/
-mirrorlist=https://gitlab.com/softwarepublico/softwarepublico/raw/master/rpm_mirrors/mailman-api
-gpgcheck=1
-gpgkey=file:///etc/yum.repos.d/softwarepublico.key
-enabled=1
