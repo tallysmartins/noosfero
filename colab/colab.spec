@@ -17,8 +17,8 @@ Prefix: %{_prefix}
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://github.com/colab-community/colab
 BuildArch: noarch
-BuildRequires: colab-deps, python-virtualenv
-Requires: colab-deps, solr, mailman-api
+BuildRequires: colab-deps >= 1.10, python-virtualenv
+Requires: colab-deps >= 1.10, solr, mailman-api
 
 %description
 Integrated software development platform.
