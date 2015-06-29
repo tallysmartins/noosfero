@@ -14,7 +14,7 @@ test_noosfero_on_subdir() {
 }
 
 test_reverse_proxy_noosfero() {
-  local meta="$(run_on social curl-host softwarepublico.dev http://localhost/social | sed -e '/noosfero:root/ !d; s/^\s*//')"
+  local meta="$(run_on social curl-host softwarepublico.dev http://social/social/ | sed -e '/noosfero:root/ !d; s/^\s*//')"
   assertEquals '<meta property="noosfero:root" content="/social"/>' "$meta"
 }
 
