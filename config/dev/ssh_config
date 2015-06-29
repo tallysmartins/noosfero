@@ -8,8 +8,8 @@ Host reverseproxy.unconfigured
 Host reverseproxy
   Hostname 10.18.0.15
   User spb
-  Port 5555
-  ProxyCommand ssh spb@189.9.151.16 -p 22 nc %h 5555
+  Port 55555
+  ProxyCommand ssh spb@189.9.151.16 -p 22 nc %h %p
 
 Host database
   Hostname 10.18.0.16
