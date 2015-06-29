@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e
+set -x
+
+# cleanup previous build
+cleanup() {
+  vagrant destroy -f
+  rm -rf tmp/
+}
+cleanup
+trap cleanup INT EXIT TERM
+
+# bring VMS up
+vagrant up
+
+# install everything
+rake preconfig
+rake
+
+# test
+rake test
