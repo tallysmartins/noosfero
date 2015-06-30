@@ -7,6 +7,10 @@ body {
   bottom: 0;
 }
 
+#main-content {
+  margin-top: 0;
+}
+
 li hr {
     margin: 10px 0;
 }
