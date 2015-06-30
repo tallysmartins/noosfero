@@ -1,39 +1,41 @@
 /*Footer*/
 
-
-.footer-content{
-  background: rgb(213,213,213);
-  padding: 50px 0;
-  font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+footer {
+  background: none;
 }
 
-.footer-links a{
+.colab-footer-content{
+  background: rgb(213,213,213);
+  font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
+}
+
+.colab-footer-links a{
   color:#2c66ce;
   font-size: 13px;
   line-height: 1.7em;
 }
 
-.footer-links a:hover{
+.colab-footer-links a:hover{
   background: none;
   text-decoration: underline;
 }
 
-.footer-links{
+.colab-footer-links{
   color:#2c66ce;
   border-left:1px dotted #2c66ce;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
-.footer-links dt{
+.colab-footer-links dt{
   font-size: 18px;
   font-weight: bold;
   line-height: 1.3em;
   margin-bottom: 8px;
-  font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
 }
 
-.footer-links dd{
+.colab-footer-links dd{
   padding-bottom: 3px
 }
 
@@ -59,10 +61,14 @@
   display: none;
 }
 
-.footer-gov .logo-sgpr img, .logo-acesso img{
+.footer-gov .colab-logo-sgpr img, .logo-acesso img{
   padding-top: 10px;
   padding-right: 15%;
   padding-bottom: 10px;
+}
+
+.colab-logo-sgpr img, .spb-definitions {
+    display: none;
 }
 
 .footer-gov .logo-brasil img{
@@ -79,9 +85,10 @@
   line-height: 2em;
 }
 
-.go-top .icon-chevron-up{
-  padding-right: 10px;
+.go-top i {
+  margin-right: 5px;
   text-decoration: none;
+  font-size: 12px; 
 }
 
 .spb-definitions{

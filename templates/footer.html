@@ -2,77 +2,68 @@
 {% load static from staticfiles %}
 
 <footer>
-<div class="row">
   <div class="container">
     <div class="pull-right go-top">
-      <a id="link-top" href="#link-rodape"><i class="icon-chevron-up"></i>Voltar ao topo</a>
+      <a id="link-top" href="#link-rodape"><i class="fa fa-chevron-up"></i>Voltar ao topo</a>
     </div>
-  </div><!-- end go-top -->
-  <div class="col-lg-12 offset footer-content">
+  </div>
+  <div class="container-fluid colab-footer-content">
     <div class="container">
-      <div class="row">
-        <dl class="col-md-2 col-md-offset-1 footer-links">
-          <dt>Assuntos</dt>
-          <dd><a href="/social/spb/publique-seu-software" title="Publique seu software">Publique seu software</a></dd>
-          <dd><a href="http://www.softwarepublico.gov.br/mpv/" title="Prestadores de serviço">Prestadores de serviço</a></dd>
-          <dd><a href="http://www.softwarepublico.gov.br/4cmbr/xowiki/Principal" title="Espaço dos municípios">Espaço dos municípios</a></dd>
-        </dl>
-        <dl class="col-md-2 footer-links">
-          <dt>Software Público</dt>
-            <dd class="portalspb-item">
-              <a title="Entenda o que é" href="/social/spb/entenda-o-que-e">Entenda o que é</a>
-            </dd>
-            <dd class="portalspb-item">
-              <a title="Eventos" href="/social/profile/spb/events">Eventos</a>
-            </dd>
-            <dd class="portalspb-item">
-              <a title="Prêmios" href="/social/spb/premios">Prêmios</a>
-            </dd>
-            <dd class="portalspb-item">
-              <a title="Publicações" href="/social/spb/publicacoes">Publicações</a>
-            </dd>
-        </dl>
-        <dl class="col-md-2 footer-links">
-          <dt>Serviços</dt>
-          <dd>
-            <a href="/social/spb/ajuda#faq" title="FAQ">FAQ</a>
+      <dl class="col-md-2 col-md-offset-1 colab-footer-links">
+        <dt>Assuntos</dt>
+        <dd><a href="/social/spb/publique-seu-software" title="Publique seu software">Publique seu software</a></dd>
+        <dd><a href="http://www.softwarepublico.gov.br/mpv/" title="Prestadores de serviço">Prestadores de serviço</a></dd>
+        <dd><a href="http://www.softwarepublico.gov.br/4cmbr/xowiki/Principal" title="Espaço dos municípios">Espaço dos municípios</a></dd>
+      </dl>
+      <dl class="col-md-2 colab-footer-links">
+        <dt>Software Público</dt>
+          <dd class="colab-portalspb-item">
+            <a title="Entenda o que é" href="/social/spb/entenda-o-que-e">Entenda o que é</a>
           </dd>
-          <dd>
-            <a href="/social/spb/contato" title="Contato">Contato</a>
+          <dd class="colab-portalspb-item">
+            <a title="Eventos" href="/social/profile/spb/events">Eventos</a>
           </dd>
-          <dd>
-            <a href="/archives/thread/spb-usuarios/relatar-erros#msg-1635" title="Relatar erros">Relatar erros</a>
+          <dd class="colab-portalspb-item">
+            <a title="Prêmios" href="/social/spb/premios">Prêmios</a>
           </dd>
-        </dl>
-        <dl class="col-md-2 footer-links">
-          <dt>RSS</dt>
-            <dd><a href="#" title="O que é?">O que é</a></dd>
-            <dd><a href="#" title="Assine">Assine</a></dd>
-        </dl>
-        <dl class="col-md-2 footer-links">
-          <dt>Navegação</dt>
-            <dd><a href="#">Acessibilidade</a></dd>
-            <dd><a href="/social/spb/mapa-do-site">Mapa do site</a></dd>
-        </dl>
-      </div>
+          <dd class="colab-portalspb-item">
+            <a title="Publicações" href="/social/spb/publicacoes">Publicações</a>
+          </dd>
+      </dl>
+      <dl class="col-md-2 colab-footer-links">
+        <dt>Serviços</dt>
+        <dd>
+          <a href="/social/spb/ajuda#faq" title="FAQ">FAQ</a>
+        </dd>
+        <dd>
+          <a href="/social/spb/contato" title="Contato">Contato</a>
+        </dd>
+        <dd>
+          <a href="/archives/thread/spb-usuarios/relatar-erros#msg-1635" title="Relatar erros">Relatar erros</a>
+        </dd>
+      </dl>
+      <dl class="col-md-2 colab-footer-links">
+        <dt>RSS</dt>
+          <dd><a href="/social/spb/rss/o-que-e" title="O que é?">O que é</a></dd>
+          <dd><a href="/rss/colab/latest" title="Assine">Assine</a></dd>
+      </dl>
+      <dl class="col-md-2 colab-footer-links">
+        <dt>Navegação</dt>
+          <dd><a href="/social/spb/acessibilidade">Acessibilidade</a></dd>
+          <dd><a href="/social/spb/mapa-do-site">Mapa do site</a></dd>
+      </dl>
     </div>
-  </div><!-- end footer-content -->
-  <div class="row footer-gov">
+
+  <div class="footer-gov">
     <div class="container">
       <div class="col-md-7">
           <a class="logo-acesso" href="http://www.acessoainformacao.gov.br/" target="_blank"><img class="img-responsive pull-left" src="{% static 'img/acesso-a-informacao.png' %}" ><span>Acesso a Informação</span></a>
       </div>
       <div class="col-md-5 institucionais">
         <a class="logo-brasil" href="http://www.brasil.gov.br/" target="_blank"><img class="img-responsive" src="{% static 'img/brasil.png' %}" ><span>Brasil - Governo Federal</span></a>
-        <a class="logo-sgpr" href="http://www.secretariageral.gov.br/" target="_blank"><img class="img-responsive" src="{% static 'img/sgpr.png' %}" ><span>Secretaria-geral da Presidência da República</span></a>
+        <a class="colab-logo-sgpr" href="http://www.secretariageral.gov.br/" target="_blank"><img class="img-responsive" src="{% static 'img/sgpr.png' %}" ><span>Secretaria-geral da Presidência da República</span></a>
       </div>
     </div>
   </div><!-- end footer-gov -->
-  <div class="row spb-definitions">
-    <div class="container">
-      <div id="about-pspb">Essa versão é BETA e está hospedada na Universidade de Brasília</div>
-      <div id="about-noosfero">Este site utiliza a plataforma para redes sociais <a href="http://noosfero.org/">Noosfero</a>, licenciado sob a <a href="http://www.gnu.org/licenses/agpl.html">GNU Affero General Public License</a> versão 3 ou superior.
-      </div>
-    </div>
-  </div><!-- end spb-definitions -->
+  </div>
 </footer>

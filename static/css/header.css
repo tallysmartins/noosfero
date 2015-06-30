@@ -25,33 +25,33 @@
   background-color: #2c66ce;
 }
 
-#portal-siteactions{
+#colab-portal-siteactions{
   font-size: 10px;
   text-align: center;
 }
 
-#portal-siteactions li{
+#colab-portal-siteactions li{
   display: inline-block;
 }
 
-#portal-siteactions a {
+#colab-portal-siteactions a {
   color:#2c66ce;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans Regular', Arial, Helvetica, sans-serif;
   padding-right: 0;
   padding-left: 10px;
 }
 
-#portal-siteactions #siteaction-mapadosite a{
+#colab-portal-siteactions #colab-siteaction-mapadosite a{
   padding-right: 0;
 }
 
-#portal-siteactions a:hover {
+#colab-portal-siteactions a:hover {
   color: #03316f;
 }
 
-#portal-siteactions span {
+#colab-portal-siteactions span {
   border-bottom: 1px dotted #2c66ce;
 }
 
