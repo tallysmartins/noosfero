@@ -3068,3 +3068,23 @@ li.folder-item:first-child {
   color: #FF0366;
   font-weight: 500;
 }
+
+#content .article-translation-field #article_language {
+  margin-top: 10px;
+}
+
+#content #article_image_builder_uploaded_data {
+  text-indent: 2px;
+}
+
+#content #edit-article-options div div {
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+#content .formfield input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 19px;
+  padding: 6px;
+}
