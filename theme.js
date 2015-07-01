@@ -134,10 +134,30 @@ $('#link-buscar').click(function(e) {
 
   }
 
+  /* Finds all uploaded files from manuals page and sets its names on the right format */
+  function set_uploaded_files_names() {
+    var article = document.getElementById('article');
+    var folderList = article.getElementsByClassName('folder-content')[0];
+    var folderItens = folderList.getElementsByClassName('item-description');
+
+    for(var i = 0; i < folderItens.length; i++) {
+      split_file_extension(folderItens[i].getElementsByTagName('a')[0]);
+    }
+  }
+
+  /* Splits a file name from its extension. Example: example.pdf becomes example - PDF */
+  function split_file_extension(element) {
+    var tokens = element.innerHTML.split('.');
+    var fileName = tokens[0];
+    var fileExtension = tokens[1].toUpperCase();
+    element.innerHTML = fileName + " - " + fileExtension;
+  }
+
   $(document).ready(function(){
     set_events();
     move_article_buttons();
     add_link_to_article_div();
     insert_notice_div();
+    set_uploaded_files_names();
     });
 })(jQuery);
