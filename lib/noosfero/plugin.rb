@@ -241,6 +241,16 @@ class Noosfero::Plugin
     nil
   end
 
+  # -> Customize the way statistic block counts comments for Profiles
+  # and Environment
+  # considering more than just articles comments
+  # Ex: a plugin may want that Communities recieve comments temself
+  # as evaluations
+  # returns = the number of comments to be sum on the statistics
+  def more_comments_count owner
+    nil
+  end
+
   # -> Adds tabs to the profile
   # returns   = { :title => title, :id => id, :content => content, :start => start }
   #   title   = name that will be displayed.
