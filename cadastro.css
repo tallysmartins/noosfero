@@ -723,6 +723,10 @@ body #content .main-content form .icon-add:before {
   text-align: center;
 }
 
+body #content form .button-bar .icon-delete {
+  float: none;
+}
+
 .dynamic-table{
   border: none;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
