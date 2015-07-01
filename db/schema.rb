@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150722042714) do
+ActiveRecord::Schema.define(:version => 20150830230047) do
 
   create_table "abuse_reports", :force => true do |t|
     t.integer  "reporter_id"
@@ -274,6 +274,28 @@ ActiveRecord::Schema.define(:version => 20150722042714) do
   end
 
   add_index "comments", ["source_id", "spam"], :name => "index_comments_on_source_id_and_spam"
+
+  create_table "community_ratings", :force => true do |t|
+    t.integer  "community_id"
+    t.integer  "person_id"
+    t.integer  "comment_id"
+    t.integer  "value"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "community_ratings_configs", :force => true do |t|
+    t.integer "environment_id"
+    t.integer "cooldown",       :default => 24
+    t.integer "integer",        :default => 10
+    t.integer "default_rating", :default => 1
+    t.string  "order",          :default => "recent"
+    t.string  "string",         :default => "recent"
+    t.integer "per_page",       :default => 10
+    t.boolean "vote_once",      :default => false
+    t.boolean "boolean",        :default => true
+    t.boolean "are_moderated",  :default => true
+  end
 
   create_table "contact_lists", :force => true do |t|
     t.text     "list"
@@ -564,6 +586,7 @@ ActiveRecord::Schema.define(:version => 20150722042714) do
     t.boolean  "allow_members_to_invite",               :default => true
     t.boolean  "invite_friends_only",                   :default => false
     t.boolean  "secret",                                :default => false
+    t.integer  "comments_count"
   end
 
   add_index "profiles", ["activities_count"], :name => "index_profiles_on_activities_count"

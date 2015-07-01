@@ -1,0 +1,4 @@
+<div class="button-bar">
+  <% options = disabled ? {:disabled => 'disabled', :class => 'disabled-button'} : {} %>
+  <%= button(:new,_('Rate Community'), {:controller => 'communities_ratings_plugin_profile', :action => 'new_rating'}, options) %>
+</div>
