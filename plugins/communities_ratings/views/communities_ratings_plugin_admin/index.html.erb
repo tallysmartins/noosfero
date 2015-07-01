@@ -1,0 +1,53 @@
+<h1><%= _("Communities Rating Management") %> </h1>
+
+<%= labelled_form_for(:environment, :url => {:action => 'update'}) do |f| %>
+  <table>
+    <tr>
+      <th><%= c_('Configuration') %></th>
+      <th><%= _('Value') %></th>
+    </tr>
+
+    <tr>
+      <td><%= _('Default amount of stars marked on evaluations') %></td>
+      <td><%= select :environment, :communities_ratings_default_rating, (Environment.communities_ratings_min_rating)..5 %></td>
+    </tr>
+
+    <tr>
+      <td><%= _('Can only vote for one community once') %></td>
+      <td><%= check_box :environment, :communities_ratings_vote_once %></td>
+    </tr>
+    <tr>
+      <td><%= _('The comments are moderated') %></td>
+      <td><%= check_box :environment, :communities_ratings_are_moderated %></td>
+    </tr>
+    <tr>
+      <td><%= _('Time cooldown between evaluations from the same user') %></td>
+
+      <% hours_options = {size: 1} %>
+      <% hours_options[:disabled] = "disabled" if environment.communities_ratings_vote_once %>
+      <td><%= text_field :environment, :communities_ratings_cooldown, hours_options %>
+          <%= _('hours') %>
+      </td>
+    </tr>
+
+     <tr>
+      <td><%= _('Order ratings by') %></td>
+      <td><%= select :environment, :communities_ratings_order, (Environment.communities_ratings_order_options) %></td>
+    </tr>
+
+    <tr>
+      <td><%= _('Ratings per page') %></td>
+      <td>
+        <%= select :environment, :communities_ratings_per_page, 5..20 %>
+        </td>
+    </tr>
+  </table>
+
+  <div>
+    <% button_bar do %>
+      <%= submit_button('save', c_('Save changes')) %>
+      <%= button :back, _('Back'), :controller => 'plugins' %>
+    <% end %>
+  </div>
+
+<% end %>
