@@ -687,7 +687,9 @@ body #content .main-block h1 {
 }
 
 body #content .main-block form .button-bar input,
-body #content .main-block form .button-bar a.button{
+body #content .main-block form .button-bar a.button,
+body #content .main-content form .button-bar input,
+body #content .main-content form .button-bar a.button {
   background-image: none;
   border: 0;
   margin-right: 10px;
@@ -698,7 +700,8 @@ body #content .main-block form .button-bar a.button{
   text-align: center;
 }
 
-body #content .main-block form .icon-add{
+body #content .main-block form .icon-add,
+body #content .main-content form .icon-add {
   background-image: none;
   border: 0;
   padding: 0 10px 0 20px;
@@ -708,7 +711,8 @@ body #content .main-block form .icon-add{
   position: relative;
 }
 
-body #content .main-block form .icon-add:before {
+body #content .main-block form .icon-add:before,
+body #content .main-content form .icon-add:before {
   left: 6px;
   vertical-align: middle;
   font-size: 12px;
@@ -790,11 +794,13 @@ body #content .main-block form .icon-add:before {
 }
 
 
-body #content .main-block form .button-bar .icon-back {
+body #content .main-block form .button-bar .icon-back,
+body #content .main-content form .button-bar .icon-back {
   width: 150px !important;
 }
 
-#content .main-block form .button-bar input {
+#content .main-block form .button-bar input,
+#content .main-content form .button-bar input {
   padding: 2px 0;
   color: #FFF;
   font-size: 15px;
@@ -806,7 +812,8 @@ body #content .main-block form .button-bar input:hover {
   background: #5E82C6;
 }
 
-body #content .main-block form .button-bar a.button {
+body #content .main-block form .button-bar a.button,
+body #content .main-content form .button-bar a.button {
   padding: 1px 0 0 0;
   height: 0;
   line-height: auto; 
@@ -816,13 +823,15 @@ body #content .main-block form .button-bar a.button {
   height: 29px;
 }
 
-body #content .main-block form .button-bar a.button:hover {
+body #content .main-block form .button-bar a.button:hover,
+body #content .main-content form .button-bar a.button:hover {
   background: none;
   border-color: #5E82C6;
   color: #5E82C6;
 }
 
-body #content .main-block #delete-profile a {
+body #content .main-block #delete-profile a,
+body #content .main-content #delete-profile a {
   border-color: #C0392B;
   color: #C0392B;
 }
