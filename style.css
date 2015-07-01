@@ -2988,7 +2988,7 @@ div.software-step-info div.current-step h3 {
   font-family: Arial;
   font-weight: 700;
   color: #172938;
-  letter-spacing: -0.1px;
+  /* letter-spacing: -0.1px; */
 }
 
 #content .main-block #article .folder-content .item-description {
@@ -3020,6 +3020,14 @@ li.folder-item:first-child {
 }
 
 /***** Estilização do aviso de campos obrigatórios na página de edição da página de ajuda *****/
+
+.text-editor-sidebar {
+  top: 0px;
+  margin-top: 30px;
+  margin-left: 650px;
+  max-height: 45px;
+  overflow: hidden;
+}
 
 #content .main-content form p .required-field .pseudoformlabel {
   color: #FF0366;
@@ -3053,16 +3061,10 @@ li.folder-item:first-child {
 
 #content .main-content form .article-translation-field {
   margin-top: 25px;
+  margin-bottom: 15px;
 }
 
 #content .main-content form .required-field .formlabel:after {
   color: #FF0366;
   font-weight: 500;
-}
-
-.text-editor-sidebar {
-  margin-top: 20px;
-  margin-left: 650px;
-  max-height: 45px;
-  overflow: hidden;
 }
