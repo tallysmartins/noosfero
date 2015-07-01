@@ -17,20 +17,27 @@ emails disparados pelo sistema partem de um mesmo relay.
 O ambiente é composto por 5 máquinas com funções distintas:
 
 * integration
+
   * Segundo proxy reverso
+
   * Repositórios Git
+
   * Listas de email
 
 * email
+
   * relay de email
 
 * social
+
   * Máquina dedicada para rede social Noosfero
 
 * database
+
   * Servidor de banco de dados PostgreSQL
 
 * reverseproxy
+
   * proxy reverso
 
 Apenas as máquinas reverseproxy e email possuem IP's externos. A primeira para
