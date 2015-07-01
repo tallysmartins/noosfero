@@ -23,19 +23,91 @@ um determinado ambiente se encontram centralizadas nos arquivos presentes em
 configurações, deve-se recorrer a tais arquivos.
 
 * ``config.yaml``
+
   * Administradores do sistema
+
   * Nome dos domínios (Portal, relay e mailman)
+
   * IP's externos para reverseproxy e relay
+
   * Porta de SSH para conexão interna à reverseproxy
+
   * Outras configurações relevantes para o sistema
 
 * ``ips.yaml``
+
   * IP's (rede local) das máquinas descritas na seção de Arquitetura
 
 * ``ssh_config``
+
   * Arquivo de configuração para conexões SSH.
 
 Ao se modificarem configurações do ambiente que sejam permanentes, é
 interessante que as mesmas sejam refletidas também nos repositórios de
 gestão de configuração, para tal, contate os mantenedores do portal em
 spb-dev@listas.softwarepublico.gov.br.
+
+Obtendo logs
+------------
+
+Os seguintes arquivos a seguir contém logs relevantes para o Portal do SPB, de
+modo que é interessante monitorá-los, note que os arquivos estão organizados
+por máquinas.
+
+* social
+  
+  * /var/log/nginx/noosfero.access.log
+
+  * /var/log/nginx/noosfero.error.log
+
+  * /var/log/noosfero/\*
+
+  * /var/log/rsnapshot
+
+* integration
+
+  * /var/log/nginx/colab.access.log
+
+  * /var/log/nginx/colab.error.log
+
+  * /var/log/nginx/mailman.access.log
+
+  * /var/log/nginx/mailman.error.log
+
+  * /var/log/nginx/gitlab.access.log
+
+  * /var/log/nginx/gitlab.error.log
+
+  * /var/log/colab/colab.log
+
+  * /var/log/gitlab-shell/gitlab-shell.log
+
+  * /var/log/gitlab/unicorn.stderr.log
+
+  * /var/log/gitlab/unicorn.stdout.log
+
+  * /var/log/gitlab/application.log
+
+  * /var/log/gitlab/production.log
+
+  * /var/log/gitlab/sidekiq.log
+
+  * /var/log/mailman/smtp
+
+  * /var/log/mailman/qrunner
+
+  * /var/log/mailman/error
+    
+  * /var/log/rsnapshot
+
+* database
+
+  * /var/log/redis/redis.log
+
+  * /var/lib/pgsql/data/pg_log/\*
+
+* Reverseproxy
+
+  * /var/log/nginx/ssl-\*.access.log
+
+  * /var/log/nginx/ssl-\*.error.log
