@@ -1,6 +1,6 @@
 Name:    noosfero-deps
 Version: 1.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Ruby dependencies for Noosfero
 Group:   Development/Tools
 License: Various
