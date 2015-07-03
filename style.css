@@ -3120,3 +3120,7 @@ li.folder-item:first-child {
 #content #article-formitem #article_slug {
   width: 20%;
 }
+
+.main-content form small {
+  padding-left: 5px;
+}
