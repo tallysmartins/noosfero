@@ -87,8 +87,8 @@ background-repeat: no-repeat;
 }
 
 #logo #portal-title {
-    background-image: url("images/logotipo_spb_beta.svg");
-  backgroud-repeat: no-repeat;
+  background-image: url("images/logotipo_spb_beta.svg");
+  background-repeat: no-repeat;
   background-size: 370px; /*374px 56px;*/
   height: 78px;
   width: 374px;

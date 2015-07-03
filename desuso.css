@@ -1,0 +1,575 @@
+/************Removido do style.css************/
+#main-content-wrapper-1,
+#main-content-wrapper-2,
+#main-content-wrapper-3,
+#main-content-wrapper-4,
+#main-content-wrapper-5,
+#main-content-wrapper-6,
+#main-content-wrapper-7,
+#main-content-wrapper-8 {
+    background: none repeat scroll 0 0 transparent;
+}
+
+/*menu no cabecalho atualmente em desuso*/
+#assets-menu {
+    background: #E8E8E8;
+    top: 35px;
+    left: 80px;
+    min-width: 132px;
+}
+
+#assets-menu a {
+    border: 1px solid #E8E8E8;
+}
+
+#categories_menu {
+    /*max-width: 960px;*/
+  padding: 0 1em;
+    margin: auto;
+}
+
+
+#cat_menu {
+    background: url(images/marca-participacao-social.png) no-repeat center left;
+    height: 40px;
+    padding-left: 60px;
+}
+
+
+#cat_menu li {
+    list-style: none;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0px 20px;
+    height: 100%;
+    text-transform: uppercase;
+}
+
+#cat_menu li:hover {
+    background-color: #E1E4E4;
+}
+
+#cat_menu li a {
+    line-height: 40px;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+/*Fim do menu em desuso*/
+
+/*nao localizei em que area isso se aplica*/
+
+.portalservicos-item div {
+    display: none;
+    position: absolute;
+     background-color: red;
+}
+
+.portalservicos-item:hover div {
+    display: inline-block;
+    float: left;
+    width: 960px;
+    top: 25px;
+    left: 0;
+    background-color: blue;
+}
+
+.portalservicos-submenu:hover {
+    display: inline-block;
+    float: left;
+    width: 960px;
+    top: 25px;
+    left: 0;
+    background-color: green;
+}
+
+/* Bubble Float Bottom */
+.bubble-float-bottom {
+  display: inline-block;
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.bubble-float-bottom:before {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  left: calc(50% - 10px);
+  bottom: 0;
+  border-style: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: #e1e1e1 transparent transparent transparent;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: bottom;
+  transition-property: bottom;
+}
+.bubble-float-bottom:hover, .bubble-float-bottom:focus, .bubble-float-bottom:active {
+  -webkit-transform: translateY(-5px) translateZ(0);
+  transform: translateY(-5px) translateZ(0);
+}
+.bubble-float-bottom:hover:before, .bubble-float-bottom:focus:before, .bubble-float-bottom:active:before {
+  bottom: -10px;
+}
+/************************************************************/
+
+
+/* chat {{{ */
+
+#chat .toolbar {
+  background-color: #F8C300;
+  border: 2px solid #F8C300;
+}
+
+#chat #environment-logo {
+  background-color: #FCDD4E;
+}
+
+#chat #buddy-list,
+#chat #occupant-list {
+  background-color: #EEE;
+}
+
+/* }}} */
+
+
+/*****css feito para um bloco novo que nao chegou a ser construido****************/
+/** Bloco de redes sociais **/
+.social_widget {
+  margin-left: 5px;
+}
+
+.social_widget .social_header {
+  height: 27px;
+  margin-top: 12px;
+}
+
+.social_widget.twitter {
+  background: url(images/twitter-widget.png) no-repeat;
+}
+
+.social_widget.facebook {
+  background: url(images/facebook-widget.png) no-repeat;
+}
+
+.social_widget.instagram {
+  background: url(images/instagram-widget.png) no-repeat;
+}
+
+.social_widget.instagram .social_content {
+  margin-top: 15px;
+}
+
+#content .no-boxes #main-content-wrapper-8 {
+  padding: 10px 10px;
+}
+
+#content .no-boxes #main-content-wrapper-8 .all_tracks {
+  padding-left: 2px;
+}
+
+/********************************************************/
+
+/*****************************************************/
+/*                  EMBED CSS                        */
+/*****************************************************/
+body.action-embed-index {
+  background-color: #f0f0f0;
+}
+
+#embed {
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+#embed #content {
+    left: 0;
+    margin-left: 0;
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+}
+
+#embed #content .title {
+    padding-right: 0px;
+}
+
+.action-embed-index #boxes,
+.action-embed-index .box-1 .blocks,
+.action-embed-index .block-outer,
+.action-embed-index #content .block {
+  margin: 0px;
+}
+
+.action-embed-index #wrap-1 {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+}
+
+.action-embed-index #wrap-2 {
+  border: 0px solid #F00;
+  padding: 0px;
+  background-color: #EEE;
+  margin: 0px;
+}
+
+.action-embed-index .block .block-inner-2 {
+  background-color: white;
+  padding: 1em;
+  margin: 0;
+}
+
+.action-embed-index #content .box-1 .block-title {
+  background-color: transparent;
+  border-bottom: 0 solid #AAAAAA;
+  border-top: 0 none;
+  left: -12px;
+  margin-bottom: 0;
+  margin-top: -38px;
+  position: relative;
+}
+
+.action-embed-index #content .box-1 .block-title span {
+  background-color: #497b16;
+  color: white;
+  font-size: 18px;
+  font-variant: normal;
+  padding: 6px 1em;
+  text-align: left;
+}
+
+/******** BLOCK => TRACK CARD LIST *********/
+.action-embed-index .community-track-plugin_track-card-list-block .block-inner-2 {
+  background: url("images/bg-bloco-de-trilhas.png") no-repeat scroll center top transparent;
+}
+
+.action-embed-index .community-track-plugin_track-card-list-block .track_list {
+  text-align: center;
+  padding: 22px 0px 0px 0px;
+}
+
+.action-embed-index .community-track-plugin_track-card-list-block .view_all a {
+  position: absolute;
+  right: -12px;
+  top: -33px;
+}
+
+
+/************************Track_list************************************/
+
+/*lista de pendencias*/
+.task_box {
+    background: none repeat scroll 0 0 #EEEEEE;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 1em;
+    position: relative;
+}
+
+/*fim lista de pendencias*/
+
+.tag_cloud a{
+     white-space: normal;
+}
+
+
+.community-track-plugin_track-card-list-block .track_list{
+    text-align: center;
+    padding: 0 0px;
+}
+
+.track_list .item_card {
+    background-color: #FFFAFA;
+    border: 1px solid #DDDDDD;
+    display: inline-block;
+    float: left;
+    clear: right;
+    margin: 12px 9px 9px;
+    max-width: 214px;
+    height: 426px;
+    padding: 0;
+    width: 214px;
+}
+
+
+
+.track_list .item_card a{
+    display: inline-block;
+}
+
+.track_list .item_card:hover {
+    background-color: white;
+}
+
+/*track list nos blocos laterais*/
+.box-2{
+  width:150px;
+}
+
+.box-2 .track_list .item_card,
+.box-3 .track_list .item_card {
+    margin: 10px 0px;
+    /*width: 188px;*/
+    width: 100%;
+}
+
+/**/
+
+
+#content .track_list .item_card .track_content{
+     height: 390px;
+     overflow: hidden;
+}
+
+#content .track_list .item_card .track_content .title{
+    color: white;
+    font-family: Arial,sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    min-height: 15px;
+    padding: 2px 0;
+    text-align: center;
+
+    vertical-align: middle;
+    width: 219px;
+    display: table-cell;
+     height: 45px;
+}
+#content .track_list .item_card .track_content .image{
+    border: 1px solid #ddd;
+    width: 196px;
+    height: 146px;
+    overflow: hidden;
+    margin: 8px;
+    background-color: #FFF;
+  position: relative;
+}
+/*imagem nos track list nos blocos laterais*/
+#content .box-2 .track_list .item_card .track_content .image,
+#content .box-3 .track_list .item_card .track_content .image {
+    width: 170px;
+}
+
+.track_list .image img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+#content .track_list .item_card .track_content .name {
+     font-size: 12px;
+    font-weight: normal;
+    padding: 5px 0;
+    text-align: left;
+    margin: 0 8px;
+    color: #444;
+     text-transform: uppercase;
+}
+
+
+#content .track_list .item_card .track_content .lead {
+    font-weight: normal;
+    padding: 5px 0;
+    margin: 0 8px;
+    text-align: left;
+    color: black;
+     font-size: 12px;
+}
+
+/**/
+
+/**/
+
+/*track list Internas*/
+
+.track_list .item {
+     border-bottom: 1px solid #DDDDDD;
+    display: inline-block;
+}
+
+.track_list .item .track_content .lead {
+    float: left;
+    padding: 2em;
+    text-align: left;
+    width: 40%;
+}
+
+/*track list - páginas internas - main content*/
+
+.track_list .track_content {
+     /*display: inline-block;*/
+     display: block;
+    height: 100%;
+}
+
+.track_list .item .track_content{
+    /*display: block;*/
+}
+
+
+.track_list .item .track_content .lead {
+    width: 30%;
+}
+
+.track_list .item .track_content .lead p.lead{
+    color: #444;
+}
+
+#content .track_list .item .track_content .lead a {
+    font-weight: bold;
+     color: #444;
+}
+
+/**/
+/*rodapé das cartas de participação*/
+.track_list .item_card .track_stats .comments .counter {
+  background: url("images/comentarios.png") no-repeat left center #fffafa;
+}
+.track_list .item_card .track_stats .hits .counter {
+  background: url("images/visualizacoes.png") no-repeat left center #fffafa;
+}
+
+.track_list .item_card .track_stats {
+  padding: 5px 5px 0;
+    height: 25px;
+}
+.track_list .item_card .track_stats .counter {
+  margin-top: 1px;
+  padding: 3px 0 0 30px;
+  text-align: left;
+  font-size: 10pt;
+  /*display: block;*/
+  color: #444;
+}
+.track_list .item_card .track_stats .comments{
+  float: left;
+}
+.track_list .item_card .track_stats .hits{
+  float: right;
+}
+.track_list .item_card .track_stats .hits .label,
+.track_list .item_card .track_stats .comments .label {
+  font-size: 7pt;
+  /*float: right;*/
+  color: #444;
+}
+.track_list .item_card .track_stats .comments .label {
+    display: none;
+    visibility: hidden;
+}
+
+/**/
+
+
+/*** step list ***/
+
+/*geral*/
+
+.track_list .item .step {
+    padding: 5px;
+}
+
+.track_list .item .track_content .steps {
+     width: 60%;
+    font-weight: normal;
+}
+
+.track_list .item .track_content .steps a:hover{
+    text-decoration: none;
+}
+
+
+.track_list .item .track_content .steps h3{
+    font-size: 13px !important;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.track_list .item .track_content .steps .position,
+#track .step_list .step .position {
+    border-radius: 50% 50% 50% 50%;
+    float: none;
+    font-size: 14px;
+    margin-right: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#track .step_list .step {
+    background: url("images/steps_bg.png") repeat-x center top #fff;/*branco com o fundo em degradê*/
+    display: inline-block;
+    width: 100%;
+}
+
+
+#track .step_list .step a {
+     background-color: transparent;/*transparente*/
+    color: #999;/*cinza escuro escuro*/
+}
+
+.step a:link, #content .step a:link, dl.portlet .step a:link {
+    color: #999; /*cinza escuro*/
+    /*teste*/
+    display: inline-block;
+   max-width: 80%;
+   vertical-align: middle;
+}
+
+#track .step_list .step .position {
+      background-color: #999;/*cinza escuro escuro*/
+      color: #fff;/*branco*/
+     display: inline-block;
+     font-size: 250%;
+     margin: 15px;
+     padding: 15px;
+     line-height: 15px;
+}
+
+#track .step_list .step .content {
+    display: inline-block;
+    margin: 10px;
+    vertical-align: middle;
+     border-bottom: 0 none;
+     vertical-align: top;
+     max-width: 80%;
+     /*max-width: 600px;*/
+}
+
+#track .step_list .step .content .date {
+    font-weight: normal;
+}
+
+#track .step_list .step .content .name {}
+
+#track .step .name,
+#track .step .name a {
+    color: #999;
+}
+
+#track .step_list .step .content .lead {
+    font-weight: normal;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: #666;
+}
+
+#track .step_list .step .content .lead p{
+    margin-bottom: 0px;
+}
+
+#track .step_list .step .content object,
+#track .step_list .step .content .lead img{
+    max-width: 80%;
+}
+
