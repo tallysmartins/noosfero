@@ -148,9 +148,11 @@ $('#link-buscar').click(function(e) {
   /* Splits a file name from its extension. Example: example.pdf becomes example - PDF */
   function split_file_extension(element) {
     var tokens = element.innerHTML.split('.');
-    var fileName = tokens[0];
-    var fileExtension = tokens[1].toUpperCase();
-    element.innerHTML = fileName + " - " + fileExtension;
+    if(tokens.length == 2) {
+      var fileName = tokens[0];
+      var fileExtension = tokens[1].toUpperCase();
+      element.innerHTML = fileName + " - " + fileExtension;
+    }
   }
 
   $(document).ready(function(){
