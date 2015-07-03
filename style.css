@@ -3082,9 +3082,20 @@ li.folder-item:first-child {
   margin-bottom: 13px;
 }
 
-#content .formfield input {
+#content .formfield input,
+#content #edit-article-options .token-input-list li {
   border: 1px solid #ccc;
   border-radius: 4px;
   height: 19px;
   padding: 6px;
+}
+
+#content #edit-article-options .token-input-list {
+  border: none;
+  margin-top: 10px;
+}
+
+#content #edit-article-options .token-input-list li input:first-child {
+  height: 10px;
+  padding-right: 0px;
 }
