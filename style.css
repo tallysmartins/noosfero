@@ -3101,16 +3101,16 @@ li.folder-item:first-child {
 }
 
 #content #content-inner #boxes #fetch-external-feed > input {
-  margin: 0px;
-  margin-right: 5px;
+  height: 13px;
+  margin: 8px;
   vertical-align: middle;
-  width: 20px;
+  width: 13px;
 }
 
 #boxes #fetch-external-feed #external-feed-options #external-feed-options-only-once input {
-  width: 20px;
+  margin-right: 3px;
+  width: 13px;
   vertical-align: middle;
-  margin-bottom: 5px;
 }
 
 #boxes #fetch-external-feed #external-feed-options #external-feed-options-only-once label {
