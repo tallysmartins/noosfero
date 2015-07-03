@@ -3099,3 +3099,24 @@ li.folder-item:first-child {
   height: 10px;
   padding-right: 0px;
 }
+
+#content #content-inner #boxes #fetch-external-feed > input {
+  margin: 0px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 20px;
+}
+
+#boxes #fetch-external-feed #external-feed-options #external-feed-options-only-once input {
+  width: 20px;
+  vertical-align: middle;
+  margin-bottom: 5px;
+}
+
+#boxes #fetch-external-feed #external-feed-options #external-feed-options-only-once label {
+  margin-right: 250px;
+}
+
+#content #article-formitem #article_slug {
+  width: 20%;
+}
