@@ -32,6 +32,11 @@
 }
 
 /**********************fim pagina inicial************************/
+/*oculta campo de busca perto do login apos remover o css do cabecalho*/
+#user form {
+display: none;
+}
+/******************************/
 
 /*label dos radio buttons da busca*/
 #content .search-field label {
@@ -1051,4 +1056,336 @@
 
 /**** FIM DE BUSCA ****/
 
-/*******fim - removidos do cabecalho-cinza-theme.css****************/
+#category-ajax-selector .select-subcategory-link:hover {
+    color: #fff;
+}
+
+/*******************Area de agenda**************************/
+.agenda-item a {
+  color: black;
+}
+.agenda-item a:visited {
+  color: black;
+  font-weight: normal;
+}
+.agenda-item a:hover {
+  color: black;
+  text-decoration: underline !important;
+}
+/*******************fim da agenda****************************/
+
+/************** data - evento *************/
+
+li.event-dates {
+    background: url("/images/icons-mime/event.png") no-repeat scroll 100% 50% white;
+
+    float: none;
+    padding: 5px 32px 5px 5px;
+     text-align: right;
+}
+/************************fim data - evento*********************/
+
+/*************** Resultado da busca geral noosfero *****************/
+.no-boxes-inner-2 {
+    background-color: white;
+}
+
+.only-one-result-box .common-profile-list-block {
+    float: none;
+}
+
+.common-profile-list-block span {
+    line-height: 1.2em;
+    overflow: visible;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.search-results-box .common-profile-list-block li {
+    display: inline-block;
+    width: 112px;
+}
+
+.common-profile-list-block,
+ul.profile-list .common-profile-list-block {
+    display: inline-block;
+     vertical-align: top;
+}
+
+.main-block .common-profile-list-block {
+    display: block;
+}
+
+#search-results .common-profile-list-block {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.vcard .menu-submenu-list li {
+    display: block;
+}
+
+.common-profile-list-block .profile-image {
+    display: table-cell;
+    height: 56px;
+    max-height: 100%;
+    text-align: center;
+}
+
+/*.box-2 .common-profile-list-block .vcard a.profile_link,
+.box-3 .common-profile-list-block .vcard a.profile_link,*/
+.common-profile-list-block .vcard a.profile_link {
+    margin-bottom: 5px;
+    float: none;
+}
+
+
+.box-2 .common-profile-list-block .vcard a.profile_link,
+.box-3 .common-profile-list-block .vcard a.profile_link {
+    height: auto;
+    max-height: 100%;
+}
+
+.common-profile-list-block .vcard {
+    float: none;
+}
+
+.common-profile-list-block .vcard a, .comment-actions .vcard a {
+     margin: 0;
+     height: auto;
+     padding-top: 0;
+     overflow: visible;
+}
+
+#content .comment-actions li {
+  padding: 2px;
+}
+
+
+#article .article-comment .comment-details .comment-actions h4 {
+  display: none;
+}
+
+.menu-submenu-trigger, .comment-actions .vcard .menu-submenu-trigger {
+ width: 20px;
+ height: 20px;
+}
+
+.common-profile-list-block .vcard:hover .menu-submenu-trigger {
+/*  display: none;*/
+}
+
+
+
+
+/*******Alinhamento da imagem de pessoas no bloco**********/
+
+.box-2 .common-profile-list-block .profile-image,
+.box-3 .common-profile-list-block .profile-image{
+    height: 56px;
+}
+
+/*fim alinhamento da imagem de pessoas nos blocos - incluindo página inicial*/
+
+.relevant-content-plugin_relevant-content-block ul{
+    padding: 0;
+}
+
+.relevant-content-plugin_relevant-content-block li {
+}
+.relevant-content-plugin_relevant-content-block li:hover {
+    background-color: #eee;
+}
+.relevant-content-plugin_relevant-content-block li a{
+    color: #333;
+    display: block;
+    padding: 0.5em 1em;
+}
+
+/*******************fim resultado da busca geral***********/
+
+/*botão rss*/
+#article .blog-feed-link {
+    position: relative;
+    right: 0;
+    top: 0;
+}
+/*******************************/
+
+#box-organizer .block-target { clear: both; }
+
+/*.profile-info-options*/
+#content .profile-info-options {
+    padding-right: 0;
+}
+
+#content .profile-info-options ul {
+    margin-left: 0px;
+}
+
+#content .profile-info-options input.button.with-text,
+#content .profile-info-options a.button.with-text {
+    background-color: #fff;
+    border-radius: 0 0 0 0;
+    display: block;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    padding-top: 5px;
+    text-align: left;
+}
+#content .profile-info-options a.button.with-text{
+    border: 0px solid #CCCCCC;
+    border-bottom: 2px solid #CCCCCC !important;
+}
+
+#content .profile-info-options input.button:hover,
+#content .profile-info-options a.button:hover {
+     background-color: #ccc;
+    border: 1pxpx solid #CCC;
+}
+
+
+/*comentário*/
+
+#comments_list.comments{
+    border: 1px solid #CCCCCC;
+    margin: 20px 0;
+}
+
+#content .main-block  #comments_list h3 {
+    border-bottom: 1px solid #CCCCCC;
+    margin: 0;
+    min-height: 100% !important;
+    padding: 14px;
+     color: #999;
+}
+#article .article-comments-list,
+#article .article-comments-list ul,
+#article .article-comments-list li {
+    list-style: none outside none;
+    margin: 5px 0 10px;
+    padding: 0;
+}
+
+#article .article-comments-list li {
+    padding: 14px;
+}
+
+.comments .comment-count-write-out {
+    min-height: 100%;
+}
+
+/*btn comentários*/
+
+#content .blog-post .short-post .read-more a{
+     text-decoration: none;
+     background: url("images/bg-btn-ver-mais-1px.png") repeat-x scroll 0 0 #DDD;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    color: #666;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    text-decoration: none;
+
+}
+
+/* nao mostrar seta neste tipo de box */
+#content .blog-post .short-post .read-more a::after {
+    content: none;
+    }
+
+.comment-info {
+    line-height: 1em;
+    margin-top: 5px;
+}
+
+#article .article-comments-list li {
+     display: block;
+    list-style: none outside none;
+    margin: 10px 0 0;
+     padding: 1em;
+}
+
+#article .comment-replies .article-comment {
+    background: url("/images/black-alpha-pixel-5.png") repeat scroll left top transparent;
+    border: 1px solid #808080;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 0px;
+    padding: 0;
+}
+
+#content .comment-picture {
+    max-width: 50px;
+     word-wrap: break-word;
+}
+
+.comment-replies .comment-picture {
+    height: auto;
+    max-width: 50px;
+     overflow: visible;
+}
+
+.comment-created-at{
+    display: block;
+    float: none;
+     margin-left: 0;
+     color: red;
+     font-style: italic;
+     margin-bottom: 1em;
+}
+
+#article .article-comment .comment-details h4 {
+    display: block;
+}
+
+.comment-text p {
+    line-height: 1.3em;
+}
+
+.article-comment .comment-details {
+    padding-top: 0;
+}
+
+
+#comments_list .comment-balloon {
+
+}
+#comments_list .comment-balloon .comment-wrapper-1,
+#comments_list .comment-balloon .comment-wrapper-2,
+#comments_list .comment-balloon .comment-wrapper-3,
+#comments_list .comment-balloon .comment-wrapper-4,
+#comments_list .comment-balloon .comment-wrapper-5,
+#comments_list .comment-balloon .comment-wrapper-6,
+#comments_list .comment-balloon .comment-wrapper-7,
+#comments_list .comment-balloon .comment-wrapper-8{
+    background-image: none;
+}
+
+#comments_list a.display-comment-form {
+     background: url("images/bg-btn-ver-mais-1px.png") repeat scroll 0 0 #EEEEEE;
+     border-color: #ddd;
+     margin: 14px;
+}
+
+#content .comment-header .comment-actions-reply{
+    margin-right: 5px;
+   margin-top: 5px;
+}
+
+.comment-details .menu-submenu {
+  bottom: -4px;
+  right: -130px;
+}
+
+#page-comment-form .post_comment_box {
+     display: inline-block;
+    padding: 5px;
+    text-align: left;
+}
+
+/* fim de comentário*/
+
+
+
+
+/*****fim - removidos do cabecalho-cinza-theme.css**********/

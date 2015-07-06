@@ -563,6 +563,10 @@ color:#000000;
     top: 10px;
     visibility: visible;
 }
+.icon-menu-login {
+  background-image: none;
+}
+
 /**** html desabilitado****/
 #barra-psocial {
     position: relative;

@@ -1,15 +1,16 @@
 @import url(../profile-base/style.css);
+@import url(../../icons/tango/style.css);
+
 @import url(header.css);
-@import url(cabecalho-cinza-theme.css);
+/*@import url(cabecalho-cinza-theme.css);*/
 @import url(footer.css);
 @import url(content.css);
 @import url(page-inicial.css);
 
 
-@import url(../../icons/tango/style.css);
 @import url(font-awesome.min.css);
 /*@import url(http://fonts.googleapis.com/css?family=Open+Sans);*/
-/*@import url(cadastro.css);*/
+@import url(cadastro.css);
 
 
 @font-face {
