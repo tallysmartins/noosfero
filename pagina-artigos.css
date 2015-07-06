@@ -109,11 +109,16 @@
   color: #2C66CE;
 }
 
-#content .main-block #article-cat a,
-#content .main-block #article-cat h4{
+#content .main-block #article-cat a{
   float: left;
   font-size: 12px !important;
   margin: 10px 10px 10px 0;
+  text-decoration: initial;
+}
+#content .main-block #article-cat h4{
+  float: left;
+  font-size: 12px !important;
+  margin: 13px 10px 10px 0;
   text-decoration: initial;
 }
 
@@ -128,6 +133,7 @@
 #article-tags{
   float: left;
   margin-top: 11px;
+  display: none;
 }
 
 .page-comment-form {
