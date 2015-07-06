@@ -2988,7 +2988,7 @@ div.software-step-info div.current-step h3 {
   font-family: Arial;
   font-weight: 700;
   color: #172938;
-  letter-spacing: -0.1px;
+  /* letter-spacing: -0.1px; */
 }
 
 #content .main-block #article .folder-content .item-description {
@@ -3017,4 +3017,106 @@ div.software-step-info div.current-step h3 {
 
 li.folder-item:first-child {
   border-top: 1px solid #ccc;
+}
+
+/***** Estilização do aviso de campos obrigatórios na página de edição da página de ajuda *****/
+
+.text-editor-sidebar {
+  top: 0px;
+  margin-top: 30px;
+  margin-left: 650px;
+  max-height: 45px;
+  overflow: hidden;
+}
+
+#content .main-content form p .required-field .pseudoformlabel {
+  color: #FF0366;
+  font-weight: 500;
+}
+
+#content .main-content form p .required-field {
+  max-width: 520px;
+  padding: 15px 20px;
+  margin: 20px 0 30px 0;
+  border: 1px dotted #ccc;
+  border-left: 5px solid #FF0366;
+  border-radius: 3px;
+  display: block;
+  background: #fff;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+.main-block form {
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#content .main-content form label.formlabel,
+#content .main-content form .article-translation-field {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #231f20; 
+}
+
+#content .main-content form .article-translation-field {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+#content .main-content form .required-field .formlabel:after {
+  color: #FF0366;
+  font-weight: 500;
+}
+
+#content .article-translation-field #article_language {
+  margin-top: 10px;
+}
+
+#content #article_image_builder_uploaded_data {
+  text-indent: 2px;
+}
+
+#content #edit-article-options div div {
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+#content .formfield input,
+#content #edit-article-options .token-input-list li {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 19px;
+  padding: 6px;
+}
+
+#content #edit-article-options .token-input-list {
+  border: none;
+  margin-top: 10px;
+}
+
+#content #edit-article-options .token-input-list li input:first-child {
+  height: 10px;
+  padding-right: 0px;
+}
+
+#content #content-inner #boxes #fetch-external-feed > input {
+  height: 13px;
+  margin: 8px;
+  vertical-align: middle;
+  width: 13px;
+}
+
+#boxes #fetch-external-feed #external-feed-options #external-feed-options-only-once input {
+  margin-right: 3px;
+  width: 13px;
+  vertical-align: middle;
+}
+
+#boxes #fetch-external-feed #external-feed-options #external-feed-options-only-once label {
+  margin-right: 250px;
+}
+
+#content #article-formitem #article_slug {
+  width: 20%;
 }
