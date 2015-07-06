@@ -7,6 +7,8 @@
   font-size: 34px !important;
   line-height: 37px !important;
   margin-bottom:  10px !important;
+  border-bottom: 1px solid #D3D6DE !important;
+  padding-bottom: 10px !important;
 }
 
 #content .main-block .article-body {
@@ -107,8 +109,25 @@
   color: #2C66CE;
 }
 
-#content .main-block #article-cat {
-  font-size: 21px !important;
+#content .main-block #article-cat a,
+#content .main-block #article-cat h4{
+  float: left;
+  font-size: 12px !important;
+  margin: 10px 10px 10px 0;
+  text-decoration: initial;
+}
+
+#content .main-block #article-cat a{
+  border: 1px solid #D3D6DE;
+  border-radius: 3px;
+  padding: 3px 10px;
+  color: #3E67B1;
+  background-color: #ECEDF1;
+}
+
+#article-tags{
+  float: left;
+  margin-top: 11px;
 }
 
 .page-comment-form {
@@ -448,4 +467,52 @@ color: #F91461;
   font-size: 15px;
   font-family: Arial;
   line-height: 22px;
+}
+
+#article-actions:last-child{
+  border-top: 4px solid #2C4B6B;
+  padding-top: 10px;
+}
+
+#article-header .preview{
+  display: none;
+}
+
+#article-header .title{
+  border-bottom: 1px solid #D3D6DE !important;
+  color: red ;
+}
+
+#article-header .publishing-info span{
+  font-size: 12px;
+  color: black;
+}
+
+#sitemap{
+  overflow: auto;
+}
+
+#sitemap a{
+  text-decoration: initial !important;
+}
+
+#sitemap ul{
+  padding-top: 20px;
+  font-weight: 700;
+}
+
+#sitemap li{
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+#sitemap #first-half{
+  float: left;
+  width: 40%;
+}
+
+#sitemap #second-half{
+  float: left;
+  padding-top: 50px;
+  width: 40%;
 }
