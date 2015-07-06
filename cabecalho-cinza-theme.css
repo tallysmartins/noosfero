@@ -24,7 +24,7 @@ tr:hover td {
 
 #theme-header{}
 
-#header {
+#theme-header #header {
   padding: 15px 0 0 0; /*13px 0 0 0;*/ 
   color: #000;
   background-color:#f0f2f1; /*rgb(236,237,241);*/
@@ -32,19 +32,19 @@ tr:hover td {
   background-image: -webkit-radial-gradient(center, ellipse cover, #f0f2f1 1%, #ecedf1 100%)
 }
 
-#header>div {
+#theme-header #header>div {
   max-width: 960px;
   min-width: 960px;
   margin: 0 auto;
 }
 
-.header-content * {
+#theme-header .header-content * {
   margin: 0;
   padding: 0;
   list-style: none;
   vertical-align: baseline;
 }
-.header-content li { display: inline; }
+#theme-header .header-content li { display: inline; }
 
 #brasilgov {
   background: #00510f;
@@ -53,7 +53,7 @@ tr:hover td {
   color: #03316f;
 }
 
-#accessibility {
+#theme-header #accessibility {
     display: block !important;
     float: left;
     font-family: arial;
@@ -61,15 +61,15 @@ tr:hover td {
     width: 50%;
 }
 
-#accessibility a {
+#theme-header #accessibility a {
   /*color:# ;rgb(96,96,96);*//*#FFF; */
   margin-right: 8px;
 }
-#accessibility a:hover {
+#theme-header #accessibility a:hover {
   /*color:/*#969696;*/ /*#d0d9ff;*/
 }
 
-#accessibility span {
+#theme-header #accessibility span {
     background: none repeat scroll 0 0 #2c66ce; /*rgb(96,96,96);*/
     color: #FFFFFF;
     padding: 0 3px;
@@ -87,28 +87,28 @@ background-repeat: no-repeat;
 }*/
 
 /* logo */
-#logo {
+#theme-header #logo {
   padding: 0;
   float: left;
   width: 50%; /*70%;*/
 }
 
-#logo span {
+#theme-header #logo span {
   display: block;
 }
 
-#logo a {
+#theme-header #logo a {
   display: block;
   width: 100%;
   color: #03316f !important;
   margin: 1em 0px;
 }
 
-#logo a, #logo #portal-title {
+#theme-header #logo a, #theme-header #logo #portal-title {
   color: #03316f;
 }
 
-#logo #portal-title {
+#theme-header #logo #portal-title {
     background-image: url("images/logotipo_spb_beta.svg");
 	background-repeat: no-repeat;
 	background-size: 370px; /*374px 56px;*/
@@ -124,19 +124,19 @@ background-repeat: no-repeat;
   letter-spacing: -0.05em;*/
 }
 
-#logo .luongo {
+#theme-header #logo .luongo {
   font-size: 3em !important;
   line-height: 1.1em;
   margin-bottom: 0.2em;
 }
 
-#logo #portal-description {
+#theme-header #logo #portal-description {
   font-size: 1.2em;
   text-transform: uppercase;
 }
 
 /* Site Actions */
-#portal-siteactions {
+#theme-header #portal-siteactions {
   display: block;
   float: right;
   clear: left;
@@ -146,7 +146,7 @@ background-repeat: no-repeat;
   text-align: center;
 }
 
-#portal-siteactions a {
+#theme-header #portal-siteactions a {
   color:#2c66ce; /*rgb(96,96,96);*/ /*#FFF;*/
   text-decoration: none;
   padding: 4px 0 4px 10px;
@@ -154,11 +154,11 @@ background-repeat: no-repeat;
   font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
 }
 
-#portal-siteactions a:hover {
+#theme-header #portal-siteactions a:hover {
   color: #03316f;
 }
 
-#portal-siteactions li {
+#theme-header #portal-siteactions li {
 	display: inline;
 	margin: 0 5px 0 0;
 	border-bottom: 1px dotted #2c66ce;; /*#d0d9ff;*/
@@ -167,7 +167,7 @@ background-repeat: no-repeat;
 #portal-siteactions li a:hover {
   color: #969696; /*#d0d9ff;
 }*/
-#portal-siteactions li a {
+#theme-header #portal-siteactions li a {
   padding: 4px 0px;
 }
 
@@ -218,7 +218,7 @@ li#siteaction-mapadosite {
 /* */
 
 /* Sobre o brasil */
-#sobre, #navbar {
+#theme-header #sobre, #theme-header #navbar {
   clear: both;
   max-width: 100% !important;
   margin: 0;
@@ -227,38 +227,38 @@ li#siteaction-mapadosite {
   padding: 5px 0;
 }
 
-#sobre,#navbar  ul {
+#theme-header #sobre, #theme-header #navbar  ul {
   max-width: 960px;
   margin: 0px auto;
   text-align: right;
   padding:10px;
 }
 
-#sobre a {
+#theme-header #sobre a {
   color: #2c66ce; /*rgb(96,96,96);*/
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
-#navbar a{
+#theme-header #navbar a{
   color: rgb(96,96,96);
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
-#sobre, #navbar .portalservicos-item a {
+#theme-header #sobre, #theme-header #navbar .portalservicos-item a {
   padding: 0 10px;
   border-right: 1px solid #03316f;
 }
 
-#sobre, #navbar .last-item a {
+#theme-header #sobre, #theme-header #navbar .last-item a {
   padding: 0 0 0 10px;
   border-right: none;
 }
 
-#navbar:houver{
+#theme-header #navbar:houver{
 	color:#000000;
 
 }
 
-#links-rapidos{
+#theme-header #links-rapidos{
   width: 960px;
   margin: 0 auto;
   font-color:#fff;
@@ -273,11 +273,11 @@ li#siteaction-mapadosite {
   border: none;
 }
 
-input.searchField {
+#theme-header input.searchField {
   -moz-appearance: none;
 }
 
-#portal-searchbox {
+#theme-header #portal-searchbox {
   clear: right;
   float: right;
   font-size: 80%;
@@ -292,26 +292,26 @@ input.searchField {
   padding: 2px;
 }
 
-#portal-searchbox .searchField {
+#theme-header #portal-searchbox .searchField {
   padding: 0.45em;
   border-right: none;
   border: none;
   width: 171px; /*210px;170px;*/
 }
 
-#portal-searchbox form {
+#theme-header #portal-searchbox form {
 white-space: nowrap;
 }
 
-#portal-searchbox label {
+#theme-header #portal-searchbox label {
 font-weight: normal;
 }
 
-#searchGadget {
+#theme-header #searchGadget {
 width: 13em;
 }
 
-#header input.searchButton {
+#theme-header #header input.searchButton {
   padding: 0.3em;
   background: transparent;
   text-indent: -2000px;
@@ -328,7 +328,7 @@ input.searchField {
  -moz-appearance: searchfield;
 }*/
 
-#header input.searchButton {
+#theme-header #header input.searchButton {
   background-image: url("images/search-button.png");
   background-position: 8px 2px;
   background-repeat: no-repeat;
@@ -342,7 +342,7 @@ input.searchField {
 
 
 /* Search Button */
-#search-button a {
+#theme-header #search-button a {
     display: inline-block;
     width: 29px;
     height: 25px;
@@ -350,16 +350,16 @@ input.searchField {
     margin-top: 10px;
 }
 
-#search-button a:hover {
+#theme-header #search-button a:hover {
     opacity: 0.6;
 }
 
-#search-button #sb_search {
+#theme-header #search-button #sb_search {
 background-image: url(images/search.png);
 background-size: 100% 100%;
 }
 
-#search-button span { display: none; }
+#theme-header #search-button span { display: none; }
 
 
 /* */
