@@ -3100,9 +3100,13 @@ li.folder-item:first-child {
   padding-right: 0px;
 }
 
+#content #content-inner #boxes #fetch-external-feed {
+  padding-left: 20px;
+}
+
 #content #content-inner #boxes #fetch-external-feed > input {
   height: 13px;
-  margin: 8px;
+  margin: 8px 8px 8px 0px;
   vertical-align: middle;
   width: 13px;
 }
@@ -3123,4 +3127,18 @@ li.folder-item:first-child {
 
 .main-content form small {
   padding-left: 5px;
+}
+
+input[type=checkbox] {
+  margin-left: 0px;
+}
+
+#content #content-inner a.lead-button {
+  border: 1px solid #CCCCCC;
+  background-image: url(/assets/designs/icons/tango/Tango/16x16/actions/add.png);
+  color: #555;
+}
+
+#content #content-inner a.lead-button:hover {
+  background-color: #fff;
 }
