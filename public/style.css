@@ -162,3 +162,13 @@
   display: block;
   background-color:rgba(255, 255, 255, 0.9);
 }
+
+/*===== Communities rate hotspot extra fields =====*/
+.comments-software-extra-fields span {
+  cursor: pointer;
+}
+
+.comments-software-extra-fields div {
+  display: none;
+}
+

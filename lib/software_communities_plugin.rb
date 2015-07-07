@@ -63,10 +63,19 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       views/search-software-catalog.js
       views/profile-tabs-software.js
       views/new-community.js
+      views/comments-software-extra-fields.js
       blocks/software-download.js
       initializer.js
       app.js
     )
+  end
+
+  def communities_ratings_plugin_comments_extra_fields
+    Proc::new do render :file => 'comments_extra_fields' end
+  end
+
+  def communities_ratings_plugin_star_message
+    Proc::new do _("Rate this software") end
   end
 
   # FIXME - if in error log apears has_permission?, try to use this method

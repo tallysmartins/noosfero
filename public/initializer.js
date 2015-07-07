@@ -8,7 +8,8 @@
     'SearchSoftwareCatalog',
     'SoftwareDownload',
     'ProfileTabsSoftware',
-    'NewCommunity'
+    'NewCommunity',
+    'CommentsSoftwareExtraFields'
   ];
 
 
