@@ -78,6 +78,10 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     Proc::new do _("Rate this software") end
   end
 
+  def communities_ratings_title
+    Proc::new do "<h1 class='title'>#{_("Use reports")}</h1>" end
+  end
+
   # FIXME - if in error log apears has_permission?, try to use this method
   def has_permission?(person, permission, target)
     person.has_permission_without_plugins?(permission, target)
