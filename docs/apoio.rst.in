@@ -1,0 +1,66 @@
+Documentação de Apoio
+=====================
+.. _referencia:
+
+Gerar Chave SSH
+---------------
+Antes de gerar a chave SSH, verifique se o seu sistema já não possui uma chave::
+
+    $ cat ~/.ssh/id_rsa.pub
+
+Se o comando acima retornar uma grande string que inicia com ``ssh-rsa`` ou ``ssh-dsa``, você já possui uma chave e, portanto, pode pular essa parte do guia.
+
+Para gerar a chave, apenas abra o terminal e digite o comando::
+
+    $ ssh-keygen -t rsa -C "seu_email"
+
+O comando acima irá perguntar em que arquivo e diretório você deseja armazenar sua chave, você pode apenas apertar ``Enter`` para usar o valor padrão. Também será perguntado se você deseja proteger sua chave com uma senha. A senha não é obrigatória, você pode ignorar essa configuraçao apenas apertando ``Enter``. Vale lembrar que essa senha não pode ser alterada posteriormente.
+
+Configurar Chave SSH no Portal SPB
+----------------------------------
+
+Primeiramente, para conseguir configurar sua chave SSH no seu perfil do SPB é necessário estar registrado no portal. O registro pode ser feito em: https://portal.softwarepublico.gov.br/account/register .
+
+Após efetuar o login no Portal SPB, clique em ``Código``, no menu principal do portal, e em seguida em ``Perfil``. Dentro do seu perfil, existe um outro menu e uma das suas opções é ``Chaves SSH``, clique nela. Nesta página você pode gerenciar suas chaves SSH, então clique em **Adicionar Chave SSH**. Utilize o comando abaixo no terminal para obter sua chave SSH::
+
+    $ cat ~/.ssh/id_rsa.pub
+    ssh-rsa AAARB3NzaC1yc2EAAAADAQEVAAABAQCops6nAMYWRR/
+    w9fDZe6LIVh5y9YwW9c10F0DCUkvEYp8E3gtmKOIz5vQewqAtqUnHmFWcIzEPhqU/Pi2UCnPfFUz+MbBZSEmSbe9mJa/
+    aVpR5uBfEscVPH+mN0bdsqDUHhSTboSe64D+MCbflKhVyjwL/wZuXdzmFtJ4Jv8D7aLm5bNQRfw0oCE7cWYc3O9PULSS9005nO91Tk4
+    w5gaA9B4i3GNRnbhaUgjis6pD9ln9dY2LmCs1mLRkZg09ocMdzq3eohhfpPTykPE+I6WDAyYFPyIJDT+AQQQ1qvFnmgYg6HpgWpXBv2
+    w8fWcPu5nc8pmKRwmzO2LSKvdfWIXgd nome-do-usuario@hostname
+
+Copie o output do comando ``cat ~/.ssh/id_rsa.pub``, digite um título para a chave no campo ``Titulo``, cole a chave no campo ``Chave`` e clique em **Adicionar Chave**.
+
+Pronto! Sua chave foi adicionada e vinculada à sua conta no Portal SPB.
+
+Copiar Chave SSH
+----------------
+Para evitar o trabalho de ter que digitar a senha dos servidores toda vez que uma conexão SSH for feita, podemos apenas copiar a chave SSH para o servidor e, assim, o servidor já reconhece a sua chave e não solicita a senha.
+
+Os comandos que podem ser utilizados para realizar a cópia da chave são::
+
+    $ ssh-copy-id usuario@ip-hostname
+    $ ssh-copy-id ip-hostname
+
+Onde:
+
+* ``usuario``: é o usuário que você deseja usar para entrar na máquina destino. Caso esse parametro não seja passado, o próprio comando, automaticamente, utiliza o usuário logado na máquina no momento em que foi executado como parâmetro.
+* ``ip-hostname``: é o ip ou hostname da máquina destino.
+
+Ao executar o comando, será solicitada a senha do usuário fornecido. Uma vez informada, as próximas conexões via SSH, utilizando esse usuário, não precisarão ser autenticadas.
+
+No contexto do SPB, é necessário que a chave da estação de trabalho seja copiada para **todas** as máquinas do ambiente @@SPB_ENV@@, ou seja, o comando acima deverá ser executado para cada ip listado em ``config/@@SPB_ENV@@/ips.yaml``::
+
+    @@config(ips.yaml)@@
+
+Caso os ambientes já tenham sido convergidos anteriormente, não será possível executar o comando ``ssh-copy-id``, pois as portas SSH estarão fechadas pelo firewall. Nesse caso, a chave deverá ser copiada manualmente::
+
+    $ cat ~/.ssh/id_rsa.pub
+    ssh-rsa AAARB3NzaC1yc2EAAAADAQEVAAABAQCops6nAMYWRR/
+    w9fDZe6LIVh5y9YwW9c10F0DCUkvEYp8E3gtmKOIz5vQewqAtqUnHmFWcIzEPhqU/Pi2UCnPfFUz+MbBZSEmSbe9mJa/
+    aVpR5uBfEscVPH+mN0bdsqDUHhSTboSe64D+MCbflKhVyjwL/wZuXdzmFtJ4Jv8D7aLm5bNQRfw0oCE7cWYc3O9PULSS9005nO91Tk4
+    w5gaA9B4i3GNRnbhaUgjis6pD9ln9dY2LmCs1mLRkZg09ocMdzq3eohhfpPTykPE+I6WDAyYFPyIJDT+AQQQ1qvFnmgYg6HpgWpXBv2
+    w8fWcPu5nc8pmKRwmzO2LSKvdfWIXgd nome-do-usuario@hostname
+
+O output do comando acima é a sua chave pública, ela deverá ser copiada e colada, manualmente, em ``~/.ssh/authorized_keys`` do usuário desejado. Esse procedimento deve ser repetido em todas as máquinas listadas em ``config/@@SPB_ENV@@/ips.yaml``.
