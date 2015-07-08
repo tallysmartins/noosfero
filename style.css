@@ -3049,7 +3049,7 @@ li.folder-item:first-child {
 #content .main-content form .article-translation-field {
   font-size: 14px;
   margin-bottom: 5px;
-  color: #231f20; 
+  color: #231f20;
 }
 
 #content .main-content form .article-translation-field {
@@ -3134,4 +3134,121 @@ input[type=checkbox] {
 
 #content #content-inner a.lead-button:hover {
   background-color: #fff;
+}
+
+/******************** RELATO DE USO - AVALIAÇÃO DO USUÁRIO **********************/
+
+/***
+.main-content {
+    background-image: url('images/tela_listagem_relato_uso_v3.jpg');
+    background-repeat: no-repeat;
+    padding: 0px;
+}*/
+
+#content .main-content .star-page-title .title {
+  font-size: 34px !important;
+}
+
+#content .main-content .star-rate-data {
+  border-top: 1px solid #D3D6DE !important;
+  margin-top: 19px;
+  padding-top: 29px;
+  padding-left: 6px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-rate-text,
+#content .main-content .star-rate-data .star-rate-form .star-container {
+  display: inline;
+  float: left;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-container {
+  width: inherit;
+  height: 30px;
+  padding-left: 6px;
+}
+
+#content .main-content .star-rate-data .star-rate-form {
+  padding-left: 14px;
+  letter-spacing: 0.1px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-rate-text {
+  font-size: 14px;
+  padding-top: 4px;
+}
+
+#content .main-content .star-rate-data .star-profile-information {
+  width: 79px;
+}
+
+#content .main-content .star-rate-data .star-profile-information .star-profile-image {
+  padding-top: 1px;
+}
+
+#content .main-content .star-rate-data .star-profile-information .star-profile-image img {
+  border-radius: 4px;
+  height: 60px;
+  width: 60px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-container .star-positive {
+  background-image: url('images/star-positive-big.png');
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-container .star-negative {
+  background-image: url('images/star-negative-big.png');
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-container .star-positive,
+#content .main-content .star-rate-data .star-rate-form .star-container .star-negative {
+  display: table-cell;
+  height: 30px;
+  width: 28px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-comment-container {
+  padding-top: 23px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-comment-container .formlabel {
+  letter-spacing: -0.15px;
+  margin-bottom: 2px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-comment-container #comments_body {
+  border-radius: 4px;
+  height: 91px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar input {
+  background-color: #4562b1;
+  font-weight: 700;
+  height: 31px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar {
+  margin-top: 66px;
+  padding-bottom: 50px;
+}
+
+#content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-people-benefited,
+#content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values {
+  font-size: 12px;
+  float: left;
+  padding-right: 20px;
+}
+
+#content .star-rate-form .star-comment-container .comments-software-extra-fields span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #comments_people_benefited,
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #comments_saved_value {
+  width: 153px;
+  padding: 4px;
+  margin-top: 4px;
 }
