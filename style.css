@@ -3137,23 +3137,23 @@ input[type=checkbox] {
 }
 
 /******************** RELATO DE USO - AVALIAÇÃO DO USUÁRIO **********************/
-
-/***
+/*
 .main-content {
     background-image: url('images/tela_listagem_relato_uso_v3.jpg');
     background-repeat: no-repeat;
     padding: 0px;
-}*/
-
+}
+*/
 #content .main-content .star-page-title .title {
   font-size: 34px !important;
 }
 
 #content .main-content .star-rate-data {
   border-top: 1px solid #D3D6DE !important;
+  color: #172738;
   margin-top: 19px;
-  padding-top: 29px;
-  padding-left: 6px;
+  padding-top: 30px;
+  padding-left: 8px;
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-rate-text,
@@ -3212,7 +3212,7 @@ input[type=checkbox] {
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-comment-container .formlabel {
-  letter-spacing: -0.15px;
+  letter-spacing: -0.2px;
   margin-bottom: 2px;
 }
 
@@ -3230,8 +3230,9 @@ input[type=checkbox] {
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar {
-  margin-top: 66px;
+  margin-top: 0px;
   padding-bottom: 50px;
+  padding-top: 10px;
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-people-benefited,
@@ -3242,8 +3243,15 @@ input[type=checkbox] {
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields span {
+  border-bottom: 1px dotted #D3D6DE;
+  color: #172738;
   display: block;
-  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15px;
+  margin-bottom: 16px;
+  margin-top: 17px;
+  padding-bottom: 4px;
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #comments_people_benefited,
@@ -3252,3 +3260,10 @@ input[type=checkbox] {
   padding: 4px;
   margin-top: 4px;
 }
+
+/*
+.star-rate-data {
+  background-image: url('images/validacao_frontend_relato_de_uso.jpg');
+  background-repeat: no-repeat;
+}
+*/
