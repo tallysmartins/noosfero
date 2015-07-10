@@ -2,15 +2,28 @@
 @import url(../../icons/tango/style.css);
 
 @import url(header.css);
-/*@import url(cabecalho-cinza-theme.css);*/
 @import url(footer.css);
 @import url(content.css);
 @import url(page-inicial.css);
+@import url(cadastro.css);
+@import url(pagina-artigos.css);
+@import url(pagina-comunidade.css);
+@import url(pagina_software.css);
+@import url(page-catalog-software.css);
+@import url(recent-content.css);
+@import url(token-input.css);
+
+/*@import url(redes_sociais.css);*/
+/*@import url(dropline_menu.css);*/
+/*@import url(contraste.css);*/
+/*@import url(desuso.css);*/
+/*@import url(agenda.css);*/
+/*@import url(errors.css);*/
+
 
 
 @import url(font-awesome.min.css);
 /*@import url(http://fonts.googleapis.com/css?family=Open+Sans);*/
-@import url(cadastro.css);
 
 
 @font-face {

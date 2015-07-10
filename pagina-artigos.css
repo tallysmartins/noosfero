@@ -1,3 +1,28 @@
+/*tamanho da fonte dentro dos artigos*/
+.article-body p{
+    font-size:15px;
+    line-height:21px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Numeracao dentro de artigos */
+.article-body ul {
+    list-style-position: inside;
+    list-style-type: disc;
+}
+
+.article-body ol {
+    list-style-position: inside;
+    list-style-type: decimal;
+}
+
+.article-body li {
+    list-style: inherit;
+}
+
+/* fim tamanho da fonte dentro dos artigos*/
+
+
 #article-hits {
   display:none !important;
 

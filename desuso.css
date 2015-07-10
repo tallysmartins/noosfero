@@ -118,6 +118,15 @@
 }
 /************************************************************/
 
+/* Bloco de noticias sempre da mesma cor - mesclado com o que havia na page-incial.css */
+
+#content .box .display-content-block .block-title {
+  border-top: 4px solid #643C67;
+  background: #eee;
+  color: #643C67;
+}
+/**************************************************************/
+
 
 /* chat {{{ */
 
@@ -174,6 +183,138 @@
 }
 
 /********************************************************/
+
+/********************* PopUp Login*************************/
+
+#TB_window {
+    left: -350px;
+    margin-left: 50% !important;
+    width: 700px !important;
+}
+
+#TB_ajaxContent.TB_modal {
+    padding: 15px;
+    position: relative;
+    width: auto !important;
+     height: auto !important;
+}
+
+#TB_window .login-box{
+    width: 100%;
+   background: url("images/img_login_popUp.png") no-repeat scroll 90% 30% #FFFFFF;
+}
+
+#TB_window .login-box h2{
+    background: url("images/bg-titulo-login.png") no-repeat scroll 70px 7px #FFFFFF;
+    color: #757575;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: normal;
+    width: 45%;
+}
+
+#TB_window .login-box form {
+    margin: 0;
+    width: 45%;
+    /*background: url("images/img_login_popUp.png") no-repeat scroll 70% 30% #FFFFFF;*/
+}
+/*
+#TB_window .login-box .formfieldline input {
+    width: 95%;
+}
+
+#TB_window .login-box .button-bar input.icon-login {
+    background: url("images/btn_entrar_login.png") no-repeat scroll 0 0 #FFFFFF;
+    border: 0px none;
+    font-family: arial,sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    height: 50px !important;
+    max-height: 50px !important;
+    padding: 0;
+    text-transform: uppercase;
+    width: 145px;
+     cursor: pointer;
+}
+
+#TB_window .login-box .button-bar input.icon-login:hover {
+    background-image: url("images/btn_entrar_login_hover.png");
+}
+
+#TB_window .login-box .button-bar a.icon-close {
+  /*background: url("images/btn_cancelar_login.png") repeat-x scroll 0 0 #FFFFFF;*/
+   /* background-color: #FCE9E8;
+    background-image: none;
+    border: 0 none;
+    border-radius: 5px 5px 5px 5px;
+    color: #CE5E5E;
+    font-size: 16px;
+    font-weight: bold;
+    height: 35px;
+    padding: 14px 13px 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 115px;
+}
+#TB_window .login-box .button-bar a.icon-close:hover {
+    background-color: #FFD1CF;
+}
+
+#TB_window .login-box .button-bar input.submit,
+#TB_window .login-box .button-bar a.icon-close {
+    border: 0px none;
+}
+
+#TB_window .login-box .button-bar {
+    float: none;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    width: 100%;
+}
+
+#TB_window .login-box .button-bar .icon-add{
+    background-color: #F7E074;
+    background-image: none;
+    color: #004B82;
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 75px;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    top: -3em;
+    width: 30%;
+}
+
+#TB_window .login-box .button-bar .icon-add span{
+    border-bottom: 1px solid #F7E074;
+}
+
+#TB_window .login-box .button-bar .icon-help{
+
+}
+
+#TB_window .login-box form .button-bar {
+    float: none;
+    width: 100%
+}
+
+#email-check, #fake-check, #password-rate, #password-check {
+    width: 375px;
+}
+
+#signup-form small#signup-balloon,
+#signup-form small#password-balloon,
+#signup-form small#password-confirmation-balloon,
+#signup-form small#email-balloon,
+#signup-form small#name-balloon {
+    right: 0;
+}
+
+/***********************Fim PopUp Login**************************/
+
+
 
 /*****************************************************/
 /*                  EMBED CSS                        */
@@ -1032,7 +1173,316 @@ div.pairwise_group_list_container .arrow span.active {
 }
 /*Fim Pairwise*/
 
+/************************Track_list - fazer limpeza***********************************/
 
+/*lista de pendencias*/
+.task_box {
+    background: none repeat scroll 0 0 #EEEEEE;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 1em;
+    position: relative;
+}
+
+/*fim lista de pendencias*/
+
+.tag_cloud a{
+     white-space: normal;
+}
+
+
+.community-track-plugin_track-card-list-block .track_list{
+    text-align: center;
+    padding: 0 0px;
+}
+
+.track_list .item_card {
+    background-color: #FFFAFA;
+    border: 1px solid #DDDDDD;
+    display: inline-block;
+    float: left;
+    clear: right;
+    margin: 12px 9px 9px;
+    max-width: 214px;
+    height: 426px;
+    padding: 0;
+    width: 214px;
+}
+
+
+
+.track_list .item_card a{
+    display: inline-block;
+}
+
+.track_list .item_card:hover {
+    background-color: white;
+}
+
+/*track list nos blocos laterais*/
+/*.box-2{
+  width:150px;
+}*/
+
+.box-2 .track_list .item_card,
+.box-3 .track_list .item_card {
+    margin: 10px 0px;
+    /*width: 188px;*/
+    width: 100%;
+}
+
+/**/
+
+
+#content .track_list .item_card .track_content{
+     height: 390px;
+     overflow: hidden;
+}
+
+#content .track_list .item_card .track_content .title{
+    color: white;
+    font-family: Arial,sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    min-height: 15px;
+    padding: 2px 0;
+    text-align: center;
+
+    vertical-align: middle;
+    width: 219px;
+    display: table-cell;
+     height: 45px;
+}
+#content .track_list .item_card .track_content .image{
+    border: 1px solid #ddd;
+    width: 196px;
+    height: 146px;
+    overflow: hidden;
+    margin: 8px;
+    background-color: #FFF;
+  position: relative;
+}
+/*imagem nos track list nos blocos laterais*/
+#content .box-2 .track_list .item_card .track_content .image,
+#content .box-3 .track_list .item_card .track_content .image {
+    width: 170px;
+}
+
+.track_list .image img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+#content .track_list .item_card .track_content .name {
+     font-size: 12px;
+    font-weight: normal;
+    padding: 5px 0;
+    text-align: left;
+    margin: 0 8px;
+    color: #444;
+     text-transform: uppercase;
+}
+
+
+#content .track_list .item_card .track_content .lead {
+    font-weight: normal;
+    padding: 5px 0;
+    margin: 0 8px;
+    text-align: left;
+    color: black;
+     font-size: 12px;
+}
+
+/**/
+
+/**/
+
+/*track list Internas*/
+
+.track_list .item {
+     border-bottom: 1px solid #DDDDDD;
+    display: inline-block;
+}
+
+.track_list .item .track_content .lead {
+    float: left;
+    padding: 2em;
+    text-align: left;
+    width: 40%;
+}
+
+/*track list - páginas internas - main content*/
+
+.track_list .track_content {
+     /*display: inline-block;*/
+     display: block;
+    height: 100%;
+}
+
+.track_list .item .track_content{
+    /*display: block;*/
+}
+
+
+.track_list .item .track_content .lead {
+    width: 30%;
+}
+
+.track_list .item .track_content .lead p.lead{
+    color: #444;
+}
+
+#content .track_list .item .track_content .lead a {
+    font-weight: bold;
+     color: #444;
+}
+
+/**/
+/*rodapé das cartas de participação*/
+.track_list .item_card .track_stats .comments .counter {
+  background: url("images/comentarios.png") no-repeat left center #fffafa;
+}
+.track_list .item_card .track_stats .hits .counter {
+  background: url("images/visualizacoes.png") no-repeat left center #fffafa;
+}
+
+.track_list .item_card .track_stats {
+  padding: 5px 5px 0;
+    height: 25px;
+}
+.track_list .item_card .track_stats .counter {
+  margin-top: 1px;
+  padding: 3px 0 0 30px;
+  text-align: left;
+  font-size: 10pt;
+  /*display: block;*/
+  color: #444;
+}
+.track_list .item_card .track_stats .comments{
+  float: left;
+}
+.track_list .item_card .track_stats .hits{
+  float: right;
+}
+.track_list .item_card .track_stats .hits .label,
+.track_list .item_card .track_stats .comments .label {
+  font-size: 7pt;
+  /*float: right;*/
+  color: #444;
+}
+.track_list .item_card .track_stats .comments .label {
+    display: none;
+    visibility: hidden;
+}
+
+/**/
+
+
+/*** step list ***/
+
+/*geral*/
+
+.track_list .item .step {
+    padding: 5px;
+}
+
+.track_list .item .track_content .steps {
+     width: 60%;
+    font-weight: normal;
+}
+
+.track_list .item .track_content .steps a:hover{
+    text-decoration: none;
+}
+
+
+.track_list .item .track_content .steps h3{
+    font-size: 13px !important;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.track_list .item .track_content .steps .position,
+#track .step_list .step .position {
+    border-radius: 50% 50% 50% 50%;
+    float: none;
+    font-size: 14px;
+    margin-right: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#track .step_list .step {
+    background: url("images/steps_bg.png") repeat-x center top #fff;/*branco com o fundo em degradê*/
+    display: inline-block;
+    width: 100%;
+}
+
+
+#track .step_list .step a {
+     background-color: transparent;/*transparente*/
+    color: #999;/*cinza escuro escuro*/
+}
+
+.step a:link, #content .step a:link, dl.portlet .step a:link {
+    color: #999; /*cinza escuro*/
+    /*teste*/
+    display: inline-block;
+   max-width: 80%;
+   vertical-align: middle;
+}
+
+#track .step_list .step .position {
+      background-color: #999;/*cinza escuro escuro*/
+      color: #fff;/*branco*/
+     display: inline-block;
+     font-size: 250%;
+     margin: 15px;
+     padding: 15px;
+     line-height: 15px;
+}
+
+#track .step_list .step .content {
+    display: inline-block;
+    margin: 10px;
+    vertical-align: middle;
+     border-bottom: 0 none;
+     vertical-align: top;
+     max-width: 80%;
+     /*max-width: 600px;*/
+}
+
+#track .step_list .step .content .date {
+    font-weight: normal;
+}
+
+#track .step_list .step .content .name {}
+
+#track .step .name,
+#track .step .name a {
+    color: #999;
+}
+
+#track .step_list .step .content .lead {
+    font-weight: normal;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: #666;
+}
+
+#track .step_list .step .content .lead p{
+    margin-bottom: 0px;
+}
+
+#track .step_list .step .content object,
+#track .step_list .step .content .lead img{
+    max-width: 80%;
+}
+/*******************************************************************/
 
 
 /*********fim Removido do cabecalho cinza theme******************/

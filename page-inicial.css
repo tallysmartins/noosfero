@@ -1,3 +1,16 @@
+/*organizacao dos blocos especifico para a pagina inicial*/
+/*Tamanho das colunas customizados na pagina inicial */
+.action-home-index .box-3{
+  width: 230px;
+}
+
+.action-home-index .box-1 {
+   /* display: inline-block;*/
+    width: 490px;
+    margin: 0 0 0 210px;
+}
+/******fim colunas na pagina inicial*******/
+
 /*campo de busca pagina inicial*/
 
 #catalogo-software-search{
@@ -6,15 +19,15 @@
   border-radius: 4px;
 }
 
-#catalogo-software-search h1{
+#content #catalogo-software-search h1{
   color:#FFFFFF !important;
   border-bottom: none !important;
   text-align: left;
-  margin:5px;
+  /*margin:5px;*/
   font-family:"open_sansregular", Arial;
   font-weight: normal;
   font-size:22px;
-  padding: 5px 0px 0px 0px;
+  /*padding: 5px 0px 0px 0px;*/
 }
 
 #content #search-Gadget {
@@ -108,7 +121,7 @@
   font-size: 14px;
 }
 
-#sbp-information-softwares h2{
+#content #sbp-information-softwares h2{
   margin: 10px 0px 0px 0px;
   font-size:16px;
   text-align:left;
@@ -116,6 +129,8 @@
   color:#454545; /*#464A55;*/
   padding:0px 0px 17px 15px; /*0px 0px 15px 20px;*/
   border-bottom:1px solid #c0c1c1;
+  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+  font-weight: normal;
 }
 
 #title-mais-software{
@@ -381,13 +396,27 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 }
 
 /* Bloco de notícias (Display contents) */
-
+/* Bloco de noticias sempre da mesma cor */
 #content .block.display-content-block .block-title {
     border-top: 4px solid #643C67;
     background: #eee;
     color: #643C67;
 }
 
+#content .box .block-outer .display-content-block .read-more {
+    border-top: 1px solid #643C67;
+    background: #eee;
+}
+
+#content .box .block-outer .display-content-block .read-more a {
+    color: #000000;
+}
+
+#content .box .block-outer .display-content-block .read-more a::after {
+  color: #FFFFFF;
+  background: #643C67;
+}
+/*********************************************************************/
 .block.display-content-block li {
     min-height: 150px;
     border-top: 1px solid #eee;
@@ -447,6 +476,7 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
 .block.display-content-block .read_more, .block.display-content-block .tags {
     display: none;
 }
+
 
 .lead a:visited, #content .lead a:visited, .lead dl.portlet a:visited {
     color: #172738;
