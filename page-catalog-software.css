@@ -71,7 +71,7 @@
   font-family:"open_sansregular", Arial, Helvetica, sans-serif;
   margin:0 !important;
   font-weight:bold;
-  font-size: 15px;
+  font-size: 15px !important;
 }
 
 .search-form #search-subheader{
