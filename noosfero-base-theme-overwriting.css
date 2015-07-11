@@ -5,7 +5,6 @@
 }
 
 #wrap-2 {
-  /*margin-top: 0;*/
   width: 960px;
   margin: 0 auto;
   border: none;
@@ -69,6 +68,7 @@
     padding-left: 0.3em;
     border-bottom: 1px solid #CCCCCC;
     border-top: 0px solid #172838;
+    font-weight: bold;
 }
 
 #content .title {
@@ -76,59 +76,22 @@
     padding-right: 70px;
 }
 
-/* verificar onde isso influencia*/
-#content .main-block h1,
-#content .no-boxes h1 {
-    font-size: 2.3em !important;
-    font-weight: bold !important;
-}
-
-#content .main-block h2 {
-    font-size: 1.8em !important;
-    min-height: 48px;
-}
-
 #content .main-block h3 {
-    font-size: 1.5em !important;
+    font-size: 1.5em;
     min-height: 48px;
 }
 
-#content .main-block #article-cat h4 {
-    font-size: 1.3em !important;
-    min-height: 0px;
-}
-
-div#article-parent {
-    /*position: absolute;*/
-     display: block;
-     position: relative;
-    right: 0px;
-    top: 0px;
-}
-
-#article-tags a:link {
-    clear: both;
-    display: inline-block;
-    margin-bottom: 1.5em;
-    color: white;
-    padding: 3px 5px;
-}
-
-#article-tags a:hover {
-    background-color: #000;
-   color: white;
-}
 /****************************************/
 
-/*documentos recentes - todo o site*/
+/*recent documents - everywhere on site*/
 #content .recent-documents-block ul {
     margin-left: 0;
     padding: 0;
 }
 
 #content .recent-documents-block li {
-    background: none repeat scroll 0 0 #eeeff2;/*#FFF;*/
-    border-bottom: 1px solid #c0c1c1; /*#CCCCCC;*/
+    background: none repeat scroll 0 0 #eeeff2;
+    border-bottom: 1px solid #c0c1c1; 
     display: block;
     margin: 0;
     min-height: 1em;
@@ -159,7 +122,7 @@ div#article-parent {
     border-top: 1px solid #ddd;
 }
 
-/* Menus que nao tiverem titulo, nao tem padding left e right e nao mostra os icones caso seja inserido */
+/* Menus without title shouldn't have padding left and right and shouldn't display icons if are inserted 8 */
 #content .link-list-block h3.empty + ul li a {
     padding-left: 0px;
     padding-right: 0px;
@@ -176,11 +139,10 @@ div#article-parent {
 
 #content .link-list-block li a {
     background-color: #fff;
-    /*border-bottom: 1px solid #64946E !important;*/
     border-radius: 0 0 0 0;
     border-right: medium none;
-    border-top: 0px solid #64946E !important;
-    color: #2C66CE; /*#454545;*/
+    border-top: 0px solid #64946E;
+    color: #2C66CE;
     font-weight: normal;
     width: auto;
     font-size: 14px;
@@ -200,25 +162,25 @@ div#article-parent {
 }
 
 #content .box .link-list-block li a.link-this-page {
-    background-color: #ffffff; /*#EEEFFF;*/
+    background-color: #ffffff;
     font-weight: bold;
     width: auto;
     margin-left: 0px;
 }
 
 #site-title {
-position: absolute;
-left: 8px;
-top: -160px;
-height: 78px;
-width: 480px;
-display: none;
+  position: absolute;
+  left: 8px;
+  top: -160px;
+  height: 78px;
+  width: 480px;
+  display: none;
 }
 
 #content {
     left: -480px;
     margin-left: 50%;
-    margin-top: 38px; /*30px;*/
+    margin-top: 38px;
     position: relative;
     width: 960px;
 }
@@ -241,7 +203,6 @@ input.button.with-text {
     background-color: #EEEEEE;
     background-repeat: no-repeat;
     border: 0px solid #CCCCCC;
-     /*border-bottom: 1px solid #CCCCCC;*/
     color: #555555;
     line-height: 16px;
     text-decoration: none;
@@ -279,7 +240,7 @@ input.button.with-text {
     border: 1px solid #CCCCCC;
 }
 
-/*label dos radio buttons da busca*/
+/*label of search's radio buttons*/
 #content .search-field label {
     display: inline-block;
     font-size: 12px;
@@ -295,5 +256,5 @@ input.button.with-text {
     margin-left: 1em;
 }
 
-/*********************fim sobrescrevendo themes/base/style.css*********************************/
+/*********************end of overwritting themes/base/style.css*********************************/
 

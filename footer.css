@@ -102,6 +102,20 @@ color:#717782
 footer .footer-atalhos .voltar-ao-topo a:hover {
 text-decoration:underline
 }
+
+.voltar-ao-topo {
+  margin-top: 1.915em;
+  text-align: right;
+}
+
+
+.voltar-ao-topo a {
+  padding-left: 20px;
+  background: url(images/voltar-topo.png) no-repeat left center !important;
+  color: #777 !important;
+  font-size: 15px;
+}
+
 footer .container-menus {
 /*padding:46px 0 0 0*/
 }

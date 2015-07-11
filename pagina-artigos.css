@@ -65,7 +65,6 @@
   font-family:  arial;
 }
 
-#content .main-block .article-body .zoomable-image,
 #content .main-block .article-body img {
  display: block;
 }
@@ -76,148 +75,6 @@
   font-size: 11px;
   line-height: 16px;
   color: #172938;
-}
-
-.article-body ul.lista-ajuda {
-  padding-top: 20px;
-  margin-top: 45px;
-  margin-bottom: 20px;
-  border-top: 1px solid #ddd;
-  font-size: 15px;
-}
-
-.article-body ul.lista-ajuda li {
-  list-style-position: inside;
-  margin-bottom: 2px;
-}
-
-.article-body ul.etapas-publicacao {
-  margin-bottom: 20px;
-}
-
-.article-body ul.etapas-publicacao li {
-  list-style: none;
-  list-style-position: inside;
-  margin-bottom: 10px;
-}
-
-.article-body ul.etapas-publicacao li strong {
-  background: #333;
-  padding: 2px 8px;
-  border-radius: 50%;
-  color: #fff;
-  float: left;
-  margin-right: 6px;
-}
-
-#content .main-block .created-at {
-  font-family: arial !important;
-  border-top: 1px solid #D7D7D7;
-  padding-top: 25px;
-  margin-top: 25px;
-  font-size: 12px;
-  color: #2C66CE;
-}
-
-#content .main-block .created-at a {
-  color: #2C66CE;
-}
-
-#content .main-block .txt-credit {
-  font-size: 12px;
-  color: #172938;
-}
-
-#content .main-block .txt-credit a {
-  color: #2C66CE;
-}
-
-#content .main-block #article-cat {
-  font-size: 21px !important;
-}
-
-.page-comment-form {
-  padding: 10px 0;
-}
-
-
-
-hr {
-  border: 0;
-    height: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  margin: 30px 0;
-}
-
-ol li {
-  margin-bottom: 5px;
-}
-
-.voltar-ao-topo {
-  margin-top: 1.915em;
-  text-align: right;
-}
-
-
-.voltar-ao-topo a {
-  padding-left: 20px;
-  background: url(images/voltar-topo.png) no-repeat left center !important;
-  color: #777 !important;
-  font-size: 15px;
-}
-
-.ancor {
-  text-decoration: none !important;
-  border-bottom: 1px dotted;
-  margin-right: 5px;
-}
-
-.ancor:hover {
-  border-bottom: 1px solid;
-}
-
-
-#article-hits {
-  display:none !important;
-
-}
-
-.main-block #article-header H1.title{
-  font-size: 34px !important;
-  line-height: 37px !important;
-  margin-bottom:  10px !important;
-}
-
-.article-body {
-    line-height: 21px;
-    font-family: arial;
-    font-size: 15px;
-}
-
-#content .main-block h2, #content .main-block h3 {
-  min-height: 0 !important;
-}
-
-#content .main-block .article-body h2 {
- font-size: 16px !important;
-  font-weight: bold;
-  line-height: 21px;
-  margin-bottom: 20px;
-  font-family:  arial;
-}
-
-#content .main-block .article-body h3 {
-   font-size: 15px !important;;
-   line-height: 21px;
-   font-weight: bold;
-   margin-bottom: 20px;
-   font-family:  arial;
-}
-
-#content .main-block .article-body P {
-  margin-bottom: 22px;
-  font-family:  arial;
 }
 
 #content .main-block .article-body P strong {
@@ -269,6 +126,96 @@ ol li {
 
 #content .main-block .created-at {
   font-family: arial !important;
+  border-top: 1px solid #D7D7D7;
+  padding-top: 25px;
+  margin-top: 25px;
+  font-size: 12px;
+  color: #2C66CE;
+}
+
+#content .main-block .created-at a {
+  color: #2C66CE;
+}
+
+#content .main-block .txt-credit {
+  font-size: 12px;
+  color: #172938;
+}
+
+#content .main-block .txt-credit a {
+  color: #2C66CE;
+}
+
+#content .main-block #article-cat {
+  font-size: 21px !important;
+}
+  
+#content .main-block #article-cat h4 {
+    font-size: 1.3em;
+    min-height: 0px;
+}
+
+#article-tags a:link {
+    clear: both;
+    display: inline-block;
+    margin-bottom: 1.5em;
+    color: white;
+    padding: 3px 5px;
+}
+
+#article-tags a:hover {
+    background-color: #000;
+   color: white;
+}
+
+.page-comment-form {
+  padding: 10px 0;
+}
+
+hr {
+  border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 30px 0;
+}
+
+ol li {
+  margin-bottom: 5px;
+}
+
+div#article-parent {
+    display: block;
+    position: relative;
+    right: 0px;
+    top: 0px;
+}
+
+.ancor {
+  text-decoration: none !important;
+  border-bottom: 1px dotted;
+  margin-right: 5px;
+}
+
+.ancor:hover {
+  border-bottom: 1px solid;
+}
+
+#article-hits {
+  display:none !important;
+
+}
+
+.main-block #article-header H1.title{
+  font-size: 34px !important;
+  line-height: 37px !important;
+  margin-bottom:  10px !important;
+}
+
+.article-body {
+    line-height: 21px;
+    font-family: arial;
+    font-size: 15px;
 }
 
 /* Pagina Ultimas noticias */
