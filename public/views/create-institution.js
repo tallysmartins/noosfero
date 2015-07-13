@@ -398,6 +398,10 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     init: function() {
       set_form_count_custom_data();
       set_events();
+    },
+    
+    institution_autocomplete: function(){
+      institution_autocomplete();
     }
   }
 });

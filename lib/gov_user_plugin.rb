@@ -153,6 +153,7 @@ class GovUserPlugin < Noosfero::Plugin
     views/create-institution.js
     views/new-community.js
     views/user-edit-profile.js
+    views/gov-user-comments-extra-fields.js
     initializer.js
     app.js
     )
@@ -230,6 +231,10 @@ class GovUserPlugin < Noosfero::Plugin
         update_attributes!(context.params[:institution])
       end
     end
+  end
+
+  def communities_ratings_plugin_comments_extra_fields
+    Proc::new do render :file => 'comments_extra_field' end
   end
 
   private
