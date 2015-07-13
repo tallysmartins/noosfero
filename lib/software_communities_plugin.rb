@@ -71,7 +71,9 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   end
 
   def communities_ratings_plugin_comments_extra_fields
-    Proc::new do render :file => 'comments_extra_fields' end
+    if context.profile.software?
+      Proc::new { render :file => 'comments_extra_fields' }
+    end
   end
 
   def communities_ratings_plugin_star_message
