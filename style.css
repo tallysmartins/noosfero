@@ -3144,7 +3144,7 @@ input[type=checkbox] {
   border-top: 1px solid #D3D6DE !important;
   color: #172738;
   margin-top: 19px;
-  padding-top: 30px;
+  padding-top: 29px;
   padding-left: 8px;
 }
 
@@ -3227,6 +3227,25 @@ input[type=checkbox] {
   padding-top: 10px;
 }
 
+#content .star-rate-form .star-comment-container .comments-software-extra-fields {
+    overflow: auto;
+}
+
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments {
+     margin-bottom: 19px;
+     margin-top: 16px;
+}
+
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments label {
+    font-size: 12px;
+}
+
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments input {
+    margin-top: 5px;
+    padding: 4px 3px 3px 3px;
+    width: 366px;
+}
+
 #content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-people-benefited,
 #content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values {
   font-size: 12px;
@@ -3234,31 +3253,51 @@ input[type=checkbox] {
   padding-right: 20px;
 }
 
-#content .star-rate-form .star-comment-container .comments-software-extra-fields span {
-  border-bottom: 1px dotted #D3D6DE;
+#content .star-rate-form .star-comment-container form .formfieldline {
+    margin-bottom: 17px;
+}
+
+#content .star-rate-form .star-comment-container .comments-display-fields {
+    border-bottom: 1px dotted #D3D6DE;
+    overflow: auto;
+}
+
+#content .star-rate-form .star-comment-container .comments-display-fields span#comments-additional-information {
   color: #172738;
   display: block;
+  float: left;
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.15px;
-  margin-bottom: 16px;
-  margin-top: 17px;
   padding-bottom: 4px;
+}
+
+#content .star-rate-form .star-comment-container .comments-display-fields span.comments-arrow-up {
+    content: url('images/top-arrow-black.png');
+    float: right;
+    padding-top: 7px;
+    padding-right: 6px;
+}
+
+#content .star-rate-form .star-comment-container .comments-display-fields span.comments-arrow-down {
+    content: url('images/bottom-arrow-black.png');
+    float: right;
+    padding-top: 7px;
+    padding-right: 6px;
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #comments_people_benefited,
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #comments_saved_value {
-  width: 153px;
+  width: 167px;
   padding: 4px;
   margin-top: 4px;
 }
 
-/*
+
 .star-rate-data {
   background-image: url('images/validacao_frontend_relato_de_uso.jpg');
   background-repeat: no-repeat;
 }
-*/
+
 
 
 /*********************** PÁGINA DE AJUDA ***********************/
