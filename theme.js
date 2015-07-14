@@ -137,11 +137,14 @@ $('#link-buscar').click(function(e) {
   /* Finds all uploaded files from manuals page and sets its names on the right format */
   function set_uploaded_files_names() {
     var article = document.getElementById('article');
-    var folderList = article.getElementsByClassName('folder-content')[0];
-    var folderItens = folderList.getElementsByClassName('item-description');
-
-    for(var i = 0; i < folderItens.length; i++) {
-      split_file_extension(folderItens[i].getElementsByTagName('a')[0]);
+    if(article != null){
+      var folderList = article.getElementsByClassName('folder-content')[0];
+      if(folderList != null){
+        var folderItens = folderList.getElementsByClassName('item-description');
+        for(var i = 0; i < folderItens.length; i++) {
+          split_file_extension(folderItens[i].getElementsByTagName('a')[0]);
+        }
+      }
     }
   }
 
