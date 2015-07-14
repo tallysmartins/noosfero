@@ -3303,11 +3303,10 @@ input[type=checkbox] {
     border-radius: 90%;
     font-size: 12px;
     font-weight: 700;
-    background: #5E82C6;
+    background: #3867b7;
     color: #fff;
     margin-left: 4px;
-    padding: 0px 5px 0px 6px;
-    cursor: pointer;
+    padding: 0px 6px;
 }
 
 /* IMAGEM DE REFERÊNCIA
