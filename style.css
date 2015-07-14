@@ -2944,18 +2944,10 @@ div.software-step-info div.current-step h3 {
   box-shadow: none;
 }
 
-#content .main-block .blog-post p {
-  text-align: justify;
-}
-
 /** Software pages - temporary adjusts **/
 
 .controller-content_viewer.profile-homepage #article hr{
   display: none;
-}
-
-#content .main-block #article p{
-  text-align: justify;
 }
 
 #content .main-block #article .folder-content .item-info {
@@ -3267,3 +3259,55 @@ input[type=checkbox] {
   background-repeat: no-repeat;
 }
 */
+
+
+/*********************** PÁGINA DE AJUDA ***********************/
+
+#content .main-content .tiny-mce-article .article-body-tiny-mce-article ul.help-list li {
+    list-style-type: none;
+    padding-bottom: 5px;
+}
+
+#content .main-content .tiny-mce-article .article-body-tiny-mce-article ul.help-list li a[href="#faq"]:before {
+    content: url('images/arrow-globe-icon.png');
+    vertical-align: middle;
+    padding-right: 5px;
+}
+
+#content .main-content .tiny-mce-article .article-body-tiny-mce-article ul.help-list li a[href="#lista-discussao"]:before {
+    content: url('images/balloon-icon.png');
+    vertical-align: middle;
+    padding-left: 3px;
+    padding-right: 6px;
+}
+
+#content .main-content .tiny-mce-article .article-body-tiny-mce-article ul.help-list li a {
+    color: #2c66ce;
+    font-size: 15px;
+}
+
+#content .main-content .tiny-mce-article .article-body-tiny-mce-article ul.help-list {
+    border-top: 1px solid #D3D6DE;
+    padding-top: 21px;
+}
+
+#content .main-content .tiny-mce-article .article-body-tiny-mce-article {
+    /*background-image: url('images/ajuda_teste_2.png');*/
+}
+
+#content .main-content .tiny-mce-article .article-body-tiny-mce-article p {
+    margin-bottom: 28px;
+}
+
+#content .main-content .tiny-mce-article .article-body-tiny-mce-article .article-header h1.help-page-title {
+    font-size: 26px !important;
+    letter-spacing: -0.1px;
+    line-height: 30px !important;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    margin-bottom: 30px !important;
+}
+
+#content .main-content .tiny-mce-article .article-body-tiny-mce-article p a {
+    color: #2c66ce;
+}
