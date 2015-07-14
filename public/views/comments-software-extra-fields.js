@@ -5,26 +5,26 @@ modulejs.define('CommentsSoftwareExtraFields', ['jquery'], function($) {
     information_display_state: "hidden"
   }
 
-  function set_show_aditional_information() {
-    $(".comments-software-extra-fields span").on("click", function() {
+  function set_show_additional_information() {
+    $("#comments-additional-information").on("click", function() {
       if (DATA.information_display_state === "hidden") {
         DATA.information_display_state = "show";
-        $(this).parent().children("div").show();
+        $(".comments-software-extra-fields div").show();
       } else {
         DATA.information_display_state = "hidden";
-        $(this).parent().children("div").hide();
+        $(".comments-software-extra-fields div").hide();
       }
     });
   }
 
   return {
     isCurrentPage: function() {
-      return $(".comments-software-extra-fields span").length === 1;
+      return $(".star-rate-form").length === 1;
     },
 
 
     init: function() {
-      set_show_aditional_information();
+      set_show_additional_information();
     }
   }
 });

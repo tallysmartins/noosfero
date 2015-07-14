@@ -164,7 +164,7 @@
 }
 
 /*===== Communities rate hotspot extra fields =====*/
-.comments-software-extra-fields span {
+#comments-additional-information {
   cursor: pointer;
 }
 
