@@ -3300,6 +3300,7 @@ input[type=checkbox] {
 }
 
 #content .main-content .tiny-mce-article .article-body-tiny-mce-article .article-header h1.help-page-title {
+    border-top: none !important;
     font-size: 26px !important;
     letter-spacing: -0.1px;
     line-height: 30px !important;
