@@ -5,11 +5,11 @@ modulejs.define("GovUserCommentsExtraFields", ['jquery','CreateInstitution'], fu
     }
 
 
-    function prepend_to_aditional_information() {
-      var aditional_information = $(".comments-software-extra-fields");
-      var institution_comments = $("#input_institution_comments");
+    function prepend_to_additional_information() {
+      var additional_information = $("#comments-additional-information");
+      var institution_comments = $("#input_institution_comments").remove();
 
-      aditional_information.prepend(institution_comments.remove());
+      institution_comments.insertAfter(additional_information);
     }
 
 
@@ -19,7 +19,7 @@ modulejs.define("GovUserCommentsExtraFields", ['jquery','CreateInstitution'], fu
       },
 
       init: function() {
-        prepend_to_aditional_information();
+        prepend_to_additional_information();
         set_events();
       }
     }

@@ -1,7 +1,10 @@
 <div id="input_institution_comments">
   <%= label_tag "input_institution", _("Organiztion name or Enterprise name")%>
-  <%= text_field_tag "comments[instituton_name]", "", id: "input_institution" %>
+
+  <input type="text" id="input_institution">
+
   <%= content_tag(:div, _("No institution found"),
                   :id=>"institution_empty_ajax_message",
                   :class=>"errorExplanation hide-field") %>
+  <%= hidden_field_tag "community_rating[institution_id]", "", id: "institution_selected" %>
 </div>

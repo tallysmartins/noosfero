@@ -1,4 +1,7 @@
 class Institution < ActiveRecord::Base
+  has_many :community_ratings
+  alias :communities_ratings :community_ratings
+  alias :communities_ratings= :community_ratings=
 
   SEARCH_FILTERS = {
     :order => %w[],
