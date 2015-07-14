@@ -3241,7 +3241,7 @@ input[type=checkbox] {
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments input {
-    margin-top: 5px;
+    margin-top: 3px;
     padding: 4px 3px 3px 3px;
     width: 366px;
 }
@@ -3292,6 +3292,16 @@ input[type=checkbox] {
   margin-top: 4px;
 }
 
+#content .star-rate-form .star-comment-container .star-tooltip {
+    content: '?';
+    border-radius: 90%;
+    font-size: 12px;
+    font-weight: 700;
+    background: #3867b7;
+    color: #fff;
+    margin-left: 4px;
+    padding: 0px 6px;
+}
 
 .star-rate-data {
   background-image: url('images/validacao_frontend_relato_de_uso.jpg');
