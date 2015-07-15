@@ -36,7 +36,7 @@ Obtendo o repositório de configuração
 -------------------------------------
 
 Para iniciar, é necessário uma conta e usuário no SPB, com uma chave SSH
-configurada.
+configurada. Mais informações em :doc:`/apoio`.
 
 Para obter o repositório de configuração, é necessário clonar o
 repositório com ``git``::
@@ -48,7 +48,6 @@ repositório, então se certifique que o seu *shell* está no diretório
 onde foi clonado o repositório::
 
     $ cd softwarepublico/
-
 
 Preparação dos servidores
 -------------------------
@@ -64,6 +63,7 @@ Preparação dos servidores
   * ter acesso SSH configurado via chave SSH para evitar digitar senha,
     a partir da estação de trabalho utilizada. Ou seja, a chave pública
     SSH **da estação de trabalho** deve ser copiada para cada servidor.
+    Para mais informações, veja a :doc:`/apoio`.
 
 * O ``sudo`` não deve estar configurado com a opção ``requiretty``. Se
   houver uma linha como a seguinte em ``/etc/sudoers``, ela deve ser
@@ -129,6 +129,8 @@ DNS:
 
 .. include:: dns.rst
 
+.. _verificandoambiente:
+
 Verificando o ambiente
 ----------------------
 
@@ -159,7 +161,7 @@ ser omitido se você tiver configurado o *default* em ``local.rake``.
 
 Para testar a conectividade às máquinas, devemos antes realizar a
 preconfiguração das máquinas, caso o sistema nunca tenha sido instalado.
-Note que se este passo só deve ser realizado uma única vez::
+Note que se este passo deve ser realizado uma **única vez**::
 
     $ rake preconfig SPB_ENV=@@SPB_ENV@@
 
@@ -186,9 +188,10 @@ parecido com o seguinte::
     reverseproxy: Qui Mai 14 18:59:28 BRT 2015
 
 Se o resultado se parece com o exemplo acima, e você não precisou digitar a sua
-senha nehuma vez, significa que 1) você conseguiu conectar em todas as máquinas
-e 2) o sudo sem senha está configurado corretamente. Está tudo certo para
-começar!
+senha nehuma vez, significa que:
+
+1) você conseguiu conectar em todas as máquinas.
+2) o sudo sem senha está configurado corretamente. Está tudo certo para começar!
 
 Nota sobre certificado SSL
 --------------------------
@@ -227,7 +230,7 @@ Primeira instalação
 
 Uma vez configurados os parâmetros em ``config/@@SPB_ENV@@/``, podemos
 dar início à instalação. O primeiro passo é uma preconfiguração que
-precisamos fazer, caso não tenha sido feito em "Verificando o Ambiente"::
+precisamos fazer, caso não tenha sido feito em :ref:`verificandoambiente`::
 
     $ rake preconfig SPB_ENV=@@SPB_ENV@@
 

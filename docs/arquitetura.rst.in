@@ -50,7 +50,7 @@ originada da integration. Conexões na porta 22 da máquina reverseproxy são
 redirecionadas para integration. As máquinas email, social e database aceitam
 conexão SSH vindas da integration na porta 22 e a reverseproxy em uma porta
 alternativa, especificada no arquivo de configuração do ambiente,
-config/$SPB_ENV/config.yaml pelo valor passado a 'alt_ssh_port'. 
+config/$SPB_ENV/config.yaml pelo valor passado a 'alt_ssh_port'.
 
 Por exemplo, para se conectar na máquina email é necessário estabelecer conexão
 SSH na porta 22 da reverseproxy, esta conexão será redirecionada para a máquina
@@ -77,7 +77,7 @@ ser obtido a partir do comando::
   $ git clone git@portal.softwarepublico.gov.br:softwarepublico/softwarepublico.git
 
 Note que para tal, é necessário possuir uma conta no Portal do SPB com chaves
-SSH configuradas.
+SSH configuradas. Para mais informações sobre essas configurações, veja a :doc:`/apoio`.
 
 Este repositório contém scripts que realizam todos os passos necessários
 para a instalação, configuração e manutenção do ambiente. Isto é feito
