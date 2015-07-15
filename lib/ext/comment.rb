@@ -1,6 +1,6 @@
-require_dependency "community_rating"
+require_dependency "comment"
 
-CommunityRating.class_eval do
+Comment.class_eval do
   attr_accessible :institution_id
 
   belongs_to :institution

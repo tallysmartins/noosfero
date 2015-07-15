@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
 require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
-class CommunityRatingTest < ActiveSupport::TestCase
+class CommentTest < ActiveSupport::TestCase
   include PluginTestHelper
 
   should "validate institution if there an institution_id" do
@@ -9,15 +9,15 @@ class CommunityRatingTest < ActiveSupport::TestCase
 
     assert_equal true, private_institution.save
 
-    rating = CommunityRating.new :institution_id => 123456
-    rating.valid?
+    comment = Comment.new :institution_id => 123456, :body => "simple body"
+    comment.valid?
 
-    assert_equal true, rating.errors[:institution].include?("not found")
+    assert_equal true, comment.errors[:institution].include?("not found")
 
-    rating.institution = private_institution
-    rating.valid?
+    comment.institution = private_institution
+    comment.valid?
 
-    assert_equal false, rating.errors[:institution].include?("not found")
+    assert_equal false, comment.errors[:institution].include?("not found")
   end
 
   private
