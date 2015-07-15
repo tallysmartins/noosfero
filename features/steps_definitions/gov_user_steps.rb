@@ -66,7 +66,6 @@ Given /^the following public institutions?$/ do |table|
   end
 end
 
-
 Given /^I sleep for (\d+) seconds$/ do |time|
   sleep time.to_i
 end
@@ -88,3 +87,4 @@ Given /^I am logged in as mpog_admin$/ do
   fill_in("Password", :with => '123456')
   click_button("Log in")
 end
+
