@@ -1,5 +1,10 @@
-modulejs.define('SoftwareDownload', ['jquery'], function($) {
+modulejs.define('SoftwareDownload', ['jquery', 'NoosferoRoot'], function($, NoosferoRoot) {
   'use strict';
+
+  var AJAX_URL = {
+    get_download_template:
+      NoosferoRoot.urlWithSubDirectory("/plugin/software_communities/get_block_template")
+  };
 
   var $download_html_template;
 
@@ -9,7 +14,7 @@ modulejs.define('SoftwareDownload', ['jquery'], function($) {
     if(block_template && block_template.length > 0) {
       $download_html_template = block_template;
     } else {
-      $.get('/plugin/software_communities/get_block_template', function(response) {
+      $.get(AJAX_URL.get_download_template, function(response) {
         $download_html_template = response;
         sessionStorage.setItem('download_list_block_template', response);
       });
