@@ -263,7 +263,9 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
 
   function add_mask_to_form_items() {
-//    $(".intitution_cnpj_field").mask("99.999.999/9999-99");
+    if ($.mask) {
+      $("#institutions_cnpj").mask("99.999.999/9999-99");
+    }
   }
 
 
