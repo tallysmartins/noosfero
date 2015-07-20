@@ -20,7 +20,7 @@ end
 execute 'setenforce Enforcing' do
   only_if 'selinux-enabled'
 end
-execute 'setsebool httpd_can_network_connect 1' do
+execute 'setsebool -P httpd_can_network_connect 1' do
   only_if 'selinux-enabled'
 end
 # directory for local type enforcements
