@@ -1,0 +1,14 @@
+admins:
+  - ["Paulo Meirelles", "paulo@softwarelivre.org"]
+external_hostname: spb.cdtc.unb.br
+external_ip: 164.41.9.49
+site_url: https://spb.cdtc.unb.br
+colab_from_address: '"Portal do Software Publico" <noreply@spb.cdtc.unb.br>'
+server_email: '"Portal do Software Publico" <noreply@spb.cdtc.unb.br>'
+email_subject_prefix: '[spb]'
+lists_hostname: listas.spb.cdtc.unb.br
+lists_admin: paulo@softwarelivre.org
+relay_hostname: relay.spb.cdtc.unb.br
+relay_ip: 164.41.9.48
+alt_ssh_port: 55555
+from_address: noreply@spb.cdtc.unb.br
