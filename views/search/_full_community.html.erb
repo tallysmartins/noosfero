@@ -1,13 +1,13 @@
 <% software = community.software_info %>
 <li class="search-profile-item">
-  <div class="search-enterprise-item">
-    <div class="search-enterprise-item-column-left">
+  <div class="search-software-item">
+    <div class="search-software-item-column-left">
       <%= profile_image_link community, :portrait, 'div', community.send(@order + '_label') + show_date(community.created_at) %>
     </div>
 
-    <div class="search-enterprise-item-column-right">
+    <div class="search-software-item-column-right">
 
-      <div class="search-community-content-block">
+      <div class="search-software-content-block">
         <span>
           <% link_name = software.acronym.blank? ? community.name : "#{software.acronym} - #{community.name}" %>
           <h4>
@@ -22,7 +22,7 @@
 
       <br />
 
-      <div class="search-community-content-block">
+      <div class="search-software-content-block">
         <span>
           <b>
             <%= _("Software Categories") %>:
