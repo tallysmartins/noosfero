@@ -237,6 +237,17 @@ class GovUserPlugin < Noosfero::Plugin
     Proc::new do render :file => 'comments_extra_field' end
   end
 
+  def communities_ratings_plugin_extra_fields_show_data user_rating
+    is_admin = environment.admins.include?(current_user.person)
+
+    if is_admin and context.profile.software?
+      Proc::new {
+        render :file => 'communities_ratings_extra_fields_show_institution',
+               :locals => {:user_rating => user_rating}
+      }
+    end
+  end
+
   private
 
   def call_model_transaction(model,name)
