@@ -38,5 +38,6 @@ class SoftwareReleaseDate < ActiveRecord::Migration
   end
 
   def down
+    say "This can't be reverted"
   end
 end
