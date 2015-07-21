@@ -348,9 +348,12 @@ margin: -10px 0px 10px 20px; /*-20px 20px;
     display: none;
 }
 
-#content .block.display-content-block .block-title,
+#content .block.display-content-block .block-title {
+  margin: 0px;
+}
+
 #content .block.softwares-block .block-title {
-    margin: 0px 0px 25px 0px;
+  margin: 0px 0px 25px 0px;
 }
 
 /* Bloco de notícias (Display contents) */
