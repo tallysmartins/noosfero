@@ -1,3 +1,5 @@
-# from django.shortcuts import render
+from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+def get_list(request,path=None,list_name=None):
+    return HttpResponse('Hello Word')
