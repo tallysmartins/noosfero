@@ -162,6 +162,22 @@ $('#link-buscar').click(function(e) {
     $('.star-tooltip').html("?");
   }
 
+  function set_arrow_direction() {
+    var additional_data_bar = $('#comments-additional-information');
+    var arrow = $('.comments-arrow-down');
+    var state = 0;
+
+    additional_data_bar.on('click', function() {
+      if(state === 0) {
+        arrow.attr('class', "comments-arrow-up")
+        state = 1;
+      } else {
+        state = 0;
+        arrow.attr('class', "comments-arrow-down");
+      }
+    });
+  }
+
   $(document).ready(function(){
     set_events();
     move_article_buttons();
@@ -169,5 +185,6 @@ $('#link-buscar').click(function(e) {
     insert_notice_div();
     set_uploaded_files_names();
     set_tooltip_content();
+    set_arrow_direction();
     });
 })(jQuery);
