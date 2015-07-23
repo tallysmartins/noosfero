@@ -44,6 +44,7 @@ plugins = [
   'statistics',
   'sub_organizations',
   'video',
+  'spb_migrations',
 ]
 
 execute 'plugins:enable' do
