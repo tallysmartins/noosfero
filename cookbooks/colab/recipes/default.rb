@@ -79,7 +79,7 @@ execute 'create-admin-token-gitlab' do
 
   user_exist = lambda do
     Dir.chdir '/usr/lib/gitlab' do
-      `RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@example.com\').nil?\"`.strip
+      `RAILS_ENV=production bundle exec rails runner \"puts User.find_by_name(\'admin-gitlab\').nil?\"`.strip
     end
   end
 
@@ -97,7 +97,7 @@ template '/etc/colab/settings.d/01-apps.yaml' do
 
   get_private_token =  lambda do
     Dir.chdir '/usr/lib/gitlab' do
-      `sudo -u git RAILS_ENV=production bundle exec rails runner \"puts User.find_by_email(\'admin-gitlab@example.com\').private_token\"`.strip
+      `sudo -u git RAILS_ENV=production bundle exec rails runner \"puts User.find_by_name(\'admin-gitlab\').private_token\"`.strip
     end
   end
 
