@@ -136,15 +136,16 @@ $('#link-buscar').click(function(e) {
 
   /* Finds all uploaded files from manuals page and sets its names on the right format */
   function set_uploaded_files_names() {
-    var article = document.getElementById('article');
-    if(article != null){
+   try {
+      var article = document.getElementById('article');
       var folderList = article.getElementsByClassName('folder-content')[0];
-      if(folderList != null){
-        var folderItens = folderList.getElementsByClassName('item-description');
-        for(var i = 0; i < folderItens.length; i++) {
-          split_file_extension(folderItens[i].getElementsByTagName('a')[0]);
-        }
+      var folderItens = folderList.getElementsByClassName('item-description');
+
+      for(var i = 0; i < folderItens.length; i++) {
+        split_file_extension(folderItens[i].getElementsByTagName('a')[0]);
       }
+    } catch(e) {
+
     }
   }
 
@@ -162,6 +163,22 @@ $('#link-buscar').click(function(e) {
     $('.star-tooltip').html("?");
   }
 
+  function set_arrow_direction() {
+    var additional_data_bar = $('#comments-additional-information');
+    var arrow = $('.comments-arrow-down');
+    var state = 0;
+
+    additional_data_bar.on('click', function() {
+      if(state === 0) {
+        arrow.attr('class', "comments-arrow-up")
+        state = 1;
+      } else {
+        state = 0;
+        arrow.attr('class', "comments-arrow-down");
+      }
+    });
+  }
+
   $(document).ready(function(){
     set_events();
     move_article_buttons();
@@ -169,5 +186,6 @@ $('#link-buscar').click(function(e) {
     insert_notice_div();
     set_uploaded_files_names();
     set_tooltip_content();
+    set_arrow_direction();
     });
 })(jQuery);
