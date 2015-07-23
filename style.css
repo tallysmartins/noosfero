@@ -3318,6 +3318,7 @@ input[type=checkbox] {
 
 .ratings-list {
   background-image: url('images/tela_listagem_relato_uso_v4_fechado.jpg');
+  background-image: url('images/print_listagem.jpg');
   background-repeat: no-repeat;
 }*/
 
@@ -3350,6 +3351,7 @@ input[type=checkbox] {
 
 .ratings-list .user-rating-block .user-testimony-container .user-testimony {
   font-size: 16px;
+  line-height: 20px;
   margin-top: 12px;
 }
 
