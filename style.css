@@ -3129,13 +3129,13 @@ input[type=checkbox] {
 }
 
 /******************** RELATO DE USO - AVALIAÇÃO DO USUÁRIO **********************/
-/*
-.main-content {
+
+/*.main-content {
     background-image: url('images/tela_listagem_relato_uso_v3.jpg');
     background-repeat: no-repeat;
     padding: 0px;
-}
-*/
+}*/
+
 #content .main-content .star-page-title .title {
   font-size: 34px !important;
 }
@@ -3143,7 +3143,7 @@ input[type=checkbox] {
 #content .main-content .star-rate-data {
   border-top: 1px solid #D3D6DE !important;
   color: #172738;
-  margin-top: 19px;
+  margin-top: 16px;
   padding-top: 29px;
 }
 
@@ -3333,9 +3333,9 @@ input[type=checkbox] {
 }
 
 .ratings-list .user-rating-block {
-  padding-bottom: 10px;
+  padding-bottom: 23px;
   padding-top: 32px;
-  margin-top: 23px;
+  margin-top: 10px;
 }
 
 .ratings-list .star-profile-information {
@@ -3385,6 +3385,43 @@ input[type=checkbox] {
 
 .ratings-list .user-rating-block .user-testimony-container .aditional-informations {
   margin-top: 10px;
+}
+
+#content .ratings-title .block-title {
+  background: none;
+  border-top: none;
+  color: #172738;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  padding: 0px 0px 0px 4px;
+}
+
+.ratings-list .make-report-block {
+  background-image: url('images/test.jpg');
+  background-repeat: no-repeat;
+  padding-top: 32px;
+}
+
+.make-report-block .star-profile-information {
+  padding-right: 13px;
+}
+
+.ratings-list .make-report-block .make-report-container {
+  padding-top: 2px;
+}
+
+.ratings-list .make-report-block .make-report-container .make-report-message {
+  font-size: 18px;
+}
+
+.ratings-list .make-report-block .make-report-container .button-bar {
+  padding-top: 28px;
+}
+
+.ratings-list .make-report-block .make-report-container .button-bar a {
+  background-image: none;
+  text-align: center;
 }
 
 /*********************** PÁGINA DE AJUDA ***********************/
