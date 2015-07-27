@@ -179,7 +179,32 @@ $('#link-buscar').click(function(e) {
     });
   }
 
+  function add_top_tooltips(){
+    $('#content span[title]').attr("data-toggle","tooltip");
+
+    $('[data-toggle="tooltip"]').tooltip({
+        position: {
+            my: "top-82",
+            at: "center"
+        },
+        tooltipClass: "ui-tooltip-top"
+    });
+  }
+
+  function add_bottom_tooltips(){
+    $('#content span[title]').attr("data-toggle","tooltip");
+
+    $('[data-toggle="tooltip"]').tooltip({
+        position: {
+            my: "bottom+82",
+            at: "center"
+        },
+        tooltipClass: "ui-tooltip-bottom"
+    });
+  }
+
   $(document).ready(function(){
+    add_top_tooltips();
     set_events();
     move_article_buttons();
     add_link_to_article_div();
