@@ -6,18 +6,9 @@ class SoftwareReleaseDate < ActiveRecord::Migration
         name = software.community.name.strip
         software.community.name = name
         software.community.save
-        software.community.layout_template = "lefttopright"
-        print "." if software.community.save
-        boxToMove = software.community.boxes.where(:position => 1).first
-        blockToMove = boxToMove.blocks.where(:type => "SoftwareInformationBlock").first
-        if blockToMove
-          newBox = software.community.boxes.where(:position => 4).first
-          blockToMove.box = newBox
-          print "." if blockToMove.save
-        end
-        else
-          software.destroy
-        end
+      else
+        software.destroy
+      end
     end
 
     file = File.new("plugins/spb_migrations/files/date-communities.txt", "r")
