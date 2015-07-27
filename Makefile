@@ -1,5 +1,5 @@
 PACKAGE = noosfero-spb
-VERSION = 3.3
+VERSION = 3.4
 DISTDIR = $(PACKAGE)-$(VERSION)
 TARBALL = $(DISTDIR).tar.gz
 
@@ -22,6 +22,8 @@ clean:
 install:
 	install -d -m 0755 $(DESTDIR)/$(plugins_dir)/software_communities
 	cp -vr software_communities/* $(DESTDIR)/$(plugins_dir)/software_communities/
+	install -d -m 0755 $(DESTDIR)/$(plugins_dir)/spb_migrations
+	cp -vr software_communities/* $(DESTDIR)/$(plugins_dir)/spb_migrations/
 	install -d -m 0755 $(DESTDIR)/$(themes_dir)/noosfero-spb-theme
 	cp -vr noosfero-spb-theme/* $(DESTDIR)/$(themes_dir)/noosfero-spb-theme/
 	cd $(DESTDIR)/$(plugins_dir)/software_communities/ && \
