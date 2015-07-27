@@ -4,3 +4,6 @@
 [submodule "noosfero-spb-theme"]
 	path = noosfero-spb-theme
 	url = git@portal.softwarepublico.gov.br:softwarepublico/noosfero-spb-theme.git
+[submodule "spb_migrations"]
+	path = spb_migrations
+	url = git@portal.softwarepublico.gov.br:softwarepublico/spb_migrations.git
