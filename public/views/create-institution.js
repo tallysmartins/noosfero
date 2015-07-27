@@ -55,8 +55,8 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       name : $("#community_name").val(),
       country : $("#community_country").val(),
       state : $("#community_state").val(),
-      city : $("#city_field").val()
-    }
+      city : $("#community_city").val()
+    };
   }
 
 
@@ -69,7 +69,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       governmental_sphere: $("#institutions_governmental_sphere").selected().val(),
       juridical_nature: $("#institutions_juridical_nature").selected().val(),
       corporate_name: $("#institutions_corporate_name").val()
-    }
+    };
   }
 
 
@@ -274,7 +274,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     var city = $("#community_city").parent().parent();
     var state = $("#community_state").parent().parent();
     var inst_type = $("input[name='institutions[type]']:checked").val();
-    institution_type_actions(inst_type)
+    institution_type_actions(inst_type);
 
     if( country === "-1" ) $("#community_country").val("BR");
 
@@ -323,10 +323,9 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
   }
 
   function autoCompleteCity() {
-    var country_selected = $('#community_country').val()
+    var country_selected = $('#community_country').val();
 
-    if(country_selected == "BR")
-    {
+    if(country_selected == "BR") {
       $('#community_city').autocomplete({
         source : function(request, response){
           $.ajax({
@@ -348,9 +347,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
         minLength: 3
       });
-    }
-    else
-    {
+    } else {
       if ($('#community_city').data('autocomplete')) {
         $('#community_city').autocomplete("destroy");
         $('#community_city').removeData('autocomplete');
@@ -385,7 +382,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     autoCompleteCity();
     $('#community_country').change(function(){
       autoCompleteCity();
-    })
+    });
   }
 
 
@@ -399,5 +396,5 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       set_form_count_custom_data();
       set_events();
     }
-  }
+  };
 });
