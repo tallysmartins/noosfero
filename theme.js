@@ -180,9 +180,9 @@ $('#link-buscar').click(function(e) {
   }
 
   function set_use_report_content() {
-    $('.make-report-block .make-report-container .button-bar a span').html('relatar uso');
+    $('.make-report-block .make-report-container .button-bar a span').html('avaliar o software');
     $('.make-report-block .make-report-container .make-report-message').html('Relate sua experiência ou do órgão/empresa com relação ao software.');
-    $('.ratings-list a.icon-arrow-right-p').html('veja todos os relatos');
+    $('.ratings-list .see-more a.icon-arrow-right-p').html('veja todos os relatos');
   }
 
   function add_top_tooltips(){

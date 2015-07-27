@@ -3451,6 +3451,11 @@ input[type=checkbox] {
   padding-top: 6px;
 }
 
+.ratings-list .make-report-block .make-report-container .alert {
+  margin-top: 37px;
+  padding-left: 1px;
+}
+
 .ratings-list .make-report-block .make-report-container .button-bar a {
   background-color: #3E67B1 !important;
   background-image: none;
