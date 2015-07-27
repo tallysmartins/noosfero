@@ -3398,13 +3398,18 @@ input[type=checkbox] {
 }
 
 .ratings-list .make-report-block {
-  background-image: url('images/test.jpg');
+  /*background-image: url('images/test.jpg');*/
   background-repeat: no-repeat;
   padding-top: 32px;
 }
 
 .make-report-block .star-profile-information {
   padding-right: 13px;
+}
+
+.make-report-block .star-profile-information .star-profile-name {
+  margin-top: 8px;
+  width: 70px;
 }
 
 .ratings-list .make-report-block .make-report-container {
@@ -3416,11 +3421,44 @@ input[type=checkbox] {
 }
 
 .ratings-list .make-report-block .make-report-container .button-bar {
-  padding-top: 28px;
+  padding-top: 6px;
 }
 
 .ratings-list .make-report-block .make-report-container .button-bar a {
+  background-color: #3E67B1 !important;
   background-image: none;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 14px;
+  height: 31px;
+  padding: 0px 7px 0px 7px;
+  text-transform: uppercase;
+}
+
+.ratings-list a.icon-arrow-right-p {
+  background: none;
+  /*background-image: url('images/teste2.jpg');*/
+  color: #172738 !important;
+  font-family: 'Open Sans';
+  font-size: 11px;
+  float: none;
+  margin-top: 0px;
+  padding-right: 0px;
+  padding-top: 22px;
+  padding-bottom: 20px;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.ratings-list a.icon-arrow-right-p:after {
+  background-color: #3E67B1 !important;
+  border-radius: 4px;
+  content: url('images/right-arrow.png');
+  font-size: 15px;
+  line-height: 20px;
+  margin-left: 9px;
+  padding-left: 8px;
+  padding-right: 5px;
   text-align: center;
 }
 

@@ -179,6 +179,12 @@ $('#link-buscar').click(function(e) {
     });
   }
 
+  function set_use_report_content() {
+    $('.make-report-block .make-report-container .button-bar a span').html('relatar uso');
+    $('.make-report-block .make-report-container .make-report-message').html('Relate sua experiência ou do órgão/empresa com relação ao software.');
+    $('.ratings-list a.icon-arrow-right-p').html('veja todos os relatos');
+  }
+
   $(document).ready(function(){
     set_events();
     move_article_buttons();
@@ -187,5 +193,6 @@ $('#link-buscar').click(function(e) {
     set_uploaded_files_names();
     set_tooltip_content();
     set_arrow_direction();
+    set_use_report_content();
     });
 })(jQuery);
