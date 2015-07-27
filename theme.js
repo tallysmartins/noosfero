@@ -191,7 +191,7 @@ $('#link-buscar').click(function(e) {
 
     $('[data-toggle="tooltip"]').tooltip({
         position: {
-            my: "center bottom-10",
+            my: "center bottom-13",
             at: "center top"
         },
         tooltipClass: "ui-tooltip-top"
@@ -203,7 +203,7 @@ $('#link-buscar').click(function(e) {
 
     $('[data-toggle="tooltip"]').tooltip({
         position: {
-            my: "center top+10",
+            my: "center top+13",
             at: "center bottom"
         },
         tooltipClass: "ui-tooltip-bottom"
