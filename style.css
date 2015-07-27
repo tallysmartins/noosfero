@@ -3243,7 +3243,7 @@ input[type=checkbox] {
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar input {
-  background-color: #5E82C6;
+  background-color: #3E67B1 !important;
   font-weight: 700;
   height: 31px;
   margin-top: 10px;

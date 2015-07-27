@@ -183,6 +183,7 @@ $('#link-buscar').click(function(e) {
     $('.make-report-block .make-report-container .button-bar a span').html('avaliar o software');
     $('.make-report-block .make-report-container .make-report-message').html('Relate sua experiência ou do órgão/empresa com relação ao software.');
     $('.ratings-list .see-more a.icon-arrow-right-p').html('veja todos os relatos');
+    $('.main-content .star-rate-data .star-rate-form .star-comment-container .button-bar input').attr('value', 'enviar relato');
   }
 
   function add_top_tooltips(){
