@@ -1330,6 +1330,11 @@ input.button.with-text {
     max-height: 28px;
 }
 
+#content .button.with-text span{
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+  padding-right: 0;
+}
+
 #content input.button, #content a.button {
     background-color: #EEEEEE;
     background-repeat: no-repeat;
@@ -3060,11 +3065,17 @@ li.folder-item:first-child {
 
 #content #article_image_builder_uploaded_data {
   text-indent: 2px;
+  font-size: 12px;
+  height: 21px;
 }
 
 #content #edit-article-options div div {
   margin-top: 13px;
   margin-bottom: 13px;
+}
+
+#content #edit-article-options h4 {
+  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
 }
 
 #content .formfield input,
@@ -3083,6 +3094,14 @@ li.folder-item:first-child {
 #content #edit-article-options .token-input-list li input:first-child {
   height: 10px;
   padding-right: 0px;
+}
+
+#content #edit-article-options label{
+  margin-left: 5px;
+}
+
+#content #edit-article-options input{
+  margin-right: 0;
 }
 
 #content #content-inner #boxes #fetch-external-feed {
@@ -3118,14 +3137,19 @@ input[type=checkbox] {
   margin-left: 0px;
 }
 
-#content #content-inner a.lead-button {
+#content #content-inner .button.icon-add.with-text.lead-button {
   border: 1px solid #CCCCCC;
-  background-image: url(/assets/designs/icons/tango/Tango/16x16/actions/add.png);
+  background: url(/assets/designs/icons/tango/Tango/16x16/actions/add.png) no-repeat;
   color: #555;
+  background-position: 5px;
 }
 
-#content #content-inner a.lead-button:hover {
+#content #content-inner .button.icon-add.with-text.lead-button:hover {
   background-color: #fff;
+}
+
+#content #content-inner .button.icon-add.with-text.lead-button:before{
+  content:"";
 }
 
 /******************** RELATO DE USO - AVALIAÇÃO DO USUÁRIO **********************/
