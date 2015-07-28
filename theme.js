@@ -184,6 +184,12 @@ $('#link-buscar').click(function(e) {
     $('.make-report-block .make-report-container .make-report-message').html('Relate sua experiência ou do órgão/empresa com relação ao software.');
     $('.ratings-list .see-more a.icon-arrow-right-p').html('veja todos os relatos');
     $('.main-content .star-rate-data .star-rate-form .star-comment-container .button-bar input').attr('value', 'enviar relato');
+    $('.main-content .star-rate-data .star-rate-form .star-rate-text').html('Avalie o software');
+    $('.main-content .star-rate-data .star-rate-form .star-comment-container .formlabel').html('Depoimento sobre o software');
+    $('.star-rate-form .star-comment-container .comments-display-fields span#comments-additional-information').html('Dados adicionais (órgãos e empresas)');
+    $('.star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments label').html('Nome do órgão ou empresa');
+    $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-people-benefited label').html('Número de beneficiados');
+    $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values label').html('Recursos economizados');
   }
 
   function add_top_tooltips(){
