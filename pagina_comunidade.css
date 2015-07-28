@@ -3,25 +3,37 @@
   border-bottom: 1px solid #D3D6DE;
   padding-bottom: 30px;
   margin:0px 20px 0px 0px;
+  background-image: url("titulo2.png");
+  background-repeat: no-repeat;
 
 }
 
 #infor-community-geral h1{
   text-align: left;
-  font-size: 23px;
+  font-size: 33px;
+  line-height: 30px;
+  margin: 0px 12px 11px 0px;
+  font-weight: 700;
 }
 
 #infor-community-geral p{
-  /*font-size: 12px;*/
+  font-size: 14px;
+  line-height: 23px;
+  margin:0px 10px 7px 2px;
 }
 
 #buttons-infor-community input{
+  font-size: 12px;
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
   border:1px solid #D3D6DE;
   border-radius:4px;
   background:none;
   color: #5E82C6;
-  margin:2px;
-  padding:3px 10px;
+  margin:1px 4px 0px 2px;
+  padding:3px 12px 6px 10px;
+  line-height: 14px;
+  /*margin: 1px 4px 0px 2px;
+  padding: 3px 11px 4px 8px;*/
 
 }
 
@@ -33,7 +45,7 @@
 }
 
 .community-block-logo{
-  border-bottom: 3px solid #3E67B1;
+  border-bottom: 4px solid #3E67B1;
 }
 .community-block-title{
   background-color:#ECEDF1;
@@ -42,7 +54,7 @@
   border-bottom-left-radius: 4px;
 }
 .community-block-title h1{
-  font-size: 14px !important;
+  font-size: 16px !important;
   margin-bottom:0px !important;
 }
 .community-block-logo{
@@ -115,57 +127,8 @@
   display:block;
 }
 /******************************************************/
-/******************* Bloco Membros*********************/
-.members-block{
-  background-color:#ECEDF1;
-  border:1px solid #D3D6DE !important;
-  border-radius: 4px;
-}
-.members-block .block-title{
-  /*background-color:#ECEDF1;*/
-  border-bottom:1px solid #D3D6DE !important;
-  border-top:none !important;
-  /*border-top-right-radius: 4px !important;
-  border-top-left-radius: 4px !important;*/
-  color:#172738 !important;
-  font-size:14px !important;
-  padding:12px !important;
-}
 
-.members-block .block-footer-content{
-  background-color:#ECEDF1;
-  padding:8px 10px 15px 0px;
-  margin-right:0px !important;
-  border-top:1px solid #D3D6DE;
-}
-#content .members-block .block-footer-content a{
-  padding-right: 0px !important;
-}
 
-#content .members-block .block-footer-content a.view-all{
-  background-image:none;
-  border:none;
-  text-transform: uppercase;
-  line-height: 21px;
-}
-#content .members-block .block-footer-content a.view-all::after{
-content: '>';
-padding-left: 7px;
-padding-right: 4px;
-color:#ffffff;
-background: #3E67B1;
-border-radius: 4px;
-font-size: 15px;
-line-height: 20px;
-text-align: center;
-margin-left: 5px;
-position: relative;
-margin-left: 5px;
-top: 2px;
-/*margin-right:0px;*/
-}
-
-/*****************************************************/
 /**********Bloco de informacoes temporarias*************/
 #temporary-alerts{
   border:1px solid #D3D6DE;
@@ -384,15 +347,28 @@ text-align: right;
 
 
 /********************** ABA04 - Wiki ********************************/
-#aba4 h3{
+#aba4{
+  background-image: url("wiki.png");
+  background-repeat: no-repeat;
+}
+
+#aba4 h2{
   color:#172738;
   border-bottom: 2px solid #ECEDF1;
-  padding:10px 0px;
+  font-size: 21px;
+  margin:0px;
+  padding:16px 0px 13px 1px;
+
 }
 
 #aba4 span{
-  line-height: 21px;
-  font-size: 13px;
+  color: #172738;
+  display:block;
+  line-height: 23px;
+  font-size: 15px;
+  margin:10px 0px 26px 5px;
+  padding-top:10px;
+
 }
 
 
@@ -469,3 +445,187 @@ text-align: right;
     text-align: center;
     top: 2px;
 }
+
+/***********Secundaria - Wiki**************/
+#secundary-page-wiki {
+  background-image: url("secundaria-wiki.png");
+  background-repeat: no-repeat;
+  width:90%;
+}
+
+#secundary-page-wiki h1 {
+  border-bottom:1px solid #D3D6DE;
+  font-family: arial;  
+  font-size: 34px;
+  line-height: 37px;
+  text-align: left;
+  font-weight: 700;
+  padding:0px 0px 28px 0px;
+  margin:0px 0px 30px 0px;
+}
+
+#secundary-page-wiki h2{
+  font-family: arial;
+  font-size: 22px;
+  line-height: 21px;
+  margin:0px 0px 20px 0px;
+  font-weight: 700;
+}
+
+#secundary-page-wiki span{
+  font-size: 15px;
+  font-family: arial;
+  line-height: 21px;
+  display:block;
+  margin:0px 0px 6px 0px;
+  padding:1px 0px 0px 2px;
+}
+
+/*********Secundaria de Discussoes***********/
+#secundary-page-discussion{
+  /*background-image: url("discussoes.png");
+  background-repeat: no-repeat;
+  /*padding-top:10px;*/
+}
+
+#secundary-page-discussion .tidings{
+  padding:0px;
+}
+
+#secundary-page-discussion .counter-discussion{
+  font-weight: bold;
+  font-size: 14px;
+  float:left;
+  line-height: 30px;
+  width: 30%;
+  margin:0px 0px 0px 2px;
+
+}
+#secundary-page-discussion .order-discussion{
+  /*text-align: right;*/
+  font-size:14px;
+  font-weight: bold;
+  margin-left:40%;
+  line-height: 28px;
+  padding:1px 0px 0px 9px;
+}
+#secundary-page-discussion .subject-list-discussion strong{
+  font-size:16px;
+}
+
+#secundary-page-discussion select{
+  background: none;
+  border:1px solid #D3D6DE;
+  border-radius: 4px;
+  padding:4px 27px 5px 9px; /*5px 23px;*/
+  margin:0px 0px 0px 3px;
+  font-size:14px;
+}
+
+#secundary-page-discussion .teste .order-discussion{
+  text-align: right;
+}
+
+#secundary-page-discussion #discussions{
+  padding-top:9px;
+}
+
+#secundary-page-discussion .date-list-discussion{
+  padding-top: 19px;
+  margin: 0px 0px 0px 3px;
+}
+#secundary-page-discussion .subject-list-discussion{
+  margin:-5px 3px 22px 5px;
+  padding:0px 5px 0px 0px;
+  font-size: 14px;
+
+}
+
+/********Bloco - Filtrar discussoes**********/
+#filter-discussion-block{
+  background:#ECEDF1;
+  border:1px solid #D3D6DE;
+  border-radius:4px;
+ /*background-image: url("filtro.png");
+  background-repeat: no-repeat;*/
+ /* width: 40%;
+  height: 50%;*/
+
+}
+
+#filter-discussion-block h3{
+  border-bottom:1px solid #D3D6DE;
+  color:#3E67B1;
+  margin:0px;
+  padding:14px 21px;
+  font-size: 14px; /*16px;*/
+  text-transform: uppercase;
+}
+
+#filter-discussion-block .form-group{
+  padding:10px 0px 7px 4px;
+}
+
+#filter-discussion-block .form-group label{
+  color: #172738;
+  font-weight:bold;
+  margin:21px;
+  line-height: 35px;
+  font-size: 14px;
+}
+
+#filter-discussion-block .form-group input{
+border: 1px solid #bdc3c7;
+border-radius: 4px;
+box-shadow: none;
+color: #34495e;
+font-size: 12px;
+height: 15px; /*12px;*/
+line-height: 1.467;
+margin:-4px 0px 0px 18px; /*0px 9px;*/
+padding: 6px 6px 9px 4px;
+transition: border 0.25s linear 0s, color 0.25s linear 0s, background-color 0.95s linear 0s;
+width: 74%;
+}
+
+/*.form-group .fa-calendar::after{
+  content: "\f073";
+}*/
+
+.btn-icon{
+  background: #F7F8F9;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  line-height: 1.467;
+  border:none;
+  border-left: 1px solid #ECEDF1;
+  padding:6px 6px 11px 9px;
+  margin:0px 0px 0px -33px;
+}
+
+#filter-discussion-block .btn-default{
+  background: #3867B7;
+  color:#fff;
+}
+/*
+#filter-discussion-block .btn-default:hover {
+background: #5E82C6;
+color: #fff;*/
+
+#filter-discussion-block .btn{
+  font-size:12px;
+  padding:7px 12px;
+  border:0;
+  font-family: arial;
+  border-radius:4px;
+  text-transform: uppercase;
+  font-weight:bold; /*400*/
+  text-align: center;
+  margin:17px 11px 12px 100px;
+
+}
+
+/**********************pagina secundaria de membros**************************/
+
+
+/*****************************************************/
