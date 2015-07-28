@@ -35,21 +35,21 @@ include SoftwareTestHelper
     @environment.save
   end
 
-  should "dispach additional comment fields to Softwares" do
+  should "dispach additional comment fields when a software is rated" do
     @hash_list = software_fields
     software = create_software(@hash_list)
 
     get :new_rating , profile: software.community.identifier
     assert_template :new_rating
-    assert_match(/Aditional informations/, @response.body)
+    assert_match(/Additional informations/, @response.body)
   end
 
-  should "NOT dispach additional comment fields only to Softwares" do
+  should "DO NOT dispach additional comment fields when the rated community isn't a software" do
     community = fast_create(Community)
 
     get :new_rating , profile: community.identifier
     assert_template :new_rating
-    assert_not_match(/Aditional informations/, @response.body)
+    assert_not_match(/Additional informations/, @response.body)
   end
 
 end
