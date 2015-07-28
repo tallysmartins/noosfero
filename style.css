@@ -3350,7 +3350,7 @@ input[type=checkbox] {
 */
 .ratings-list {
   /*background-image: url('images/tela_listagem_relato_uso_v4_fechado.jpg');*/
-  /*background-image: url('images/print_listagem.jpg');*/
+/*  background-image: url('images/print_listagem.jpg');*/
   background-repeat: no-repeat;
 }
 
@@ -3360,14 +3360,13 @@ input[type=checkbox] {
 }
 
 .ratings-list .user-rating-block {
-  padding-bottom: 23px;
+  padding-bottom: 30px;
   padding-top: 32px;
   margin-top: 10px;
 }
 
 .ratings-list .star-profile-information {
-  padding-right: 15px;
-  padding-top: 1px;
+  padding: 1px 30px 0px 14px;
   width: 99px;
 }
 
@@ -3381,10 +3380,19 @@ input[type=checkbox] {
   height: 60px;
 }
 
+.ratings-list .user-rating-block .user-testimony-container {
+  width: 100%;
+}
+
+.ratings-list .user-rating-block .user-testimony-container .star-container div {
+  display: inline;
+}
+
 .ratings-list .user-rating-block .user-testimony-container .user-testimony {
   font-size: 16px;
   line-height: 20px;
-  margin-top: 12px;
+  margin-top: 31px;
+  min-height: 60px;
 }
 
 .star-rate-data .star-rate-form .star-comment-container .formfield textarea {
@@ -3392,11 +3400,16 @@ input[type=checkbox] {
 }
 
 .ratings-list .user-rating-block .user-testimony-container .testimony-rate-date {
-  padding-right: 198px;
+  display: block;
+  float: left;
+  padding-right: 0px;
+  width: 100px;
 }
 
 .ratings-list .star-container {
-  margin-top: 4px;
+  display: block;
+  float: right;
+  width: auto;
 }
 
 .ratings-list .star-container .small-star-positive,
@@ -3432,6 +3445,7 @@ input[type=checkbox] {
 
 .make-report-block .star-profile-information {
   padding-right: 13px;
+  padding-left: 0px;
 }
 
 .make-report-block .star-profile-information .star-profile-name {
