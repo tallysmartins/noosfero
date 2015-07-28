@@ -3559,3 +3559,16 @@ input[type=checkbox] {
 #content .main-content .tiny-mce-article .article-body-tiny-mce-article p a {
     color: #2c66ce;
 }
+
+/********** communities rating configuration ***********/
+.main-content form table tr td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.main-content form table tr td input#environment_communities_ratings_cooldown {
+  display: inline;
+  margin: auto;
+  padding: 2px;
+  width: 20px;
+}
