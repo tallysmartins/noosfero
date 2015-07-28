@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.utils.translation import ugettext as _
 from colab.super_archives.models import MailingList, Thread
 from colab.accounts.utils import mailman
+from colab.accounts.models import User
 
 def get_list(request):
     list_name = None
     MAX = 0
     if request.GET.get('list_name'):
-	list_name = request.GET['list_name']
+	list_name = request.GET['list_name'].title()
     if request.GET.get('MAX'):
 	MAX = request.GET['MAX']
 
