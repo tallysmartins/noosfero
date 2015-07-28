@@ -2,8 +2,8 @@
 %define cache_dirs javascripts/cache stylesheets/cache
 
 Name:    noosfero
-Version: 1.2~rc0
-Release: 2%{?dist}
+Version: 1.2~rc1+spb1
+Release: 1%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
 License: AGPLv3
@@ -104,6 +104,12 @@ NOOSFERO_USER="noosfero"
 NOOSFERO_DATA_DIR="/var/lib/noosfero"
 EOF
 
+%pre
+if [ $1 -gt 1 ]; then
+  echo 'Stopping noosfero'
+  systemctl stop noosfero
+fi
+
 %post
 groupadd noosfero || true
 if ! id noosfero; then
@@ -134,6 +140,12 @@ if [ -x /usr/bin/postgres ]; then
   su noosfero -c "RAILS_ENV=production bundle exec rake db:schema:load"
   su noosfero -c "RAILS_ENV=production SCHEMA=/dev/null bundle exec rake db:migrate"
   su noosfero -c "RAILS_ENV=production bundle exec rake db:data:minimal"
+fi
+
+if [ $1 -gt 1 ]; then
+  echo 'Starting noosfero'
+  systemctl daemon-reload
+  systemctl start noosfero &
 fi
 
 %preun
