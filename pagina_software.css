@@ -553,6 +553,16 @@ border:
 
 /*************Paginas internas de Software***************/
 
+/*************Pagina - Como instalar***************/
+
+#article code{
+  background: #ECEDF1;
+  display: block;
+  font-size: 12px;
+  padding: 15px 20px 15px 20px;
+    
+}
+
 /**************Pagina de manuais**********************/
 #manual{
   font-family: arial;
