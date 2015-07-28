@@ -8,7 +8,7 @@ def get_list(request):
     list_name = None
     MAX = 0
     if request.GET.get('list_name'):
-	list_name = request.GET['list_name'].title()
+	list_name = request.GET['list_name']
     if request.GET.get('MAX'):
 	MAX = request.GET['MAX']
 
@@ -26,7 +26,7 @@ def get_list(request):
         user = User.objects.get(username=request.user)
         lists_for_user = mailman.get_user_mailinglists(user)
 
-    for list_ in MailingList.objects.filter(name=list_name):
+    for list_ in MailingList.objects.filter(name__iexact=list_name):
         if list_.name not in all_privates or list_.name in lists_for_user:
             context['lists'].append((
                 list_.name,
