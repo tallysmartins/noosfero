@@ -3,8 +3,8 @@
   border-bottom: 1px solid #D3D6DE;
   padding-bottom: 30px;
   margin:0px 20px 0px 0px;
-  background-image: url("titulo2.png");
-  background-repeat: no-repeat;
+  /*background-image: url("titulo2.png");
+  background-repeat: no-repeat;*/
 
 }
 
@@ -259,21 +259,36 @@ ul#itens-legend-grafic{
 }
 
 #discussions h3{
-  padding:12px 0px 3px 0px;
+  font-size: 20px;
+  padding:25px 0px 5px 0px;
   margin:0px;
 }
 
 .tidings{
-  border-top: 1px solid #ECEDF1;
+  border-top: 1px solid #D3D6DE;
   padding:10px;
+  padding-bottom: 23px;
 }
 
 .date-list-discussion,
 .subject-list-discussion{
   display: block;
-    line-height: 21px;
-    padding: 0px 0px 10px 0px;
-    position: relative;
+  line-height: 21px;
+  padding: 10px 0px 0px 0px;
+  position: relative;
+}
+
+.date-list-discussion {
+  letter-spacing: -0.1px;
+}
+
+.subject-list-title {
+  line-height: 18px !important;
+}
+
+.subject-list-discussion {
+  font-size: 16px;
+  padding-top: 3px;
 }
 
 .date-list-discussion{
@@ -284,28 +299,43 @@ ul#itens-legend-grafic{
   text-decoration: none;
   color:#5E82C6;
 }
-.see-more-discussion{
-text-align: right;
-  padding: 10px;
+
+.see-more-discussion {
+  text-align: right;
+  padding: 15px 0px 0px 0px;
   text-transform: uppercase;
   line-height: 21px;
-  font-size: 12px;
-  border-top: 1px solid #ECEDF1;
+  font-size: 11px;
+  border-top: 1px solid #D3D6DE;
+  margin-bottom: 2px;
+  letter-spacing: -0.12px;
 }
 
 .see-more-discussion::after {
   background: none repeat scroll 0 0 #3e67b1;
-  border-radius: 4px;
+  border-radius: 2px;
   color: #ffffff;
-  content: ">";
+  content: url('images/left-arrow.png');
   font-size: 15px;
   line-height: 20px;
   margin-left: 5px;
-  padding-left: 7px;
-  padding-right: 4px;
+  padding: 2px 7px 1px 7px;
   position: relative;
   text-align: center;
   top: 2px;
+}
+
+.tidings {
+  padding-left: 0px;
+}
+
+#mais-relevantes h3 {
+  letter-spacing: 0.2px;
+  padding-bottom: 16px;
+}
+
+#mais-relevantes span {
+  letter-spacing: 0px;
 }
 
 /********************** ABA03 - BLOG ********************************/
@@ -347,12 +377,13 @@ text-align: right;
 
 
 /********************** ABA04 - Wiki ********************************/
-#aba4{
-  background-image: url("wiki.png");
-  background-repeat: no-repeat;
+
+#aba4 {
+  border-bottom: 3px solid #172738;
+  padding-bottom: 40px;
 }
 
-#aba4 h2{
+#aba4 h3{
   color:#172738;
   border-bottom: 2px solid #ECEDF1;
   font-size: 21px;
@@ -362,13 +393,19 @@ text-align: right;
 }
 
 #aba4 span{
-  color: #172738;
+  /*color: #172738;
   display:block;
   line-height: 23px;
   font-size: 15px;
   margin:10px 0px 26px 5px;
-  padding-top:10px;
-
+  padding-top:10px;*/
+  line-height: 21px;
+  font-size: 15px;
+  display: block;
+  padding-left: 3px;
+  font-weight: 400;
+  color: black;
+  padding-top: 10px;
 }
 
 
@@ -376,82 +413,516 @@ text-align: right;
 
 .information-repository-activ{
   border-bottom: 1px solid #D3D6DE;
-  padding:40px 20px 40px 20px;
+  /*padding:40px 20px 40px 20px; #D3D6DE*/
+  margin: 0px;
   color:#172738;
 }
 
 .about-commit{
+  font-size: 12px;
   display:block;
   position:absolute;
   float:left;
+  margin-top: 27px;
   border-right:1px dotted #D3D6DE;
-  padding-right: 40px;
+  padding: 0px 23px 13px 0px;
 }
+
+.calendar-commit {
+  margin-top: 10px;
+}
+
 .about-commit span{
   position: relative;
-  display:block;
+  display: block;
   line-height: 21px;
-    padding: 5px;
+  padding: 0px;
 }
 
 .information-member-repository{
-  margin-left:150px;
+  padding-top: 28px;
+  margin-left: 127px;
   display:block;
 
+}
+
+.name-information-repository {
+  font-size: 12px;
+}
+
+.information-member-repository {
+  margin-bottom: 20px;
 }
 
 .information-member-repository span{
   display:block;
   position:relative;
-  line-height: 21px;
-    padding: 5px;
+  line-height: 15px;
+  padding: 5px;
 }
 
 .commit-historic::before {
-    content: url("images/calendar-icon.png");
-    float: left;
+    content: url("images/upload-icon.png");
+    /*float: left;*/
     line-height: 20px;
-    margin-right: 10px;
+    margin-right: 11px;
     margin-top: 4px;
 }
 
 .calendar-commit::before {
     content: url("images/calendar-icon.png");
-    float: left;
+    /*float: left;*/
     line-height: 20px;
-    margin-right: 10px;
+    margin-right: 11px;
     margin-top: 4px;
 }
 
 .see-more-repository{
+  color: black !important;
   text-align: right;
-  padding:10px;
+  padding: 15px 0px 0px 0px;
   text-transform: uppercase;
   line-height: 21px;
-  font-size:12px;
+  font-size: 11px;
+/*  border-top: 1px solid #D3D6DE; */
+  margin-bottom: 2px;
+  letter-spacing: -0.12px;
 }
 
 .see-more-repository::after {
-    background: none repeat scroll 0 0 #3e67b1;
-    border-radius: 4px;
-    color: #ffffff;
-    content: ">";
-    font-size: 15px;
-    line-height: 20px;
-    margin-left: 5px;
-    padding-left: 7px;
-    padding-right: 4px;
-    position: relative;
-    text-align: center;
-    top: 2px;
+  background: none repeat scroll 0 0 #3e67b1;
+  border-radius: 2px;
+  color: #ffffff;
+  content: url('images/left-arrow.png');
+  font-size: 15px;
+  line-height: 20px;
+  margin-left: 5px;
+  padding: 2px 7px 1px 7px;
+  position: relative;
+  text-align: center;
+  top: 2px;
 }
 
+
+/*********************** Página de eventos da comunidade *******************/
+
+#event-card {
+  float: left;
+  border-top: 1px dotted #D3D6D3;
+  padding-top: 33px;
+  width: 494px;
+  height: 173px;
+  /*background-image: url('images/evento-teste.jpg');*/
+  background-repeat: no-repeat;
+}
+
+#event-card #event-image {
+  position: relative;
+  float: left;
+  content: url('images/comunidade-evento-imagem-evento.png');
+  border-right:1px dotted #D3D6DE;
+  padding-right: 22px;
+}
+
+.about-event {
+  position: relative;
+  float: left;
+  height: 160px;
+  width: 300px;
+  max-width: 300px;
+}
+
+.about-event > span {
+  font-family: arial;
+  display: block;
+  max-width: inherit;
+  margin-left: 20px;
+  padding-left: 21px; 
+  line-height: 13px;
+  margin-right: 11px;
+}
+
+.about-event .event-date {
+  font-weight: bold;
+  letter-spacing: 0.49px;
+  margin-top: 3px;
+}
+
+.about-event .event-address {
+  margin-top: 19px;
+}
+
+.about-event .event-address span {
+  display: block;
+  margin-left: 0px;
+  margin-top: 4.4px;
+  line-height: 14px;
+  letter-spacing: 0.5px;
+}
+
+/*
+.event-date::before {
+  content: url("images/calendar-icon.png");
+}
+*/
+
+#community-page {
+  width: 494px;
+  height: 716px;
+  /*background-image: url('images/pagina-comunidade-teste.png');*/
+  background-repeat: no-repeat;
+}
+
+#community-page h1 {
+  margin-bottom: 17px;
+  text-align: left;
+  font-size: 32px;
+  line-height: 30px;
+  padding-left: 1px;
+}
+
+.event-date {
+  background: url('images/calendar-icon.png') no-repeat left center;
+}
+
+.event-link {
+  background: url('images/globe-icon.png') no-repeat left center;
+  margin-top: 18px;
+  letter-spacing: 0.48px;
+}
+
+.event-link a {
+  text-decoration: underline;
+}
+
+.event-address {
+  background: url('images/icone_pin.png') no-repeat left top;
+}
+
+.event-body {
+  float: left;
+}
+
+.event-body h2 {
+  margin-left: 2px !important;
+  width: 494px;
+  letter-spacing: -0.4px;
+  line-height: 26px;
+  margin-bottom: -3px !important;
+}
+
+.event-body .event-content p {
+  font-size: 15px;
+  font-family: Arial;
+  margin-top: 20px;
+  width: 494px;
+  padding-left: 2px;
+  line-height: 22px;
+}
+
+/********** event side box **********/
+
+.community-side-box {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #D3D6DE;
+  border-radius: 7px;
+  margin-bottom: 27px;
+  overflow: hidden;
+}
+
+.community-logo-container {
+  height: 150px;
+  width: 200px;
+  border-bottom: 4px solid #3E67B1;
+  overflow: hidden;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.community-logo-container img {
+  height: auto;
+  width: 70%;
+}
+
+.community-name {
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 13px 10px 0px 10px;
+  text-align: center;
+  height: 100%;
+  background-color: #ECEDF1;
+}
+
+.community-name p {
+  font-family: open sans;
+  font-size: 16px;
+  line-height: 17px;
+  letter-spacing: 0px;
+}
+
+.community-side-box table {
+  background-color: #ECEDF1;
+}
+
+.community-side-box table th {
+  font-weight: 700;
+  text-align: left;
+  font-family: Arial;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding-top: 9px;
+  padding-left: 13px;
+  padding-bottom: 0px;
+  letter-spacing: -1px;
+  border-bottom: 1px solid #D3D6DE;
+}
+
+.community-side-box table td {
+  text-align: left;
+  border-bottom: 1px solid #D3D6DE;
+  height: 42px;
+  padding-top: 9px;
+  padding-left: 13px;
+}
+
+.another-events-date {
+  color: #2C4B6B;
+  font-weight: 700;
+}
+
+.another-event {
+  color: #2C4B6B;
+}
+
+/************************** PÁGINA BLOG **************************/
+
+#community-blog {
+  width: 500px;
+  height: 2200px;
+  /*background-image: url('images/blog-teste.png');*/
+  background-repeat: no-repeat; 
+}
+
+#blog-header {
+  width: 100%;
+  height: 129px;
+  border-bottom: 1.5px solid #D3D6DE;
+}
+
+#blog-header > h1 {
+  font-family: Arial;
+  font-weight: 700;
+  font-size: 33px;
+  margin: 0px;
+  text-align: left;
+  padding-left: 2px;
+  letter-spacing: 1px;
+}
+
+#community-blog p {
+  font-family: Arial;
+  font-size: 15px;
+  margin-top: 2px;
+  margin-left: 4px;
+  margin-bottom: 0px;
+  letter-spacing: 0.15px;
+}
+
+#community-blog #community-action-button {
+  margin-left: 3px;
+  margin-top: 7px;
+}
+
+#community-blog #community-action-button a {
+  text-align: center;
+  font-family: Arial;
+  font-size: 13px;
+  float: left;
+  margin-right: 9px;
+  padding: 5px 12px 4px 9px;
+  border: 1px solid #D3D6DE;
+  border-radius: 4px;
+  color: #2C66CE;
+}
+
+.blog-main-content {
+  font-family: Arial;
+  color: #172738;
+  margin-top: 46px;
+}
+
+.blog-main-content #date {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.blog-main-content #title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 9px;
+  line-height: 25px;
+  letter-spacing: 0.4px;
+}
+
+.blog-main-content #image-container {
+  border-radius: 6px;
+  margin-top: 13px;
+  overflow: hidden;
+  height: 210px;
+  width: 490px;
+}
+
+.blog-main-content #image-container img {
+  height: auto;
+  width: 490px;
+}
+
+.blog-main-content #description {
+  font-size: 15px;
+  margin-top: 11px;
+  line-height: 21px;
+  letter-spacing: 0.1px;
+  padding-left: 3px;
+}
+
+.blog-event-list {
+  margin-top: 24px;
+}
+
+.blog-event-item{
+  position: relative;
+  float: left;
+  width: 500px;
+  border-top: 1px solid #D3D6DE;
+  padding-top: 25px;
+  margin-bottom: 25px;
+  display: table;
+  overflow: hidden;
+}
+
+.blog-event-item .blog-event-information .date {
+  font-size: 12px;
+  margin-top: -1px;
+  text-transform: uppercase;
+}
+
+.blog-event-item .blog-event-information .event-title {
+  max-height: 40px;
+  padding-right: 0px;
+  font-weight: 700;
+  font-size: 15px;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+.blog-event-item .blog-event-information .description {
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: -0.2px;
+  max-height: 57px;
+  overflow: hidden;
+}
+
+.blog-event-item .blog-event-information {
+  display: table-cell;
+  width: 100%;
+}
+
+.blog-event-item .item-image {
+  display: table-cell;
+  vertical-align: top;
+  padding-right: 20px;
+}
+
+.blog-event-item img {
+  width: 106px;
+  height: 63px;
+  border-radius: 5px;
+  padding-left: 4px;
+}
+
+.community-content-footer {
+  position: relative;
+  float: left;
+  padding-left: 2px;
+  width: 100%;
+  border-top: 1px solid #D3D6DE;
+  padding-top: 37px;
+  padding-bottom: 56px;
+}
+
+.community-content-footer ul li {
+  display: inline;
+  border: 1px solid #D3D6DE;
+}
+
+.community-content-footer ul .default-index {
+  padding: 7px 11px 7px 11px;
+  border-radius: 4px;
+  margin-right: 4px;
+  font-family: Arial;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.community-content-footer ul #previous {
+  padding: 7px 11px 7px 11px;
+  border-radius: 4px;
+  margin-right: 38px;
+  font-family: Arial;
+  font-size: 14px;
+  padding-left: 35px;
+}
+
+.community-content-footer ul #next {
+  padding: 7px 11px 7px 11px;
+  border-radius: 4px;
+  margin-left: 30px;
+  padding-left: 14px;
+  padding-right: 32px;
+  font-family: Arial;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+}
+
+.community-content-footer #indexes li a {
+  color: #172738;
+} 
+
+.community-content-footer #indexes .active-index {
+  background-color: #ECEDF1;
+  padding: 7px 11px 7px 11px;
+  border-radius: 4px;
+  margin-right: 4px;
+  font-family: Arial;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.community-content-footer #indexes #previous #left-arrow {
+  position: absolute;
+  content: url('images/left-arrow-black.png');
+  margin-left: -25px;
+  margin-top: 3px;
+}
+
+.community-content-footer #indexes #next #right-arrow {
+  position: absolute;
+  content: url('images/right-arrow-black.png');
+  margin-left: 18px;
+  margin-top: 3px;
+}
+
+
 /***********Secundaria - Wiki**************/
-#secundary-page-wiki {
+/*#secundary-page-wiki {
   background-image: url("secundaria-wiki.png");
   background-repeat: no-repeat;
   width:90%;
-}
+}*/
 
 #secundary-page-wiki h1 {
   border-bottom:1px solid #D3D6DE;
@@ -482,12 +953,6 @@ text-align: right;
 }
 
 /*********Secundaria de Discussoes***********/
-#secundary-page-discussion{
-  /*background-image: url("discussoes.png");
-  background-repeat: no-repeat;
-  /*padding-top:10px;*/
-}
-
 #secundary-page-discussion .tidings{
   padding:0px;
 }
@@ -546,11 +1011,6 @@ text-align: right;
   background:#ECEDF1;
   border:1px solid #D3D6DE;
   border-radius:4px;
- /*background-image: url("filtro.png");
-  background-repeat: no-repeat;*/
- /* width: 40%;
-  height: 50%;*/
-
 }
 
 #filter-discussion-block h3{

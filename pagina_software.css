@@ -166,7 +166,7 @@ border: none;
 
 #download_spb-2 h3{
   margin:6px 0px 2px 10px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 #download-info-1,
@@ -201,8 +201,8 @@ border: none;
 #image-download{
   background-color: #2c66ce;/*#5E82C6;*/
   border:1px solid #2c66ce;/*#5E82C6;*/
-  border-top-right-radius:8px;
-  border-top-left-radius: 8px;
+  /*border-top-right-radius:8px;
+  border-top-left-radius: 8px;*/
   background-image: url("images/download-icon.png");
   background-repeat: no-repeat;
   background-position: center; /*15px;*/
@@ -211,6 +211,10 @@ border: none;
   /*width: 45px;*/
   /*height: 25px;*/
   display:block;
+
+  /* FIX ME */
+  height: 18px;
+  border-radius: 8px;
 }
 
 #size-download{
@@ -221,7 +225,7 @@ border: none;
   border:1px solid #1a397d;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
-  display:block;
+  display: none; /* FIX ME */
   /*padding: 0px 10px 3px 6px; /*3px 22px;*/
  /* width: 45px;
   height: 17px;
@@ -240,6 +244,22 @@ border: none;
   margin-right: 20px;
 
 }*/
+.item-icon a {
+  display: none;
+}
+
+.item-icon {
+  background-color: #2C66CE;
+  background-image: url("images/download-icon.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 1px solid #2C66CE;
+  border-radius: 6px;
+  display: block;
+  padding: 45px 45px 5px 10px;
+  float: left;
+  margin-right: 20px;
+}
 
 #info-software-download{
   font-size: 16px;
@@ -488,13 +508,15 @@ border:
 }
 
 #bt_repositorio::after{
-	content:'>';
-	position:absolute;
-	padding-left:2px;
-	margin-top:-2px;
-	right:10px;
-	width:18px;
-	height:20px;
+	content: url('images/right-arrow.png');
+  position: absolute;
+  padding-left: 2px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: -2px;
+  right: 10px;
+  width: 18px;
+  /* height: 20px; */
 	color:#FFF;
 	background:#2C66CE;
 	border-radius: 4px;

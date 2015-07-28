@@ -118,10 +118,108 @@ $('#link-buscar').click(function(e) {
     });
   }
 
+  function insert_notice_div(){
+    var notice = $('.display-content-block').find('li');
+      notice.each(function(){
+        var $set = $(this).children();
+        for(var i=1, len = $set.length; i < len; i+=5){
+          $set.slice(i, i+5).wrapAll('<div class="notice-item"/>');
+        }
+        for(var i=2, len = $set.length; i < len; i+=3){
+          $set.slice(i, i+3).wrapAll('<div class="notice-info"/>');
+        }
+      //$('<div class="notice-item"></div>').wrap($(this).find( '.image', '.title', '.lead', '.read_more'));
+    });
+
+
+  }
+
+  /* Finds all uploaded files from manuals page and sets its names on the right format */
+  function set_uploaded_files_names() {
+   try {
+      var article = document.getElementById('article');
+      var folderList = article.getElementsByClassName('folder-content')[0];
+      var folderItens = folderList.getElementsByClassName('item-description');
+
+      for(var i = 0; i < folderItens.length; i++) {
+        split_file_extension(folderItens[i].getElementsByTagName('a')[0]);
+      }
+    } catch(e) {
+
+    }
+  }
+
+  /* Splits a file name from its extension. Example: example.pdf becomes example - PDF */
+  function split_file_extension(element) {
+    var tokens = element.innerHTML.split('.');
+    if(tokens.length == 2) {
+      var fileName = tokens[0];
+      var fileExtension = tokens[1].toUpperCase();
+      element.innerHTML = fileName + " - " + fileExtension;
+    }
+  }
+
+  function set_tooltip_content() {
+    $('.star-tooltip').html("?");
+  }
+
+  function set_arrow_direction() {
+    var additional_data_bar = $('#comments-additional-information');
+    var arrow = $('.comments-arrow-down');
+    var state = 0;
+
+    additional_data_bar.on('click', function() {
+      if(state === 0) {
+        arrow.attr('class', "comments-arrow-up")
+        state = 1;
+      } else {
+        state = 0;
+        arrow.attr('class', "comments-arrow-down");
+      }
+    });
+  }
+
+  function set_use_report_content() {
+    $('.make-report-block .make-report-container .button-bar a span').html('avaliar o software');
+    $('.make-report-block .make-report-container .make-report-message').html('Relate sua experiência ou do órgão/empresa com relação ao software.');
+    $('.ratings-list .see-more a.icon-arrow-right-p').html('veja todos os relatos');
+    $('.main-content .star-rate-data .star-rate-form .star-comment-container .button-bar input').attr('value', 'enviar relato');
+  }
+
+  function add_top_tooltips(){
+    $('#content span[title]').attr("data-toggle","tooltip");
+
+    $('[data-toggle="tooltip"]').tooltip({
+        position: {
+            my: "center bottom-13",
+            at: "center top"
+        },
+        tooltipClass: "ui-tooltip-top"
+    });
+  }
+
+  function add_bottom_tooltips(){
+    $('#content span[title]').attr("data-toggle","tooltip");
+
+    $('[data-toggle="tooltip"]').tooltip({
+        position: {
+            my: "center top+13",
+            at: "center bottom"
+        },
+        tooltipClass: "ui-tooltip-bottom"
+    });
+  }
+
   $(document).ready(function(){
+    add_top_tooltips();
     set_events();
     move_article_buttons();
     add_link_to_article_div();
+    insert_notice_div();
+    set_uploaded_files_names();
+    set_tooltip_content();
+    set_arrow_direction();
+    set_use_report_content();
     });
 })(jQuery);
 
