@@ -23,7 +23,7 @@ install:
 	install -d -m 0755 $(DESTDIR)/$(plugins_dir)/software_communities
 	cp -vr software_communities/* $(DESTDIR)/$(plugins_dir)/software_communities/
 	install -d -m 0755 $(DESTDIR)/$(plugins_dir)/spb_migrations
-	cp -vr software_communities/* $(DESTDIR)/$(plugins_dir)/spb_migrations/
+	cp -vr spb_migrations/* $(DESTDIR)/$(plugins_dir)/spb_migrations/
 	install -d -m 0755 $(DESTDIR)/$(themes_dir)/noosfero-spb-theme
 	cp -vr noosfero-spb-theme/* $(DESTDIR)/$(themes_dir)/noosfero-spb-theme/
 	cd $(DESTDIR)/$(plugins_dir)/software_communities/ && \
