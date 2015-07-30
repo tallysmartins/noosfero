@@ -3168,10 +3168,11 @@ input[type=checkbox] {
 }
 
 #content .main-content .star-rate-data {
+  border-bottom: 1px solid #D3D6DE;
   border-top: 1px solid #D3D6DE !important;
   color: #172738;
   margin-top: 16px;
-  padding-top: 29px;
+  padding: 29px 0px 21px 0px;
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-rate-text,
@@ -3347,8 +3348,8 @@ input[type=checkbox] {
 .star-rate-data {
   background-image: url('images/validacao_frontend_relato_de_uso.jpg');
   background-repeat: no-repeat;
-}
-*/
+}*/
+
 .ratings-list {
   /*background-image: url('images/tela_listagem_relato_uso_v4_fechado.jpg');*/
 /*  background-image: url('images/print_listagem.jpg');*/
@@ -3361,9 +3362,11 @@ input[type=checkbox] {
 }
 
 .ratings-list .user-rating-block {
-  padding-bottom: 30px;
+  border-bottom: 1px solid #D3D6DE;
+  border-top: none;
+  padding-bottom: 40px;
   padding-top: 32px;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 .ratings-list .star-profile-information {
@@ -3430,17 +3433,22 @@ input[type=checkbox] {
 
 #content .ratings-title .block-title {
   background: none;
+  border-bottom: 1px solid #D3D6DE;
   border-top: none;
   color: #172738;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 1.8px;
-  padding: 0px 0px 0px 4px;
+  margin-bottom: 0px;
+  padding: 0px 0px 12px 4px;
 }
 
 .ratings-list .make-report-block {
   /*background-image: url('images/test.jpg');*/
   background-repeat: no-repeat;
+  border-bottom: 1px solid #D3D6DE;
+  border-top: none;
+  margin-top: 0px;
   padding-top: 32px;
 }
 
@@ -3480,6 +3488,10 @@ input[type=checkbox] {
   height: 31px;
   padding: 0px 7px 0px 7px;
   text-transform: uppercase;
+}
+
+.ratings-list .see-more {
+  border-top: none;
 }
 
 .ratings-list a.icon-arrow-right-p {
