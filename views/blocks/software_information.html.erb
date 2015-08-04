@@ -27,6 +27,27 @@
         <b>
           <%= block.owner.software_info.finality %>
         </b>
+        <div class="community-average-rating-container">
+          <% if average_rating %>
+            <div class="star-rate-text"><%= _("Rate") %></div>
+
+            <div class="star-container">
+              <% (1..5).each do |star_number| %>
+                <% if star_number <= average_rating %>
+                  <div class="medium-star-positive"></div>
+                <% else %>
+                  <div class="medium-star-negative"></div>
+                <% end %>
+              <% end %>
+            </div>
+          <% else %>
+            <%= _("Be the first to rate this software") %>
+          <% end %>
+
+          <div class="rate-this-software">
+            <%= link_to _('Rate this software'), url_for(:controller => 'communities_ratings_plugin_profile', :action => 'new_rating', :profile=>block.owner.identifier) %>
+          </div>
+        </div>
       </td>
     </tr>
   </table>
