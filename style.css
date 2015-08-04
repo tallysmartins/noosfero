@@ -3312,14 +3312,14 @@ input[type=checkbox] {
   padding-bottom: 4px;
 }
 
-#content .star-rate-form .star-comment-container .comments-display-fields span.comments-arrow-up {
+#content .star-rate-form .star-comment-container .comments-display-fields span.comments-arrow-up:after {
     content: url('images/top-arrow-black.png');
     float: right;
     padding-top: 7px;
     padding-right: 6px;
 }
 
-#content .star-rate-form .star-comment-container .comments-display-fields span.comments-arrow-down {
+#content .star-rate-form .star-comment-container .comments-display-fields span.comments-arrow-down:after {
     content: url('images/bottom-arrow-black.png');
     float: right;
     padding-top: 7px;
