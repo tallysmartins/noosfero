@@ -1,0 +1,350 @@
+/***************** General Block Organisation **********************/
+.box-2 {
+    display: inline-block;
+    vertical-align: top;
+    width: 150px;
+}
+
+.box-3{
+  width: 190px;
+}
+
+.box-1 .block,
+.no-boxes .block {
+    margin-top: 50px;
+}
+
+#user form {
+  display: none;
+}
+
+.block-outer {
+  margin-bottom: 45px;
+  clear: both;
+}
+
+.block-outer .block .block-outer {
+    margin-top: 0;
+    border: 5px solid red;
+}
+
+/*** pagination **/
+
+.pagination {
+  border-top: 0 none;
+  font-size: 120%;
+  margin-bottom: 30px;
+}
+
+#content .pagination a {
+  padding: 7px 11px 7px 11px;
+  border-radius: 4px;
+  margin-right: 4px;
+  letter-spacing: 0.6px;
+  color: #172738;
+  border: 1px solid #D3D6DE;
+}
+
+#content .pagination .previous_page,
+#content .pagination .next_page{
+    background-image: none;
+    color: #888888;
+    font-size: 14px;
+    width: auto;
+    font-weight: bold;
+}
+
+.pagination .previous_page {
+  margin-right: 0.5em; 
+}
+
+.pagination .next_page {
+  margin-left: 0.5em; 
+  font-weight: bold;
+}
+
+.pagination .current {
+  background-color: #ECEDF1;
+  padding: 8px 11px 8px 11px;
+  border-radius: 4px;
+  margin-right: 4px;
+  font-family: Arial;
+  font-weight: 700;
+  font-size: 16px;
+  border: 1px solid #D3D6DE;
+}
+
+/*** end of pagination **/
+
+/*** see more buttons **/
+.more_button,
+.read_more {
+  margin-bottom: 15px;
+  margin-top: -5px;
+  color: #000000;
+  font-size: 11px;
+  text-align: left;
+}
+
+.community-track-plugin_track-card-list-block .more_button{
+  text-align: right;
+}
+
+.community-track-plugin_track-card-list-block .more_button .view_all a{
+  margin-right: 12px;
+}
+
+#content .more_button .view_all a,
+#content .read_more a{
+  background: url("images/button-read-more-vazio.png") no-repeat scroll left 50% transparent;
+  color: #333;
+  display: inline-block;
+  font-weight: bold;
+  padding: 10px 20px 10px 50px;
+  text-align: left;
+  font-family: Arial, sans-serif;
+}
+
+#content .box .read-more {
+  border-top: 1px solid #2c66ce;
+  background: #eee;
+  font-size: 10px;
+  text-align: right;
+  border-bottom: none;
+  text-transform: uppercase;
+  font-family: "open_sans", Arial, Helvetica, sans-serif;
+  font-variant: normal;
+}
+
+#content .read-more a {
+  color: #000000;
+  line-height: 20px;
+  padding: 8px;
+  display: block
+}
+
+#content .box .read-more a::after {
+  background: #2c66ce;
+  content: url('images/right-arrow.png');
+  padding-left: 8px;
+  padding-right: 5px;
+  margin-left: 7px;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+}
+
+#content .read-more a:hover {
+    background: #dedede;
+} 
+
+#content .box-2 .block-outer .read-more {
+    border-top: 1px solid #4562b1;
+    background: #eee;
+}
+
+#content .box-2 .block-outer .read-more a {
+    color: #000000;
+}
+
+#content .box-2 .block-outer .read-more a::after {
+  color: #FFFFFF;
+  background: #4562b1;
+}
+
+/*end of see more buttons */
+
+/***************** block title pattern *************/
+#content .box .block-title {
+  font-size: 12px;
+  text-align: left;
+  border-bottom: none;
+  padding: 5px 8px 18px 7px;
+  text-transform: uppercase;
+  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+  font-variant: normal;
+  margin: 0px 0px 2px 0px;
+  border-top: 4px solid #4562b1;
+  background: #eee;
+  color: #4562b1;
+}
+
+#content .box-1 .block-title {
+    font-size: 18px;
+    text-transform: none;
+    font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+    padding: 5px 8px 20px 10px;
+}
+
+#content .box-2 .block-outer .block-title {
+  border-top: 4px solid #4562b1;
+  background: #eee;
+  color: #4562b1;
+}
+/***************** end of block title pattern ********************/
+
+#content .button-bar a.icon-cancel span{
+    vertical-align: text-middle;
+}
+
+#category-ajax-selector .select-subcategory-link:hover {
+    color: #fff;
+}
+
+/*feed rss*/
+#article .blog-feed-link {
+    position: relative;
+    right: 0;
+    top: 0;
+}
+
+/*******************************/
+
+#box-organizer .block-target { clear: both; }
+
+/*.profile-info-options*/
+#content .profile-info-options {
+    padding-right: 0;
+}
+
+#content .profile-info-options ul {
+    margin-left: 0px;
+}
+
+#content .profile-info-options input.button.with-text,
+#content .profile-info-options a.button.with-text {
+    background-color: #fff;
+    border-radius: 0 0 0 0;
+    display: block;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    padding-top: 5px;
+    text-align: left;
+}
+
+#content .profile-info-options a.button.with-text{
+    border: 0px solid #CCCCCC;
+    border-bottom: 2px solid #CCCCCC !important;
+}
+
+#content .profile-info-options input.button:hover,
+#content .profile-info-options a.button:hover {
+     background-color: #ccc;
+    border: 1pxpx solid #CCC;
+}
+
+
+
+.comment-info {
+    line-height: 1em;
+    margin-top: 5px;
+}
+
+#article .article-comments-list li {
+     display: block;
+    list-style: none outside none;
+    margin: 10px 0 0;
+     padding: 1em;
+}
+
+#article .comment-replies .article-comment {
+    background: url("/images/black-alpha-pixel-5.png") repeat scroll left top transparent;
+    border: 1px solid #808080;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 0px;
+    padding: 0;
+}
+
+#content .comment-picture {
+    max-width: 50px;
+     word-wrap: break-word;
+}
+
+.comment-replies .comment-picture {
+    height: auto;
+    max-width: 50px;
+     overflow: visible;
+}
+
+.comment-created-at{
+    display: block;
+    float: none;
+     margin-left: 0;
+     color: red;
+     font-style: italic;
+     margin-bottom: 1em;
+}
+
+#article .article-comment .comment-details h4 {
+    display: block;
+}
+
+.comment-text p {
+    line-height: 1.3em;
+}
+
+.article-comment .comment-details {
+    padding-top: 0;
+}
+
+#comments_list .comment-balloon .comment-wrapper-1,
+#comments_list .comment-balloon .comment-wrapper-2,
+#comments_list .comment-balloon .comment-wrapper-3,
+#comments_list .comment-balloon .comment-wrapper-4,
+#comments_list .comment-balloon .comment-wrapper-5,
+#comments_list .comment-balloon .comment-wrapper-6,
+#comments_list .comment-balloon .comment-wrapper-7,
+#comments_list .comment-balloon .comment-wrapper-8{
+    background-image: none;
+}
+
+#comments_list a.display-comment-form {
+     background: url("images/bg-btn-ver-mais-1px.png") repeat scroll 0 0 #EEEEEE;
+     border-color: #ddd;
+     margin: 14px;
+}
+
+#content .comment-header .comment-actions-reply{
+    margin-right: 5px;
+   margin-top: 5px;
+}
+
+.comment-details .menu-submenu {
+  bottom: -4px;
+  right: -130px;
+}
+
+#page-comment-form .post_comment_box {
+     display: inline-block;
+    padding: 5px;
+    text-align: left;
+}
+
+/* fim de comentário*/
+
+
+
+
+/*****fim - removidos do cabecalho-cinza-theme.css**********/
+
+/**********************************************************************/
+
+/*label dos radio buttons da busca*/
+#content .search-field label {
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: middle;
+    margin-left: 5px;
+    border: 5px solid red;
+}
+
+#public-profile-search .formfield, #public-profile-search .submit {
+    margin-bottom: 5px;
+}
+
+#content .profile ul{
+    margin-left: 1em;
+}
+/****************************************************************/

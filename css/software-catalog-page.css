@@ -1,0 +1,335 @@
+/*** Title and subtitle ***/
+
+.action-search-software_infos #content {
+  margin-top: 10px;
+  padding: 0px;
+}
+
+.action-search-software_infos .main-content {
+  border: none;
+  box-shadow: none;
+}
+
+.action-search-software_infos #content .main-content h2{
+  color: #ff0066;
+  font-size: 16px;
+  font-family: "open_sansregular",Arial, Helvetica,sans-serif;
+  text-transform: uppercase;
+}
+
+.action-search-software_infos #content .main-content h1{
+  padding: 5px 0 10px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
+  font-variant: normal;
+}
+
+/*** end of title and subtitle ***/
+
+/*** Search Box ***/
+.action-search-software_infos .search-form {
+  margin-top:28px;
+  padding: 0;
+  background: #ecedf1;
+  border-radius: 4px;
+  border: 1px solid #d7d7d7;
+}
+
+.action-search-software_infos #software-search-container .search-form h3{
+  margin: 0;
+  padding: 16px 0 10px 14px;
+  font-family:"open_sansregular", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.action-search-software_infos #content .search-form .search-field .formfield {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.action-search-software_infos #content .search-form .search-field #search-input {
+  width: 96%;
+  margin: 4px 0px 0px 13px;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #d7d7d7;
+  font-size: 14px;
+}
+
+
+.action-search-software_infos #content .search-form .search-field input.button{
+  padding: 0px;
+  background-color: #2B65cd;
+  color: #ffffff; 
+  border: 1px solid #2B65cd;
+  font-family: "open_sansbold",Arial,sans-serif;
+  border-radius: 4px;
+}
+
+.controller-search #content .search-form .search-field input.button.submit {
+  width: auto;
+  height: 30px;
+  max-height: 30px;
+  margin: 14px;
+  padding: 0 14px 0 14px;
+  background-color: #4562b1; 
+  text-transform: uppercase;
+}
+
+/* Filter options */
+
+.action-search-software_infos #filter-catalog-software {
+  background-color: #d7d7d7;
+}
+
+.action-search-software_infos #filter-option-catalog-software {
+  padding: 14px;
+  background-color: #d7d7d7;
+  border:none; 
+  font-size: 11px;
+}
+
+.action-search-software_infos #filter-option-catalog-software:hover {
+  background-color: #c7c7c7;
+}
+
+.action-search-software_infos #filter-option-catalog-software:after {
+  content: "";
+  margin-left:5px;
+  padding: 3px 10.5px;
+  background:url("../images/bottom-arrow.png") no-repeat center;
+  background-color:#4562b1;
+  border-radius: 4px;
+}
+
+.action-search-software_infos #filter-catalog-software #filter-categories-option {
+  border:none;
+}
+
+.action-search-software_infos #filter-catalog-software #filter-categories-catalog h4 {
+  margin: 5px 0 10px 5px;
+  background: transparent;
+  color: black;
+}
+
+.action-search-software_infos #filter-catalog-software  input[type="checkbox"]{
+  vertical-align:sub;
+}
+
+.action-search-software_infos #group-categories #group-catalog-01 {
+  float: left;
+  width: 50%;
+}
+
+.action-search-software_infos #group-categories label {
+  font-family:Arial;
+  font-size: 14px;
+}
+
+.action-search-software_infos #group-categories label span {
+  font-family:Arial;
+  font-size: 14px;
+}
+
+.action-search-software_infos #filter-catalog-software .project-software{
+  margin: 0 0 30px;
+  border-top: 1px dotted;
+  border-bottom: 1px dotted;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: Arial;
+}
+
+
+.action-search-software_infos #filter-catalog-software .project-software span {  
+  padding: 2px 6px;
+  background: #fff;
+  color: #3867b7;
+  border-radius: 50%;
+  font-size: 16px;
+}
+
+.action-search-software_infos button#cleanup-filter-catalg {
+  cursor: pointer;
+  background-color: #4562b1;
+  font-size: 14px;
+  font-family:Arial;
+}
+
+.action-search-software_infos button#close-filter-catalog {
+  cursor:pointer;
+}
+
+.action-search-software_infos button#close-filter-catalog:after {
+  content: "";
+  margin-left: 5px;
+  padding: 2.5px 10.5px;
+  background: url("../images/top-arrow.png") no-repeat center;
+  background-color: #4562b1;
+  border-radius: 4px;
+}
+
+/*** end of search box ***/
+
+/*** Catalog Options ***/
+
+.action-search-software_infos #catalog-display-options {
+  font-size: 14px;
+  font-family: Arial; 
+}
+
+.action-search-software_infos #catalog-display-options  #catalog-display-options-count{
+  padding: 45px 0 4px 0;
+}
+
+.action-search-software_infos #catalog-display-options  #catalog-display-options-show-and-sort{
+  padding: 38px 0 5px 0;
+  font-weight: bold;
+}
+
+/*** Search Results ***/
+.action-search-software_infos #search-results {
+  border-top: 1px solid #d7d7d7;
+}
+
+.action-search-software_infos #search-results.only-one-result-box .search-software-item {
+  padding: 29px 0 31px 0;
+  background: #ffffff;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.action-search-software_infos #search-results #search-results-empty{
+  padding: 15px 0px;
+  color: #172738;
+  font-size: 16px;
+  text-align: left;
+}
+
+
+.action-search-software_infos #search-results .search-results-innerbox {
+  background: #ffffff;
+  border: none;
+}
+
+/* Column left */
+
+.action-search-software_infos #search-results .search-software-item-column-left{
+  width: 130px;
+  height: 130px;
+  float: left;
+  border-right: 1px dotted  #ccc;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .vcard {
+  display: table;
+  margin: 0;
+  border: none;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .vcard:hover {
+  border: none;
+  background: none;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .vcard a:hover{
+  color:#2C66CE;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .vcard a.profile_link{
+  float:left; 
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .vcard:hover .menu-submenu-trigger {
+  display:none;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .profile-image{
+  width: 130px;
+  height: 130px;
+  margin-left: 130px; 
+  margin-top: 35px;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .vcard img {
+  max-width: 90px;
+  max-height: 130px;
+  height: auto;
+  margin-left:170px;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .org {
+  display: none;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .extra_info {
+  width: 130px;
+  padding-right: 20px;
+  top: 0px;
+  position: absolute;
+  color: #21376c;
+  font-size: 13px;
+  font-family: Arial;
+  text-align: left;
+  opacity: inherit;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .extra_info::before{
+  content: url("../images/ic-calendar.png");
+  margin-right: 10px;
+  margin-top: 6px;
+  float: left;
+}
+
+/* Column Right */
+
+.action-search-software_infos #search-results .search-software-item-column-right {
+  width: 70%;
+  float: left;
+  margin-left: 130px;
+  padding: 0 0 0 8px;
+  font-size: 15px;
+  font-family: Arial;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-right .search-software-content-block h4{
+  margin-top: 0;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-right .search-software-content-block h4 a {
+  color: #172938;
+  font-size: 19px;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-right .search-software-content-block:last-child {
+  margin-top: 30px;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-right span{
+  width: 100%;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-right span b{
+  font-weight: normal;
+  font-size: 13px;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-right .search-software-content-block:last-child span{
+  width: auto;
+  float: left;
+}
+
+.action-search-software_infos #search-results .search-software-content-block #categories-list li{
+  width: auto !important; /* force overwritting from base */
+  margin-left: 7px !important; /* force overwritting from base */
+  float: left;
+  color: #2B65cd;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: underline;
+}
+
+.action-search-software_infos #search-results .search-software-content-block #categories-list li a{
+  color: #2B65cd;
+}

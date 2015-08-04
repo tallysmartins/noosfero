@@ -359,13 +359,13 @@ span.label {
 }
 /*** end of statistics block **/
 
-/******************** Box-2 ********************/
+/******************** end Box-2 ********************/
 
 /******************** Box-3 ********************/
 
 /*** article block **/
 
-#content .box .article-block .block-title {
+#content .box-3 .article-block .block-title {
   border-top: 4px solid #08A649;
   background: #eee;
   color: #08A649;
@@ -378,32 +378,30 @@ span.label {
   font-weight: 300;
 }
 
-#content .box .block-outer .article-block  .read-more {
+
+#content .box-3 .block-outer .article-block  .read-more {
     border-top: 1px solid #08A649;
     background: #eee;
+    margin-top: 30px;
 }
 
-#content .box .block-outer .article-block .read-more a {
+#content .box-3 .block-outer .article-block .read-more a {
   color: #000000;
   font-size: 11px;
   padding: 9px 9px 10px 9px;
 }
 
-#content .read-more a:hover {
-    background: #dedede;
-}
-
-#content .box .block-outer .article-block .read-more a::after {
+#content .box-3 .block-outer .article-block .read-more a::after {
   color: #FFFFFF;
   background: #08A649;
   font-size: 14px;
 }
 
-#content .box .article-block .short-post {
+#content .box-3 .article-block .short-post {
   padding-top: 23px;
 }
 
-#content .box .article-block p {
+#content .box-3 .article-block p {
   font-size: 15px;
   text-align: left;
   padding: 0;

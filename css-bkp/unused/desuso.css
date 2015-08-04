@@ -1486,3 +1486,75 @@ div.pairwise_group_list_container .arrow span.active {
 
 
 /*********fim Removido do cabecalho cinza theme******************/
+
+.block-footer-content {
+    text-align: right;
+    margin-top: 0.5em;
+}
+.box-2 .block-footer-content,
+.box-3 .block-footer-content {
+    margin-right: 8px;
+}
+
+#content .tags-block .block-footer-content a,
+#content .people-block .block-footer-content a,
+#content .profile-list-block .block-footer-content a,
+#content .enterprises-block .block-footer-content a,
+#content .members-block .block-footer-content a,
+#content .communities-block .block-footer-content a,
+#content .softwares-block .block-footer-content a,
+#content .institutions-block .block-footer-content a,
+#content .friends-block .block-footer-content a {
+    background: url("images/bg-btn-ver-mais-1px.png") repeat-x scroll 0 0 #EEEEEE;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px 5px 5px 5px;
+    display: inline;
+    margin: 14px 0 14px 14px;
+    padding: 5px 15px;
+    position: relative;
+    top: 5px;
+    border: 5px solid red;
+}
+
+/*Container Block - Bloco de Blocos*/
+
+.container-block-plugin_container-block,
+.container-block-plugin_container-block .block-inner-2{
+    background-color: transparent;
+    padding: 0;
+}
+
+.container-block-plugin_container-block .block .block-inner-2{
+    background-color: white;
+    padding: 1em;
+}
+
+.container-block-plugin_container-block .container-block-plugin_container-block .block-inner-2 {
+    background-color: white;
+    padding-left: 6px;
+    padding-top: 5px;
+}
+
+.container-block-plugin_container-block .block-outer{
+    margin-top: 0px;
+}
+
+.block-outer .block .block-outer {
+    margin-top: 0;
+}
+
+.relevant-content-plugin_relevant-content-block ul{
+    padding: 0;
+}
+
+.relevant-content-plugin_relevant-content-block li {
+}
+.relevant-content-plugin_relevant-content-block li:hover {
+    background-color: #eee;
+}
+.relevant-content-plugin_relevant-content-block li a{
+    color: #333;
+    display: block;
+    padding: 0.5em 1em;
+}
+

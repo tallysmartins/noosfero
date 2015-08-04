@@ -1,27 +1,19 @@
 @import url(../profile-base/style.css);
 @import url(../../icons/tango/style.css);
 
-@import url(noosfero-base-theme-overwriting.css);
-@import url(header.css);
-@import url(footer.css);
-@import url(content.css);
-@import url(home-page.css);
-@import url(cadastro.css);
-@import url(pagina-artigos.css);
-@import url(pagina-comunidade.css);
-@import url(pagina_software.css);
-@import url(page-catalog-software.css);
-@import url(recent-content.css);
-@import url(token-input.css);
-
-/*@import url(redes_sociais.css);*/
-/*@import url(dropline_menu.css);*/
-/*@import url(contraste.css);*/
-/*@import url(desuso.css);*/
-/*@import url(agenda.css);*/
-/*@import url(errors.css);*/
-
-
+@import url(css/overwriting-base-theme.css);
+@import url(css/header.css);
+@import url(css/footer.css);
+@import url(css/left-bar.css);
+@import url(css/home-page.css);
+@import url(css/main-content.css);
+@import url(css/general-article-pages.css);
+@import url(css/community-pages.css);
+@import url(css/software-pages.css);
+@import url(css/software-catalog-page.css);
+@import url(css/news-page.css);
+@import url(css/use-report.css);
+@import url(css/tooltips.css);
 
 @import url(font-awesome.min.css);
 /*@import url(http://fonts.googleapis.com/css?family=Open+Sans);*/
@@ -150,7 +142,7 @@ body {
 }
 #content h3{
     font-size:18px;
-    line-height: 21px;
+    line-height: 1.3em;
 }
 #content h4, content h5, #content h6 {
     font-size: 16px;
@@ -159,7 +151,7 @@ body {
 
 p {
     font-size: 12px;
-    line-height: 21px;
+    line-height: 1.5em;
     margin: 0px 0px 10px 0px;
 }
 

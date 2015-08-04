@@ -421,3 +421,33 @@ color: #F91461;
   font-family: Arial;
   line-height: 22px;
 }
+
+/*comments*/
+
+#comments_list.comments{
+    border: 1px solid #CCCCCC;
+    margin: 20px 0;
+}
+
+#content .main-block  #comments_list h3 {
+    border-bottom: 1px solid #CCCCCC;
+    margin: 0;
+    min-height: 100% !important;
+    padding: 14px;
+     color: #999;
+}
+#article .article-comments-list,
+#article .article-comments-list ul,
+#article .article-comments-list li {
+    list-style: none outside none;
+    margin: 5px 0 10px;
+    padding: 0;
+}
+
+#article .article-comments-list li {
+    padding: 14px;
+}
+
+.comments .comment-count-write-out {
+    min-height: 100%;
+}

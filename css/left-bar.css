@@ -1,0 +1,87 @@
+/******************** Box-2 ********************/
+
+.box-2{
+  width:150px;
+}
+
+#content .box-2 .block-outer .block-title {
+	background: #eee;
+	color: #4562b1;
+	border-top: 4px solid #4562b1;
+	line-height: 15px;
+}
+
+/*** Menus - Link list block ***/
+
+#content .box-2 .link-list-block li {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+  border-top: none;
+}
+
+#content .box-2 .link-list-block li a {
+  width: auto;
+  padding: 6px 5px 8px 18px;
+  background-color: #fff;
+  background-position: 0px 50%;
+  color: #2C66CE;
+  border-right: none;
+  border-top: 0px solid #64946E;
+  border-radius: 0 0 0 0;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+#content .box-2 .link-list-block h3.empty + ul {
+  border-top: 1px solid #ddd;
+}
+
+#content .box-2 .link-list-block h3.empty + ul li a {
+  padding-left: 0px;
+  padding-right: 0px;
+  background-image: none;
+}
+
+#content .box-2 .link-list-block li a.link-this-page,
+#content .box-2 .link-list-block li a.link-this-page:hover {
+  border-right: none;
+}
+
+#content .box-2 .link-list-block li a:hover {
+  background-color: #FFFFFF;
+  color: #000;
+}
+#content .box-2 .link-list-block li a.link-this-page {
+  width: auto;
+  margin-left: 0px;
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+/*** Statistics block **/
+.statistics-block-data ul {
+  margin-top: 10px;
+}
+
+.statistics-block-data ul li {
+  margin-left: 18px;
+  margin-top: 6px;
+  line-height: 17px;
+}
+
+.statistics-block-data ul li.users span {
+  font-size: 14px;
+}
+
+span.amount {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+span.label {
+  font-size: 14px;
+}
+/*** end of statistics block **/
+
+/******************** end Box-2 ********************/

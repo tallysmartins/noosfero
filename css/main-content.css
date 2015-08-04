@@ -1,0 +1,31 @@
+/*** Box ***/
+.box-1 .block,
+.no-boxes .block {
+    margin-top: 50px;
+}
+
+.block-outer {
+    margin-bottom: 45px;
+    clear: both;
+}
+
+/*** Block Title ***/
+#content .block-outer .block-title {
+	background: #eee;
+  font-size: 12px;
+  text-align: left;
+  border-bottom: none;
+  padding: 5px 8px 18px 7px;
+  text-transform: uppercase;
+  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+  font-variant: normal;
+  margin: 0px 0px 2px 0px;
+}
+
+#content .box-1 .block-title {
+    font-size: 18px;
+    text-transform: none;
+    font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+    padding: 5px 8px 20px 10px;
+}
+
