@@ -268,3 +268,11 @@ configuração::
 Após isso, basta executar o comando ``converge`` novamente::
 
     $ rake converge SPB_ENV=@@SPB_ENV@@
+
+Caso após a atualização o noosfero não funcionar corretamente, provavelmente
+um erro de *'502 Bad Gateway'* irá aparecer, reinicie o ambiente social::
+
+    $ rake run:social SPB_ENV=@@SPB_ENV@@
+    $ sudo shutdown -r
+
+Aguarde o ambiente reiniciar, e atualize a pagina.
