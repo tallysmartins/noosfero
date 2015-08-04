@@ -16,6 +16,8 @@
 # Sergio Oliveira
 -A INPUT -s 179.111.229.232/32 -p tcp -m state --state NEW -m multiport --dports 22,80,5432 -j ACCEPT
 
+# Antonio Terceiro
+-A INPUT -s 198.58.116.17/32 -p tcp -m state --state NEW -m multiport --dports 22,80,5432 -j ACCEPT
 
 -A INPUT -s 10.18.0.0/16 -p tcp -m state --state NEW -m multiport --dports 22,80,5432 -j ACCEPT
 -A INPUT -s 10.18.0.0/16 -p icmp --icmp-type 8 -j ACCEPT
