@@ -61,15 +61,15 @@ To run Colab with development server you will have to:
 .. code-block::
 
   colab-init-config > /etc/colab/settings.py
-  
+
 2- Edit the configuration file. Make sure you set everything you need including **database** credentials.
-  
-3- Run the development server: 
+
+3- Run the development server:
 
 .. code-block::
 
   colab-admin runserver 0.0.0.0:8000
 
 
-**NOTE**: In case you want to keep the configuration file else where just set the 
+**NOTE**: In case you want to keep the configuration file else where just set the
 desired location in environment variable **COLAB_SETTINGS**.

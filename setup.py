@@ -9,6 +9,7 @@ from setuptools import setup
 if os.environ.get('USER', '') == 'vagrant':
     del os.link
 
+
 def read(*parts):
     return codecs.open(os.path.join(os.path.dirname(__file__), *parts),
                        encoding='utf8').read()
@@ -24,7 +25,7 @@ def find_version(*file_paths):
 
 
 setup(
-    name='colab-spb',
+    name='colab_spb',
     url='https://github.com/colab/colab-spb',
     description='Yet another Django reverse proxy application.',
     version=find_version('colab_spb/__init__.py'),
@@ -35,9 +36,9 @@ setup(
     ],
     tests_require=['mock'],
     test_suite="tests.run.runtests",
-    author='Sergio Oliveira',
-    author_email='sergio@tracy.com.br',
-    license='GPL 2.0',
+    author='Macartur Sousa',
+    author_email='macartur.sc@gmail.com',
+    license='GPL 3.0',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',

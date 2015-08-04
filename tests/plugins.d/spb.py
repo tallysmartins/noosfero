@@ -1,4 +1,3 @@
-from django.utils.translation import ugettext_lazy as _
 from colab.plugins.utils.menu import colab_url_factory
 
 name = 'colab_spb'
@@ -10,3 +9,4 @@ urls = {
     'prefix': 'spb',
 }
 
+url = colab_url_factory("spb")
