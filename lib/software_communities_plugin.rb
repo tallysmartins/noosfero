@@ -40,7 +40,8 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       CategoriesAndTagsBlock => { :type => [Community] },
       CategoriesSoftwareBlock => { :type => [Environment] },
       SearchCatalogBlock => { :type => [Environment] },
-      SoftwareHighlightsBlock => { :type => [Environment] }
+      SoftwareHighlightsBlock => { :type => [Environment] },
+      SoftwareTabDataBlock => {:type => [Community], :position => 1}
     }
   end
 
