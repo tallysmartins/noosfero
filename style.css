@@ -3588,7 +3588,7 @@ input[type=checkbox] {
 
 /******* Bloco Highlights *******/
 
-#content .box-3 .block-outer .highlights-block .block-inner-2 .block-title {
+.action-environment_design-index #content .box-3 .block-outer .highlights-block .block-inner-2 .block-title {
   width: auto;
   background-color: #eeeff1;
   border: 1px solid #c0c1c1;
@@ -3606,7 +3606,7 @@ input[type=checkbox] {
   border-bottom: 0;
 }
 
-#content .box-3 .highlights-border {
+.action-environment_design-index #content .box-3 .highlights-border {
   width: auto;
   border: 1px solid #c0c1c1;
   max-height: 230px;
@@ -3614,7 +3614,7 @@ input[type=checkbox] {
   border-radius: 0 0 8px 8px;
 }
 
-#content .box-3 .highlights-container {
+.action-environment_design-index #content .box-3 .highlights-container {
   width: 100% !important;
   position: relative;
   top: 0px;
@@ -3628,7 +3628,7 @@ input[type=checkbox] {
   padding-bottom: 0px;
 }
 
-#content .box-3 .highlights-image-link {
+.action-environment_design-index #content .box-3 .highlights-image-link {
   width: 220px;
   max-height: 217px;
   padding-top: 18px;
@@ -3636,7 +3636,7 @@ input[type=checkbox] {
   border-radius: 0 0 8px 8px;
 }
 
-#content .box-3 .highlights-label {
+.action-environment_design-index #content .box-3 .highlights-label {
   border-top: 4px solid #3b61a7;
   position: relative;
   bottom: -18px;
@@ -3655,7 +3655,7 @@ input[type=checkbox] {
   font-family: "open_sansbold", Arial, Helvetica, sans-serif;
 }
 
-#content .box-3 .highlights-block-pager {
+.action-environment_design-index #content .box-3 .highlights-block-pager {
   height: 20px;
   background-color: #FFF;
   width: 190px;
@@ -3668,7 +3668,7 @@ input[type=checkbox] {
 }
 
 /* Primeira imagem */
-#content .box-3 .highlights-block-pager a {
+.action-environment_design-index #content .box-3 .highlights-block-pager a {
   color: transparent;
   background: #c0c1c1 center no-repeat;
   text-indent: -5000px;
@@ -3682,7 +3682,7 @@ input[type=checkbox] {
   border-color: transparent;
   z-index: 1000;
 }
-#content .box-3 .highlights-block-pager a.activeSlide {
+.action-environment_design-index #content .box-3 .highlights-block-pager a.activeSlide {
   color: transparent;
   background: #3e67b1;
   border-color: transparent;

@@ -621,6 +621,11 @@ span.label {
   border-radius: 0 0 8px 8px;
 }
 
+.action-home-index #content .box-3 .highlights-image-link img {
+  height: 96px;
+  max-width: 210px;
+}
+
 .action-home-index #content .box-3 .highlights-label {
   border-top: 4px solid #3b61a7;
   position: relative;
@@ -630,7 +635,7 @@ span.label {
   padding-right: 20px;
   padding-left: 20px;
   padding-top: 23px;
-  padding-bottom: 11px;
+  padding-bottom: 46px;
   background: #e8e9ec;
   vertical-align: middle;
   text-align: center;
