@@ -179,7 +179,9 @@ margin:10px;
   padding: 15px !important;
 }
 
-
+#profile-data .institution_container #input_institution {
+  margin-bottom: 10px;
+}
 
 /* cadastro de software */
 
@@ -749,7 +751,7 @@ body #content form .button-bar .icon-delete {
 
 .formfield{
   font-weight: 500;
-  padding-right: 10px; 
+  padding-right: 10px;
 }
 
 .formlabel{
@@ -820,7 +822,7 @@ body #content .main-block form .button-bar a.button,
 body #content .main-content form .button-bar a.button {
   padding: 1px 0 0 0;
   height: 0;
-  line-height: auto; 
+  line-height: auto;
   color: #2C66CE;
   font-size: 14px;
   border: 1px solid #2C66CE;
