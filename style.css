@@ -3163,6 +3163,10 @@ input[type=checkbox] {
     padding: 0px;
 }*/
 
+.main-content {
+    padding: 0px;
+}
+
 #content .main-content .star-page-title .title {
   font-size: 34px !important;
 }
@@ -3173,6 +3177,7 @@ input[type=checkbox] {
   color: #172738;
   margin-top: 16px;
   padding: 29px 0px 21px 0px;
+  width: 550px;
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-rate-text,
@@ -3359,6 +3364,7 @@ input[type=checkbox] {
 .ratings-list {
   color: #172738;
   font-family: Arial, Helvetica, "open_sansregular", sans-serif;
+  width: 550px;
 }
 
 .ratings-list .user-rating-block {
@@ -3427,7 +3433,7 @@ input[type=checkbox] {
   margin-top: 2px;
 }
 
-.ratings-list .user-rating-block .user-testimony-container .aditional-informations {
+.ratings-list .user-rating-block .user-testimony-container .additional-informations {
   margin-top: 10px;
 }
 
@@ -3479,15 +3485,32 @@ input[type=checkbox] {
   padding-left: 1px;
 }
 
-.ratings-list .make-report-block .make-report-container .button-bar a {
+.ratings-list .make-report-block .make-report-container .button-bar a,
+.star-rate-data .rating-cooldown .button-bar a,
+.star-rate-data .rating-vote-once .button-bar a {
   background-color: #3E67B1 !important;
   background-image: none;
   color: #fff !important;
   font-weight: 700;
   font-size: 14px;
+  font-style: normal;
   height: 31px;
   padding: 0px 7px 0px 7px;
   text-transform: uppercase;
+}
+
+.star-rate-data .rating-cooldown,
+.star-rate-data .rating-vote-once {
+    font-family: Arial;
+    font-size: 18px;
+    font-style: italic;
+    word-break: break-word;
+}
+
+.star-rate-data .rating-cooldown .button-bar a.disabled-button,
+.star-rate-data .rating-vote-once .button-bar a.disabled-button {
+    cursor: not-allowed;
+    opacity: 0.4;
 }
 
 .ratings-list .see-more {
