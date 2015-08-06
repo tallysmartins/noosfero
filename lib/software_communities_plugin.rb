@@ -70,6 +70,12 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     )
   end
 
+  module Hotspots
+    def display_community_average_rating community
+      nil
+    end
+  end
+
   def communities_ratings_plugin_comments_extra_fields
     if context.profile.software?
       Proc::new { render :file => 'comments_extra_fields' }

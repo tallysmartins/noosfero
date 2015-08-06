@@ -15,12 +15,11 @@ class SoftwareInformationBlock < Block
   def content(args={})
     block = self
     s = show_name
-    average_rating = CommunityRating.average_rating block.owner.id
 
     lambda do |object|
       render(
         :file => 'blocks/software_information',
-        :locals => { :block => block, :show_name => s, :average_rating => average_rating}
+        :locals => { :block => block, :show_name => s}
       )
     end
   end
