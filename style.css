@@ -3163,10 +3163,6 @@ input[type=checkbox] {
     padding: 0px;
 }*/
 
-.main-content {
-    padding: 0px;
-}
-
 #content .main-content .star-page-title .title {
   font-size: 34px !important;
 }
@@ -3177,7 +3173,6 @@ input[type=checkbox] {
   color: #172738;
   margin-top: 16px;
   padding: 29px 0px 21px 0px;
-  width: 550px;
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-rate-text,
@@ -3364,7 +3359,6 @@ input[type=checkbox] {
 .ratings-list {
   color: #172738;
   font-family: Arial, Helvetica, "open_sansregular", sans-serif;
-  width: 550px;
 }
 
 .ratings-list .user-rating-block {
