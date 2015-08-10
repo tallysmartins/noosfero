@@ -113,6 +113,12 @@ template '/etc/colab/settings.d/02-logging.yaml' do
   notifies :restart, 'service[colab]'
 end
 
+template '/etc/colab/settings.d/03-sentry.yaml' do
+  owner  'root'
+  group  'colab'
+  mode   0640
+  notifies :restart, 'service[colab]'
+end
 
 directory '/var/lib/colab-assets/spb/' do
   owner  'root'

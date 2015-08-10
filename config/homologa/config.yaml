@@ -15,4 +15,5 @@ relay_hostname: relay.homologa.softwarepublico.gov.br
 relay_ip: 189.9.151.66
 external_outgoing_mail_relay: 189.9.150.53
 external_outgoing_mail_domain: serpro.gov.br
+raven_dsn: https://a5e2f92a83774dfc9de66486e0fe970b:1a9229a4e1d2483582144d302fb53115@sentry.tracy.com.br/19
 google_analytics_id: 'UA-64206731-3'
