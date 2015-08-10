@@ -1,0 +1,195 @@
+/*** Software Header ***/
+#content .software-information-block{
+	margin-bottom: 60px;
+}
+
+#content #software-information-block-table{
+  width: auto;
+  margin: 0px 15px;
+}
+
+#content #software-information-block-table td{
+	display: table-cell;
+}
+
+#content #software-information-block-table #col-software-name {
+  font-style: normal;
+  vertical-align: top;
+}
+
+#content #software-information-block-table #col-software-name h1{
+  line-height: 37px;
+  font-size: 34px;
+  font-family: Arial, open_sansbold, Helvetica, sans-serif;
+  font-weight: 700;
+  text-align: left;
+}
+
+#content #software-information-block-table #col-software-name b{
+  line-height: 21px;
+  font-weight: normal;
+  font-family: Arial, open_sansregular, Helvetica, sans-serif;
+  font-size: 15px;
+}
+	
+/*** end of Software Header ***/
+
+/*** Software Homepage ***/
+
+/* Software Download Block*/
+
+#content .download-block #download-block-2{
+  margin: 0px 15px;
+  border:1px solid #D3D6DE;
+  border-radius: 10px;
+}
+
+#content .download-block #download-block-2 #download_spb-2{
+  padding: 5px 10px;
+  background-color: #D3D6DE;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-family: Arial;
+}
+
+#content .download-block #download-block-2 #download_spb-2 h3{
+  margin: 6px 0px 2px 10px;
+  font-size: 18px;
+}
+
+#content .download-block #download-block-2 #download-info-1,
+#content .download-block #download-block-2 #download-info-2,
+#content .download-block #download-block-2 #download-info-3{
+  padding: 30px 10px 30px 10px;
+  clear: both;
+  border-top: 1px solid #D3D6DE;
+}
+
+#content .download-block #download-block-2 #download-info-2{
+  background: #ECEDF1;
+}
+
+#content .download-block #download-block-2 #version01{
+  width: 80px;
+  float: left;
+  margin-right: 20px;
+  margin-left: 15px;
+  clear: both;
+}
+
+#content .download-block #download-block-2 #version01 #image-download{
+  display: block;
+  height: 18px; /*fix when display file size*/
+  padding: 50px 0px 8px 0px;
+  background-color: #2c66ce;
+  background-image: url("../images/download-icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #2c66ce;
+  border-radius: 8px; /*fix when display file size*/
+}
+
+#content .download-block #download-block-2 #version01 #size-download{
+  display: none; /*fix when display file size*/
+  color: #ffffff;
+  background-color: #1a397d;
+  border: 1px solid #1a397d;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  font-size: 12px;
+  text-align: center;
+}
+
+#content .download-block #download-block-2 #info-software-download{
+  position: relative;
+  margin: 5px 0px 0px 100px;
+  font-size: 16px;
+}
+
+#content .download-block #download-block-2 #info-software-download .download-name{
+  display: block;
+  font-weight: bold;
+}
+
+#content .download-block #download-block-2 #info-software-download .download-system{
+  display: block;
+  font-size: 14px;
+}
+
+#content .download-block #download-block-2 #info-software-download .req_min_spb{
+  font-size: 12px;
+}
+
+#content .download-block #download-block-2 #info-software-download .req_min_spb a{
+  color: #3E67B1;
+  line-height: 40px;
+  text-decoration: underline;
+}
+
+#content .download-block #download-block-2 #licensed-software{
+  padding:14px;
+  background-color: #D3D6DE;
+  border-top: 1px solid #D3D6DE;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  font-size: 12px;
+  text-align: right;
+}
+
+#content .download-block #download-block-2 #licensed-software a{
+  color: #3e67b1;
+  text-decoration: underline;
+}
+
+/* About Software - Article on homepage */
+
+.profile-homepage #article h1{
+  padding: 0;
+  margin: 0 0 10px;
+  color: #172738;
+  font-family: Arial, open_sansbold, Helvetica, sans-serif;
+  font-variant: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 1.3em;
+}
+
+.profile-homepage #article #article-header h1.title{
+  border: none;  
+}
+
+.profile-homepage #article #article-header .publishing-info{
+  display: none;
+}
+
+.profile-homepage #article .article-body h1{
+  padding-top: 25px;
+  border-top: 1px solid #ECEDF1;
+  border-bottom: none;
+}
+
+.profile-homepage #article .article-body p{
+	text-align: left;
+	font-size: 15px;
+	line-height: 21px;
+	margin-bottom: 20px;
+}
+
+.profile-homepage #article .article-body hr{
+  display: none;
+}
+
+.profile-homepage #article .article-body ul {
+  list-style-position: inside;
+  list-style-type: disc;
+  background-repeat: no-repeat;
+}
+
+.profile-homepage #article .article-body ul li{
+  list-style: inherit;
+  text-align: left;
+	font-size: 15px;
+	line-height: 21px;
+}
+
+/*** end of Software Homepage ***/ 
