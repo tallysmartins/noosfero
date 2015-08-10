@@ -1,0 +1,4 @@
+<% node['peers'].each do |hostname,ip| %>
+[<%= hostname %>]
+  address <%= ip %>
+<% end %>
