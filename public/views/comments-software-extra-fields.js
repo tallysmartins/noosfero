@@ -6,7 +6,7 @@ modulejs.define('CommentsSoftwareExtraFields', ['jquery'], function($) {
   }
 
   function set_show_additional_information() {
-    $("#comments-additional-information").on("click", function() {
+    $(".comments-display-fields").on("click", function() {
       if (DATA.information_display_state === "hidden") {
         DATA.information_display_state = "show";
         $(".comments-software-extra-fields div").show();

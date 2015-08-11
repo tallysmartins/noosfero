@@ -164,11 +164,12 @@
 }
 
 /*===== Communities rate hotspot extra fields =====*/
-#comments-additional-information {
-  cursor: pointer;
-}
 
 .comments-software-extra-fields div {
   display: none;
+}
+
+#content .star-rate-form .star-comment-container .comments-display-fields {
+  cursor: pointer;
 }
 
