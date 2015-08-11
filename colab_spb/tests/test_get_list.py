@@ -4,7 +4,7 @@ from django.test import TestCase, Client
 
 class ColabSPB(TestCase):
 
-    fixtures = ['colab_data.json']
+    fixtures = ['test_data.json']
 
     def setUp(self):
         super(ColabSPB, self).setUp()
@@ -15,13 +15,13 @@ class ColabSPB(TestCase):
 
     def test_getlist_without_list(self):
         response = self.client.get("/spb/get_list/?list_name=")
-        self.assertEqual("x",response.content)
+        self.assertEqual("",response.content)
+        self.assertEqual(404,response.status_code)
 
     def test_getlist_with_list(self):
         response = self.client.get("/spb/get_list/?list_name=ListA&MAX=5")
-        self.assertEqual("x",response.content)
+        self.assertEqual(5,len(response.context[1]['latest']))
 
     def test_getlist_default_MAX(self):
         response = self.client.get("/spb/get_list/?list_name=ListA")
-        self.assertEqual("x",response.content)
-
+        self.assertEqual(7,len(response.context[1]['latest']))

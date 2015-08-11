@@ -1,16 +1,14 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.utils.translation import ugettext as _
 from colab.super_archives.models import MailingList, Thread
 from colab.accounts.utils import mailman
 from colab.accounts.models import User
 
 def get_list(request):
-    list_name = None
-    MAX = 0
-    if request.GET.get('list_name'):
-	list_name = request.GET['list_name']
-    if request.GET.get('MAX'):
-	MAX = request.GET['MAX']
+
+    list_name = request.GET.get('list_name',None)
+    MAX = request.GET.get('MAX',7)
 
     context = {}
 
@@ -38,5 +36,8 @@ def get_list(request):
                     mailinglist__name=list_.name)[:MAX]],
                 len(mailman.list_users(list_.name)),
             ))
+
+    if len(context['lists']) == 0:
+       return HttpResponse('',status=404)
 
     return render(request,"discussion.html",context)
