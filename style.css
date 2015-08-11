@@ -3334,6 +3334,7 @@ input[type=checkbox] {
 }
 
 #content .star-rate-form .star-comment-container .star-tooltip {
+    cursor: default;
     content: '?';
     border-radius: 90%;
     font-size: 12px;
@@ -3710,8 +3711,8 @@ input[type=checkbox] {
 
 /**** animated.css ****/
 .animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }

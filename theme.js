@@ -164,7 +164,7 @@ $('#link-buscar').click(function(e) {
   }
 
   function set_arrow_direction() {
-    var additional_data_bar = $('#comments-additional-information');
+    var additional_data_bar = $('.comments-display-fields');
     var arrow = $('.comments-arrow-down');
     var state = 0;
 
