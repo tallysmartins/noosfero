@@ -1,0 +1,197 @@
+/*** News Page's homepage ***/
+
+/** Header's Block **/
+#content .main-block .blog #article-header h1.title {
+  margin: 0px 0px 0px 0px;
+  border: none;
+  padding: 0px 0px 0px 0px;
+  color: #FF0366;
+  font: normal normal 300 16px/37px 'open sans';
+  text-transform: uppercase;
+}
+
+/* WARNING:
+ *   This solution is TEMPORARY. This informations shouldn't exist
+ *   in this area.
+ *   
+ *   TODO: Remove this informations of the html and, then, from here.
+ */
+#content .blog #article-header .publishing-info .date,
+#content .blog #article-header .publishing-info .author,
+#content .blog #article-header .publishing-info .comments {
+  display: none;
+}
+/** end of Header's Block **/
+
+
+/** General Properties of News **/
+#content .blog p {
+  margin-bottom: 5px;
+  max-height: 25px;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+}
+
+#content .blog .publishing-info {
+  display: inline;
+}
+
+#content .blog .blog-post {
+  margin: 0 auto;
+  border-bottom: 1px solid #ccc;
+  padding: 25px 0px 0px 0px;
+  background: none;
+}
+
+#content .blog .blog-post h1.title {
+  margin-bottom: 10px;
+  border: none;
+  padding: 0px 0px 0px 0px;
+}
+
+#content .blog .blog-post .title a {
+  line-height: 20px;
+  font: normal normal bold 16px arial;
+}
+
+/* WARNING:
+ *   This solution is TEMPORARY. This informations shouldn't exist
+ *   in this area.
+ *   
+ *   TODO: Remove this informations of the html and, then, from here.
+ */
+#content .blog .blog-post .author {
+  display: none;
+}
+
+#content .blog .blog-post .publishing-info {
+  border-top: none;
+  line-height: 21px;
+  color: #172838;
+  font: 13px arial;
+}
+
+#content .blog .blog-post .publishing-info .date {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#content .blog .blog-post .post-pic {
+  margin: 0px 20px 5px 0px;
+  border-radius: 4px;
+  height: 80px;
+  width: 20%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  float: left;
+}
+
+#content .blog .blog-post .short-post {
+  max-height: 50px;
+  text-align: justify;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#content .blog .blog-post .short-post p {
+  color: #172738;
+}
+
+#content .blog #article-actions:last-child {
+  border-top: none;
+}
+/** end of General Properties of News **/
+
+
+/** Main News' Block **/
+#content .blog .page-1 .position-1 .title a {
+  line-height: 37px;
+  color: #172738 !important;
+  font-size: 34px;
+}
+
+#content .blog .page-1 .position-1 .post-pic {
+  margin-bottom: 13px;
+  max-height: 320px;
+  height: 320px;
+  width: 100%;
+}
+/** end of Main News' Block **/
+
+
+/** Secondary News' Block **/
+#content .blog .page-1 .position-2,
+#content .blog .page-1 .position-3,
+#content .blog .page-1 .position-4 {
+  display: block;
+  margin: 0px 0px 0px 0px;
+  padding: 20px 30px 45px 0px;
+  height: 235px;
+  width: 30.5%; 
+  float: left;
+}
+
+#content .blog .page-1 .position-4 {
+  margin: 0px;
+  padding-right: 0px;
+}
+
+#content .main-block #article.blog .page-1 .position-2 p,
+#content .main-block #article.blog .page-1 .position-3 p,
+#content .main-block #article.blog .page-1 .position-4 p {
+  max-height: 35px;
+}
+
+#content .blog .page-1 .position-2 .post-pic,
+#content .blog .page-1 .position-3 .post-pic,
+#content .blog .page-1 .position-4 .post-pic {
+  margin-top: 12px;
+  top: 10px;
+  height: 120px;
+  width: 100%;
+}
+
+#content .blog .page-1 .position-4 .post-pic {
+  margin-right: 0px;
+}
+
+#content .blog .page-1 .position-2 .short-post,
+#content .blog .page-1 .position-3 .short-post,
+#content .blog .page-1 .position-4 .short-post {
+  max-height: 35px;
+  color: #172738;
+  text-align: justify;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#content .main-block .blog .article-body h1 {
+  margin: 0px 0px 10px 0px;
+  border: none;
+  padding: 0px 0px 0px 0px;
+}
+/** end of Secondary News' Block **/
+
+
+/** Lastest News' Block ***/
+
+/* This rule serves to maintain the element in position-5 clear the
+ *   configurations of float.
+ */
+#content .blog .blog-post.position-5 {
+  clear: both;
+}
+
+#content .main-block #article.blog p {
+  margin-bottom: 5px;
+  max-height: 25px;
+  font: 14px/21px Arial;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/** end of Lastest News' Block **/
+
+/** end of News Page's homepage **/
