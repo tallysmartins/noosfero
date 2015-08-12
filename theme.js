@@ -190,6 +190,10 @@ $('#link-buscar').click(function(e) {
     $('.star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments label').html('Nome do órgão ou empresa');
     $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-people-benefited label').html('Número de beneficiados');
     $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values label').html('Recursos economizados');
+    $('.community-average-rating-container .star-rate-text').html('Avaliação dos usuários:');
+    $('.community-average-rating-container .rate-this-community a').html('Avalie o software');
+
+
   }
 
   function add_top_tooltips(){

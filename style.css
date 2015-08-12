@@ -3163,6 +3163,50 @@ input[type=checkbox] {
     padding: 0px;
 }*/
 
+/* página principal do software */
+
+#content #software-information-block-table {
+  width: 715px;
+}
+
+#content .community-average-rating-container {
+  /*background-image: url('images/software_relato_uso_cabecalho2.jpg');
+  background-repeat: no-repeat;*/
+  margin-top: 21px;
+  overflow: auto;
+}
+
+#content .community-average-rating-container .star-rate-text {
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  margin-right: 5px;
+  padding: 4px 0px 0px 3px;
+}
+
+#content .community-average-rating-container .star-container {
+  margin-top: 2px;
+}
+
+#content .community-average-rating-container .rate-this-community {
+  font-size: 14px;
+  text-decoration: underline;
+  margin: 4px 0px 0px 6px;
+  padding: 0px 0px 0px 15px;
+}
+
+#content .community-average-rating-container .star-container .medium-star-negative,
+#content .community-average-rating-container .star-container .medium-star-positive {
+  margin-right: 3px;
+}
+
+
+/* página interna */
+
+#content .main-content .star-page-title,
+#content .main-content .star-rate-data {
+  max-width: 560px;
+}
+
 #content .main-content .star-page-title .title {
   font-size: 34px !important;
 }
@@ -3301,6 +3345,11 @@ input[type=checkbox] {
 #content .star-rate-form .star-comment-container .comments-display-fields {
     border-bottom: 1px dotted #D3D6DE;
     overflow: auto;
+}
+
+#content .star-rate-form .star-comment-container .comments-display-fields:hover span,
+#content .star-rate-form .star-comment-container .comments-display-fields:hover span:after {
+    opacity: 0.6;
 }
 
 #content .star-rate-form .star-comment-container .comments-display-fields span#comments-additional-information {
@@ -3538,6 +3587,7 @@ input[type=checkbox] {
   padding-right: 5px;
   text-align: center;
 }
+
 
 /*********************** PÁGINA DE AJUDA ***********************/
 
