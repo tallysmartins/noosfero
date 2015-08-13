@@ -3166,8 +3166,21 @@ input[type=checkbox] {
 /* página principal do software */
 
 #content #software-information-block-table {
-  width: 715px;
+  width: 100%;
 }
+
+#content #software-information-block-table h1 {
+    font-size: 34px;
+}
+
+#content #software-information-block-table #col-profile-big-image {
+    padding-right: 0px;
+}
+
+#content #software-information-block-table #col-software-name {
+    padding-left: 0px;
+}
+
 
 #content .community-average-rating-container {
   /*background-image: url('images/software_relato_uso_cabecalho2.jpg');
@@ -3750,6 +3763,7 @@ input[type=checkbox] {
   border-color: transparent;
   z-index: 1000;
 }
+
 .action-environment_design-index #content .box-3 .highlights-block-pager a.activeSlide {
   color: transparent;
   background: #3e67b1;
