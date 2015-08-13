@@ -16,9 +16,11 @@
 -A INPUT -p icmp --icmp-type 11 -j ACCEPT
 -A INPUT -p icmp --icmp-type 12 -j ACCEPT
 
+<% if node['config'] && node['config']['munin_master'] %>
 # allow ping between the peers
 <% node['peers'].each do |hostname,ip| %>
 -A INPUT -s <%= ip %> -p icmp --icmp-type 8 -j ACCEPT
+<% end %>
 <% end %>
 
 -A INPUT -i lo -j ACCEPT
@@ -27,7 +29,9 @@
 -A INPUT -s <%= node['peers']['integration'] %> -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
 # Everybody needs to accept munin connections from munin master
+<% if node['config'] && node['config']['munin_master'] %>
 -A INPUT -s <%= node['config']['munin_master'] %> -p tcp -m state --state NEW --dport 4949 -j ACCEPT
+<% end %>
 
 <%= node['firewall'] %>
 <%= render 'iptables-filter.erb' %>

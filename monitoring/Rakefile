@@ -10,7 +10,9 @@ ENV['CHAKE_SSH_CONFIG'] = File.join(basedir, 'ssh_config')
 require 'chake'
 
 ips = YAML.load_file('config/prod/ips.yaml')
+firewall = File.read('monitoring/iptables-filter-rules')
 $nodes.each do |node|
   node.data['environment'] = 'prod'
   node.data['peers'] = ips
+  node.data['firewall'] = firewall
 end

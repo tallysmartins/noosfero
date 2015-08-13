@@ -1,0 +1,11 @@
+-A INPUT -s 200.198.196.192/26 -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 200.198.196.192/26 -p icmp --icmp-type 8 -j ACCEPT
+-A INPUT -s 200.198.196.201/32 -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+-A INPUT -s 200.198.196.206/32 -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+-A INPUT -s 164.41.86.12/32 -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+-A INPUT -s 198.58.116.17/32 -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+-A INPUT -s 179.111.229.232/32 -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+-A INPUT -s 10.21.0.0/16       -p tcp -m state --state NEW -m multiport --dports 22,80 -j ACCEPT
+-A INPUT -s 10.21.0.0/16       -p icmp --icmp-type 8 -j ACCEPT
+-A INPUT -s 189.9.137.239/32   -p tcp -m state --state NEW -m tcp --dport 10050 -j ACCEPT
+-A INPUT -s 189.9.137.239/32   -p icmp --icmp-type 8 -j ACCEPT
