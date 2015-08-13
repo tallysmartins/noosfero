@@ -32,45 +32,40 @@
 
 /* Software Download Block*/
 
-#content .download-block #download-block-2 {
+#content .download-block {
   margin: 0px 15px;
   border: 1px solid #D3D6DE;
   border-radius: 10px;
 }
 
-#content .download-block #download-block-2 #download_spb-2 {
-  padding: 5px 10px 5px 10px;
+#content .download-block .block-title {
+  padding: 11px 10px 7px 20px;
+  background-color: #D3D6DE;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  background-color: #D3D6DE;
-  font-family: arial;
-}
-
-#content .download-block #download-block-2 #download_spb-2 h3 {
-  margin: 6px 0px 2px 10px;
+  font-family: Arial;
+  margin: 0;
+  color: #172738;
   font-size: 18px;
 }
 
-#content .download-block #download-block-2 #download-info-1,
-#content .download-block #download-block-2 #download-info-2,
-#content .download-block #download-block-2 #download-info-3 {
+#content .download-block .download-list li {
   padding: 30px 10px 30px 10px;
   border-top: 1px solid #D3D6DE;
   clear: both;
 }
 
-#content .download-block #download-block-2 #download-info-2 {
+#content .download-block .download-list li:nth-child(even) {
   background: #ECEDF1;
 }
 
-#content .download-block #download-block-2 #version01 {
-  margin: 0px 20px 0px 15px;
+#content .download-block .download-button {
   width: 80px;
   float: left;
   clear: both;
 }
 
-#content .download-block #download-block-2 #version01 #image-download {
+#content .download-block .download-button .download-image {
   padding: 50px 0px 8px 0px;
   border: 1px solid #2c66ce;
   border-radius: 8px;
@@ -79,7 +74,7 @@
   display: block;
 }
 
-#content .download-block #download-block-2 #version01 #size-download {
+#content .download-block .download-button #download-size {
   border: 1px solid #1a397d;
   border-radius: 0px 0px 8px 8px;
   background-color: #1a397d;
@@ -89,33 +84,33 @@
   display: none;
 }
 
-#content .download-block #download-block-2 #info-software-download {
+#content .download-block .download-info {
   margin: 5px 0px 0px 100px;
   position: relative;
   font-size: 16px;
 }
 
-#content .download-block #download-block-2 #info-software-download .download-name {
+#content .download-block .download-info .download-name {
   display: block;
   font-weight: bold;
 }
 
-#content .download-block #download-block-2 #info-software-download .download-system {
+#content .download-block .download-info .download-platform {
   display: block;
   font-size: 14px;
 }
 
-#content .download-block #download-block-2 #info-software-download .req_min_spb {
+#content .download-block .download-info .min-requirements {
   font-size: 12px;
 }
 
-#content .download-block #download-block-2 #info-software-download .req_min_spb a {
+#content .download-block .download-info .req_min_spb a {
   line-height: 40px;
   color: #3E67B1;
   text-decoration: underline;
 }
 
-#content .download-block #download-block-2 #licensed-software {
+#content .download-block #licensed-software {
   padding:14px;
   border-top: 1px solid #D3D6DE;
   border-radius: 0px 0px 8px 8px;
@@ -124,7 +119,7 @@
   text-align: right;
 }
 
-#content .download-block #download-block-2 #licensed-software a {
+#content .download-block #licensed-software a {
   color: #3e67b1;
   text-decoration: underline;
 }
