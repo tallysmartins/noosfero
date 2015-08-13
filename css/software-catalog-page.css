@@ -122,7 +122,8 @@
 }
 
 .action-search-software_infos #filter-catalog-software  input[type="checkbox"]{
-  vertical-align:sub;
+  vertical-align: middle;
+  margin: 0 3px 2px 8px;
 }
 
 .action-search-software_infos #group-categories #group-catalog-01 {
@@ -130,12 +131,15 @@
   width: 50%;
 }
 
-.action-search-software_infos #group-categories label {
+.action-search-software_infos #group-categories ul {
   font-family: Arial;
   font-size: 14px;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
 }
 
-.action-search-software_infos #group-categories label span {
+.action-search-software_infos #group-categories li span {
   font-family: Arial;
   font-size: 14px;
 }
@@ -149,6 +153,9 @@
   font-family: Arial;
 }
 
+.action-search-software_infos #filter-catalog-software .project-software label {
+  font-weight: normal;
+}
 
 .action-search-software_infos #filter-catalog-software .project-software span {  
   padding: 2px 6px;
