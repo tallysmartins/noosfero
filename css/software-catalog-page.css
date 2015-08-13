@@ -126,11 +126,6 @@
   margin: 0 3px 2px 8px;
 }
 
-.action-search-software_infos #group-categories #group-catalog-01 {
-  float: left;
-  width: 50%;
-}
-
 .action-search-software_infos #group-categories ul {
   font-family: Arial;
   font-size: 14px;
@@ -145,7 +140,7 @@
 }
 
 .action-search-software_infos #filter-catalog-software .project-software{
-  margin: 0 0 30px;
+  margin: 20px 0 30px;
   border-top: 1px dotted;
   border-bottom: 1px dotted;
   font-weight: bold;
