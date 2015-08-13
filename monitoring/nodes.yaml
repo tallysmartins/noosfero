@@ -1,0 +1,4 @@
+status.softwarepublico.gov.br:
+  run_list:
+    - recipe[basics]
+    - role[monitoring_server]

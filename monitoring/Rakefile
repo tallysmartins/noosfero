@@ -1,0 +1,5 @@
+require 'chake'
+
+$nodes.each do |node|
+  node.data['peers'] = YAML.load_file('ips.yaml')
+end

@@ -1,0 +1,3 @@
+Host status.softwarepublico.gov.br
+   HostName 189.9.151.77
+   ProxyCommand ssh lappis.unb.br nc %h %p
