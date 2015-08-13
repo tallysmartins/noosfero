@@ -1,27 +1,25 @@
 <% if block.owner.software_info.nil? %>
   <%= _("This community needs a software to use this block") %>
 <% else %>
-  <div id="download-block-2">
-    <div id="download_spb-2"><h3> <%= _("Download #{block.owner.software_info.community.name}") %> </h3></div>
-
+    <h3 class="block-title"> <%= _("Download #{block.owner.software_info.community.name}") %> </h3>
+    <ul class="download-list">
     <% block.downloads.each_with_index do |download, index| %>
-        <div id="download-info-<%=(index+1)%>">
-          <div id="version01">
-          <%= link_to download[:link], title: _("Download the software") do %>
-            <span id="image-download"></span>
-            <span id="size-download"><%= download[:size] %></span>
-          <% end %>
-          </div>
-          <div id="info-software-download">
-            <span class="download-name"><%= _("#{download[:name]}") %></span>
-            <span class="download-system"><%= _("Platform:#{download[:software_description]}") %> </span>
-            <span class="req_min_spb"><%= link_to _("Minimum Requirements"), download[:minimum_requirements] %></span>
-          </div>
+      <li id="download-item-<%=(index+1)%>">
+        <div class="download-button">
+        <%= link_to download[:link], title: _("Download the software") do %>
+          <span class="download-image"></span>
+          <span class="download-size"><%= download[:size] %></span>
+        <% end %>
         </div>
+        <div class="download-info">
+          <span class="download-name"><%= _("#{download[:name]}") %></span>
+          <span class="download-platform"><%= _("Platform:#{download[:software_description]}") %> </span>
+          <span class="min-requirements"><%= link_to _("Minimum Requirements"), download[:minimum_requirements] %></span>
+        </div>
+      </li>
     <% end %>
-
+    </ul>
     <div id="licensed-software">
       <%= link_to _("License: #{block.owner.software_info.license_info.version}"), block.owner.software_info.license_info.link %>
-    </div>
   </div>
 <% end %>
