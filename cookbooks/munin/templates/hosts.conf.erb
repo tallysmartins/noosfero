@@ -1,4 +1,4 @@
 <% node['peers'].each do |hostname,ip| %>
-[<%= hostname %>]
+[SPB_<%= node['environment'] %>;<%= hostname %>]
   address <%= ip %>
 <% end %>

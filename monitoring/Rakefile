@@ -11,5 +11,6 @@ require 'chake'
 
 ips = YAML.load_file('config/prod/ips.yaml')
 $nodes.each do |node|
+  node.data['environment'] = 'prod'
   node.data['peers'] = ips
 end

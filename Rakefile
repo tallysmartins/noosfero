@@ -53,6 +53,7 @@ ips ||= YAML.load_file(ips_file)
 config ||= YAML.load_file(config_file)
 firewall ||= File.open(iptables_file).read
 $nodes.each do |node|
+  node.data['environment'] = $SPB_ENV
   node.data['config'] = config
   node.data['peers'] = ips
   node.data['firewall'] = firewall
