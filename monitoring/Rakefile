@@ -1,5 +1,15 @@
+basedir = File.expand_path(File.dirname(__FILE__))
+
+Dir.chdir File.join(basedir, '..')
+
+ENV['CHAKE_NODES'] = File.join(basedir, 'nodes.yaml')
+ENV['CHAKE_RSYNC_OPTIONS'] = '--exclude .vagrant/ --exclude docs/_build'
+ENV['CHAKE_TMPDIR'] = 'tmp/chake.monitoring'
+ENV['CHAKE_SSH_CONFIG'] = File.join(basedir, 'ssh_config')
+
 require 'chake'
 
+ips = YAML.load_file('config/prod/ips.yaml')
 $nodes.each do |node|
-  node.data['peers'] = YAML.load_file('ips.yaml')
+  node.data['peers'] = ips
 end
