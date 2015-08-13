@@ -3,7 +3,7 @@
     <h3> <%= _("Search Public Software Catalog") %> </h3>
 
     <%= form_tag( { :controller => 'search', :action => @asset ? @asset : 'index', :asset => nil, :category_path => ( @category ? @category.path : nil ) },
-    :method => 'get', :class => 'search_form' ) do %>
+      :method => 'get') do %>
 
     <div style="margin:0;padding:0;display:inline">
       <input name="utf8" type="hidden" value="&#x2713;" />
