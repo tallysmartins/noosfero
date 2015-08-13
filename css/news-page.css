@@ -2,12 +2,12 @@
 
 /** Header's Block **/
 #content .blog #article-header h1.title {
-  margin: 0px 0px 0px 0px;
+  margin: 0px 0px 10px 0px;
   border: none;
   padding: 0px 0px 0px 0px;
   color: #FF0366;
   text-transform: uppercase;
-  font: normal normal normal 16px/37px 'open sans';
+  font: normal normal normal 16px/37px 'open_sansregular';
 }
 
 /* WARNING:
@@ -21,7 +21,6 @@
 #content .blog #article-header .publishing-info .comments {
   display: none;
 }
-/** end of Header's Block **/
 
 
 /** General Properties of News **/
@@ -90,6 +89,17 @@
   overflow: hidden;
 }
 
+/* WARNING:
+ *   This solution is TEMPORARY. This informations shouldn't exist
+ *   in this area.
+ *   
+ *   TODO: Remove this informations of the html and, then, from here.
+ *   The correct is the text is sensitive to lead to the complete text.
+ */
+#content .blog .blog-post .read-more {
+  display: none;
+}
+
 #content .blog #article-actions:last-child {
   border-top: none;
 }
@@ -97,6 +107,10 @@
 
 
 /** Main News' Block **/
+#content .blog .page-1 .position-1 {
+  padding: 0px 0px 0px 0px;
+}
+
 #content .blog .page-1 .position-1 .title a {
   line-height: 37px;
   color: #172738 !important;
@@ -113,7 +127,6 @@
 #content .blog .page-1 .position-1 .short-post {
   max-height: 50px;
 }
-/** end of Main News' Block **/
 
 
 /** Secondary News' Block **/
@@ -126,6 +139,12 @@
   width: 30.5%; 
   display: block;
   float: left;
+}
+
+#content .blog .page-1 .position-2 p,
+#content .blog .page-1 .position-3 p,
+#content .blog .page-1 .position-4 p {
+  max-height: 45px;
 }
 
 #content .blog .page-1 .position-4 {
@@ -155,7 +174,6 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
-/** end of Secondary News' Block **/
 
 
 /** Lastest News' Block ***/
@@ -166,6 +184,5 @@
 #content .blog .blog-post.position-5 {
   clear: both;
 }
-/** end of Lastest News' Block **/
 
 /*** end of News Page's homepage ***/
