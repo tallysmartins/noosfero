@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
 	$.ajax({ type: "GET",
-		 url:  "/gitlab/root/colab",
+		 url: '{{ url }}',
 		 data: "limit=20&offset=0",
 		 complete: function(msg,e) {
 			return e

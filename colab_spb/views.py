@@ -44,7 +44,15 @@ def get_list(request):
 
 
 def feed_repository(request):
-    group = request.GET.get('list_name',None)
+    group = request.GET.get('group',"")
+    project = request.GET.get('project',"")
+
     context = {}
+    context['url']= '/gitlab'
+
+    if group :
+        context['url'] += "/"+group
+    if project :
+        context['url'] += "/"+project
 
     return render(request,"feed_repository.html",context)
