@@ -41,3 +41,10 @@ def get_list(request):
        return HttpResponse('',status=404)
 
     return render(request,"discussion.html",context)
+
+
+def feed_repository(request):
+    group = request.GET.get('list_name',None)
+    context = {}
+
+    return render(request,"feed_repository.html",context)

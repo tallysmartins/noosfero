@@ -1,0 +1,21 @@
+{% load i18n %}
+
+<head>
+    <script type='text/javascript' src='/static/spb/js/jquery-2.0.3.min.js'></script>
+</head>
+
+<div id='feed_content' > </div>
+
+<script type="text/javascript">
+	$.ajax({ type: "GET",
+		 url:  "/gitlab/root/colab",
+		 data: "limit=20&offset=0",
+		 complete: function(msg,e) {
+			return e
+		 },
+		 success: function(e) {
+		  $('#feed_content').html(e.html)     
+		 },
+		 dataType: "json"
+	      })
+</script>
