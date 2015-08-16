@@ -24,6 +24,10 @@
   line-height: 21px;
 }
 
+#content .main-block .article-body a {
+  color: #2c66ce;
+}
+
 /* For software internal pages */
 
 #content .main-block .article-body h2 {
@@ -90,3 +94,78 @@
 }
 
 /*** end of categories ***/
+
+/*** Site Map page ***/
+
+#content .main-block .article-body #sitemap{
+  overflow: auto;
+}
+
+#content .main-block .article-body #sitemap a{
+  text-decoration: initial;
+}
+
+#content .main-block .article-body #sitemap ul{
+  padding-top: 20px;
+  font-weight: 700;
+}
+
+#content .main-block .article-body #sitemap li{
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+#content .main-block .article-body #sitemap #first-half{
+  float: left;
+  width: 40%;
+}
+
+#content .main-block .article-body #sitemap #second-half{
+  float: left;
+  padding-top: 50px;
+  width: 40%;
+}
+
+/*** end of sitemap page ***/
+
+/*** Help page ***/
+
+#content .main-block .article-body ul.help-list li {
+  list-style-type: none;
+  padding-bottom: 5px;
+}
+
+#content .main-block .article-body ul.help-list li a[href="#faq"]:before {
+  content: url('../images/arrow-globe-icon.png');
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+#content .main-block .article-body ul.help-list li a[href="#lista-discussao"]:before {
+  content: url('../images/balloon-icon.png');
+  padding-left: 3px;
+  padding-right: 6px;
+  vertical-align: middle;
+}
+
+#content .main-block .article-body ul.help-list li a {
+  color: #2c66ce;
+  font-size: 15px;
+}
+
+#content .main-block .article-body ul.help-list {
+  padding-top: 21px;
+  border-top: 1px solid #D3D6DE;
+}
+
+#content .main-block .article-header h1.help-page-title {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  padding-top: 0px;
+  line-height: 30px;
+  border-top: none;
+  letter-spacing: -0.1px;
+  font-size: 26px;
+}
+
+/*** end of help page ***/
