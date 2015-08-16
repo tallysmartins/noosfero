@@ -1,0 +1,188 @@
+/*** News Page's homepage ***/
+
+/** Header's Block **/
+#content .blog #article-header h1.title {
+  margin: 0px 0px 10px 0px;
+  border: none;
+  padding: 0px 0px 0px 0px;
+  color: #FF0366;
+  text-transform: uppercase;
+  font: normal normal normal 16px/37px 'open_sansregular';
+}
+
+/* WARNING:
+ *   This solution is TEMPORARY. This informations shouldn't exist
+ *   in this area.
+ *   
+ *   TODO: Remove this informations of the html and, then, from here.
+ */
+#content .blog #article-header .publishing-info .date,
+#content .blog #article-header .publishing-info .author,
+#content .blog #article-header .publishing-info .comments {
+  display: none;
+}
+
+
+/** General Properties of News **/
+#content .blog p {
+  margin: 0px 0px 5px 0px;
+  max-height: 25px;
+  color: #172738;
+  text-align: left;
+  text-overflow: ellipsis;
+  font: 14px/21px arial;
+  overflow: hidden;
+}
+
+#content .blog .publishing-info {
+  display: inline;
+}
+
+#content .blog .blog-post {
+  margin: 0 auto;
+  border-bottom: 1px solid #ccc;
+  padding: 25px 0px 0px 0px;
+  background: none;
+}
+
+#content .blog .blog-post h1.title {
+  margin: 0px 0px 10px 0px;
+  border: none;
+  padding: 0px 0px 0px 0px;
+  font: normal normal bold 16px/20px arial;
+}
+
+/* WARNING:
+ *   This solution is TEMPORARY. This informations shouldn't exist
+ *   in this area.
+ *   
+ *   TODO: Remove this informations of the html and, then, from here.
+ */
+#content .blog .blog-post .author {
+  display: none;
+}
+
+#content .blog .blog-post .publishing-info {
+  border-top: none;
+  color: #172838;
+  font: 13px/21px arial;
+}
+
+#content .blog .blog-post .publishing-info .date {
+  margin: 0px 0px 5px 0px;
+  display: block;
+}
+
+#content .blog .blog-post .post-pic {
+  margin: 0px 20px 5px 0px;
+  border-radius: 4px;
+  height: 80px;
+  width: 20%;
+  background: center/cover no-repeat;
+  float: left;
+}
+
+#content .blog .blog-post .short-post {
+  max-height: 35px;
+  text-align: justify;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* WARNING:
+ *   This solution is TEMPORARY. This informations shouldn't exist
+ *   in this area.
+ *   
+ *   TODO: Remove this informations of the html and, then, from here.
+ *   The correct is the text is sensitive to lead to the complete text.
+ */
+#content .blog .blog-post .read-more {
+  display: none;
+}
+
+#content .blog #article-actions:last-child {
+  border-top: none;
+}
+/** end of General Properties of News **/
+
+
+/** Main News' Block **/
+#content .blog .page-1 .position-1 {
+  padding: 0px 0px 0px 0px;
+}
+
+#content .blog .page-1 .position-1 .title a {
+  line-height: 37px;
+  color: #172738 !important;
+  font-size: 34px;
+}
+
+#content .blog .page-1 .position-1 .post-pic {
+  margin: 0px 0px 13px 0px;
+  max-height: 320px;
+  height: 320px;
+  width: 100%;
+}
+
+#content .blog .page-1 .position-1 .short-post {
+  max-height: 50px;
+}
+
+
+/** Secondary News' Block **/
+#content .blog .page-1 .position-2,
+#content .blog .page-1 .position-3,
+#content .blog .page-1 .position-4 {
+  margin: 0px 0px 0px 0px;
+  padding: 20px 30px 45px 0px;
+  height: 235px;
+  width: 30.5%; 
+  display: block;
+  float: left;
+}
+
+#content .blog .page-1 .position-2 p,
+#content .blog .page-1 .position-3 p,
+#content .blog .page-1 .position-4 p {
+  max-height: 45px;
+}
+
+#content .blog .page-1 .position-4 {
+  margin: 0px;
+  padding-right: 0px;
+}
+
+#content .blog .page-1 .position-2 .post-pic,
+#content .blog .page-1 .position-3 .post-pic,
+#content .blog .page-1 .position-4 .post-pic {
+  margin-top: 12px;
+  top: 10px;
+  height: 120px;
+  width: 100%;
+}
+
+#content .blog .page-1 .position-4 .post-pic {
+  margin-right: 0px;
+}
+
+#content .blog .page-1 .position-2 .short-post,
+#content .blog .page-1 .position-3 .short-post,
+#content .blog .page-1 .position-4 .short-post {
+  max-height: 50px;
+  color: #172738;
+  text-align: justify;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+/** Lastest News' Block ***/
+
+/* This rule serves to maintain the element in position-5 clear the
+ *   configurations of float.
+ */
+#content .blog .blog-post.position-5 {
+  clear: both;
+}
+
+/*** end of News Page's homepage ***/
