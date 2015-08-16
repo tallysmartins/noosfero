@@ -11,21 +11,21 @@
 
 /*** Block Title ***/
 #content .block-outer .block-title {
-	background: #eee;
-  font-size: 12px;
-  text-align: left;
-  border-bottom: none;
   padding: 5px 8px 18px 7px;
-  text-transform: uppercase;
+  margin: 0px 0px 2px 0px;
+	background: #eee;
+  border-bottom: none;
+  font-size: 12px;
   font-family: "open_sansbold", Arial, Helvetica, sans-serif;
   font-variant: normal;
-  margin: 0px 0px 2px 0px;
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: 300;
 }
 
 #content .box-1 .block-title {
-    font-size: 18px;
-    text-transform: none;
-    font-family: "open_sansregular", Arial, Helvetica, sans-serif;
-    padding: 5px 8px 20px 10px;
+  padding: 5px 8px 20px 10px;
+  font-size: 18px;
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+  text-transform: none;
 }
-
