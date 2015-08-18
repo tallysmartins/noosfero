@@ -1,10 +1,11 @@
 from django.http import HttpResponsePermanentRedirect
 from django.test import TestCase, Client
 
+from colab.super_archives.models import *
 
 class ColabSPB(TestCase):
 
-    fixtures = ['test_colab_spb.json']
+    fixtures = ['colab_spb.json']
 
     def setUp(self):
         super(ColabSPB, self).setUp()
@@ -25,3 +26,4 @@ class ColabSPB(TestCase):
     def test_getlist_default_MAX(self):
         response = self.client.get("/spb/get_list/?list_name=ListA")
         self.assertEqual(7,len(response.context[1]['latest']))
+	pass
