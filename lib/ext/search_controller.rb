@@ -140,14 +140,6 @@ class SearchController
 
   def prepare_software_infos_category_groups
     @categories = Category.software_categories.sort{|a, b| a.name <=> b.name}
-    @categories_groupe_one = []
-    @categories_groupe_two = []
-
-    if @categories && @categories.count > 1
-      categories_sliced = @categories.each_slice(@categories.count/2)
-      @categories_groupe_one = categories_sliced.next
-      @categories_groupe_two = categories_sliced.next
-    end
   end
 
   def prepare_software_infos_category_enable

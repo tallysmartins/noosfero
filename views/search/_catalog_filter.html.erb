@@ -4,16 +4,10 @@
     <div id="filter-categories-catalog"><h4> <%= _("Categories") %> </h4></div>
     <div id="group-categories">
       <ul>
-        <% @categories_groupe_one.each do |category| %>
+        <% @categories.each do |category| %>
         <li>
           <%= check_box_tag("selected_categories_id[]", category.id, @selected_categories_id.include?(category.id), :class => "categories-catalog", @enabled_check_box[category] => "true") %>
           <span><%= _("#{category.name}") %></span>
-        </li>
-        <% end %>
-        <% @categories_groupe_two.each do |category| %>
-        <li>
-          <%= check_box_tag("selected_categories_id[]", category.id, @selected_categories_id.include?(category.id), :class => "categories-catalog", @enabled_check_box[category] => "true") %>
-          <%= _("#{category.name}") %>
         </li>
         <% end %>
       </ul>
