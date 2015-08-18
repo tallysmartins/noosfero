@@ -148,7 +148,6 @@ $('#link-buscar').click(function(e) {
       filterOptions.animate({
         height: 565
       },500);
-
     }
   }
 
@@ -265,3 +264,4 @@ $('#link-buscar').click(function(e) {
 
     });
 })(jQuery);
+
