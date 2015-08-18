@@ -4,7 +4,7 @@ from django.test import TestCase, Client
 
 class ColabSPB(TestCase):
 
-    fixtures = ['test_data.json']
+    fixtures = ['test_colab_spb.json']
 
     def setUp(self):
         super(ColabSPB, self).setUp()
