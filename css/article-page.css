@@ -1,0 +1,171 @@
+/*** General Definitions ***/
+#content .main-block #article-header h1.title{
+  margin-bottom:  10px;
+  padding: 0px 0px 10px 0px;
+  color: #172738;
+  border-bottom: 1px solid #D3D6DE;
+  font-family: Arial, open_sansbold, Helvetica, sans-serif;
+  font-size: 34px;
+  font-variant: normal;
+  font-weight: bold;
+  line-height: 37px;
+  text-transform: capitalize;
+}
+
+#content .main-block #article-header .publishing-info span{
+  font-size: 12px;
+  color: #172738;
+  font-family: Arial;
+}
+
+#content .main-block .article-body {
+  font-family: Arial ;
+  font-size: 15px;
+  line-height: 21px;
+}
+
+#content .main-block .article-body a {
+  color: #2c66ce;
+}
+
+/* For software internal pages */
+
+#content .main-block .article-body h2 {
+  margin-bottom: 20px;
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 21px;
+}
+
+#content .main-block .article-body h3 {
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 21px;
+  font-weight: bold;
+  font-family:  Arial;
+}
+
+#content .main-block .article-body p{
+  margin-bottom: 22px;
+  font-family:  arial;
+}
+
+#content .main-block .article-body .zoomable-image,
+#content .main-block .article-body img {
+  display: block;
+}
+
+#content .main-block .article-body hr {
+  height: 0;
+  margin: 30px 0;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#content .main-block .article-body #article-actions:last-child{
+  padding-top: 10px;
+  border-top: 4px solid #2C4B6B;
+}
+
+/*** Categories ***/
+
+#content .main-block #article-cat h4 {
+  float: left;
+  margin: 13px 10px 10px 0;
+  min-height: 0px;
+  font-family: Arial;
+  font-size: 1.3em;
+  font-weight: 300;
+  text-decoration: initial;
+}
+
+#content .main-block #article-cat a{
+  float: left;
+  margin: 10px 10px 10px 0;
+  padding: 3px 10px;
+  color: #3E67B1;
+  background-color: #ECEDF1;
+  border: 1px solid #D3D6DE;
+  border-radius: 3px;
+  font-size: 12px;
+  text-decoration: initial;
+}
+
+/*** end of categories ***/
+
+/*** Site Map page ***/
+
+#content .main-block .article-body #sitemap{
+  overflow: auto;
+}
+
+#content .main-block .article-body #sitemap a{
+  text-decoration: initial;
+}
+
+#content .main-block .article-body #sitemap ul{
+  padding-top: 20px;
+  font-weight: 700;
+}
+
+#content .main-block .article-body #sitemap li{
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+#content .main-block .article-body #sitemap #first-half{
+  float: left;
+  width: 40%;
+}
+
+#content .main-block .article-body #sitemap #second-half{
+  float: left;
+  padding-top: 50px;
+  width: 40%;
+}
+
+/*** end of sitemap page ***/
+
+/*** Help page ***/
+
+#content .main-block .article-body ul.help-list li {
+  list-style-type: none;
+  padding-bottom: 5px;
+}
+
+#content .main-block .article-body ul.help-list li a[href="#faq"]:before {
+  content: url('../images/arrow-globe-icon.png');
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+#content .main-block .article-body ul.help-list li a[href="#lista-discussao"]:before {
+  content: url('../images/balloon-icon.png');
+  padding-left: 3px;
+  padding-right: 6px;
+  vertical-align: middle;
+}
+
+#content .main-block .article-body ul.help-list li a {
+  color: #2c66ce;
+  font-size: 15px;
+}
+
+#content .main-block .article-body ul.help-list {
+  padding-top: 21px;
+  border-top: 1px solid #D3D6DE;
+}
+
+#content .main-block .article-header h1.help-page-title {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  padding-top: 0px;
+  line-height: 30px;
+  border-top: none;
+  letter-spacing: -0.1px;
+  font-size: 26px;
+}
+
+/*** end of help page ***/

@@ -193,3 +193,215 @@
 }
 
 /*** end of Software Homepage ***/ 
+
+/*** Categories and Tags block ***/
+
+#content .box-1  .categories-and-tags-block {
+  border-top: 4px solid #4562b1; 
+}
+
+#content .box-1 .categories-and-tags-block .block-title {
+  background: none;
+  margin-top: 14px;
+  float: left;
+  font-size: 11px;
+}
+
+#content .box-1 .categories-and-tags-block .block-title:last-child {
+  border-top: 1px solid #8b949b;
+  border-bottom: 1px solid #8b949b;
+}
+
+#content .box-1 .categories-and-tags-block .category_cloud {
+  margin: 12px auto 10px 0px;
+  float: left;
+}
+
+#content .box-1 .categories-and-tags-block .category_cloud a {
+  padding: 3px 6px;
+  margin: 10px 3px;
+  line-height: 28px;
+  background-color: #e9e8ed;
+  border: 1px solid #e9e8ed;
+  border-radius: 8px;
+  font-size: 11px;
+}
+
+#content .box-1 .categories-and-tags-block .category_cloud a:hover {
+  background: #3a70d1;
+  color: white;
+  border-color: #3a70d1;
+}
+
+#content .box-1 .categories-and-tags-block .category_cloud a:link {
+  text-decoration: none;
+}
+
+/*** end of categories and tags block ***/
+
+/*** Right bar ***/
+
+/* Link-list block */
+#content .box-3 .block-title {
+	background: #eee;
+	color: #4562b1;
+	border-top: 4px solid #4562b1;
+	line-height: 15px;
+}
+
+#content .box-3 .link-list-block li {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+  border-top: none;
+}
+
+#content .box-3 .link-list-block li a {
+  width: auto;
+  padding: 6px 5px 8px 18px;
+  background-color: #fff;
+  background-position: 0px 50%;
+  color: #2C66CE;
+  border-right: none;
+  border-top: 0px solid #64946E;
+  border-radius: 0 0 0 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+#content .box-3 .link-list-block h3.empty + ul {
+  border-top: 1px solid #ddd;
+}
+
+#content .box-3 .link-list-block li a.link-this-page,
+#content .box-3 .link-list-block li a.link-this-page:hover {
+  border-right: none;
+}
+
+#content .box-3 .link-list-block li a:hover {
+  background-color: #FFFFFF;
+  color: #000;
+}
+
+#content .box-3 .link-list-block li a.link-this-page {
+  width: auto;
+  margin-left: 0px;
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+/* Repository block */
+.box-3 #bt_repositorio, 
+.box-3 #bt_repositorio:active, 
+.box-3 #bt_repositorio:visited{
+	display: block;
+	position: relative;
+	padding: 12px 10px;
+	background: #EAEBEE;
+	border-radius: 4px;
+	font-size: 12px;
+	font-family: open_sansbold, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.box-3 #bt_repositorio::after{
+	content: url('../images/right-arrow.png');
+  position: absolute;
+  width: 18px;
+  right: 10px;
+  padding: 4px 0px 4px 2px;
+  margin-top: -2px;
+	background: #2C66CE;
+	color: #FFF;
+	border-radius: 4px;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: center;
+}
+
+.box-3 #content #bt_repositorio:hover{
+	color: #FFF;
+	background: #2C66CE;
+	text-decoration: none;
+}
+/*** end of right bar ***/
+
+/*** Software internal pages ***/
+
+/* FAQ page */
+
+#content .main-block .article-body ul.etapas-publicacao {
+  margin-bottom: 20px;
+}
+
+#content .main-block .article-body ul.etapas-publicacao li {
+  margin-bottom: 10px;
+  list-style: none;
+  list-style-position: inside;
+}
+
+#content .main-block .article-body ul.etapas-publicacao li strong {
+  padding: 2px 8px;
+  margin-right: 6px;
+  background: #333;
+  color: #fff;
+  float: left;
+  border-radius: 50%;
+}
+
+#content .main-block .article-body .etapas-publicacao-2{
+  font-weight: bold;
+}
+
+/* Tutorial page */
+
+#content .main-block .article-body p strong {
+  font-size: 16px;
+}
+
+/* Manual page */
+
+#content .main-block #article .folder-content .item-info {
+  padding: 30px 20px 32px 0px;
+  border-top: 1px solid #ccc;
+}
+
+#content .main-block #article .folder-content .folder-item:last-child .item-info{
+  border-bottom: 1px solid #ccc;
+}
+
+#content .main-block #article .folder-content .item-icon {
+  display: block;
+  float: left;
+  margin: 2px 0px auto auto;
+  padding: 45px 40px 4px 10px;
+  background: #2C66CE url("../images/download-mini_icon.png") center center no-repeat;
+  border: 1px solid #2C66CE;
+  border-radius: 4px;
+}
+
+#content .main-block #article .folder-content .item-icon a{
+  display: none;
+}
+
+
+#content .main-block #article .folder-content .item-description{
+  padding-left: 0px;
+  margin-left: 65px;
+}
+
+#content .main-block #article .folder-content .item-description a{
+  color: #172938;
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: 700;
+}
+
+#content .main-block #article .folder-content .item-date{
+  padding-left: 0px;
+  margin-left: 65px;
+}
+
+/*** end fo software internal pages ***/
