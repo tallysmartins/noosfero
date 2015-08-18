@@ -228,7 +228,7 @@ msgstr "Instituição"
 
 #: plugins/software_communities/lib/software_info.rb:151
 msgid "Name is too long (maximum is %{count} characters)"
-msgstr "Nome é muito longo(máximo é" %{count} caracteres)"
+msgstr "Nome é muito longo(máximo é %{count} caracteres)"
 
 #: plugins/software_communities/lib/software_info.rb:219
 msgid "can't have more than 10 characteres"
@@ -391,7 +391,7 @@ msgstr "Categorias de Software"
 #: plugins/software_communities/views/search/_catalog_filter.html.erb:26
 #: plugins/software_communities/views/blocks/categories_software.html.erb:19
 msgid "\"#{category.name}\""
-msgstr "\"#{category.name}\"
+msgstr "\"#{category.name}\""
 
 #: plugins/software_communities/views/search/_full_community.html.erb:47
 msgid "This software doesn't have categories"
@@ -495,7 +495,7 @@ msgstr "Note que a criação de comunidades nesse ambiente é restrita. Sua requ
 #: plugins/software_communities/views/software_communities_plugin/_institution.html.erb:11
 #: plugins/software_communities/views/software_communities_plugin_myprofile/edit_institution.html.erb:11
 msgid "\"Can`t create new Institution: #{flash[:errors].length} errors\""
-msgstr "\”Não foi possível criar a Instituição: #{flash[:errors].length} errors\""
+msgstr "\"Não foi possível criar a Instituição: #{flash[:errors].length} errors\""
 
 #: plugins/software_communities/views/software_communities_plugin/_institution.html.erb:24
 #: plugins/software_communities/views/software_communities_plugin_myprofile/edit_institution.html.erb:24
@@ -785,7 +785,7 @@ msgstr "Entre com as informações básicas do software.<br>\n  Você pode adici
 
 #: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:22
 msgid "\"Can`t create new software: #{@errors.length} errors\""
-msgstr "\”Não foi possível criar o software: #{@errors.length} errors\""
+msgstr "\"Não foi possível criar o software: #{@errors.length} errors\""
 
 #: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:42
 msgid "Domain"
@@ -1037,7 +1037,7 @@ msgstr "Público &mdash; mostrar conteudos deste grupo a todos os usuários na i
 
 #: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:38
 msgid "Private &mdash; show content of this group only to members"
-msgstr "Privado &mdash; mostrar meus conteudos deste grupo apenas aos membros""
+msgstr "Privado &mdash; mostrar meus conteudos deste grupo apenas aos membros"
 
 #: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:43
 msgid "Page to redirect after login"
@@ -1145,10 +1145,6 @@ msgstr "Repositório"
 #: plugins/software_communities/views/blocks/download.html.erb:5
 msgid "\"Download #{block.owner.software_info.community.name}\""
 msgstr "\"Baixar #{block.owner.software_info.community.name}\""
-
-#: plugins/software_communities/views/blocks/download.html.erb:10
-msgid ""
-msgstr ""
 
 #: plugins/software_communities/views/blocks/download.html.erb:14
 msgid "\"#{download[:name]}\""
