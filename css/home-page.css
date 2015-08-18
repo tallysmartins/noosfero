@@ -1,10 +1,10 @@
 /*** boxes sizes definition **/
 .action-home-index .box-1 {
+  margin: 0px 0px 0px 210px;
   width: 490px;
-  margin: 0 0 0 210px;
 }
 
-.action-home-index .box-3{
+.action-home-index .box-3 {
   width: 230px;
 }
 
@@ -14,20 +14,18 @@
 
 /* Read More pattern */
 
-.action-home-index #content .box .block-outer .read-more{
-  background: #eee;
+.action-home-index #content .box .block-outer .read-more {
   border-bottom: none;
-  font-family: "open_sans", Arial, Helvetica, sans-serif;
-  font-variant: normal;
-  font-size: 10px;
+  background: #eee;
+  font: normal normal normal 10px 'open_sansregular', arial, helvetica, sans-serif;
   text-transform: uppercase;
   text-align: right;
 }
 
 .action-home-index #content .box .block-outer .read-more a {
-  color: #000000;
-  line-height: 20px;
   padding: 8px;
+  line-height: 20px;
+  color: #000000;
   display: block;
 }
 
@@ -36,16 +34,14 @@
 }
 
 .action-home-index #content .box .block-outer .read-more a::after {
-  color: #FFFFFF;
-  font-size: 14px;
-  content: url('../images/right-arrow.png');
-  padding-left: 8px;
-  padding-right: 5px;
   margin-left: 7px;
   border-radius: 4px;
+  padding: 0px 5px 0px 8px;
   line-height: 20px;
+  color: #FFFFFF;
+  font: 14px 'open_sansbold', arial, helvetica, sans-serif;
   text-align: center;
-  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+  content: url('../images/right-arrow.png');
 }
 
 
@@ -55,65 +51,61 @@
 
 /*** Software catalog search block **/
 
-.action-home-index #content #catalogo-software-search{
-  width: 100%;
-  background-color:#1A397D;
+.action-home-index #content #catalogo-software-search {
   border-radius: 4px;
+  width: 100%;
+  background-color: #1A397D;
 }
 
-.action-home-index #content #catalogo-software-search h1{
-  margin: 0 15px 10px 15px;
-  padding: 10px 0 0 0;
-  color:#FFFFFF;
+.action-home-index #content #catalogo-software-search h1 {
+  margin: 0px 15px 10px 15px;
   border-bottom: none;
-  font-family:"open_sansregular", Arial;
-  font-weight: normal;
-  font-size:22px;
+  padding: 10px 0px 0px 0px;
   line-height: 1.3em;
+  color: #FFFFFF;
+  font: normal normal normal 22px 'open_sansregular', arial;
   text-align: left;
 }
 
 .action-home-index #content  #catalogo-software-search #search-Gadget {
-  width: 90%;
-  padding: 7px;
-  margin: 0 15px 9px 15px;
+  margin: 0px 15px 9px 15px;
   border: none;
   border-radius: 4px;
+  padding: 7px;
+  width: 90%;
 }
 
-.action-home-index #content  #catalogo-software-search .searchButton-catalog{
+.action-home-index #content  #catalogo-software-search .searchButton-catalog {
   margin: 0px 0px 15px 15px;
-  padding:6px 25px;
-  color:#FFFFFF;
-  background-color: #1A397D;
-  border:1px solid #FFFFFF;
+  padding: 6px 25px;
+  border: 1px solid #FFFFFF;
   border-radius: 4px;
+  background-color: #1A397D;
+  color: #FFFFFF;
   font-weight: bold;
   font-size: 14px;
   text-transform: uppercase;
 }
 
-.action-home-index #content  #catalogo-software-search #search-catalog-footer{
-  color:#FFFFFF;
-  background-color:#192758;
-  border-top:1px solid;
-  border-bottom-left-radius:4px;
-  border-bottom-right-radius:4px;
+.action-home-index #content  #catalogo-software-search #search-catalog-footer {
+  border-top: 1px solid;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #192758;
+  color: #FFFFFF;
 }
 
 .action-home-index #content  #catalogo-software-search #search-catalog-footer p {
   margin: 0px;
   font-size: 11px;
-  text-align:right;
+  text-align: right;
   text-transform: uppercase;
 }
 
 .action-home-index #content  #catalogo-software-search #search-catalog-footer a {
-  display: block;
-  color: #FFF;
   padding: 7px 0px 12px 0px;
-  border-bottom-left-radius:4px;
-  border-bottom-right-radius:4px;
+  color: #FFF;
+  display: block;
 }
 
 .action-home-index #content #catalogo-software-search #search-catalog-footer a:hover {
@@ -121,32 +113,30 @@
 }
 
 .action-home-index #content  #catalogo-software-search #bt_catalog-search::after {
-  content: url('../images/right-arrow-black.png');
-  top: 2px;
-  padding-left: 7px;
-  padding-right: 4px;
-  margin-left: 5px;
-  margin-right: 15px;
-  color: #172857;
-  background: #eee;
+  margin: 0px 15px 0 5px;
   border-radius: 4px;
-  font-size: 15px;
+  padding: 0px 4px 0 7px;
+  top: 2px;
   line-height: 20px;
+  background: #eee;
+  color: #172857;
+  font-size: 15px;
   text-align: center;
   position: relative;
+  content: url('../images/right-arrow-black.png');
 }
 
 /*** Softwares block **/
-.action-home-index #content .softwares-block{
+.action-home-index #content .softwares-block {
   border-bottom: 1px solid #ccc;
   overflow: auto;
 }
 
 .action-home-index #content .softwares-block .block-title {
   margin: 0px 0px 25px 0px;
-  color: #2c66ce;
-  background: #eee;
   border-top: 4px solid #2c66ce;
+  background: #eee;
+  color: #2c66ce;
   font-weight: 300;
 }
 
@@ -154,26 +144,26 @@
   display:none;
 }
 
-.action-home-index #content .software-block{ 
+.action-home-index #content .software-block { 
   width: 145px;
   height: 218px;
   margin: 0px 9px 14px 9px;
 }
 
 .action-home-index #content .software-block .software-block-logo {
-  display: table-cell;
-  width: 140px;
-  height: 150px;
-  overflow: hidden;
   border: 1px solid #ccc;
   border-radius: 8px;
-  vertical-align: middle;
+  width: 140px;
+  height: 150px;
   text-align: center;
+  overflow: hidden;
+  vertical-align: middle;
+  display: table-cell;
 }
 
-.action-home-index #content .software-block .software-block-logo img{
-  max-width: 90px;
+.action-home-index #content .software-block .software-block-logo img {
   height: auto;
+  max-width: 90px;
 }
 
 .action-home-index #content .software-block .software-block-info {
@@ -182,18 +172,16 @@
 }
 
 .action-home-index #content .software-block .software-block-title {
-  height: 59px;
-  overflow: hidden;
+  height: 65px;
   font-weight: 300;
   font-size: 14px;
   text-align: center;
+  overflow: hidden;
 }
 
-.action-home-index #content .software-block .software-block-title h3{
+.action-home-index #content .software-block .software-block-title h3 {
   color: #2C66CE;
-  font-weight: 300;
-  font-size: 14px;
-  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+  font: normal normal 300 14px 'open_sansregular', arial, helvetica, sans-serif;
 }
 
 .action-home-index #content .software-block-description {
@@ -206,55 +194,54 @@
 }
 
 .action-home-index #content .software-block .software-block-finality {
-  width:142px;
-  height: 216px;
-  left:0px;
-  background-color:#f4f4f4;
   border: solid 1px #D7D7D7;
   border-radius: 8px;
+  width:142px;
+  height: 216px;
+  left: 0px;
+  background-color: #f4f4f4;
   text-transform: uppercase;
 }
 
 .action-home-index #content .software-block .software-block-finality::after {
-  content: url('../images/right-arrow.png');
-  margin: 0 7px 0px 3px;
-  padding-left: 7px;
-  padding-right: 4px;
-  color: #FFF;
-  background: #2c65cd;
+  margin: 0px 7px 0px 3px;
   border-radius: 4px;
-  font-size: 15px;
+  padding: 0 4px 0 7px;
   line-height: 20px;
+  background: #2c65cd;
+  color: #FFF;
+  font-size: 15px;
   text-align: center;
   position: relative;
+  content: url('../images/right-arrow.png');
 }
 
 .action-home-index #content .software-block .software-block-finality p {
-  height: 170px;
-  overflow: hidden;
-  margin: 0 0 7px 0;
-  padding: 12px 12px 0 12px;
-  color: #172738;
+  margin: 0px 0px 7px 0px;
   border-bottom: solid 1px #D7D7D7;
+  padding: 12px 12px 0px 12px;
+  height: 170px;
+  color: #172738;
   font-size: 12px;
   text-align: left;
   text-transform: none;
+  overflow: hidden;
 }
 
 /*** News block - display content block **/
 
 .action-home-index #content .display-content-block .block-title {
   margin: 0px;  
+  border-top: 4px solid #643C67;
   background: #eee;
   color: #643C67;
-  border-top: 4px solid #643C67;
   font-weight: 300;
 }
 
 .action-home-index #content .display-content-block li {
-  min-height: 150px;
   border-top: 1px solid #eee;
-  padding-top: 15px;
+  padding: 15px 0px 0px 0px;
+  min-height: 150px;
 }
 
 .action-home-index #content .display-content-block li:first-child  {
@@ -262,59 +249,53 @@
 }
 
 .action-home-index #content .display-content-block .published-at {
-  padding-bottom: 15px;
+  padding: 0px 0px 15px 0px;
   color: #643C67;
 }
 
 .action-home-index #content .display-content-block .image {
-  display: table-cell;
-  width: 150px;
   padding-right: 25px;
+  padding: 0px 25px 0px 0px;
   border: 0px solid #c0c1c1;
   border-radius: 8px;
+  width: 150px;
+  display: table-cell;
 }
 
 .action-home-index #content .display-content-block .image a {
-  display: block;
+  border-radius: 8px;
   height: 90px;
   overflow: hidden;
-  border-radius: 8px;
+  display: block;
 }
 
 .action-home-index #content .display-content-block .image img {
-  max-width: 150px;
   border: 0px solid #c0c1c1;
+  max-width: 150px;
 }
 
 .action-home-index #content .display-content-block .title {
-  max-height: 40px;
-  overflow: hidden;
-  margin-bottom: 4px;
+  margin: 2px 0px 4px 0px;
   padding-right: 0px;
+  max-height: 40px;
   text-align: justify;
+  overflow: hidden;
 }
 
 .action-home-index #content .display-content-block .title a {
-  padding: 0;
+  padding: 0px;
   color: #172738;
-  font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  line-height: 1.3em;
+  font: normal normal bold 16px/1.3em arial, helvetica, sans-serif;
 }
 
 .action-home-index #content .display-content-block .lead {
   max-height: 56px;
   overflow: hidden;
-  padding-right: 0px;
 }
 
 .action-home-index #content .display-content-block .lead a {
   color: #000000;
-  font-size: 15px;
-  font-family: Arial;
-  line-height: 1.3em;
+  font: 15px/1.3em arial;
 }
 
 .action-home-index #content .display-content-block .lead a:visited, 
@@ -347,19 +328,15 @@
 /*** What Is block - Article block **/
 
 .action-home-index #content .article-block .block-title {
+  border-top: 4px solid #08A649;
+  border-bottom: none;
   padding: 6px 8px 22px 10px;
   background: #eee;
   color: #08A649;
-  border-top: 4px solid #08A649;
-  border-bottom: none;
-  font-size: 18px;
-  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
-  font-weight: 300;
-  line-height: 1.3em;
+  font: normal normal 300 18px/1.3em 'open_sansregular', arial, helvetica, sans-serif;
   text-align: left;
   text-transform: none;
 }
-
 
 .action-home-index #content .article-block .read-more {
   margin-top: 30px;
@@ -375,11 +352,9 @@
 }
 
 .action-home-index #content .article-block p {
-  margin: 0 0 14px 0;
-  padding: 0;
-  font-size: 15px;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 18px;
+  margin: 0px 0px 14px 0px;
+  padding: 0px;
+  font: 15px/18px arial, helvetica, sans-serif;
   text-align: left;
   text-transform: none;
 }
@@ -387,133 +362,124 @@
 /******* See As Well Block - Highlights block *******/
 
 .action-home-index #content .highlights-block .block-title {
-  width: auto;
-  height: 16px;
   margin: 11px 0px 0px;
-  padding: 15px 1px 21px 15px;
-  background-color: #eeeff1;
-  color: #172638;
   border: 1px solid #c0c1c1;
   border-bottom: 0;
   border-radius: 8px 8px 0 0;
-  font-size: 16px;
-  font-weight: bold;
-  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+  padding: 15px 1px 21px 15px;
+  width: auto;
+  height: 16px;
+  background-color: #fff;
+  color: #172638;
+  font: bold 16px/1.3em 'open_sansbold', arial, helvetica, sans-serif;
   text-transform: uppercase;
 }
 
 .action-home-index #content .highlights-border {
+  border: 1px solid #c0c1c1;
+  border-radius: 0px 0px 8px 8px;
   width: auto;
   max-height: 230px;
   background: #fff;
-  border: 1px solid #c0c1c1;
-  border-radius: 0 0 8px 8px;
 }
 
 .action-home-index #content .highlights-container {
+  border-radius: 0px 0px 8px 8px;
+  border-width: 0px 0px 1px 0px;
+  padding: 0px 0px 0px 0px;
   width: 100% !important;
   max-height: 230px;
-  padding-bottom: 0px;
+  background: #fff;
   position: relative;
   top: 0px;
-  border-width: 0px;
-  border-bottom-width: 1px;
-  background: #fff;
-  border-radius: 0 0 8px 8px;
 }
 
 .action-home-index #content .highlights-image-link {
+  padding: 18px 0px 0px 0px;
+  border-radius: 0px 0px 8px 8px;
   width: 220px;
   max-height: 217px;
-  padding-top: 18px;
   background-color: #fff;
-  border-radius: 0 0 8px 8px;
 }
 
 .action-home-index #content .highlights-label {
-  width: 190px;
+  border-top: 4px solid #3b61a7;
+  padding: 23px 20px 46px 20px;
   max-height: 60px;
+  width: 190px;
   position: relative;
   bottom: -18px;
-  padding: 23px 20px 11px;
   background: #e8e9ec;
   color: #172638;
-  border-top: 4px solid #3b61a7;
-  vertical-align: middle;
   text-align: center;
-  font-size: 16px;
-  font-weight: normal;
-  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+  font: normal normal normal 16px/1.5em 'open_sansbold', arial, helvetica, sans-serif;
+  vertical-align: middle;
 }
 
 .action-home-index #content .highlights-block-pager {
+  border: 0;
+  padding: 14px 0px 0px 0px;
   height: 1px;
   width: 232px;
-  padding-top: 14px;
-  padding-right: 0px;
+  background-color: #FFF;
   float: left;
   position: static;
-  background-color: #FFF;
-  border: 0;
 }
 
 .action-home-index #content .highlights-block-pager a {
-  display: inline-block;
-  height: 6px;
-  width: 6px;
-  overflow: hidden;
   margin: 0 4px;
-  color: transparent;
-  background: #c0c1c1 center center no-repeat;
   border-color: transparent;
   border-radius: 50%;
+  height: 6px;
+  width: 6px;
+  background: #c0c1c1 center center no-repeat;
+  color: transparent;
   text-indent: -5000px;
   z-index: 1000;
+  overflow: hidden;
+  display: inline-block;
 }
 .action-home-index #content .highlights-block-pager a.activeSlide {
-  color: transparent;
-  background: #3e67b1;
   border-color: transparent;
+  background: #3e67b1;
+  color: transparent;
 }
 
 /*** mais software block **/
-.action-home-index #content #mais-software-block{
-  width: auto;
+.action-home-index #content #mais-software-block {
   margin: 11px 0px;
-  padding: 5px 0px;
-  background-color: #eeeff1;
   border: 1px solid #c0c1c1;
   border-radius: 8px;
-  font-family: arial;
-  font-size: 14px;
+  padding: 5px 0px;
+  width: auto;
+  background-color: #eeeff1;
+  font: 14px arial;
 }
 
-.action-home-index #content #mais-software-block #sbp-information-softwares h2{
+.action-home-index #content #mais-software-block #sbp-information-softwares h2 {
   margin: 10px 0px 0px 0px;
   padding: 0px 0px 17px 15px;
-  color: #454545;
   border-bottom: 1px solid #c0c1c1;
-  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
-  font-weight: normal;
-  font-size: 16px;
+  color: #454545;
+  font: normal normal normal 16px/21px 'open_sansbold', arial, helvetica, sans-serif;
   text-align: left;
   text-transform: uppercase;
 }
 
-.action-home-index #content #mais-software-block #list-categories{
+.action-home-index #content #mais-software-block #list-categories {
   margin: 14px 14px 14px 14px;
 }
 
-.action-home-index #content #mais-software-block #list-categories p{
+.action-home-index #content #mais-software-block #list-categories p {
   margin: 0 0 16px 0;
   color: #464A55;
 }
 
-.action-home-index #content #mais-software-block #list-categories ul li{
+.action-home-index #content #mais-software-block #list-categories ul li {
   margin: 18px 5px 5px 5px;
 }
 
-.action-home-index #content #mais-software-block #list-categories li a{
+.action-home-index #content #mais-software-block #list-categories li a {
   color: #335277;
   font-weight: bold;
 }
@@ -524,8 +490,8 @@
 
 .action-home-index #content #mais-software-block #footer-mais-software {
   margin: 0px;
-  padding: 10px 10px 0px 3px;
   border-top: 1px solid #c0c1c1;
+  padding: 10px 10px 0px 3px;
   font-size: 11px;
   text-align: right;
   text-transform: uppercase;
@@ -536,4 +502,3 @@
 }
 
 /******************** End Box-3 ********************/
-
