@@ -21,7 +21,7 @@
 @import url(css/use-report.css);
 @import url(css/tooltips.css);
 */
-
+@import url(css/animate.css);
 @import url(font-awesome.min.css);
 /*@import url(http://fonts.googleapis.com/css?family=Open+Sans);*/
 
@@ -207,3 +207,5 @@ img {
 iframe {
     border-width: 0; border-style:none;
 }
+
+

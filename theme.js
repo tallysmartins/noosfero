@@ -83,16 +83,6 @@ $('#link-buscar').click(function(e) {
     //finality.stop().animate({"top" : "100%"}, TRANSITION_TIME);
   }
 
-  function set_events() {
-    // Fade css
-    $('.software-block-finality').css('opacity', 0);
-    $('.software-block-finality').css('top', 0);
-    // End Fade CSS
-
-    $(".software-block").mouseover(show_finality);
-    $(".software-block").mouseout(hide_finality);
-  }
-
   function move_article_buttons(){
     var article_actions = $('#article-actions').clone();
     var report = $('.report-abuse-action').remove();
@@ -131,7 +121,43 @@ $('#link-buscar').click(function(e) {
       //$('<div class="notice-item"></div>').wrap($(this).find( '.image', '.title', '.lead', '.read_more'));
     });
 
+  }
 
+  //toggle filter options in catalog page
+  function setFilterCategoriesOptionClass() {
+    var filterOptions = $("#filter-categories-option");
+    filterOptions.addClass("animated slideInDown");
+  }
+
+  function toggleFilterOptions(){
+    var filterOptions = $("#filter-categories-option");
+    var showOptions = $("#filter-option-catalog-software");
+    var hideOptions = $("#filter-option-catalog-close");
+    if(filterOptions.is(":visible")){
+      filterOptions.slideUp(function() {
+         showOptions.show();
+         hideOptions.hide();
+      });
+    }
+    else {
+      filterOptions.slideDown();
+      showOptions.hide();
+      hideOptions.show();
+    }
+  }
+
+  function setEvents(){
+    // Fade css
+    $('.software-block-finality').css('opacity', 0);
+    $('.software-block-finality').css('top', 0);
+    // End Fade CSS
+    $(".software-block").mouseover(show_finality);
+    $(".software-block").mouseout(hide_finality);
+
+    var showOptions = $("#filter-option-catalog-software");
+    var hideOptions = $("#filter-option-catalog-close");
+    showOptions.click(toggleFilterOptions);
+    hideOptions.click(toggleFilterOptions);
   }
 
   /* Finds all uploaded files from manuals page and sets its names on the right format */
@@ -217,6 +243,7 @@ $('#link-buscar').click(function(e) {
   }
 
   $(document).ready(function(){
+
     add_top_tooltips();
     set_events();
     move_article_buttons();
@@ -226,5 +253,11 @@ $('#link-buscar').click(function(e) {
     set_tooltip_content();
     set_arrow_direction();
     set_use_report_content();
+
+    setEvents(); //FIX-ME
+    move_article_buttons();
+    add_link_to_article_div();
+    insert_notice_div();
+
     });
 })(jQuery);

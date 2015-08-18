@@ -98,6 +98,10 @@
   text-align: right;
 }
 
+.action-search-software_infos #filter-option-catalog-close {  
+  padding: 7px 7px 17px 10px;
+  display: none;
+}
 .action-search-software_infos #filter-option-catalog-software:hover {
   background-color: #c7c7c7;
 }
@@ -112,7 +116,10 @@
 }
 
 .action-search-software_infos #filter-catalog-software #filter-categories-option {
-  border:none;
+  border: none;
+  position: relative;
+  display: none;
+  overflow: hidden;
 }
 
 .action-search-software_infos #filter-catalog-software #filter-categories-catalog h4 {
