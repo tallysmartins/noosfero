@@ -80,8 +80,8 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
   end
 
   def constroy_software
-    params[:software][:public_software] ||= false
     @software_info = @profile.software_info
+    params[:software][:public_software] ||= false unless @software_info.public_software?
     @license = LicenseInfo.find(params[:license][:license_infos_id])
     @software_info.license_info = @license
     @software_info.update_attributes(params[:software])
