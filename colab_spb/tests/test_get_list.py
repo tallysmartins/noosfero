@@ -26,4 +26,7 @@ class ColabSPB(TestCase):
     def test_getlist_default_MAX(self):
         response = self.client.get("/spb/get_list/?list_name=ListA")
         self.assertEqual(7,len(response.context[1]['latest']))
-	pass
+
+    def test_getlist_invalid_MAX(self):
+        response = self.client.get("/spb/get_list/?list_name=ListA&MAX=")
+        self.assertEqual(7,len(response.context[1]['latest']))

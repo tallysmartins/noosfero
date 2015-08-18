@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils.translation import ugettext as _
@@ -9,6 +10,9 @@ def get_list(request):
 
     list_name = request.GET.get('list_name',None)
     MAX = request.GET.get('MAX',7)
+
+    if not MAX:
+        MAX = 7
 
     context = {}
 
@@ -38,7 +42,9 @@ def get_list(request):
             ))
 
     if len(context['lists']) == 0:
-       return HttpResponse('',status=404)
+       return HttpResponse("""Não foi encontrada lista de discussão a está
+                              comunidade, para mais detalhes contacte o
+                              administrador.""",status=404)
 
     return render(request,"discussion.html",context)
 
