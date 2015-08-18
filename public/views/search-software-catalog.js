@@ -161,10 +161,8 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot', 'SoftwareCat
     init: function() {
       set_events();
       catalog_message();
-
-      $("#filter-categories-option").hide();
-
       SoftwareCatalogComponent.init(dispatch_search_ajax);
     }
   }
 });
+
