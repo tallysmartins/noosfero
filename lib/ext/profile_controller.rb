@@ -2,6 +2,8 @@ require_dependency 'profile_controller'
 
 class ProfileController
 
+  before_filter :hit_view_page
+
   def communities
     type = []
     params[:type].downcase! unless params[:type].nil?
@@ -37,4 +39,33 @@ class ProfileController
     end
   end
 
+  def user_is_a_bot?
+    user_agent= request.env["HTTP_USER_AGENT"]
+    user_agent.blank? ||
+    user_agent.match(/bot/) ||
+    user_agent.match(/spider/) ||
+    user_agent.match(/crawler/) ||
+    user_agent.match(/\(.*https?:\/\/.*\)/)
+  end
+
+  def already_visited?(element)
+    user_id = if user.nil? then -1 else current_user.id end
+    user_id = "#{user_id}_#{element.id}_#{element.class}"
+
+    if cookies.signed[:visited] == user_id
+      return true
+    else
+      cookies.permanent.signed[:visited] = user_id
+      return false
+    end
+  end
+
+  def hit_view_page
+    if profile
+      community = profile
+      community.hit unless user_is_a_bot?  ||
+                           already_visited?(community) ||
+                           community.class != Community
+    end
+  end
 end
