@@ -8,11 +8,7 @@ class DownloadBlock < Block
   validate :download_values
 
   def download_values
-    self.downloads.each do |download|
-      if download[:name] == ""
-        downloads.delete(download)
-      end
-    end
+    self.downloads = Download.validate_download_list(self.downloads)
   end
 
   def self.description

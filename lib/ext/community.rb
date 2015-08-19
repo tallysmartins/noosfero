@@ -12,6 +12,8 @@ class Community
 
   has_one :software_info, :dependent=>:destroy
 
+  settings_items :hits, :type => :integer, :default => 0
+
   def self.create_after_moderation(requestor, attributes = {})
     community = Community.new(attributes)
 
@@ -55,4 +57,10 @@ class Community
   def remove_of_community_search_software?
     return software?
   end
+  
+  def hit
+    self.hits += 1
+    self.save!
+  end
+
 end
