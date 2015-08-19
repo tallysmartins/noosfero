@@ -80,7 +80,7 @@ class SearchController
   def get_communities_list software_list
     filtered_community_list = []
       software_list.each do |software|
-       if @include_non_public || software.public_software?
+       if @all_selected || software.public_software?
          filtered_community_list << software.community unless software.community.nil?
        end
     end
@@ -110,7 +110,8 @@ class SearchController
     @selected_categories_id = params[:selected_categories_id]
     @selected_categories_id ||= []
     @selected_categories_id = @selected_categories_id.map(&:to_i)
-    @include_non_public = params[:include_non_public] == "true"
+    @all_selected = params[:software_type] == "all"
+    @public_software_selected = !@all_selected
     @per_page = prepare_per_page
   end
 

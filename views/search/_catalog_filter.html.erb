@@ -12,14 +12,6 @@
         <% end %>
       </ul>
     </div>
-
-    <div class="project-software"> <%= _("Software Projects:") %>
-      <label>
-        <%= check_box_tag("include_non_public", true, @include_non_public) %>
-        <%= _("Include in results") %>
-      </label>
-      <span class="doubts-catalog-software" title="<%= _('Include software development projects that are not yet officially Brazilian Public Software.') %>">?</span>
-    </div>
   </div>
   <div id="filter-option-catalog-software"><%= _("More options") %></div>
   <div id="filter-option-catalog-close">

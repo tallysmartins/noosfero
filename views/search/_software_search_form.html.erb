@@ -5,19 +5,22 @@
     <%= form_tag( { :controller => 'search', :action => @asset ? @asset : 'index', :asset => nil, :category_path => ( @category ? @category.path : nil ) },
       :method => 'get') do %>
 
-    <div style="margin:0;padding:0;display:inline">
-      <input name="utf8" type="hidden" value="&#x2713;" />
-    </div>
-    <%= hidden_field_tag :display, params[:display] %>
-    <%= hidden_field_tag :filter, params[:filter] %>
+      <div style="margin:0;padding:0;display:inline">
+      <input name="utf8" type="hidden" value="&#x2713;" /></div>
 
-    <div class="search-field">
-      <span class="formfield">
-        <%= text_field_tag 'query', @query, :id => 'search-input', :size => 50, :placeholder=>_("Type words about the software you're looking for (the search begins after 3 characters)") %>
-      </span>
+      <%= hidden_field_tag :display, params[:display] %>
+      <%= hidden_field_tag :filter, params[:filter] %>
+
+      <%= labelled_radio_button _('Public Software'), :software_type, 'public_software', @public_software_selected, :id => "public_software_radio_button", :class => "project-software" %>
+      <%= labelled_radio_button _('All'), :software_type, 'all', @all_selected, :id => "all_radio_button", :class => "project-software" %>
+
+      <div class="search-field">
+        <span class="formfield">
+          <%= text_field_tag 'query', @query, :id => 'search-input', :size => 50, :placeholder=>_("Type words about the software you're looking for (the search begins after 3 characters)") %>
+        </span>
 
       <%= submit_button(:search, _('Filter')) %>
-    </div>
+      </div>
     <%= render :partial => 'search_form_extra_fields' %>
     <%= render :partial => 'catalog_filter' %>
     <% end %>
