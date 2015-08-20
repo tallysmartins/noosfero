@@ -133,16 +133,22 @@ $('#link-buscar').click(function(e) {
     var filterOptions = $("#filter-categories-option");
     var showOptions = $("#filter-option-catalog-software");
     var hideOptions = $("#filter-option-catalog-close");
-    if(filterOptions.is(":visible")){
-      filterOptions.slideUp(function() {
-         showOptions.show();
-         hideOptions.hide();
-      });
+    if(hideOptions.is(":visible")){
+      //filterOptions.slideUp(function() {
+        showOptions.show();
+        hideOptions.hide();
+      //});
+      filterOptions.animate({
+        height: 0
+      },500);
     }
     else {
-      filterOptions.slideDown();
       showOptions.hide();
       hideOptions.show();
+      filterOptions.animate({
+        height: 565
+      },500);
+
     }
   }
 
@@ -245,7 +251,6 @@ $('#link-buscar').click(function(e) {
   $(document).ready(function(){
 
     add_top_tooltips();
-    set_events();
     move_article_buttons();
     add_link_to_article_div();
     insert_notice_div();
@@ -253,8 +258,7 @@ $('#link-buscar').click(function(e) {
     set_tooltip_content();
     set_arrow_direction();
     set_use_report_content();
-
-    setEvents(); //FIX-ME
+    setEvents();
     move_article_buttons();
     add_link_to_article_div();
     insert_notice_div();

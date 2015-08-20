@@ -117,13 +117,15 @@
 
 .action-search-software_infos #filter-catalog-software #filter-categories-option {
   border: none;
+  height: 0;
+  max-height: 620px;
   position: relative;
-  display: none;
   overflow: hidden;
+  padding: 0 15px;
 }
 
 .action-search-software_infos #filter-catalog-software #filter-categories-catalog h4 {
-  margin: 5px 0 10px 5px;
+  margin: 20px 0 10px 5px;
   background: transparent;
   color: black;
 }
