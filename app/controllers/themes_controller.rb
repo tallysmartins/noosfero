@@ -43,8 +43,8 @@ class ThemesController < ApplicationController
   private
 
   def check_user_can_edit_appearance
-    disable_appearance_enabled = !user.is_admin?(environment) && environment.enabled?('disable_appearance')
-    redirect_to request.referer || "/" if disable_appearance_enabled
+    user_can_not_edit_appearance = !user.is_admin?(environment) && environment.enabled?('disable_appearance')
+    redirect_to request.referer || "/" if user_can_not_edit_appearance
   end
 
 end
