@@ -10,6 +10,7 @@ class ProfileEditorController < MyProfileController
 
   def index
     @pending_tasks = Task.to(profile).pending.without_spam.select{|i| user.has_permission?(i.permission, profile)}
+    @show_appearance_option = user.is_admin?(environment) || !environment.enabled?('disable_appearance')
   end
 
   helper :profile

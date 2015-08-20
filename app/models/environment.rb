@@ -123,6 +123,7 @@ class Environment < ActiveRecord::Base
       'disable_asset_events' => _('Disable search for events'),
       'disable_categories' => _('Disable categories'),
       'disable_header_and_footer' => _('Disable header/footer editing by users'),
+      'disable_appearance' => _('Disable appearance editing by users'),
       'disable_gender_icon' => _('Disable gender icon'),
       'disable_categories_menu' => _('Disable the categories menu'),
       'disable_select_city_for_contact' => _('Disable state/city select for contact form'),
@@ -158,7 +159,7 @@ class Environment < ActiveRecord::Base
       'allow_change_of_redirection_after_login' => _('Allow users to set the page to redirect after login'),
       'display_my_communities_on_user_menu' => _('Display on menu the list of communities the user can manage'),
       'display_my_enterprises_on_user_menu' => _('Display on menu the list of enterprises the user can manage'),
-      'restrict_to_members' => _('Show content only to members')
+      'restrict_to_members' => _('Show content only to members'),
     }
   end
 
