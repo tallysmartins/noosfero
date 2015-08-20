@@ -1,0 +1,5 @@
+# Allow access to Rsyslog
+-A INPUT -s <%= node['peers']['integration'] %> -p tcp -m state --state NEW -m tcp --dport 514 -j ACCEPT
+-A INPUT -s <%= node['peers']['social'] %> -p tcp -m state --state NEW -m tcp --dport 514 -j ACCEPT
+-A INPUT -s <%= node['peers']['email'] %> -p tcp -m state --state NEW -m tcp --dport 514 -j ACCEPT
+-A INPUT -s <%= node['peers']['database'] %> -p tcp -m state --state NEW -m tcp --dport 514 -j ACCEPT
