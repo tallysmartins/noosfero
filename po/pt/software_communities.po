@@ -563,8 +563,8 @@ msgstr "Pesquisar Catálogo de Software Público"
 msgid ""
 "Type words about the software you're looking for (the search begins after 3 "
 "characters)"
-msgstr "Digite palavras sobre o software que você está procurando (a busca
-começa depois de 3 caracteres"
+msgstr "Digite palavras sobre o software que você está procurando (a busca "
+"começa depois de 3 caracteres"
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:17
 msgid "Filter"
