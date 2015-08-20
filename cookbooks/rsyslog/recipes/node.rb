@@ -4,8 +4,8 @@ package 'rsyslog' do
 	action [:install, :upgrade]
 end
 
-template '/etc/rsyslog.conf' do
-	source "node/rsyslog.conf.erb"
+template '/etc/rsyslog.d/node.conf' do
+	source "node/node.conf.erb"
 	owner 'root'
 	group 'root'
 	mode 0644
