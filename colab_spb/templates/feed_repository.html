@@ -5,17 +5,21 @@
     <script type='text/javascript' src='/static/spb/js/jquery.timeago.js'   ></script>
 </head>
 
-<div id='feed_content' > </div>
+<div id='feed_content' ></div>
 
 <script type="text/javascript">
 	$.ajax({ type: "GET",
 		 url: '{{ url }}',
-		 data: "limit=20&offset=0",
+		 data: "limit={{limit}}&offset=0",
 		 complete: function(msg,e) {
-			return e
+                    if (msg !== 'success')
+		        $('#feed_content').html(
+			  "Não foi encontrado repositório associado a esta comunidade,"+
+			  " para mais detalhes contacte o administrador.")
+                    return e;
 		 },
 		 success: function(e) {
-		  $('#feed_content').html(e.html)     
+		    $('#feed_content').html(e.html); 
 		 },
 		 dataType: "json"
 	      })

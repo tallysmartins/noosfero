@@ -52,6 +52,7 @@ def get_list(request):
 def feed_repository(request):
     group = request.GET.get('group',"")
     project = request.GET.get('project',"")
+    limit = request.GET.get("limit",20)
 
     context = {}
     context['url']= '/gitlab'
@@ -60,5 +61,7 @@ def feed_repository(request):
         context['url'] += "/"+group
     if project :
         context['url'] += "/"+project
+    if limit:
+        context['limit'] = limit
 
     return render(request,"feed_repository.html",context)
