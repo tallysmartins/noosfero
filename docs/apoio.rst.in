@@ -64,3 +64,23 @@ Caso os ambientes já tenham sido convergidos anteriormente, não será possíve
     w8fWcPu5nc8pmKRwmzO2LSKvdfWIXgd nome-do-usuario@hostname
 
 O output do comando acima é a sua chave pública, ela deverá ser copiada e colada, manualmente, em ``~/.ssh/authorized_keys`` do usuário desejado. Esse procedimento deve ser repetido em todas as máquinas listadas em ``config/@@SPB_ENV@@/ips.yaml``.
+
+Gerenciando listas de email
+---------------------------
+O Mailman fornece alguns scripts para administração das listas de email, tais programas podem ser encontrados na máquina ``integration`` em ``/usr/lib/mailman/bin``.
+
+Removendo uma lista::
+
+  $ cd /usr/lib/mailman/bin
+  $ sudo ./rmlist nome_da_lista
+
+Note que o comando acima não remove os históricos (archives) da lista. Para remover uma lista juntamente com seu histórico::
+
+  $ cd /usr/lib/mailman/bin
+  $ sudo ./rmlist -a nome_da_lista
+
+Alterando a senha de administrador do Mailman::
+
+  $ cd /usr/lib/mailman/bin
+  $ sudo ./mmsitepass nova_senha
+
