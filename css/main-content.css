@@ -29,3 +29,56 @@
   font-family: "open_sansregular", Arial, Helvetica, sans-serif;
   text-transform: none;
 }
+
+/*** Pagination ***/
+
+#content .pagination {
+  margin: 48px auto 30px auto;
+  border-top: 0 none;
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+}
+
+#content .pagination a,
+#content .pagination em,
+#content .pagination span{
+  padding: 7px 11px 7px 11px;
+  margin-right: 4px;
+  color: #172738;
+  border: 1px solid #D3D6DE;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-table;
+}
+
+#content .pagination .current {
+  background-color: #ECEDF1;
+  font-style: normal;
+}
+
+#content .pagination .previous_page{
+  padding: 7px 11px 10px 11px;
+  float: left;
+}
+
+#content .pagination .next_page{
+  float: right;
+  padding: 7px 11px 10px 11px;
+}
+
+#content .pagination .previous_page,
+#content .pagination .next_page{
+  width: auto;
+  position: relative;
+  background-image: none;
+  font-weight: 500;
+}
+
+#content .pagination .disabled{
+  opacity: 0.5;
+}
+
+
+
