@@ -9,7 +9,6 @@
   font-variant: normal;
   font-weight: bold;
   line-height: 37px;
-  text-transform: capitalize;
 }
 
 #content .main-block #article-header .publishing-info span{
@@ -22,10 +21,6 @@
   font-family: Arial ;
   font-size: 15px;
   line-height: 21px;
-}
-
-#content .main-block .article-body a {
-  color: #2c66ce;
 }
 
 /* For software internal pages */
@@ -161,11 +156,18 @@
 #content .main-block .article-header h1.help-page-title {
   margin-top: 0px;
   margin-bottom: 30px;
-  padding-top: 0px;
+  padding: 0px;
+  color: #172738;
   line-height: 30px;
-  border-top: none;
+  border: none;
   letter-spacing: -0.1px;
+  font-family: Arial;
   font-size: 26px;
+  font-variant: normal;
+}
+
+#content .main-block .article-body p a {
+  color: #2c66ce;
 }
 
 /*** end of help page ***/
