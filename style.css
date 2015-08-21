@@ -10,6 +10,7 @@
 @import url(css/software-catalog-page.css);
 @import url(css/main-content.css);
 @import url(css/article-page.css);
+@import url(css/news-page.css);
 /*
 @import url(css/community-pages.css);
 @import url(css/software-pages.css);
@@ -77,7 +78,7 @@ url("fonts/opensans-800-webfont.ttf") format("truetype"),
 url("fonts/opensans-800-webfont.svg#open_sansextrabold") format("svg");
 }
 
-/***********Regras Gerais ************/
+/*********** General Rules ************/
 
 * {
 margin: 0;
