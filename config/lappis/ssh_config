@@ -7,7 +7,7 @@ Host reverseproxy.unconfigured
 Host reverseproxy
   Hostname 10.0.0.11
   Port 5555
-  ProxyCommand ssh 10.0.0.11 -p 22 nc %h %p 
+  ProxyCommand ssh 10.0.0.11 -p 22 nc %h %p
 
 Host database
   Hostname 10.0.0.13
