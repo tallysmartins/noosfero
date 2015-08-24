@@ -17,10 +17,26 @@
   font-family: Arial;
 }
 
+#content .main-block .publishing-info a{
+  color: #2C66CE;
+  font-family: Arial;
+}
+
 #content .main-block .article-body {
   font-family: Arial ;
   font-size: 15px;
   line-height: 21px;
+}
+
+/* Need a dev solution - blog internal pages*/
+
+#article-header .preview{
+  display: none;
+}
+
+#article-hits {
+  display: none;
+
 }
 
 /* For software internal pages */
@@ -43,7 +59,7 @@
 
 #content .main-block .article-body p{
   margin-bottom: 22px;
-  font-family:  arial;
+  font-family: Arial;
 }
 
 #content .main-block .article-body .zoomable-image,
