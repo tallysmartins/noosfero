@@ -149,3 +149,172 @@
   text-decoration: none;
 }
 
+/*Members Page*/
+
+/*area do select*/
+.action-profile-members #profile-members-sort-options{
+  font-size: 14px;
+  text-align: right;
+  margin-bottom:20px;
+}
+
+.action-profile-members #profile-members-sort-options label{
+  font-weight: 600;
+}
+
+.action-profile-members #profile-members-sort-options select{
+  background: none;
+  border: 1px solid #D3D6DE;
+  border-radius: 4px;
+  padding: 4px 15px 4px 4px;
+  margin: 0px 0px 0px 10px;
+  font-size: 14px;
+}
+/*fim select*/
+/*area da imagem*/
+.action-profile-members .box-1 .common-profile-list-block span{
+  margin-right: 9px;
+  width: 90px;
+  height: 86px;
+}
+.action-profile-members .common-profile-list-block img{
+  border-radius: 4px;
+  width: 82px;
+  height: 82px;
+  max-width: 150px;
+  max-height: 150px;
+}
+/*hover da imagem e informacoes da aba*/
+.action-profile-members .common-profile-list-block .vcard{
+  border:none;
+}
+
+.action-profile-members .common-profile-list-block .vcard:hover{
+  border:none;
+  background:none;
+}
+
+.action-profile-members .menu-submenu{
+  background:#172738;
+  border-radius: 4px;
+  /***posicionamento do bloco na lateral***/
+  bottom:-66px; /*0px;*/
+  right: 105%;
+  width: 126px;
+}
+.action-profile-members .menu-submenu.down::before {
+  content:"\f0da";
+  color:#172738;
+  font-family: FontAwesome;
+  font-size: 25px;
+  float: right;
+  position: relative;
+  margin-right: -8px; /*-7px;*/
+  margin-top: 3px; /*65%;*/
+}
+
+.action-profile-members .menu-submenu-header,
+.action-profile-members .menu-submenu-content,
+.action-profile-members .menu-submenu-footer{
+  background:none;
+}
+
+.action-profile-members .menu-submenu-header,
+.action-profile-members .menu-submenu-footer{
+  display: none;
+}
+
+.action-profile-members .menu-submenu-content{
+  height: 100%;
+}
+
+.action-profile-members #content .menu-submenu-content h4{
+  color:#fff;
+  background:#243F59;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom: 2px solid #FF0366;
+  text-transform: uppercase;
+  padding:6px;
+  text-align: center;
+}
+
+.action-profile-members #content .menu-submenu-content ul a{
+  padding-left: 0px;
+}
+
+.action-profile-members #content .menu-submenu-content .menu-submenu-list .add-friend::before{
+  content:"\f067";
+  font-family: FontAwesome;
+  color:#FF0366;
+  font-size: 16px;
+  padding-right: 6px;
+}
+
+.action-profile-members #content .menu-submenu-content .menu-submenu-list .add-friend:last-child{
+  border-bottom:none;
+}
+
+.action-profile-members #content .menu-submenu-content .menu-submenu-list li a {
+  color:#fff;
+  border-bottom:1px dotted #2C4B6B;
+  text-align: center;
+  padding-top:8px;
+  padding-bottom:10px;
+  margin-right: 1px;
+}
+
+/*.action-profile-members #content .menu-submenu-content h4:hover,
+.action-profile-members #content .menu-submenu-content .menu-submenu-list li a:hover{
+  color:#ECEDF1;
+  background-color:#172738;
+}*/
+
+.action-profile-members .box-1 .common-profile-list-block span{
+  margin-right: 9px;
+  width: 90px;
+  height: 86px;
+}
+
+.action-profile-members .common-profile-list-block .vcard .menu-submenu-trigger{
+  display: block;
+  background:#172738;
+  top:2px;
+  left:3px;
+  border:1px solid #172738;
+}
+
+.action-profile-members .common-profile-list-block .vcard .menu-submenu-trigger::before{
+  content:"\f053";
+  color:#fff;
+  font-family: FontAwesome;
+  font-size: 10px;
+  line-height: 15px;
+}
+
+/*.action-profile-members #content .common-profile-list-block .vcard li a{
+  color:#172738;
+}*/
+
+/*.action-profile-members .common-profile-list-block .vcard a{
+  max-height: 150px;
+}*/
+
+/*.action-profile-members .comment-actions .vcard a{
+  height: 150px;
+  max-height: 150px;
+}*/
+
+.action-profile-members .box-1 .common-profile-list-block .fn{
+  font-size: 14px;
+  color:#172738;
+  margin-bottom: 27px;
+  margin-top:2px;
+  height: 30px;
+  max-height: 30px;
+  overflow: hidden;
+}
+
+/************************************************************/
+
+/*Members block*/
