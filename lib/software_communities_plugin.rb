@@ -39,7 +39,8 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       RepositoryBlock => { :type => [Community] },
       CategoriesAndTagsBlock => { :type => [Community] },
       CategoriesSoftwareBlock => { :type => [Environment] },
-      SearchCatalogBlock => { :type => [Environment] }
+      SearchCatalogBlock => { :type => [Environment] },
+      SoftwareHighlightsBlock => { :type => [Environment] }
     }
   end
 
