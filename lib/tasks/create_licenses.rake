@@ -3,7 +3,7 @@ namespace :software do
 
   task :create_licenses => :environment do
     Environment.all.each do |env|
-      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
+      if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunities")
         list_file = File.open "plugins/software_communities/public/static/licences.txt", "r"
 
         version_or_link = 'version'
