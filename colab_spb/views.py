@@ -41,27 +41,9 @@ def get_list(request):
             ))
 
     if len(context['lists']) == 0:
-        message = ("Não foi encontrada lista de discussão a está"
-                   " comunidade, para mais detalhes contacte o"
-                   " administrador.")
+        message = ("Não foi possível encontrada lista de discussão"
+                   " associada a está comunidade, para mais"
+                   " detalhes contacte o administrador.")
         return HttpResponse(message, status=404)
 
     return render(request, "discussion.html", context)
-
-
-def feed_repository(request):
-    group = request.GET.get('group', "")
-    project = request.GET.get('project', "")
-    limit = request.GET.get("limit", 20)
-
-    context = {}
-    context['url'] = '/gitlab'
-
-    if group:
-        context['url'] += "/"+group
-    if project:
-        context['url'] += "/"+project
-    if limit:
-        context['limit'] = limit
-
-    return render(request, "feed_repository.html", context)
