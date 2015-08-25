@@ -24,10 +24,7 @@
 
 <div>
   <%= labelled_form_for :community, :url => {:action=>"new_institution"}, :html => { :multipart => true, :id=>"institution_form" } do |f| %>
-    <div class="fields-required">
-      <span class="errorExplanation"><%= required_fields_message %></span>
-    </div>
-    <br/>
+    <%= required_fields_message %>
     <%= hidden_field_tag "edit_institution_page", false %>
     <%= fields_for :institutions do |inst| %>
       <span class=''>
@@ -114,7 +111,6 @@
           <% end %>
           </div>
       </span>
-      <br />
 
       <% if @url_token == "create_institution_admin" %>
         <%= submit_button :save, _('Save') %>
