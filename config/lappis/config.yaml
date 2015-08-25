@@ -1,0 +1,15 @@
+admins:
+  - ["Paulo Meirelles", "paulo@softwarelivre.org"]
+site_url: https://softwarepublico.lappis
+external_hostname: softwarepublico.lappis
+external_ip: 10.0.0.11
+colab_from_address: '"Portal do Software Publico" <noreply@softwarepublico.lappis>'
+server_email: '"Portal do Software Publico" <noreply@softwarepublico.lappis>'
+email_subject_prefix: '[spb]'
+lists_hostname: listas.softwarepublico.lappis
+lists_admin: paulo@softwarelivre.org
+relay_hostname: relay.softwarepublico.lappis
+relay_ip: 10.0.0.15
+alt_ssh_port: 5555
+from_address: noreply@softwarepublico.lappis
+

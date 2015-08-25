@@ -1,0 +1,29 @@
+Host *
+  ForwardAgent yes
+
+Host reverseproxy.unconfigured
+  Hostname 10.0.0.11
+
+Host reverseproxy
+  Hostname 10.0.0.11
+  Port 5555
+  ProxyCommand ssh 10.0.0.11 -p 22 nc %h %p
+
+Host database
+  Hostname 10.0.0.13
+  # connect via reverseproxy host
+  ProxyCommand ssh 10.0.0.11 nc %h %p
+
+Host social
+  Hostname 10.0.0.14
+  # connect via reverseproxy host
+  ProxyCommand ssh 10.0.0.11 nc %h %p
+
+Host email
+  Hostname 10.0.0.15
+  # connect via reverseproxy host
+  ProxyCommand ssh 10.0.0.11 nc %h %p
+
+Host integration
+  Hostname 10.0.0.11
+  # Porta 22 de 10.0.0.11 cai aqui entao nao precisa de ProxyCommand
