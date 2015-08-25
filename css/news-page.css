@@ -47,9 +47,10 @@
 
 #content .blog .blog-post h1.title {
   margin: 0px 0px 10px 0px;
-  border: none;
   padding: 0px 0px 0px 0px;
+  max-width: 555px;
   max-height: 40px;
+  border: none;
   font: normal normal bold 16px/20px arial;
   overflow: hidden;
   display: inline-block;

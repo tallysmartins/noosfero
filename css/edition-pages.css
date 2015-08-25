@@ -1,0 +1,222 @@
+/*** General Form Fields ***/
+
+/*** Edit Blog and Articles ***/
+
+.controller-cms #content .main-block h1{
+  margin: 0 0 10px 0;
+  padding: 0;
+  color: #172738;
+  border-bottom: none;
+  font-family: Arial;
+  font-size: 32px;
+  font-weight: bold;
+  font-variant: normal;
+}
+
+.controller-cms #content .main-block form{
+  font-size: 14px;
+  font-family: Arial;
+}
+
+.controller-cms #content .main-block form .required-field .pseudoformlabel,
+.controller-cms #content .main-block form .required-field label.formlabel:after {
+  color: #FF0366;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.controller-cms #content .main-block .formlabel {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  padding: 10px 0 5px 0;
+  color: #231f20;
+  font-size: 14px;
+}
+
+.controller-cms #content .main-block .formfieldline .formfield code {
+  display: block;
+  width: auto;
+  height: 30px;
+  padding: 2px 0px 2px 0px;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: Arial, helvetica;
+}
+
+.controller-cms #content .main-block .formfieldline .formfield code * {
+  display: inline;
+}
+
+.controller-cms #content .main-block .formfieldline .formfield code input[type="text"] {
+  padding: 6px;
+  color: #585858;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: Arial, helvetica;
+}
+
+.controller-cms #content .main-block .formfieldline textarea{
+  padding: 6px;
+  color: #585858;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: Arial, helvetica;
+  font-size: 15px;
+}
+
+.controller-cms #content .main-block .formfieldline .formfield code input[type="text"]:hover,
+.controller-cms #content .main-block .formfieldline .formfield code input[type="text"]:focus,
+.controller-cms #content .main-block .formfieldline textarea:hover,
+.controller-cms #content .main-block .formfieldline textarea:focus{
+  border: 1px solid #172738;
+}
+
+.controller-cms #content .main-block .formfieldline .type-file .type-file .formlabel{
+  display: none;
+}
+
+.controller-cms #content .main-block .formfieldline .type-file .type-file .type-text .formlabel{
+  display: block;
+}
+
+.controller-cms #content .formfield #article_image_builder_uploaded_data,
+.controller-cms #content .formfield #article_image_builder_label{
+  height: 19px;
+  padding: 6px;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  text-indent: 0px;
+}
+
+.controller-cms #content .formfield #article_image_builder_uploaded_data:hover,
+.controller-cms #content .formfield #article_image_builder_label:hover,
+.controller-cms #content .formfield #article_image_builder_uploaded_data:focus,
+.controller-cms #content .formfield #article_image_builder_label:focus{
+  border: 1px solid #172738;
+}
+
+.controller-cms #content .formfield #fetch-external-feed {
+  padding-left: 20px;
+  border-radius: 4px;
+}
+
+.controller-cms #content .formfield #fetch-external-feed > input {
+  height: 13px;
+  margin: 8px 8px 8px 0px;
+  vertical-align: middle;
+  width: 13px;
+}
+
+.controller-cms #content .formfield #fetch-external-feed #external-feed-options #external-feed-options-only-once input {
+  margin-right: 3px;
+  width: 13px;
+  vertical-align: middle;
+}
+
+.controller-cms #content .formfield #fetch-external-feed #external-feed-options #external-feed-options-only-once label {
+  margin-right: 250px;
+}
+
+.controller-cms #content .main-content form label.formlabel,
+.controller-cms #content .main-content form .article-translation-field {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #231f20;
+}
+
+.controller-cms #content .main-content form .article-translation-field {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.controller-cms #content .main-block form .button-bar input{
+  min-width: 100px;
+  margin-right: 10px;
+  padding: 2px 5px;
+  color: #FFF;
+  background: #2C66CE;
+  font-size: 15px;
+  border: none;
+}
+
+.controller-cms #content .main-block form .button-bar input:hover {
+  background: #5E82C6;
+  border: none;
+}
+
+.controller-cms #content .main-block form .button-bar a.button{
+  height: 29px;
+  min-width: 100px;
+  padding: 1px 0 0 0;
+  color: #2C66CE;
+  background: #FFF;
+  border: 1px solid #2C66CE;
+  font-size: 14px;
+  text-align: center;
+}
+
+.controller-cms #content .main-block form .button-bar a.button:hover{
+  background: none;
+  color: #5E82C6;
+  border-color: #5E82C6;
+}
+
+.controller-cms #content .main-block form .box-title{
+  font-size: 15px;
+  font-family: Arial, helvetica;
+}
+
+.controller-cms #content .main-block #category-ajax-selector{
+  border-style: dotted;
+}
+
+.controller-cms #content .main-block #category-ajax-selector label{
+  font-size: 14px;
+}
+
+.controller-cms #content .main-block #category-ajax-selector .select-subcategory-link{
+  background: #FFF;
+  border: 1px solid #2C66CE;
+  color: #2C66CE;
+  padding: 3px;
+}
+ 
+.controller-cms #content .main-block #category-ajax-selector .select-subcategory-link:hover{
+  background: #2C66CE;
+  color: #FFF;
+}
+
+.controller-cms #content .main-block .inputosaurus-required{
+  background: none;
+  border: 1px solid #ccc;
+}
+
+.controller-cms #content .main-block .inputosaurus-required:hover,
+.controller-cms #content .main-block .inputosaurus-required:focus{
+  border: 1px solid #172738;
+}
+
+.controller-cms #content .main-block .inputosaurus-required input:hover{
+  background: none;
+}
+
+#content #edit-article-options h4 {
+  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#content #edit-article-options div div {
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+
+/*** Edit Organizations ***/
+
