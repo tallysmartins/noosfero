@@ -65,6 +65,7 @@ class SearchController
     if params[:only_softwares]
       params[:only_softwares].collect!{ |software_name| software_name.to_slug }
       filtered_software_list = SoftwareInfo.all.select{ |s| params[:only_softwares].include?(s.identifier) }
+      @public_software_selected = false
     end
 
     category_ids = get_filter_category_ids
