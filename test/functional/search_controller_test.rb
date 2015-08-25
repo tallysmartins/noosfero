@@ -199,6 +199,21 @@ class SearchControllerTest < ActionController::TestCase
     assert_includes assigns(:searches)[:software_infos][:results], software_three.community
   end
 
+  should "software_infos search return only the software in params" do
+    software_one = create_software_info("Software One", :acronym => "SFO", :finality => "Help")
+    software_two = create_software_info("Java", :acronym => "SFT", :finality => "Task")
+    software_three = create_software_info("Software Three", :acronym => "SFW", :finality => "Java")
+
+    get(
+      :software_infos,
+      :only_softwares => ["software-three", "java"]
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], software_two.community
+    assert_includes assigns(:searches)[:software_infos][:results], software_three.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], software_one.community
+  end
+
   private
 
   def create_software_categories
