@@ -7,13 +7,13 @@
 </div>
 
 <div class="comments-software-extra-fields">
-  <div class="comments-software-people-benefited animated slideInDown">
+  <div class="comments-software-people-benefited">
     <%= label_tag "comments_people_benefited", _("Number of Beneficiaries")%>
     <span class="star-tooltip" title="Quantidade de pessoas beneficiadas com a utilização do software"></span>
     <%= text_field_tag "comments[people_benefited]", "" %>
   </div>
 
-  <div class="comments-software-saved-values animated slideInDown">
+  <div class="comments-software-saved-values">
     <%= label_tag "comments_saved_value", _("Saved resources")%>
     <span class="star-tooltip" title="Valores em “Real” economizados com a utilização do software"></span>
     <%= text_field_tag "comments[saved_value]", "", :placeholder=>"R$"%>

@@ -48,31 +48,26 @@
   border-color: rgb(0, 80, 0)
 }
 
-#software-name-field
-{
+#software-name-field {
   padding-bottom: 10px;
 }
 
-#software-hostname
-{
+#software-hostname {
   float: left;
   display: inline-block;
-  vertical-align: middle;
-
   background: #EEE;
-  border: 1px solid #CFCFCF;
-
-  line-height: 22px;
-  padding: 0px 7px;
   color: #4A4A4A;
+  padding: 0px 7px;
+  min-width: 190px;
+  line-height: 22px;
   font-size: 20px;
   text-transform: lowercase;
-  min-width: 190px;
+  vertical-align: middle;
   border-spacing: 20px;
+  border: 1px solid #CFCFCF;
 }
 
-.mandatory::after
-{
+.mandatory::after {
   color: red;
   content: ' (*)'
 }
@@ -116,11 +111,11 @@
 }
 
 #catalog-list ul li {
-    display: inline;
-    margin-right: 5px;
-    font-size: 14px;
-    padding: 5px;
-  }
+  display: inline;
+  margin-right: 5px;
+  font-size: 14px;
+  padding: 5px;
+}
 
 #catalog-list ul li span {
   cursor: pointer;
