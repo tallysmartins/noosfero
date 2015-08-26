@@ -56,6 +56,10 @@
   display: inline-block;
 }
 
+#content .blog .blog-post h1.title a {
+  color: black;
+}
+
 /* WARNING:
  *   This solution is TEMPORARY. This informations shouldn't exist
  *   in this area.

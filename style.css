@@ -80,7 +80,7 @@ url("fonts/opensans-800-webfont.ttf") format("truetype"),
 url("fonts/opensans-800-webfont.svg#open_sansextrabold") format("svg");
 }
 
-/***********Regras Gerais ************/
+/*********** General Rules ************/
 
 * {
 margin: 0;

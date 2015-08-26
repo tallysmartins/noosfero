@@ -151,7 +151,7 @@
 .action-home-index #content .software-block { 
   width: 145px;
   height: 218px;
-  margin: 0px 9px 14px 9px;
+  margin: 0px 18px 14px 0px;
 }
 
 .action-home-index #content .software-block .software-block-logo {
@@ -263,7 +263,6 @@
   padding-right: 25px;
   padding: 0px 25px 0px 0px;
   border: 0px solid #c0c1c1;
-  border-radius: 8px;
   width: 150px;
   display: table-cell;
 }

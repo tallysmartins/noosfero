@@ -1,35 +1,29 @@
 /*** Software Header ***/
-#content .software-information-block{
-	margin-bottom: 60px;
+#content .software-information-block {
+  margin: 0px 0px 60px 0px;
 }
 
-#content #software-information-block-table{
-  width: auto;
+#content #software-information-block-table {
   margin: 0px 15px;
+  width: auto;
 }
 
-#content #software-information-block-table td{
+#content #software-information-block-table td {
 	display: table-cell;
 }
 
 #content #software-information-block-table #col-software-name {
-  font-style: normal;
   vertical-align: top;
+  font-style: normal;
 }
 
-#content #software-information-block-table #col-software-name h1{
-  line-height: 37px;
-  font-size: 34px;
-  font-family: Arial, open_sansbold, Helvetica, sans-serif;
-  font-weight: 700;
+#content #software-information-block-table #col-software-name h1 {
+  font: 700 34px/37px arial, open_sansbold, helvetica, sans-serif;
   text-align: left;
 }
 
-#content #software-information-block-table #col-software-name b{
-  line-height: 21px;
-  font-weight: normal;
-  font-family: Arial, open_sansregular, Helvetica, sans-serif;
-  font-size: 15px;
+#content #software-information-block-table #col-software-name b {
+  font: normal normal normal 15px/21px arial, 'open_sansregular', helvetica, sans-serif;
 }
 	
 /*** end of Software Header ***/
@@ -38,158 +32,148 @@
 
 /* Software Download Block*/
 
-#content .download-block #download-block-2{
+#content .download-block #download-block-2 {
   margin: 0px 15px;
-  border:1px solid #D3D6DE;
+  border: 1px solid #D3D6DE;
   border-radius: 10px;
 }
 
-#content .download-block #download-block-2 #download_spb-2{
-  padding: 5px 10px;
-  background-color: #D3D6DE;
+#content .download-block #download-block-2 #download_spb-2 {
+  padding: 5px 10px 5px 10px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  font-family: Arial;
+  background-color: #D3D6DE;
+  font-family: arial;
 }
 
-#content .download-block #download-block-2 #download_spb-2 h3{
+#content .download-block #download-block-2 #download_spb-2 h3 {
   margin: 6px 0px 2px 10px;
   font-size: 18px;
 }
 
 #content .download-block #download-block-2 #download-info-1,
 #content .download-block #download-block-2 #download-info-2,
-#content .download-block #download-block-2 #download-info-3{
+#content .download-block #download-block-2 #download-info-3 {
   padding: 30px 10px 30px 10px;
-  clear: both;
   border-top: 1px solid #D3D6DE;
+  clear: both;
 }
 
-#content .download-block #download-block-2 #download-info-2{
+#content .download-block #download-block-2 #download-info-2 {
   background: #ECEDF1;
 }
 
-#content .download-block #download-block-2 #version01{
+#content .download-block #download-block-2 #version01 {
+  margin: 0px 20px 0px 15px;
   width: 80px;
   float: left;
-  margin-right: 20px;
-  margin-left: 15px;
   clear: both;
 }
 
-#content .download-block #download-block-2 #version01 #image-download{
-  display: block;
-  height: 18px; /*fix when display file size*/
+#content .download-block #download-block-2 #version01 #image-download {
   padding: 50px 0px 8px 0px;
-  background-color: #2c66ce;
-  background-image: url("../images/download-icon.png");
-  background-repeat: no-repeat;
-  background-position: center;
   border: 1px solid #2c66ce;
-  border-radius: 8px; /*fix when display file size*/
+  border-radius: 8px;
+  height: 18px;
+  background: #2C66CE url("../images/download-icon.png") center no-repeat;
+  display: block;
 }
 
-#content .download-block #download-block-2 #version01 #size-download{
-  display: none; /*fix when display file size*/
-  color: #ffffff;
-  background-color: #1a397d;
+#content .download-block #download-block-2 #version01 #size-download {
   border: 1px solid #1a397d;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
+  border-radius: 0px 0px 8px 8px;
+  background-color: #1a397d;
+  color: #ffffff;
   font-size: 12px;
   text-align: center;
+  display: none;
 }
 
-#content .download-block #download-block-2 #info-software-download{
-  position: relative;
+#content .download-block #download-block-2 #info-software-download {
   margin: 5px 0px 0px 100px;
+  position: relative;
   font-size: 16px;
 }
 
-#content .download-block #download-block-2 #info-software-download .download-name{
+#content .download-block #download-block-2 #info-software-download .download-name {
   display: block;
   font-weight: bold;
 }
 
-#content .download-block #download-block-2 #info-software-download .download-system{
+#content .download-block #download-block-2 #info-software-download .download-system {
   display: block;
   font-size: 14px;
 }
 
-#content .download-block #download-block-2 #info-software-download .req_min_spb{
+#content .download-block #download-block-2 #info-software-download .req_min_spb {
   font-size: 12px;
 }
 
-#content .download-block #download-block-2 #info-software-download .req_min_spb a{
-  color: #3E67B1;
+#content .download-block #download-block-2 #info-software-download .req_min_spb a {
   line-height: 40px;
+  color: #3E67B1;
   text-decoration: underline;
 }
 
-#content .download-block #download-block-2 #licensed-software{
+#content .download-block #download-block-2 #licensed-software {
   padding:14px;
-  background-color: #D3D6DE;
   border-top: 1px solid #D3D6DE;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
+  border-radius: 0px 0px 8px 8px;
+  background-color: #D3D6DE;
   font-size: 12px;
   text-align: right;
 }
 
-#content .download-block #download-block-2 #licensed-software a{
+#content .download-block #download-block-2 #licensed-software a {
   color: #3e67b1;
   text-decoration: underline;
 }
 
 /* About Software - Article on homepage */
 
-.profile-homepage #article h1{
-  padding: 0;
-  margin: 0 0 10px;
+.profile-homepage #article #article-toolbar #article-header h1 {
+  margin: 0px 0px 10px 0px;
+  padding: 0px;
   color: #172738;
-  font-family: Arial, open_sansbold, Helvetica, sans-serif;
-  font-variant: normal;
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 1.3em;
+  font: normal normal bold 22px/1.3em arial, 'open_sansbold', helvetica, sans-serif;
 }
 
-.profile-homepage #article #article-header h1.title{
-  border: none;  
+.profile-homepage #article #article-toolbar #article-header h1.title {
+  border: none;
 }
 
-.profile-homepage #article #article-header .publishing-info{
+.profile-homepage #article #article-header .publishing-info {
   display: none;
 }
 
-.profile-homepage #article .article-body h1{
-  padding-top: 25px;
+.profile-homepage #article .article-body h1 {
   border-top: 1px solid #ECEDF1;
   border-bottom: none;
+  padding-top: 25px;
 }
 
-.profile-homepage #article .article-body p{
-	text-align: left;
-	font-size: 15px;
-	line-height: 21px;
-	margin-bottom: 20px;
+.profile-homepage #article .article-body p {
+  margin: 0px 0px 20px 0px;
+  line-height: 21px;
+  text-align: left;
+  font-size: 15px;
 }
 
-.profile-homepage #article .article-body hr{
+.profile-homepage #article .article-body hr {
   display: none;
 }
 
 .profile-homepage #article .article-body ul {
+  background-repeat: no-repeat;
   list-style-position: inside;
   list-style-type: disc;
-  background-repeat: no-repeat;
 }
 
-.profile-homepage #article .article-body ul li{
-  list-style: inherit;
+.profile-homepage #article .article-body ul li {
+  line-height: 21px;
   text-align: left;
-	font-size: 15px;
-	line-height: 21px;
+  font-size: 15px;
+  list-style: inherit;
 }
 
 /*** end of Software Homepage ***/ 
@@ -228,9 +212,9 @@
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud a:hover {
+  border-color: #3a70d1;
   background: #3a70d1;
   color: white;
-  border-color: #3a70d1;
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud a:link {
@@ -243,31 +227,31 @@
 
 /* Link-list block */
 #content .box-3 .block-title {
-	background: #eee;
-	color: #4562b1;
-	border-top: 4px solid #4562b1;
-	line-height: 15px;
+  border-top: 4px solid #4562b1;
+  line-height: 15px;
+  background: #eee;
+  color: #4562b1;
 }
 
 #content .box-3 .link-list-block li {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   border-bottom: 1px solid #ddd;
   border-top: none;
 }
 
 #content .box-3 .link-list-block li a {
-  width: auto;
+  border-right: none;
+  border-top: 0px solid #64946E;
+  border-radius: 0px 0px 0px 0px;
   padding: 6px 5px 8px 18px;
+  width: auto;
+  line-height: 17px;
   background-color: #fff;
   background-position: 0px 50%;
   color: #2C66CE;
-  border-right: none;
-  border-top: 0px solid #64946E;
-  border-radius: 0 0 0 0;
   font-weight: normal;
   font-size: 14px;
-  line-height: 17px;
 }
 
 #content .box-3 .link-list-block h3.empty + ul {
@@ -285,8 +269,8 @@
 }
 
 #content .box-3 .link-list-block li a.link-this-page {
-  width: auto;
   margin-left: 0px;
+  width: auto;
   background-color: #ffffff;
   font-weight: bold;
 }
@@ -294,37 +278,35 @@
 /* Repository block */
 .box-3 #bt_repositorio, 
 .box-3 #bt_repositorio:active, 
-.box-3 #bt_repositorio:visited{
-	display: block;
-	position: relative;
-	padding: 12px 10px;
-	background: #EAEBEE;
-	border-radius: 4px;
-	font-size: 12px;
-	font-family: open_sansbold, Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	text-transform: uppercase;
+.box-3 #bt_repositorio:visited {
+  border-radius: 4px;
+  padding: 12px 10px;
+  background: #EAEBEE;
+  font: normal normal bold 12px 'open_sansbold', arial, helvetica, sans-serif;
+  text-transform: uppercase;
+  display: block;
+  position: relative;
 }
 
-.box-3 #bt_repositorio::after{
-	content: url('../images/right-arrow.png');
-  position: absolute;
+.box-3 #bt_repositorio::after {
+  margin-top: -2px;
+  padding: 4px 0px 4px 2px;
+  border-radius: 4px;
   width: 18px;
   right: 10px;
-  padding: 4px 0px 4px 2px;
-  margin-top: -2px;
-	background: #2C66CE;
-	color: #FFF;
-	border-radius: 4px;
-	font-size: 16px;
-	line-height: 20px;
-	text-align: center;
+  line-height: 20px;
+  position: absolute;
+  background: #2C66CE;
+  color: #FFF;
+  font-size: 16px;
+  text-align: center;
+  content: url('../images/right-arrow.png');
 }
 
-.box-3 #content #bt_repositorio:hover{
-	color: #FFF;
-	background: #2C66CE;
-	text-decoration: none;
+.box-3 #content #bt_repositorio:hover {
+  color: #FFF;
+  background: #2C66CE;
+  text-decoration: none;
 }
 /*** end of right bar ***/
 
@@ -343,15 +325,15 @@
 }
 
 #content .main-block .article-body ul.etapas-publicacao li strong {
-  padding: 2px 8px;
   margin-right: 6px;
+  border-radius: 50%;
+  padding: 2px 8px;
   background: #333;
   color: #fff;
   float: left;
-  border-radius: 50%;
 }
 
-#content .main-block .article-body .etapas-publicacao-2{
+#content .main-block .article-body .etapas-publicacao-2 {
   font-weight: bold;
 }
 
@@ -364,44 +346,44 @@
 /* Manual page */
 
 #content .main-block #article .folder-content .item-info {
-  padding: 30px 20px 32px 0px;
   border-top: 1px solid #ccc;
+  padding: 30px 20px 32px 0px;
 }
 
-#content .main-block #article .folder-content .folder-item:last-child .item-info{
+#content .main-block #article .folder-content .folder-item:last-child .item-info {
   border-bottom: 1px solid #ccc;
 }
 
 #content .main-block #article .folder-content .item-icon {
-  display: block;
-  float: left;
   margin: 2px 0px auto auto;
   padding: 45px 40px 4px 10px;
-  background: #2C66CE url("../images/download-mini_icon.png") center center no-repeat;
   border: 1px solid #2C66CE;
   border-radius: 4px;
+  background: #2C66CE url("../images/download-mini_icon.png") center center no-repeat;
+  display: block;
+  float: left;
 }
 
-#content .main-block #article .folder-content .item-icon a{
+#content .main-block #article .folder-content .item-icon a {
   display: none;
 }
 
 
-#content .main-block #article .folder-content .item-description{
-  padding-left: 0px;
+#content .main-block #article .folder-content .item-description {
   margin-left: 65px;
+  padding-left: 0px;
 }
 
-#content .main-block #article .folder-content .item-description a{
+#content .main-block #article .folder-content .item-description a {
   color: #172938;
   font-size: 18px;
   font-family: Arial;
   font-weight: 700;
 }
 
-#content .main-block #article .folder-content .item-date{
-  padding-left: 0px;
+#content .main-block #article .folder-content .item-date {
   margin-left: 65px;
+  padding-left: 0px;
 }
 
 /*** end fo software internal pages ***/
