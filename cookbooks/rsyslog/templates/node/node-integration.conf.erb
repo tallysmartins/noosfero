@@ -1,0 +1,14 @@
+# Node <%= node.name %>
+# The following configurations sends the
+# files to rsyslog server
+
+$Modload imfile
+# Logs to send
+# TODO: add a for to increment 'var log path', 'severity', 'tag', 'facility', 'state file'
+$InputFileName 'var log path'
+$InputFileTag 'tag'
+$InputFileStateFile 'state file' # Be careful, this must be unique
+
+$InputFileSeverity 'severity'
+$InputFileFacility 'facility'
+$InputRunFileMonitor

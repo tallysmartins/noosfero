@@ -4,7 +4,7 @@ package 'rsyslog' do
   action [:install, :upgrade]
 end
 
-template '/etc/rsyslog.d/node.conf' do
+template "/etc/rsyslog.d/node-#{node.name}.conf" do
   source "node/node.conf.erb"
   owner 'root'
   group 'root'
