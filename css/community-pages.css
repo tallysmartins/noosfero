@@ -58,7 +58,6 @@
 .action-profile-index #content .main-block h1 {
   color: #172738;
   border-bottom: none;
-  font-size: 2.3em;
   font-weight: bold;
   font-variant: normal;
   font-family: Arial, open_sansbold, Helvetica, sans-serif;
@@ -99,14 +98,15 @@
 
 .action-profile-index .main-block #public-profile-search form input.button.submit {
   height: 32px;
-  background: #2B51A8;
-  font-size: 14px;
   margin-top: 8px;
+  padding: 5px 15px;
   color: #ffffff;
-  text-transform: uppercase;
+  background: #2B51A8;
   border-radius: 4px;
   border: 1px solid #2B51A8;
-  padding: 5px 15px;
+  font-size: 14px;
+  line-height: 14px
+  text-transform: uppercase;
 }
 
 /* Profile tab */
