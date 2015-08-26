@@ -25,7 +25,7 @@
   font-weight: 500;
 }
 
-.controller-cms #content .main-block .formlabel {
+.controller-cms #content .main-block .formlabel{
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
@@ -34,7 +34,7 @@
   font-size: 14px;
 }
 
-.controller-cms #content .main-block .formfieldline .formfield code {
+.controller-cms #content .main-block .formfieldline .formfield code{
   display: block;
   width: auto;
   height: 30px;
@@ -45,11 +45,11 @@
   font-family: Arial, helvetica;
 }
 
-.controller-cms #content .main-block .formfieldline .formfield code * {
+.controller-cms #content .main-block .formfieldline .formfield code *{
   display: inline;
 }
 
-.controller-cms #content .main-block .formfieldline .formfield code input[type="text"] {
+.controller-cms #content .main-block .formfieldline .formfield code input[type="text"]{
   padding: 6px;
   color: #585858;
   background: none;
@@ -102,30 +102,30 @@
   border: 1px solid #172738;
 }
 
-.controller-cms #content .formfield #fetch-external-feed {
+.controller-cms #content .formfield #fetch-external-feed{
   padding-left: 20px;
   border-radius: 4px;
 }
 
-.controller-cms #content .formfield #fetch-external-feed > input {
+.controller-cms #content .formfield #fetch-external-feed > input{
   height: 13px;
   margin: 8px 8px 8px 0px;
   vertical-align: middle;
   width: 13px;
 }
 
-.controller-cms #content .formfield #fetch-external-feed #external-feed-options #external-feed-options-only-once input {
+.controller-cms #content .formfield #fetch-external-feed #external-feed-options #external-feed-options-only-once input{
   margin-right: 3px;
   width: 13px;
   vertical-align: middle;
 }
 
-.controller-cms #content .formfield #fetch-external-feed #external-feed-options #external-feed-options-only-once label {
+.controller-cms #content .formfield #fetch-external-feed #external-feed-options #external-feed-options-only-once label{
   margin-right: 250px;
 }
 
 .controller-cms #content .main-content form label.formlabel,
-.controller-cms #content .main-content form .article-translation-field {
+.controller-cms #content .main-content form .article-translation-field{
   font-size: 14px;
   margin-bottom: 5px;
   color: #231f20;
@@ -141,12 +141,12 @@
   margin-right: 10px;
   padding: 2px 5px;
   color: #FFF;
-  background: #2C66CE;
+  background: #3E67B1;
   font-size: 15px;
   border: none;
 }
 
-.controller-cms #content .main-block form .button-bar input:hover {
+.controller-cms #content .main-block form .button-bar input:hover{
   background: #5E82C6;
   border: none;
 }
@@ -155,17 +155,17 @@
   height: 29px;
   min-width: 100px;
   padding: 1px 0 0 0;
-  color: #2C66CE;
+  color: #3E67B1;
   background: #FFF;
-  border: 1px solid #2C66CE;
+  border: 1px solid #3E67B1;
   font-size: 14px;
   text-align: center;
 }
 
 .controller-cms #content .main-block form .button-bar a.button:hover{
   background: none;
-  color: #5E82C6;
-  border-color: #5E82C6;
+  color: #3E67B1;
+  border-color: #3E67B1;
 }
 
 .controller-cms #content .main-block form .box-title{
@@ -216,7 +216,3 @@
   margin-top: 13px;
   margin-bottom: 13px;
 }
-
-
-/*** Edit Organizations ***/
-
