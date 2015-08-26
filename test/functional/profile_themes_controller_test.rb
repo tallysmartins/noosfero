@@ -17,6 +17,7 @@ class ProfileThemesControllerTest < ActionController::TestCase
 
     @env = Environment.default
     @env.enable('user_themes')
+    @env.enable_default_features
     @env.save!
   end
   attr_reader :profile, :env
@@ -331,7 +332,7 @@ class ProfileThemesControllerTest < ActionController::TestCase
 
   should 'user cant edit appearance if environment dont permit' do
     environment = Environment.default
-    environment.settings[:disable_appearance_enabled] = true
+    environment.disable('enable_appearance')
     environment.save!
 
     user = create_user('user').person
@@ -346,7 +347,7 @@ class ProfileThemesControllerTest < ActionController::TestCase
 
     environment = Environment.default
     environment.add_admin(user)
-    environment.settings[:disable_appearance_enabled] = true
+    environment.disable('enable_appearance')
     environment.save!
 
     login_as('user')
