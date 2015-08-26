@@ -79,6 +79,8 @@ Note que o comando acima não remove os históricos (archives) da lista. Para re
   $ cd /usr/lib/mailman/bin
   $ sudo ./rmlist -a nome_da_lista
 
+Além disto, o Colab também armazena os dados relacionados aos históricos das listas. Para remover tais dados  deve-se acessar ``<DOMINIO>/colab/admin/``, onde ``<DOMINIO>`` é o domínio do ambiente em que se deseja realizar a operação, como por exemplo: portal.softwarepublico.gov.br, clicar em Mailing Lists e remover a lista que desejar. Note que os dados não poderão ser restaurados.
+
 Alterando a senha de administrador do Mailman::
 
   $ cd /usr/lib/mailman/bin
