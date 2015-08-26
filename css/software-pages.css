@@ -197,34 +197,34 @@
 /*** Categories and Tags block ***/
 
 #content .box-1  .categories-and-tags-block {
-  border-top: 4px solid #4562b1; 
+  border-top: 4px solid #2C4B6B; 
 }
 
 #content .box-1 .categories-and-tags-block .block-title {
-  background: none;
-  margin-top: 14px;
+  margin: 13px 10px 10px 0;
+  padding: 3px 0px;
   float: left;
-  font-size: 11px;
-}
-
-#content .box-1 .categories-and-tags-block .block-title:last-child {
-  border-top: 1px solid #8b949b;
-  border-bottom: 1px solid #8b949b;
+  background: none;
+  color: #5E82C6;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud {
-  margin: 12px auto 10px 0px;
+  margin: 13px 10px 10px 0px;
   float: left;
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud a {
-  padding: 3px 6px;
-  margin: 10px 3px;
-  line-height: 28px;
-  background-color: #e9e8ed;
-  border: 1px solid #e9e8ed;
-  border-radius: 8px;
-  font-size: 11px;
+  padding: 3px 10px;
+  margin: 0;
+  float: left;
+  color: #3E67B1;
+  background-color: #ECEDF1;
+  border: 1px solid #D3D6DE;
+  border-radius: 3px;
+  font-size: 12px;
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud a:hover {
