@@ -55,10 +55,16 @@
   margin: 0px;
   padding: 0px;
 }
-
-.profile-members-tabs-container .ui-tabs .ui-tabs-panel {
+*/
+#block-community-tabs .ui-tabs .ui-tabs-panel {
   padding: 0px;
-}*/
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-nav li a:visited,
+#content .profile-members-tabs-container .ui-tabs .ui-tabs-nav li a:visited{
+  color:#172738;
+}
+
 #block-community-tabs .ui-tabs .ui-tabs-nav li,
 #content .profile-members-tabs-container .ui-tabs .ui-tabs-nav li{
   padding-right: 3px;
@@ -82,5 +88,84 @@
 #block-community-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active a,
 #content .profile-members-tabs-container .ui-tabs .ui-tabs-nav li.ui-tabs-active a {
   color: #FF0366;
+  font-weight: 700;
+}
+
+/********************************************/
+/***abas da area de comunidade******/
+
+#content #discussions-content .pull-left{
+  float:none;
+}
+
+#content #discussions-content{
+  font-family: Arial;
+  font-size: 14px;
+}
+
+#content #discussions-content .message-discussion{
+  border-top: 1px solid #ECEDF1;
+  margin:20px 0px 0px 0px;
+  padding:20px 0px 0px 0px;
+}
+
+/*#content #discussions-content .row{
+  width: 520px;
+}*/
+
+#content #discussions-content h4{
+  font-size: 20px;
+}
+
+#discussions-content hr{
+  display: none;
+}
+
+#discussions-content .quiet{
+  line-height: 21px;
+}
+
+#discussions-content div.quiet:last-child{
+  border-top:none;
+}
+
+#discussions-content .text-right a{
+  text-align: right;
+  display: block;
+  text-transform: uppercase;
+  line-height: 21px;
+}
+
+#discussions-content .text-right a::after {
+content: "\f105";
+font-family: FontAwesome;
+padding-left: 7px;
+padding-right: 4px;
+color: #ffffff;
+background: #3E67B1;
+border-radius: 4px;
+font-size: 18px;
+line-height: 20px;
+text-align: center;
+margin-left: 5px;
+position: relative;
+top: 2px;
+}
+
+/*#discussions-content .pull-left{
+  margin-top: 20px;
+}*/
+
+#content #discussions-content .pull-left a{
+  color:#3E67B1;
+  font-weight: 600;
+}
+
+/*
+#discussions-content .subject{
+  margin-bottom: 20px;
+}*/
+
+#content #discussions-content .subject{
   font-weight: 700;
 }
