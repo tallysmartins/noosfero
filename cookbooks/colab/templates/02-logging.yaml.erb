@@ -6,7 +6,16 @@ LOGGING:
     verbose:
       format: '%(asctime)s (%(name)s) %(levelname)s: %(message)s'
 
+    simple:
+      format: '[colab-spb] (%(name)s) %(levelname)s: %(message)s'
+
   handlers:
+    syslog:
+      level: WARNING
+      class: logging.handlers.SysLogHandler
+      formatter: simple
+      address: /dev/log
+
     file:
       level: DEBUG
       class: logging.handlers.TimedRotatingFileHandler
@@ -20,9 +29,11 @@ LOGGING:
     django:
       handlers:
         - file
+        - syslog
       level: DEBUG
 
     revproxy:
       handlers:
         - file
+        - syslog
       level: ERROR
