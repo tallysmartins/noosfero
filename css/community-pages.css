@@ -164,6 +164,7 @@
 .action-profile-members #profile-members-sort-options label{
   font-weight: 700;
   color:#172738;
+}
 
 .action-profile-members #profile-members-sort-options select{
   background: none;
@@ -178,6 +179,7 @@
 .action-profile-members .profile-members{
   padding-left: 5px; /*34px;*/
 }
+
 .action-profile-members .profile-admins{
   padding-left: 5px;
 }
@@ -195,6 +197,7 @@
   max-width: 150px;
   max-height: 150px;
 }
+
 /*hover da imagem e informacoes da aba*/
 .action-profile-members .common-profile-list-block .vcard{
   border:none;
@@ -214,6 +217,7 @@
   width: 131px;
   height: 171px;
 }
+
 .action-profile-members .menu-submenu.down::before {
   content:"\f0da";
   color:#172738;
@@ -344,6 +348,7 @@
   border:1px solid #D3D6DE !important;
   border-radius: 4px;
 }
+
 #content .members-block .block-title{
   background-color:#ECEDF1;
   border-bottom:1px solid #D3D6DE;
@@ -361,6 +366,7 @@
   border-top:1px solid #D3D6DE;
   text-align: right;
 }
+
 #content .members-block .block-footer-content a{
   padding-right: 0px !important;
 }
@@ -371,6 +377,7 @@
   text-transform: uppercase;
   line-height: 21px;
 }
+
 #content .members-block .block-footer-content a.view-all::after{
 content:"\f105";
 font-family: FontAwesome;
@@ -396,6 +403,7 @@ top: 2px;
   border:none;
   background:none;
 }
+
 /*.members-block .common-profile-list-block .vcard a{
   padding-bottom: 0px;
 }
