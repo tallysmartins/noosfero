@@ -12,6 +12,10 @@
 
 /*** Box's patterns ***/
 
+.action-home-index .block-outer{
+   margin-bottom: 45px;
+}
+
 /* Read More pattern */
 
 .action-home-index #content .box .block-outer .read-more {
@@ -52,9 +56,9 @@
 /*** Software catalog search block **/
 
 .action-home-index #content #catalogo-software-search {
-  border-radius: 4px;
   width: 100%;
   background-color: #1A397D;
+  border-radius: 4px;
 }
 
 .action-home-index #content #catalogo-software-search h1 {
