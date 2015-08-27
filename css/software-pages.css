@@ -9,7 +9,7 @@
 }
 
 #content #software-information-block-table td {
-	display: table-cell;
+  display: table-cell;
 }
 
 #content #software-information-block-table #col-software-name {
