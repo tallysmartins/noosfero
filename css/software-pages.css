@@ -25,7 +25,7 @@
 #content #software-information-block-table #col-software-name b {
   font: normal normal normal 15px/21px arial, 'open_sansregular', helvetica, sans-serif;
 }
-	
+
 /*** end of Software Header ***/
 
 /*** Software Homepage ***/
@@ -176,12 +176,12 @@
   list-style: inherit;
 }
 
-/*** end of Software Homepage ***/ 
+/*** end of Software Homepage ***/
 
 /*** Categories and Tags block ***/
 
 #content .box-1  .categories-and-tags-block {
-  border-top: 4px solid #4562b1; 
+  border-top: 4px solid #4562b1;
 }
 
 #content .box-1 .categories-and-tags-block .block-title {
@@ -276,8 +276,8 @@
 }
 
 /* Repository block */
-.box-3 #bt_repositorio, 
-.box-3 #bt_repositorio:active, 
+.box-3 #bt_repositorio,
+.box-3 #bt_repositorio:active,
 .box-3 #bt_repositorio:visited {
   border-radius: 4px;
   padding: 12px 10px;
@@ -308,6 +308,64 @@
   background: #2C66CE;
   text-decoration: none;
 }
+
+/* Metrics Block */
+.software-metrics-block {
+  /*background-image: url('../images/metrics.png');*/
+  padding: 3px 0px 0px 10px;
+}
+
+.software-metrics-block .metrics-list {
+  border-bottom: 1px dotted #D3D6DE;
+}
+
+.software-metrics-block .metrics-list li {
+  display: table;
+  margin-bottom: 10px;
+}
+
+.software-metrics-block .metrics-list li span,
+.software-metrics-block .metrics-list li a {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.software-metrics-block .metrics-list li a:link {
+  color: #2c66ce !important;
+}
+
+.software-metrics-block span.arrow-globe-icon {
+  content: url('../images/arrow-globe-icon.png');
+  padding-right: 5px;
+}
+
+.software-metrics-block span.downloads-icon {
+  content: url('../images/downloads-icon.png');
+  padding-right: 14px;
+  padding-left: 1px;
+}
+
+.software-metrics-block span.face-icon {
+  content: url('../images/beneficiados-icon.png');
+  padding-right: 14px;
+  padding-left: 1px;
+}
+
+.software-metrics-block span.pig-safe-icon {
+  content: url('../images/economizados-icon.png');
+  padding-right: 11px;
+}
+
+.software-metrics-block .metrics-list li a {
+  letter-spacing: -0.1px;
+}
+
+.software-metrics-block .admin-estimation {
+  margin-top: 7px;
+  margin-left: 4px;
+}
+
+
 /*** end of right bar ***/
 
 /*** Software internal pages ***/
