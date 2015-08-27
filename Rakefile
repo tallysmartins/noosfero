@@ -86,8 +86,10 @@ if ['local', 'lxc'].include?($SPB_ENV)
   end
 end
 
+desc 'Downloads latest system backups to backups directory. WARNING: This overrides anything written in the backups directory'
 task :backup => ssh_config_file do
   # setup
+  sh 'rm', '-rf', 'backups'
   sh 'mkdir', '-p', 'backups'
   # integration
   sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', 'chmod a+xr /.snapshots'
@@ -97,6 +99,7 @@ task :backup => ssh_config_file do
   sh 'scp', '-F', ssh_config_file, 'social:/.snapshots/hourly.0/spb/*', 'backups/'
 end
 
+desc 'Restores content saved in the backups directory to the target env. WARNING: This will drop all the current databases'
 task :restore => [ssh_config_file, config_file] do
   # setup
   sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', 'rm -rf /tmp/backups'
