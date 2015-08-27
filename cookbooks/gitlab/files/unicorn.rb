@@ -16,7 +16,7 @@ ENV['RAILS_RELATIVE_URL_ROOT'] = "/gitlab"
 # Read about unicorn workers here:
 # http://doc.gitlab.com/ee/install/requirements.html#unicorn-workers
 #
-worker_processes 2
+worker_processes `nproc`.to_i
 
 # Since Unicorn is never exposed to outside clients, it does not need to
 # run on the standard HTTP port (80), there is no reason to start Unicorn
