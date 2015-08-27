@@ -122,12 +122,14 @@ task :restore => [ssh_config_file, config_file] do
   sh 'ssh', '-F', ssh_config_file, 'integration', 'sudo', 'systemctl start colab'
 end
 
-task :export_data => [ssh_config_file, config_file] do
-  # setup
-  sh 'mkdir', '-p', 'exported_data'
-  #social
-  sh 'ssh', '-F', ssh_config_file, 'social', 'cd /usr/lib/noosfero/ && sudo -u noosfero RAILS_ENV=production bundle exec rake export:catalog:csv'
-  sh 'scp', '-F', ssh_config_file, 'social:/tmp/software_catalog_csvs.tar.gz', 'exported_data/'
+namespace :export_data do
+  task :noosfero => [ssh_config_file, config_file] do
+    # setup
+    sh 'mkdir', '-p', 'exported_data'
+    #social
+    sh 'ssh', '-F', ssh_config_file, 'social', 'cd /usr/lib/noosfero/ && sudo -u noosfero RAILS_ENV=production bundle exec rake export:catalog:csv'
+    sh 'scp', '-F', ssh_config_file, 'social:/tmp/software_catalog_csvs.tar.gz', 'exported_data/'
+  end
 end
 
 task :bootstrap_common => 'config/local/ssh_config'
