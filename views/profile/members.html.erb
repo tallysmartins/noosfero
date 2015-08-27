@@ -1,0 +1,72 @@
+
+<div class="page-members-header">
+  <h1><%= _("Members") + " (#{@total_members})" %></h1>
+  <h3 class="community-name-members"><%= _("%s") % profile.name %></h3>
+  <%= render "blocks/profile_info_actions/community" %>
+</div>
+
+<% cache_timeout(profile.members_cache_key(params), 4.hours) do %>
+<div class="profile-members-tabs-container">
+    <% tabs = [] %>
+
+        <% div_members = content_tag :div, :class => "profile-members" do
+      render :partial => 'profile_members_list',
+                            :locals => {
+                            :users => @profile_members,
+                            :role => "members"
+                            }
+
+     end %>
+
+     <% members_pagination = content_tag :div, :class => "pagination-profile-members" do
+        pagination_links @profile_members, :param_name => 'npage'
+     end %>
+
+
+   <% tabs << {:title => "#{@profile_members.size} "+_("Members"),
+                     :id => "members-tab",
+                     :content => (div_members + members_pagination)
+                     } %>
+
+    <% div_admins = content_tag :div, :class => "profile-admins" do
+      render :partial => 'profile_members_list',
+                            :locals => {
+                            :users => @profile_admins,
+                            :role => "admins"
+                            }
+     end %>
+
+     <% admins_pagination = content_tag :div, :class => "pagination-profile-admins" do
+        pagination_links @profile_admins, :param_name => 'npage'
+     end %>
+
+    <% tabs << {:title => "#{@profile_admins.size} "+_("Administrators"),
+                           :id => "admins-tab",
+                           :content => (div_admins+admins_pagination)
+                           } %>
+
+
+
+
+    <%= render_tabs(tabs) %>
+  <% end %>
+</div>
+
+
+<% button_bar do %>
+  <%= button :back, _('Go back'), { :controller => 'profile' } %>
+  <% if profile.community? and user %>
+    <% if user.has_permission?(:invite_members, profile) %>
+      <%= button :person, _('Invite people to join'), :controller => 'invite', :action => 'invite_friends' %>
+    <% end %>
+    <% if user.has_permission?(:send_mail_to_members, profile) %>
+      <%= button :send, _('Send e-mail to members'), :controller => 'profile', :action => 'send_mail' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= hidden_field_tag "profile_url", @profile_members_url %>
+<%= hidden_field_tag "sort", "asc" %>
+</div><!-- fim class="common-profile-list-block" -->
+
+<%= javascript_include_tag "members_page.js" %>
