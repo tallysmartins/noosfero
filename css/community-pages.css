@@ -305,6 +305,7 @@
   border-radius: 5px;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
+  height: 15px;
 }
 
 .action-profile-members .common-profile-list-block .vcard .menu-submenu-trigger::before{
@@ -312,7 +313,7 @@
   color:#fff;
   font-family: FontAwesome;
   font-size: 10px;
-  line-height: 13px;
+  line-height: 11px;
 }
 
 /*.action-profile-members #content .common-profile-list-block .vcard li a{

@@ -51,6 +51,10 @@
   padding-right: 3px;
 }
 
+#content .profile-members-tabs-container .ui-tabs .ui-tabs-nav li a:visited{
+  color:#172738;
+}
+
 #content .profile-members-tabs-container .ui-tabs .ui-tabs-nav li.ui-tabs-active {
   margin-bottom: -3px !important;
   padding-bottom: 1px;
