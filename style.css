@@ -868,6 +868,16 @@ p {
     min-height: 100%;
 }
 
+/* This is a temporary solution until noosfero deals with logged-out comments in a better manner. */
+.comment-replies .comment-logged-out .comment-text, .comment-logged-out .comment-picture, .comment-logged-out h4 {
+  opacity: 1.0;
+}
+
+.comment-logged-out .comment-text, .comment-info {
+  color: black;
+}
+/**/
+
 /*btn comentários*/
 
 #content .blog-post .short-post .read-more a{
