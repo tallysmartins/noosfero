@@ -5,7 +5,9 @@
 .profile-members-tabs-container .ui-corner-all{
   overflow: visible;
 }
-
+.profile-members-tabs-container .ui-widget{
+  font-size: 0px;
+}
 .profile-members-tabs-container .ui-widget-header{
   background:#ECEDF1;
   border:none;
