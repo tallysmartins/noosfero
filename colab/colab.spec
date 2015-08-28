@@ -191,28 +191,8 @@ fi
 
 mkdir -p /etc/colab/settings.d
 
-# only applies if there is a local PostgreSQL server
-if [ -x /usr/bin/postgres ]; then
-
-  # start/enable the service
-  postgresql-setup initdb || true
-  systemctl start postgresql
-  systemctl enable postgresql
-
-  if [ "$(sudo -u postgres -i psql --quiet --tuples-only -c "select count(*) from pg_user where usename = 'colab';")" -eq 0 ]; then
-    # create user
-    sudo -u postgres -i createuser colab
-  fi
-
-  if [ "$(sudo -u postgres -i psql --quiet --tuples-only -c "select count(1) from pg_database where datname = 'colab';")" -eq 0 ]; then
-    # create database
-    sudo -u postgres -i createdb --owner=colab colab
-  fi
->>>>>>> Updated colab settings
-
-  chown root:colab /etc/colab/settings.py
-  chmod 0640 /etc/colab/settings.py
-fi
+chown root:colab /etc/colab/settings.py
+chmod 0640 /etc/colab/settings.py
 
 install -d -m 0755 -o colab -g colab /var/lib/colab-assets
 
