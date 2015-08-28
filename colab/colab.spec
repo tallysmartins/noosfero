@@ -48,6 +48,9 @@ find %{buildvenv} -type d -empty -delete
 install -d -m 0755 %{buildroot}/etc/colab
 install -m 0644 misc/etc/colab/gunicorn.py %{buildroot}/etc/colab
 
+# install log
+install -d -m 0755 -o colab -g colab %{buildroot}/var/log/colab
+
 # install virtualenv
 install -d -m 0755 %{buildroot}/usr/lib
 rm -rf %{buildroot}/usr/lib/colab
@@ -79,6 +82,7 @@ rm -rf %{buildvenv}
 
 %files
 /usr/lib/colab
+/var/log/colab
 %{_bindir}/*
 /etc/cron.d/colab
 /etc/colab/gunicorn.py
