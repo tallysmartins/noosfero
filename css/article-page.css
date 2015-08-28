@@ -28,6 +28,15 @@
   line-height: 21px;
 }
 
+#content #article-parent a.button.with-text{
+  background-color: #3E67B1;
+  color: #FFF;
+}
+
+#content #article-parent a.button.with-text:hover{
+  background-color: #5E82C6;
+}
+
 /* Need a dev solution - blog internal pages*/
 
 #article-header .preview{
@@ -76,27 +85,34 @@
 }
 
 #content .main-block .article-body #article-actions:last-child{
-  padding-top: 10px;
-  border-top: 4px solid #2C4B6B;
+  margin: 0;
+  padding: 10px 0;
+  border-top: 1px solid #D3D6DE;
 }
 
 /*** Categories ***/
 
+#content .main-block #article-cat{
+  border-top: 4px solid #2C4B6B;
+  border-bottom: 1px solid #D3D6DE;
+}
+
 #content .main-block #article-cat h4 {
   float: left;
-  margin: 13px 10px 10px 0;
+  margin: 12px 10px 10px 0;
   min-height: 0px;
+  color: #5E82C6;
   font-family: Arial;
-  font-size: 1.3em;
+  font-size: 12px;
   font-weight: 300;
   text-decoration: initial;
 }
 
 #content .main-block #article-cat a{
-  float: left;
+  display: inline-block;
   margin: 10px 10px 10px 0;
   padding: 3px 10px;
-  color: #3E67B1;
+  color: #5E82C6;
   background-color: #ECEDF1;
   border: 1px solid #D3D6DE;
   border-radius: 3px;
@@ -104,7 +120,29 @@
   text-decoration: initial;
 }
 
-/*** end of categories ***/
+/*** Tags ***/
+
+#content .main-block #article-tags{
+  width: 100%; 
+  color: #5E82C6;
+  border-bottom: 1px solid #D3D6DE;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: 300; 
+  text-align: left;
+}
+
+#content .main-block #article-tags a{
+  display: inline-block;
+  margin: 10px 10px 10px 0;
+  padding: 3px 10px;
+  color: #5E82C6;
+  background-color: #ECEDF1;
+  border: 1px solid #D3D6DE;
+  border-radius: 3px;
+  font-size: 12px;
+  text-decoration: initial;
+}
 
 /*** Site Map page ***/
 

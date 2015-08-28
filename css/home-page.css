@@ -12,6 +12,10 @@
 
 /*** Box's patterns ***/
 
+.action-home-index .block-outer{
+   margin-bottom: 45px;
+}
+
 /* Read More pattern */
 
 .action-home-index #content .box .block-outer .read-more {
@@ -52,9 +56,9 @@
 /*** Software catalog search block **/
 
 .action-home-index #content #catalogo-software-search {
-  border-radius: 4px;
   width: 100%;
   background-color: #1A397D;
+  border-radius: 4px;
 }
 
 .action-home-index #content #catalogo-software-search h1 {
@@ -363,34 +367,31 @@
 /******* See As Well Block - Highlights block *******/
 
 .action-home-index #content .highlights-block .block-title {
-  margin: 11px 0px 0px;
-  border: 1px solid #c0c1c1;
-  border-bottom: 0;
-  border-radius: 8px 8px 0 0;
-  padding: 15px 1px 21px 15px;
-  width: auto;
-  height: 16px;
-  background-color: #fff;
-  color: #172638;
-  font: bold 16px/1.3em 'open_sansbold', arial, helvetica, sans-serif;
-  text-transform: uppercase;
+  display: none;
 }
 
 .action-home-index #content .highlights-border {
   border: 1px solid #c0c1c1;
-  border-radius: 0px 0px 8px 8px;
+  border-radius: 8px 8px 8px 8px;
   width: auto;
-  max-height: 230px;
-  background: #fff;
+  height: 248px;
+  max-height: 250px;
+  background-color: #e8e9ec;
+  background-image: linear-gradient(
+    0deg,
+    transparent 45%,
+    #fff 55%);
+  background-size: 100% 100%;
 }
 
 .action-home-index #content .highlights-container {
-  border-radius: 0px 0px 8px 8px;
+  border-radius: 8px 8px 8px 8px;
   border-width: 0px 0px 1px 0px;
+  border-bottom: none;
   padding: 0px 0px 0px 0px;
   width: 100% !important;
   max-height: 230px;
-  background: #fff;
+  background: transparent;
   position: relative;
   top: 0px;
 }
@@ -401,6 +402,10 @@
   width: 220px;
   max-height: 217px;
   background-color: #fff;
+}
+
+.action-home-index #content .highlights-image-link img{
+  max-height: 100px;
 }
 
 .action-home-index #content .highlights-label {
@@ -419,10 +424,8 @@
 
 .action-home-index #content .highlights-block-pager {
   border: 0;
-  padding: 14px 0px 0px 0px;
-  height: 1px;
+  padding: 0px 0px 0px 0px;
   width: 232px;
-  background-color: #FFF;
   float: left;
   position: static;
 }
