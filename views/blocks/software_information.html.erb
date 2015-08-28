@@ -27,6 +27,8 @@
         <b>
           <%= block.owner.software_info.finality %>
         </b>
+
+        <%= @plugins.dispatch(:display_community_average_rating, block.owner).collect { |content| instance_exec(&content) }.join("") %>
       </td>
     </tr>
   </table>

@@ -3,6 +3,7 @@ module PluginTestHelper
   def create_community name
     community = fast_create(Community)
     community.name = name
+    community.identifier = name.to_slug
     community.save
     community
   end

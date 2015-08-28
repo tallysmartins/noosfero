@@ -45,36 +45,21 @@
 
 #profile-data .validated {
   box-shadow: 0px 0px 7px green;
-  border-color: rgb(0, 80, 0)
+  border-color: rgb(0, 80, 0);
 }
 
-#software-name-field
-{
+#software-name-field {
   padding-bottom: 10px;
 }
 
-#software-hostname
-{
-  float: left;
-  display: inline-block;
-  vertical-align: middle;
-
-  background: #EEE;
-  border: 1px solid #CFCFCF;
-
-  line-height: 22px;
+#software-hostname {
   padding: 0px 7px;
-  color: #4A4A4A;
-  font-size: 20px;
-  text-transform: lowercase;
-  min-width: 190px;
-  border-spacing: 20px;
+  font-size: 18px;
 }
 
-.mandatory::after
-{
+.mandatory::after {
   color: red;
-  content: ' (*)'
+  content: ' (*)';
 }
 
 .autocomplete_validation_message {
@@ -94,71 +79,34 @@
 }
 
 #content .softwares-block .block-footer-content a {
-  position: absolute;
-  top: 2px;
-  right: 0px;
-  font-size: 11px;
-  color: #000;
-  text-decoration: none;
-  padding-right: 15px;
-}
-
-#content .softwares-block .block-footer-content a {
   background: url(../../../designs/themes/base/imgs/arrow-right-p.png) 100% 50% no-repeat;
 }
 
+/*FIX-ME: necessary while there is
+* not a defined theme style for the
+* forms */
 .improve_input_size {
   width: 315px !important;
-}
-
-.search-community-content-block span {
-  width: auto;
-}
-
-#catalog-list ul li {
-    display: inline;
-    margin-right: 5px;
-    font-size: 14px;
-    padding: 5px;
-  }
-
-#catalog-list ul li span {
-  cursor: pointer;
-  margin-left: 5px;
-}
-
-/* Fix software catalog list bug(it does not happen in fix_for_beta) */
-.search-results-type-software_info .search-profile-item {
-  width: 100% !important;
 }
 
 .software-block {
   position: relative;
   float: left;
-  margin: 0px 10px 10px 0px;
-  width: 30%;
-  height: 200px;
-  word-wrap: break-word;
   overflow: hidden;
-}
-
-.software-block-logo {
-  width: 150px;
-  height: 150px;
-  margin: 0px auto;
 }
 
 .software-block-content, .software-block-finality {
   width: 100%;
-  height: 100%;
   position: absolute;
-  top: 0px;
-  left: 0px;
 }
 
-.software-block-finality {
-  background-color: #fff;
-  top: 100%;
-  display: block;
-  background-color:rgba(255, 255, 255, 0.9);
+/*===== Communities rate hotspot extra fields =====*/
+
+.comments-software-extra-fields div {
+  display: none;
 }
+
+#content .star-rate-form .star-comment-container .comments-display-fields {
+  cursor: pointer;
+}
+

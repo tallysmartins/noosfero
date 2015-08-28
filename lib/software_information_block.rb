@@ -15,15 +15,23 @@ class SoftwareInformationBlock < Block
   def content(args={})
     block = self
     s = show_name
+
     lambda do |object|
       render(
         :file => 'blocks/software_information',
-        :locals => { :block => block, :show_name => s }
+        :locals => { :block => block, :show_name => s}
       )
     end
   end
 
   def cacheable?
     false
+  end
+
+  private
+
+  def owner_has_ratings?
+    ratings = CommunityRating.where(community_id: block.owner.id)
+    !ratings.empty?
   end
 end

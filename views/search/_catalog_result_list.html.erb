@@ -4,47 +4,45 @@
 
     <input type="hidden" id="empty_result" value="<%= search[:results].blank? %>" />
 
-    <div class="search-results-<%= name %> search-results-box">
-      <% if !search[:results].blank? %>
+    <% if !search[:results].blank? %>
 
-        <% if multiple_search?(@searches) %>
-          <h3><%= @names[name] %></h3>
-          <% if search[:results].total_entries > SearchController::MULTIPLE_SEARCH_LIMIT %>
-            <%= link_to(_('see all (%d)') % search[:results].total_entries, params.merge(:action => name), :class => 'see-more' ) %>
-          <% end %>
+      <% if multiple_search?(@searches) %>
+        <h3><%= @names[name] %></h3>
+        <% if search[:results].total_entries > SearchController::MULTIPLE_SEARCH_LIMIT %>
+          <%= link_to(_('see all (%d)') % search[:results].total_entries, params.merge(:action => name), :class => 'see-more' ) %>
         <% end %>
-
-        <% display = display_filter(name, params[:display]) %>
-
-        <div class="search-results-innerbox search-results-type-<%= name.to_s.singularize %> <%= 'common-profile-list-block' if SearchHelper::COMMON_PROFILE_LIST_BLOCK.include?(name) %>">
-          <ul>
-            <% search[:results].each do |hit| %>
-              <% partial = partial_for_class(hit.class, display) %>
-              <% variable_name = partial.gsub("#{display}_", '').to_sym %>
-              <%= render :partial => partial, :locals => {variable_name => hit} %>
-            <% end %>
-          </ul>
-        </div>
-      <% else %>
-        <% if multiple_search? %>
-          <h3><%= @names[name] %></h3>
-        <% end %>
-
-        <div id="search-results-empty"></div>
-
-        <input type="hidden" id="message-no-catalog-selected" value="<%= _('No software found. Try more general filters') %>" />
-
-        <input type="hidden" id="message-catalog-selected" value="<%= _('No software found. Try more general filters or check the software category individually') %>" />
-
-        <div id="individually-category">
-          <% @selected_categories.each do |category| %>
-            <br />
-            <%= link_to _("#{category.name}") + " (#{category.software_infos.count})", {:controller => :search, :action => :software_infos, :selected_categories_id => [category.id]} %>
-          <% end %>
-        </div>
-
       <% end %>
-    </div>
+
+      <% display = display_filter(name, params[:display]) %>
+
+      <div class="search-results-innerbox <%= 'common-profile-list-block' if SearchHelper::COMMON_PROFILE_LIST_BLOCK.include?(name) %>">
+        <ul>
+          <% search[:results].each do |hit| %>
+            <% partial = partial_for_class(hit.class, display) %>
+            <% variable_name = partial.gsub("#{display}_", '').to_sym %>
+            <%= render :partial => partial, :locals => {variable_name => hit} %>
+          <% end %>
+        </ul>
+      </div>
+    <% else %>
+      <% if multiple_search? %>
+        <h3><%= @names[name] %></h3>
+      <% end %>
+
+      <div id="search-results-empty"></div>
+
+      <input type="hidden" id="message-no-catalog-selected" value="<%= _('No software found. Try more general filters') %>" />
+
+      <input type="hidden" id="message-catalog-selected" value="<%= _('No software found. Try more general filters or check the software category individually') %>" />
+
+      <div id="individually-category">
+        <% @selected_categories.each do |category| %>
+          <br />
+          <%= link_to _("#{category.name}") + " (#{category.software_infos.count})", {:controller => :search, :action => :software_infos, :selected_categories_id => [category.id]} %>
+        <% end %>
+      </div>
+
+    <% end %>
   <% end %>
 
   <div style="clear:both"></div>

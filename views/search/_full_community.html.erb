@@ -1,55 +1,53 @@
 <% software = community.software_info %>
-<li class="search-profile-item">
-  <div class="search-enterprise-item">
-    <div class="search-enterprise-item-column-left">
-      <%= profile_image_link community, :portrait, 'div', community.send(@order + '_label') + show_date(community.created_at) %>
-    </div>
-
-    <div class="search-enterprise-item-column-right">
-
-      <div class="search-community-content-block">
-        <span>
-          <% link_name = software.acronym.blank? ? community.name : "#{software.acronym} - #{community.name}" %>
-          <h4>
-            <%= link_to_homepage(link_name, community.identifier) %>
-          </h4>
-        </span>
-        <span class="search-content-result">
-          <% body_stripped = strip_tags(software.finality) %>
-          <%= excerpt(body_stripped, body_stripped.first(3), 200) if body_stripped %>
-        </span>
-      </div>
-
-      <br />
-
-      <div class="search-community-content-block">
-        <span>
-          <b>
-            <%= _("Software Categories") %>:
-          </b>
-        </span>
-
-        <% if !community.categories.empty? %>
-          <ul id="categories-list">
-            <% community.categories.each do |category| %>
-              <li>
-              <%= link_to _("#{category.name}"), {
-                :controller => :search,
-                :action => :software_infos,
-                :selected_categories => [category.id],
-                :include_non_public => !community.software_info.public_software?
-              } %>
-              </li>
-            <% end %>
-          </ul>
-        <% else %>
-          <span>
-            <%= _("This software doesn't have categories") %>
-          </span>
-        <% end %>
-      </div>
-    </div>
-
-    <hr class="clearfix" />
+<li class="search-software-item">
+  <div class="search-software-item-column-left">
+    <%= profile_image_link community, :portrait, 'div', community.send(@order + '_label') + show_date(community.created_at) %>
   </div>
+
+  <div class="search-software-item-column-right">
+
+    <div class="search-software-content-block">
+      <span>
+        <% link_name = software.acronym.blank? ? community.name : "#{software.acronym} - #{community.name}" %>
+        <h4>
+          <%= link_to_homepage(link_name, community.identifier) %>
+        </h4>
+      </span>
+      <span class="search-content-result">
+        <% body_stripped = strip_tags(software.finality) %>
+        <%= excerpt(body_stripped, body_stripped.first(3), 200) if body_stripped %>
+      </span>
+    </div>
+
+    <br />
+
+    <div class="search-software-content-block">
+      <span>
+        <b>
+          <%= _("Software Categories") %>:
+        </b>
+      </span>
+
+      <% if !community.categories.empty? %>
+        <ul id="categories-list">
+          <% community.categories.each do |category| %>
+            <li>
+            <%= link_to _("#{category.name}"), {
+              :controller => :search,
+              :action => :software_infos,
+              :selected_categories_id => [category.id],
+              :include_non_public => !community.software_info.public_software?
+            } %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <span>
+          <%= _("This software doesn't have categories") %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+
+  <hr class="clearfix" />
 </li>

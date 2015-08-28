@@ -39,7 +39,11 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot', 'SoftwareCat
     params.software_display = $("#software_display").val();
     params.sort = $("#sort").val();
 
-    params.include_non_public = $("#include_non_public").is(":checked");
+    if($("#all_radio_button").is(":checked")) {
+      params.software_type = $("#all_radio_button").val();
+    } else {
+      params.software_type = $("#public_software_radio_button").val();
+    }
 
     return params;
   }
@@ -161,10 +165,8 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot', 'SoftwareCat
     init: function() {
       set_events();
       catalog_message();
-
-      $("#filter-categories-option").hide();
-
       SoftwareCatalogComponent.init(dispatch_search_ajax);
     }
   }
 });
+

@@ -59,7 +59,14 @@ class SearchController
 
   def get_filtered_software_list
     params[:query] ||= ""
+
     filtered_software_list = SoftwareInfo.search_by_query(params[:query])
+
+    if params[:only_softwares]
+      params[:only_softwares].collect!{ |software_name| software_name.to_slug }
+      filtered_software_list = SoftwareInfo.all.select{ |s| params[:only_softwares].include?(s.identifier) }
+      @public_software_selected = false
+    end
 
     category_ids = get_filter_category_ids
 
@@ -80,7 +87,7 @@ class SearchController
   def get_communities_list software_list
     filtered_community_list = []
       software_list.each do |software|
-       if @include_non_public || software.public_software?
+       if @all_selected || software.public_software?
          filtered_community_list << software.community unless software.community.nil?
        end
     end
@@ -110,7 +117,8 @@ class SearchController
     @selected_categories_id = params[:selected_categories_id]
     @selected_categories_id ||= []
     @selected_categories_id = @selected_categories_id.map(&:to_i)
-    @include_non_public = params[:include_non_public] == "true"
+    @all_selected = params[:software_type] == "all"
+    @public_software_selected = !@all_selected
     @per_page = prepare_per_page
   end
 
@@ -140,14 +148,6 @@ class SearchController
 
   def prepare_software_infos_category_groups
     @categories = Category.software_categories.sort{|a, b| a.name <=> b.name}
-    @categories_groupe_one = []
-    @categories_groupe_two = []
-
-    if @categories && @categories.count > 1
-      categories_sliced = @categories.each_slice(@categories.count/2)
-      @categories_groupe_one = categories_sliced.next
-      @categories_groupe_two = categories_sliced.next
-    end
   end
 
   def prepare_software_infos_category_enable

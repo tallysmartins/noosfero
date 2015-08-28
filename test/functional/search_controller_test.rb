@@ -68,6 +68,7 @@ class SearchControllerTest < ActionController::TestCase
 
     community_template = create_community("Community Template")
     community_template.is_template = true
+    community_template.visible = false
     community_template.save!
 
     get :communities, :query => "Comm"
@@ -162,6 +163,55 @@ class SearchControllerTest < ActionController::TestCase
     assert_equal assigns(:searches)[:software_infos][:results][0], @softwares[1].community
     assert_equal assigns(:searches)[:software_infos][:results][1], @softwares[2].community
     assert_equal assigns(:searches)[:software_infos][:results][2], @softwares[0].community
+  end
+
+  should "software_infos search only public_software" do
+    software_one = create_software_info("Software One", :acronym => "SFO", :finality => "Help")
+    software_two = create_software_info("Java", :acronym => "SFT", :finality => "Task")
+    software_three = create_software_info("Software Three", :acronym => "SFW", :finality => "Java")
+    software_three.public_software = false
+    software_three.save!
+
+    get(
+      :software_infos,
+      :software_type => "public_software"
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], software_one.community
+    assert_includes assigns(:searches)[:software_infos][:results], software_two.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], software_three.community
+  end
+
+  should "software_infos search public_software and other all" do
+    software_one = create_software_info("Software One", :acronym => "SFO", :finality => "Help")
+    software_two = create_software_info("Java", :acronym => "SFT", :finality => "Task")
+    software_three = create_software_info("Software Three", :acronym => "SFW", :finality => "Java")
+    software_three.public_software = false
+    software_three.save!
+
+    get(
+      :software_infos,
+      :software_type => "all"
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], software_one.community
+    assert_includes assigns(:searches)[:software_infos][:results], software_two.community
+    assert_includes assigns(:searches)[:software_infos][:results], software_three.community
+  end
+
+  should "software_infos search return only the software in params" do
+    software_one = create_software_info("Software One", :acronym => "SFO", :finality => "Help")
+    software_two = create_software_info("Java", :acronym => "SFT", :finality => "Task")
+    software_three = create_software_info("Software Three", :acronym => "SFW", :finality => "Java")
+
+    get(
+      :software_infos,
+      :only_softwares => ["software-three", "java"]
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], software_two.community
+    assert_includes assigns(:searches)[:software_infos][:results], software_three.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], software_one.community
   end
 
   private

@@ -5,8 +5,6 @@
 
   <%= render :partial => 'software_search_form', :locals => { :hint => _("Type words about the %s you're looking for") % @asset.to_s.singularize } %>
 
-  <div style="clear: both"></div>
-
   <% if @asset == :product %>
     <%= javascript_tag do %>
       jQuery('.search-product-price-details').altBeautify();
