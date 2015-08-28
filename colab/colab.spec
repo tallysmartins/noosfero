@@ -43,13 +43,17 @@ rm -f cleanup.list
 find %{buildvenv} -type d -empty -delete
 
 %install
-mkdir -p %{buildroot}/etc/colab
-mkdir -p %{buildroot}/usr/lib
+
+# install config file
+install -d -m 0755 %{buildroot}/etc/colab
+install -m 0644 misc/etc/colab/gunicorn.py %{buildroot}/etc/colab
 
 # install virtualenv
+install -d -m 0755 %{buildroot}/usr/lib
 rm -rf %{buildroot}/usr/lib/colab
 cp -r %{buildvenv} %{buildroot}/usr/lib/colab
 mkdir -p %{buildroot}/%{_bindir}
+
 cat > %{buildroot}/%{_bindir}/colab-admin <<EOF
 #!/bin/sh
 set -e
@@ -77,6 +81,7 @@ rm -rf %{buildvenv}
 /usr/lib/colab
 %{_bindir}/*
 /etc/cron.d/colab
+/etc/colab/gunicorn.py
 /lib/systemd/system/colab.service
 
 %post
@@ -84,8 +89,6 @@ groupadd colab || true
 if ! id colab; then
   useradd --system --gid colab  --home-dir /usr/lib/colab --no-create-home colab
 fi
-
-mkdir -p /etc/colab
 
 if [ ! -f /etc/colab/settings.yaml ]; then
   SECRET_KEY=$(openssl rand -hex 32)
