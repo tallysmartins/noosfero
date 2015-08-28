@@ -1,0 +1,10 @@
+<div id="input_institution_comments">
+  <%= label_tag "input_institution", _("Organization name or Enterprise name")%>
+  <span class="star-tooltip" title="Órgão ou Empresa que você representa e utiliza o software"></span>
+  <input type="text" id="input_institution">
+
+  <%= content_tag(:div, _("No institution found"),
+                  :id=>"institution_empty_ajax_message",
+                  :class=>"errorExplanation hide-field") %>
+  <%= hidden_field_tag "comments[institution_id]", "", id: "institution_selected" %>
+</div>

@@ -6,7 +6,8 @@
     'CreateInstitution',
     'CompleteRegistration',
     'UserEditProfile',
-    'NewCommunity'
+    'NewCommunity',
+    'GovUserCommentsExtraFields'
   ];
 
 

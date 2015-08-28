@@ -29,34 +29,35 @@ class InstitutionTest < ActiveSupport::TestCase
   end
   should "not save institutions without name" do
     @institution.name = nil
-    assert !@institution.save
-    assert @institution.errors.full_messages.include? "Name can't be blank"
+    assert_equal false, @institution.save
+    assert_equal true, @institution.errors.full_messages.include?("Name can't be blank")
   end
 
   should "not save if institution has invalid type" do
     invalid_msg = "Type invalid, only public and private institutions are allowed."
     @institution.type = "Other type"
-    assert !@institution.save, 'Invalid type'
-    assert @institution.errors.full_messages.include? invalid_msg
+    assert_equal false, @institution.save
+    assert_equal true, @institution.errors.full_messages.include?(invalid_msg)
   end
 
   should "not save without country" do
     @institution.community.country = nil
-    assert !@institution.save, "Country can't be blank"
-    assert @institution.errors.full_messages.include? "Country can't be blank"
+    assert_equal false, @institution.save
+    assert_equal true, @institution.errors.full_messages.include?("Country can't be blank")
   end
 
   should "not save without state" do
     @institution.community.state = nil
 
-    assert !@institution.save, "State can't be blank"
-    assert @institution.errors.full_messages.include? "State can't be blank"
+    assert_equal false, @institution.save
+    assert_equal true, @institution.errors.full_messages.include?("State can't be blank")
   end
 
   should "not save without city" do
     @institution.community.city = nil
+    @institution.community.state = "DF"
 
-    assert !@institution.save, "City can't be blank"
-    assert @institution.errors.full_messages.include? "City can't be blank"
+    assert_equal false, @institution.save
+    assert_equal true, @institution.errors.full_messages.include?("City can't be blank")
   end
 end

@@ -153,6 +153,7 @@ class GovUserPlugin < Noosfero::Plugin
     views/create-institution.js
     views/new-community.js
     views/user-edit-profile.js
+    views/gov-user-comments-extra-fields.js
     initializer.js
     app.js
     )
@@ -228,6 +229,24 @@ class GovUserPlugin < Noosfero::Plugin
         context.profile.
         institution.
         update_attributes!(context.params[:institution])
+      end
+    end
+  end
+
+  def communities_ratings_plugin_comments_extra_fields
+    Proc::new do render :file => 'comments_extra_field' end
+  end
+
+  def communities_ratings_plugin_extra_fields_show_data user_rating
+    if logged_in?
+      is_admin = environment.admins.include?(current_user.person)
+      is_admin ||= user_rating.community.admins.include?(current_user.person)
+
+      if is_admin and context.profile.software?
+        Proc::new {
+          render :file => 'communities_ratings_extra_fields_show_institution',
+                 :locals => {:user_rating => user_rating}
+        }
       end
     end
   end
