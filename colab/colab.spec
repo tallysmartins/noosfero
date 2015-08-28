@@ -189,8 +189,6 @@ fi
 mkdir -p /var/lib/colab-assets
 chown colab:colab /var/lib/colab-assets
 
-install -d -m 0755 -o colab -g colab /var/lib/colab-assets
-
 # If nginx is available serve assets using it
 if [ -d /usr/share/nginx ]; then
     ln -s /var/lib/colab-assets /usr/share/nginx/colab
