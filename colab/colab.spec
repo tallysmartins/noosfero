@@ -180,9 +180,10 @@ fi
 mkdir -p /var/lib/colab-assets
 chown colab:colab /var/lib/colab-assets
 
-mkdir -p /usr/share/nginx/
-
-ln -s /var/lib/colab-assets /usr/share/nginx/colab
+# If nginx is available serve assets using it
+if [ -d /usr/share/nginx ]; then
+    ln -s /var/lib/colab-assets /usr/share/nginx/colab
+fi
 
 yes yes | colab-admin collectstatic
 
