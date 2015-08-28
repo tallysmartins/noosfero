@@ -94,71 +94,102 @@ if ! id colab; then
   useradd --system --gid colab  --home-dir /usr/lib/colab --no-create-home colab
 fi
 
-if [ ! -f /etc/colab/settings.yaml ]; then
+if [ ! -f /etc/colab/settings.py ]; then
   SECRET_KEY=$(openssl rand -hex 32)
-  cat > /etc/colab/settings.yaml <<EOF
-## Set to false in production
-DEBUG: true
-TEMPLATE_DEBUG: true
+  cat > /etc/colab/settings.py <<EOF
 
-## System admins
-ADMINS: &admin
-  -
-    - John Foo
-    - john@example.com
-  -
-    - Mary Bar
-    - mary@example.com
+# Set to false in production
+DEBUG = True
+TEMPLATE_DEBUG = True
 
-MANAGERS: *admin
+# System admins
+ADMINS = [['John Foo', 'john@example.com'], ['Mary Bar', 'mary@example.com']]
 
-COLAB_FROM_ADDRESS: '"Colab" <noreply@example.com>'
-SERVER_EMAIL: '"Colab" <noreply@example.com>'
+MANAGERS = ADMINS
 
-EMAIL_HOST: localhost
-EMAIL_PORT: 25
-EMAIL_SUBJECT_PREFIX: '[colab]'
+COLAB_FROM_ADDRESS = '"Colab" <noreply@example.com>'
+SERVER_EMAIL = '"Colab" <noreply@example.com>'
 
-SECRET_KEY: '$SECRET_KEY'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
+EMAIL_SUBJECT_PREFIX = '[colab]'
 
-SITE_URL: 'http://localhost:8001/'
-BROWSERID_AUDIENCES:
-  - http://localhost:8001
-#  - http://example.com
-#  - https://example.org
-#  - http://example.net
+SECRET_KEY = '$(openssl rand -hex 32)'
 
-ALLOWED_HOSTS:
-  - localhost
-#  - example.com
-#  - example.org
-#  - example.net
+ALLOWED_HOSTS = [
+    'localhost',
+#    'example.com',
+#    'example.org',
+#    'example.net',
+]
 
-## Disable indexing
-ROBOTS_NOINDEX: false
+# Database settings
+#
+#     When DEBUG is True colab will create the DB on
+#     the repository root. In case of production settings
+#     (DEBUG False) the DB settings must be set.
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': '/path/to/colab.sqlite3',
+#     }
+# }
 
-## Disable browser id authentication
-#  BROWSERID_ENABLED: true
+# Disable indexing
+ROBOTS_NOINDEX = False
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+
+    'formatters': {
+        'colab': '[colab] (%(name)s) %(levelname)s: %(message)s',
+        'verbose': '%(asctime)s (%(name)s) %(levelname)s: %(message)s',
+    },
+
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+        'syslog': {
+            'level': 'WARNING',
+            'class': 'logging.handlers.SysLogHandler',
+            'formatter': 'colab',
+            'address': '/dev/log',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': '/var/log/colab/colab.log',
+            'interval': 24,  # 24 hours
+            'backupCount': 7,  # keep last 7 backups
+            'encoding': 'UTF-8',
+            'formatter': 'verbose',
+        },
+    },
+
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'syslog'],
+            'propagate': False,
+        },
+        'revproxy': {
+            'handlers': ['file', 'syslog'],
+            'propagate': False,
+            'level': 'ERROR',
+        },
+    },
+}
+
 EOF
-  chown root:colab /etc/colab/settings.yaml
-  chmod 0640 /etc/colab/settings.yaml
+
+  chown root:colab /etc/colab/settings.py
+  chmod 0640 /etc/colab/settings.py
 fi
 
 mkdir -p /etc/colab/settings.d
-
-if [ ! -f /etc/colab/settings.d/00-database.yaml ]; then
-  cat > /etc/colab/settings.d/00-database.yaml <<EOF
-DATABASES:
-  default:
-    ENGINE: django.db.backends.postgresql_psycopg2
-    NAME: colab
-    USER: colab
-    HOST: localhost
-    PORT: 5432
-EOF
-  chown root:colab /etc/colab/settings.d/00-database.yaml
-  chmod 0640 /etc/colab/settings.d/00-database.yaml
-fi
 
 # only applies if there is a local PostgreSQL server
 if [ -x /usr/bin/postgres ]; then
