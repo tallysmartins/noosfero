@@ -177,9 +177,6 @@ if [ -x /usr/bin/postgres ]; then
   colab-admin migrate
 fi
 
-mkdir -p /var/lock/colab
-chown colab:colab /var/lock/colab
-
 mkdir -p /var/lib/colab-assets
 chown colab:colab /var/lib/colab-assets
 
