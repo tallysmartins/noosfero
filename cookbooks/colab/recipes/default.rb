@@ -47,6 +47,13 @@ execute 'secret-key' do
   notifies :create, 'template[/etc/colab/settings.yaml]'
 end
 
+template '/etc/sysconfig/colab' do
+  owner 'root'
+  group 'root'
+  mode '0640'
+  notifies :restart, 'service[colab]'
+end
+
 template '/etc/colab/settings.yaml' do
   owner  'root'
   group  'colab'
