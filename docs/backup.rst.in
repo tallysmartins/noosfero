@@ -19,6 +19,10 @@ Esta operação vai copiar arquivos e *dumps* dos bancos de dados do
 Noosfero, GitLab, Colab e Mailman, e copiá-los para um subdiretório
 chamado ``backups`` na sua estação de trabalho.
 
+Toda vez que o procedimento de backup é executado, o diretório ``backups`` é removido no início do procedimento, de modo que não se deve armazenar os backups obtidos em tal diretório.
+
+Note que o comando para resgatar os backups, especificado acima, apenas copia arquivos das máquinas ``integration`` e ``social`` para sua estação de trabalho. Os backups são realizados em tais servidores utilizando o ``rsnapshot``, e podem ser encontrados no diretório ``/.snapshots`` em cada um dos servidores mencionados.
+
 Procedimento de restauração
 ---------------------------
 
