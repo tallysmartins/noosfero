@@ -42,6 +42,7 @@
   padding: 16px 0 10px 14px;
   color: #2C4B6B;
   font-family:"open_sansregular", Arial, Helvetica, sans-serif;
+  color: #2B51A8;
   font-weight: bold;
   font-size: 15px;
   text-transform: uppercase;
@@ -79,9 +80,13 @@
   max-height: 30px;
   margin: 14px;
   padding: 0 14px 0 14px;
-  background-color: #3E67B1; 
+  background: #3E67B1; 
   line-height: 14px;
+  border-radius: 4px;
+  color: #ffffff;
   text-transform: uppercase;
+  font-family: "open_sansbold",Arial,sans-serif;
+  font-size: 14px;
 }
 
 /* Filter options */
@@ -94,10 +99,17 @@
   padding: 14px;
   background-color: #D3D6DE;
   border: none; 
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   font-size: 11px;
   text-align: right;
+  text-transform: uppercase;
 }
 
+.action-search-software_infos #filter-option-catalog-close {  
+  padding: 7px 7px 17px 10px;
+  display: none;
+}
 .action-search-software_infos #filter-option-catalog-software:hover {
   background-color: #c7c7c7;
 }
@@ -112,43 +124,52 @@
 }
 
 .action-search-software_infos #filter-catalog-software #filter-categories-option {
-  border:none;
+  border: none;
+  height: 0;
+  max-height: 620px;
+  position: relative;
+  overflow: hidden;
+  padding: 0 15px;
 }
 
 .action-search-software_infos #filter-catalog-software #filter-categories-catalog h4 {
-  margin: 5px 0 10px 5px;
+  margin: 20px 0 10px 5px;
   background: transparent;
   color: black;
 }
 
 .action-search-software_infos #filter-catalog-software  input[type="checkbox"]{
-  vertical-align:sub;
+  vertical-align: middle;
+  margin: 0 3px 2px 8px;
 }
 
-.action-search-software_infos #group-categories #group-catalog-01 {
-  float: left;
-  width: 50%;
-}
-
-.action-search-software_infos #group-categories label {
+.action-search-software_infos #group-categories ul {
   font-family: Arial;
   font-size: 14px;
+  line-height: 31px;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
 }
 
-.action-search-software_infos #group-categories label span {
+.action-search-software_infos #group-categories li span {
   font-family: Arial;
   font-size: 14px;
 }
 
 .action-search-software_infos #filter-catalog-software .project-software{
-  margin: 0 0 30px;
+  margin: 20px 0 30px;
   border-top: 1px dotted;
   border-bottom: 1px dotted;
   font-weight: bold;
   font-size: 15px;
   font-family: Arial;
+  padding: 10px;
 }
 
+.action-search-software_infos #filter-catalog-software .project-software label {
+  font-weight: normal;
+}
 
 .action-search-software_infos #filter-catalog-software .project-software span {  
   padding: 2px 6px;
@@ -162,11 +183,24 @@
   cursor: pointer;
   background-color: #3E67B1;
   font-size: 14px;
-  font-family:Arial;
+  font-family: Arial;
+  color: #ffffff;
+  border: 1px solid #2B65CD;
+  border-radius: 4px;
+  margin: 5px 0 0 5px;
+  padding: 5px 10px;
 }
 
 .action-search-software_infos button#close-filter-catalog {
   cursor:pointer;
+  float: right;
+  border: none;
+  background: none;
+  font-size: 12px;
+  margin-top: 5px;
+  color: #000;
+  text-transform: uppercase;
+  padding: 5px;
 }
 
 .action-search-software_infos button#close-filter-catalog:after {
@@ -189,11 +223,22 @@
 
 .action-search-software_infos #catalog-display-options  #catalog-display-options-count{
   padding: 45px 0 4px 0;
+  float: left;
+  width: 50%;
 }
 
 .action-search-software_infos #catalog-display-options  #catalog-display-options-show-and-sort{
   padding: 38px 0 5px 0;
   font-weight: bold;
+  float: left;
+  width: 50%;
+}
+.action-search-software_infos #catalog-display-options  #catalog-display-options-sort,
+.action-search-software_infos #catalog-display-options  #catalog-display-options-show{
+  position: relative;
+  float: left;
+  width: 50%;
+  text-align: right;
 }
 
 /*** Search Results ***/
