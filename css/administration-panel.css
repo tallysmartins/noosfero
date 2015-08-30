@@ -1,4 +1,4 @@
-/*** Admin Pages - General Rules ***/
+/*** Environment Admin Pages - General Rules ***/
 .action-admin_panel-index #content .main-block h2,
 .controller-features #content .main-block h2{
   font-family: Arial;
@@ -7,7 +7,7 @@
   line-height: 21px;
 }
 
-/*** Environment Settings ***/
+/* Environment Settings */
 
 /* Profile tab */
 
@@ -49,7 +49,7 @@
   text-decoration: none;
 }
 
-/*** Organizations Settings ***/
+/* Organizations Settings */
 
 .action-organizations-index .main-block form#manage-profiles, 
 .action-organizations-index .main-block form#manage-profiles form{
@@ -132,4 +132,11 @@
   border-radius: 4px;
   font-family: Arial, helvetica;
   font-size: 15px;
+}
+
+/*** Community Admin pages ***/
+
+/* Index */
+.action-cms-index .cms-articles th{
+  text-align: left;
 }

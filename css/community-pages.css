@@ -1,59 +1,3 @@
-/*** Events ***/
-
-#content .event-card {
-  border-top: 1px dotted #D3D6D3;
-  background-repeat: no-repeat;
-  width: 494px;
-  height: 116px;
-  margin-bottom: 30px;
-}
-
-#content .event-image {
-  border-right: 1px dotted #D3D6DE;
-}
-
-#content .about-event > span {
-  font-family: Arial;
-  line-height: 13px;
-}
-
-#content  .about-event .event-date {
-  font-weight: bold;
-  letter-spacing: 0.49px;
-}
-
-#content  .about-event .event-address {
-  margin-top: 19px;
-}
-
-#content  .about-event .event-address span {
-  margin-top: 4.4px;
-  line-height: 14px;
-  letter-spacing: 0.5px;
-}
-
-#content  .event-link {
-  letter-spacing: 0.48px;
-}
-
-#content .event-link a {
-  text-decoration: underline;
-}
-
-#content .event-body .event-lead p {
-  font-size: 16px;
-  font-family: Arial;
-  font-weight: bold;
-  letter-spacing: -0.4px;
-  line-height: 21px;
-}
-
-#content .event-body .event-content p {
-  font-size: 15px;
-  font-family: Arial;
-  line-height: 22px;
-}
-
 /*** Profile page ***/
 .action-profile-index #content .main-block h1 {
   color: #172738;
@@ -147,5 +91,61 @@
   border-width: 1px;
   font-size: 13px;
   text-decoration: none;
+}
+
+/*** Events ***/
+
+#content .article-body-event .event-card{
+  border-top: 1px dotted #D3D6D3;
+  background-repeat: no-repeat;
+  width: 494px;
+  height: 116px;
+  margin-bottom: 30px;
+}
+
+#content .article-body-event .event-image{
+  border-right: 1px dotted #D3D6DE;
+}
+
+#content .article-body-event .about-event > span{
+  font-family: Arial;
+  line-height: 13px;
+}
+
+#content .article-body-event .about-event .event-date{
+  font-weight: bold;
+  letter-spacing: 0.49px;
+}
+
+#content .article-body-event .about-event .event-address{
+  margin-top: 19px;
+}
+
+#content .article-body-event .about-event .event-address span{
+  margin-top: 4.4px;
+  line-height: 14px;
+  letter-spacing: 0.5px;
+}
+
+#content .article-body-event .event-link{
+  letter-spacing: 0.48px;
+}
+
+#content .article-body-event .event-link a{
+  text-decoration: underline;
+}
+
+#content .article-body-event .event-body .event-lead p{
+  font-size: 16px;
+  font-family: Arial;
+  font-weight: bold;
+  letter-spacing: -0.4px;
+  line-height: 21px;
+}
+
+#content .article-body-event .event-body .event-content p{
+  font-size: 15px;
+  font-family: Arial;
+  line-height: 22px;
 }
 
