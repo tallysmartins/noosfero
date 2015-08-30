@@ -134,11 +134,7 @@ body {
 
 #content h1, #content h2, #content h3, #content h4, #content h5, #content h6{
   margin-top: 20px;
-<<<<<<< 22561cf84ef741968c2784eb32a3c64c4cc35acc
   margin-bottom: 10px;
-=======
-  margin-bottom:10px
->>>>>>> adjust headers styles on general and specific cases
   color: inherit;
   font-family: Arial;
   font-weight: 700;
