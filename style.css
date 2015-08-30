@@ -1,6 +1,9 @@
 /*** Noosfero Base Theme ***/
 @import url(../profile-base/style.css);
+
+/*** Icon Resources***/
 @import url(../../icons/tango/style.css);
+@import url(font-awesome.min.css);
 
 /*** SPB Theme section styles ***/
 @import url(css/overwriting-base-theme.css);
@@ -14,122 +17,117 @@
 @import url(css/article-page.css);
 @import url(css/software-pages.css);
 @import url(css/community-pages.css);
+@import url(css/use-report.css);
 @import url(css/news-page.css);
 @import url(css/search-pages.css);
 @import url(css/software-catalog-page.css);
-/*
-@import url(css/use-report.css);
-@import url(css/tooltips.css);
-*/
+@import url(css/tooltip.css);
 
-@import url(font-awesome.min.css);
-/*@import url(http://fonts.googleapis.com/css?family=Open+Sans);*/
-
-
-@font-face {
-font-weight: normal;
-font-style: normal;
-font-family: "open_sanslight";
-src: url("fonts/opensans-300-webfont.eot");
-src: url("fonts/opensans-300-webfont.eot?#iefix") format("embedded-opentype"),
-url("fonts/opensans-300-webfont.woff") format("woff"),
-url("fonts/opensans-300-webfont.ttf") format("truetype"),
-url("fonts/opensans-300-webfont.svg#open_sanslight") format("svg");
+@font-face{
+  font-weight: normal;
+  font-style: normal;
+  font-family: "open_sanslight";
+  src: url("fonts/opensans-300-webfont.eot");
+  src: url("fonts/opensans-300-webfont.eot?#iefix") format("embedded-opentype"),
+       url("fonts/opensans-300-webfont.woff") format("woff"),
+       url("fonts/opensans-300-webfont.ttf") format("truetype"),
+       url("fonts/opensans-300-webfont.svg#open_sanslight") format("svg");
 }
 
-@font-face {
-font-weight: normal;
-font-style: normal;
-font-family: "open_sansregular";
-src: url("fonts/opensans-400-webfont.eot");
-src: url("fonts/opensans-400-webfont.eot?#iefix") format("embedded-opentype"),
-url("fonts/opensans-400-webfont.woff") format("woff"),
-url("fonts/opensans-400-webfont.ttf") format("truetype"),
-url("fonts/opensans-400-webfont.svg#open_sansregular") format("svg");
+@font-face{
+  font-weight: normal;
+  font-style: normal;
+  font-family: "open_sansregular";
+  src: url("fonts/opensans-400-webfont.eot");
+  src: url("fonts/opensans-400-webfont.eot?#iefix") format("embedded-opentype"),
+       url("fonts/opensans-400-webfont.woff") format("woff"),
+       url("fonts/opensans-400-webfont.ttf") format("truetype"),
+       url("fonts/opensans-400-webfont.svg#open_sansregular") format("svg");
 }
 
-@font-face {
-font-weight: normal;
-font-style: normal;
-font-family: "open_sanssemibold";
-src: url("fonts/opensans-600-webfont.eot");
-src: url("fonts/opensans-600-webfont.eot?#iefix") format("embedded-opentype"),
-url("fonts/opensans-600-webfont.woff") format("woff"),
-url("fonts/opensans-600-webfont.ttf") format("truetype"),
-url("fonts/opensans-600-webfont.svg#open_sanssemibold") format("svg");
-}
-@font-face {
-font-weight: normal;
-font-style: normal;
-font-family: "open_sansbold";
-src: url("fonts/opensans-700-webfont.eot");
-src: url("fonts/opensans-700-webfont.eot?#iefix") format("embedded-opentype"),
-url("fonts/opensans-700-webfont.woff") format("woff"),
-url("fonts/opensans-700-webfont.ttf") format("truetype"),
-url("fonts/opensans-700-webfont.svg#open_sansbold") format("svg");
+@font-face{
+  font-weight: normal;
+  font-style: normal;
+  font-family: "open_sanssemibold";
+  src: url("fonts/opensans-600-webfont.eot");
+  src: url("fonts/opensans-600-webfont.eot?#iefix") format("embedded-opentype"),
+       url("fonts/opensans-600-webfont.woff") format("woff"),
+       url("fonts/opensans-600-webfont.ttf") format("truetype"),
+       url("fonts/opensans-600-webfont.svg#open_sanssemibold") format("svg");
 }
 
-@font-face {
-font-weight: normal;
-font-style: normal;
-font-family: "open_sansextrabold";
-src: url("fonts/opensans-800-webfont.eot");
-src: url("fonts/opensans-800-webfont.eot?#iefix") format("embedded-opentype"),
-url("fonts/opensans-800-webfont.woff") format("woff"),
-url("fonts/opensans-800-webfont.ttf") format("truetype"),
-url("fonts/opensans-800-webfont.svg#open_sansextrabold") format("svg");
+@font-face{
+  font-weight: normal;
+  font-style: normal;
+  font-family: "open_sansbold";
+  src: url("fonts/opensans-700-webfont.eot");
+  src: url("fonts/opensans-700-webfont.eot?#iefix") format("embedded-opentype"),
+       url("fonts/opensans-700-webfont.woff") format("woff"),
+       url("fonts/opensans-700-webfont.ttf") format("truetype"),
+       url("fonts/opensans-700-webfont.svg#open_sansbold") format("svg");
+}
+
+@font-face{
+  font-weight: normal;
+  font-style: normal;
+  font-family: "open_sansextrabold";
+  src: url("fonts/opensans-800-webfont.eot");
+  src: url("fonts/opensans-800-webfont.eot?#iefix") format("embedded-opentype"),
+       url("fonts/opensans-800-webfont.woff") format("woff"),
+       url("fonts/opensans-800-webfont.ttf") format("truetype"),
+       url("fonts/opensans-800-webfont.svg#open_sansextrabold") format("svg");
 }
 
 /*********** General Rules ************/
 
 * {
-margin: 0;
-padding: 0;
-list-style: none;
-vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  vertical-align: baseline;
 }
 
 body {
-    background-color: #fff;
-    color: #172738;
-    font-size: 12px;
-    font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: #172738;
+  font-size: 12px;
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
 }
 
 * :link,:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 * ul,ol {
-    list-style: none;
+  list-style: none;
 }
 
 * h1,h2,h3,h4,h5,h6 {
-    color: inherit;
-    font-family: Arial;
-    font-weight: 700;
-    margin-top: 20px;
-    margin-bottom: 10px;
+  color: inherit;
+  font-family: Arial;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 * h1{
-    font-size: 34px;
-    line-height: 37px;
+  font-size: 34px;
+  line-height: 37px;
 }
 
 * h2{
-    font-size:22px;
-    line-height: 21px;
+  font-size: 22px;
+  line-height: 21px;
 }
 
 * h3{
-    font-size:18px;
-    line-height: 21px;
+  font-size: 18px;
+  line-height: 21px;
 }
 
 * h4,h5,h6 {
-    font-size: 16px;
-    line-height: 21px;
+  font-size: 16px;
+  line-height: 21px;
 }
 
 #content h1, #content h2, #content h3, #content h4, #content h5, #content h6{
@@ -156,54 +154,54 @@ body {
   font-weight: 700;
 }
 
-#content h4, content h5, #content h6 {
+#content h4, content h5, #content h6{
   font-size: 16px;
   line-height: 21px;
 }
 
-p {
+p{
   margin: 0px 0px 10px 0px;
   line-height: 21px;
   font-size: 15px;
 }
 
 
-* a img,:link img,:visited img {
-    border:none
+* a img,:link img,:visited img{
+  border: none
 }
 
-a {
-    outline: none;
+a{
+  outline: none;
 }
-a:link, #content a:link, dl.portlet a:link {
-    color: #172738;
-    /*border-bottom: none;*/
-}
-
-a:visited, #content a:visited, dl.portlet a:visited {
-    color:#2c66ce; /*#2c67cd;*/
+a:link, #content a:link, dl.portlet a:link{
+  color: #172738;
 }
 
-a:focus {
-    outline: 2px solid #f1ca7f;
+a:visited, #content a:visited, dl.portlet a:visited{
+  color:#2c66ce;
+}
+
+a:focus{
+  outline: 2px solid #f1ca7f;
 }
 
 /* Remove in all td gray backgroung hover */
-tr:hover td {
-    background-color: transparent;
+tr:hover td{
+  background-color: transparent;
 }
 
-#content a:hover, dl.portlet a:hover {
-    color: #000;
-}
-table {
- border-spacing: 0;
+#content a:hover, dl.portlet a:hover{
+  color: #000;
 }
 
-img {
-    vertical-align: text-bottom;
+table{
+  border-spacing: 0;
 }
 
-iframe {
-    border-width: 0; border-style:none;
+img{
+  vertical-align: text-bottom;
+}
+
+iframe{
+  border-width: 0; border-style:none;
 }
