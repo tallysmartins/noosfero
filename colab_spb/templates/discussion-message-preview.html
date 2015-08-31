@@ -1,34 +1,36 @@
 {% load i18n tz highlight %}
 
 {% if result.fullname or result.modified or result.modified_by %}
-  <div class="quiet">
-    {% if result.modified %}
-      <span class="pull-left">{{ result.modified|localtime|timesince }} {% trans "ago" %} - </span>
-    {% endif %}
-
-    {% if result.modified_by %}
-      <span class="pull-left">{% trans "by" %}
-        {% if result.modified_by_url %}
-          <a href="{{ result.modified_by_url }}">
-        {% else %}
-          <span>
+    <div class="message-discussion">
+      <div class="quiet">
+        {% if result.modified %}
+          <span class="pull-left">{{ result.modified|localtime|timesince }} {% trans "ago" %} - </span>
         {% endif %}
 
-        {% if query %}
-          {% highlight result.modified_by with query %}
-        {% else %}
-          {{ result.modified_by }}
-        {% endif %}
+        {% if result.modified_by %}
+          <span class="pull-left">{% trans "by" %}
+            {% if result.modified_by_url %}
+              <a href="{{ result.modified_by_url }}">
+            {% else %}
+              <span>
+            {% endif %}
 
-        {% if result.modified_by_url %}
-          </a>
-        {% else %}
+            {% if query %}
+              {% highlight result.modified_by with query %}
+            {% else %}
+              {{ result.modified_by }}
+            {% endif %}
+
+            {% if result.modified_by_url %}
+              </a>
+            {% else %}
+              </span>
+            {% endif %}
           </span>
+        {% else %}
+          <span class="pull-left">{% trans "by" %} {% trans "Anonymous" %}</span>
         {% endif %}
-      </span>
-    {% else %}
-      <span class="pull-left">{% trans "by" %} {% trans "Anonymous" %}</span>
-    {% endif %}
+      </div>
   </div>
 {% endif %}
 
@@ -58,14 +60,16 @@
 
 {% if result.description %}
   <!-- a striptags filter was raising an error here because using with highlight -->
-  <span class="quiet"> - {% if query %}
-    {% highlight result.description with query max_length "110" %}
-  {% else %}
-    {% if result.latest_description %}
-      {{ result.latest_description|striptags|escape|truncatechars:110 }}
-    {% elif result.description %}
-      {{ result.description|striptags|escape|truncatechars:110 }}
-    {% endif %}
-  {% endif %}
-  </span>
+  <div class="message-discussion">
+      <span class="quiet"> - {% if query %}
+        {% highlight result.description with query max_length "110" %}
+      {% else %}
+        {% if result.latest_description %}
+          {{ result.latest_description|striptags|escape|truncatechars:110 }}
+        {% elif result.description %}
+          {{ result.description|striptags|escape|truncatechars:110 }}
+        {% endif %}
+      {% endif %}
+      </span>
+  <div>
 {% endif %}

@@ -43,7 +43,7 @@ def get_list(request):
     if len(context['lists']) == 0:
         message = ("Não foi possível encontrada lista de discussão"
                    " associada a está comunidade, para mais"
-                   " detalhes contacte o administrador.")
+                   " detalhes contate o administrador.")
         return HttpResponse(message, status=404)
 
     return render(request, "discussion.html", context)
