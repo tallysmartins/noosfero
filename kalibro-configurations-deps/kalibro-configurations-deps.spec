@@ -1,13 +1,13 @@
 Name:    kalibro-configurations-deps
 Version: 1.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Ruby dependencies for kalibro-configurations
 Group:   Development/Tools
 License: Various
 URL:     http://mezuro.org
 Source0: %{name}-%{version}.tar.gz
 
-BuildRequires: make, gcc, gcc-c++, ruby, ruby-devel, rubygem-bundler, postgresql-devel, libxml2-devel, libxslt-devel
+BuildRequires: make, gcc, gcc-c++, ruby, ruby-devel, rubygem-bundler, postgresql-devel, libxml2-devel, libxslt-devel, sqlite-devel
 Requires: ruby, rubygem-bundler
 
 %description
