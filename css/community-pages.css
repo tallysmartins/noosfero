@@ -342,6 +342,39 @@
 }
 
 /************************************************************/
+/*****title of the area members******/
+.page-members-header{
+  border-bottom: 1px solid #D3D6DE;
+  margin-bottom: 45px;
+  padding-bottom: 26px;
+  background-image: url("titulo.png");
+
+}
+#content .page-members-header h1{
+  margin:20px 0px 8px 0px;
+}
+
+#content .page-members-header h3.community-name-members{
+  font-size: 14px;
+  font-weight: 600;
+  margin:0px 0px 5px 0px;
+}
+
+#content .page-members-header a.button.with-text{
+  border:1px solid #ccc;
+  text-transform: none;
+  font-size: 12px;
+  padding:3px 15px;
+}
+
+.page-members-header .join-leave-button.require-login-popup{
+  width: 85px;
+  float:left;
+  /*margin-right: 40px;
+  line-height: 21px;*/
+}
+
+/*************************************/
 
 /*Members block*/
 
