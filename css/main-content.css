@@ -110,8 +110,19 @@
 #content a.button:hover,
 #content #article-actions a.button.with-text:hover,
 #content input.button.with-text:hover{
-  background: #3E67B1 none;
+  background-color: #3E67B1;
   color: #FFF;
 }
 
+/* This is a temporary solution until noosfero deals with logged-out comments in a better manner. */
+.comment-replies .comment-logged-out .comment-text, 
+.comment-logged-out .comment-picture, 
+.comment-logged-out h4 {
+  opacity: 1.0;
+}
 
+.comment-logged-out .comment-text, 
+.comment-info {
+  color: black;
+}
+/**/

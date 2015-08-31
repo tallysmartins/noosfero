@@ -125,7 +125,7 @@
 }
 
 .controller-cms #content .main-content form label.formlabel,
-.controller-cms #content .main-content form .article-translation-field{
+.controller-cms #content .main-content form .article-translation-field {
   font-size: 14px;
   margin-bottom: 5px;
   color: #231f20;
@@ -249,3 +249,4 @@
   border-radius: 4px;
   border: 1px solid #D3D6DE;
 }
+

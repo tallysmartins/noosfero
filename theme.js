@@ -83,16 +83,6 @@ $('#link-buscar').click(function(e) {
     //finality.stop().animate({"top" : "100%"}, TRANSITION_TIME);
   }
 
-  function set_events() {
-    // Fade css
-    $('.software-block-finality').css('opacity', 0);
-    $('.software-block-finality').css('top', 0);
-    // End Fade CSS
-
-    $(".software-block").mouseover(show_finality);
-    $(".software-block").mouseout(hide_finality);
-  }
-
   function move_article_buttons(){
     var article_actions = $('#article-actions').clone();
     var report = $('.report-abuse-action').remove();
@@ -131,7 +121,48 @@ $('#link-buscar').click(function(e) {
       //$('<div class="notice-item"></div>').wrap($(this).find( '.image', '.title', '.lead', '.read_more'));
     });
 
+  }
 
+  //toggle filter options in catalog page
+  function setFilterCategoriesOptionClass() {
+    var filterOptions = $("#filter-categories-option");
+    filterOptions.addClass("animated slideInDown");
+  }
+
+  function toggleFilterOptions(){
+    var filterOptions = $("#filter-categories-option");
+    var showOptions = $("#filter-option-catalog-software");
+    var hideOptions = $("#filter-option-catalog-close");
+    if(hideOptions.is(":visible")){
+      //filterOptions.slideUp(function() {
+        showOptions.show();
+        hideOptions.hide();
+      //});
+      filterOptions.animate({
+        height: 0
+      },500);
+    }
+    else {
+      showOptions.hide();
+      hideOptions.show();
+      filterOptions.animate({
+        height: 565
+      },500);
+    }
+  }
+
+  function setEvents(){
+    // Fade css
+    $('.software-block-finality').css('opacity', 0);
+    $('.software-block-finality').css('top', 0);
+    // End Fade CSS
+    $(".software-block").mouseover(show_finality);
+    $(".software-block").mouseout(hide_finality);
+
+    var showOptions = $("#filter-option-catalog-software");
+    var hideOptions = $("#filter-option-catalog-close");
+    showOptions.click(toggleFilterOptions);
+    hideOptions.click(toggleFilterOptions);
   }
 
   /* Finds all uploaded files from manuals page and sets its names on the right format */
@@ -190,6 +221,9 @@ $('#link-buscar').click(function(e) {
     $('.star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments label').html('Nome do órgão ou empresa');
     $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-people-benefited label').html('Número de beneficiados');
     $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values label').html('Recursos economizados');
+    $('.star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments').addClass("animated slideInDown");
+    $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-people-benefited').addClass("animated slideInDown");
+    $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values').addClass("animated slideInDown");
   }
 
   function add_top_tooltips(){
@@ -217,8 +251,8 @@ $('#link-buscar').click(function(e) {
   }
 
   $(document).ready(function(){
+
     add_top_tooltips();
-    set_events();
     move_article_buttons();
     add_link_to_article_div();
     insert_notice_div();
@@ -226,5 +260,11 @@ $('#link-buscar').click(function(e) {
     set_tooltip_content();
     set_arrow_direction();
     set_use_report_content();
+    setEvents();
+    move_article_buttons();
+    add_link_to_article_div();
+    insert_notice_div();
+
     });
 })(jQuery);
+
