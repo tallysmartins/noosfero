@@ -25,7 +25,7 @@
     </div>
 
     <div class="user-testimony">
-      <%= user_rate.comment.body unless user_rate.comment.nil? %>
+      <%= user_rate.get_comment_message %>
     </div>
 
     <%= @plugins.dispatch(:communities_ratings_plugin_extra_fields_show_data, user_rate).collect { |content| instance_exec(&content) }.join("") %>
