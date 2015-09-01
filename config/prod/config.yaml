@@ -18,4 +18,3 @@ external_outgoing_mail_domain: serpro.gov.br
 raven_dsn: https://4418146896924efe9b73d557f803f047:8a59f39b5f584ff589ecf3dd47faaead@sentry.tracy.com.br/13
 google_analytics_id: 'UA-64206731-1'
 munin_master: 10.21.0.10
-colab_http_workers: 16

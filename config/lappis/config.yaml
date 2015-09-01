@@ -12,4 +12,4 @@ relay_hostname: relay.softwarepublico.lappis
 relay_ip: 10.0.0.15
 alt_ssh_port: 5555
 from_address: noreply@softwarepublico.lappis
-colab_http_workers: 4
+
