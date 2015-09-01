@@ -17,7 +17,7 @@ class ColabSPB(TestCase):
         response = self.client.get("/spb/get_list/?list_name=")
         message = ("Não foi possível encontrada lista de discussão"
                    " associada a está comunidade, para mais"
-                   " detalhes contacte o administrador.")
+                   " detalhes contate o administrador.")
         self.assertEqual(message, response.content)
         self.assertEqual(404, response.status_code)
 
