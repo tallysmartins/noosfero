@@ -1,6 +1,5 @@
 %define name colab
-%define version 1.10.2
-%define unmangled_version 1.10.2
+%define version 1.10.3
 %define default_release 1
 %{!?release: %define release %{default_release}}
 %define buildvenv /var/tmp/%{name}-%{version}
@@ -9,7 +8,7 @@ Summary: Collaboration platform for communities
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{name}-%{unmangled_version}.tar.gz
+Source0: %{name}-%{version}.tar.gz
 License: GPLv2
 Group: Development/Tools
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -24,7 +23,7 @@ Requires: colab-deps >= 1.10, solr, mailman-api
 Integrated software development platform.
 
 %prep
-%setup -n %{name}-%{unmangled_version} -n %{name}-%{unmangled_version}
+%setup -n %{name}-%{version} -n %{name}-%{version}
 
 %build
 # install colab into virtualenv to make sure dependencies are OK
