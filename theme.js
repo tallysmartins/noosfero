@@ -250,11 +250,29 @@ $('#link-buscar').click(function(e) {
     });
   }
 
-  $(document).ready(function(){
+  function add_popovers() {
+    var span = $('span[data-toggle="popover"]');
+    var place = span.attr("data-placement");
+    var elementClass = span.attr("data-class");
+    span.popover({
+      html:true,
+      placement: place,
+      content: function() {
+        return $(this).next().html();
+      }
+    })
+    .data('bs.popover')
+    .tip()
+    .addClass(elementClass);
+    $('a.toggle-popover').on("click",function() {
+      span.trigger("click");
+    });
+  }
 
+  $(document).ready(function(){
+    add_popovers();
     add_top_tooltips();
     move_article_buttons();
-    add_link_to_article_div();
     insert_notice_div();
     set_uploaded_files_names();
     set_tooltip_content();
@@ -263,4 +281,3 @@ $('#link-buscar').click(function(e) {
     setEvents();
     });
 })(jQuery);
-
