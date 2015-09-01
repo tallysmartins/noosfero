@@ -10,6 +10,7 @@ obsdir = .obs
 all:
 	@echo "Usage:"
 	@echo
+	@echo '$$ make $${pkg}-checkout   checkout $${pkg}'
 	@echo '$$ make $${pkg}-upload     uploads package $${pkg}'
 	@echo '$$ make $${pkg}-build      builds package $${pkg} locally'
 	@echo '$$ make $${pkg}-diff       diff from OBS to git for package $${pkg}'
