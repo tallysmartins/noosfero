@@ -1,1 +1,1 @@
-WEB_CONCURRENCY=<%= node['config']['colab_http_workers'] %>
+WEB_CONCURRENCY=<%= `nproc`.to_i * 2 %>

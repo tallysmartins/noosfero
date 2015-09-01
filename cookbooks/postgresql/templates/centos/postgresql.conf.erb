@@ -1,9 +1,17 @@
 listen_addresses = 'localhost,<%= node['peers']['database'] %>'
 
-# TODO optimize these settings
+<% ram = `awk '{ if ($1 == "MemTotal:") {print($2) } }' /proc/meminfo`.to_i %>
 
-max_connections = 100                             # (change requires restart)
-shared_buffers = 32MB                             # min 128kB
+#######################################################################
+# performance optimization settings
+#######################################################################
+shared_buffers = <%= (0.1 * ram).to_i %>kB        # 10% of RAM for shared buffers
+effective_cache_size = <%= (0.8 * ram).to_i %>kB  # 80% of RAM for cache
+
+#######################################################################
+# other settings
+#######################################################################
+max_connections = 500                             # (change requires restart)
 logging_collector = on                            # Enable capturing of stderr and csvlog
 log_filename = 'postgresql-%a.log'                # log file name pattern,
 log_truncate_on_rotation = on                     # If on, an existing log file with the
