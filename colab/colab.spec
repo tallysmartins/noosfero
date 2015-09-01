@@ -1,6 +1,6 @@
 %define name colab
 %define version 1.10.3
-%define default_release 2
+%define default_release 3
 %{!?release: %define release %{default_release}}
 %define buildvenv /var/tmp/%{name}-%{version}
 
