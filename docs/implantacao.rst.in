@@ -260,14 +260,25 @@ Todas as possibilidades de comandos serão listados se você executar
 Atualizações
 ------------
 
-Para atualizar o sistema, primeiro atualize o repositório de gestão de
-configuração::
+O primeiro passo para realizar a atualização do ambiente consiste em entrar
+na pasta do repositório de configuração. Em caso de dúvida, veja a seção
+"Obtendo o Repositório de Configuração".
 
+Em seguida atualize o repositório de gestão de configuração com o comando
+abaixo::
+
+    $ cd /diretorio/deconfiguracao/softwarepublico
     $ git pull
 
-Após isso, basta executar o comando ``converge`` novamente::
+Após isso, basta executar o comando ``converge`` novamente no ambiente
+especifico::
 
-    $ rake converge SPB_ENV=@@SPB_ENV@@
+    $ rake converge SPB_ENV=[Ambiente Especifico]
+
+Repare que ``SPB_ENV``, assume os seguintes valores de acordo com o ambiente
+que será atualizado. Logo, se você deseja atualizar o ambiente de homologação
+use ``SPB_ENV=homologa``. Se você deseja atualizar o ambiente de produção, use
+``SPB_ENV=prod``.
 
 Caso após a atualização o noosfero não funcionar corretamente, provavelmente
 um erro de *'502 Bad Gateway'* irá aparecer, reinicie o ambiente social::
@@ -276,3 +287,26 @@ um erro de *'502 Bad Gateway'* irá aparecer, reinicie o ambiente social::
     $ sudo shutdown -r
 
 Aguarde o ambiente reiniciar, e atualize a pagina.
+
+Atualizações pontuais
+---------------------
+
+Algumas vezes é preciso fazer atualizações em apenas um dos ambientes, como
+por exemplo, aplicar uma correção de bug. Tais correções/atualizações podem
+não precisar convergir o ambiente inteiro. Neste caso é possível fazer a
+atualização em ambientes especificos, por meio dos comandos abaixo:
+
+  * Atualizar a social: rake converge:social SPB_ENV=homologa
+  * Atualizar a integration:  rake converge:social SPB_ENV=homologa
+  * Atualizar a email: rake converge:email SPB_ENV=homologa
+  * Atualizar a database: rake converge:database SPB_ENV=homolga
+  * Atualizar a reverseproxy: rake converge:reverseproxy SPB_ENV=homologa
+
+> Atenção: Estes comandos devem ser executados dentro da pasta
+"softwarepublico", previamente clonada do repositório. Em caso de dúvida
+consulte a seção "Obtendo o Repositório de Configuração".
+
+Lembrando que a variável SPB_ENV, assume o valor do ambiente em que será
+executado a atulização. Logo, se você estiver querendo atualizar o ambiente
+de homologação então use SPB_ENV=homologa, caso você deseje atualizar o
+ambiente de produção utilize SPB_ENV=prod.
