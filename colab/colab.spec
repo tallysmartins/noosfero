@@ -1,6 +1,6 @@
 %define name colab
 %define version 1.10.3
-%define default_release 3
+%define default_release 4
 %{!?release: %define release %{default_release}}
 %define buildvenv /var/tmp/%{name}-%{version}
 
@@ -191,7 +191,7 @@ if [ $1 -gt 1 ]; then
   systemctl try-restart colab
 fi
 
-%postun
+%preun
 if [ $1 -eq 0 ]; then
   # package being removed
   systemctl stop colab
