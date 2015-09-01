@@ -3,11 +3,10 @@ require_dependency 'search_controller'
 class SearchController
 
   def communities
-    @scope = visible_profiles(Community)
-    full_text_search
-    results = @searches[@asset][:results]
-
-    results = results.each {|community| !community.institution?}
+    results = filter_communities_list do |community|
+      !community.institution?
+    end
+    results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}
     @search = results
   end

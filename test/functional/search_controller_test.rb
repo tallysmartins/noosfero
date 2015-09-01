@@ -35,7 +35,7 @@ class SearchControllerTest < ActionController::TestCase
     get :communities, :query => "New"
 
     assert_includes assigns(:searches)[:communities][:results], community
-    assert_not_includes assigns(:searches)[:communities][:results], institution
+    assert_not_includes assigns(:searches)[:communities][:results], institution.community
   end
 
   should "institutions_search don't have community" do
@@ -51,10 +51,7 @@ class SearchControllerTest < ActionController::TestCase
 
     get :institutions, :query => "New"
 
-    assert_includes(
-    assigns(:searches)[:institutions][:results],
-    institution.community
-    )
+    assert_includes assigns(:searches)[:institutions][:results], institution.community
     assert_not_includes assigns(:searches)[:institutions][:results], community
   end
 end
