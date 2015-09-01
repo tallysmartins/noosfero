@@ -186,12 +186,14 @@ ln -s /var/lib/colab-assets /usr/share/nginx/colab
 
 yes yes | colab-admin collectstatic
 
+if [ $1 -gt 1 ]; then
+  # upgrade; restart if running
+  systemctl try-restart colab
+fi
+
 %postun
 if [ $1 -eq 0 ]; then
   # package being removed
   systemctl stop colab
   systemctl disable colab
-else
-  # upgrade
-  systemctl try-restart colab
 fi
