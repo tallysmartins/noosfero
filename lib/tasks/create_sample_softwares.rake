@@ -4,8 +4,7 @@ namespace :software do
   desc "Create sample softwares"
   task :create_sample_softwares => :environment do
     Environment.all.each do |env|
-      if env.plugin_enabled?("SoftwareCommunities") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
-
+      if env.plugin_enabled?("SoftwareCommunitiesPlugin")
         print "Creating softwares: "
 
         NUMBER_OF_SOFTWARES.times do |i|
