@@ -51,11 +51,12 @@
   font-size: 15px;
 }
 
-/*.profile-members-tabs-container .ui-tabs .ui-tabs-nav{
-  margin: 0px;
-  padding: 0px;
+#block-community-tabs .ui-tabs .ui-tabs-nav .ui-tabs-anchor,
+.profile-members-tabs-container .ui-tabs .ui-tabs-nav .ui-tabs-anchor{
+  float:none;
+  display:table;
 }
-*/
+
 #block-community-tabs .ui-tabs .ui-tabs-panel {
   padding: 0px;
 }
@@ -104,17 +105,24 @@
 }
 
 #content #discussions-content .message-discussion{
-  border-top: 1px solid #ECEDF1;
-  margin:20px 0px 0px 0px;
-  padding:20px 0px 0px 0px;
+  border-bottom: 1px solid #ECEDF1;
+  margin:0px 0px 8px 0px;
+  padding:10px 0px 20px 0px;
 }
+
+/*#content #discussions-content .message-discussion:last-child{
+  border-bottom: 1px solid #ECEDF1;
+}*/
 
 /*#content #discussions-content .row{
   width: 520px;
 }*/
 
 #content #discussions-content h4{
-  font-size: 20px;
+  font-size: 22px;
+  border-bottom: 1px solid #ECEDF1;
+  padding-bottom: 10px;
+
 }
 
 #discussions-content hr{
@@ -168,4 +176,50 @@ top: 2px;
 
 #content #discussions-content .subject{
   font-weight: 700;
+}
+
+/********************************************/
+#repository-feed-tab{
+  
+}
+
+#repository-feed-tab .event-inline.event-item{
+  border-top: 1px solid #ECEDF1; 
+  border-bottom: 1px solid #ECEDF1;
+  margin-top:20px;
+  padding: 25px 0px 40px 0px;
+}
+
+#repository-feed-tab .event-inline.event-item img{
+  display: none;
+}
+
+#repository-feed-tab .event-item-timestamp{
+  border-right: 1px dotted #D3D6DE;
+  float:left;
+  width: 120px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+#repository-feed-tab .event-item-timestamp .time_ago:before{
+  /*content: url("images/ic-calendar.png");*/
+  content:"\f073";
+  font-family: FontAwesome;
+  font-size: 16px;
+  margin-right: 10px;
+  margin-top: 0px;
+  float: left;
+  color:#172738;
+}
+
+#repository-feed-tab .event-title{
+  max-height: 33px;
+  overflow: hidden;
+  float:left;
+  width: 80%;
+}
+
+#content #repository-feed-tab .author_name a{
+  color:#3E67B1;
 }
