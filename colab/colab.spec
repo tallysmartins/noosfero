@@ -1,6 +1,6 @@
 %define name colab
 %define version 1.10.3
-%define default_release 1
+%define default_release 2
 %{!?release: %define release %{default_release}}
 %define buildvenv /var/tmp/%{name}-%{version}
 
@@ -186,6 +186,12 @@ ln -s /var/lib/colab-assets /usr/share/nginx/colab
 
 yes yes | colab-admin collectstatic
 
-%preun
-systemctl stop colab
-systemctl disable colab
+%postun
+if [ $1 -eq 0 ]; then
+  # package being removed
+  systemctl stop colab
+  systemctl disable colab
+else
+  # upgrade
+  systemctl try-restart colab
+fi
