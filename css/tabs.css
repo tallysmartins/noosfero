@@ -8,9 +8,10 @@
   overflow: visible;
 }
 
-#block-community-tabs .iu-widget,
-.profile-members-tabs-container .iu-widget{
-  font-size: 0px;
+#content #block-community-tabs .iu-widget,
+#content .profile-members-tabs-container .iu-widget{
+  font-size: 0px ;
+  /*font-family: Arial !important;*/
 }
 
 #block-community-tabs .ui-widget-header,
@@ -95,6 +96,10 @@
 /********************************************/
 /***abas da area de comunidade******/
 
+#content #discussions-content{
+  color:#172738;
+}
+
 #content #discussions-content .pull-left{
   float:none;
 }
@@ -107,7 +112,19 @@
 #content #discussions-content .message-discussion{
   border-bottom: 1px solid #ECEDF1;
   margin:0px 0px 8px 0px;
-  padding:10px 0px 20px 0px;
+  padding:10px 0px 18px 0px;
+}
+
+/*#content #discussions-content .message-discussion .subject{
+  display: block;
+  float: left;
+  padding-top:3px; 
+}*/
+
+#content #discussions-content .message-discussion .quiet:last-child{
+  font-size: 16px;
+  max-height: 50px;
+  overflow: hidden;
 }
 
 /*#content #discussions-content .message-discussion:last-child{
@@ -121,7 +138,7 @@
 #content #discussions-content h4{
   font-size: 22px;
   border-bottom: 1px solid #ECEDF1;
-  padding-bottom: 10px;
+  padding: 8px 0px 6px 0px;
 
 }
 
@@ -142,6 +159,11 @@
   display: block;
   text-transform: uppercase;
   line-height: 21px;
+  font-size: 11px;
+}
+
+#discussions-content .text-right a:visited, #content #discussions-content .text-right a:visited, #discussions-content .text-right dl.portlet a:visited{
+  color: #172738;
 }
 
 #discussions-content .text-right a::after {
@@ -175,7 +197,8 @@ top: 2px;
 }*/
 
 #content #discussions-content .subject{
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 16px
 }
 
 /********************************************/
@@ -184,10 +207,9 @@ top: 2px;
 }
 
 #repository-feed-tab .event-inline.event-item{
-  border-top: 1px solid #ECEDF1; 
   border-bottom: 1px solid #ECEDF1;
-  margin-top:20px;
-  padding: 25px 0px 40px 0px;
+  margin-top:37px;
+  padding: 0px 0px 80px 0px;
 }
 
 #repository-feed-tab .event-inline.event-item img{
@@ -197,16 +219,19 @@ top: 2px;
 #repository-feed-tab .event-item-timestamp{
   border-right: 1px dotted #D3D6DE;
   float:left;
-  width: 120px;
-  height: 20px;
+  width: 112px;
+  height: 55px;
   margin-right: 20px;
+}
+#repository-feed-tab .event-item-timestamp .time_ago{
+  color:#172738;
 }
 
 #repository-feed-tab .event-item-timestamp .time_ago:before{
   /*content: url("images/ic-calendar.png");*/
   content:"\f073";
   font-family: FontAwesome;
-  font-size: 16px;
+  font-size: 15px;
   margin-right: 10px;
   margin-top: 0px;
   float: left;
@@ -214,10 +239,17 @@ top: 2px;
 }
 
 #repository-feed-tab .event-title{
-  max-height: 33px;
+  max-height: 55px;
   overflow: hidden;
   float:left;
-  width: 80%;
+  width: 70%;
+  font-size: 16px;
+}
+
+#content #repository-feed-tab .author_name{
+  display: block;
+  padding-bottom: 5px;
+  font-size: 12px;
 }
 
 #content #repository-feed-tab .author_name a{
