@@ -2,7 +2,7 @@ class CommunityRating < ActiveRecord::Base
   belongs_to :person
   belongs_to :community
 
-  attr_accessible :value, :person, :community
+  attr_accessible :value, :person, :community, :comment
 
   validates :value,
             :presence => true, :inclusion => {

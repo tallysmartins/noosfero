@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.expand_path(File.dirname(__FILE__)) + '/../../../../test/test_helper'
 
 class CommunityRatingTest < ActiveSupport::TestCase
   test "The value must be between 1 and 5" do
@@ -44,6 +44,93 @@ class CommunityRatingTest < ActiveSupport::TestCase
 
     assert community.tasks.include?(create_community_rating_comment)
   end
+
+    test "Check comment message when Task status = ACTIVE" do
+    person = create_user('molly').person
+    person.email = "person@email.com"
+    person.save!
+
+    community = fast_create(Community)
+    community.add_admin(person)
+
+
+    community_rating = CommunityRating.create!(
+        :value => 3,
+        :person => person,
+        :community => community
+    )
+
+    create_community_rating_comment = CreateCommunityRatingComment.create!(
+      :requestor => person,
+      :source => community,
+      :community_rating => community_rating,
+      :organization => community
+    )
+    assert_equal 1, create_community_rating_comment.status
+    message = "Comment waiting for approval"
+    assert_equal message, community_rating.get_comment_message
+  end
+
+  test "Check comment message when Task status = CANCELLED" do
+    person = create_user('molly').person
+    person.email = "person@email.com"
+    person.save!
+
+    community = fast_create(Community)
+    community.add_admin(person)
+
+
+    community_rating = CommunityRating.create!(
+        :value => 3,
+        :person => person,
+        :community => community
+    )
+
+    create_community_rating_comment = CreateCommunityRatingComment.create!(
+      :requestor => person,
+      :source => community,
+      :community_rating => community_rating,
+      :organization => community
+    )
+    create_community_rating_comment.cancel
+    assert_equal 2, create_community_rating_comment.status
+    message = "Comment rejected"
+    assert_equal message, community_rating.get_comment_message
+  end
+
+  test "Check comment message when Task status = FINISHED" do
+    person = create_user('molly').person
+    person.email = "person@email.com"
+    person.save!
+
+    community = fast_create(Community)
+    community.add_admin(person)
+
+    comment = Comment.create!(source: community,
+                                                 body: "regular comment",
+                                                 author: person)
+
+    community_rating = CommunityRating.create!(
+        :value => 3,
+        :person => person,
+        :community => community,
+        :comment => comment
+    )
+
+    create_community_rating_comment = CreateCommunityRatingComment.create!(
+          :body => comment.body,
+          :requestor => community_rating.person,
+          :source => community_rating.community,
+          :community_rating => community_rating,
+          :organization => community_rating.community
+      )
+
+    create_community_rating_comment.finish
+    assert_equal 3, create_community_rating_comment.status
+    message = "regular comment"
+    assert_equal message, community_rating.get_comment_message
+  end
+
 
   test "Should calculate community's rating average" do
     community = fast_create Community
