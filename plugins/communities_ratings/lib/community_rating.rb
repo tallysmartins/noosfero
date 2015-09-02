@@ -24,19 +24,19 @@ class CommunityRating < ActiveRecord::Base
     end
   end
 
-  def self.get_task_status
-    CreateCommunityRatingComment.where(community_rating_id: self).status
+  def get_task_status
+    CreateCommunityRatingComment.where(community_rating_id: self).first.status
   end
 
-  def self.get_comment_message
+  def get_comment_message
     if get_task_status == 1
-      "_(Comment waiting for approval)"
+      _("Comment waiting for approval")
     elsif get_task_status == 2
-      "_(Comment rejected)"
-    elsif get_task_status == 3 && self.comment
-      self.comment
+      _("Comment rejected")
+    elsif get_task_status == 3 && self.comment.body
+      self.comment.body
     else
-      "_(No comment)"
+      _("No comment")
     end
   end
 

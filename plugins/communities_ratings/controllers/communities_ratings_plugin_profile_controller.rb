@@ -46,15 +46,7 @@ class CommunitiesRatingsPluginProfileController < ProfileController
     community_rating.community = profile
     community_rating.value = params[:community_rating_value] if params[:community_rating_value]
 
-    if params[:comments] and (not params[:comments][:body].empty?)
-      if !environment.communities_ratings_are_moderated
-        comment = Comment.new(params[:comments])
-        comment.author = community_rating.person
-        comment.community = community_rating.community
-        comment.save
-   
-        community_rating.comment = comment
-      else
+    if params[:comments]
         create_comment = CreateCommunityRatingComment.create!(
           params[:comments].merge(
             :requestor => community_rating.person,
@@ -63,7 +55,7 @@ class CommunitiesRatingsPluginProfileController < ProfileController
             :organization => community_rating.community
           )
         )
-      end
+        create_comment.finish if can_perform?(params)
     end
 
     if community_rating.save
@@ -72,6 +64,12 @@ class CommunitiesRatingsPluginProfileController < ProfileController
     else
       session[:notice] = _("Sorry, there were problems rating this profile.")
     end
+  end
+
+  def can_perform? (rating_params)
+     (rating_params[:comments][:body].blank? ||
+      rating_params[:comments][:body].empty? ||
+      !environment.communities_ratings_are_moderated)
   end
 
   def permission

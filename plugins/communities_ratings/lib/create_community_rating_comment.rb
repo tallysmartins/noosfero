@@ -17,8 +17,11 @@ class CreateCommunityRatingComment < Task
 
 
   def perform
-    comment = Comment.create!(:source => self.source, :body => self.body, :author => self.requestor)
+    if (self.body.empty? || self.body.blank?)
+      self.body = _("No comment")
+    end
 
+    comment = Comment.create!(:source => self.source, :body => self.body, :author => self.requestor)
     self.community_rating.comment = comment
     self.community_rating.save!
   end
