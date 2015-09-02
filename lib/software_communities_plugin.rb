@@ -41,7 +41,8 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       CategoriesSoftwareBlock => { :type => [Environment] },
       SearchCatalogBlock => { :type => [Environment] },
       SoftwareHighlightsBlock => { :type => [Environment] },
-      SoftwareTabDataBlock => {:type => [Community], :position => 1}
+      SoftwareTabDataBlock => {:type => [Community], :position => 1},
+      WikiBlock => {:type => [Community]}
     }
   end
 

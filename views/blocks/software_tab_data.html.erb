@@ -1,10 +1,13 @@
-<div id="block-community-tabs">
-  <% tabs = [] %>
-  <% tabs << {:title => _("Activity"), :id => 'activity-tab', :content => ""} %>
-  <% tabs << {:title => _("Discussions"), :id => 'discussions-tab', :content => ""} %>
-  <% tabs << {:title => _("Blog"), :id => 'blog-tab', :content => (render partial: "blocks/software_tab_blog", :locals => {block: block})} %>
-  <% tabs << {:title => _("Wiki"), :id => 'wiki-tab', :content => ""} %>
-  <% tabs << {:title => _("Repository Feed"), :id => 'repository-feed-tab', :content => ""} %>
+<% if block.owner.software_info.nil? %>
+  <%= _("This community needs a software to use this block") %>
+<% else %>
+  <div id="block-community-tabs">
+    <% tabs = [] %>
+    <% tabs << {:title => _("Discussions"), :id => 'discussions-tab', :content => ""} %>
+    <% tabs << {:title => _("Blog"), :id => 'blog-tab', :content => (render partial: "blocks/software_tab_blog", :locals => {block: block})} %>
+    <% tabs << {:title => _("Repository Feed"), :id => 'repository-feed-tab', :content => ""} %>
 
-  <%= render_tabs(tabs) %>
-</div>
+    <%= render_tabs(tabs) %>
+  </div>
+<% end %>
+
