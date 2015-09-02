@@ -26,6 +26,15 @@ class Community
     community
   end
 
+  def self.get_valid_communities_string
+    remove_of_communities_methods = Community.instance_methods.select{|m| m =~ /remove_of_community_search/}
+    valid_communities_string = ""
+    remove_of_communities_methods.each do |method|
+      valid_communities_string += "!community.send('#{method}') && "
+    end
+    valid_communities_string[0..-5]
+  end
+
   def software?
     return !software_info.nil?
   end
@@ -38,5 +47,9 @@ class Community
   def activate
    self.visible = true
    self.save!
+  end
+
+  def remove_of_community_search_software?
+    return software?
   end
 end

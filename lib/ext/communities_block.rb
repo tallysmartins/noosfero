@@ -4,16 +4,9 @@ class CommunitiesBlock
 
   def profile_list
     result = get_visible_profiles
+    valid_communities_string = Community.get_valid_communities_string
 
-    list_without_software = []
-
-    result.each do |profile|
-			if profile.class == Community && !profile.software?
-				list_without_software << profile
-			end
-    end
-
-    result = list_without_software
+    result.each{|community| @scope.delete(community) unless eval(valid_communities_string)}
 
     result.slice(0..get_limit-1)
   end
@@ -45,5 +38,4 @@ class CommunitiesBlock
         ).sort_by {rand}
     end
   end
-
 end
