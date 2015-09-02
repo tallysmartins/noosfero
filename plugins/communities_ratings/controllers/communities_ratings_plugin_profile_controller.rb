@@ -46,23 +46,27 @@ class CommunitiesRatingsPluginProfileController < ProfileController
     community_rating.community = profile
     community_rating.value = params[:community_rating_value] if params[:community_rating_value]
 
+    if community_rating.save
+      create_rating_comment(community_rating)
+      session[:notice] = _("#{profile.name} successfully rated!")
+    else
+      session[:notice] = _("Sorry, there were problems rating this profile.")
+    end
+
+    redirect_to :controller => 'profile',  :action => 'index'
+  end
+
+  def create_rating_comment(rating)
     if params[:comments]
         create_comment = CreateCommunityRatingComment.create!(
           params[:comments].merge(
-            :requestor => community_rating.person,
-            :source => community_rating.community,
-            :community_rating => community_rating,
-            :organization => community_rating.community
+            :requestor => rating.person,
+            :source => rating.community,
+            :community_rating => rating,
+            :organization => rating.community
           )
         )
         create_comment.finish if can_perform?(params)
-    end
-
-    if community_rating.save
-      session[:notice] = _("#{profile.name} successfully rated!")
-      redirect_to :controller => 'profile',  :action => 'index'
-    else
-      session[:notice] = _("Sorry, there were problems rating this profile.")
     end
   end
 

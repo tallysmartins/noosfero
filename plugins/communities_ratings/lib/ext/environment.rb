@@ -1,7 +1,9 @@
 require_dependency 'environment'
 
 Environment.class_eval do
-  attr_accessible :communities_ratings_cooldown, :communities_ratings_default_rating, :communities_ratings_order, :communities_ratings_per_page, :communities_ratings_vote_once, :communities_ratings_are_moderated
+  attr_accessible :communities_ratings_cooldown, :communities_ratings_default_rating
+  attr_accessible :communities_ratings_order, :communities_ratings_per_page
+  attr_accessible :communities_ratings_vote_once, :communities_ratings_are_moderated
 
   COMMUNITIES_RATINGS_ORDER_OPTIONS = ["Most Recent", "Best Ratings"]
   COMMUNITIES_RATINGS_MINIMUM_RATING = 1
