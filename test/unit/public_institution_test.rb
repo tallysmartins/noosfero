@@ -32,9 +32,9 @@ class PublicInstitutionTest < ActiveSupport::TestCase
     @institution = nil
   end
 
-  should "not save without a cnpj" do
+  should "save without a cnpj" do
     @institution.cnpj = nil
-    assert !@institution.save
+    assert @institution.save
   end
 
   should "save institution without an acronym" do

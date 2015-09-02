@@ -19,11 +19,10 @@ class PrivateInstitutionTest < ActiveSupport::TestCase
     Institution.destroy_all
   end
 
-  should "not save without a cnpj" do
+  should "save without a cnpj" do
     @institution.cnpj = nil
 
-    assert !@institution.save
-    assert @institution.errors.full_messages.include? "Cnpj can't be blank"
+    assert @institution.save
   end
 
   should "not save with a repeated cnpj" do

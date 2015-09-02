@@ -23,8 +23,7 @@ class Institution < ActiveRecord::Base
                   :corporate_name
 
   validates :name, :presence=>true, :uniqueness=>true
-
-  validates :corporate_name, :presence => true
+  validates :cnpj, :uniqueness=>true
 
   before_save :verify_institution_type
 
@@ -35,7 +34,7 @@ class Institution < ActiveRecord::Base
   }
 
   validate :validate_country, :validate_state, :validate_city,
-           :verify_institution_type, :validate_cnpj, :validate_format_cnpj
+           :verify_institution_type, :validate_format_cnpj
 
 
   protected
@@ -57,7 +56,7 @@ class Institution < ActiveRecord::Base
 
   def validate_country
     unless self.community.blank?
-       if self.community.country.blank? && self.errors[:country].blank?
+      if self.community.country.blank? && self.errors[:country].blank?
         self.errors.add(:country, _("can't be blank"))
         return false
       end
@@ -94,7 +93,8 @@ class Institution < ActiveRecord::Base
   end
 
   def validate_format_cnpj
-    return true if !self.community.blank? && self.community.country != "BR"
+    return true if self.community.blank? && self.community.country != "BR"
+    return true if self.cnpj.blank?
 
     format =  /^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/
 
@@ -104,16 +104,5 @@ class Institution < ActiveRecord::Base
       self.errors.add(:cnpj, _("invalid format"))
       return false
     end
-  end
-
-  def validate_cnpj
-    if !self.community.blank? && self.community.country == "BR"
-      if self.cnpj.blank? && self.errors[:cnpj].blank?
-        self.errors.add(:cnpj, _("can't be blank"))
-        return false
-      end
-    end
-
-    return true
   end
 end
