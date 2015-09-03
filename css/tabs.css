@@ -289,6 +289,7 @@ top: 2px;
   color:#172738;
 }
 /*************ABA BLOG**************/
+
 #blog-tab .blog .blog-post{
   padding:0px 20px 5px 20px;
   background:none;
@@ -298,16 +299,47 @@ top: 2px;
   text-align: left;
 }
 
+#blog-tab #article.blog .article-body h1{
+  padding-top:0px;
+  border-top:none;
+  width: 70%;
+  padding-left:175px;
+}
+
+#blog-tab .odd-post-inner.blog-post-inner,
+#blog-tab .even-post-inner.blog-post-inner{
+  border-bottom: 1px solid #ECEDF1;
+  padding:15px 0px 10px 0px;
+}
+
 #content #blog-tab .blog .blog-post.position-1 h1{
   line-height: 37px;
   font-size: 34px;
   color: #172738;
+  padding-left:0px;
+}
+#content #blog-tab .blog .blog-post.position-1 .date{
+  padding-left:0px;
+}
+#content #blog-tab .blog .blog-post.position-1 .article-compact-image{
+  position:relative;
+  padding-right: 0px;
+  margin-top: 0px; /*temporario*/
 }
 
-#blog-tab .blog .blog-post.position-1 .zoomable-image{
-  position:absolute;
-  display: inline-block;
-  max-width: 100%
+#content #blog-tab .blog .blog-post.position-1 .article-compact-abstract-with-image{
+  width: 100%;
+  margin-left: 0px;
+}
+
+#blog-tab .blog .blog-post.position-1{
+  padding-right: 0px;
+
+}
+
+#content #blog-tab .blog .publishing-info .date{
+  width: 70%;
+  padding-left:180px;
 }
 
 #content #blog-tab .blog .publishing-info .author{
@@ -317,27 +349,47 @@ top: 2px;
 #content #blog-tab .blog .publishing-info .comments{
   display: none;
 }
-
 #content #blog-tab .blog .blog-post .article-compact-image{
-  width: initial;
+  position:absolute;
+  margin-top:-51px; /*provisorio*/
   text-align: left;
-  float: none;
 }
-
-#content #blog-tab .blog .blog-post .article-compact-image img{
-  margin:0px 0px 3px;
-  width: 100%;
-  height: 320px;
-}
-
 
 #content #blog-tab .blog .blog-post .zoomable-image{
-  float:right;
-  width: 100% !important;
+  width: 200px !important;
   height: auto !important;
-
 }
 
 #content #blog-tab .blog .blog-post .article-compact-abstract-with-image{
-  width: 100%;
+  margin-left: 180px;
+
+}
+
+/*leia mais*/
+#content #blog-tab .blog .read-more{
+  text-align: right;
+  display: block;
+  text-transform: uppercase;
+  line-height: 21px;
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+#content #blog-tab .blog .read-more:after{
+  content: "\f105";
+  font-family: FontAwesome;
+  padding-left: 7px;
+  padding-right: 4px;
+  color: #ffffff;
+  background: #3E67B1;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  margin-left: 5px;
+  position: relative;
+  top: 2px;
+}
+#content #blog-tab .blog .read-more a{
+  text-decoration: none;
 }
