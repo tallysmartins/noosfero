@@ -7,7 +7,7 @@ class User
   has_and_belongs_to_many :institutions
 
   validate :email_different_secondary?, :email_has_already_been_used?,
-  :secondary_email_format, :email_suffix_is_gov?
+  :secondary_email_format
 
   scope :primary_or_secondary_email_already_used?, lambda { |email|
     where("email=? OR secondary_email=?", email, email)
@@ -52,39 +52,9 @@ class User
     end
   end
 
-  def email_suffix_is_gov?
-    check_gov_suffix_in_secondary_email
-    check_gov_email_have_institution
-  end
-
   private
 
   def valid_format?(value, string_format)
     !value.nil? && value.length > 0 && !string_format.match(value).nil?
   end
-
-  def check_gov_suffix_in_secondary_email
-    unless primary_email_has_gov_suffix?
-      self.errors.add(
-      :base,
-      _("The governamental email must be the primary one.")
-      ) if secondary_email_has_gov_suffix?
-    end
-  end
-
-  def check_gov_email_have_institution
-    self.errors.add(
-    :base,
-    _("Institution is obligatory if user has a government email.")
-    ) if primary_email_has_gov_suffix? && self.institutions.blank?
-  end
-
-  def primary_email_has_gov_suffix?
-    valid_format?(self.email, GOV_SUFFIX)
-  end
-
-  def secondary_email_has_gov_suffix?
-    valid_format?(self.secondary_email, GOV_SUFFIX)
-  end
-
 end

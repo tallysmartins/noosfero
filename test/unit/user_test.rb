@@ -84,45 +84,6 @@ class UserTest < ActiveSupport::TestCase
     assert user2.save
   end
 
-  should 'return an error if secondary email is governmental and primary is not' do
-    invalid_msg = "The governamental email must be the primary one."
-    user = fast_create(User)
-
-    user.email = "test@email.com"
-    user.secondary_email = "test@gov.br"
-
-    assert !user.save
-    assert user.errors.full_messages.include?(invalid_msg)
-  end
-
-  # should 'have institution if email is governmental' do
-  #   user = fast_create(User)
-  #
-  #   user.email = "testtest@gov.br"
-  #
-  #   user.institutions = []
-  #   assert !user.save, "this should not save"
-  #
-  #   gov_power = GovernmentalPower.create(:name=>"Some Gov Power")
-  #   gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
-  #   juridical_nature = JuridicalNature.create(:name => "Autarquia")
-  #   institution = create_public_institution(
-  #   "Ministerio Publico da Uniao",
-  #   "MPU",
-  #   "BR",
-  #   "DF",
-  #   "Gama",
-  #   juridical_nature,
-  #   gov_power,
-  #   gov_sphere,
-  #   "44.555.666/7777-88"
-  #   )
-  #   institution.save!
-  #
-  #   user.institutions << institution
-  #   assert user.save, "this should save"
-  # end
-
   private
 
   def create_default_user

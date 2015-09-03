@@ -13,6 +13,7 @@ class Person
   def institution?
     false
   end
+
   def secondary_email
     self.user.secondary_email unless self.user.nil?
   end
