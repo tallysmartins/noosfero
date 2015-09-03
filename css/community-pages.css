@@ -160,7 +160,10 @@
   bottom:0px; /*-66px; 0px;*/
   right: 105%;
   width: 131px;
-  height: 171px;
+  height: 178px;
+  box-shadow: 2px 2px 2px #ECEDF1;
+  -webkit-box-shadow: 2px 2px 2px #ECEDF1;
+  -moz-box-shadow: 2px 2px 2px #ECEDF1;
 }
 
 .action-profile-members .menu-submenu.down::before {
@@ -191,13 +194,14 @@
 
 .action-profile-members #content .menu-submenu-content h4{
   color:#fff;
+  font-size: 13px;
   background:#243F59;
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   border-bottom: 2px solid #FF0366;
   text-transform: uppercase;
-  padding:6px 6px 10px 6px;
-  margin:2px 0px 2px 0px;
+  padding:8px 7px 10px 6px;
+  margin:0px 0px 2px 0px;
   text-align: center;
   max-height: 16px;
   overflow: hidden;
@@ -211,7 +215,7 @@
   content:"\f067";
   font-family: FontAwesome;
   color:#FF0366;
-  font-size: 16px;
+  font-size: 11px;
   padding-right: 6px;
 }
 
@@ -221,6 +225,8 @@
 
 .action-profile-members #content .menu-submenu-content .menu-submenu-list li a {
   color:#fff;
+  font-family: Arial;
+  font-size: 14px;
   border-bottom:1px dotted #2C4B6B;
   text-align: center;
   padding-top:8px;
@@ -289,6 +295,7 @@
 /************************************************************/
 /*****title of the area members******/
 .page-members-header{
+  font-family: Arial;
   border-bottom: 1px solid #D3D6DE;
   margin-bottom: 45px;
   padding-bottom: 26px;
@@ -313,10 +320,8 @@
 }
 
 .page-members-header .join-leave-button.require-login-popup{
-  width: 85px;
   float:left;
-  /*margin-right: 40px;
-  line-height: 21px;*/
+  margin-right: 4px;
 }
 
 /*************************************/
@@ -403,6 +408,9 @@ top: 2px;
   right: 100%;
   width: 131px;
   height: 176px;
+  box-shadow: 2px 2px 2px #ECEDF1;
+  -webkit-box-shadow: 2px 2px 2px #ECEDF1;
+  -moz-box-shadow: 2px 2px 2px #ECEDF1;
 }
 
 .members-block .menu-submenu.down::before{
@@ -468,11 +476,13 @@ top: 2px;
 
 #content .members-block .menu-submenu-content h4{
   color: #fff;
+  font-family: Arial;
+  font-size: 13px;
   background:#243F59;
   border-bottom: 2px solid #FF0366;
   text-transform: uppercase;
-  padding:6px 6px 10px 6px;
-  margin:2px 0px 2px 0px;
+  padding:8px 7px 10px 6px;
+  margin:0px 0px 2px 0px;
   text-align: center;
   max-height: 16px;
   overflow: hidden;
