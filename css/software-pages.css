@@ -180,7 +180,6 @@
 }
 
 #content .box-1 .categories-and-tags-block .block-title {
-  display: inline-flex;
   margin: 13px 10px 10px 0;
   padding: 3px 0px;
   background: none;
@@ -188,16 +187,18 @@
   font-family: Arial;
   font-size: 12px;
   font-weight: 300;
+  float: left;
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud {
-  margin: 13px 10px 10px 0px;
-  display: inline-flex;
+  margin: 13px 0 10px 0;
+  float: left;
+  max-width: 87%;
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud a {
   padding: 3px 10px;
-  margin: 0;
+  margin: 5px;
   float: left;
   color: #3E67B1;
   background-color: #ECEDF1;
