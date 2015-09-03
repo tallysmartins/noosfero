@@ -311,7 +311,7 @@
 
 /* Metrics Block */
 .software-metrics-block {
-  /*background-image: url('../images/metrics.png');*/
+  font-family: Arial;
   padding: 3px 0px 0px 10px;
 }
 
@@ -361,6 +361,8 @@
 }
 
 .software-metrics-block .admin-estimation {
+  font-size: 11px;
+  line-height: 15px;
   margin-top: 7px;
   margin-left: 4px;
 }
