@@ -126,7 +126,11 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     var error_keys = Object.keys(errors);
 
     // (field)|(field)|...
-    var verify_error = new RegExp("(" + error_keys.join(")|(") + ")" );
+    var verify_error = new RegExp("(\\[" + error_keys.join("\\])|(\\[") + "\\])" );
+
+    console.log(error_keys);
+    console.log("");
+    console.log(verify_error);
 
     var fields_with_errors = $("#institution_dialog .formfield input").filter(function(index, field) {
       return verify_error.test(field.getAttribute("name"));
@@ -396,7 +400,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       set_form_count_custom_data();
       set_events();
     },
-    
+
     institution_autocomplete: function(){
       institution_autocomplete();
     }
