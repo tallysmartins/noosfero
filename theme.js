@@ -261,10 +261,6 @@ $('#link-buscar').click(function(e) {
     set_arrow_direction();
     set_use_report_content();
     setEvents();
-    move_article_buttons();
-    add_link_to_article_div();
-    insert_notice_div();
-
     });
 })(jQuery);
 
