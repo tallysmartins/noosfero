@@ -1,3 +1,14 @@
 <%= render :file => 'blocks/highlights.html.erb', :locals => { :block => block } %>
 
-<%= link_to _('See all'), {:controller => :search, :action => :software_infos, :only_softwares => softwares} %>
+<!-- popover html structure -->
+<!-- <a> link to fire popover -->
+<a class="toggle-popover">mais informaçõs</a>
+<!-- <span> to handle popover options -->
+<span class="popover-span" data-toggle="popover" data-placement="top" data-class="highlights-popover">?</span>
+<!-- <div> with html content of popover
+     MUST APPEAR AFTER THE SPAN  -->
+<div class="popover-content" style="display: none">
+  <p>Este software foi desenvolvido com recursos públicos, gerenciado por uma instituição
+       governamental. Sua inclusão neste portal atende aos requisitos do <span>art. 14 da IN 01/2011</span>.</p>
+  <%= link_to _('See all'), {:controller => :search, :action => :software_infos, :only_softwares => softwares} %>
+</div>
