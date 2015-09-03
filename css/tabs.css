@@ -257,6 +257,37 @@ top: 2px;
   color:#3E67B1;
 }
 
+#repository-feed-tab .see-more-repository{
+  text-align: right;
+  display: block;
+  text-transform: uppercase;
+  line-height: 21px;
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+#repository-feed-tab .see-more-repository:after{
+  content: "\f105";
+font-family: FontAwesome;
+padding-left: 7px;
+padding-right: 4px;
+color: #ffffff;
+background: #3E67B1;
+border-radius: 4px;
+font-size: 18px;
+line-height: 20px;
+text-align: center;
+margin-left: 5px;
+position: relative;
+top: 2px;
+}
+
+
+#repository-feed-tab .see-more-repository a:visited,
+#content #repository-feed-tab .see-more-repository a:visited,
+#repository-feed-tab .see-more-repository dl.portlet a:visited{
+  color:#172738;
+}
 /*************ABA BLOG**************/
 #blog-tab .blog .blog-post{
   padding:0px 20px 5px 20px;
@@ -267,7 +298,13 @@ top: 2px;
   text-align: left;
 }
 
-#blog-tab .blog .blog-post position-1 .zoomable-image{
+#content #blog-tab .blog .blog-post.position-1 h1{
+  line-height: 37px;
+  font-size: 34px;
+  color: #172738;
+}
+
+#blog-tab .blog .blog-post.position-1 .zoomable-image{
   position:absolute;
   display: inline-block;
   max-width: 100%
