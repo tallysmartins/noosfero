@@ -139,7 +139,6 @@
   font-size: 22px;
   border-bottom: 1px solid #ECEDF1;
   padding: 8px 0px 6px 0px;
-
 }
 
 #discussions-content hr{
@@ -154,6 +153,10 @@
   border-top:none;
 }
 
+#discussions-content .text-right{
+  padding:6px 0px 25px 0px;
+}
+
 #discussions-content .text-right a{
   text-align: right;
   display: block;
@@ -162,7 +165,9 @@
   font-size: 11px;
 }
 
-#discussions-content .text-right a:visited, #content #discussions-content .text-right a:visited, #discussions-content .text-right dl.portlet a:visited{
+#discussions-content .text-right a:visited,
+#content #discussions-content .text-right a:visited,
+#discussions-content .text-right dl.portlet a:visited{
   color: #172738;
 }
 
@@ -208,7 +213,7 @@ top: 2px;
 
 #repository-feed-tab .event-inline.event-item{
   border-bottom: 1px solid #ECEDF1;
-  margin-top:37px;
+  margin-top:30px;
   padding: 0px 0px 80px 0px;
 }
 
@@ -228,14 +233,10 @@ top: 2px;
 }
 
 #repository-feed-tab .event-item-timestamp .time_ago:before{
-  /*content: url("images/ic-calendar.png");*/
-  content:"\f073";
-  font-family: FontAwesome;
-  font-size: 15px;
+  content: url("../images/ic-calendar.png");
   margin-right: 10px;
   margin-top: 0px;
   float: left;
-  color:#172738;
 }
 
 #repository-feed-tab .event-title{
@@ -254,4 +255,52 @@ top: 2px;
 
 #content #repository-feed-tab .author_name a{
   color:#3E67B1;
+}
+
+/*************ABA BLOG**************/
+#blog-tab .blog .blog-post{
+  padding:0px 20px 5px 20px;
+  background:none;
+}
+
+#content #blog-tab .blog .blog-post h1{
+  text-align: left;
+}
+
+#blog-tab .blog .blog-post position-1 .zoomable-image{
+  position:absolute;
+  display: inline-block;
+  max-width: 100%
+}
+
+#content #blog-tab .blog .publishing-info .author{
+  display: none;
+}
+
+#content #blog-tab .blog .publishing-info .comments{
+  display: none;
+}
+
+#content #blog-tab .blog .blog-post .article-compact-image{
+  width: initial;
+  text-align: left;
+  float: none;
+}
+
+#content #blog-tab .blog .blog-post .article-compact-image img{
+  margin:0px 0px 3px;
+  width: 100%;
+  height: 320px;
+}
+
+
+#content #blog-tab .blog .blog-post .zoomable-image{
+  float:right;
+  width: 100% !important;
+  height: auto !important;
+
+}
+
+#content #blog-tab .blog .blog-post .article-compact-abstract-with-image{
+  width: 100%;
 }
