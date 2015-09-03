@@ -8,6 +8,16 @@
   font-family: Arial, open_sansbold, Helvetica, sans-serif;
 }
 
+/*** Profile info block ***/
+#content .profile-info-options{
+  padding-right: 0;
+  text-align: center;
+}
+
+#content .profile-info-options a.button.with-text{
+  font-size: 11px;
+}
+
 /* Search form */
 
 .action-profile-index .main-block #public-profile-search, 
@@ -50,7 +60,7 @@
   border-radius: 4px;
   border: 1px solid #2B51A8;
   font-size: 14px;
-  line-height: 14px
+  line-height: 14px;
   text-transform: uppercase;
 }
 
