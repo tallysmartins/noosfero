@@ -2,135 +2,164 @@
 {% load static from staticfiles %}
 
 <header>
-<div class="navbar navbar-static-top">
-<!-- begin of barra-brasil -->
-<div id="barra-brasil">
-  <a href="https://brasil.gov.br" style="background:#7F7F7F; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">Portal do Governo Brasileiro</a>
-</div>
-<script src="https://barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
-<!-- end of barra-brasil -->
-  <div id="first-nav">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <ul id="accessibility" class="nav navbar-nav hidden-xs hidden-sm">
-            <li>
-              <a id="link-conteudo" href="#main-content" accesskey="1">Ir para o conteúdo <span class="label label-primary">1</span></a>
-            </li>
-            <li>
-              <a id="link-navegacao" href="#menu-spb" accesskey="2">Ir para o menu <span class="label label-primary">2</span></a>
-            </li>
-            <li> <a id="link-buscar" accesskey="3" href="#header-searchbox" title="Go to search">Ir para a busca <span class="label label-primary">3</span></a>
-            </li>
-            <li>
-              <a id="link-rodape" href="#link-top" accesskey="4">Ir para o rodapé <span class="label label-primary">4</span></a>
-            </li>
-          </ul> <!-- end of accesskeys -->
-          <ul id="colab-portal-siteactions" class="nav navbar-nav navbar-right">
-            <li id="colab-siteaction-accessibility">
-              <a href="/software-publico-brasileiro/acessibilidade"><span>Acessibilidade</span></a>
-            </li>
-            <li id="colab-siteaction-contraste">
-              <a href="#"><span>Alto Contraste</span></a>
-            </li>
-            <li id="colab-siteaction-mapadosite">
-              <a href="/social/spb/mapa-do-site"><span>Mapa do site</span></a>
-            </li>
-            <!-- begin of user-menu -->
-            {% if not user.is_authenticated %}
-            <li class="dropdown hidden-xs hidden-lg">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Acesso <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-              {% trans 'Login' as login_text %}
-                <li><a href="{% url 'signup' %}">{% trans "Register" %}</a></li>
-                <li><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
-              </ul>
-            </li>
+  <div id="barra-brasil">
+    <a href="http://brasil.gov.br" style="background:#7F7F7F; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">Software Público Brasileiro</a>
+  </div>
+  <script src="http://barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
+	<div id="header" role="banner">
+    <div>
+      <ul id="accessibility">
+        <li>
+          <a accesskey="1" href="#acontent" id="link-conteudo">
+            Ir para o conteúdo
+            <span>1</span>
+          </a>
+        </li>
+        <li>
+          <a accesskey="2" href="#anavigation" id="link-navegacao">
+            Ir para o menu
+            <span>2</span>
+          </a>
+        </li>
+        <li>
+          <a accesskey="3" href="#SearchableText" id="link-buscar">
+            Ir para a busca
+            <span>3</span>
+          </a>
+        </li>
+        <li class="last-item">
+          <a accesskey="4" href="#afooter" id="link-rodape">
+            Ir para o rodapé
+            <span>4</span>
+          </a>
+        </li>
+      </ul>
+      <!-- <ul id="language">
+        <li class="language-es">
+          <a href="#">Espa&#241;ol</a>
+        </li>
+        <li class="language-en">
+          <a href="#">English</a>
+        </li>
+      </ul>-->
+      <div id="second-nav">
+        <ul id="portal-siteactions">
+          <li id="siteaction-accessibility">
+            <a href="/software-publico-brasileiro/acessibilidade" title="Acessibilidade" accesskey="5">
+              Acessibilidade
+            </a>
+          </li>
+          <li id="siteaction-contraste">
+            <a href="#" title="Alto Contraste" accesskey="6">
+              Alto Contraste
+            </a>
+          </li>
+          <li id="siteaction-mapadosite">
+            <a href="/social/spb/mapa-do-site" title="Mapa do Site" accesskey="7">
+              Mapa do Site
+            </a>
+          </li>
+        </ul>
+        <ul id="login-menu">
+          {% if not user.is_authenticated %}
             {% trans 'Login' as login_text %}
-            <li class="visible-xs hidden-sm hidden-md"><a href="{% url 'signup' %}">{% trans "Register" %}</a></li>
-            <li class="visible-xs hidden-sm hidden-md"><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
-            {% else %}
-            <li id="user-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle user" data-toggle="dropdown">{% gravatar user.email 40 %} <b class="caret"></b>&nbsp;&nbsp;</a>
-              <ul class="dropdown-menu" role="menu">
-                <li>
+            <li class="login-item"><a href="{% url 'signup' %}">{% trans "Register" %}</a></li>
+            <li class="login item last-item"><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
+          {% else %}
+            <li id="user-menu" class="login-item dropdown">
+              <a href="#" class="dropdown-toggle user" data-toggle="dropdown">{% gravatar user.email %} <b class="caret"></b>&nbsp;&nbsp;</a>
+              <ul id="login-menu-box" class="dropdown-menu" role="menu">
+                <li class="last-item">
                   <div class="wrapper">
-                    <div class="thumbnail">{% gravatar user.email 100 %}</div>
-                      <div class="user-info">
-                        <span><b>{{ user.get_full_name }}</b></span>
-                        <span class="quiet">{{ user.email }}</span>
-                      </div>
-                      <div>
-                        <a class="btn btn-info pull-left" href="{% url 'user_profile' user.username %}">{% trans "My Profile" %}</a>
-                        {% trans 'Logout' as logout_text %}
-                        <a class="btn btn-default pull-right" href="{% url 'logout' %}"> {% trans "Logout" %}</a>
+                    <div class="thumbnail">{% gravatar user.email %}</div>
+                    <div class="user-info">
+                      <span><b>{{ user.get_full_name }}</b></span>
+                      <span class="quiet">{{ user.email }}</span>
+                    </div>
+                    <div>
+                      <a class="btn btn-info pull-left" href="{% url 'user_profile' user.username %}">{% trans "My Profile" %}</a>
+                      {% trans 'Logout' as logout_text %}
+                      <a class="btn btn-default pull-right" href="{% url 'logout' %}"> {% trans "Logout" %}</a>
                     </div>
                   </div>
                 </li>
               </ul>
-            </li> <!-- end of user-menu -->
-            {% endif %}
-          </ul>
-        </div>
-      </div> <!-- end of access-menu -->
-      <div class="row" id="spb-logo-search">
-        <div class="col-md-6 logo-box">
-          <div id="logo">
-            <a href="/" id="portal-logo">
-                  <img class="img-responsive pull-left" src="{% static 'img/logo.svg' %}" />
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="input-group box-search navbar-right">
-              <form action="{% url 'haystack_search' %}" method="GET" id="search-form" class="navbar-form" role="search">
-              <div class="form-group">
-                <label class="sr-only" for="header-searchbox">{% trans 'Search...' %}</label>
-                <input name="q" id="header-searchbox"
-                      class="form-control" value="{{ request.GET.q }}"
-                      type="search" placeholder="{% trans 'Search...' %}" />
-              </div>
-              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-              </form>
-            </div>
-        </div>
+            </li>
+          {% endif %}
+        </ul>
       </div>
-    </div>
-  </div><!-- end of first-nav -->
-  <div id="second-nav">
-    <div class="container">
-      <div class="row">
-        <ul id="quick-links-sm" class="hidden-md hidden-lg">
-          <li id="link-faq">
-            <a href="/social/spb/ajuda">FAQ</a>
-          </li>
-          <li id="link-contact">
-            <a href="/social/spb/contato">Contato</a>
-          </li>
-        </ul>
-        <div class="navbar-header logo">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+      <div id="logo">
+        <a id="portal-logo" title="" href="/">
+          <span id="portal-title-1">Portal do</span>
+          <h1 id="portal-title" class="corto">Software Público Brasileiro</h1>
+          <span id="portal-description">MINISTÉRIO DO PLANEJAMENTO, ORÇAMENTO E GESTÃO</span>
+        </a>
+      </div>
+      <div id="portal-searchbox">
+    {% comment %}
+      <form action="{% url 'haystack_search' %}" method="GET" id="search-form" class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <label class="sr-only" for="header-searchbox">{% trans 'Search here...' %}</label>
+          <input name="q" id="header-searchbox"
+                  class="form-control" value="{{ request.GET.q }}"
+                  type="search" placeholder="{% trans 'Search here...' %}" />
         </div>
-        <ul id="menu-spb" class="nav navbar-nav navbar-collapse collapse ">
-          <li>
-            <a href="{% url 'thread_list' %}">{% trans "Groups" %}</a>
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
+    {% endcomment %}
+        <form id="nolivesearchGadget_form" action="/search/">
+          <fieldset class="LSBox"><legend class="hiddenStructure">Buscar no portal</legend>
+            <label class="hiddenStructure" for="nolivesearchGadget">Buscar no portal</label>
+            <input name="SearchableText" type="text" size="18" title="Buscar no portal" placeholder="Buscar no portal" class="searchField" id="nolivesearchGadget">
+            <input class="searchButton" type="submit" value="Buscar no portal">
+          </fieldset>
+        </form>
+      </div>
+      <div id="social-icons">
+        <ul>
+          <li id="portalredes-facebook" class="portalredes-item">
+            <a href="#">Facebook</a>
           </li>
-          {% plugins_menu %}
-        </ul>
-        <ul id="quick-links" class="nav navbar-nav navbar-right hidden-xs hidden-sm">
-          <li id="link-faq">
-            <a href="/social/spb/ajuda">Perguntas Frequentes</a>
+          <li id="portalredes-googleplus" class="portalredes-item">
+            <a href="#">Google+</a>
           </li>
-          <li id="link-contact">
-            <a href="/social/spb/contato">Contato</a>
+          <li id="portalredes-instagram" class="portalredes-item">
+            <a href="#">Instagram</a>
+          </li>
+          <li id="portalredes-twitter" class="portalredes-item">
+            <a href="#">Twitter</a>
+          </li>
+          <li id="portalredes-youtube" class="portalredes-item">
+            <a href="#">YouTube</a>
+          </li>
+          <li id="portalredes-soundcloud" class="portalredes-item">
+            <a href="#">SoundCloud</a>
+          </li>
+          <li id="portalredes-slideshare" class="portalredes-item">
+            <a href="#">Slideshare</a>
+          </li>
+          <li id="portalredes-rss" class="portalredes-item last-item">
+            <a href="#">RSS</a>
           </li>
         </ul>
       </div>
+    </div>
+    <div id="sobre">
+      <ul>
+        <li id="softwarepublico-groups" class="softwarepublico-item">
+          <a href="https://portal.softwarepublico.gov.br/archives/thread/" title="Groups">Groups</a>
+        </li>
+        <li id="softwarepublico-perguntas-frequentes" class="softwarepublico-item">
+          <a href="/social/spb/ajuda" title="Perguntas frequentes">Perguntas frequentes</a>
+        </li>
+        <li id="softwarepublico-contato" class="softwarepublico-item">
+          <a href="/social/spb/contato" title="Contato">Contato</a>
+        </li>
+      </ul>
     </div>
   </div>
-</div>
 </header>
+
+{% block main_content %}
+  <a name="acontent" id="acontent"></a>
+{% endblock %}
