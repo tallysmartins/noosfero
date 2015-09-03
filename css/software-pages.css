@@ -221,22 +221,24 @@
 
 /*** Right bar ***/
 
+/*** WARNING - WHITOUT BOX-4 ***/
+
 /* Link-list block */
-#content .box-3 .block-title {
+.template-leftbar #content .box-3 .block-title {
   border-top: 4px solid #4562b1;
   line-height: 15px;
   background: #eee;
   color: #4562b1;
 }
 
-#content .box-3 .link-list-block li {
+.template-leftbar #content .box-3 .link-list-block li {
   margin: 0px;
   padding: 0px;
   border-bottom: 1px solid #ddd;
   border-top: none;
 }
 
-#content .box-3 .link-list-block li a {
+.template-leftbar #content .box-3 .link-list-block li a {
   border-right: none;
   border-top: 0px solid #64946E;
   border-radius: 0px 0px 0px 0px;
@@ -250,21 +252,21 @@
   font-size: 14px;
 }
 
-#content .box-3 .link-list-block h3.empty + ul {
+.template-leftbar #content .box-3 .link-list-block h3.empty + ul {
   border-top: 1px solid #ddd;
 }
 
-#content .box-3 .link-list-block li a.link-this-page,
-#content .box-3 .link-list-block li a.link-this-page:hover {
+.template-leftbar #content .box-3 .link-list-block li a.link-this-page,
+.template-leftbar #content .box-3 .link-list-block li a.link-this-page:hover {
   border-right: none;
 }
 
-#content .box-3 .link-list-block li a:hover {
+.template-leftbar #content .box-3 .link-list-block li a:hover {
   background-color: #FFFFFF;
   color: #000;
 }
 
-#content .box-3 .link-list-block li a.link-this-page {
+.template-leftbar #content .box-3 .link-list-block li a.link-this-page {
   margin-left: 0px;
   width: auto;
   background-color: #ffffff;
@@ -272,9 +274,9 @@
 }
 
 /* Repository block */
-.box-3 #bt_repositorio, 
-.box-3 #bt_repositorio:active, 
-.box-3 #bt_repositorio:visited {
+.template-leftbar .box-3 #bt_repositorio,
+.template-leftbar .box-3 #bt_repositorio:active,
+.template-leftbar .box-3 #bt_repositorio:visited {
   border-radius: 4px;
   padding: 12px 10px;
   background: #EAEBEE;
@@ -284,7 +286,7 @@
   position: relative;
 }
 
-.box-3 #bt_repositorio::after {
+.template-leftbar .box-3 #bt_repositorio::after {
   margin-top: -2px;
   padding: 4px 0px 4px 2px;
   border-radius: 4px;
@@ -299,12 +301,117 @@
   content: url('../images/right-arrow.png');
 }
 
-.box-3 #content #bt_repositorio:hover {
+.template-leftbar .box-3 #content #bt_repositorio:hover {
   color: #FFF;
   background: #2C66CE;
   text-decoration: none;
 }
+/*** END - WARNING - WHITOUT BOX-4 ***/
+
 /*** end of right bar ***/
+
+/************ DUPLICATE ************/
+
+/*
+    This part of the code is duplicated because, if there is
+    a change of layout from template-leftbar to lefttopright
+    the CSS fit without many complication.
+ */
+
+/*** Right bar ***/
+
+/*** WARNING - WITH BOX-4 ***/
+
+/* Link-list block */
+.template-lefttopright #content .box-2 .block-title {
+  border-top: 4px solid #4562b1;
+  line-height: 15px;
+  background: #eee;
+  color: #4562b1;
+}
+
+.template-lefttopright #content .box-2 .link-list-block li {
+  margin: 0px;
+  padding: 0px;
+  border-bottom: 1px solid #ddd;
+  border-top: none;
+}
+
+.template-lefttopright #content .box-2 .link-list-block li a {
+  border-right: none;
+  border-top: 0px solid #64946E;
+  border-radius: 0px 0px 0px 0px;
+  padding: 6px 5px 8px 18px;
+  width: auto;
+  line-height: 17px;
+  background-color: #fff;
+  background-position: 0px 50%;
+  color: #2C66CE;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.template-lefttopright #content .box-2 .link-list-block h3.empty + ul {
+  border-top: 1px solid #ddd;
+}
+
+.template-lefttopright #content .box-2 .link-list-block li a.link-this-page,
+.template-lefttopright #content .box-2 .link-list-block li a.link-this-page:hover {
+  border-right: none;
+}
+
+.template-lefttopright #content .box-2 .link-list-block li a:hover {
+  background-color: #FFFFFF;
+  color: #000;
+}
+
+.template-lefttopright #content .box-2 .link-list-block li a.link-this-page {
+  margin-left: 0px;
+  width: auto;
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+/* Repository block */
+.template-lefttopright .box-2 #bt_repositorio,
+.template-lefttopright .box-2 #bt_repositorio:active,
+.template-lefttopright .box-2 #bt_repositorio:visited {
+  border-radius: 4px;
+  padding: 12px 10px;
+  background: #EAEBEE;
+  font: normal normal bold 12px 'open_sansbold', arial, helvetica, sans-serif;
+  text-transform: uppercase;
+  display: block;
+  position: relative;
+}
+
+.template-lefttopright .box-2 #bt_repositorio::after {
+  margin-top: -2px;
+  padding: 4px 0px 4px 2px;
+  border-radius: 4px;
+  width: 18px;
+  right: 10px;
+  line-height: 20px;
+  position: absolute;
+  background: #2C66CE;
+  color: #FFF;
+  font-size: 16px;
+  text-align: center;
+  content: url('../images/right-arrow.png');
+}
+
+.template-lefttopright .box-2 #content #bt_repositorio:hover {
+  color: #FFF;
+  background: #2C66CE;
+  text-decoration: none;
+}
+
+/*** WARNING - WITH BOX-4 ***/
+
+/*** end of right bar ***/
+
+/************ END DUPLICATE ************/
+
 
 /*** Software internal pages ***/
 

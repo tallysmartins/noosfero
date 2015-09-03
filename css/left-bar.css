@@ -1,10 +1,12 @@
 /******************** Box-2 ********************/
 
-.box-2{
+/*** WARNING - WITHOUT BOX-4 ***/
+
+.template-leftbar .box-2 {
   width:150px;
 }
 
-#content .box-2 .block-outer .block-title {
+.template-leftbar #content .box-2 .block-outer .block-title {
 	background: #eee;
 	color: #4562b1;
 	border-top: 4px solid #4562b1;
@@ -13,14 +15,14 @@
 
 /*** Menus - Link list block ***/
 
-#content .box-2 .link-list-block li {
+.template-leftbar #content .box-2 .link-list-block li {
   margin: 0;
   padding: 0;
   border-bottom: 1px solid #ddd;
   border-top: none;
 }
 
-#content .box-2 .link-list-block li a {
+.template-leftbar #content .box-2 .link-list-block li a {
   width: auto;
   padding: 6px 5px 8px 18px;
   background-color: #fff;
@@ -34,31 +36,107 @@
   line-height: 17px;
 }
 
-#content .box-2 .link-list-block h3.empty + ul {
+.template-leftbar #content .box-2 .link-list-block h3.empty + ul {
   border-top: 1px solid #ddd;
 }
 
-#content .box-2 .link-list-block h3.empty + ul li a {
+.template-leftbar #content .box-2 .link-list-block h3.empty + ul li a {
   padding-left: 0px;
   padding-right: 0px;
   background-image: none;
 }
 
-#content .box-2 .link-list-block li a.link-this-page,
-#content .box-2 .link-list-block li a.link-this-page:hover {
+.template-leftbar #content .box-2 .link-list-block li a.link-this-page,
+.template-leftbar #content .box-2 .link-list-block li a.link-this-page:hover {
   border-right: none;
 }
 
-#content .box-2 .link-list-block li a:hover {
+.template-leftbar #content .box-2 .link-list-block li a:hover {
   background-color: #FFFFFF;
   color: #000;
 }
-#content .box-2 .link-list-block li a.link-this-page {
+.template-leftbar #content .box-2 .link-list-block li a.link-this-page {
   width: auto;
   margin-left: 0px;
   background-color: #ffffff;
   font-weight: bold;
 }
+
+/*** END OF WARNING - WITHOUT BOX-4 ***/
+
+/*** WARNING - WITH BOX-4 ***/
+
+/************ DUPLICATE ************
+
+    This part of the code is duplicated because, if there is
+    a change of layout from template-leftbar to lefttopright
+    the CSS fit without many complication.
+
+ */
+
+.template-lefttopright .box-3 {
+  width:150px;
+}
+
+.template-lefttopright #content .box-3 .block-outer .block-title {
+  background: #eee;
+  color: #4562b1;
+  border-top: 4px solid #4562b1;
+  line-height: 15px;
+}
+
+/*** Menus - Link list block ***/
+
+.template-lefttopright #content .box-3 .link-list-block li {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+  border-top: none;
+}
+
+.template-lefttopright #content .box-3 .link-list-block li a {
+  width: auto;
+  padding: 6px 5px 8px 18px;
+  background-color: #fff;
+  background-position: 0px 50%;
+  color: #2C66CE;
+  border-right: none;
+  border-top: 0px solid #64946E;
+  border-radius: 0 0 0 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.template-lefttopright #content .box-3 .link-list-block h3.empty + ul {
+  border-top: 1px solid #ddd;
+}
+
+.template-lefttopright #content .box-3 .link-list-block h3.empty + ul li a {
+  padding-left: 0px;
+  padding-right: 0px;
+  background-image: none;
+}
+
+.template-lefttopright #content .box-3 .link-list-block li a.link-this-page,
+.template-lefttopright #content .box-3 .link-list-block li a.link-this-page:hover {
+  border-right: none;
+}
+
+.template-lefttopright #content .box-3 .link-list-block li a:hover {
+  background-color: #FFFFFF;
+  color: #000;
+}
+.template-lefttopright #content .box-3 .link-list-block li a.link-this-page {
+  width: auto;
+  margin-left: 0px;
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+/************ END OF DUPLICATE ************
+
+/*** END OF WARNING - WITH BOX-4 ***/
 
 /*** Statistics block **/
 .statistics-block-data ul {
@@ -83,6 +161,9 @@ span.amount {
 span.label {
   font-size: 14px;
 }
+
 /*** end of statistics block **/
+
+/*** WARNING - WITH BOX-4 ***/
 
 /******************** end Box-2 ********************/
