@@ -2,7 +2,6 @@
   <%= block_title(block.title) %>
   <% if block.get_ratings(block.owner.id).empty? %>
   <div class="ratings-list">
-    <%= _("This community does not have any ratings") %>
     <%= render :partial => 'shared/make_report_block' %>
   </div>
   <% else %>
