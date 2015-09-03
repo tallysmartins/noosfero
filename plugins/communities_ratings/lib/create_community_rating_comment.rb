@@ -3,7 +3,7 @@ class CreateCommunityRatingComment < Task
 
   validates_presence_of :requestor_id, :community_rating, :target_id
 
-  attr_accessible :community_rating, :source, :body, :requestor, :reject_explanation, :organization
+  attr_accessible :community_rating, :source, :body, :requestor, :reject_explanation, :organization, :institution_id
   belongs_to :source, :class_name => 'Community', :foreign_key => :source_id
   belongs_to :community_rating
 
