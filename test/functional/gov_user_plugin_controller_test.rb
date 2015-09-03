@@ -122,26 +122,6 @@ class GovUserPluginControllerTest < ActionController::TestCase
     assert !json_response["success"]
   end
 
-  should "not create a institution without cnpj" do
-    @controller.stubs(:verify_recaptcha).returns(true)
-
-    fields = InstitutionTestHelper.generate_form_fields(
-      "Some Private Institution",
-      "BR",
-      "DF",
-      "Brasilia",
-      "",
-      "PrivateInstitution"
-    )
-    fields[:institutions][:acronym] = "SPI"
-
-    xhr :get, :new_institution, fields
-
-    json_response = ActiveSupport::JSON.decode(@response.body)
-
-    assert !json_response["success"]
-  end
-
   should "verify if institution name already exists" do
     xhr :get, :institution_already_exists, :name=>"Ministerio Publico da Uniao"
     assert_equal "true", @response.body

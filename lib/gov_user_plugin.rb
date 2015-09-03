@@ -10,13 +10,11 @@ class GovUserPlugin < Noosfero::Plugin
   include Rails.application.routes.url_helpers
 
   def self.plugin_name
-    # FIXME
     "GovUserPlugin"
   end
 
   def self.plugin_description
-    # FIXME
-    _("A plugin that does this and that.")
+    _("Add features related to Brazilian government.")
   end
 
   def stylesheet?
@@ -57,7 +55,7 @@ class GovUserPlugin < Noosfero::Plugin
         unless is_admin
           institution = profile.user.institutions
 
-          if !params[:institution].blank? && !params[:institution][:sisp].nil?
+          if !params[:institution].blank? && params[:institution].class == Hash && !params[:institution][:sisp].nil?
             if params[:institution][:sisp] != institution.sisp
               params[:institution][:sisp] = institution.sisp
             end
