@@ -128,15 +128,13 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     // (field)|(field)|...
     var verify_error = new RegExp("(\\[" + error_keys.join("\\])|(\\[") + "\\])" );
 
-    console.log(error_keys);
-    console.log("");
-    console.log(verify_error);
-
     var fields_with_errors = $("#institution_dialog .formfield input").filter(function(index, field) {
+      $(field).removeClass("highlight-error");
       return verify_error.test(field.getAttribute("name"));
     });
 
     var selects_with_errors = $("#institution_dialog .formfield select").filter(function(index, field) {
+      $(field).removeClass("highlight-error");
       return verify_error.test(field.getAttribute("name"));
     });
 
