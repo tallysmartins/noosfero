@@ -6,7 +6,7 @@ class CommunitiesBlock
     result = get_visible_profiles
     valid_communities_string = Community.get_valid_communities_string
 
-    result.each{|community| @scope.delete(community) unless eval(valid_communities_string)}
+    result.each{|community| result.delete(community) unless eval(valid_communities_string)}
 
     result.slice(0..get_limit-1)
   end
