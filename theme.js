@@ -254,19 +254,21 @@ $('#link-buscar').click(function(e) {
     var span = $('span[data-toggle="popover"]');
     var place = span.attr("data-placement");
     var elementClass = span.attr("data-class");
-    span.popover({
+    var popover =  span.popover({
       html:true,
       placement: place,
       content: function() {
         return $(this).next().html();
       }
     })
-    .data('bs.popover')
-    .tip()
-    .addClass(elementClass);
-    $('a.toggle-popover').on("click",function() {
-      span.trigger("click");
-    });
+    .data('bs.popover');
+    if(popover) {
+      popover.tip()
+      .addClass(elementClass);
+      $('a.toggle-popover').on("click",function() {
+        span.trigger("click");
+      });
+    }
   }
 
   $(document).ready(function(){
