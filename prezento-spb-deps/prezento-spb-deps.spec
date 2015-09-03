@@ -1,5 +1,5 @@
 Name:    prezento-spb-deps
-Version: 0.8
+Version: 0.8.3.colab
 Release: 1%{?dist}
 Summary: Ruby dependencies for prezento
 Group:   Development/Tools
@@ -7,7 +7,9 @@ License: Various
 URL:     http://mezuro.org
 Source0: %{name}-%{version}.tar.gz
 
-BuildRequires: make, gcc, gcc-c++, ruby, ruby-devel, rubygem-bundler, postgresql-devel, libxml2-devel, libxslt-devel, sqlite-devel, git
+BuildRequires: make, gcc, gcc-c++, ruby, ruby-devel
+BuildRequires: rubygem-bundler, postgresql-devel
+BuildRequires: libxml2-devel, libxslt-devel, sqlite-devel
 Requires: ruby, rubygem-bundler
 
 %description
