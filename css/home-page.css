@@ -293,7 +293,7 @@
 }
 
 .action-home-index #content .display-content-block .lead {
-  max-height: 56px;
+  max-height: 47px;
   overflow: hidden;
 }
 
@@ -331,7 +331,7 @@
 
 /*** What Is block - Article block **/
 
-.action-home-index #content .article-block .block-title {
+.template-default .action-home-index #content .box-3 .article-block .block-title {
   border-top: 4px solid #08A649;
   border-bottom: none;
   padding: 6px 8px 22px 10px;
@@ -342,20 +342,20 @@
   text-transform: none;
 }
 
-.action-home-index #content .article-block .read-more {
+.template-default .action-home-index #content .box-3 .article-block .read-more {
   margin-top: 30px;
   border-top: 1px solid #08A649;
 }
 
-.action-home-index #content .article-block .read-more a::after {
+.template-default .action-home-index #content .box-3 .article-block .read-more a::after {
   background: #08A649;
 }
 
-.action-home-index #content .article-block .short-post {
+.template-default .action-home-index #content .box-3 .article-block .short-post {
   padding-top: 23px;
 }
 
-.action-home-index #content .article-block p {
+.template-default .action-home-index #content .box-3 .article-block p {
   margin: 0px 0px 14px 0px;
   padding: 0px;
   font: 15px/18px arial, helvetica, sans-serif;
