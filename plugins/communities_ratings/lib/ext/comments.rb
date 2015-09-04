@@ -4,5 +4,5 @@ Comment.class_eval do
   alias :community :source
   alias :community= :source=
 
-  belongs_to :community_rating
+  has_one :community_rating
 end

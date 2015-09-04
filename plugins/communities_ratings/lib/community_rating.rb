@@ -1,6 +1,7 @@
 class CommunityRating < ActiveRecord::Base
   belongs_to :person
   belongs_to :community
+  belongs_to :comment
 
   attr_accessible :value, :person, :community, :comment
 
@@ -12,7 +13,6 @@ class CommunityRating < ActiveRecord::Base
   validates :community_id, :person_id,
             :presence => true
 
-  has_one :comment
 
   def self.average_rating community_id
     average = CommunityRating.where(community_id: community_id).average(:value)
@@ -21,22 +21,6 @@ class CommunityRating < ActiveRecord::Base
       (average - average.truncate) >= 0.5 ? average.ceil : average.floor
     else
       nil
-    end
-  end
-
-  def get_task_status
-    CreateCommunityRatingComment.where(community_rating_id: self).first.status
-  end
-
-  def get_comment_message
-    if get_task_status == 1
-      _("Comment waiting for approval")
-    elsif get_task_status == 2
-      _("Comment rejected")
-    elsif get_task_status == 3 && self.comment.body
-      self.comment.body
-    else
-      _("No comment")
     end
   end
 

@@ -1,11 +1,18 @@
 class CreateCommunityRatingComment < Task
   include Rails.application.routes.url_helpers
 
-  validates_presence_of :requestor_id, :community_rating, :target_id
+  validates_presence_of :requestor_id, :community_rating_id, :target_id
 
-  attr_accessible :community_rating, :source, :body, :requestor, :reject_explanation, :organization, :institution_id
-  belongs_to :source, :class_name => 'Community', :foreign_key => :source_id
-  belongs_to :community_rating
+  settings_items :community_rating_id, :type => Integer, :default => nil
+  settings_items :community_rating_comment_id, :type => Integer, :default => nil
+
+  attr_accessible :community_rating_id, :body, :requestor, :reject_explanation, :organization
+
+  before_save :update_comment_body
+  # before_save :create_comment
+
+  # belongs_to :target, :class_name => 'Community', :foreign_key => :target_id
+  # belongs_to :community_rating
 
   alias :organization :target
   alias :organization= :target=
@@ -15,15 +22,40 @@ class CreateCommunityRatingComment < Task
     settings_items field.to_sym
   end
 
+  def link_comment_with_its_rating(user_comment)
+    rating = CommunityRating.find(self.community_rating_id)
+    rating.comment = user_comment
+    rating.save
+  end
 
-  def perform
-    if (self.body.empty? || self.body.blank?)
-      self.body = _("No comment")
+  def create_comment
+    if (self.body && !self.body.empty? && !self.body.blank?)
+      comment_body = _("Comment waiting for approval")
+      comment = Comment.create!(:source => self.target, :body => comment_body, :author => self.requestor)
+      self.community_rating_comment_id = comment.id
+      link_comment_with_its_rating(comment)
     end
+  end
 
-    comment = Comment.create!(:source => self.source, :body => self.body, :author => self.requestor)
-    self.community_rating.comment = comment
-    self.community_rating.save!
+  def get_comment_message
+    if self.status == 2
+      _("Comment rejected")
+    elsif self.status == 3
+      self.body
+    else
+      _("No comment")
+    end
+  end
+
+
+  def update_comment_body
+    if self.community_rating_comment_id.nil?
+      create_comment
+    else
+      comment = Comment.find_by_id(self.community_rating_comment_id)
+      comment.body = get_comment_message
+      comment.save
+    end
   end
 
   def title
@@ -31,8 +63,8 @@ class CreateCommunityRatingComment < Task
   end
 
   def information
-    message = _("<div class=\"comment\">%{requestor} wants to create a comment in the \"%{source}\" community.<br> Comment: <br> \"%{body}\"</div>") %
-    {:requestor => self.requestor.name, :source => self.source.name, :body => self.body }
+    message = _("<div class=\"comment\">%{requestor} wants to create a comment in the \"%{target}\" community.<br> Comment: <br> \"%{body}\"</div>") %
+    {:requestor => self.requestor.name, :target => self.target.name, :body => self.body }
 
     {:message => message}
   end
@@ -56,33 +88,33 @@ class CreateCommunityRatingComment < Task
   end
 
   def target_notification_description
-    _('%{requestor} wants to create a comment in the \"%{source}\" community') %
-    {:requestor => self.requestor.name, :source => self.source.name }
+    _('%{requestor} wants to create a comment in the \"%{target}\" community') %
+    {:requestor => self.requestor.name, :target => self.target.name }
   end
 
   def target_notification_message
-    _("User \"%{user}\" just requested to create a comment in the \"%{source}\" community.
+    _("User \"%{user}\" just requested to create a comment in the \"%{target}\" community.
       You have to approve or reject it through the \"Pending Validations\"
       section in your control panel.\n") %
-    { :user => self.requestor.name, :source => self.source.name }
+    { :user => self.requestor.name, :target => self.target.name }
   end
 
   def task_created_message
 
-    _("Your request for commenting at %{source} was
+    _("Your request for commenting at %{target} was
       just sent. Environment administrator will receive it and will approve or
       reject your request according to his methods and criteria.
 
       You will be notified as soon as environment administrator has a position
       about your request.") %
-    { :source => self.source.name }
+    { :target => self.target.name }
   end
 
   def task_cancelled_message
-    _("Your request for commenting at %{source} was
+    _("Your request for commenting at %{target} was
       not approved by the environment administrator. The following explanation
       was given: \n\n%{explanation}") %
-    { :source => self.source.name,
+    { :target => self.target.name,
       :explanation => self.reject_explanation }
   end
 
@@ -95,7 +127,7 @@ class CreateCommunityRatingComment < Task
   private
 
   def mount_url
-    identifier = self.source.identifier
+    identifier = self.target.identifier
     # The use of url_for doesn't allow the /social within the Public Software
     # portal. That's why the url is mounted so 'hard coded'
     url = "#{self.environment.top_url}/profile/#{identifier}"

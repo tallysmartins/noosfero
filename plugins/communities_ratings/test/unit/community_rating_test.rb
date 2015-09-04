@@ -37,8 +37,7 @@ class CommunityRatingTest < ActiveSupport::TestCase
 
     create_community_rating_comment = CreateCommunityRatingComment.create!(
       :requestor => person,
-      :source => community,
-      :community_rating => community_rating,
+      :community_rating_id => community_rating.id,
       :organization => community
     )
 
@@ -62,13 +61,14 @@ class CommunityRatingTest < ActiveSupport::TestCase
 
     create_community_rating_comment = CreateCommunityRatingComment.create!(
       :requestor => person,
-      :source => community,
-      :community_rating => community_rating,
-      :organization => community
+      :community_rating_id => community_rating.id,
+      :organization => community,
+      :body => "sample comment"
     )
     assert_equal 1, create_community_rating_comment.status
     message = "Comment waiting for approval"
-    assert_equal message, community_rating.get_comment_message
+    comment = Comment.find_by_id(create_community_rating_comment.community_rating_comment_id)
+    assert_equal message, comment.body
   end
 
   test "Check comment message when Task status = CANCELLED" do
@@ -88,14 +88,15 @@ class CommunityRatingTest < ActiveSupport::TestCase
 
     create_community_rating_comment = CreateCommunityRatingComment.create!(
       :requestor => person,
-      :source => community,
-      :community_rating => community_rating,
-      :organization => community
+      :community_rating_id => community_rating.id,
+      :organization => community,
+      :body => "sample comment"
     )
     create_community_rating_comment.cancel
     assert_equal 2, create_community_rating_comment.status
     message = "Comment rejected"
-    assert_equal message, community_rating.get_comment_message
+    comment = Comment.find_by_id(create_community_rating_comment.community_rating_comment_id)
+    assert_equal message, comment.body
   end
 
   test "Check comment message when Task status = FINISHED" do
@@ -120,15 +121,16 @@ class CommunityRatingTest < ActiveSupport::TestCase
     create_community_rating_comment = CreateCommunityRatingComment.create!(
           :body => comment.body,
           :requestor => community_rating.person,
-          :source => community_rating.community,
-          :community_rating => community_rating,
-          :organization => community_rating.community
+          :community_rating_id => community_rating.id,
+          :organization => community_rating.community,
+          :body => "sample comment"
       )
 
     create_community_rating_comment.finish
     assert_equal 3, create_community_rating_comment.status
-    message = "regular comment"
-    assert_equal message, community_rating.get_comment_message
+    message = "sample comment"
+    comment = Comment.find_by_id(create_community_rating_comment.community_rating_comment_id)
+    assert_equal message, comment.body
   end
 
 

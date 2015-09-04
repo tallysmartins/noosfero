@@ -48,7 +48,7 @@ class CommunitiesRatingsPluginProfileControllerTest < ActionController::TestCase
     assert_equal "#{@community.name} successfully rated!", session[:notice]
 
     post :new_rating, profile: @community.identifier, :comments => {:body => "This is a test 2"}, :community_rating_value => 3
-    assert_equal "You cant vote on this community", session[:notice]
+    assert_equal "You can not vote on this community", session[:notice]
   end
 
   test "Display unavailable rating message for users that must wait the rating cooldown time" do
