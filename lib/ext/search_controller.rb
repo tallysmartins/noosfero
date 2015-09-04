@@ -3,10 +3,12 @@ require_dependency 'search_controller'
 class SearchController
 
   def communities
+    delete_communities = []
     valid_communities_string = Community.get_valid_communities_string
+    Community.all.each{|community| delete_communities << community.id unless eval(valid_communities_string)}
 
     @scope = visible_profiles(Community)
-    @scope.each{|community| @scope.delete(community) unless eval(valid_communities_string)}
+    @scope = @scope.where(["id NOT IN (?)", delete_communities]) unless delete_communities.empty?
 
     full_text_search
   end

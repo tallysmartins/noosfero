@@ -24,7 +24,8 @@ class CommunitiesBlockTest < ActiveSupport::TestCase
     @software_info = nil
   end
   should "not have community of software or institution in block" do
-    assert_equal 1, @comminities_block.profile_list.count
+    assert_includes @comminities_block.profile_list, @community
+    assert_not_includes @comminities_block.profile_list, @software_info.community
   end
 
 end
