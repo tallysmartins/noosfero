@@ -19,11 +19,11 @@
 @import url(css/article-page.css);
 @import url(css/software-pages.css);
 @import url(css/community-pages.css);
-@import url(css/use-report.css);
 @import url(css/news-page.css);
 @import url(css/search-pages.css);
 @import url(css/software-catalog-page.css);
 @import url(css/tooltip.css);
+@import url(css/popover.css);
 
 @font-face{
   font-weight: normal;
