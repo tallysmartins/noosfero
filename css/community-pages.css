@@ -9,12 +9,16 @@
 }
 
 /*** Profile info block ***/
-#content .profile-info-options{
+#content .profile-image-block .admin-link a{
+  color: #2c66ce;
+}
+
+#content .profile-image-block .profile-info-options{
   padding-right: 0;
   text-align: center;
 }
 
-#content .profile-info-options a.button.with-text{
+#content .profile-image-block .profile-info-options a.button.with-text{
   font-size: 11px;
 }
 
