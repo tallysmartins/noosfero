@@ -62,9 +62,8 @@
         </ul>
         <ul id="login-menu">
           {% if not user.is_authenticated %}
-            {% trans 'Login' as login_text %}
-            <li class="login-item"><a href="{% url 'signup' %}">{% trans "Register" %}</a></li>
-            <li class="login item last-item"><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
+            <li class="login-item"><a href="{% url 'signup' %}">Cadastre-se</a></li>
+            <li class="login item last-item"><a href="{% url 'login' %}">Entrar</a></li>
           {% else %}
             <li id="user-menu" class="login-item dropdown">
               <a href="#" class="dropdown-toggle user" data-toggle="dropdown">{% gravatar user.email %} <b class="caret"></b>&nbsp;&nbsp;</a>
@@ -96,21 +95,10 @@
         </a>
       </div>
       <div id="portal-searchbox">
-    {% comment %}
-      <form action="{% url 'haystack_search' %}" method="GET" id="search-form" class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
-        <div class="form-group">
-          <label class="sr-only" for="header-searchbox">{% trans 'Search here...' %}</label>
-          <input name="q" id="header-searchbox"
-                  class="form-control" value="{{ request.GET.q }}"
-                  type="search" placeholder="{% trans 'Search here...' %}" />
-        </div>
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-      </form>
-    {% endcomment %}
-        <form id="nolivesearchGadget_form" action="/search/">
+        <form id="nolivesearchGadget_form" action="{% url 'haystack_search' %}">
           <fieldset class="LSBox"><legend class="hiddenStructure">Buscar no portal</legend>
             <label class="hiddenStructure" for="nolivesearchGadget">Buscar no portal</label>
-            <input name="SearchableText" type="text" size="18" title="Buscar no portal" placeholder="Buscar no portal" class="searchField" id="nolivesearchGadget">
+            <input name="q" type="text" size="18" value="{{ request.GET.q }}" title="Buscar no portal" placeholder="Buscar no portal" class="searchField" id="nolivesearchGadget">
             <input class="searchButton" type="submit" value="Buscar no portal">
           </fieldset>
         </form>
@@ -147,8 +135,9 @@
     <div id="sobre">
       <ul>
         <li id="softwarepublico-groups" class="softwarepublico-item">
-          <a href="https://portal.softwarepublico.gov.br/archives/thread/" title="Groups">Groups</a>
+          <a href="{% url 'thread_list' %}" title="Groups">Grupos</a>
         </li>
+        {% plugins_menu %}
         <li id="softwarepublico-perguntas-frequentes" class="softwarepublico-item">
           <a href="/social/spb/ajuda" title="Perguntas frequentes">Perguntas frequentes</a>
         </li>
