@@ -48,7 +48,7 @@ class CommunitiesRatingsPluginProfileController < ProfileController
 
     if rating.save
       create_rating_comment(rating)
-      session[:notice] = _("#{profile.name} successfully rated!")
+      session[:notice] = _("%s successfully rated!") % profile.name
     else
       session[:notice] = _("Sorry, there were problems rating this profile.")
     end

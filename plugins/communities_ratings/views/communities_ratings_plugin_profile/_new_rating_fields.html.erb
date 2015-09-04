@@ -57,7 +57,7 @@
 
     <% elsif environment.communities_ratings_vote_once %>
       <div class="star-rate-form rating-vote-once">
-        <%= _("Hi, #{current_user.name}! The administrators set that you can vote") %>
+        <%= _("Hi, %s! The administrators set that you can vote") % current_user.name %>
 
         <strong><%= 'only once' %></strong>
 
@@ -66,7 +66,7 @@
       </div>
     <% else %>
       <div class="star-rate-form rating-cooldown">
-        <%= _("Hi, #{current_user.name}! The administrators set the minimum time of") %>
+        <%= _("Hi, %s! The administrators set the minimum time of") % current_user.name %>
         <strong><%= _("%s hour(s)" % environment.communities_ratings_cooldown) %></strong>
         <%= _("between each evaluation.") %>
 
