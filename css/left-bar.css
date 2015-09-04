@@ -139,6 +139,10 @@
 /*** END OF WARNING - WITH BOX-4 ***/
 
 /*** Statistics block **/
+.template-default #content .box-2 .statistics-block {
+  padding: 10px 0px 10px 10px
+}
+
 .statistics-block-data ul {
   margin-top: 10px;
 }
