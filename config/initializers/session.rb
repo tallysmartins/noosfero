@@ -1,4 +1,5 @@
 ActionDispatch::Reloader.to_prepare do
-  ActiveRecord::SessionStore.session_class = Session
+  require_relative '../../app/models/session'
+  ActiveRecord::SessionStore.session_class = Session.class
 end
 
