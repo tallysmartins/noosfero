@@ -224,21 +224,21 @@
 /*** WARNING - WHITOUT BOX-4 ***/
 
 /* Link-list block */
-.template-leftbar #content .box-3 .block-title {
+.template-default #content .box-3 .block-title {
   border-top: 4px solid #4562b1;
   line-height: 15px;
   background: #eee;
   color: #4562b1;
 }
 
-.template-leftbar #content .box-3 .link-list-block li {
+.template-default #content .box-3 .link-list-block li {
   margin: 0px;
   padding: 0px;
   border-bottom: 1px solid #ddd;
   border-top: none;
 }
 
-.template-leftbar #content .box-3 .link-list-block li a {
+.template-default #content .box-3 .link-list-block li a {
   border-right: none;
   border-top: 0px solid #64946E;
   border-radius: 0px 0px 0px 0px;
@@ -252,21 +252,21 @@
   font-size: 14px;
 }
 
-.template-leftbar #content .box-3 .link-list-block h3.empty + ul {
+.template-default #content .box-3 .link-list-block h3.empty + ul {
   border-top: 1px solid #ddd;
 }
 
-.template-leftbar #content .box-3 .link-list-block li a.link-this-page,
-.template-leftbar #content .box-3 .link-list-block li a.link-this-page:hover {
+.template-default #content .box-3 .link-list-block li a.link-this-page,
+.template-default #content .box-3 .link-list-block li a.link-this-page:hover {
   border-right: none;
 }
 
-.template-leftbar #content .box-3 .link-list-block li a:hover {
+.template-default #content .box-3 .link-list-block li a:hover {
   background-color: #FFFFFF;
   color: #000;
 }
 
-.template-leftbar #content .box-3 .link-list-block li a.link-this-page {
+.template-default #content .box-3 .link-list-block li a.link-this-page {
   margin-left: 0px;
   width: auto;
   background-color: #ffffff;
@@ -274,9 +274,9 @@
 }
 
 /* Repository block */
-.template-leftbar .box-3 #bt_repositorio,
-.template-leftbar .box-3 #bt_repositorio:active,
-.template-leftbar .box-3 #bt_repositorio:visited {
+.template-default .box-3 #bt_repositorio,
+.template-default .box-3 #bt_repositorio:active,
+.template-default .box-3 #bt_repositorio:visited {
   border-radius: 4px;
   padding: 12px 10px;
   background: #EAEBEE;
@@ -286,7 +286,7 @@
   position: relative;
 }
 
-.template-leftbar .box-3 #bt_repositorio::after {
+.template-default .box-3 #bt_repositorio::after {
   margin-top: -2px;
   padding: 4px 0px 4px 2px;
   border-radius: 4px;
@@ -301,7 +301,7 @@
   content: url('../images/right-arrow.png');
 }
 
-.template-leftbar .box-3 #content #bt_repositorio:hover {
+.template-default .box-3 #content #bt_repositorio:hover {
   color: #FFF;
   background: #2C66CE;
   text-decoration: none;
@@ -314,7 +314,7 @@
 
 /*
     This part of the code is duplicated because, if there is
-    a change of layout from template-leftbar to lefttopright
+    a change of layout from template-default to lefttopright
     the CSS fit without many complication.
  */
 
