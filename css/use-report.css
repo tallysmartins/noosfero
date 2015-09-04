@@ -1,0 +1,56 @@
+/*** Profile homepage ***/
+
+/* Ratings Header */
+.profile-homepage #content .community-average-rating-container{
+  margin-top: 21px;
+  overflow: auto;
+}
+
+.profile-homepage #content .community-average-rating-container .star-rate-text{
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  margin-right: 5px;
+  padding: 4px 0px 0px 3px;
+}
+
+.profile-homepage #content .community-average-rating-container .star-container{
+  margin-top: 2px;
+}
+
+.profile-homepage #content .community-average-rating-container .rate-this-community{
+  font-size: 14px;
+  text-decoration: underline;
+  margin: 4px 0px 0px 6px;
+  padding: 0px 0px 0px 15px;
+}
+
+.profile-homepage #content .community-average-rating-container .rate-this-community a{
+  color: #2c66ce;
+}
+
+.profile-homepage #content .community-average-rating-container .star-container .medium-star-negative,
+.profile-homepage #content .community-average-rating-container .star-container .medium-star-positive{
+  margin-right: 3px;
+}
+
+/* Use report list */
+
+.profile-homepage #content .communities-ratings-block .ratings-title .block-title {
+  background: none;
+  border-bottom: 1px solid #D3D6DE;
+  border-top: none;
+  color: #172738;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  margin-bottom: 0px;
+  padding: 0px 0px 12px 4px;
+}
+
+.profile-homepage #content .communities-ratings-block .ratings-list .make-report-block {
+  background-repeat: no-repeat;
+  border-bottom: 1px solid #D3D6DE;
+  border-top: none;
+  margin-top: 0px;
+  padding-top: 32px;
+}
