@@ -13,7 +13,7 @@
 /* WARNING:
  *   This solution is TEMPORARY. This informations shouldn't exist
  *   in this area.
- *   
+ *
  *   TODO: Remove this informations of the html and, then, from here.
  */
 #content .blog #article-header .publishing-info .date,
@@ -63,7 +63,7 @@
 /* WARNING:
  *   This solution is TEMPORARY. This informations shouldn't exist
  *   in this area.
- *   
+ *
  *   TODO: Remove this informations of the html and, then, from here.
  */
 #content .blog .blog-post .author {
@@ -100,7 +100,7 @@
 /* WARNING:
  *   This solution is TEMPORARY. This informations shouldn't exist
  *   in this area.
- *   
+ *
  *   TODO: Remove this informations of the html and, then, from here.
  *   The correct is the text is sensitive to lead to the complete text.
  */
@@ -142,9 +142,9 @@
 #content .blog .page-1 .position-3,
 #content .blog .page-1 .position-4 {
   margin: 0px 0px 0px 0px;
-  padding: 20px 30px 45px 0px;
+  padding: 20px  21px 45px 0px;
   height: 235px;
-  width: 30.5%; 
+  width: 30.5%;
   display: block;
   float: left;
 }
