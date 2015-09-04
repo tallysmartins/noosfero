@@ -2,12 +2,12 @@
 from django.test import TestCase, Client
 
 
-class ColabSPB(TestCase):
+class SPBTest(TestCase):
 
     fixtures = ['colab_spb.json']
 
     def setUp(self):
-        super(ColabSPB, self).setUp()
+        super(SPBTest, self).setUp()
         self.client = Client()
 
     def tearDown(self):

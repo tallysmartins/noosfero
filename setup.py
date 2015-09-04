@@ -1,55 +1,38 @@
-import codecs
-import os
-import re
+#!/usr/bin/env python
+"""
+colab-spb plugin
+=================
 
-from setuptools import setup
+A SPB plugin for Colab
+"""
+from setuptools import setup, find_packages
 
-# if you are not using vagrant, just delete os.link directly,
-# The hard link only saves a little disk space, so you should not care
-if os.environ.get('USER', '') == 'vagrant':
-    del os.link
+install_requires = ['colab', 'colab_noosfero', 'colab_gitlab']
 
-
-def read(*parts):
-    return codecs.open(os.path.join(os.path.dirname(__file__), *parts),
-                       encoding='utf8').read()
-
-
-def find_version(*file_paths):
-    version_file = read(*file_paths)
-    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
-                              version_file, re.M)
-    if version_match:
-        return version_match.group(1)
-    raise RuntimeError("Unable to find version string.")
-
+tests_require = [ ]
 
 setup(
-    name='colab_spb',
-    url='https://github.com/colab/colab-spb',
-    description='Yet another Django reverse proxy application.',
-    version=find_version('colab_spb/__init__.py'),
-    long_description=read('README.rst'),
-    packages=['colab_spb'],
-    install_requires=[
-        'colab',
-    ],
-    tests_require=['mock'],
-    test_suite="tests.run.runtests",
+    name='colab-spb',
+    version='0.1.0',
     author='Macartur Sousa',
     author_email='macartur.sc@gmail.com',
-    license='GPL 3.0',
+    url='https://portal.softwarepublico.gov.br/gitlab/softwarepublico/colab-spb-plugin/',
+    description='A Brazilian Public Software(Software Publico Brasileiro) plugin for Colab',
+    long_description=__doc__,
+    license='GPLv3',
+    package_dir={'':'src'},
+    packages=find_packages('src'),
+    zip_safe=False,
+    install_requires=install_requires,
+    test_suite="tests.runtests.run",
+    tests_require=tests_require,
+    extras_require={'test':tests_require},
+    include_package_data=True,
     classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
+        'Intended Audience :: System Administrators',
         'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
-        'Topic :: Internet :: WWW/HTTP',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        'Topic :: Internet :: WWW/HTTP :: WSGI',
+        'Topic :: Software Development'
     ],
 )

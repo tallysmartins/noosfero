@@ -7,9 +7,9 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gitlab', '0001_initial'),
+        ('colab_gitlab', '0001_initial'),
+        ('colab_noosfero', '0001_initial'),
         ('super_archives', '0002_mailinglist_is_private'),
-        ('noosfero', '0001_initial'),
     ]
 
     operations = [
@@ -17,8 +17,8 @@ class Migration(migrations.Migration):
             name='CommunityAssociations',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('community', models.ForeignKey(to='noosfero.NoosferoCommunity', null=True)),
-                ('group', models.ForeignKey(to='gitlab.GitlabGroup', null=True)),
+                ('community', models.ForeignKey(to='colab_noosfero.NoosferoCommunity', null=True)),
+                ('group', models.ForeignKey(to='colab_gitlab.GitlabGroup', null=True)),
                 ('mail_list', models.ForeignKey(to='super_archives.MailingList', null=True)),
             ],
             options={
