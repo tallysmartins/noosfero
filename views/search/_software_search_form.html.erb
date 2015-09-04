@@ -12,10 +12,10 @@
       <%= hidden_field_tag :filter, params[:filter] %>
 
       <%= labelled_radio_button _('Public Software'), :software_type, 'public_software', @public_software_selected, :id => "public_software_radio_button", :class => "project-software" %>
-      <span class"doubts-catalog-software" title="<%= _('Public Software.') %>">?</span>
+      <span class="doubts-catalog-software" title="<%= _('Public Software.') %>">?</span>
 
       <%= labelled_radio_button _('All'), :software_type, 'all', @all_selected, :id => "all_radio_button", :class => "project-software" %>
-      <span class"doubts-catalog-software" title="<%= _('All.') %>">?</span>
+      <span class="doubts-catalog-software" title="<%= _('All.') %>">?</span>
 
       <div class="search-field">
         <span class="formfield">
