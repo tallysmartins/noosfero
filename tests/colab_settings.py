@@ -1,9 +1,9 @@
 
-## Set to false in production
+# Set to false in production
 DEBUG = True
 TEMPLATE_DEBUG = False
 
-## System admins
+# System admins
 ADMINS = [['John Foo', 'john@example.com'], ['Mary Bar', 'mary@example.com']]
 
 MANAGERS = ADMINS
@@ -19,15 +19,15 @@ SECRET_KEY = 'not-a-secret'
 
 ALLOWED_HOSTS = [
     'localhost',
-#    'example.com',
-#    'example.org',
-#    'example.net',
+    # 'example.com',
+    # 'example.org',
+    # 'example.net',
 ]
 
-### Uncomment to enable social networks fields profile
+# Uncomment to enable social networks fields profile
 SOCIAL_NETWORK_ENABLED = True
 
-## Disable indexing
+# Disable indexing
 ROBOTS_NOINDEX = True
 
 LOGGING = {
