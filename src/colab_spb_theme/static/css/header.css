@@ -250,8 +250,11 @@ fieldset, .editionComment {
 
 #sobre a {
     color: #2C65CD;
-    /*font-size: 1.2em;*/
     font-size: 1.4em;
+}
+
+#sobre a .caret {
+    border-top: 4px dashed #2C65CD;
 }
 
 #sobre .softwarepublico-item a {
