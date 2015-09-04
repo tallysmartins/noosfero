@@ -28,11 +28,14 @@ class Community
 
   def self.get_valid_communities_string
     remove_of_communities_methods = Community.instance_methods.select{|m| m =~ /remove_of_community_search/}
-    valid_communities_string = ""
+    valid_communities_string = "!("
     remove_of_communities_methods.each do |method|
-      valid_communities_string += "!community.send('#{method}') && "
+      valid_communities_string += "community.send('#{method}') || "
     end
-    valid_communities_string[0..-5]
+    valid_communities_string = valid_communities_string[0..-5]
+    valid_communities_string += ")"
+
+    valid_communities_string
   end
 
   def software?
