@@ -48,6 +48,10 @@
   text-transform: uppercase;
 }
 
+.action-search-software_infos #content .search-form .project-software {
+    margin: 0 0 0 15px;
+}
+
 /* It's TEMPORARY */
 .action-search-software_infos #content .search-form .doubts-catalog-software {
     display: none;
