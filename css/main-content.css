@@ -94,6 +94,18 @@
   text-transform: uppercase;
 }
 
+#content .button-bar a.button.with-text{
+  height: auto;
+  border: 1px solid #D3D6DE;
+  font-size: 12px;
+  line-height: normal;
+  text-transform: none;
+}
+
+#content .button-bar a.button.with-text:hover{
+  border-color: #3E67B1;
+}
+
 #content form input.button.with-text{
   height: 42px;
   max-height: 42px;
