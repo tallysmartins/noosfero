@@ -68,19 +68,20 @@
 .action-search-software_infos .search-form label, 
 .action-search-software_infos .search-form label{
   margin:0px 3px 4px 32px;
-  line-height: 23px;
-  font-size: 14px;
+  line-height: 22px;
+  font-size: 15px;
   font-family: Arial;
 }
 
 .action-search-software_infos #software-search-container .search-form .doubts-catalog-software{
   border:1px solid #3E67B1;
   border-radius:50%;
-  padding:0px 6px;
+  padding:0px 3px;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 900;
   background:#3E67B1;
   color:#fff;
+  font-family: Arial;
 
 }
 /******/
