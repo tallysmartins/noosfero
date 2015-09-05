@@ -1,5 +1,5 @@
-.ui-tooltip {
-  position: relative;
+.tooltip {
+  position: absolute;
   width: -moz-fit-content;
   width: -webkit-fit-content;
   width: fit-content;
@@ -9,11 +9,13 @@
   color: white;
   font-family: Arial, sans-serif;
   font-size: 13px;
+  border-radius: 5px;
   border: 0px !important;
   z-index: 1070;
+  margin: -10px 0;
 }
 
-.ui-tooltip-bottom:after {
+.tooltip-bottom:after {
   content: " ";
   height: 0;
   width: 0;
@@ -26,7 +28,7 @@
   border-width: 6px;
 }
 
-.ui-tooltip-top:after {
+.tooltip:after {
   content: " ";
   height: 0;
   width: 0;

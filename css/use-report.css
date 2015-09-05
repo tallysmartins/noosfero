@@ -54,3 +54,453 @@
   margin-top: 0px;
   padding-top: 32px;
 }
+
+#content #software-information-block-table {
+  width: 100%;
+}
+
+#content #software-information-block-table h1 {
+  font-size: 34px;
+}
+
+#content #software-information-block-table #col-profile-big-image {
+  padding-right: 0px;
+}
+
+#content #software-information-block-table #col-software-name {
+  padding-left: 0px;
+}
+
+
+#content .community-average-rating-container {
+  margin-top: 21px;
+  overflow: auto;
+}
+
+#content .community-average-rating-container .star-rate-text {
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  margin-right: 5px;
+  padding: 4px 0px 0px 3px;
+}
+
+#content .community-average-rating-container .star-container {
+  margin-top: 2px;
+}
+
+#content .community-average-rating-container .rate-this-community {
+  font-size: 14px;
+  text-decoration: underline;
+  margin: 4px 0px 0px 6px;
+  padding: 0px 0px 0px 15px;
+}
+
+#content .community-average-rating-container .star-container .medium-star-negative,
+#content .community-average-rating-container .star-container .medium-star-positive {
+  margin-right: 3px;
+}
+
+/*** Internal Page ***/
+
+#content .main-content .star-page-title,
+#content .main-content .star-rate-data {
+  max-width: 560px;
+}
+
+#content .main-content .star-page-title .title {
+  font-size: 34px !important;
+}
+
+#content .main-content .star-rate-data {
+  border-bottom: 1px solid #D3D6DE;
+  border-top: 1px solid #D3D6DE !important;
+  color: #172738;
+  margin-top: 16px;
+  padding: 29px 0px 21px 0px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-rate-text,
+#content .main-content .star-rate-data .star-rate-form .star-container {
+  display: inline;
+  float: left;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-container {
+  width: inherit;
+  height: 30px;
+  padding-left: 6px;
+}
+
+#content .main-content .star-rate-data .star-rate-form {
+  padding-left: 37px;
+  letter-spacing: 0.1px;
+  width: 100%;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-rate-text {
+  font-size: 14px;
+  padding-top: 4px;
+}
+
+#content .main-content .star-rate-data .star-profile-information {
+  padding-left: 15px;
+  width: 79px;
+}
+
+#content .main-content .star-rate-data .star-profile-information .star-profile-image {
+  padding-top: 1px;
+}
+
+#content .main-content .star-rate-data .star-profile-information .star-profile-image img {
+  border-radius: 4px;
+  height: 60px;
+  width: 60px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-container .star-positive,
+#content .main-content .star-rate-data .star-rate-form .star-container .star-negative {
+  display: table-cell;
+  margin-right: 0px;
+  height: 30px;
+  width: 28px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-comment-container {
+  padding-top: 23px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-comment-container .formlabel {
+  letter-spacing: -0.2px;
+  margin-bottom: 2px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-comment-container #comments_body {
+  border-radius: 4px;
+  height: 91px;
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar input {
+  background-color: #3E67B1 !important;
+  font-weight: 700;
+  height: 31px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  color: #FFF;
+  padding-top: 0;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar a {
+  display: none;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar {
+  margin-top: 0px;
+  padding-bottom: 50px;
+  padding-top: 10px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-notice {
+  display: none;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#content .star-rate-form .star-comment-container .comments-software-extra-fields {
+  overflow: auto;
+}
+
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments {
+  margin-bottom: 19px;
+  margin-top: 16px;
+}
+
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments label {
+  font-size: 12px;
+}
+
+/** TODO: fix theses rules to the forms on addtional information **/
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments input {
+  margin-top: 3px;
+  padding: 4px 3px 3px 3px;
+  width: 366px;
+  display: block;
+  height: 19px;
+  padding: 6px;
+  border: 1px solid rgb(204, 204, 204);
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  border-radius: 4px;
+  width: 384px;
+  font-size: 15px;
+  font-family: arial, helvetica;
+  color: rgb(88, 88, 88);
+}
+
+#content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-people-benefited,
+#content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values {
+  font-size: 12px;
+  float: left;
+  padding-right: 20px;
+}
+
+#content .star-rate-form .star-comment-container form .formfieldline {
+  margin-bottom: 17px;
+}
+
+#content .star-rate-form .star-comment-container .comments-display-fields {
+  border-bottom: 1px dotted #D3D6DE;
+  overflow: auto;
+}
+
+#content .star-rate-form .star-comment-container .comments-display-fields:hover span,
+#content .star-rate-form .star-comment-container .comments-display-fields:hover span:after {
+  opacity: 0.6;
+}
+
+#content .star-rate-form .star-comment-container .comments-display-fields span#comments-additional-information {
+  color: #172738;
+  display: block;
+  float: left;
+  font-size: 14px;
+  font-weight: 700;
+  padding-bottom: 4px;
+}
+
+/** TODO: ARROWS ARE NOT SHOWING **/
+#content .action-communities_ratings_plugin_profile-new_rating .star-rate-form .star-comment-container .comments-additional-information span.comments-arrow-up:after {
+  content: url('/images/top-arrow-black.png') !important;
+  float: right;
+  padding-top: 7px;
+  padding-right: 6px;
+}
+
+/** TODO: ARROWS ARE NOT SHOWING **/
+#content .star-rate-form .star-comment-container .comments-additional-information span.comments-arrow-down:after {
+  content: url('/images/bottom-arrow-black.png');
+  float: right;
+  padding-top: 7px;
+  padding-right: 6px;
+}
+
+/** TODO: fix theses rules to the forms on addtional information **/
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #comments_people_benefited,
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #comments_saved_value {
+  width: 167px;
+  padding: 4px;
+  margin-top: 4px;
+  display: block;
+  height: 19px;
+  padding: 6px;
+  border: 1px solid rgb(204, 204, 204);
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: arial, helvetica;
+  color: rgb(88, 88, 88);
+}
+
+#content .star-rate-form .star-comment-container .star-tooltip {
+  cursor: default;
+  content: '?';
+  border-radius: 90%;
+  font-size: 12px;
+  font-weight: 700;
+  background: #3867b7;
+  color: #fff;
+  margin-left: 4px;
+  padding: 0px 6px;
+}
+
+.ratings-list {
+  color: #172738;
+  font-family: Arial, Helvetica, "open_sansregular", sans-serif;
+}
+
+.ratings-list .user-rating-block {
+  border-bottom: 1px solid #D3D6DE;
+  border-top: none;
+  padding-bottom: 40px;
+  padding-top: 32px;
+  margin-top: 0px;
+}
+
+.ratings-list .star-profile-information {
+  padding: 1px 30px 0px 14px;
+  width: 99px;
+}
+
+.ratings-list .user-rating-block .star-profile-information .star-profile-name {
+  line-height: 16px;
+  width: 70px;
+}
+
+.ratings-list .star-profile-information .star-profile-image img {
+  border-radius: 4px;
+  height: 60px;
+}
+
+.ratings-list .user-rating-block .user-testimony-container {
+  width: 100%;
+}
+
+.ratings-list .user-rating-block .user-testimony-container .star-container div {
+  display: inline;
+}
+
+.ratings-list .user-rating-block .user-testimony-container .user-testimony {
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 31px;
+  min-height: 60px;
+}
+
+.star-rate-data .star-rate-form .star-comment-container .formfield textarea {
+  width: 100%;
+}
+
+.ratings-list .user-rating-block .user-testimony-container .testimony-rate-date {
+  display: block;
+  float: left;
+  padding-right: 0px;
+  width: 100px;
+}
+
+.ratings-list .star-container {
+  display: block;
+  float: right;
+  width: auto;
+}
+
+.ratings-list .star-container .small-star-positive,
+.ratings-list .star-container .small-star-negative {
+  margin-right: 3px;
+}
+
+.ratings-list .user-rating-block .user-testimony-container .testimony-rate-date {
+  display: block;
+  float: left;
+  margin-top: 2px;
+}
+
+.ratings-list .user-rating-block .user-testimony-container .additional-informations {
+  margin-top: 10px;
+}
+
+#content .ratings-title .block-title {
+  background: none;
+  border-bottom: 1px solid #D3D6DE;
+  border-top: none;
+  color: #172738;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  margin-bottom: 0px;
+  padding: 0px 0px 12px 4px;
+}
+
+.ratings-list .make-report-block {
+  background-repeat: no-repeat;
+  border-bottom: 1px solid #D3D6DE;
+  border-top: none;
+  margin-top: 0px;
+  padding-top: 32px;
+}
+
+.make-report-block .star-profile-information {
+  padding-right: 13px;
+  padding-left: 0px;
+}
+
+.make-report-block .star-profile-information .star-profile-name {
+  margin-top: 8px;
+  width: 70px;
+}
+
+.ratings-list .make-report-block .make-report-container {
+  padding-top: 2px;
+}
+
+.ratings-list .make-report-block .make-report-container .make-report-message {
+  font-size: 18px;
+}
+
+.ratings-list .make-report-block .make-report-container .button-bar {
+  padding-top: 6px;
+}
+
+.ratings-list .make-report-block .make-report-container .alert {
+  margin-top: 37px;
+  padding-left: 1px;
+}
+
+.ratings-list .make-report-block .make-report-container .button-bar a,
+.star-rate-data .rating-cooldown .button-bar a,
+.star-rate-data .rating-vote-once .button-bar a {
+  background-color: #3E67B1 !important;
+  background-image: none;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 14px;
+  font-style: normal;
+  height: 31px;
+  padding: 0px 7px 0px 7px;
+  text-transform: uppercase;
+}
+
+.star-rate-data .rating-cooldown,
+.star-rate-data .rating-vote-once {
+  font-family: Arial;
+  font-size: 18px;
+  font-style: italic;
+  word-break: break-word;
+}
+
+.star-rate-data .rating-cooldown .button-bar a.disabled-button,
+.star-rate-data .rating-vote-once .button-bar a.disabled-button {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.ratings-list .see-more {
+  border-top: none;
+}
+
+.ratings-list a.icon-arrow-right-p {
+  background: none;
+  color: #172738 !important;
+  font-family: 'Open Sans';
+  font-size: 11px;
+  float: none;
+  margin-top: 0px;
+  padding-right: 0px;
+  padding-top: 22px;
+  padding-bottom: 20px;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.ratings-list a.icon-arrow-right-p:after {
+  background-color: #3E67B1 !important;
+  border-radius: 4px;
+  content: url('images/right-arrow.png');
+  font-size: 15px;
+  line-height: 20px;
+  margin-left: 9px;
+  padding-left: 8px;
+  padding-right: 5px;
+  text-align: center;
+}

@@ -131,6 +131,7 @@ $('#link-buscar').click(function(e) {
 
   function toggleFilterOptions(){
     var filterOptions = $("#filter-categories-option");
+    var filterHeight = filterOptions[0].scrollHeight;
     var showOptions = $("#filter-option-catalog-software");
     var hideOptions = $("#filter-option-catalog-close");
     if(hideOptions.is(":visible")){
@@ -146,7 +147,7 @@ $('#link-buscar').click(function(e) {
       showOptions.hide();
       hideOptions.show();
       filterOptions.animate({
-        height: 565
+        height: filterHeight
       },500);
     }
   }
@@ -194,6 +195,8 @@ $('#link-buscar').click(function(e) {
     $('.star-tooltip').html("?");
   }
 
+  // TODO: fix calls for this function below
+  // TODO: comments-additional-information --> comments-display-fields
   function set_arrow_direction() {
     var additional_data_bar = $('#comments-additional-information');
     var arrow = $('.comments-arrow-down');
