@@ -134,6 +134,7 @@
 }
 
 .action-search-software_infos #filter-option-catalog-software {
+  cursor: pointer;
   padding: 14px;
   background-color: #D3D6DE;
   border: none;

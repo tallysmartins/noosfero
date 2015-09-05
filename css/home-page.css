@@ -18,7 +18,7 @@
 
 /* Read More pattern */
 
-.action-home-index #content .box .block-outer .read-more {
+.action-home-index #content .box .block-outer .read-more{
   border-bottom: none;
   background: #eee;
   font: normal normal normal 10px 'open_sansregular', arial, helvetica, sans-serif;
@@ -26,18 +26,18 @@
   text-align: right;
 }
 
-.action-home-index #content .box .block-outer .read-more a {
+.action-home-index #content .box .block-outer .read-more a{
   padding: 8px;
   line-height: 20px;
   color: #000000;
   display: block;
 }
 
-.action-home-index #content .box .block-outer .read-more a:hover {
+.action-home-index #content .box .block-outer .read-more a:hover{
   background: #dedede;
 }
 
-.action-home-index #content .box .block-outer .read-more a::after {
+.action-home-index #content .box .block-outer .read-more a::after{
   margin-left: 7px;
   border-radius: 4px;
   padding: 0px 5px 0px 8px;
@@ -55,13 +55,13 @@
 
 /*** Software catalog search block **/
 
-.action-home-index #content #catalogo-software-search {
+.action-home-index #content #catalogo-software-search{
   width: 100%;
   background-color: #1A397D;
   border-radius: 4px;
 }
 
-.action-home-index #content #catalogo-software-search h1 {
+.action-home-index #content #catalogo-software-search h1{
   margin: 0px 15px 10px 15px;
   border-bottom: none;
   padding: 10px 0px 0px 0px;
@@ -71,7 +71,7 @@
   text-align: left;
 }
 
-.action-home-index #content  #catalogo-software-search #search-Gadget {
+.action-home-index #content  #catalogo-software-search #search-Gadget{
   margin: 0px 15px 9px 15px;
   border: none;
   border-radius: 4px;
@@ -79,7 +79,8 @@
   width: 90%;
 }
 
-.action-home-index #content  #catalogo-software-search .searchButton-catalog {
+.action-home-index #content  #catalogo-software-search .searchButton-catalog{
+  cursor: pointer;
   margin: 0px 0px 15px 15px;
   padding: 6px 25px;
   border: 1px solid #FFFFFF;
@@ -91,7 +92,7 @@
   text-transform: uppercase;
 }
 
-.action-home-index #content  #catalogo-software-search #search-catalog-footer {
+.action-home-index #content  #catalogo-software-search #search-catalog-footer{
   border-top: 1px solid;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -99,24 +100,24 @@
   color: #FFFFFF;
 }
 
-.action-home-index #content  #catalogo-software-search #search-catalog-footer p {
+.action-home-index #content  #catalogo-software-search #search-catalog-footer p{
   margin: 0px;
   font-size: 11px;
   text-align: right;
   text-transform: uppercase;
 }
 
-.action-home-index #content  #catalogo-software-search #search-catalog-footer a {
+.action-home-index #content  #catalogo-software-search #search-catalog-footer a{
   padding: 7px 0px 12px 0px;
   color: #FFF;
   display: block;
 }
 
-.action-home-index #content #catalogo-software-search #search-catalog-footer a:hover {
+.action-home-index #content #catalogo-software-search #search-catalog-footer a:hover{
   background-color: #101A38;
 }
 
-.action-home-index #content  #catalogo-software-search #bt_catalog-search::after {
+.action-home-index #content  #catalogo-software-search #bt_catalog-search::after{
   margin: 0px 15px 0 5px;
   border-radius: 4px;
   padding: 0px 4px 0 7px;
@@ -131,12 +132,12 @@
 }
 
 /*** Softwares block **/
-.action-home-index #content .softwares-block {
+.action-home-index #content .softwares-block{
   margin: 0px;
   overflow: auto;
 }
 
-.action-home-index #content .softwares-block .block-title {
+.action-home-index #content .softwares-block .block-title{
   margin: 0px 0px 25px 0px;
   border-top: 4px solid #2c66ce;
   background: #eee;
@@ -144,17 +145,17 @@
   font-weight: 300;
 }
 
-.action-home-index #content .softwares-block .block-footer-content a {
+.action-home-index #content .softwares-block .block-footer-content a{
   display:none;
 }
 
-.action-home-index #content .software-block {
+.action-home-index #content .software-block{
   width: 145px;
   height: 218px;
   margin: 0px 18px 14px 0px;
 }
 
-.action-home-index #content .software-block .software-block-logo {
+.action-home-index #content .software-block .software-block-logo{
   border: 1px solid #ccc;
   border-radius: 8px;
   width: 140px;
@@ -165,17 +166,17 @@
   display: table-cell;
 }
 
-.action-home-index #content .software-block .software-block-logo img {
+.action-home-index #content .software-block .software-block-logo img{
   height: auto;
   max-width: 90px;
 }
 
-.action-home-index #content .software-block .software-block-info {
+.action-home-index #content .software-block .software-block-info{
   height: 85px;
   overflow: hidden;
 }
 
-.action-home-index #content .software-block .software-block-title {
+.action-home-index #content .software-block .software-block-title{
   height: 50px;
   font-weight: 300;
   font-size: 14px;
@@ -183,22 +184,22 @@
   overflow: hidden;
 }
 
-.action-home-index #content .software-block .software-block-title h3 {
+.action-home-index #content .software-block .software-block-title h3{
   margin: 10px 0px 10px 0px;
   color: #2C66CE;
   font: normal normal 300 14px 'open_sansregular', arial, helvetica, sans-serif;
 }
 
-.action-home-index #content .software-block-description {
+.action-home-index #content .software-block-description{
   display: none;
 }
 
 .action-home-index #content .software-block .software-block-finality,
-.action-home-index #content .software-block .software-block-content {
+.action-home-index #content .software-block .software-block-content{
   text-align: right;
 }
 
-.action-home-index #content .software-block .software-block-finality {
+.action-home-index #content .software-block .software-block-finality{
   border: solid 1px #D7D7D7;
   border-radius: 8px;
   width:142px;
@@ -208,7 +209,7 @@
   text-transform: uppercase;
 }
 
-.action-home-index #content .software-block .software-block-finality::after {
+.action-home-index #content .software-block .software-block-finality::after{
   margin: 0px 7px 0px 3px;
   border-radius: 4px;
   padding: 0 4px 0 7px;
@@ -221,7 +222,7 @@
   content: url('../images/right-arrow.png');
 }
 
-.action-home-index #content .software-block .software-block-finality p {
+.action-home-index #content .software-block .software-block-finality p{
   margin: 0px 0px 7px 0px;
   border-bottom: solid 1px #D7D7D7;
   padding: 12px 12px 0px 12px;
@@ -235,7 +236,7 @@
 
 /*** News block - display content block **/
 
-.action-home-index #content .display-content-block .block-title {
+.action-home-index #content .display-content-block .block-title{
   margin: 0px;
   border-top: 4px solid #643C67;
   background: #eee;
@@ -243,22 +244,22 @@
   font-weight: 300;
 }
 
-.action-home-index #content .display-content-block li {
+.action-home-index #content .display-content-block li{
   border-top: 1px solid #eee;
   padding: 15px 0px 0px 0px;
   min-height: 150px;
 }
 
-.action-home-index #content .display-content-block li:first-child  {
+.action-home-index #content .display-content-block li:first-child{
   border-top: 0px solid #eee;
 }
 
-.action-home-index #content .display-content-block .published-at {
+.action-home-index #content .display-content-block .published-at{
   padding: 0px 0px 15px 0px;
   color: #643C67;
 }
 
-.action-home-index #content .display-content-block .image {
+.action-home-index #content .display-content-block .image{
   padding-right: 25px;
   padding: 0px 25px 0px 0px;
   border: 0px solid #c0c1c1;
@@ -266,19 +267,19 @@
   display: table-cell;
 }
 
-.action-home-index #content .display-content-block .image a {
+.action-home-index #content .display-content-block .image a{
   border-radius: 8px;
   height: 90px;
   overflow: hidden;
   display: block;
 }
 
-.action-home-index #content .display-content-block .image img {
+.action-home-index #content .display-content-block .image img{
   border: 0px solid #c0c1c1;
   max-width: 150px;
 }
 
-.action-home-index #content .display-content-block .title {
+.action-home-index #content .display-content-block .title{
   margin: 2px 0px 4px 0px;
   padding-right: 0px;
   max-height: 40px;
@@ -286,42 +287,42 @@
   overflow: hidden;
 }
 
-.action-home-index #content .display-content-block .title a {
+.action-home-index #content .display-content-block .title a{
   padding: 0px;
   color: #172738;
   font: normal normal bold 16px/1.3em arial, helvetica, sans-serif;
 }
 
-.action-home-index #content .display-content-block .lead {
+.action-home-index #content .display-content-block .lead{
   max-height: 47px;
   overflow: hidden;
 }
 
-.action-home-index #content .display-content-block .lead a {
+.action-home-index #content .display-content-block .lead a{
   color: #000000;
   font: 15px/1.3em arial;
 }
 
 .action-home-index #content .display-content-block .lead a:visited,
 .action-home-index #content .lead a:visited,
-.action-home-index #content .lead dl.portlet a:visited {
+.action-home-index #content .lead dl.portlet a:visited{
   color: #172738;
 }
 
-.action-home-index #content .display-content-block .notice-info {
+.action-home-index #content .display-content-block .notice-info{
   display: table-cell;
   vertical-align: top;
 }
 
-.action-home-index #content .display-content-block .read_more {
+.action-home-index #content .display-content-block .read_more{
   display: none;
 }
 
-.action-home-index #content .display-content-block .read-more {
+.action-home-index #content .display-content-block .read-more{
   border-top: 1px solid #643C67;
 }
 
-.action-home-index #content .display-content-block .read-more a::after {
+.action-home-index #content .display-content-block .read-more a::after{
   background: #643C67;
 }
 
@@ -331,7 +332,7 @@
 
 /*** What Is block - Article block **/
 
-.template-default .action-home-index #content .box-3 .article-block .block-title {
+.template-default .action-home-index #content .box-3 .article-block .block-title{
   border-top: 4px solid #08A649;
   border-bottom: none;
   padding: 6px 8px 22px 10px;
@@ -342,20 +343,20 @@
   text-transform: none;
 }
 
-.template-default .action-home-index #content .box-3 .article-block .read-more {
+.template-default .action-home-index #content .box-3 .article-block .read-more{
   margin-top: 30px;
   border-top: 1px solid #08A649;
 }
 
-.template-default .action-home-index #content .box-3 .article-block .read-more a::after {
+.template-default .action-home-index #content .box-3 .article-block .read-more a::after{
   background: #08A649;
 }
 
-.template-default .action-home-index #content .box-3 .article-block .short-post {
+.template-default .action-home-index #content .box-3 .article-block .short-post{
   padding-top: 23px;
 }
 
-.template-default .action-home-index #content .box-3 .article-block p {
+.template-default .action-home-index #content .box-3 .article-block p{
   margin: 0px 0px 14px 0px;
   padding: 0px;
   font: 15px/18px arial, helvetica, sans-serif;
@@ -365,11 +366,11 @@
 
 /******* See As Well Block - Highlights block *******/
 
-.action-home-index #content .highlights-block .block-title {
+.action-home-index #content .highlights-block .block-title{
   display: none;
 }
 
-.action-home-index #content .highlights-border {
+.action-home-index #content .highlights-border{
   border: 1px solid #c0c1c1;
   border-radius: 8px;
   width: auto;
@@ -383,7 +384,7 @@
   background-size: 100% 100%;
 }
 
-.action-home-index #content .highlights-container {
+.action-home-index #content .highlights-container{
   border-radius: 8px;
   border-width: 0px 0px 1px 0px;
   border-bottom: none;
@@ -395,7 +396,7 @@
   top: 0;
 }
 
-.action-home-index #content .highlights-image-link {
+.action-home-index #content .highlights-image-link{
   padding: 18px 0px 0px 0px;
   border-radius: 0px 0px 8px 8px;
   width: 220px;
@@ -407,7 +408,7 @@
   max-height: 100px;
 }
 
-.action-home-index #content .highlights-label {
+.action-home-index #content .highlights-label{
   border-top: 4px solid #3b61a7;
   padding: 23px 20px 46px 20px;
   max-height: 60px;
@@ -421,13 +422,13 @@
   vertical-align: middle;
 }
 
-.action-home-index #content .highlights-block-pager {
+.action-home-index #content .highlights-block-pager{
   float: none;
   display: block;
   text-align: center;
 }
 
-.action-home-index #content .highlights-block-pager a {
+.action-home-index #content .highlights-block-pager a{
   margin: 0 4px;
   border-color: transparent;
   border-radius: 50%;
@@ -440,7 +441,8 @@
   overflow: hidden;
   display: inline-block;
 }
-.action-home-index #content .highlights-block-pager a.activeSlide {
+
+.action-home-index #content .highlights-block-pager a.activeSlide{
   border-color: transparent;
   background: #3e67b1;
   color: transparent;
@@ -449,13 +451,13 @@
 /*** software highlights block ***/
 
 .action-home-index #content a.toggle-popover,
-.action-home-index #content a.toggle-popover:hover {
+.action-home-index #content a.toggle-popover:hover{
   margin: 0 0 0 55px;
   color: #3867b7;
   cursor: pointer;
 }
 
-.action-home-index #content span.popover-span {
+.action-home-index #content span.popover-span{
   padding: 1px 6px;
   border-radius: 50%;
   background-color: #3867b7;
@@ -465,7 +467,7 @@
 }
 
 /*** mais software block **/
-.action-home-index #content #mais-software-block {
+.action-home-index #content #mais-software-block{
   margin: 11px 0px;
   border: 1px solid #c0c1c1;
   border-radius: 8px;
@@ -475,7 +477,7 @@
   font: 14px arial;
 }
 
-.action-home-index #content #mais-software-block #sbp-information-softwares h2 {
+.action-home-index #content #mais-software-block #sbp-information-softwares h2{
   margin: 10px 0px 0px 0px;
   padding: 0px 0px 17px 15px;
   border-bottom: 1px solid #c0c1c1;
@@ -485,29 +487,29 @@
   text-transform: uppercase;
 }
 
-.action-home-index #content #mais-software-block #list-categories {
+.action-home-index #content #mais-software-block #list-categories{
   margin: 14px 14px 14px 14px;
 }
 
-.action-home-index #content #mais-software-block #list-categories p {
+.action-home-index #content #mais-software-block #list-categories p{
   margin: 0 0 16px 0;
   color: #464A55;
 }
 
-.action-home-index #content #mais-software-block #list-categories ul li {
+.action-home-index #content #mais-software-block #list-categories ul li{
   margin: 18px 5px 5px 5px;
 }
 
-.action-home-index #content #mais-software-block #list-categories li a {
+.action-home-index #content #mais-software-block #list-categories li a{
   color: #335277;
   font-weight: bold;
 }
 
-.action-home-index #content #mais-software-block #list-categories a:hover {
+.action-home-index #content #mais-software-block #list-categories a:hover{
   text-decoration: none;
 }
 
-.action-home-index #content #mais-software-block #footer-mais-software {
+.action-home-index #content #mais-software-block #footer-mais-software{
   margin: 0px;
   border-top: 1px solid #c0c1c1;
   padding: 10px 10px 0px 3px;
@@ -516,7 +518,7 @@
   text-transform: uppercase;
 }
 
-.action-home-index #content #mais-software-block #footer-mais-software a {
+.action-home-index #content #mais-software-block #footer-mais-software a{
   color: #464A55;
 }
 
