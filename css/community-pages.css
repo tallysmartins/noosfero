@@ -1,5 +1,445 @@
 /*** Right bar ***/
 
+/*** Home page - profile page ***/
+
+/* Profile header */
+.profile-type-is-community .action-profile-index #content .main-block h1 {
+  color: #172738;
+  border-bottom: none;
+  font-size: 2.3em;
+  font-weight: bold;
+  font-variant: normal;
+  font-family: Arial, open_sansbold, Helvetica, sans-serif;
+}
+
+/* Search form - need to develop solution - hidden on profile page*/
+.profile-type-is-community .action-profile-index #public-profile-search{
+  display: none;
+}
+
+.action-profile-index .main-block #public-profile-search, 
+.action-profile-index .main-block #profile-search-results form, 
+.action-profile-index .main-block .profile-search-block form {
+  background-color: transparent;
+}
+
+.action-profile-index .main-block #public-profile-search .search-field .formfield {
+  float: left;
+  margin-right: 0.5em;
+}
+
+.action-profile-index .main-block #public-profile-search .search-field .formfield input {
+  margin-top: 0px;
+  margin-right: 0.5em;
+  padding: 6px;
+  height: 19px;
+  max-height: 19px;
+  border: 1px solid #D3D6DE;
+  border-radius: 4px;
+}
+
+.action-profile-index .main-block #public-profile-search .formfield input, 
+.action-profile-index .main-block #public-profile-search .formfield textarea{
+  width: 100%;
+  background: none #FFFFFF;
+  color: #585858;
+  border: 1px solid #DDDDDD;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+.action-profile-index .main-block #public-profile-search form input.button.submit {
+  height: 32px;
+  margin-top: 8px;
+  padding: 5px 15px;
+  color: #ffffff;
+  background: #2B51A8;
+  border-radius: 4px;
+  border: 1px solid #2B51A8;
+  font-size: 14px;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+/* Profile tab */
+.profile-type-is-community .action-profile-index .profile{
+  display: none;
+}
+
+#block-community-tabs{
+  font-family: Arial;
+}
+
+#block-community-tabs .ui-corner-all{
+  overflow: visible;
+}
+
+#content #block-community-tabs .iu-widget{
+  font-size: 0px ;
+}
+
+#block-community-tabs .ui-widget-header{
+  background:#ECEDF1;
+  border:none;
+  border-bottom: 3px solid #D3D6DE;
+}
+
+#block-community-tabs .ui-widget-content{
+  border:none;
+  background:none;
+}
+
+#block-community-tabs .ui-corner-all{
+  border-radius:0px;
+}
+
+#block-community-tabs .ui-state-default
+#block-community-tabs .ui-widget-content .ui-state-default,
+#block-community-tabs .ui-widget-header .ui-state-default{
+  border:none;
+  background:#ECEDF1;
+  font-weight: normal;
+  color:#172738;
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-nav{
+  font-size: 15px;
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-nav .ui-tabs-anchor{
+  float:none;
+  display:table;
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-panel{
+  padding: 0px;
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-nav li a:visited{
+  color:#172738;
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-nav li{
+  padding-right: 3px;
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active{
+  margin-bottom: -3px !important;
+  padding-bottom: 1px;
+  border-bottom: 3px solid #FF0366; 
+}
+
+#block-community-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active.ui-state-active:before{
+  content:"\f0dd";
+  font-family: FontAwesome;
+  font-size: 16px;
+  position:absolute;
+  top:26px;
+  margin:0px 45%;
+  color:#FF0366;
+}
+#block-community-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active a{
+  color: #FF0366;
+  font-weight: 700;
+}
+
+/********************************************/
+/***abas da area de comunidade******/
+
+#content #discussions-content{
+  color:#172738;
+}
+
+#content #discussions-content .pull-left{
+  float:none;
+}
+
+#content #discussions-content{
+  font-family: Arial;
+  font-size: 14px;
+}
+
+#content #discussions-content .message-discussion{
+  border-bottom: 1px solid #ECEDF1;
+  margin:0px 0px 8px 0px;
+  padding:10px 0px 18px 0px;
+}
+
+/*#content #discussions-content .message-discussion .subject{
+  display: block;
+  float: left;
+  padding-top:3px; 
+}*/
+
+#content #discussions-content .message-discussion .quiet:last-child{
+  font-size: 16px;
+  max-height: 50px;
+  overflow: hidden;
+}
+
+/*#content #discussions-content .message-discussion:last-child{
+  border-bottom: 1px solid #ECEDF1;
+}*/
+
+/*#content #discussions-content .row{
+  width: 520px;
+}*/
+
+#content #discussions-content h4{
+  font-size: 22px;
+  border-bottom: 1px solid #ECEDF1;
+  padding: 8px 0px 6px 0px;
+}
+
+#discussions-content hr{
+  display: none;
+}
+
+#discussions-content .quiet{
+  line-height: 21px;
+}
+
+#discussions-content div.quiet:last-child{
+  border-top:none;
+}
+
+#discussions-content .text-right{
+  padding:6px 0px 25px 0px;
+}
+
+#discussions-content .text-right a{
+  text-align: right;
+  display: block;
+  text-transform: uppercase;
+  line-height: 21px;
+  font-size: 11px;
+}
+
+#discussions-content .text-right a:visited,
+#content #discussions-content .text-right a:visited,
+#discussions-content .text-right dl.portlet a:visited{
+  color: #172738;
+}
+
+#discussions-content .text-right a::after {
+  content: "\f105";
+  font-family: FontAwesome;
+  padding-left: 7px;
+  padding-right: 4px;
+  color: #ffffff;
+  background: #3E67B1;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  margin-left: 5px;
+  position: relative;
+  top: 2px;
+}
+
+#content #discussions-content .pull-left a{
+  color:#3E67B1;
+  font-weight: 600;
+}
+
+#content #discussions-content .subject{
+  font-weight: 800;
+  font-size: 16px
+}
+
+#repository-feed-tab .event-inline.event-item{
+  border-bottom: 1px solid #ECEDF1;
+  margin-top:30px;
+  padding: 0px 0px 80px 0px;
+}
+
+#repository-feed-tab .event-inline.event-item img{
+  display: none;
+}
+
+#repository-feed-tab .event-item-timestamp{
+  border-right: 1px dotted #D3D6DE;
+  float:left;
+  width: 112px;
+  height: 55px;
+  margin-right: 20px;
+}
+#repository-feed-tab .event-item-timestamp .time_ago{
+  color:#172738;
+}
+
+#repository-feed-tab .event-item-timestamp .time_ago:before{
+  content: url("../images/ic-calendar.png");
+  margin-right: 10px;
+  margin-top: 0px;
+  float: left;
+}
+
+#repository-feed-tab .event-title{
+  max-height: 55px;
+  overflow: hidden;
+  float:left;
+  width: 70%;
+  font-size: 16px;
+}
+
+#content #repository-feed-tab .author_name{
+  display: block;
+  padding-bottom: 5px;
+  font-size: 12px;
+}
+
+#content #repository-feed-tab .author_name a{
+  color:#3E67B1;
+}
+
+#repository-feed-tab .see-more-repository{
+  text-align: right;
+  display: block;
+  text-transform: uppercase;
+  line-height: 21px;
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+#repository-feed-tab .see-more-repository:after{
+  content: "\f105";
+  font-family: FontAwesome;
+  padding-left: 7px;
+  padding-right: 4px;
+  color: #ffffff;
+  background: #3E67B1;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  margin-left: 5px;
+  position: relative;
+  top: 2px;
+}
+
+
+#repository-feed-tab .see-more-repository a:visited,
+#content #repository-feed-tab .see-more-repository a:visited,
+#repository-feed-tab .see-more-repository dl.portlet a:visited{
+  color:#172738;
+}
+/*************ABA BLOG**************/
+
+#blog-tab .blog .blog-post{
+  padding:0px 20px 5px 20px;
+  background:none;
+}
+
+#content #blog-tab .blog .blog-post h1{
+  text-align: left;
+}
+
+#blog-tab #article.blog .article-body h1{
+  padding-top:0px;
+  border-top:none;
+  width: 70%;
+  padding-left:175px;
+}
+
+#blog-tab .odd-post-inner.blog-post-inner,
+#blog-tab .even-post-inner.blog-post-inner{
+  border-bottom: 1px solid #ECEDF1;
+  padding:15px 0px 10px 0px;
+}
+
+#content #blog-tab .blog .blog-post.position-1 h1{
+  line-height: 37px;
+  font-size: 34px;
+  color: #172738;
+  padding-left:0px;
+}
+#content #blog-tab .blog .blog-post.position-1 .date{
+  padding-left:0px;
+}
+#content #blog-tab .blog .blog-post.position-1 .article-compact-image{
+  position:relative;
+  padding-right: 0px;
+  margin-top: 0px; /*temporario*/
+}
+
+#content #blog-tab .blog .blog-post.position-1 .article-compact-abstract-with-image{
+  width: 100%;
+  margin-left: 0px;
+}
+
+#blog-tab .blog .blog-post.position-1{
+  padding-right: 0px;
+
+}
+
+#content #blog-tab .blog .publishing-info .date{
+  width: 70%;
+  padding-left:180px;
+}
+
+#content #blog-tab .blog .publishing-info .author{
+  display: none;
+}
+
+#content #blog-tab .blog .publishing-info .comments{
+  display: none;
+}
+#content #blog-tab .blog .blog-post .article-compact-image{
+  position:absolute;
+  margin-top:-51px; /*provisorio*/
+  text-align: left;
+}
+
+#content #blog-tab .blog .blog-post .zoomable-image{
+  width: 200px !important;
+  height: auto !important;
+}
+
+#content #blog-tab .blog .blog-post .article-compact-abstract-with-image{
+  margin-left: 180px;
+}
+
+/*leia mais*/
+#content #blog-tab .blog .read-more{
+  text-align: right;
+  display: block;
+  text-transform: uppercase;
+  line-height: 21px;
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+#content #blog-tab .blog .read-more:after{
+  content: "\f105";
+  font-family: FontAwesome;
+  padding-left: 7px;
+  padding-right: 4px;
+  color: #ffffff;
+  background: #3E67B1;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  margin-left: 5px;
+  position: relative;
+  top: 2px;
+}
+#content #blog-tab .blog .read-more a{
+  text-decoration: none;
+}
+
+/* Software Tab Data - Need to develop solution - Only display on profile page */
+
+.profile-type-is-community #content .software-tab-data-block{
+  display: none;
+}
+
+.profile-type-is-community .action-profile-index #content .software-tab-data-block{
+  display: block;
+}
+
+
 /* Members block */
 
 #content .members-block{
@@ -193,120 +633,6 @@ padding: 0px;
 
 #content .profile-image-block .profile-info-options a.button.with-text:hover{
   border-color: #3E67B1;
-}
-
-/* Search form - need to develop solution - hidden on profile page*/
-.profile-type-is-community .action-profile-index #public-profile-search{
-  display: none;
-}
-
-.action-profile-index .main-block #public-profile-search, 
-.action-profile-index .main-block #profile-search-results form, 
-.action-profile-index .main-block .profile-search-block form {
-  background-color: transparent;
-}
-
-.action-profile-index .main-block #public-profile-search .search-field .formfield {
-  float: left;
-  margin-right: 0.5em;
-}
-
-.action-profile-index .main-block #public-profile-search .search-field .formfield input {
-  margin-top: 0px;
-  margin-right: 0.5em;
-  padding: 6px;
-  height: 19px;
-  max-height: 19px;
-  border: 1px solid #D3D6DE;
-  border-radius: 4px;
-}
-
-.action-profile-index .main-block #public-profile-search .formfield input, 
-.action-profile-index .main-block #public-profile-search .formfield textarea{
-  width: 100%;
-  background: none #FFFFFF;
-  color: #585858;
-  border: 1px solid #DDDDDD;
-  font-size: 16px;
-  word-wrap: break-word;
-}
-
-.action-profile-index .main-block #public-profile-search form input.button.submit {
-  height: 32px;
-  margin-top: 8px;
-  padding: 5px 15px;
-  color: #ffffff;
-  background: #2B51A8;
-  border-radius: 4px;
-  border: 1px solid #2B51A8;
-  font-size: 14px;
-  line-height: 14px;
-  text-transform: uppercase;
-}
-
-/*** Profile page ***/
-
-/* Profile header */
-.profile-type-is-community .action-profile-index #content .main-block h1 {
-  color: #172738;
-  border-bottom: none;
-  font-size: 2.3em;
-  font-weight: bold;
-  font-variant: normal;
-  font-family: Arial, open_sansbold, Helvetica, sans-serif;
-}
-
-/* Profile tab */
-.profile-type-is-community .action-profile-index table.profile{
-  display: none;
-}
-
-.action-profile-index .main-block .profile .ui-tabs{
-  border: none;
-}
-
-.action-profile-index .main-block .profile .ui-tabs .ui-tabs-nav{
-  margin: 0 0 0 1em;
-  padding: 0;
-  background: none;
-  color: #172738;
-  border: 0px solid #aaaaaa;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-.action-profile-index .main-block .profile .ui-widget-content .ui-state-default, 
-.action-profile-index .main-block .profile .ui-widget-header .ui-state-default{
-  background: #d5d5d5 none;
-  color: #555555;
-  font-weight: normal;
-}
-
-.action-profile-index .main-block .profile .ui-widget-content .ui-state-active, 
-.action-profile-index .main-block .profile .ui-widget-header .ui-state-active{
-  background: #eeeff1;
-  color: #212121;
-  font-weight: normal;
-}
-
-.action-profile-index .main-block .profile .ui-tabs .ui-tabs-panel{
-  display: block;
-  padding: 1em 1.4em;
-  background-color: #eeeff1;
-  color: #777;
-  border-width: 1px;
-  font-size: 13px;
-  text-decoration: none;
-}
-
-/* Software Tab Data - Need to develop solution - Only display on profile page */
-
-.profile-type-is-community #content .software-tab-data-block{
-  display: none;
-}
-
-.profile-type-is-community .action-profile-index #content .software-tab-data-block{
-  display: block;
 }
 
 /*** Members Page ***/
