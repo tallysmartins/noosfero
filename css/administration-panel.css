@@ -135,6 +135,16 @@
 }
 
 /*** Community Admin pages ***/
+/* Homepage */
+.action-profile_editor-index #profile-editor-index h1.block-title{
+  color: #172738;
+  background-color: transparent;
+  border-bottom: none;
+  font-size: 2.3em;
+  font-weight: bold;
+  font-variant: normal;
+  font-family: Arial, open_sansbold, Helvetica, sans-serif;
+}
 
 /* Index */
 .action-cms-index .cms-articles th{
