@@ -49,6 +49,15 @@
   text-transform: uppercase;
 }
 
+.action-search-software_infos #content .search-form .project-software {
+    margin: 0 0 0 15px;
+}
+
+/* It's TEMPORARY */
+.action-search-software_infos #content .search-form .doubts-catalog-software {
+    display: none;
+}
+
 .action-search-software_infos #content .search-form .search-field .formfield {
   width: 100%;
   margin: 0;
@@ -69,7 +78,7 @@
 .action-search-software_infos #content .search-form .search-field input.button{
   padding: 0px;
   background-color: #3E67B1;
-  color: #FFF; 
+  color: #FFF;
   border: 1px solid #3E67B1;
   font-family: "open_sansbold",Arial,sans-serif;
   border-radius: 4px;
@@ -81,7 +90,7 @@
   max-height: 30px;
   margin: 14px;
   padding: 0 14px 0 14px;
-  background: #3E67B1; 
+  background: #3E67B1;
   line-height: 14px;
   border-radius: 4px;
   color: #ffffff;
@@ -125,7 +134,7 @@
 .action-search-software_infos #filter-option-catalog-software {
   padding: 14px;
   background-color: #D3D6DE;
-  border: none; 
+  border: none;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   font-size: 11px;
@@ -133,7 +142,7 @@
   text-transform: uppercase;
 }
 
-.action-search-software_infos #filter-option-catalog-close {  
+.action-search-software_infos #filter-option-catalog-close {
   padding: 7px 7px 17px 10px;
   display: none;
 }
@@ -198,7 +207,7 @@
   font-weight: normal;
 }
 
-.action-search-software_infos #filter-catalog-software .project-software span {  
+.action-search-software_infos #filter-catalog-software .project-software span {
   padding: 2px 6px;
   background: #FFF;
   color: #3E67B1;
@@ -245,7 +254,7 @@
 
 .action-search-software_infos #catalog-display-options {
   font-size: 14px;
-  font-family: Arial; 
+  font-family: Arial;
 }
 
 .action-search-software_infos #catalog-display-options  #catalog-display-options-count{
@@ -317,7 +326,7 @@
 }
 
 .action-search-software_infos #search-results .search-software-item-column-left .vcard a.profile_link{
-  float:left; 
+  float:left;
 }
 
 .action-search-software_infos #search-results .search-software-item-column-left .vcard:hover .menu-submenu-trigger {
@@ -327,7 +336,7 @@
 .action-search-software_infos #search-results .search-software-item-column-left .profile-image{
   width: 130px;
   height: 130px;
-  margin-left: 130px; 
+  margin-left: 130px;
   margin-top: 35px;
 }
 
