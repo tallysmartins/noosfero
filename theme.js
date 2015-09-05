@@ -195,6 +195,8 @@ $('#link-buscar').click(function(e) {
     $('.star-tooltip').html("?");
   }
 
+  // TODO: fix calls for this function below
+  // TODO: comments-additional-information --> comments-display-fields
   function set_arrow_direction() {
     var additional_data_bar = $('#comments-additional-information');
     var arrow = $('.comments-arrow-down');
