@@ -175,11 +175,12 @@
 
 /*** Categories and Tags block ***/
 
-#content .box-1  .categories-and-tags-block {
+#content .box-1  .categories-and-tags-block{
   border-top: 4px solid #2C4B6B; 
 }
 
-#content .box-1 .categories-and-tags-block .block-title {
+#content .box-1 .categories-and-tags-block .block-title{
+  display: inline-flex;
   margin: 13px 10px 10px 0;
   padding: 3px 0px;
   background: none;
@@ -187,19 +188,18 @@
   font-family: Arial;
   font-size: 12px;
   font-weight: 300;
-  float: left;
 }
 
-#content .box-1 .categories-and-tags-block .category_cloud {
+#content .box-1 .categories-and-tags-block .category_cloud{
+  display: inline-flex;
   margin: 13px 0 10px 0;
-  float: left;
   max-width: 87%;
 }
 
-#content .box-1 .categories-and-tags-block .category_cloud a {
+#content .box-1 .categories-and-tags-block .category_cloud a{
+  display: inline-block;
   padding: 3px 10px;
   margin: 5px;
-  float: left;
   color: #3E67B1;
   background-color: #ECEDF1;
   border: 1px solid #D3D6DE;
@@ -207,13 +207,13 @@
   font-size: 12px;
 }
 
-#content .box-1 .categories-and-tags-block .category_cloud a:hover {
+#content .box-1 .categories-and-tags-block .category_cloud a:hover{
   border-color: #3a70d1;
   background: #3a70d1;
   color: white;
 }
 
-#content .box-1 .categories-and-tags-block .category_cloud a:link {
+#content .box-1 .categories-and-tags-block .category_cloud a:link{
   text-decoration: none;
 }
 
@@ -224,21 +224,21 @@
 /*** WARNING - WHITOUT BOX-4 ***/
 
 /* Link-list block */
-.template-default #content .box-3 .block-title {
+.template-default #content .box-3 .block-title{
   border-top: 4px solid #4562b1;
   line-height: 15px;
   background: #eee;
   color: #4562b1;
 }
 
-.template-default #content .box-3 .link-list-block li {
+.template-default #content .box-3 .link-list-block li{
   margin: 0px;
   padding: 0px;
   border-bottom: 1px solid #ddd;
   border-top: none;
 }
 
-.template-default #content .box-3 .link-list-block li a {
+.template-default #content .box-3 .link-list-block li a{
   border-right: none;
   border-top: 0px solid #64946E;
   border-radius: 0px 0px 0px 0px;
@@ -252,21 +252,21 @@
   font-size: 14px;
 }
 
-.template-default #content .box-3 .link-list-block h3.empty + ul {
+.template-default #content .box-3 .link-list-block h3.empty + ul{
   border-top: 1px solid #ddd;
 }
 
 .template-default #content .box-3 .link-list-block li a.link-this-page,
-.template-default #content .box-3 .link-list-block li a.link-this-page:hover {
+.template-default #content .box-3 .link-list-block li a.link-this-page:hover{
   border-right: none;
 }
 
-.template-default #content .box-3 .link-list-block li a:hover {
+.template-default #content .box-3 .link-list-block li a:hover{
   background-color: #FFFFFF;
   color: #000;
 }
 
-.template-default #content .box-3 .link-list-block li a.link-this-page {
+.template-default #content .box-3 .link-list-block li a.link-this-page{
   margin-left: 0px;
   width: auto;
   background-color: #ffffff;
@@ -276,7 +276,7 @@
 /* Repository block */
 .template-default .box-3 #bt_repositorio,
 .template-default .box-3 #bt_repositorio:active,
-.template-default .box-3 #bt_repositorio:visited {
+.template-default .box-3 #bt_repositorio:visited{
   border-radius: 4px;
   padding: 12px 10px;
   background: #EAEBEE;
@@ -286,7 +286,7 @@
   position: relative;
 }
 
-.template-default .box-3 #bt_repositorio::after {
+.template-default .box-3 #bt_repositorio::after{
   margin-top: -2px;
   padding: 4px 0px 4px 2px;
   border-radius: 4px;
@@ -301,7 +301,7 @@
   content: url('../images/right-arrow.png');
 }
 
-.template-default .box-3 #content #bt_repositorio:hover {
+.template-default .box-3 #content #bt_repositorio:hover{
   color: #FFF;
   background: #2C66CE;
   text-decoration: none;
