@@ -49,14 +49,41 @@
   text-transform: uppercase;
 }
 
-.action-search-software_infos #content .search-form .project-software {
+/*.action-search-software_infos #content .search-form .project-software {
     margin: 0 0 0 15px;
 }
 
-/* It's TEMPORARY */
+ It's TEMPORARY 
 .action-search-software_infos #content .search-form .doubts-catalog-software {
     display: none;
+}*/
+
+/**Radio Buttons***/
+.action-search-software_infos #public_software_radio_button,
+.action-search-software_infos #all_radio_button {
+  margin:5px 4px 15px 15px;
+  line-height: 20px;
+  position:absolute;
 }
+.action-search-software_infos .search-form label, 
+.action-search-software_infos .search-form label{
+  margin:0px 3px 4px 32px;
+  line-height: 23px;
+  font-size: 14px;
+  font-family: Arial;
+}
+
+.action-search-software_infos #software-search-container .search-form .doubts-catalog-software{
+  border:1px solid #3E67B1;
+  border-radius:50%;
+  padding:0px 6px;
+  font-size: 14px;
+  font-weight: 800;
+  background:#3E67B1;
+  color:#fff;
+
+}
+/******/
 
 .action-search-software_infos #content .search-form .search-field .formfield {
   width: 100%;
@@ -101,32 +128,6 @@
 
 /* Filter options */
 
-/**radio-button***/
-#public_software_radio_button,
-#all_radio_button {
-  margin:5px 4px 15px 15px;
-  line-height: 20px;
-  position:absolute;
-}
-.search-form label, 
-.search-form label{
-  margin:0px 3px 4px 32px;
-  line-height: 23px;
-  font-size: 14px;
-  font-family: Arial;
-}
-
-#software-search-container .search-form .doubts-catalog-software{
-  border:1px solid #3E67B1;
-  border-radius:50%;
-  padding:0px 6px;
-  font-size: 14px;
-  font-weight: 800;
-  background:#3E67B1;
-  color:#fff;
-
-}
-/******/
 .action-search-software_infos #filter-catalog-software {
   background-color: #D3D6DE;
 }
