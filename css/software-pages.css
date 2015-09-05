@@ -274,6 +274,10 @@
 }
 
 /* Repository block */
+.template-default #content .box-3 .repository-block{
+  padding: 0 0 0 10px;
+}
+
 .template-default .box-3 #bt_repositorio,
 .template-default .box-3 #bt_repositorio:active,
 .template-default .box-3 #bt_repositorio:visited{
@@ -373,6 +377,10 @@
 }
 
 /* Repository block */
+.template-lefttopright #content .box-2 .repository-block{
+  padding: 0 0 0 10px;
+}
+
 .template-lefttopright .box-2 #bt_repositorio,
 .template-lefttopright .box-2 #bt_repositorio:active,
 .template-lefttopright .box-2 #bt_repositorio:visited {
