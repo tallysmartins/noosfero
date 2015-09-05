@@ -2,18 +2,15 @@
 
 /** Header's Block **/
 #content .blog #article-header h1.title {
-  margin: 0px 0px 10px 0px;
-  border: none;
-  padding: 0px 0px 0px 0px;
-  color: #FF0366;
-  text-transform: uppercase;
-  font: normal normal normal 16px/37px 'open_sansregular';
+  margin: 20px 0px 10px 0px;
+  padding: 0px 0px 10px 0px;
+  font: normal normal bold 35px/37px arial;
 }
 
 /* WARNING:
  *   This solution is TEMPORARY. This informations shouldn't exist
  *   in this area.
- *   
+ *
  *   TODO: Remove this informations of the html and, then, from here.
  */
 #content .blog #article-header .publishing-info .date,
@@ -56,10 +53,14 @@
   display: inline-block;
 }
 
+#content .blog .blog-post h1.title a {
+  color: black;
+}
+
 /* WARNING:
  *   This solution is TEMPORARY. This informations shouldn't exist
  *   in this area.
- *   
+ *
  *   TODO: Remove this informations of the html and, then, from here.
  */
 #content .blog .blog-post .author {
@@ -96,7 +97,7 @@
 /* WARNING:
  *   This solution is TEMPORARY. This informations shouldn't exist
  *   in this area.
- *   
+ *
  *   TODO: Remove this informations of the html and, then, from here.
  *   The correct is the text is sensitive to lead to the complete text.
  */
@@ -138,9 +139,9 @@
 #content .blog .page-1 .position-3,
 #content .blog .page-1 .position-4 {
   margin: 0px 0px 0px 0px;
-  padding: 20px 30px 45px 0px;
+  padding: 20px  21px 45px 0px;
   height: 235px;
-  width: 30.5%; 
+  width: 30.5%;
   display: block;
   float: left;
 }

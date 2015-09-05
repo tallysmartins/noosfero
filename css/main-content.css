@@ -1,12 +1,13 @@
 /*** Box ***/
 .box-1 .block,
 .no-boxes .block {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
-.block-outer {
-    margin-bottom: 45px;
-    clear: both;
+.box-2 .block-outer,
+.box-3 .block-outer{
+  margin-bottom: 45px;
+  clear: both;
 }
 
 /*** Block Title ***/
@@ -41,13 +42,13 @@
 #content .pagination a,
 #content .pagination em,
 #content .pagination span{
-  padding: 7px 11px 7px 11px;
+  padding: 5px 9px;
   margin-right: 4px;
   color: #172738;
   border: 1px solid #D3D6DE;
   border-radius: 4px;
   letter-spacing: 0.6px;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   text-decoration: none;
   display: inline-table;
@@ -59,13 +60,11 @@
 }
 
 #content .pagination .previous_page{
-  padding: 7px 11px 10px 11px;
   float: left;
 }
 
 #content .pagination .next_page{
   float: right;
-  padding: 7px 11px 10px 11px;
 }
 
 #content .pagination .previous_page,
@@ -80,5 +79,50 @@
   opacity: 0.5;
 }
 
+/*** Button ***/
 
+#content a.button.with-text,
+#content #article-actions a.button.with-text{
+  height: 32px;
+  padding: 5px 15px;
+  background: #FFF none;
+  color: #3E67B1;
+  border-radius: 4px;
+  border: 1px solid #3E67B1;
+  font-size: 14px;
+  line-height: 32px;
+  text-transform: uppercase;
+}
 
+#content form input.button.with-text{
+  height: 42px;
+  max-height: 42px;
+  padding: 5px 15px;
+  background: #FFF none;
+  color: #3E67B1;
+  border-radius: 4px;
+  border: 1px solid #3E67B1;
+  font-size: 14px;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
+#content a.button:hover,
+#content #article-actions a.button.with-text:hover,
+#content input.button.with-text:hover{
+  background-color: #3E67B1;
+  color: #FFF;
+}
+
+/* This is a temporary solution until noosfero deals with logged-out comments in a better manner. */
+.comment-replies .comment-logged-out .comment-text, 
+.comment-logged-out .comment-picture, 
+.comment-logged-out h4 {
+  opacity: 1.0;
+}
+
+.comment-logged-out .comment-text, 
+.comment-info {
+  color: black;
+}
+/**/

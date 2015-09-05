@@ -1,0 +1,40 @@
+.ui-tooltip {
+  position: relative;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  max-width:280px;
+  padding: 15px 10px 15px 20px;
+  background: #172638;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  border: 0px !important;
+  z-index: 1070;
+}
+
+.ui-tooltip-bottom:after {
+  content: " ";
+  height: 0;
+  width: 0;
+  margin-left: -6px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  border-bottom-color: #172638;
+  border-width: 6px;
+}
+
+.ui-tooltip-top:after {
+  content: " ";
+  height: 0;
+  width: 0;
+  margin-left: -6px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  border-top-color: #172638;
+  border-width: 6px;
+}
