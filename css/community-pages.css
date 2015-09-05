@@ -23,7 +23,7 @@
   font-size: 11px;
 }
 
-/* Search form - need to develop solution - hideen on profile page*/
+/* Search form - need to develop solution - hidden on profile page*/
 .profile-type-is-community .action-profile-index #public-profile-search{
   display: none;
 }
@@ -125,6 +125,399 @@
   display: block;
 }
 
+/*Members Page*/
+
+/*Select area*/
+
+.action-profile-members #profile-members-sort-options{
+  font-size: 14px;
+  text-align: right;
+  margin:16px 15px 17px 6px;
+  border-bottom: 1px solid #ECEDF1;
+  padding-bottom:8px;
+}
+
+.action-profile-members #profile-members-sort-options label{
+  font-weight: 700;
+  color:#172738;
+}
+
+.action-profile-members #profile-members-sort-options select{
+  background: none;
+  border: 1px solid #D3D6DE;
+  border-radius: 4px;
+  padding: 4px 15px 4px 4px;
+  margin: 0px 0px 0px 10px;
+  font-size: 14px;
+}
+/*end of select*/
+
+.action-profile-members .profile-members{
+  padding-left: 5px; /*34px;*/
+}
+
+.action-profile-members .profile-admins{
+  padding-left: 5px;
+}
+
+/* Image area*/
+.action-profile-members .box-1 .common-profile-list-block span{
+  margin-right: 9px;
+  width: 90px;
+  height: 86px;
+}
+.action-profile-members .common-profile-list-block img{
+  border-radius: 4px;
+  width: 82px;
+  height: 82px;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+/*Image hover and informations*/
+.action-profile-members .common-profile-list-block .vcard{
+  border:none;
+}
+
+.action-profile-members .common-profile-list-block .vcard:hover{
+  border:none;
+  background:none;
+}
+
+.action-profile-members .menu-submenu{
+  background:#172738;
+  border-radius: 4px;
+  /***side block position***/
+  bottom:0px;
+  right: 105%;
+  width: 131px;
+  height: 178px;
+  box-shadow: 2px 2px 2px #ECEDF1;
+  -webkit-box-shadow: 2px 2px 2px #ECEDF1;
+  -moz-box-shadow: 2px 2px 2px #ECEDF1;
+}
+
+.action-profile-members .menu-submenu.down::before {
+  content:"\f0da";
+  color:#172738;
+  font-family: FontAwesome;
+  font-size: 25px;
+  float: right;
+  position: relative;
+  margin:-7px;
+  margin-top: 30%;
+}
+
+.action-profile-members .menu-submenu-header,
+.action-profile-members .menu-submenu-content,
+.action-profile-members .menu-submenu-footer{
+  background:none;
+}
+
+.action-profile-members .menu-submenu-header,
+.action-profile-members .menu-submenu-footer{
+  display: none;
+}
+
+.action-profile-members .menu-submenu-content{
+  height: 100%;
+}
+
+.action-profile-members #content .menu-submenu-content h4{
+  color:#fff;
+  font-size: 13px;
+  background:#243F59;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom: 2px solid #FF0366;
+  text-transform: uppercase;
+  padding:8px 7px 10px 6px;
+  margin:0px 0px 2px 0px;
+  text-align: center;
+  max-height: 16px;
+  overflow: hidden;
+}
+
+.action-profile-members #content .menu-submenu-content ul a{
+  padding-left: 0px;
+}
+
+.action-profile-members #content .menu-submenu-content .menu-submenu-list .add-friend::before{
+  content:"\f067";
+  font-family: FontAwesome;
+  color:#FF0366;
+  font-size: 11px;
+  padding-right: 6px;
+}
+
+.action-profile-members #content .menu-submenu-content .menu-submenu-list .add-friend:last-child{
+  border-bottom:none;
+}
+
+.action-profile-members #content .menu-submenu-content .menu-submenu-list li a {
+  color:#fff;
+  font-family: Arial;
+  font-size: 14px;
+  border-bottom:1px dotted #2C4B6B;
+  text-align: center;
+  padding-top:8px;
+  padding-bottom:10px;
+  margin-right: 1px;
+}
+
+.action-profile-members .box-1 .common-profile-list-block span{
+  margin-right: 9px;
+  width: 90px;
+  height: 86px;
+}
+
+.action-profile-members .common-profile-list-block .vcard .menu-submenu-trigger{
+  display: block;
+  background:#172738;
+  top:5px;
+  left:4px;
+  border:1px solid #172738;
+  padding-bottom: 0px;
+  border-radius: 5px;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  height: 15px;
+}
+
+.action-profile-members .common-profile-list-block .vcard .menu-submenu-trigger::before{
+  content:"\f053";
+  color:#fff;
+  font-family: FontAwesome;
+  font-size: 10px;
+  line-height: 11px;
+}
+
+.action-profile-members .common-profile-list-block .vcard a{
+  padding-bottom: 30px;
+}
+
+.action-profile-members .box-1 .common-profile-list-block .fn{
+  font-size: 14px;
+  color:#172738;
+  margin-bottom: 27px;
+  margin-top:2px;
+  height: 35px;
+  max-height: 35px;
+  overflow: hidden;
+}
+
+/************************************************************/
+/*****title of the area members******/
+.action-profile-members #content .page-members-header{
+  font-family: Arial;
+  border-bottom: 1px solid #D3D6DE;
+  margin-bottom: 45px;
+  padding-bottom: 26px;
+  background-image: url("titulo.png");
+
+}
+
+.action-profile-members #content .page-members-header h1{
+  margin:20px 0px 8px 0px;
+}
+
+.action-profile-members #content .page-members-header h3.community-name-members{
+  font-size: 14px;
+  font-weight: 600;
+  margin:0px 0px 5px 0px;
+}
+
+.action-profile-members  #content .page-members-header a.button.with-text{
+  border:1px solid #ccc;
+  text-transform: none;
+  font-size: 12px;
+  padding:3px 15px;
+}
+
+.action-profile-members  .page-members-header .join-leave-button.require-login-popup{
+  float:left;
+  margin-right: 4px;
+}
+
+/*************************************/
+
+/*Members block*/
+
+#content .members-block{
+  border:1px solid #D3D6DE !important;
+  border-radius: 4px;
+}
+
+#content .members-block .block-title{
+  background-color:#ECEDF1;
+  border-bottom:1px solid #D3D6DE;
+  border-top:none;
+  color:#172738;
+  font-size:14px;
+  padding:12px;
+  margin-bottom:12px;
+}
+
+.members-block .block-footer-content{
+  background-color:#ECEDF1;
+  padding:8px 10px 15px 0px;
+  margin-right:0px; 
+  border-top:1px solid #D3D6DE;
+  text-align: right;
+}
+
+#content .members-block .block-footer-content a{
+  padding-right: 0px !important;
+}
+
+#content .members-block .block-footer-content a.view-all{
+  background-image:none;
+  border:none;
+  text-transform: uppercase;
+  line-height: 21px;
+}
+
+#content .members-block .block-footer-content a.view-all::after{
+  content:"\f105";
+  font-family: FontAwesome;
+  padding-left: 7px;
+  padding-right: 4px;
+  color:#ffffff;
+  background: #3E67B1;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  margin-left: 5px;
+  position: relative;
+  top: 2px;
+}
+
+.members-block .common-profile-list-block .vcard{
+  border:none;
+}
+.members-block .common-profile-list-block .vcard:hover{
+  border:none;
+  background:none;
+}
+
+#content .members-block .common-profile-list-block .vcard li a{
+  color:#172738;
+}
+
+.members-block .menu-submenu{
+  background:#172738;
+  border-radius: 4px;
+  /***side block position***/
+  bottom:-29px; 
+  right: 100%;
+  width: 131px;
+  height: 176px;
+  box-shadow: 2px 2px 2px #ECEDF1;
+  -webkit-box-shadow: 2px 2px 2px #ECEDF1;
+  -moz-box-shadow: 2px 2px 2px #ECEDF1;
+}
+
+.members-block .menu-submenu.down::before{
+  content:"\f0da";
+  color:#172738;
+  font-family: FontAwesome;
+  font-size:25px;
+  float:right;
+  position:relative;
+  margin:-7px;
+  margin-top:30%;
+}
+
+.members-block .menu-submenu-header,
+.members-block .menu-submenu-content,
+.members-block .menu-submenu-footer{
+  background:none;
+}
+
+.members-block .menu-submenu-header,
+.members-block .menu-submenu-footer{
+  display: none;
+}
+.members-block .menu-submenu-content{
+  height:100%;
+}
+
+#content .members-block .common-profile-list-block li{
+  margin:0px !important;
+}
+
+.members-block .common-profile-list-block .vcard .menu-submenu-trigger{
+  display: block;
+  background:#172738;
+  top:2px;
+  left:3px;
+  border:1px solid #fff;
+  padding-bottom: 0px;
+  opacity: 0.7;
+  height: 13px;
+}
+
+.members-block .common-profile-list-block .vcard .menu-submenu-trigger::before{
+  content:"\f053";
+  color:#fff;
+  font-family: FontAwesome;
+  font-size: 8px; 
+  line-height: 11px; 
+}
+
+#content .members-block .common-profile-list-block .fn {
+  margin-top:2px;
+  color:#172738;
+}
+
+#content .members-block .menu-submenu-content h4{
+  color: #fff;
+  font-family: Arial;
+  font-size: 13px;
+  background:#243F59;
+  border-bottom: 2px solid #FF0366;
+  text-transform: uppercase;
+  padding:8px 7px 10px 6px;
+  margin:0px 0px 2px 0px;
+  text-align: center;
+  max-height: 16px;
+  overflow: hidden;
+}
+
+#content .friends-block ul, #content .members-block ul {
+min-width: 196px;
+width: 192px;
+margin: 0px 0px 0px 0px;
+padding: 0px;
+}
+
+#content .members-block .menu-submenu-content .menu-submenu-list li a{
+  color:#fff;
+  border-bottom:1px dotted #2C4B6B;
+  text-align: center;
+}
+
+#content .members-block .menu-submenu-content h4:hover,
+#content .members-block .menu-submenu-content .menu-submenu-list li a:hover{
+  color:#ECEDF1;
+}
+
+.members-block .common-profile-list-block img{
+  border-radius: 4px;
+  max-height:50px; 
+  max-width:50px;
+  width: 50px;
+  height: 50px;
+}
+
+.members-block .block-footer-content a.view-all{
+  position:relative;
+}
+
+/*****************************************************/
+
+
 /*** Events ***/
 
 #content .article-body-event .event-card{
@@ -180,4 +573,3 @@
   font-family: Arial;
   line-height: 22px;
 }
-
