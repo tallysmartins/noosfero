@@ -33,6 +33,16 @@
   margin-right: 3px;
 }
 
+.profile-homepage #content .communities-ratings-block .button-bar a.button.with-text{
+  height: 32px;
+  padding: 0px 5px;
+  border: 1px solid #3E67B1;
+  font-family: 'open_sansbold';
+  font-size: 14px;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
 /* Use report list */
 
 .profile-homepage #content .communities-ratings-block .ratings-title .block-title {
@@ -48,11 +58,12 @@
 }
 
 .profile-homepage #content .communities-ratings-block .ratings-list .make-report-block {
+  margin-top: 0px;
+  padding-top: 32px;
   background-repeat: no-repeat;
   border-bottom: 1px solid #D3D6DE;
   border-top: none;
-  margin-top: 0px;
-  padding-top: 32px;
+  font-family: Arial;
 }
 
 #content #software-information-block-table {
@@ -108,12 +119,12 @@
 }
 
 #content .main-content .star-page-title .title {
-  font-size: 34px !important;
+  font-size: 34px;
 }
 
 #content .main-content .star-rate-data {
   border-bottom: 1px solid #D3D6DE;
-  border-top: 1px solid #D3D6DE !important;
+  border-top: 1px solid #D3D6DE;
   color: #172738;
   margin-top: 16px;
   padding: 29px 0px 21px 0px;
@@ -132,7 +143,7 @@
 }
 
 #content .main-content .star-rate-data .star-rate-form {
-  padding-left: 37px;
+  padding: 0 37px;
   letter-spacing: 0.1px;
   width: 100%;
 }
@@ -155,6 +166,14 @@
   border-radius: 4px;
   height: 60px;
   width: 60px;
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-container .star-positive {
+  background-image: url('../images/star-positive-big.png');
+}
+
+#content .main-content .star-rate-data .star-rate-form .star-container .star-negative {
+  background-image: url('../images/star-negative-big.png');
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-container .star-positive,
@@ -186,7 +205,7 @@
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar input {
-  background-color: #3E67B1 !important;
+  background-color: #3E67B1;
   font-weight: 700;
   height: 31px;
   margin-top: 10px;
@@ -225,14 +244,13 @@
   font-size: 12px;
 }
 
-/** TODO: fix theses rules to the forms on addtional information **/
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments input {
-  margin-top: 3px;
-  padding: 4px 3px 3px 3px;
-  width: 366px;
   display: block;
   height: 19px;
+  width: 335px;
   padding: 6px;
+  margin-top: 3px;
+  color: rgb(88, 88, 88);
   border: 1px solid rgb(204, 204, 204);
   border-image-source: initial;
   border-image-slice: initial;
@@ -240,17 +258,19 @@
   border-image-outset: initial;
   border-image-repeat: initial;
   border-radius: 4px;
-  width: 384px;
   font-size: 15px;
-  font-family: arial, helvetica;
-  color: rgb(88, 88, 88);
+  font-family: Arial, helvetica;
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-people-benefited,
-#content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values {
+#content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values{
   font-size: 12px;
   float: left;
-  padding-right: 20px;
+  padding-right: 10px;
+}
+
+#content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values{
+  padding-right: 0px;
 }
 
 #content .star-rate-form .star-comment-container form .formfieldline {
@@ -276,30 +296,26 @@
   padding-bottom: 4px;
 }
 
-/** TODO: ARROWS ARE NOT SHOWING **/
-#content .action-communities_ratings_plugin_profile-new_rating .star-rate-form .star-comment-container .comments-additional-information span.comments-arrow-up:after {
-  content: url('/images/top-arrow-black.png') !important;
+.action-communities_ratings_plugin_profile-new_rating #content .star-rate-form .star-comment-container .comments-display-fields .comments-arrow-up::after {
+  content: url('../images/top-arrow-black.png');
   float: right;
   padding-top: 7px;
   padding-right: 6px;
 }
 
-/** TODO: ARROWS ARE NOT SHOWING **/
-#content .star-rate-form .star-comment-container .comments-additional-information span.comments-arrow-down:after {
-  content: url('/images/bottom-arrow-black.png');
+.action-communities_ratings_plugin_profile-new_rating #content .star-rate-form .star-comment-container .comments-display-fields .comments-arrow-down::after{
+  content: url('../images/bottom-arrow-black.png');
   float: right;
   padding-top: 7px;
   padding-right: 6px;
 }
 
-/** TODO: fix theses rules to the forms on addtional information **/
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #comments_people_benefited,
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #comments_saved_value {
-  width: 167px;
-  padding: 4px;
-  margin-top: 4px;
   display: block;
   height: 19px;
+  width: 155px;
+  margin-top: 4px;
   padding: 6px;
   border: 1px solid rgb(204, 204, 204);
   border-image-source: initial;
@@ -309,7 +325,7 @@
   border-image-repeat: initial;
   border-radius: 4px;
   font-size: 15px;
-  font-family: arial, helvetica;
+  font-family: Arial, helvetica;
   color: rgb(88, 88, 88);
 }
 
@@ -435,6 +451,8 @@
 }
 
 .ratings-list .make-report-block .make-report-container .make-report-message {
+  font-family: Arial;
+  font-weight: 300;
   font-size: 18px;
 }
 
@@ -450,9 +468,9 @@
 .ratings-list .make-report-block .make-report-container .button-bar a,
 .star-rate-data .rating-cooldown .button-bar a,
 .star-rate-data .rating-vote-once .button-bar a {
-  background-color: #3E67B1 !important;
+  background-color: #3E67B1;
   background-image: none;
-  color: #fff !important;
+  color: #fff;
   font-weight: 700;
   font-size: 14px;
   font-style: normal;
@@ -481,8 +499,8 @@
 
 .ratings-list a.icon-arrow-right-p {
   background: none;
-  color: #172738 !important;
-  font-family: 'Open Sans';
+  color: #172738;
+  font-family: 'open_sansregular';
   font-size: 11px;
   float: none;
   margin-top: 0px;
@@ -493,10 +511,10 @@
   text-transform: uppercase;
 }
 
-.ratings-list a.icon-arrow-right-p:after {
-  background-color: #3E67B1 !important;
+.ratings-list a.icon-arrow-right-p::after {
+  background-color: #3E67B1;
   border-radius: 4px;
-  content: url('images/right-arrow.png');
+  content: url('../images/right-arrow.png');
   font-size: 15px;
   line-height: 20px;
   margin-left: 9px;
