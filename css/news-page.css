@@ -1,9 +1,11 @@
 /*** News Page's homepage ***/
 
 /** Header's Block **/
-#content .blog #article-header h1.title {
+.profile-name-is-spb #article #article-toolbar #article-header h1.title,
+#content .blog #article-header h1.title{
   margin: 20px 0px 10px 0px;
   padding: 0px 0px 10px 0px;
+  border-bottom: 1px solid #D3D6DE;
   font: normal normal bold 35px/37px arial;
 }
 
