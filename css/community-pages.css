@@ -425,6 +425,10 @@
 
 /*** Right bar ***/
 
+.template-default.profile-type-is-community .action-profile-index #content .box-3 .link-list-block{
+  display: none;
+}
+
 /********Bloco de informacao da comunidade********/
 .profile-type-is-community .community-block{
   display: none;
