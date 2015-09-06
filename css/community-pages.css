@@ -642,8 +642,16 @@
   line-height: 30px;
 }
 
-.profile-type-is-community #content .members-block .menu-submenu-content .menu-submenu-list li:last-child a{
+.profile-type-is-community #content .members-block .menu-submenu-content .menu-submenu-list li a.add-friend{
   border: none;
+}
+
+.profile-type-is-community #content .members-block .menu-submenu-content .menu-submenu-list li a.add-friend::before{
+  content: "\f067";
+  padding-right: 6px;
+  color: #FF0366;
+  font-family: FontAwesome;
+  font-size: 11px;
 }
 
 .profile-type-is-community #content  .members-block .menu-submenu-content h4:hover,
