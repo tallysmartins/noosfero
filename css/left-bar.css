@@ -2,10 +2,12 @@
 
 /*** WARNING - WITHOUT BOX-4 ***/
 
+.template-leftbar .box-2,
 .template-default .box-2 {
   width:150px;
 }
 
+.template-leftbar #content .box-2 .block-outer .block-title,
 .template-default #content .box-2 .block-outer .block-title {
 	background: #eee;
 	color: #4562b1;
@@ -15,6 +17,7 @@
 
 /*** Menus - Link list block ***/
 
+.template-leftbar #content .box-2 .link-list-block li,
 .template-default #content .box-2 .link-list-block li {
   margin: 0;
   padding: 0;
@@ -22,6 +25,7 @@
   border-top: none;
 }
 
+.template-leftbar #content .box-2 .link-list-block li a,
 .template-default #content .box-2 .link-list-block li a {
   width: auto;
   padding: 6px 5px 8px 18px;
@@ -36,25 +40,32 @@
   line-height: 17px;
 }
 
+.template-leftbar #content .box-2 .link-list-block h3.empty + ul,
 .template-default #content .box-2 .link-list-block h3.empty + ul {
   border-top: 1px solid #ddd;
 }
 
+.template-leftbar #content .box-2 .link-list-block h3.empty + ul li a,
 .template-default #content .box-2 .link-list-block h3.empty + ul li a {
   padding-left: 0px;
   padding-right: 0px;
   background-image: none;
 }
 
+.template-leftbar #content .box-2 .link-list-block li a.link-this-page,
+.template-leftbar #content .box-2 .link-list-block li a.link-this-page:hover ,
 .template-default #content .box-2 .link-list-block li a.link-this-page,
 .template-default #content .box-2 .link-list-block li a.link-this-page:hover {
   border-right: none;
 }
 
+.template-leftbar #content .box-2 .link-list-block li a:hover,
 .template-default #content .box-2 .link-list-block li a:hover {
   background-color: #FFFFFF;
   color: #000;
 }
+
+.template-leftbar #content .box-2 .link-list-block li a.link-this-page,
 .template-default #content .box-2 .link-list-block li a.link-this-page {
   width: auto;
   margin-left: 0px;
