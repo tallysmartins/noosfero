@@ -102,6 +102,7 @@
 
 #block-community-tabs .ui-tabs .ui-tabs-nav{
   font-size: 15px;
+  padding:.2em .0em 0;
 }
 
 #block-community-tabs .ui-tabs .ui-tabs-nav .ui-tabs-anchor{
@@ -310,12 +311,19 @@
 
 /* Blog tab*/
 
-#blog-tab .blog .blog-post{
+#content #blog-tab .blog-posts{
+  margin-top:20px;
+}
+
+#content #blog-tab .blog .blog-post{
   padding:0px 20px 5px 20px;
   background:none;
+  border-bottom: 1px solid #ECEDF1;
+  padding:20px 0px 30px 0px;
 }
 
 #content #blog-tab .blog .blog-post h1{
+  margin: 0px 0px 6px 0px;
   text-align: left;
 }
 
@@ -323,16 +331,10 @@
   padding-top:0px;
   border-top:none;
   width: 70%;
-  padding-left:175px;
+  padding-left:130px;
 }
 
-#blog-tab .odd-post-inner.blog-post-inner,
-#blog-tab .even-post-inner.blog-post-inner{
-  border-bottom: 1px solid #ECEDF1;
-  padding:15px 0px 10px 0px;
-}
-
-#content #blog-tab .blog .blog-post.position-1 h1{
+/*#content #blog-tab .blog .blog-post.position-1 h1{
   line-height: 37px;
   font-size: 34px;
   color: #172738;
@@ -344,7 +346,7 @@
 #content #blog-tab .blog .blog-post.position-1 .article-compact-image{
   position:relative;
   padding-right: 0px;
-  margin-top: 0px; /*temporary*/
+  margin-top: 0px; *temporary*
 }
 
 #content #blog-tab .blog .blog-post.position-1 .article-compact-abstract-with-image{
@@ -355,11 +357,11 @@
 #blog-tab .blog .blog-post.position-1{
   padding-right: 0px;
 
-}
+}*/
 
 #content #blog-tab .blog .publishing-info .date{
   width: 70%;
-  padding-left:180px;
+  padding-left:130px;
 }
 
 #content #blog-tab .blog .publishing-info .author{
@@ -375,13 +377,27 @@
   text-align: left;
 }
 
+#content #blog-tab .blog .blog-post .article-compact-image img{
+  border-radius: 4px;
+  width: 110px;
+  max-height: auto;
+}
+
 #content #blog-tab .blog .blog-post .zoomable-image{
   width: 200px !important;
   height: auto !important;
 }
 
+#content #blog-tab .blog .blog-post .zoomable-image:hover .zoomify-image{
+  display: none;
+}
+
+#content #blog-tab .blog .blog-post .zoomify-text{
+  display:none;
+}
+
 #content #blog-tab .blog .blog-post .article-compact-abstract-with-image{
-  margin-left: 180px;
+  margin-left: 130px;
 }
 
 /* Read more button*/
@@ -391,7 +407,7 @@
   text-transform: uppercase;
   line-height: 21px;
   font-size: 11px;
-  margin-top: 15px;
+  margin:15px 0px 20px 0px;
 }
 
 #content #blog-tab .blog .read-more:after{
@@ -415,9 +431,9 @@
 
 /* Software Tab Data - Need to develop solution - Only display on profile page */
 
-.profile-type-is-community #content .software-tab-data-block{
-  display: none;
-}
+/*.profile-type-is-community #content .software-tab-data-block{
+  display: none; DEVOLVER COMENTARIO NO FINAL
+}*/
 
 .profile-type-is-community .action-profile-index #content .software-tab-data-block{
   display: block;
