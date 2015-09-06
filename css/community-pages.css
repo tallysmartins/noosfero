@@ -431,9 +431,9 @@
 
 /* Software Tab Data - Need to develop solution - Only display on profile page */
 
-/*.profile-type-is-community #content .software-tab-data-block{
-  display: none; DEVOLVER COMENTARIO NO FINAL
-}*/
+.profile-type-is-community #content .software-tab-data-block{
+  display: none; 
+}
 
 .profile-type-is-community .action-profile-index #content .software-tab-data-block{
   display: block;
