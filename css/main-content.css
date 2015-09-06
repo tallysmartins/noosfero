@@ -81,8 +81,7 @@
 
 /*** Button ***/
 
-#content a.button.with-text,
-#content #article-actions a.button.with-text{
+#content a.button.with-text{
   height: 32px;
   padding: 5px 15px;
   background: #FFF none;
@@ -94,7 +93,21 @@
   text-transform: uppercase;
 }
 
-#content .button-bar a.button.with-text{
+#content #article-actions a.button.with-text{
+  display: inline-block;
+  height: 18px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  background: #FFF none;
+  color: #3E67B1;
+  border-radius: 4px;
+  border: 1px solid #3E67B1;
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: none;
+}
+
+.action-profile-members #content .button-bar a.button.with-text{
   height: auto;
   border: 1px solid #D3D6DE;
   font-size: 12px;
@@ -102,7 +115,7 @@
   text-transform: none;
 }
 
-#content .button-bar a.button.with-text:hover{
+.action-profile-members #content .button-bar a.button.with-text:hover{
   border-color: #3E67B1;
 }
 
