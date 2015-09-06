@@ -1,5 +1,3 @@
-/*** Right bar ***/
-
 /*** Home page - profile page ***/
 
 /* Profile header */
@@ -143,8 +141,7 @@
   font-weight: 700;
 }
 
-/********************************************/
-/***abas da area de comunidade******/
+/* Community's area tabs */
 
 #content #discussions-content{
   color:#172738;
@@ -165,25 +162,11 @@
   padding:10px 0px 18px 0px;
 }
 
-/*#content #discussions-content .message-discussion .subject{
-  display: block;
-  float: left;
-  padding-top:3px; 
-}*/
-
 #content #discussions-content .message-discussion .quiet:last-child{
   font-size: 16px;
   max-height: 50px;
   overflow: hidden;
 }
-
-/*#content #discussions-content .message-discussion:last-child{
-  border-bottom: 1px solid #ECEDF1;
-}*/
-
-/*#content #discussions-content .row{
-  width: 520px;
-}*/
 
 #content #discussions-content h4{
   font-size: 22px;
@@ -324,7 +307,8 @@
 #repository-feed-tab .see-more-repository dl.portlet a:visited{
   color:#172738;
 }
-/*************ABA BLOG**************/
+
+/* Blog tab*/
 
 #blog-tab .blog .blog-post{
   padding:0px 20px 5px 20px;
@@ -360,7 +344,7 @@
 #content #blog-tab .blog .blog-post.position-1 .article-compact-image{
   position:relative;
   padding-right: 0px;
-  margin-top: 0px; /*temporario*/
+  margin-top: 0px; /*temporary*/
 }
 
 #content #blog-tab .blog .blog-post.position-1 .article-compact-abstract-with-image{
@@ -387,7 +371,7 @@
 }
 #content #blog-tab .blog .blog-post .article-compact-image{
   position:absolute;
-  margin-top:-51px; /*provisorio*/
+  margin-top:-51px; /* temporary */
   text-align: left;
 }
 
@@ -400,7 +384,7 @@
   margin-left: 180px;
 }
 
-/*leia mais*/
+/* Read more button*/
 #content #blog-tab .blog .read-more{
   text-align: right;
   display: block;
@@ -439,76 +423,133 @@
   display: block;
 }
 
+/*** Right bar ***/
 
-/* Members block */
+/********Bloco de informacao da comunidade********/
+.profile-type-is-community .community-block{
+  display: none;
+}
 
-#content .members-block{
-  border:1px solid #D3D6DE !important;
+.profile-type-is-community .action-profile-index #content .community-block{
+  display: block;
+  border: 1px solid #ECEDF1;
   border-radius: 4px;
 }
 
-#content .members-block .block-title{
-  background-color:#ECEDF1;
-  border-bottom:1px solid #D3D6DE;
-  border-top:none;
-  color:#172738;
-  font-size:14px;
-  padding:12px;
-  margin-bottom:12px;
+.profile-type-is-community  #content .community-block-logo{
+  border-bottom: 3px solid #3E67B1;
 }
 
-.members-block .block-footer-content{
-  background-color:#ECEDF1;
-  padding:8px 10px 15px 0px;
-  margin-right:0px; 
-  border-top:1px solid #D3D6DE;
+.profile-type-is-community  #content .community-block-title{
+  padding: 10px;
+  background-color: #ECEDF1;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.profile-type-is-community  #content .community-block-title h1{
+  margin: 5px auto;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.profile-type-is-community  #content .community-block-logo{
+  padding: 10px;
+}
+
+.profile-type-is-community  #content .community-block-logo img.logo{
+  height: auto;
+  width: 100px;
+  min-width: 100px;
+  max-width: 170px;
+}
+
+.profile-type-is-community  #content .community-block-logo a{
+  display: block;
+  height: 100px;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Members block */
+
+.profile-type-is-community #content .members-block{
+  display: none;
+  border: 1px solid #D3D6DE;
+  border-radius: 4px;
+}
+
+.profile-type-is-community .action-profile-index #content .members-block{
+  display: block;
+}
+
+.profile-type-is-community #content .members-block .block-title{
+  padding: 12px;
+  margin-bottom: 12px;
+  background-color: #ECEDF1;
+  color: #172738;
+  border-bottom: 1px solid #D3D6DE;
+  border-top: none;
+  font-size: 14px;
+}
+
+.profile-type-is-community #content .members-block .block-footer-content{
+  padding: 8px 10px 15px 0px;
+  margin-right: 0px; 
+  background-color: #ECEDF1;
+  border-top: 1px solid #D3D6DE;
   text-align: right;
 }
 
-#content .members-block .block-footer-content a{
+.profile-type-is-community #content .members-block .block-footer-content a{
   padding-right: 0px !important;
 }
 
-#content .members-block .block-footer-content a.view-all{
-  background-image:none;
-  border:none;
+.profile-type-is-community #content .members-block .block-footer-content a.view-all{
+  background-image: none;
+  border: none;
   text-transform: uppercase;
   line-height: 21px;
 }
 
-#content .members-block .block-footer-content a.view-all::after{
-  content:"\f105";
-  font-family: FontAwesome;
+.profile-type-is-community #content .members-block .block-footer-content a.view-all::after{
+  content: "\f105";
+  position: relative;
+  top: 2px;
+  margin-left: 5px;
   padding-left: 7px;
   padding-right: 4px;
-  color:#ffffff;
+  color: #ffffff;
   background: #3E67B1;
   border-radius: 4px;
+  font-family: FontAwesome;
   font-size: 18px;
   line-height: 20px;
   text-align: center;
-  margin-left: 5px;
-  position: relative;
-  top: 2px;
 }
 
-.members-block .common-profile-list-block .vcard{
-  border:none;
-}
-.members-block .common-profile-list-block .vcard:hover{
-  border:none;
-  background:none;
+.profile-type-is-community #content .members-block .common-profile-list-block .vcard{
+  border: none;
 }
 
-#content .members-block .common-profile-list-block .vcard li a{
-  color:#172738;
+.profile-type-is-community #content .members-block .common-profile-list-block .vcard:hover{
+  background: none;
+  border: none;
 }
 
-.members-block .menu-submenu{
-  background:#172738;
+.profile-type-is-community #content  .members-block .common-profile-list-block .vcard li a{
+  color: #172738;
+}
+
+.profile-type-is-community #content  .members-block .common-profile-list-block .vcard a.profile_link{
+  height: 70px;
+}
+
+.profile-type-is-community #content .members-block .menu-submenu{
+  background: #172738;
   border-radius: 4px;
   /***side block position***/
-  bottom:-29px; 
+  top: -39px;
   right: 100%;
   width: 131px;
   height: 176px;
@@ -517,100 +558,108 @@
   -moz-box-shadow: 2px 2px 2px #ECEDF1;
 }
 
-.members-block .menu-submenu.down::before{
+.profile-type-is-community #content .members-block .menu-submenu.down::before{
   content:"\f0da";
-  color:#172738;
+  float: right;
+  position: relative;
+  margin: -7px;
+  margin-top: 30%;
+  color: #172738;
   font-family: FontAwesome;
-  font-size:25px;
-  float:right;
-  position:relative;
-  margin:-7px;
-  margin-top:30%;
+  font-size: 25px;
 }
 
-.members-block .menu-submenu-header,
-.members-block .menu-submenu-content,
-.members-block .menu-submenu-footer{
-  background:none;
+.profile-type-is-community #content .members-block .menu-submenu-header,
+.profile-type-is-community #content .members-block .menu-submenu-content,
+.profile-type-is-community #content .members-block .menu-submenu-footer{
+  background: none;
 }
 
-.members-block .menu-submenu-header,
-.members-block .menu-submenu-footer{
+.profile-type-is-community #content .members-block .menu-submenu-header,
+.profile-type-is-community #content .members-block .menu-submenu-footer{
   display: none;
 }
-.members-block .menu-submenu-content{
-  height:100%;
+
+.profile-type-is-community #content .members-block .menu-submenu-content{
+  height: 100%;
 }
 
-#content .members-block .common-profile-list-block li{
-  margin:0px !important;
+.profile-type-is-community #content  .members-block .common-profile-list-block li{
+  margin: 0px !important;
 }
 
-.members-block .common-profile-list-block .vcard .menu-submenu-trigger{
+.profile-type-is-community #content .members-block .common-profile-list-block .vcard .menu-submenu-trigger{
   display: block;
-  background:#172738;
-  top:2px;
-  left:3px;
-  border:1px solid #fff;
-  padding-bottom: 0px;
-  opacity: 0.7;
   height: 13px;
+  top: 2px;
+  left: 3px;
+  padding-bottom: 0px;
+  background: #172738;
+  border: 1px solid #fff;
+  opacity: 0.7;
 }
 
-.members-block .common-profile-list-block .vcard .menu-submenu-trigger::before{
-  content:"\f053";
-  color:#fff;
+.profile-type-is-community #content .members-block .common-profile-list-block .vcard .menu-submenu-trigger::before{
+  content: "\f053";
+  color: #fff;
   font-family: FontAwesome;
   font-size: 8px; 
   line-height: 11px; 
 }
 
-#content .members-block .common-profile-list-block .fn {
-  margin-top:2px;
-  color:#172738;
+.profile-type-is-community #content .members-block .common-profile-list-block .fn {
+  margin-top: 2px;
+  color: #172738;
 }
 
-#content .members-block .menu-submenu-content h4{
+.profile-type-is-community #content .members-block .menu-submenu-content h4{
+  max-height: 16px;
+  padding: 8px 7px 10px 6px;
+  margin: 0px 0px 2px 0px;
+  background: #243F59;
   color: #fff;
+  border-bottom: 2px solid #FF0366;
+  border-radius: 4px 4px 0px 0px;
   font-family: Arial;
   font-size: 13px;
-  background:#243F59;
-  border-bottom: 2px solid #FF0366;
   text-transform: uppercase;
-  padding:8px 7px 10px 6px;
-  margin:0px 0px 2px 0px;
   text-align: center;
-  max-height: 16px;
   overflow: hidden;
 }
 
-#content .friends-block ul, #content .members-block ul {
-min-width: 196px;
-width: 192px;
-margin: 0px 0px 0px 0px;
-padding: 0px;
+.profile-type-is-community #content .friends-block ul, #content .members-block ul {
+  min-width: 196px;
+  width: 192px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
 }
 
-#content .members-block .menu-submenu-content .menu-submenu-list li a{
-  color:#fff;
-  border-bottom:1px dotted #2C4B6B;
+.profile-type-is-community #content .members-block .menu-submenu-content .menu-submenu-list li a{
+  padding: 2px;
+  color: #fff;
+  border-bottom: 1px dotted #2C4B6B;
   text-align: center;
+  line-height: 30px;
 }
 
-#content .members-block .menu-submenu-content h4:hover,
-#content .members-block .menu-submenu-content .menu-submenu-list li a:hover{
-  color:#ECEDF1;
+.profile-type-is-community #content .members-block .menu-submenu-content .menu-submenu-list li:last-child a{
+  border: none;
 }
 
-.members-block .common-profile-list-block img{
-  border-radius: 4px;
-  max-height:50px; 
-  max-width:50px;
+.profile-type-is-community #content  .members-block .menu-submenu-content h4:hover,
+.profile-type-is-community #content  .members-block .menu-submenu-content .menu-submenu-list li a:hover{
+  color: #ECEDF1;
+}
+
+.profile-type-is-community #content .members-block .common-profile-list-block img{
   width: 50px;
   height: 50px;
+  max-height: 50px; 
+  max-width: 50px;
+  border-radius: 4px;
 }
 
-.members-block .block-footer-content a.view-all{
+.profile-type-is-community #content .members-block .block-footer-content a.view-all{
   position:relative;
 }
 
