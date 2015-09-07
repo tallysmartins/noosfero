@@ -107,6 +107,10 @@
   text-transform: none;
 }
 
+#content #article-actions a.button.with-text span{
+  padding: 0;
+}
+
 .action-profile-members #content .button-bar a.button.with-text{
   height: auto;
   border: 1px solid #D3D6DE;
