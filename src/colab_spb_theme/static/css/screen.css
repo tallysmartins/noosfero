@@ -511,3 +511,10 @@ span.highlighted {
 .chart > p > label {
     margin: 0 2px;
 }
+
+#main-content {
+    width: 960px;
+    padding-left: 0px;
+    padding-right: 0px;
+    color: #172738;
+}
