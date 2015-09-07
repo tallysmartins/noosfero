@@ -1,0 +1,8 @@
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': "<%= node['peers']['database'] %>",
+        'NAME': 'colab',
+        'USER': 'colab'
+    }
+}
