@@ -210,7 +210,19 @@ $('#link-buscar').click(function(e) {
         state = 0;
         arrow.attr('class', "comments-arrow-down");
       }
+      animateExtraFields();
     });
+  }
+
+  function animateExtraFields() {
+    var fields = $('.comments-software-extra-fields');
+    if(fields) {
+      var innerHeight = fields[0].offsetHeight;
+      if(fields.height()!==0)
+        fields.animate({height: 0});
+      else
+        fields.animate({height: 140});
+    }
   }
 
   function set_use_report_content() {
@@ -224,9 +236,6 @@ $('#link-buscar').click(function(e) {
     $('.star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments label').html('Nome do órgão ou empresa');
     $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-people-benefited label').html('Número de beneficiados');
     $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values label').html('Recursos economizados');
-    $('.star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments').addClass("animated slideInDown");
-    $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-people-benefited').addClass("animated slideInDown");
-    $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values').addClass("animated slideInDown");
   }
 
   function add_tooltips(){
