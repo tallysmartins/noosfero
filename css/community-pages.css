@@ -327,7 +327,7 @@
   max-width: 555px;
   max-height: 40px;
   border: none;
-  font: normal normal bold 16px/20px arial;
+  font: normal normal bold 16px/20px Arial;
   overflow: hidden;
   display: inline-block;
 }
@@ -343,7 +343,7 @@
 #content #blog-tab .blog .blog-post .publishing-info {
   border-top: none;
   color: #172838;
-  font: 13px/21px arial;
+  font: 13px/21px Arial;
 }
 
 #content #blog-tab .blog .publishing-info{
@@ -376,7 +376,7 @@
   color: #172738;
   text-align: left;
   text-overflow: ellipsis;
-  font: 14px/21px arial;
+  font: 14px/21px Arial;
   overflow: hidden;
 }
 
@@ -830,7 +830,7 @@ float: left;
 
 .action-profile-members #content .profile-members-tabs-container .ui-tabs .ui-tabs-nav li.ui-tabs-active a {
   color: #FF0366;
-  font-weight: 700;
+  font-weight: 300;
 }
 
 /* Sort selection */
