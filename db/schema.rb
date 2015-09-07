@@ -334,6 +334,18 @@ ActiveRecord::Schema.define(:version => 20150830230047) do
   add_index "domains", ["owner_id", "owner_type", "is_default"], :name => "index_domains_on_owner_id_and_owner_type_and_is_default"
   add_index "domains", ["owner_id", "owner_type"], :name => "index_domains_on_owner_id_and_owner_type"
 
+  create_table "driven_signup_plugin_auths", :force => true do |t|
+    t.integer  "environment_id"
+    t.string   "name"
+    t.string   "token"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "driven_signup_plugin_auths", ["environment_id", "token"], :name => "index_driven_signup_plugin_auths_on_environment_id_and_token"
+  add_index "driven_signup_plugin_auths", ["environment_id"], :name => "index_driven_signup_plugin_auths_on_environment_id"
+  add_index "driven_signup_plugin_auths", ["token"], :name => "index_driven_signup_plugin_auths_on_token"
+
   create_table "environments", :force => true do |t|
     t.string   "name"
     t.string   "contact_email"
