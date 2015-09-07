@@ -198,30 +198,29 @@ $('#link-buscar').click(function(e) {
   // TODO: fix calls for this function below
   // TODO: comments-additional-information --> comments-display-fields
   function set_arrow_direction() {
-    var additional_data_bar = $('#comments-additional-information');
+    var additional_data_bar = $('.comments-display-fields');
     var arrow = $('.comments-arrow-down');
     var state = 0;
-
     additional_data_bar.on('click', function() {
-      if(state === 0) {
-        arrow.attr('class', "comments-arrow-up")
-        state = 1;
-      } else {
-        state = 0;
-        arrow.attr('class', "comments-arrow-down");
-      }
       animateExtraFields();
     });
   }
 
   function animateExtraFields() {
+    var additional_data_bar = $('.comments-display-fields');
+    var arrow = ($('.comments-arrow-down')[0])? $('.comments-arrow-down') : $('.comments-arrow-up');
+    console.log(arrow);
     var fields = $('.comments-software-extra-fields');
     if(fields) {
       var innerHeight = fields[0].offsetHeight;
-      if(fields.height()!==0)
+      if(fields.height()!==0) {
+        arrow.attr('class', "comments-arrow-down");
         fields.animate({height: 0});
-      else
+      }
+      else {
+        arrow.attr('class', "comments-arrow-up");
         fields.animate({height: 140});
+      }
     }
   }
 

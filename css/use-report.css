@@ -128,6 +128,7 @@
   color: #172738;
   margin-top: 16px;
   padding: 29px 0px 21px 0px;
+  overflow: visible;
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-rate-text,
@@ -207,11 +208,12 @@
 #content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar input {
   background-color: #3E67B1;
   font-weight: 700;
-  height: 31px;
-  margin-top: 10px;
   text-transform: uppercase;
   color: #FFF;
-  padding-top: 0;
+  padding: 5px;
+  height: 31px;
+  line-height: 20px;
+  font-family: Arial;
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar a {
@@ -219,9 +221,7 @@
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar {
-  margin-top: 0px;
   padding-bottom: 50px;
-  padding-top: 10px;
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-notice {
@@ -232,12 +232,14 @@
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields {
-  overflow: auto;
+  height: 0;
+  overflow: hidden;
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments {
   margin-bottom: 19px;
   margin-top: 16px;
+  height: 50px;
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments label {
@@ -267,10 +269,12 @@
   font-size: 12px;
   float: left;
   padding-right: 10px;
+  height: 50px;
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values{
   padding-right: 0px;
+  height: 70px;
 }
 
 #content .star-rate-form .star-comment-container form .formfieldline {
@@ -521,4 +525,10 @@
   padding-left: 8px;
   padding-right: 5px;
   text-align: center;
+}
+
+/*** Tooltip ***/
+
+.comments-software-extra-fields .tooltip-inner {
+  display: block;
 }
