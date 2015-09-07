@@ -25,7 +25,7 @@
 #content #software-information-block-table #col-software-name b {
   font: normal normal normal 15px/21px arial, 'open_sansregular', helvetica, sans-serif;
 }
-	
+
 /*** end of Software Header ***/
 
 /*** Software Homepage ***/
@@ -171,12 +171,12 @@
   list-style: inherit;
 }
 
-/*** end of Software Homepage ***/ 
+/*** end of Software Homepage ***/
 
 /*** Categories and Tags block ***/
 
 #content .box-1  .categories-and-tags-block{
-  border-top: 4px solid #2C4B6B; 
+  border-top: 4px solid #2C4B6B;
 }
 
 #content .box-1 .categories-and-tags-block .block-title{
@@ -438,9 +438,12 @@
 #content .main-block .article-body ul.etapas-publicacao li strong {
   margin-right: 6px;
   border-radius: 50%;
-  padding: 2px 8px;
+  padding: 1px;
   background: #333;
+  height: 24px;
+  width: 24px;
   color: #fff;
+  text-align: center;
   float: left;
 }
 
@@ -452,6 +455,14 @@
 
 #content .main-block .article-body p strong {
   font-size: 16px;
+}
+
+#content .main-block .article-body .etapas-publicacao .etapas-publicacao-2 {
+  display: table-cell;
+}
+
+#content .main-block .article-body .etapas-publicacao p {
+    margin: 0px 0 0 31px;
 }
 
 /* Manual page */
