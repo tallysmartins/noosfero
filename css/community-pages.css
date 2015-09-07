@@ -312,13 +312,13 @@
 /* Blog tab*/
 
 #content #blog-tab .blog-posts{
-  margin-top:20px;
+  margin-top:15px;
 }
 
 #content #blog-tab .blog .blog-post{
   background:none;
   border-bottom: 1px solid #ECEDF1;
-  padding:30px 0px 0px 0px;
+  padding:25px 0px 12px 0px;
 }
 
 #content #blog-tab .blog .blog-post h1{
@@ -335,8 +335,8 @@
 #content #blog-tab .blog .blog-post .post-pic{
   margin:0 20px 5px 0px;
   border-radius: 4px;
-  height: 60px;
-  width: 20%;
+  height: 62px;
+  width: 19%;
   background: center/cover no-repeat;
   float: left;
 }
@@ -353,6 +353,7 @@
 #content #blog-tab .blog .blog-post .publishing-info .date {
   margin: 0px 0px 5px 0px;
   display: table-cell;
+  font-size: 11px;
 }
 #content #blog-tab .blog .blog-post .author {
   display: none;
@@ -382,7 +383,7 @@
 /*Post Position-1*/
 #content #blog-tab .blog .blog-post.position-1 h1{
   line-height: 37px;
-  font-size: 34px;
+  font-size: 25px;
   color: #172738;
   padding-left:0px;
   text-align: left;
@@ -394,7 +395,7 @@
 #content #blog-tab .blog .blog-post.position-1 .post-pic {
 margin: 0 20px 5px 0px;
 border-radius: 4px;
-height: 220px;
+height: 210px;
 width: 100%;
 background: center/cover no-repeat;
 float: left;
