@@ -1,4 +1,4 @@
-#header {
+header #header {
 	font-size: 62.5%;
     font-family: "open_sansregular", Arial, Helvetica, sans-serif;
 	padding: 14px 0 0 0;
@@ -7,29 +7,29 @@
     min-width: 960px;
 }
 
-#header * {
+header #header * {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 
-#header a {
+header #header a {
     text-decoration: none;
 }
 
-#header > div {
+header #header > div {
     position: relative;
     margin: 0 auto;
     max-width: 960px;
     display: block;
 }
 
-#header * li {
+header #header * li {
     display: inline;
 }
 
-#accessibility {
+header #accessibility {
 	/*font-size: 1.1em;*/
     font-size: 1.3em;
     font-family: Arial, Helvetica, sans-serif;
@@ -39,73 +39,70 @@
     margin-bottom: 18px;
 }
 
-#accessibility a {
+header #accessibility a {
     color: #2C65CD;
     margin-right: 9px;
 }
 
-#accessibility span {
+header #accessibility span {
     padding: 0 3px;
     background: #2C65CD;
     color: #fff;
 }
 
-#second-nav {
+header #second-nav {
     float: right;
 }
 
-#portal-siteactions,
-#portal-language {
+header #portal-siteactions,
+header #portal-language {
     border-bottom: 1px dotted #2C65CD;
 }
 
-#portal-siteactions #siteaction-accessibility a {
+header #portal-siteactions #siteaction-accessibility a {
 	padding-left: 0;
 }
 
-#portal-siteactions {
+header #portal-siteactions {
     display: block;
-    /*float: right;*/
     float: left;
     clear: none;
     padding-bottom: 2px;
-    /*font-size: 1.1em;*/
     font-size: 1.3em;
 }
 
-#portal-siteactions a {
+header #portal-siteactions a {
     padding: 4px 0 4px 17px;
 }
 
-#portal-siteactions a,
-#login-menu a {
+header #portal-siteactions a{
     text-decoration: none;
     text-transform: uppercase;
 }
 
-#portal-siteactions a,
-#portal-siteactions a:hover,
-#portal-language a,
-#portal-language a:hover {
+header #portal-siteactions a,
+header #portal-siteactions a:hover,
+header #portal-language a,
+header #portal-language a:hover {
     color: #2C65CD;
 }
 
-#login-menu #user-menu a {
+header #login-menu #user-menu .user {
     position: relative;
     top: -6px;
 }
 
-#login-menu #user-menu .user img {
+header #login-menu #user-menu .user img {
     width: 32px;
     height: 32px;
     border-radius: 90%;
 }
 
-#login-menu #user-menu .user .carret {
+header #login-menu #user-menu .user .carret {
     vertical-align: middle;
 }
 
-#login-menu {
+header #login-menu {
     float:right;
     display: block;
     clear: none;
@@ -114,22 +111,33 @@
     padding-left: 17px;
 }
 
-#login-menu a {
-    padding: 4px 0 4px 6px;
-    font-weight: bold;
+header #login-menu a {
+    font-size: 12px;
+    padding: 5px 10px;
+    color: #2C65CD;
 }
 
-#login-menu-box {
+header #login-menu a.btn-spb-profile {
+    background-color: #2C65CD;
+    border-color: #2C65CD;
+    color: #FFF;
+}
+
+header #login-menu .login-item {
+    text-transform: uppercase;
+}
+
+header #login-menu-box {
     right: 0;
     left: auto;
 }
 
-#portal-searchbox {
+header #portal-searchbox {
     border: 1px solid #CCC;
     float: right;
     clear: right;
-    margin: 18px 0 0 0;
-    padding: 2px;
+    margin: 14px 0 0 0;
+    padding: 0px 2px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -139,24 +147,24 @@
     color: #777;
 }
 
-#portal-searchbox form {
+header #portal-searchbox form {
     white-space: nowrap;
 }
 
-.LSBox {
+header .LSBox {
     margin: 0;
     padding: 0;
     border: none;
 }
 
-fieldset, .editionComment {
+header fieldset, header .editionComment {
     line-height: 1.5em;
     margin: 1em 0;
     padding: 0 1em 1em;
     width: auto;
 }
 
-.hiddenStructure {
+header .hiddenStructure {
     display: block;
     background: transparent;
     background-image: none;
@@ -168,105 +176,99 @@ fieldset, .editionComment {
     width: 1px;
 }
 
-#portal-searchbox label {
+header #portal-searchbox label {
     font-weight: normal;
     cursor: default;
 }
 
-#portal-searchbox .searchField {
-    padding: 0.3em 0.35em;
-    width: 186px;
+header #portal-searchbox .searchField {
+    padding: 0.4em 0.35em 0 0.35em;
+    width: 192px;
     border: none;
     border-right: none;
-    /*font-size: 1.2em;*/
     font-size: 1.4em;
     font-family: "open_sansregular", Arial, Helvetica, sans-serif;
 }
 
-#header input.searchButton {
-    /*background-position: 0px 2px;*/
+header #header input.searchButton {
     background-position: 00 0;
-    /*padding: 4px 5px 4px 15px;*/
     padding: 6px 5px 4px 15px;
     border: none;
     background-color: transparent;
     text-indent: -2000px;
 }
 
-#logo {
+header #logo {
     float: left;
     padding: 0;
     width: 70%;
-    min-height: 104px;
+    min-height: 101px;
 }
 
-#logo span {
+header #logo span {
     position: absolute;
     display: block;
-    /*line-height: 1em;*/
-    line-height: 1.1em;
+    line-height: 0.5em;
 }
 
-#logo a, #logo #portal-title {
+header #logo a, header #logo #portal-title {
     color: #2C65CD;
 }
 
-#portal-title {
-	/*font-size: 4.0em;*/
-    font-size: 4.2em;
-	font-family: "open_sansextrabold", Arial, Helvetica, sans-serif;
-	margin-top: 9px;
+header #portal-title {
+    font-size: 4.4em;
+    font-family: "open_sansextrabold", Arial, Helvetica, sans-serif;
+    margin-top: 13px;
 }
 
-#portal-title-1,
-#portal-description {
+header #portal-title-1,
+header #portal-description {
 	font-family: "open_sansregular", Arial, Helvetica, sans-serif;
 }
 
-#portal-title-1 {
+header #portal-title-1 {
 	/*font-size: 1.2em;*/
     font-size: 1.4em;
 }
 
-#portal-description {
-	/*font-size: 1.4em;*/
+header #portal-description {
     font-size: 1.6em;
+    margin-top: 10px;
+    letter-spacing: 0.2px;
 }
 
-#sobre {
+header #sobre {
     background: #D9DBDE;
     clear: both;
     margin: 0;
-    padding: 7px 0;
+    padding: 6px 0 5px 0;
     max-width: 100% !important;
     position: relative;
 }
 
-#sobre ul {
+header #sobre ul {
     margin: 0 auto;
     max-width: 960px;
     text-align: right;
 }
 
-#sobre a {
+header #sobre a {
     color: #2C65CD;
     font-size: 1.4em;
 }
 
-#sobre a .caret {
+header #sobre a .caret {
     border-top: 4px dashed #2C65CD;
 }
 
-#sobre .softwarepublico-item a {
-    padding: 0 8px;
-}
 
-#sobre .softwarepublico-item .dropdown-menu {
+header #sobre .softwarepublico-item .dropdown-menu {
     margin-top: 10px;
 }
 
 
-#sobre .softwarepublico-item .dropdown-menu:before {
+header #sobre .softwarepublico-item .dropdown-menu:before,
+header #second-nav .softwarepublico-item .dropdown-menu:before {
       position: absolute;
       top: -7px;
       left: 20px;
@@ -278,7 +280,8 @@ fieldset, .editionComment {
       content: '';
 }
 
-#sobre .softwarepublico-item .dropdown-menu:after {
+header #sobre .softwarepublico-item .dropdown-menu:after,
+header #second-nav .softwarepublico-item .dropdown-menu:after {
       position: absolute;
       top: -6px;
       left: 21px;
@@ -289,45 +292,68 @@ fieldset, .editionComment {
       content: '';
 }
 
-#sobre .softwarepublico-item .dropdown-menu li {
+header #second-nav #login-menu-box {
+    top: 23px;
+    padding: 10px 4px;
+}
+
+header #user-menu .user-info span {
+    color: #172738;
+}
+
+header #second-nav .softwarepublico-item .dropdown-menu:before {
+    left: auto;
+    right: 12px;
+}
+
+header #second-nav .softwarepublico-item .dropdown-menu:after {
+    left: auto;
+    right: 13px;
+}
+header #sobre .softwarepublico-item .dropdown-menu li {
     font-size: 0.65em;
     text-align: left;
     border-right: none;
 }
 
-#sobre .softwarepublico-item .dropdown-menu li a {
+header #sobre .softwarepublico-item .dropdown-menu li a {
     border-bottom: 1px solid #EAEDF0;
     padding: 8px;
 }
 
-
-#sobre .softwarepublico-item a {
-    border-right: 0;
+header #sobre li.softwarepublico-item a {
+    border-right: 1px solid #EAEDF0;
+    /*border-right: 1px solid #2C65CD;*/
     padding: 0 8px;
 }
 
-#sobre .softwarepublico-item li a:hover {
+header #sobre li.softwarepublico-item:last-child a {
+    border-right: none;
+    padding-right: 0;
+}
+
+header #sobre .softwarepublico-item li a:hover {
     background: #EAEDF0;
 }
 
-#sobre .last-item a {
+header #sobre .last-item a {
     padding: 0 0 0 8px;
     border-right: none;
 }
 
-#social-icons {
+header #social-icons {
     float: right;
     clear: right;
     margin: 13px 0 22px 0;
     display: none;
 }
 
-#social-icons a,
-#header input.searchButton {
+header #social-icons a,
+header #header input.searchButton {
     background-image: url("../img/sprite.png");
 }
 
-#social-icons a {
+header #social-icons a {
     display: block;
     overflow: hidden;
     margin: 0 0 0 2px;
@@ -341,38 +367,43 @@ fieldset, .editionComment {
     border-radius: 4px;
 }
 
-#social-icons li {
+header #social-icons li {
     display: inline-block;
 }
 
-#portalredes-facebook a {
+header #portalredes-facebook a {
     background-position: -80px -25px;
 }
 
-#portalredes-googleplus a {
+header #portalredes-googleplus a {
     background-position: -130px 0;
 }
 
-#portalredes-instagram a {
+header #portalredes-instagram a {
     background-position: 69px -49px;
 }
 
-#portalredes-twitter a {
+header #portalredes-twitter a {
     background-position: -155px -25px;
 }
 
-#portalredes-youtube a {
+header #portalredes-youtube a {
     background-position: -130px -25px;
 }
 
-#portalredes-soundcloud a {
+header #portalredes-soundcloud a {
     background-position: 20px 0;
 }
 
-#portalredes-slideshare a {
+header #portalredes-slideshare a {
     background-position: 45px 0;
 }
 
-#portalredes-rss a {
+header #portalredes-rss a {
     background-position: 145px -25px;
+}
+
+header .thumbnail {
+    min-width: 80px;
+    max-width: 80px;
 }

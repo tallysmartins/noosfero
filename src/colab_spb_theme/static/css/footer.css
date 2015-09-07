@@ -1,6 +1,6 @@
 /*Footer*/
 
-#btn-top {
+footer #btn-top {
     min-width: 960px;
     max-width: 960px;
     padding-right: 0px;
@@ -11,14 +11,14 @@
     position: relative;
 }
 
-#btn-top a {
+footer #btn-top a {
     padding-left: 20px;
     background: url("../img/voltar-topo.png") no-repeat left center;
     color: #777;
     font-size: 14px;
 }
 
-#footer {
+footer #footer {
     padding: 4px 0 20px 0;
     min-height: 50px;
     width: 100%;
@@ -29,78 +29,82 @@
 }
 
 
-#footer > div {
+footer #footer > div {
     margin: 2em auto;
     padding-top: 1em;
     max-width: 960px;
 }
 
-#doormat-container {
+footer #doormat-container {
     float: none;
     width: 100%;
 }
 
-#doormat-container dl {
+footer #doormat-container dl {
     border-left: 1px dotted #9CB5E2;
     margin: 0 0 18px 0;
     font-size: 13px;
 }
 
-#doormat-container dt {
+footer #doormat-container dt {
     color: #2C65CD;
     font-size: 18px;
-    font-family: "open_sansextrabold", Arial, Helvetica, sans-serif;
+    font-family: "open_sansbold", Arial, Helvetica, sans-serif;
 }
 
-#doormat-container dt,
-#doormat-container dd {
+footer #doormat-container dtfooter ,
+footer #doormat-container dd {
     padding-left: 10px;
     margin-bottom: 4px;
 }
 
-#doormat-container dd a {
+footer #doormat-container dd a {
     color: #2C65CD;
 }
 
-#doormat-container dd a:hover {
+footer #doormat-container dd a:hover {
     text-decoration: none;
 }
 
-#doormat-container.columns-4 .doormatColumn {
+footer #doormat-container.columns-4 .doormatColumn {
     width: 21%;
 }
 
-#doormat-container .doormatColumn {
+footer #doormat-container .doormatColumn {
     float: left;
     margin: 0 1.1em 0 0.8em;
     text-align: left;
 }
 
 
-#footer .footer-logos {
+footer #footer .footer-logos {
     margin: 0 0 -20px;
     padding: 1.6em 0;
     max-width: 100%;
     background: #0041B1;
 }
 
-#extra-footer p {
+footer #extra-footer p {
     margin: 1em auto;
     max-width: 960px;
     font-size: 12px;
 }
 
-#footer .clear {
+footer #extra-footer a {
+    color: #2C65CD;
+}
+
+footer #footer .clear {
     clear: both;
 }
 
 
-.go-top a{
+footer .go-top a{
   color: #717782;
   line-height: 2em;
 }
 
-.go-top i {
+footer .go-top i {
   margin-right: 5px;
   text-decoration: none;
   font-size: 12px;
