@@ -229,42 +229,26 @@ $('#link-buscar').click(function(e) {
     $('.star-rate-form .star-comment-container .comments-software-extra-fields .comments-software-saved-values').addClass("animated slideInDown");
   }
 
-  function add_top_tooltips(){
+  function add_tooltips(){
     $('#content span[title]').attr("data-toggle","tooltip");
 
-    $('[data-toggle="tooltip"]').tooltip({
-        position: {
-            my: "center bottom-13",
-            at: "center top"
-        },
-        tooltipClass: "ui-tooltip-top"
-    });
-  }
-
-  function add_bottom_tooltips(){
-    $('#content span[title]').attr("data-toggle","tooltip");
-
-    $('[data-toggle="tooltip"]').tooltip({
-        position: {
-            my: "center top+13",
-            at: "center bottom"
-        },
-        tooltipClass: "ui-tooltip-bottom"
-    });
+    $('[data-toggle="tooltip"]').tooltip();
   }
 
   function add_popovers() {
     var span = $('span[data-toggle="popover"]');
     var place = span.attr("data-placement");
     var elementClass = span.attr("data-class");
-    var popover =  span.popover({
-      html:true,
-      placement: place,
-      content: function() {
-        return $(this).next().html();
-      }
-    })
-    .data('bs.popover');
+    if(span){
+      var popover =  span.popover({
+        html:true,
+        placement: place,
+        content: function() {
+          return $(this).next().html();
+        }
+      })
+      .data('bs.popover');
+    }
     if(popover) {
       popover.tip()
       .addClass(elementClass);
@@ -275,8 +259,8 @@ $('#link-buscar').click(function(e) {
   }
 
   $(document).ready(function(){
+    add_tooltips();
     add_popovers();
-    add_top_tooltips();
     move_article_buttons();
     insert_notice_div();
     set_uploaded_files_names();
