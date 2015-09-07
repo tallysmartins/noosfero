@@ -16,13 +16,13 @@
           </a>
         </li>
         <li>
-          <a accesskey="2" href="#anavigation" id="link-navegacao">
+          <a accesskey="2" href="#sobre" id="link-navegacao">
             Ir para o menu
             <span>2</span>
           </a>
         </li>
         <li>
-          <a accesskey="3" href="#SearchableText" id="link-buscar">
+          <a accesskey="3" href="#nolivesearchGadget" id="link-buscar">
             Ir para a busca
             <span>3</span>
           </a>
@@ -45,7 +45,7 @@
       <div id="second-nav">
         <ul id="portal-siteactions">
           <li id="siteaction-accessibility">
-            <a href="/software-publico-brasileiro/acessibilidade" title="Acessibilidade" accesskey="5">
+            <a href="/social/spb/acessibilidade" title="Acessibilidade" accesskey="5">
               Acessibilidade
             </a>
           </li>
@@ -63,9 +63,9 @@
         <ul id="login-menu">
           {% if not user.is_authenticated %}
             <li class="login-item"><a href="{% url 'signup' %}">Cadastre-se</a></li>
-            <li class="login item last-item"><a href="{% url 'login' %}">Entrar</a></li>
+            <li class="login-item last-item"><a href="{% url 'login' %}">Entrar</a></li>
           {% else %}
-            <li id="user-menu" class="login-item dropdown">
+            <li id="user-menu" class="dropdown softwarepublico-item">
               <a href="#" class="dropdown-toggle user" data-toggle="dropdown">{% gravatar user.email %} <b class="caret"></b>&nbsp;&nbsp;</a>
               <ul id="login-menu-box" class="dropdown-menu" role="menu">
                 <li class="last-item">
@@ -76,9 +76,8 @@
                       <span class="quiet">{{ user.email }}</span>
                     </div>
                     <div>
-                      <a class="btn btn-info pull-left" href="{% url 'user_profile' user.username %}">{% trans "My Profile" %}</a>
-                      {% trans 'Logout' as logout_text %}
-                      <a class="btn btn-default pull-right" href="{% url 'logout' %}"> {% trans "Logout" %}</a>
+                      <a class="btn btn-default btn-spb-profile pull-left" href="{% url 'user_profile' user.username %}">Meu perfil</a>
+                      <a class="btn btn-default pull-right" href="{% url 'logout' %}">Sair</a>
                     </div>
                   </div>
                 </li>
@@ -135,7 +134,7 @@
     <div id="sobre">
       <ul>
         <li id="softwarepublico-groups" class="softwarepublico-item">
-          <a href="{% url 'thread_list' %}" title="Groups">Grupos</a>
+          <a href="{% url 'thread_list' %}" title="Listas de discussão">Listas de discussão</a>
         </li>
         {% plugins_menu %}
         <li id="softwarepublico-perguntas-frequentes" class="softwarepublico-item">
