@@ -111,7 +111,7 @@
 #content .main-block .article-body #article-actions:last-child{
   margin: 0;
   padding: 10px 0;
-  border-top: 1px solid #D3D6DE;
+  border-top: 3px solid #172938;
 }
 
 /*** Categories ***/
@@ -148,12 +148,12 @@
 
 #content .main-block #article-tags{
   display: none; /* wait to fix label */
-  width: 100%; 
+  width: 100%;
   color: #5E82C6;
   border-bottom: 1px solid #D3D6DE;
   font-family: Arial;
   font-size: 12px;
-  font-weight: 300; 
+  font-weight: 300;
   text-align: left;
 }
 
