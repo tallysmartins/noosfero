@@ -1,5 +1,10 @@
 <div id='edit-softwares-block'>
+  <% suggestion_benefited_people = @block.owner.community_ratings.collect{|community_rating| community_rating.people_benefited.to_f}.inject(:+) || 0.0 %>
+  <% suggestion_saved_resources = @block.owner.community_ratings.collect{|community_rating| community_rating.saved_value.to_f}.inject(:+) || 0.0 %>
+
   <%= labelled_form_field _('Benefited People'), text_field(:block, :benefited_people) %>
+  <p> <%= _("Portal suggested value: ") %> <span> <%= "%d" % (suggestion_benefited_people) %> <span> </p>
   <%= labelled_form_field _('Saved Resources'), text_field(:block, :saved_resources) %>
+  <p> <%= _("Portal suggested value: ") %> <span> <%= "R$%.2f" % (suggestion_saved_resources) %> <span> </p>
 </div>
 
