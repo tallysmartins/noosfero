@@ -144,8 +144,8 @@ LOGGING = {
     'disable_existing_loggers': True,
 
     'formatters': {
-        'colab': '[colab] (%(name)s) %(levelname)s: %(message)s',
-        'verbose': '%(asctime)s (%(name)s) %(levelname)s: %(message)s',
+        'colab': '[colab] (%%(name)s) %%(levelname)s: %%(message)s',
+        'verbose': '%%(asctime)s (%%(name)s) %%(levelname)s: %%(message)s',
     },
 
     'handlers': {
