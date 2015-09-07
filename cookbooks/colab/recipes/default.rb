@@ -11,12 +11,6 @@ if node['platform'] == 'centos'
   end
 end
 
-# FIXME should not be needed; colab should depend on the right version of
-# colab-deps
-package 'colab-deps' do
-  action :upgrade
-end
-
 package 'colab' do
   action :upgrade
   notifies :restart, 'service[colab]'
@@ -40,13 +34,6 @@ directory '/var/lock/colab' do
   mode 0755
 end
 
-execute 'secret-key' do
-  f = '/etc/colab/secret.key'
-  command "openssl rand -hex 32 -out #{f} && chown root:colab #{f} && chmod 0640 #{f}"
-  not_if { File.exists?(f) }
-  notifies :create, 'template[/etc/colab/settings.yaml]'
-end
-
 template '/etc/sysconfig/colab' do
   owner 'root'
   group 'root'
@@ -61,6 +48,7 @@ template '/etc/colab/settings.d/00-database.py' do
   notifies :restart, 'service[colab]'
 end
 
+# Creating a gitlab admin user
 template '/tmp/admin-gitlab.json' do
 
   password = SecureRandom.random_number.to_s
@@ -87,23 +75,6 @@ execute 'create-admin-token-gitlab' do
 
   cwd '/usr/lib/gitlab'
   user 'git'
-end
-
-template '/etc/colab/settings.d/01-apps.yaml' do
-  owner  'root'
-  group  'colab'
-  mode   0640
-  notifies :restart, 'service[colab]'
-
-  get_private_token =  lambda do
-    Dir.chdir '/usr/lib/gitlab' do
-      `sudo -u git RAILS_ENV=production bundle exec rails runner \"puts User.find_by_name(\'admin-gitlab\').private_token\"`.strip
-    end
-  end
-
-  variables(
-    :get_private_token => get_private_token
-  )
 end
 
 # Adding settings.d files
@@ -160,6 +131,7 @@ service 'colab' do
   action :restart
 end
 
+# Static files
 directory '/var/lib/colab-assets/spb/' do
   owner  'root'
   group  'root'
