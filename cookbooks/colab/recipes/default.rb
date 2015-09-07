@@ -106,18 +106,33 @@ template '/etc/colab/settings.d/01-apps.yaml' do
   )
 end
 
+# Adding settings.d files
 template '/etc/colab/settings.d/02-logging.py' do
   owner  'root'
   group  'colab'
   mode   0640
-  notifies :restart, 'service[colab]'
 end
 
 template '/etc/colab/settings.d/03-sentry.py' do
   owner  'root'
   group  'colab'
   mode   0640
-  notifies :restart, 'service[colab]'
+end
+
+template '/etc/colab/settings.d/memcached.py' do
+  owner 'root'
+  group 'colab'
+  mode 0640
+end
+
+template '/etc/colab/settings.d/redis.py' do
+  owner 'root'
+  group 'colab'
+  mode 0640
+end
+
+service 'colab' do
+  action :restart
 end
 
 # Adding plugins for colab
@@ -125,25 +140,25 @@ template '/etc/colab/plugins.d/gitlab.py' do
   owner 'root'
   group 'colab'
   mode 0640
-  notifies :restart, 'service[colab]'
 end
 
 template '/etc/colab/plugins.d/noosfero.py' do
   owner 'root'
   group 'colab'
   mode 0640
-  notifies :restart, 'service[colab]'
 end
 
 template '/etc/colab/plugins.d/spb.py' do
   owner 'root'
   group 'colab'
   mode 0640
-  notifies :restart, 'service[colab]'
 end
 
 execute 'colab-admin migrate'
-# End adding plugins for colab
+
+service 'colab' do
+  action :restart
+end
 
 directory '/var/lib/colab-assets/spb/' do
   owner  'root'
