@@ -144,14 +144,24 @@
 }
 
 /* This is a temporary solution until noosfero deals with logged-out comments in a better manner. */
-.comment-replies .comment-logged-out .comment-text, 
-.comment-logged-out .comment-picture, 
+.comment-replies .comment-logged-out .comment-text,
+.comment-logged-out .comment-picture,
 .comment-logged-out h4 {
   opacity: 1.0;
 }
 
-.comment-logged-out .comment-text, 
+.comment-logged-out .comment-text,
 .comment-info {
   color: black;
 }
 /**/
+
+/* Temporary solution to code block in tutorial page. */
+.article-body td {
+    background-color: white;
+}
+
+.article-body td:hover {
+    background-color: white;
+}
+/* End of temporary solution to code block in tutorial page. */
