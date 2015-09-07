@@ -501,6 +501,19 @@
   font-size: 18px;
   font-family: Arial;
   font-weight: 700;
+  word-wrap: break-word;
+}
+
+/* It's a Specific rule to the Google Chrome. */
+@supports (-webkit-appearance:none) {
+  #content .main-block #article .folder-content .item-description a {
+    color: #172938;
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: 700;
+    white-space: pre;
+    word-wrap: break-word;
+  }
 }
 
 #content .main-block #article .folder-content .item-date {
