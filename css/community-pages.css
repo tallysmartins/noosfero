@@ -438,6 +438,7 @@ float: left;
   display: none; 
 }
 
+.profile-type-is-community .action-profile_design-index #content .software-tab-data-block,
 .profile-type-is-community .action-profile-index #content .software-tab-data-block{
   display: block;
 }
@@ -448,11 +449,13 @@ float: left;
   display: none;
 }
 
-/********Bloco de informacao da comunidade********/
+/*Block with Community information - Need to develop solution - Only display on profile page */
+
 .profile-type-is-community .community-block{
   display: none;
 }
 
+.profile-type-is-community .action-profile_design-index #content .community-block,
 .profile-type-is-community .action-profile-index #content .community-block{
   display: block;
   border: 1px solid #ECEDF1;
@@ -494,7 +497,7 @@ float: left;
   text-align: center;
 }
 
-/* Members block */
+/*Block with Members information - Need to develop solution - Only display on profile page */
 
 .profile-type-is-community #content .members-block{
   display: none;
@@ -502,6 +505,7 @@ float: left;
   border-radius: 4px;
 }
 
+.profile-type-is-community .action-profile_design-index #content .members-block,
 .profile-type-is-community .action-profile-index #content .members-block{
   display: block;
 }
