@@ -273,24 +273,32 @@
   font-weight: bold;
 }
 
-/* Repository block */
+/* Repository and Wiki blocks */
+
+.template-default #content .box-3 .wiki-block,
 .template-default #content .box-3 .repository-block{
   padding: 0 0 0 10px;
 }
 
-.template-default .box-3 #bt_repositorio,
-.template-default .box-3 #bt_repositorio:active,
-.template-default .box-3 #bt_repositorio:visited{
+.template-default .box-3 #bt_wiki,
+.template-default .box-3 #bt_repositorio {
   border-radius: 4px;
   padding: 12px 10px;
   background: #EAEBEE;
+  color: #2C66CE;
   font: normal normal bold 12px 'open_sansbold', arial, helvetica, sans-serif;
   text-transform: uppercase;
   display: block;
   position: relative;
 }
 
-.template-default .box-3 #bt_repositorio::after{
+.template-default .box-3 #bt_wiki:hover,
+.template-default .box-3 #bt_repositorio:hover {
+  color:#172738;
+}
+
+.template-default .box-3 #bt_wiki:after,
+.template-default .box-3 #bt_repositorio:after{
   margin-top: -2px;
   padding: 4px 0px 4px 2px;
   border-radius: 4px;
@@ -305,6 +313,7 @@
   content: url('../images/right-arrow.png');
 }
 
+.template-default .box-3 #content #bt_wiki:hover,
 .template-default .box-3 #content #bt_repositorio:hover{
   color: #FFF;
   background: #2C66CE;
