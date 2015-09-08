@@ -455,41 +455,38 @@
   vertical-align: top;
 }
 
-.software-metrics-block .metrics-list li a:link {
-  color: #2c66ce !important;
+#content .software-metrics-block .metrics-list li a:link {
+  color: #2c66ce;
 }
 
 .software-metrics-block span.arrow-globe-icon {
   background: url('../images/arrow-globe-icon.png') no-repeat center center;
   width: 25px;
   height: 18px;
-  padding-right: 5px;
 }
 
 .software-metrics-block span.downloads-icon {
   background: url('../images/downloads-icon.png') no-repeat center center;
   width: 25px;
   height: 18px;
-  padding-right: 5px;
 }
 
 .software-metrics-block span.face-icon {
   background: url('../images/beneficiados-icon.png') no-repeat center center;
   width: 25px;
-  height: 18px;
-  padding-right: 5px;
+  height: 20px;
 }
 
 .software-metrics-block span.pig-safe-icon {
   background: url('../images/economizados-icon.png') no-repeat center center;
   width: 25px;
-  height: 18px;
-  padding-right: 5px;
+  height: 20px;
 }
 
 .software-metrics-block .metrics-list li a {
   letter-spacing: -0.1px;
-  line-height: 17px;
+  line-height: 20px;
+  padding-left: 5px;
 }
 
 .software-metrics-block .admin-estimation {
