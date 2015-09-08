@@ -281,18 +281,20 @@
 }
 
 .template-default .box-3 #bt_wiki,
-.template-default .box-3 #bt_wiki:active,
-.template-default .box-3 #bt_wiki:visited,
-.template-default .box-3 #bt_repositorio,
-.template-default .box-3 #bt_repositorio:active,
-.template-default .box-3 #bt_repositorio:visited{
+.template-default .box-3 #bt_repositorio {
   border-radius: 4px;
   padding: 12px 10px;
   background: #EAEBEE;
+  color: #2C66CE;
   font: normal normal bold 12px 'open_sansbold', arial, helvetica, sans-serif;
   text-transform: uppercase;
   display: block;
   position: relative;
+}
+
+.template-default .box-3 #bt_wiki:hover,
+.template-default .box-3 #bt_repositorio:hover {
+  color:#172738;
 }
 
 .template-default .box-3 #bt_wiki:after,
