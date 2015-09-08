@@ -497,6 +497,22 @@ float: left;
   text-align: center;
 }
 
+/* Wiki block - Need to develop solution - Only display on profile page */
+.template-default #content .box-3 .wiki-block,
+.template-lefttopright #content .box-2 .wiki-block,
+.template-leftbar #content .box-3 .wiki-block{
+  display: none;
+}
+
+.template-default .action-profile-index #content .box-3 .wiki-block,
+.template-lefttopright .action-profile-index #content .box-2 .wiki-block,
+.template-leftbar .action-profile-index #content .box-3 .wiki-block,
+.template-default .action-profile_design-index #content .box-3 .wiki-block,
+.template-lefttopright .action-profile_design-index #content .box-2 .wiki-block,
+.template-leftbar .action-profile_design-index #content .box-3 .wiki-block{
+  display: block;
+}
+
 /*Block with Members information - Need to develop solution - Only display on profile page */
 
 .profile-type-is-community #content .members-block{
