@@ -1,6 +1,6 @@
 # TODO: configure nginx to send logs to syslog directly
 # Configuration to forward Nginx
-
+$ModLoad imfile
 # Noosfero-Nginx access log
 $InputFileName /var/log/nginx/noosfero.access.log
 $InputFileTag nginx-noosfero-access
