@@ -18,15 +18,16 @@ This package contains Colab theme for Software Público Brasileiro platform.
 make
 
 %install
-cat >> %{buildroot}/etc/colab/settings.d/spb_theme.py << EOF
-COLAB_STATICS=['%{buildroot}/usr/lib/colab/colab-spb-theme-plugin/src/colab_spb_theme/static']
-COLAB_TEMPLATES=('%{buildroot}/usr/lib/colab/colab-spb-theme-plugin/src/colab_spb_theme/templates',)
-EOF
 
-chmod 0750 root:colab %{buildroot}/etc/colab/settings.d/spb_theme.py
-chown  root:colab %{buildroot}/etc/colab/settings.d/spb_theme.py
+install -d  %{buildroot}/etc/colab/settings.d/
+
+cat > %{buildroot}/etc/colab/settings.d/spb_theme.py << EOF
+COLAB_STATICS=['/usr/lib/colab/colab-spb-theme-plugin/src/colab_spb_theme/static']
+COLAB_TEMPLATES=('/usr/lib/colab/colab-spb-theme-plugin/src/colab_spb_theme/templates',)
+EOF
 
 make install DESTDIR=%{buildroot}
 
 %files
 /usr/lib/colab
+/etc/colab

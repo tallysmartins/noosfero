@@ -30,7 +30,7 @@ Integrated software development platform.
 # install colab into virtualenv to make sure dependencies are OK
 rm -rf %{buildvenv}
 cp -r /usr/lib/colab %{buildvenv}
-PATH=%{buildvenv}/bin:$PATH pip install --no-index .
+PATH=%{buildvenv}/bin:$PATH pip install --use-wheel --no-index  .
 virtualenv --relocatable %{buildvenv}
 
 # cleanup virtualenv
