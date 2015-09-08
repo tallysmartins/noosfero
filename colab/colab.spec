@@ -214,6 +214,10 @@ EOF
   chmod 0640 /etc/colab/settings.py
 fi
 
+install -d -m 0750 -o root -g colab /etc/colab/settings.d
+
+install -d -m 0755 -o colab -g colab /var/lib/colab-assets
+
 # If nginx is available serve assets using it
 if [ -d /usr/share/nginx ]; then
     ln -s /var/lib/colab/assets /usr/share/nginx/colab
