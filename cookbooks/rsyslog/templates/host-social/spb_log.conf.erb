@@ -1,2 +1,21 @@
+# TODO: configure nginx to send logs to syslog directly
+# Configuration to forward Nginx
+
+# Noosfero-Nginx access log
+$InputFileName /var/log/nginx/noosfero.access.log
+$InputFileTag nginx-noosfero-access
+$InputFileStateFile nginx-noosfero-accesslog
+$InputFileSeverity 'access'
+$InputFileFacility nginxnoosferoaccess
+$InputRunFileMonitor
+
+# Noosfero-Nginx error log
+$InputFileName /var/log/nginx/noosfero.error.log
+$InputFileTag nginx-noosfero-error
+$InputFileStateFile nginx-noosfero-errorlog
+$InputFileSeverity 'error'
+$InputFileFacility nginxnoosferoerror
+$InputRunFileMonitor
+
 # Sending <%= node.name %> logs
 *.*                                                     @@<%= node['peers']['monitor'] %>
