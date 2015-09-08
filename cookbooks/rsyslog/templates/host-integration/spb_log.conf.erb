@@ -49,5 +49,54 @@ $InputFileSeverity 'info'
 $InputFileFacility gitlabshell
 $InputRunFileMonitor
 
+#### Nginx log files
+# Colab-Nginx logs
+$InputFileName /var/log/nginx/colab.access.log
+$InputFileTag nginx-colab-access
+$InputFileStateFile nginx-colab-accesslog
+$InputFileSeverity 'access'
+$InputFileFacility nginxcolabaccess
+$InputRunFileMonitor
+
+# Colab-Nginx error log
+$InputFileName /var/log/nginx/colab.error.log
+$InputFileTag nginx-colab-error
+$InputFileStateFile nginx-colab-errorlog
+$InputFileSeverity 'error'
+$InputFileFacility nginxcolaberror
+$InputRunFileMonitor
+
+# Mailman-Nginx logs
+$InputFileName /var/log/nginx/mailman.access.log
+$InputFileTag nginx-mailman-access
+$InputFileStateFile nginx-mailman-accesslog
+$InputFileSeverity 'access'
+$InputFileFacility nginxmailmanaccess
+$InputRunFileMonitor
+
+# Mailman-Nginx error log
+$InputFileName /var/log/nginx/mailman.error.log
+$InputFileTag nginx-mailman-error
+$InputFileStateFile nginx-mailman-errorlog
+$InputFileSeverity 'error'
+$InputFileFacility nginxmailmanerror
+$InputRunFileMonitor
+
+# Gitlab-Nginx logs
+$InputFileName /var/log/nginx/gitlab.access.log
+$InputFileTag nginx-gitlab-access
+$InputFileStateFile nginx-gitlab-accesslog
+$InputFileSeverity 'access'
+$InputFileFacility nginxgitlabaccess
+$InputRunFileMonitor
+
+# Gitlab-Nginx error log
+$InputFileName /var/log/nginx/gitlab.error.log
+$InputFileTag nginx-gitlab-error
+$InputFileStateFile nginx-gitlab-errorlog
+$InputFileSeverity 'error'
+$InputFileFacility nginxgitlaberror
+$InputRunFileMonitor
+
 # Sending <%= node.name %> logs
 *.*                                                     @@<%= node['peers']['monitor'] %>
