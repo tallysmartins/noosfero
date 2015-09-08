@@ -445,7 +445,9 @@ float: left;
 
 /*** Right bar ***/
 
-.template-default.profile-type-is-community .action-profile-index #content .box-3 .link-list-block{
+.template-default.profile-type-is-community .action-profile-index #content .box-3 .link-list-block,
+.template-lefttopright.profile-type-is-community .action-profile-index #content .box-3 .link-list-block,
+.template-leftbar.profile-type-is-community .action-profile-index #content .box-3 .link-list-block{
   display: none;
 }
 
