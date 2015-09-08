@@ -377,6 +377,7 @@
 }
 
 /* Repository block */
+
 .template-lefttopright #content .box-2 .repository-block{
   padding: 0 0 0 10px;
 }
@@ -415,6 +416,68 @@
 }
 
 /*** WARNING - WITH BOX-4 ***/
+
+/* Metrics Block */
+.software-metrics-block {
+  font-family: Arial;
+  padding: 3px 0px 0px 10px;
+}
+
+.software-metrics-block .metrics-list {
+  border-bottom: 1px dotted #D3D6DE;
+}
+
+.software-metrics-block .metrics-list li {
+  display: table;
+  margin-bottom: 10px;
+}
+
+.software-metrics-block .metrics-list li span,
+.software-metrics-block .metrics-list li a {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.software-metrics-block .metrics-list li a:link {
+  color: #2c66ce !important;
+}
+
+.software-metrics-block span.arrow-globe-icon {
+  content: url('../images/arrow-globe-icon.png');
+  padding-right: 5px;
+}
+
+.software-metrics-block span.downloads-icon {
+  content: url('../images/downloads-icon.png');
+  padding-right: 14px;
+  padding-left: 1px;
+}
+
+.software-metrics-block span.face-icon {
+  content: url('../images/beneficiados-icon.png');
+  padding-right: 14px;
+  padding-left: 1px;
+}
+
+.software-metrics-block span.pig-safe-icon {
+  content: url('../images/economizados-icon.png');
+  padding-right: 11px;
+}
+
+.software-metrics-block .metrics-list li a {
+  letter-spacing: -0.1px;
+}
+
+.software-metrics-block .admin-estimation {
+  font-size: 11px;
+  line-height: 15px;
+  margin-top: 7px;
+  margin-left: 4px;
+}
+
+.software-metrics-block .metrics-list .saved-money {
+  font-size: 14px;
+}
 
 /*** end of right bar ***/
 
