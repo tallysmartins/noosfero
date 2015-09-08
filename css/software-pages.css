@@ -387,23 +387,30 @@
 
 /* Repository block */
 
+.template-lefttopright #content .box-2 .wiki-block,
 .template-lefttopright #content .box-2 .repository-block{
   padding: 0 0 0 10px;
 }
 
-.template-lefttopright .box-2 #bt_repositorio,
-.template-lefttopright .box-2 #bt_repositorio:active,
-.template-lefttopright .box-2 #bt_repositorio:visited {
+.template-lefttopright .box-2 #bt_wiki,
+.template-lefttopright .box-2 #bt_repositorio {
   border-radius: 4px;
   padding: 12px 10px;
   background: #EAEBEE;
+  color: #2C66CE;
   font: normal normal bold 12px 'open_sansbold', arial, helvetica, sans-serif;
   text-transform: uppercase;
   display: block;
   position: relative;
 }
 
-.template-lefttopright .box-2 #bt_repositorio::after {
+.template-lefttopright .box-2 #bt_wiki:hover,
+.template-lefttopright .box-2 #bt_repositorio:hover {
+  color:#172738;
+}
+
+.template-lefttopright .box-2 #bt_wiki::after,
+.template-lefttopright .box-2 #bt_repositorio::after{
   margin-top: -2px;
   padding: 4px 0px 4px 2px;
   border-radius: 4px;
@@ -418,7 +425,8 @@
   content: url('../images/right-arrow.png');
 }
 
-.template-lefttopright .box-2 #content #bt_repositorio:hover {
+.template-lefttopright .box-2 #content #bt_wiki:hover,
+.template-lefttopright .box-2 #content #bt_repositorio:hover{
   color: #FFF;
   background: #2C66CE;
   text-decoration: none;
