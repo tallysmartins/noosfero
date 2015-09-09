@@ -405,7 +405,8 @@
 }
 
 .action-home-index #content .highlights-image-link img{
-  max-height: 100px;
+  height: 100px;
+  max-width: 200px;
 }
 
 .action-home-index #content .highlights-label{
