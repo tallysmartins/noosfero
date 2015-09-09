@@ -4,8 +4,8 @@
   margin-top: 50px;
 }
 
-.box-2 .block-outer,
-.box-3 .block-outer{
+#content .box-2 .block-outer .block,
+#content .box-3 .block-outer .block{
   margin-bottom: 45px;
   clear: both;
 }
