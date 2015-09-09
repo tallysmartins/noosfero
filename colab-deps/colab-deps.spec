@@ -2,7 +2,7 @@
 %define version 1.11
 %define release 1
 
-Summary: Collaboration platform for communities (Pyton dependencies)
+Summary: Collaboration platform for communities (Python dependencies)
 Name: %{name}
 Version: %{version}
 Release: %{release}
