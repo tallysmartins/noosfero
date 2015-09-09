@@ -27,11 +27,12 @@ cd %{_builddir}
 make
 
 %install
+cd %{_builddir}
 %make_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%{_libdir}/colab
+/usr/lib/colab
 %defattr(-,root,root)
