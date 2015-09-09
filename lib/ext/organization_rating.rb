@@ -1,6 +1,6 @@
-require_dependency "community_rating"
+require_dependency "organization_rating"
 
-CommunityRating.class_eval do
+OrganizationRating.class_eval do
 
   belongs_to :institution
 
@@ -16,4 +16,5 @@ CommunityRating.class_eval do
       self.errors.add :institution, _("not found") unless institution
     end
   end
+
 end
