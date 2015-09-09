@@ -250,3 +250,228 @@
   border: 1px solid #D3D6DE;
 }
 
+/*New Software form*/
+
+.action-software_communities_plugin_myprofile-new_software #content.current-step h3 {
+  color: #F50054;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-block form input[type="text"] {
+  display: block;
+  height: 19px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 384px;
+  font-size: 15px;
+  font-family: arial, helvetica;
+  color: #585858;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .formfield input{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 76%;
+  word-wrap: break-word;
+  border-radius: 4px;
+}
+.action-software_communities_plugin_myprofile-new_software #content .main-content form label.formlabel.mandatory{
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #231f20;
+  font-weight: 300;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-content form .required-field .formlabel.mandatory:after{
+  color: #FF0366;
+  font-weight: 500;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .formfield textarea{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content #finality textarea {
+  resize: none;
+  height: 100px;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content #software-hostname {
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+  background: #EEE;
+  border: 1px solid #CFCFCF;
+  line-height: 22px;
+  padding: 0px 7px;
+  color: #4A4A4A;
+  font-size: 20px;
+  text-transform: lowercase;
+  min-width: 190px;
+  border-spacing: 20px;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-block form #profile_change_picture {
+  padding: 0 15px 15px 15px;
+  border: 1px dotted #ddd;
+  margin-top: 10px;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-content form p .required-field {
+  max-width: 500px;
+  padding: 15px 20px;
+  margin: 20px 0 30px 0;
+  border: 1px dotted #ccc;
+  border-left: 5px solid #FF0366;
+  border-radius: 3px;
+  display: block;
+  background: #fff;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+.action-software_communities_plugin_myprofile-new_software .explanation {
+font-style: italic;
+font-size: 10px;
+}
+
+/* new community form*/
+
+.action-memberships-new_community #content .main-block form input[type="text"] {
+  display: block;
+  height: 19px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 384px;
+  font-size: 15px;
+  font-family: arial, helvetica;
+  color: #585858;
+}
+
+.action-memberships-new_community .formfield input{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 76%;
+  word-wrap: break-word;
+  border-radius: 4px;
+}
+
+.action-memberships-new_community #content .main-content form label.formlabel{
+  font-size: 14px;
+  margin-bottom: 5px;
+  color:#231f20;
+  font-weight: 300;
+}
+
+.action-memberships-new_community #content .main-content form .required-field .formlabel:after {
+  color: #FF0366;
+  font-weight: 500;
+}
+
+.action-memberships-new_community .formfield textarea{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.action-memberships-new_community #content .main-block form #profile_change_picture {
+  padding: 0 15px 15px 15px;
+  border: 1px dotted #ddd;
+  margin-top: 10px;
+}
+
+.action-memberships-new_community #content .main-content form p .required-field {
+  max-width: 500px;
+  padding: 15px 20px;
+  margin: 20px 0 30px 0;
+  border: 1px dotted #ccc;
+  border-left: 5px solid #FF0366;
+  border-radius: 3px;
+  display: block;
+  background: #fff;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+/*Contact new form*/
+
+.action-contact-new #content .main-block form input[type="text"] {
+  display: block;
+  height: 19px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 384px;
+  font-size: 15px;
+  font-family: arial, helvetica;
+  color: #585858;
+}
+
+.action-contact-new .formfield input{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 76%;
+  word-wrap: break-word;
+  border-radius: 4px;
+}
+
+.action-contact-new #content .main-content form label.formlabel{
+  font-size: 14px;
+  margin-bottom: 5px;
+  color:#231f20;
+  font-weight: 300;
+}
+
+.action-contact-new #content .main-content form .required-field .formlabel:after {
+  color: #FF0366;
+  font-weight: 500;
+}
+.action-contact-new #content .main-content form label.formlabel{
+  font-size: 14px;
+  margin-bottom: 5px;
+  color:#231f20;
+  font-weight: 300;
+}
+
+.action-contact-new #content .main-content form .required-field .formlabel:after {
+  color: #FF0366;
+  font-weight: 500;
+}
+
+
+.action-contact-new .formfield textarea{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.action-contact-new #content .main-content form p .required-field {
+  max-width: 500px;
+  padding: 15px 20px;
+  margin: 20px 0 30px 0;
+  border: 1px dotted #ccc;
+  border-left: 5px solid #FF0366;
+  border-radius: 3px;
+  display: block;
+  background: #fff;
+  line-height: 20px;
+  font-size: 13px;
+}
