@@ -2,6 +2,8 @@ admins:
   - ["Paulo Meirelles", "paulo@softwarelivre.org"]
 external_hostname: dev.softwarepublico.gov.br
 external_ip: 189.9.151.16
+alternative_hostnames:
+  - www.dev.softwarepublico.gov.br
 site_url: https://dev.softwarepublico.gov.br
 colab_from_address: '"Portal do Software Publico (dev)" <noreply@dev.softwarepublico.gov.br>'
 server_email: '"Portal do Software Publico (dev)" <noreply@dev.softwarepublico.gov.br>'

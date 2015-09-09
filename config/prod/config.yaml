@@ -1,10 +1,14 @@
 admins:
   - ["Nayanne Araújo", "nayanne.bonifacio@planejamento.gov.br"]
   - ["Marisa Souza dos Santos", "marisa.santos@planejamento.gov.br"]
-external_hostname: portal.softwarepublico.gov.br
+site_url: https://www.softwarepublico.gov.br
+external_hostname: www.softwarepublico.gov.br
+alternative_hostnames:
+  - softwarepublico.gov.br
+  - portal.softwarepublico.gov.br
+  - beta.softwarepublico.gov.br
 external_ip: 189.9.151.64
 alt_ssh_port: 55555
-site_url: https://portal.softwarepublico.gov.br
 colab_from_address: '"Portal do Software Publico" <noreply@portal.softwarepublico.gov.br>'
 server_email: '"Portal do Software Publico" <noreply@portal.softwarepublico.gov.br>'
 email_subject_prefix: '[spb]'
