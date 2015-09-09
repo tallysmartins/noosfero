@@ -1,6 +1,6 @@
 %define name colab
-%define version 1.10.3
-%define default_release 4
+%define version 1.11.0
+%define default_release 1
 %{!?release: %define release %{default_release}}
 %define buildvenv /var/tmp/%{name}-%{version}
 
@@ -16,8 +16,9 @@ Prefix: %{_prefix}
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://github.com/colab/colab
 BuildArch: noarch
-BuildRequires: colab-deps >= 1.10, python-virtualenv
-Requires: colab-deps >= 1.10, solr, mailman-api
+BuildRequires: colab-deps >= 1.11, python-virtualenv
+# TODO: Set mailman-api version (0.3c1)
+Requires: colab-deps >= 1.11, solr, mailman-api
 
 %description
 Integrated software development platform.
@@ -49,7 +50,7 @@ install -d -m 0755 %{buildroot}/etc/colab
 install -m 0644 misc/etc/colab/gunicorn.py %{buildroot}/etc/colab
 
 # install log
-install -d -m 0755 -o colab -g colab %{buildroot}/var/log/colab
+install -d -m 0755 %{buildroot}/var/log/colab
 
 # install virtualenv
 install -d -m 0755 %{buildroot}/usr/lib
@@ -85,7 +86,7 @@ rm -rf %{buildvenv}
 /var/log/colab
 %{_bindir}/*
 /etc/cron.d/colab
-/etc/colab/gunicorn.py
+/etc/colab
 /lib/systemd/system/colab.service
 
 %post
@@ -93,6 +94,8 @@ groupadd colab || true
 if ! id colab; then
   useradd --system --gid colab  --home-dir /usr/lib/colab --no-create-home colab
 fi
+
+chown -R colab:colab /var/log/colab
 
 if [ ! -f /etc/colab/settings.py ]; then
   SECRET_KEY=$(openssl rand -hex 32)
