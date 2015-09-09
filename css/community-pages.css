@@ -514,7 +514,7 @@ float: left;
 /* Repository block and wiki block need to look a unique block */
 .action-profile-index #content .box-2 .block-outer .repository-block,
 .action-profile-index #content .box-3 .block-outer .repository-block{
-  margin-bottom: 0px;
+  margin-bottom: 20px;
 }
 
 /*Block with Members information - Need to develop solution - Only display on profile page */
