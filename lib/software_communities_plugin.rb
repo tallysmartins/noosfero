@@ -75,7 +75,7 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   end
 
   module Hotspots
-    def display_community_average_rating community
+    def display_organization_average_rating organization
       nil
     end
   end
