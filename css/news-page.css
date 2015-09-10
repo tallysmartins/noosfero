@@ -15,6 +15,17 @@
  *
  *   TODO: Remove this informations of the html and, then, from here.
  */
+
+#article-toolbar a.button.icon-feed.blog-feed-link {
+  display: none;
+}
+
+/* WARNING:
+ *   This solution is TEMPORARY. This informations shouldn't exist
+ *   in this area.
+ *
+ *   TODO: Remove this informations of the html and, then, from here.
+ */
 #content .blog #article-header .publishing-info .date,
 #content .blog #article-header .publishing-info .author,
 #content .blog #article-header .publishing-info .comments {
