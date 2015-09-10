@@ -10,7 +10,7 @@ install_requires = ['colab']
 
 setup(
     name="colab-spb-theme",
-    version='0.1.0',
+    version='0.2.0',
     author='Carlos Oliveira',
     author_email='carlospecter@gmail.com',
     url='https://portal.softwarepublico.gov.br/gitlab/softwarepublico/colab-spb-theme',

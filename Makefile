@@ -1,5 +1,5 @@
-PACKAGE = colab-spb-theme-plugin
-VERSION = 0.2
+PACKAGE = colab-spb-theme
+VERSION = 0.2.0
 DISTDIR = $(PACKAGE)-$(VERSION)
 TARBALL = $(DISTDIR).tar.gz
 
@@ -18,5 +18,5 @@ clean:
 	$(RM) -r $(DISTDIR)
 
 install:
-	install -d -m 0755 $(DESTDIR)/$(colab_dir)/colab-spb-theme-plugin
-	cp -vr .  $(DESTDIR)/$(colab_dir)/colab-spb-theme-plugin
+	install -d -m 0755 $(DESTDIR)/$(colab_dir)/colab-spb-theme
+	cp -vr .  $(DESTDIR)/$(colab_dir)/colab-spb-theme
