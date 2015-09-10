@@ -1,10 +1,10 @@
 admins:
   - ["Nayanne Araújo", "nayanne.bonifacio@planejamento.gov.br"]
   - ["Marisa Souza dos Santos", "marisa.santos@planejamento.gov.br"]
-site_url: https://www.softwarepublico.gov.br
-external_hostname: www.softwarepublico.gov.br
+site_url: https://softwarepublico.gov.br
+external_hostname: softwarepublico.gov.br
 alternative_hostnames:
-  - softwarepublico.gov.br
+  - www.softwarepublico.gov.br
   - portal.softwarepublico.gov.br
   - beta.softwarepublico.gov.br
 external_ip: 189.9.151.64
