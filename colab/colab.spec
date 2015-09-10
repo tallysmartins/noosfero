@@ -47,7 +47,7 @@ find %{buildvenv} -type d -empty -delete
 
 # install config file
 install -d -m 0755 %{buildroot}/etc/colab
-install -m 0644 misc/etc/colab/gunicorn.py %{buildroot}/etc/colab
+install -m 0644 misc/etc/colab/gunicorn.py %{buildroot}/etc/colab/gunicorn.py.example
 
 # Create settings dirs
 install -d -m 0755 %{buildroot}/etc/colab/settings.d
@@ -106,7 +106,7 @@ rm -rf %{buildvenv}
 #/etc/colab # XXX: remove if doesnt break
 /etc/colab/settings.d
 /etc/colab/plugins.d
-/etc/colab/gunicorn.py
+/etc/colab/gunicorn.py.example
 /lib/systemd/system/colab.service
 /lib/systemd/system/celeryd.service
 /lib/systemd/system/celerybeat.service
@@ -117,7 +117,7 @@ if ! id colab; then
   useradd --system --gid colab  --home-dir /usr/lib/colab --no-create-home colab
 fi
 
-chown -R colab:colab /var/log/colab
+mv /etc/colab/gunicorn.py.example /etc/colab/gunicorn.py
 
 if [ ! -f /etc/colab/settings.py ]; then
   SECRET_KEY=$(openssl rand -hex 32)
