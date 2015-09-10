@@ -98,7 +98,7 @@ rm -rf %{buildvenv}
 
 /usr/lib/colab
 #/var/lib/colab # XXX: remove if doesnt break
-%attr(-, colab, colab) /var/lib/colab/assets
+/var/lib/colab/assets
 %attr(-, colab, colab) /var/lib/colab/celery
 %attr(-, colab, colab) /var/log/colab
 %{_bindir}/*
