@@ -97,7 +97,7 @@ rm -rf %{buildvenv}
 
 /usr/lib/colab
 #/var/lib/colab # XXX: remove if doesnt break
-/var/lib/colab/assets
+%attr(-, colab, colab) /var/lib/colab/assets
 %attr(-, colab, colab) /var/lib/colab/celery
 %attr(-, colab, colab) /var/log/colab
 %{_bindir}/*
@@ -212,10 +212,6 @@ EOF
   chown root:colab /etc/colab/settings.py
   chmod 0640 /etc/colab/settings.py
 fi
-
-install -d -m 0750 -o root -g colab /etc/colab/settings.d
-
-install -d -m 0755 -o colab -g colab /var/lib/colab-assets
 
 # If nginx is available serve assets using it
 if [ -d /usr/share/nginx ]; then
