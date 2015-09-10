@@ -39,7 +39,7 @@ class AddWikiBlockToAllSoftwaresCommunities < ActiveRecord::Migration
 
       repository_block = software_area_two.blocks.find_by_type("RepositoryBlock")
       if !repository_block.nil?
-        wiki_block.position = repository_block.position + 1
+        wiki_block.position = repository_block.position
         wiki_block.save!
         print "."
       end
