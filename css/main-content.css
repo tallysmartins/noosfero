@@ -118,7 +118,9 @@
   line-height: normal;
   text-transform: none;
 }
-
+.action-profile-members #content .page-profile-header a.button.with-text{
+  border:none;
+}
 .action-profile-members #content .button-bar a.button.with-text:hover{
   border-color: #3E67B1;
 }

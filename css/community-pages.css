@@ -1,4 +1,33 @@
 /*** Home page - profile page ***/
+.action-profile-index .main-content{
+  padding:0px;
+}
+.action-profile-index .page-profile-header{
+  display: block;
+  border-bottom: 1px solid #D3D6DE;
+  padding-bottom:30px;
+  margin-bottom: 30px;
+}
+.action-profile-index .page-profile-header .join-leave-button.require-login-popup{
+  float:left;
+  width: 35%;
+}
+.action-profile-index #content .page-profile-header a.button.with-text {
+    padding: 5px 15px;
+    border: 1px solid #D3D6DE;
+    text-transform: none;
+    font-size: 12px;
+}
+.action-profile-index #content .page-profile-header .control-panel-button a{
+  background:#3E67B1;
+  color:#fff;
+}
+.action-profile-index #content .page-profile-header .control-panel-button a.button.with-text,
+.action-profile-index #content .page-profile-header .join-leave-button a:hover{
+  border:1px solid #3E67B1;
+}
+
+
 
 /* Profile header */
 .profile-type-is-community .action-profile-index #content .main-block h1 {
@@ -15,8 +44,8 @@
   display: none;
 }
 
-.action-profile-index .main-block #public-profile-search, 
-.action-profile-index .main-block #profile-search-results form, 
+.action-profile-index .main-block #public-profile-search,
+.action-profile-index .main-block #profile-search-results form,
 .action-profile-index .main-block .profile-search-block form {
   background-color: transparent;
 }
@@ -36,7 +65,7 @@
   border-radius: 4px;
 }
 
-.action-profile-index .main-block #public-profile-search .formfield input, 
+.action-profile-index .main-block #public-profile-search .formfield input,
 .action-profile-index .main-block #public-profile-search .formfield textarea{
   width: 100%;
   background: none #FFFFFF;
@@ -125,7 +154,7 @@
 #block-community-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active{
   margin-bottom: -3px !important;
   padding-bottom: 1px;
-  border-bottom: 3px solid #FF0366; 
+  border-bottom: 3px solid #FF0366;
 }
 
 #block-community-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active.ui-state-active:before{
@@ -435,7 +464,7 @@ float: left;
 /* Software Tab Data - Need to develop solution - Only display on profile page */
 
 .profile-type-is-community #content .software-tab-data-block{
-  display: none; 
+  display: none;
 }
 
 .profile-type-is-community .action-profile_design-index #content .software-tab-data-block,
@@ -542,7 +571,7 @@ float: left;
 
 .profile-type-is-community #content .members-block .block-footer-content{
   padding: 8px 10px 15px 0px;
-  margin-right: 0px; 
+  margin-right: 0px;
   background-color: #ECEDF1;
   border-top: 1px solid #D3D6DE;
   text-align: right;
@@ -652,8 +681,8 @@ float: left;
   content: "\f053";
   color: #fff;
   font-family: FontAwesome;
-  font-size: 8px; 
-  line-height: 11px; 
+  font-size: 8px;
+  line-height: 11px;
 }
 
 .profile-type-is-community #content .members-block .common-profile-list-block .fn {
@@ -713,7 +742,7 @@ float: left;
 .profile-type-is-community #content .members-block .common-profile-list-block img{
   width: 50px;
   height: 50px;
-  max-height: 50px; 
+  max-height: 50px;
   max-width: 50px;
   border-radius: 4px;
 }
@@ -752,9 +781,9 @@ float: left;
 
 .action-profile-members #content .page-members-header{
   margin-bottom: 45px;
-  padding-bottom: 70px;
   border-bottom: 1px solid #D3D6DE;
   font-family: Arial;
+  height: 150px;
 }
 
 .action-profile-members #content .page-members-header h1{
@@ -764,7 +793,7 @@ float: left;
 .action-profile-members #content .page-members-header h3.community-name{
   margin: 0px 0px 5px 0px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 300;
 }
 
 .action-profile-members #content .page-members-header ul li{
@@ -779,6 +808,7 @@ float: left;
   border: 1px solid #D3D6DE;
   text-transform: none;
   font-size: 12px;
+  margin-right: 5px;
 }
 
 .action-profile-members #content .page-members-header a.button.with-text:hover{
@@ -812,12 +842,12 @@ float: left;
   border: none;
 }
 
-.action-profile-members #content .profile-members-tabs-container .ui-corner-all, 
-.action-profile-members #content .profile-members-tabs-container .ui-corner-bl, 
-.action-profile-members #content .profile-members-tabs-container .ui-corner-top, 
-.action-profile-members #content .profile-members-tabs-container .ui-corner-right, 
-.action-profile-members #content .profile-members-tabs-container .ui-corner-bottom, 
-.action-profile-members #content .profile-members-tabs-container .ui-corner-left, 
+.action-profile-members #content .profile-members-tabs-container .ui-corner-all,
+.action-profile-members #content .profile-members-tabs-container .ui-corner-bl,
+.action-profile-members #content .profile-members-tabs-container .ui-corner-top,
+.action-profile-members #content .profile-members-tabs-container .ui-corner-right,
+.action-profile-members #content .profile-members-tabs-container .ui-corner-bottom,
+.action-profile-members #content .profile-members-tabs-container .ui-corner-left,
 .action-profile-members #content .profile-members-tabs-container .ui-corner-tr,
 .action-profile-members #content .profile-members-tabs-container .ui-corner-tl{
   border-radius: 0px;
@@ -852,7 +882,7 @@ float: left;
 .action-profile-members #content .profile-members-tabs-container .ui-tabs .ui-tabs-nav li.ui-tabs-active {
   margin-bottom: -3px;
   padding-bottom: 1px;
-  border-bottom: 3px solid #FF0366; 
+  border-bottom: 3px solid #FF0366;
 }
 
 .action-profile-members #content .profile-members-tabs-container .ui-tabs .ui-tabs-nav li.ui-tabs-active.ui-state-active:before{
