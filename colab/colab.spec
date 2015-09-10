@@ -215,7 +215,7 @@ if [ -d /usr/share/nginx ]; then
     ln -s /var/lib/colab/assets /usr/share/nginx/colab
 fi
 
-yes yes | colab-admin collectstatic
+colab-admin collectstatic --noinput
 
 if [ $1 -gt 1 ]; then
   # upgrade; restart if running
