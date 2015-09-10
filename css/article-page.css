@@ -114,6 +114,10 @@
   border-top: 3px solid #172938;
 }
 
+#content .main-block .article-body #article-actions {
+  display: none;
+}
+
 /*** Categories ***/
 
 #content .main-block #article-cat{
