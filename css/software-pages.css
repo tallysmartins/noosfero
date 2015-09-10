@@ -281,18 +281,20 @@
 }
 
 .template-default .box-3 #bt_wiki,
-.template-default .box-3 #bt_wiki:active,
-.template-default .box-3 #bt_wiki:visited,
-.template-default .box-3 #bt_repositorio,
-.template-default .box-3 #bt_repositorio:active,
-.template-default .box-3 #bt_repositorio:visited{
+.template-default .box-3 #bt_repositorio {
   border-radius: 4px;
   padding: 12px 10px;
   background: #EAEBEE;
+  color: #2C66CE;
   font: normal normal bold 12px 'open_sansbold', arial, helvetica, sans-serif;
   text-transform: uppercase;
   display: block;
   position: relative;
+}
+
+.template-default .box-3 #bt_wiki:hover,
+.template-default .box-3 #bt_repositorio:hover {
+  color:#172738;
 }
 
 .template-default .box-3 #bt_wiki:after,
@@ -384,23 +386,31 @@
 }
 
 /* Repository block */
+
+.template-lefttopright #content .box-2 .wiki-block,
 .template-lefttopright #content .box-2 .repository-block{
   padding: 0 0 0 10px;
 }
 
-.template-lefttopright .box-2 #bt_repositorio,
-.template-lefttopright .box-2 #bt_repositorio:active,
-.template-lefttopright .box-2 #bt_repositorio:visited {
+.template-lefttopright .box-2 #bt_wiki,
+.template-lefttopright .box-2 #bt_repositorio {
   border-radius: 4px;
   padding: 12px 10px;
   background: #EAEBEE;
+  color: #2C66CE;
   font: normal normal bold 12px 'open_sansbold', arial, helvetica, sans-serif;
   text-transform: uppercase;
   display: block;
   position: relative;
 }
 
-.template-lefttopright .box-2 #bt_repositorio::after {
+.template-lefttopright .box-2 #bt_wiki:hover,
+.template-lefttopright .box-2 #bt_repositorio:hover {
+  color:#172738;
+}
+
+.template-lefttopright .box-2 #bt_wiki::after,
+.template-lefttopright .box-2 #bt_repositorio::after{
   margin-top: -2px;
   padding: 4px 0px 4px 2px;
   border-radius: 4px;
@@ -415,13 +425,80 @@
   content: url('../images/right-arrow.png');
 }
 
-.template-lefttopright .box-2 #content #bt_repositorio:hover {
+.template-lefttopright .box-2 #content #bt_wiki:hover,
+.template-lefttopright .box-2 #content #bt_repositorio:hover{
   color: #FFF;
   background: #2C66CE;
   text-decoration: none;
 }
 
 /*** WARNING - WITH BOX-4 ***/
+
+/* Metrics Block */
+.software-metrics-block {
+  font-family: Arial;
+  padding: 3px 0px 0px 10px;
+}
+
+.software-metrics-block .metrics-list {
+  border-bottom: 1px dotted #D3D6DE;
+}
+
+.software-metrics-block .metrics-list li {
+  display: table;
+  margin-bottom: 10px;
+}
+
+.software-metrics-block .metrics-list li span,
+.software-metrics-block .metrics-list li a {
+  display: table-cell;
+  vertical-align: top;
+}
+
+#content .software-metrics-block .metrics-list li a:link {
+  color: #2c66ce;
+}
+
+.software-metrics-block span.arrow-globe-icon {
+  background: url('../images/arrow-globe-icon.png') no-repeat center center;
+  width: 25px;
+  height: 18px;
+}
+
+.software-metrics-block span.downloads-icon {
+  background: url('../images/downloads-icon.png') no-repeat center center;
+  width: 25px;
+  height: 18px;
+}
+
+.software-metrics-block span.face-icon {
+  background: url('../images/beneficiados-icon.png') no-repeat center center;
+  width: 25px;
+  height: 20px;
+}
+
+.software-metrics-block span.pig-safe-icon {
+  background: url('../images/economizados-icon.png') no-repeat center center;
+  width: 25px;
+  height: 20px;
+}
+
+.software-metrics-block .metrics-list li a {
+  letter-spacing: -0.1px;
+  line-height: 20px;
+  padding-left: 5px;
+}
+
+.software-metrics-block .admin-estimation {
+  font-size: 11px;
+  line-height: 15px;
+  margin-top: 7px;
+  margin-left: 4px;
+}
+
+.software-metrics-block .metrics-list .saved-money {
+  font-size: 14px;
+}
 
 /*** end of right bar ***/
 

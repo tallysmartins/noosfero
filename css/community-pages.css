@@ -109,7 +109,7 @@
   float:none;
   display:table;
 }
-
+.profile-members-tabs-container .ui-tabs .ui-tabs-panel,
 #block-community-tabs .ui-tabs .ui-tabs-panel{
   padding: 0px;
 }
@@ -139,7 +139,7 @@
 }
 #block-community-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active a{
   color: #FF0366;
-  font-weight: 700;
+  font-weight: 300;
 }
 
 /* Community's area tabs */
@@ -376,14 +376,14 @@
   color: #172738;
   text-align: left;
   text-overflow: ellipsis;
-  font: 14px/21px Arial;
+  font: 15px/21px Arial;
   overflow: hidden;
 }
 
 /*Post Position-1*/
 #content #blog-tab .blog .blog-post.position-1 h1{
   line-height: 37px;
-  font-size: 25px;
+  font-size: 22px;
   color: #172738;
   padding-left:0px;
   text-align: left;
@@ -417,17 +417,19 @@ float: left;
   padding-left: 7px;
   padding-right: 4px;
   color: #ffffff;
-  background: #3E67B1;
-  border-radius: 4px;
-  font-size: 18px;
+  background: #172738;
+  border-radius: 2px;
+  font-size: 19px;
   line-height: 20px;
   text-align: center;
   margin-left: 5px;
   position: relative;
   top: 2px;
 }
+
 #content #blog-tab .blog .read-more a{
   text-decoration: none;
+  color:#172735;
 }
 
 /* Software Tab Data - Need to develop solution - Only display on profile page */
@@ -436,21 +438,25 @@ float: left;
   display: none; 
 }
 
+.profile-type-is-community .action-profile_design-index #content .software-tab-data-block,
 .profile-type-is-community .action-profile-index #content .software-tab-data-block{
   display: block;
 }
 
 /*** Right bar ***/
 
-.template-default.profile-type-is-community .action-profile-index #content .box-3 .link-list-block{
+.template-default.profile-type-is-community .action-profile-index #content .box-3 .link-list-block,
+.template-lefttopright.profile-type-is-community .action-profile-index #content .box-2 .link-list-block
   display: none;
 }
 
-/********Bloco de informacao da comunidade********/
+/*Block with Community information - Need to develop solution - Only display on profile page */
+
 .profile-type-is-community .community-block{
   display: none;
 }
 
+.profile-type-is-community .action-profile_design-index #content .community-block,
 .profile-type-is-community .action-profile-index #content .community-block{
   display: block;
   border: 1px solid #ECEDF1;
@@ -492,7 +498,26 @@ float: left;
   text-align: center;
 }
 
-/* Members block */
+/* Wiki block - Need to develop solution - Only display on profile page */
+.template-default #content .box-3 .wiki-block,
+.template-lefttopright #content .box-2 .wiki-block{
+  display: none;
+}
+
+.template-default .action-profile-index #content .box-3 .wiki-block,
+.template-lefttopright .action-profile-index #content .box-2 .wiki-block,
+.template-default .action-profile_design-index #content .box-3 .wiki-block,
+.template-lefttopright .action-profile_design-index #content .box-2 .wiki-block{
+  display: block;
+}
+
+/* Repository block and wiki block need to look a unique block */
+.action-profile-index #content .box-2 .block-outer .repository-block,
+.action-profile-index #content .box-3 .block-outer .repository-block{
+  margin-bottom: 20px;
+}
+
+/*Block with Members information - Need to develop solution - Only display on profile page */
 
 .profile-type-is-community #content .members-block{
   display: none;
@@ -500,6 +525,7 @@ float: left;
   border-radius: 4px;
 }
 
+.profile-type-is-community .action-profile_design-index #content .members-block,
 .profile-type-is-community .action-profile-index #content .members-block{
   display: block;
 }
@@ -563,7 +589,9 @@ float: left;
 }
 
 .profile-type-is-community #content  .members-block .common-profile-list-block .vcard a.profile_link{
-  height: 70px;
+  /*height: 70px;*/
+  height: 100px;
+  max-height: 100px;
 }
 
 .profile-type-is-community #content .members-block .menu-submenu{
@@ -631,6 +659,8 @@ float: left;
 .profile-type-is-community #content .members-block .common-profile-list-block .fn {
   margin-top: 2px;
   color: #172738;
+  max-height: 34px;
+  overflow: hidden;
 }
 
 .profile-type-is-community #content .members-block .menu-submenu-content h4{
@@ -716,9 +746,13 @@ float: left;
 /*** Members Page ***/
 
 /* Title of the area members */
+.action-profile-members .box-1{
+  width: 560px;
+}
+
 .action-profile-members #content .page-members-header{
   margin-bottom: 45px;
-  padding-bottom: 26px;
+  padding-bottom: 70px;
   border-bottom: 1px solid #D3D6DE;
   font-family: Arial;
 }
@@ -727,10 +761,17 @@ float: left;
   margin:20px 0px 8px 0px;
 }
 
-.action-profile-members #content .page-members-header h3.community-name-members{
+.action-profile-members #content .page-members-header h3.community-name{
   margin: 0px 0px 5px 0px;
   font-size: 14px;
   font-weight: 600;
+}
+
+.action-profile-members #content .page-members-header ul li{
+  float:left;
+  margin:8px 0px 0px 0px;
+  width: 36%;
+
 }
 
 .action-profile-members #content .page-members-header a.button.with-text{
@@ -744,10 +785,6 @@ float: left;
   border-color: #3E67B1;
 }
 
-.action-profile-members  .page-members-header .join-leave-button.require-login-popup{
-  margin-right: 4px;
-  float: left;
-}
 
 /* Tabs */
 
