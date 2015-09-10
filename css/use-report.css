@@ -300,22 +300,22 @@
   padding-bottom: 4px;
 }
 
-.action-communities_ratings_plugin_profile-new_rating #content .star-rate-form .star-comment-container .comments-display-fields .comments-arrow-up::after {
+.action-organization_ratings_plugin_profile-new_rating #content .star-rate-form .star-comment-container .comments-display-fields .comments-arrow-up::after {
   content: url('../images/top-arrow-black.png');
   float: right;
   padding-top: 7px;
   padding-right: 6px;
 }
 
-.action-communities_ratings_plugin_profile-new_rating #content .star-rate-form .star-comment-container .comments-display-fields .comments-arrow-down::after {
+.action-organization_ratings_plugin_profile-new_rating #content .star-rate-form .star-comment-container .comments-display-fields .comments-arrow-down::after {
   content: url('../images/bottom-arrow-black.png');
   float: right;
   padding-top: 7px;
   padding-right: 6px;
 }
 
-#content .star-rate-form .star-comment-container .comments-software-extra-fields #community_rating_people_benefited,
-#content .star-rate-form .star-comment-container .comments-software-extra-fields #community_rating_saved_value {
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #organization_rating_people_benefited,
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #organization_rating_saved_value {
   display: block;
   height: 19px;
   width: 155px;
