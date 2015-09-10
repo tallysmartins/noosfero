@@ -194,6 +194,7 @@
 }
 
 
+
 /** Lastest News' Block ***/
 
 /* This rule serves to maintain the element in position-5 clear the
@@ -202,5 +203,13 @@
 #content .blog .blog-post.position-5 {
   clear: both;
 }
+
+/** Pagination **/
+
+#content #article .pagination .next_page{
+  position: relative;
+
+}
+
 
 /*** end of News Page's homepage ***/
