@@ -49,8 +49,18 @@ find %{buildvenv} -type d -empty -delete
 install -d -m 0755 %{buildroot}/etc/colab
 install -m 0644 misc/etc/colab/gunicorn.py %{buildroot}/etc/colab
 
-# install log
+# Create settings dirs
+install -d -m 0755 %{buildroot}/etc/colab/settings.d
+install -d -m 0755 %{buildroot}/etc/colab/plugins.d
+
+# create log dir
 install -d -m 0755 %{buildroot}/var/log/colab
+
+# create celery dir
+install -d -m 0755 %{buildroot}/var/lib/colab/celery
+
+# Create assets dir (stores static files)
+install -d -m 0755 %{buildroot}/var/lib/colab/assets
 
 # install virtualenv
 install -d -m 0755 %{buildroot}/usr/lib
@@ -82,11 +92,19 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf %{buildvenv}
 
 %files
+%defattr(-, root, root)
+
 /usr/lib/colab
-/var/log/colab
+#/var/lib/colab # XXX: remove if doesnt break
+%attr(-, colab, colab) /var/lib/colab/assets
+%attr(-, colab, colab) /var/lib/colab/celery
+%attr(-, colab, colab) /var/log/colab
 %{_bindir}/*
 /etc/cron.d/colab
-/etc/colab
+#/etc/colab # XXX: remove if doesnt break
+/etc/colab/settings.d
+/etc/colab/plugins.d
+/etc/colab/gunicorn.py
 /lib/systemd/system/colab.service
 
 %post
@@ -192,16 +210,9 @@ EOF
   chmod 0640 /etc/colab/settings.py
 fi
 
-mkdir -p /etc/colab/settings.d
-
-chown root:colab /etc/colab/settings.py
-chmod 0640 /etc/colab/settings.py
-
-install -d -m 0755 -o colab -g colab /var/lib/colab-assets
-
 # If nginx is available serve assets using it
 if [ -d /usr/share/nginx ]; then
-    ln -s /var/lib/colab-assets /usr/share/nginx/colab
+    ln -s /var/lib/colab/assets /usr/share/nginx/colab
 fi
 
 yes yes | colab-admin collectstatic
