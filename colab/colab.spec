@@ -83,6 +83,8 @@ chmod +x %{buildroot}/%{_bindir}/colab-admin
 # install initscript
 install -d -m 0755 %{buildroot}/lib/systemd/system
 install -m 0644 misc/lib/systemd/system/colab.service %{buildroot}/lib/systemd/system
+install -m 0644 misc/lib/systemd/system/celeryd.service %{buildroot}/lib/systemd/system
+install -m 0644 misc/lib/systemd/system/celerybeat.service %{buildroot}/lib/systemd/system
 # install crontab
 install -d -m 0755 %{buildroot}/etc/cron.d
 install -m 0644 misc/etc/cron.d/colab %{buildroot}/etc/cron.d
@@ -106,6 +108,8 @@ rm -rf %{buildvenv}
 /etc/colab/plugins.d
 /etc/colab/gunicorn.py
 /lib/systemd/system/colab.service
+/lib/systemd/system/celeryd.service
+/lib/systemd/system/celerybeat.service
 
 %post
 groupadd colab || true
@@ -221,6 +225,8 @@ if [ $1 -gt 1 ]; then
   # upgrade; restart if running
   systemctl try-restart colab
 fi
+
+systemctl daemon-reload
 
 %preun
 if [ $1 -eq 0 ]; then
