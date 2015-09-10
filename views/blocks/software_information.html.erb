@@ -12,7 +12,7 @@
               <%= link_to profile_image(block.owner, :big) +"\n", profile.url %>
             </span>
             <div class='admin-link'>
-              <% if current_user && block.owner.admins.include?(current_user.person) %>
+              <% if !user.nil? && user.has_permission?('edit_profile', profile) %>
                 <%= link_to _('Control panel'), block.owner.admin_url %>
               <% end %>
             </div>
