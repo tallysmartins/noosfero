@@ -20,10 +20,9 @@ class Institution < ActiveRecord::Base
                   :sub_juridical_nature, :normalization_level,
                   :version, :cnpj, :type, :governmental_power,
                   :governmental_sphere, :sisp, :juridical_nature,
-                  :corporate_name
+                  :corporate_name, :siorg_code, :community
 
   validates :name, :presence=>true, :uniqueness=>true
-  validates :cnpj, :uniqueness=>true
 
   before_save :verify_institution_type
 
