@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.2-143-g8dfded9\n"
-"POT-Creation-Date: 2015-09-11 17:15-0000\n"
+"POT-Creation-Date: 2015-09-11 17:44-0000\n"
 "PO-Revision-Date: 2014-11-12 13:05-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,27 +46,24 @@ msgstr ""
 "Você será notificado."
 
 #: plugins/software_communities/controllers/software_communities_plugin_profile_controller.rb:7
-#, fuzzy
 msgid "Could not find the download file"
-msgstr "Não foi possível atualizar o software"
+msgstr "Não foi possível encontrar o arquivo para download"
 
 #: plugins/software_communities/controllers/software_communities_plugin_profile_controller.rb:8
 msgid "Invalid download params"
-msgstr ""
+msgstr "Parâmetros de Download inválidos"
 
 #: plugins/software_communities/lib/operating_system.rb:12
 msgid "too long (maximum is 20 characters)"
 msgstr "muito longo(máximo é 20 caracteres)"
 
 #: plugins/software_communities/lib/statistic_block.rb:9
-#, fuzzy
 msgid "Software Statistics"
-msgstr "Bancos de Dados do Software"
+msgstr "Estastísticas de software"
 
 #: plugins/software_communities/lib/statistic_block.rb:13
-#, fuzzy
 msgid "This block displays software statistics."
-msgstr "Este bloco apresenta a busca do campo de categorias"
+msgstr "Este bloco apresenta a estatística de software"
 
 #: plugins/software_communities/lib/categories_and_tags_block.rb:8
 msgid "Categories and Tags"
@@ -77,14 +74,12 @@ msgid "This block displays the categories and tags of a software."
 msgstr "Este block apresenta as categorias e marcadores de um software."
 
 #: plugins/software_communities/lib/wiki_block.rb:8
-#, fuzzy
 msgid "Wiki Link"
-msgstr "Link"
+msgstr "Link da wiki"
 
 #: plugins/software_communities/lib/wiki_block.rb:12
-#, fuzzy
 msgid "This block displays a link to the software wiki."
-msgstr "Este bloco apresenta o link para o repositório do software."
+msgstr "Este bloco apresenta o link para a wiki do software."
 
 #: plugins/software_communities/lib/library.rb:5
 msgid "can't be blank"
@@ -179,22 +174,20 @@ msgid "This block displays the stable version of a software."
 msgstr "Este block apresenta a versão estável do software."
 
 #: plugins/software_communities/lib/software_tab_data_block.rb:10
-#, fuzzy
 msgid "Software Tab Data"
-msgstr "Bancos de Dados do Software"
+msgstr "Aba de dados do software"
 
 #: plugins/software_communities/lib/software_tab_data_block.rb:14
 msgid "This block is used by colab to insert data into Noosfero"
-msgstr ""
+msgstr "Esse bloco é usado pelo Colab para inserir dados no noosfero"
 
 #: plugins/software_communities/lib/software_highlights_block.rb:4
 msgid "Software Highlights Block"
-msgstr ""
+msgstr "Bloco de software em destaque"
 
 #: plugins/software_communities/lib/software_highlights_block.rb:8
-#, fuzzy
 msgid "This block displays the softwares icon into a highlight"
-msgstr "Este bloco apresenta os softwares em que o usuário é membro."
+msgstr "Esse bloco apresenta o ícone do software em destaque"
 
 #: plugins/software_communities/lib/dynamic_table_helper.rb:17
 #: plugins/software_communities/views/box_organizer/_download_block.html.erb:3
@@ -300,9 +293,8 @@ msgid "Add Public Software and MPOG features."
 msgstr "Adicionar Software Público e Funcionalidades."
 
 #: plugins/software_communities/lib/software_communities_plugin.rb:90
-#, fuzzy
 msgid "Rate this software"
-msgstr "Categorias de Softwares"
+msgstr "Avalie esse software"
 
 #: plugins/software_communities/lib/software_communities_plugin.rb:136
 msgid "Software Info"
@@ -400,28 +392,27 @@ msgstr "softwares|Veja todos"
 #: plugins/software_communities/views/profile/members.html.erb:3
 #: plugins/software_communities/views/profile/members.html.erb:26
 msgid "Members"
-msgstr ""
+msgstr "Membros"
 
 #: plugins/software_communities/views/profile/members.html.erb:4
 msgid "%s"
 msgstr ""
 
 #: plugins/software_communities/views/profile/members.html.erb:43
-#, fuzzy
 msgid "Administrators"
-msgstr "Gestão Pública"
+msgstr "Administradores"
 
 #: plugins/software_communities/views/profile/members.html.erb:57
 msgid "Go back"
-msgstr ""
+msgstr "Voltar"
 
 #: plugins/software_communities/views/profile/members.html.erb:60
 msgid "Invite people to join"
-msgstr ""
+msgstr "Convide pessoas para entrar"
 
 #: plugins/software_communities/views/profile/members.html.erb:63
 msgid "Send e-mail to members"
-msgstr ""
+msgstr "Envie e-mail para os membros"
 
 #: plugins/software_communities/views/profile/_software_tab.html.erb:3
 #: plugins/software_communities/views/_main_software_editor_extras.html.erb:1
@@ -548,14 +539,12 @@ msgid "Operating System"
 msgstr "Sistema Operacional"
 
 #: plugins/software_communities/views/profile/index.html.erb:17
-#, fuzzy
 msgid "Control Panel"
 msgstr "Painel de Controle"
 
 #: plugins/software_communities/views/profile/_profile_members_list.html.erb:2
-#, fuzzy
 msgid "Sort by:"
-msgstr "Nome Curto:"
+msgstr "Ordenar por:"
 
 #: plugins/software_communities/views/profile/_profile_members_list.html.erb:5
 #: plugins/software_communities/views/search/_software_search_form.html.erb:52
@@ -569,12 +558,11 @@ msgstr "Nome Z-A"
 
 #: plugins/software_communities/views/box_organizer/_software_tab_data_block.html.erb:5
 msgid "Which blog should have its posts displayed: "
-msgstr ""
+msgstr "Qual blog deve ter seus posts exibidos: "
 
 #: plugins/software_communities/views/box_organizer/_software_tab_data_block.html.erb:13
-#, fuzzy
 msgid "This community has no blogs"
-msgstr "Essa comunidade precisa de um software para usar este block"
+msgstr "Essa comunidade não possui blogs"
 
 #: plugins/software_communities/views/box_organizer/_softwares_block.html.erb:2
 msgid "Limit of items"
@@ -586,16 +574,16 @@ msgstr "Tipo de Software:"
 
 #: plugins/software_communities/views/box_organizer/_statistic_block.html.erb:5
 msgid "Benefited People"
-msgstr ""
+msgstr "Pessoas Beneficiadas"
 
 #: plugins/software_communities/views/box_organizer/_statistic_block.html.erb:6
 #: plugins/software_communities/views/box_organizer/_statistic_block.html.erb:8
 msgid "Portal suggested value: "
-msgstr ""
+msgstr "Valor sugerido pelo portal: "
 
 #: plugins/software_communities/views/box_organizer/_statistic_block.html.erb:7
 msgid "Saved Resources"
-msgstr ""
+msgstr "Recursos economizados"
 
 #: plugins/software_communities/views/box_organizer/_download_block.html.erb:4
 msgid "Link"
@@ -620,7 +608,7 @@ msgstr "Novo link"
 
 #: plugins/software_communities/views/box_organizer/_wiki_block.html.erb:3
 msgid "Wiki link"
-msgstr ""
+msgstr "Link da wiki"
 
 #: plugins/software_communities/views/search/_catalog_filter.html.erb:4
 #: plugins/software_communities/views/blocks/categories_and_tags.html.erb:2
@@ -687,14 +675,16 @@ msgid ""
 "Projects that have passed by the Avalia SPB process according to the "
 "requirements of IN 01/2011."
 msgstr ""
+"Projetos que passaram pelo processo Avalia SPB de acordo com os Requisitos "
+"da IN 01/2011."
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:18
 msgid "All"
-msgstr ""
+msgstr "Todos"
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:19
 msgid "Projects included in the portal as cases provided by the IN 01/2011."
-msgstr ""
+msgstr "Projetos incluidos no portal como os casos fornecidos pela IN 01/2011."
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:24
 msgid ""
@@ -943,28 +933,27 @@ msgstr "Tags"
 
 #: plugins/software_communities/views/blocks/software_tab_data.html.erb:6
 msgid "Discussions"
-msgstr ""
+msgstr "Discussões"
 
 #: plugins/software_communities/views/blocks/software_tab_data.html.erb:7
 msgid "Blog"
 msgstr ""
 
 #: plugins/software_communities/views/blocks/software_tab_data.html.erb:8
-#, fuzzy
 msgid "Repository Feed"
-msgstr "Repositório"
+msgstr "Feed do Repositório"
 
 #: plugins/software_communities/views/blocks/software_statistics.html.erb:5
 msgid " benefited people*"
-msgstr ""
+msgstr " pessoas beneficiadas*"
 
 #: plugins/software_communities/views/blocks/software_statistics.html.erb:6
 msgid " saved resources*"
-msgstr ""
+msgstr " recursos economizados*"
 
 #: plugins/software_communities/views/blocks/software_statistics.html.erb:10
 msgid "Data estimated by the software administrator."
-msgstr ""
+msgstr "Dados estimados pelo administrador do software"
 
 #: plugins/software_communities/views/blocks/download.html.erb:4
 msgid "\"Download #{block.owner.software_info.community.name}\""
@@ -987,18 +976,16 @@ msgid "\"License: #{block.owner.software_info.license_info.version}\""
 msgstr "\"License: #{block.owner.software_info.license_info.version}\""
 
 #: plugins/software_communities/views/blocks/software_highlights.html.erb:13
-#, fuzzy
 msgid "See all"
 msgstr "ver todos (%d)"
 
 #: plugins/software_communities/views/blocks/_software_tab_blog.html.erb:5
-#, fuzzy
 msgid "This community has no posts in its blog"
-msgstr "Essa comunidade precisa de um software para usar este block"
+msgstr "Essa comunidade não possui posts nesse blog"
 
 #: plugins/software_communities/views/blocks/_software_tab_blog.html.erb:13
 msgid "Read more"
-msgstr ""
+msgstr "Leia mais"
 
 #: plugins/software_communities/views/blocks/software_information.html.erb:16
 msgid "Control panel"
@@ -1131,17 +1118,16 @@ msgid "Step 2 - Community Settings"
 msgstr "Passo 2 - Configuração da Comunidade"
 
 #: plugins/software_communities/views/comments_extra_fields.html.erb:3
-#, fuzzy
 msgid "Additional informations"
-msgstr "Informação geral"
+msgstr "Informações adicionais"
 
 #: plugins/software_communities/views/comments_extra_fields.html.erb:11
 msgid "Number of Beneficiaries"
-msgstr ""
+msgstr "Número de beneficiados"
 
 #: plugins/software_communities/views/comments_extra_fields.html.erb:17
 msgid "Saved resources"
-msgstr ""
+msgstr "Recursos economizados"
 
 #~ msgid "Software Projects:"
 #~ msgstr "Projetos de Software:"
