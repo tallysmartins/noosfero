@@ -25,21 +25,6 @@ class PrivateInstitutionTest < ActiveSupport::TestCase
     assert @institution.save
   end
 
-  should "not save with a repeated cnpj" do
-    msg = "Cnpj has already been taken"
-    assert @institution.save
-    sec_institution = create_private_institution(
-                        "Another Private Institution",
-                        "API",
-                        "BR",
-                        "DF",
-                        "Gama",
-                        "00.000.000/0001-00"
-                      )
-
-    assert sec_institution.errors.full_messages.include? msg
-  end
-
   should "save without fantasy name" do
     @institution.acronym = nil
     @institution.community.save
