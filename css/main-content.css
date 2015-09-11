@@ -81,6 +81,11 @@
 
 /*** Button ***/
 
+#content .button-bar a.button,
+#content .button-bar input {
+    margin: 0 10px 10px 0;
+}
+
 #content a.button.with-text{
   height: 32px;
   padding: 5px 15px;

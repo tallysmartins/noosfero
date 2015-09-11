@@ -25,14 +25,14 @@
   font-weight: bold;
 }
 
-.action-admin_panel-site_info .main-content .ui-widget-content .ui-state-default, 
+.action-admin_panel-site_info .main-content .ui-widget-content .ui-state-default,
 .action-admin_panel-site_info .main-content .ui-widget-header .ui-state-default{
   background: #d5d5d5 none;
   color: #555555;
   font-weight: normal;
 }
 
-.action-admin_panel-site_info .main-content .ui-widget-content .ui-state-active, 
+.action-admin_panel-site_info .main-content .ui-widget-content .ui-state-active,
 .action-admin_panel-site_info .main-content .ui-widget-header .ui-state-active{
   background: #eeeff1;
   color: #212121;
@@ -51,7 +51,7 @@
 
 /* Organizations Settings */
 
-.action-organizations-index .main-block form#manage-profiles, 
+.action-organizations-index .main-block form#manage-profiles,
 .action-organizations-index .main-block form#manage-profiles form{
   background-color: transparent;
 }
@@ -86,6 +86,7 @@
   color: #FFF;
   border-radius: 4px;
   border: 1px solid #3E67B1;
+  line-height: 22px;
   font-size: 14px;
   text-transform: uppercase;
 }
@@ -149,4 +150,10 @@
 /* Index */
 .action-cms-index .cms-articles th{
   text-align: left;
+}
+
+/* Spam Index */
+.action-spam-index .ui-widget-header {
+  border: none;
+  background: none;
 }
