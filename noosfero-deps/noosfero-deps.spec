@@ -1,5 +1,5 @@
 Name:    noosfero-deps
-Version: 1.2
+Version: 1.3
 Release: 2%{?dist}
 Summary: Ruby dependencies for Noosfero
 Group:   Development/Tools
