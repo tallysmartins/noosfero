@@ -47,6 +47,10 @@ class AddCommunityBlockInPlaceOfProfileImageBlock < ActiveRecord::Migration
 
         profile_image_block.destroy
         print "."
+
+        # Put all link list blocks to behind
+        link_list_blocks = software_area_two.blocks.where(:type=>"LinkListBlock", :position=>1)
+        link_list_blocks.update_all :position => 3
       end
     end
 
