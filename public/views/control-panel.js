@@ -2,11 +2,11 @@ modulejs.define('ControlPanel', ['jquery'], function($) {
   'use strict';
 
   function add_institution_on_control_panel(control_panel) {
-    var institution_link = $(".control-panel-instituton-link").remove();
+    /*var institution_link = $(".control-panel-instituton-link").remove();
 
     if( institution_link.size() > 0 ) {
       control_panel.prepend(institution_link);
-    }
+    }*/
   }
 
 
