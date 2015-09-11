@@ -75,33 +75,33 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   end
 
   module Hotspots
-    def display_community_average_rating community
+    def display_organization_average_rating organization
       nil
     end
   end
 
-  def communities_ratings_plugin_comments_extra_fields
+  def organization_ratings_plugin_comments_extra_fields
     if context.profile.software?
       Proc::new { render :file => 'comments_extra_fields' }
     end
   end
 
-  def communities_ratings_plugin_star_message
+  def organization_ratings_plugin_star_message
     Proc::new do _("Rate this software") end
   end
 
-  def communities_ratings_title
+  def organization_ratings_title
     Proc::new do "<h1 class='title'>#{_("Use reports")}</h1>" end
   end
 
-  def communities_ratings_plugin_extra_fields_show_data user_rating
+  def organization_ratings_plugin_extra_fields_show_data user_rating
     if logged_in?
       is_admin = environment.admins.include?(current_user.person)
-      is_admin ||= user_rating.community.admins.include?(current_user.person)
+      is_admin ||= user_rating.organization.admins.include?(current_user.person)
 
       if is_admin and context.profile.software?
         Proc::new {
-          render :file => 'communities_ratings_extra_fields_show_data',
+          render :file => 'organization_ratings_extra_fields_show_data',
                  :locals => {:user_rating => user_rating}
         }
       end
