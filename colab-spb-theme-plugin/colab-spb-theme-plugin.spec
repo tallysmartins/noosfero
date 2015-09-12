@@ -23,8 +23,8 @@ make
 install -d  %{buildroot}/etc/colab/settings.d/
 
 cat > %{buildroot}/etc/colab/settings.d/spb_theme.py << EOF
-COLAB_STATICS=['/usr/lib/colab/colab-spb-theme-plugin/src/colab_spb_theme/static']
-COLAB_TEMPLATES=('/usr/lib/colab/colab-spb-theme-plugin/src/colab_spb_theme/templates',)
+COLAB_STATICS=['/usr/lib/colab/colab-spb-theme/colab_spb_theme/static']
+COLAB_TEMPLATES=('/usr/lib/colab/colab-spb-theme/colab_spb_theme/templates',)
 EOF
 
 make install DESTDIR=%{buildroot}
