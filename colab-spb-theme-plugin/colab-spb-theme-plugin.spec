@@ -1,5 +1,5 @@
-Name:    colab-spb-theme-plugin
-Version: 0.2
+Name:    colab-spb-theme
+Version: 0.2.0
 Release: 1
 Summary: SPB-specific Colab theme
 Group:   Applications/Publishing
@@ -7,7 +7,8 @@ License: GPLv3
 URL:     https://portal.softwarepublico.gov.br/gitlab/softwarepublico/colab-spb-theme-plugin
 Source0: %{name}-%{version}.tar.gz
 BuildArch: noarch
-BuildRequires: colab >= 1.10
+BuildRequires: colab >= 1.11
+Requires: colab >= 1.11
 %description
 This package contains Colab theme for Software Público Brasileiro platform.
 
