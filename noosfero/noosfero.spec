@@ -2,7 +2,7 @@
 %define cache_dirs javascripts/cache stylesheets/cache
 
 Name:    noosfero
-Version: 1.2+spb2
+Version: 1.2.1+spb4
 Release: 1%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
@@ -10,7 +10,7 @@ License: AGPLv3
 URL:     http://noosfero.org
 Source0: %{name}-%{version}.tar.gz
 BuildArch: noarch
-BuildRequires: noosfero-deps, gettext, po4a
+BuildRequires: noosfero-deps >= 1.3-3, gettext, po4a
 Requires: noosfero-deps, po4a, tango-icon-theme, memcached,crontabs, nodejs
 
 %description
