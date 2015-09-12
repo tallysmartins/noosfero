@@ -7,3 +7,6 @@
 [submodule "spb_migrations"]
 	path = spb_migrations
 	url = git@portal.softwarepublico.gov.br:softwarepublico/spb_migrations.git
+[submodule "gov_user"]
+	path = gov_user
+	url = git@softwarepublico.gov.br:softwarepublico/gov_user.git

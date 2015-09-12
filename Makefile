@@ -26,6 +26,12 @@ install:
 	cp -vr spb_migrations/* $(DESTDIR)/$(plugins_dir)/spb_migrations/
 	install -d -m 0755 $(DESTDIR)/$(themes_dir)/noosfero-spb-theme
 	cp -vr noosfero-spb-theme/* $(DESTDIR)/$(themes_dir)/noosfero-spb-theme/
+	install -d -m 0755 $(DESTDIR)/$(plugins_dir)/gov_user
+	cp -vr gov_user/* $(DESTDIR)/$(plugins_dir)/gov_user/
 	cd $(DESTDIR)/$(plugins_dir)/software_communities/ && \
 	mkdir -p locale/pt/LC_MESSAGES && \
 	msgfmt -o locale/pt/LC_MESSAGES/software_communities.mo po/pt/software_communities.po
+	cd ..
+	cd $(DESTDIR)/$(plugins_dir)/gov_user/ && \
+	mkdir -p locale/pt/LC_MESSAGES && \
+	msgfmt -o locale/pt/LC_MESSAGES/gov_user.mo po/pt/gov_user.po
