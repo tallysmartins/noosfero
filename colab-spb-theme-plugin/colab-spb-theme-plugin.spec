@@ -29,6 +29,9 @@ EOF
 
 make install DESTDIR=%{buildroot}
 
+%post
+yes yes | colab-admin collectstatic
+
 %files
 /usr/lib/colab
 /etc/colab
