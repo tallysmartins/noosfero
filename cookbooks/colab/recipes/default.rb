@@ -48,6 +48,13 @@ template '/etc/colab/settings.d/00-database.py' do
   notifies :restart, 'service[colab]'
 end
 
+template '/etc/colab/settings.d/04-settings.py' do
+  owner  'root'
+  group  'colab'
+  mode   0640
+  notifies :restart, 'service[colab]'
+end
+
 # Creating a gitlab admin user
 template '/tmp/admin-gitlab.json' do
 
