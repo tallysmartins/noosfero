@@ -89,7 +89,7 @@ execute 'software:create_licenses' do
   command 'sudo -u noosfero bundle exec rake software:create_licenses RAILS_ENV=production'
 end
 
-template '/etc/noosfero/thin.yml' do
+template '/etc/noosfero/unicorn.rb' do
   owner 'root'; group 'root'; mode 0644
   notifies :restart, 'service[noosfero]'
 end
