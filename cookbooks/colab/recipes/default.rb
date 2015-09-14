@@ -34,6 +34,13 @@ directory '/var/lock/colab' do
   mode 0755
 end
 
+execute 'secret-key' do
+  f = '/etc/colab/secret.key'
+  command "openssl rand -hex 32 -out #{f} && chown root:colab #{f} && chmod 0640 #{f}"
+  not_if { File.exists?(f) }
+  notifies :create, 'template[/etc/colab/settings.d/04-custom_settings.py]'
+end
+
 template '/etc/sysconfig/colab' do
   owner 'root'
   group 'root'
@@ -48,7 +55,7 @@ template '/etc/colab/settings.d/00-database.py' do
   notifies :restart, 'service[colab]'
 end
 
-template '/etc/colab/settings.d/04-settings.py' do
+template '/etc/colab/settings.d/04-custom_settings.py' do
   owner  'root'
   group  'colab'
   mode   0640
@@ -118,6 +125,15 @@ template '/etc/colab/plugins.d/gitlab.py' do
   owner 'root'
   group 'colab'
   mode 0640
+  get_private_token =  lambda do
+    Dir.chdir '/usr/lib/gitlab' do
+      `sudo -u git RAILS_ENV=production bundle exec rails runner \"puts User.find_by_name(\'admin-gitlab\').private_token\"`.strip
+    end
+  end
+
+  variables(
+    :get_private_token => get_private_token
+  )
 end
 
 template '/etc/colab/plugins.d/noosfero.py' do
