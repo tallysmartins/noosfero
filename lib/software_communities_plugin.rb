@@ -91,21 +91,23 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   end
 
   def organization_ratings_title
-    Proc::new do "<h1 class='title'>#{_("Use reports")}</h1>" end
+    title = _('Use reports')
+    Proc::new do "<h1 class='title'>#{title}</h1>" end
   end
 
   def organization_ratings_plugin_extra_fields_show_data user_rating
-    if logged_in?
-      is_admin = environment.admins.include?(current_user.person)
-      is_admin ||= user_rating.organization.admins.include?(current_user.person)
+    Proc::new {
+      if logged_in?
+        is_admin = environment.admins.include?(current_user.person)
+        is_admin ||= user_rating.organization.admins.include?(current_user.person)
 
-      if is_admin and context.profile.software?
-        Proc::new {
-          render :file => 'organization_ratings_extra_fields_show_data',
-                 :locals => {:user_rating => user_rating}
-        }
+        if is_admin and profile.software?
+
+            render :file => 'organization_ratings_extra_fields_show_data',
+                   :locals => {:user_rating => user_rating}
+        end
       end
-    end
+    }
   end
 
   # FIXME - if in error log apears has_permission?, try to use this method
