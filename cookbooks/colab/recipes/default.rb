@@ -38,7 +38,7 @@ execute 'secret-key' do
   f = '/etc/colab/secret.key'
   command "openssl rand -hex 32 -out #{f} && chown root:colab #{f} && chmod 0640 #{f}"
   not_if { File.exists?(f) }
-  notifies :create, 'template[/etc/colab/settings.d/04-custom_settings.py]'
+  notifies :create, 'template[/etc/colab/settings.d/00-custom_settings.py]'
 end
 
 template '/etc/sysconfig/colab' do
@@ -48,14 +48,14 @@ template '/etc/sysconfig/colab' do
   notifies :restart, 'service[colab]'
 end
 
-template '/etc/colab/settings.d/00-database.py' do
+template '/etc/colab/settings.d/00-custom_settings.py' do
   owner  'root'
   group  'colab'
   mode   0640
   notifies :restart, 'service[colab]'
 end
 
-template '/etc/colab/settings.d/04-custom_settings.py' do
+template '/etc/colab/settings.d/01-database.py' do
   owner  'root'
   group  'colab'
   mode   0640
@@ -104,13 +104,13 @@ template '/etc/colab/settings.d/03-sentry.py' do
   mode   0640
 end
 
-template '/etc/colab/settings.d/memcached.py' do
+template '/etc/colab/settings.d/04-memcached.py' do
   owner 'root'
   group 'colab'
   mode 0640
 end
 
-template '/etc/colab/settings.d/redis.py' do
+template '/etc/colab/settings.d/05-redis.py' do
   owner 'root'
   group 'colab'
   mode 0640
