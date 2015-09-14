@@ -1,3 +1,4 @@
+rpm_repository: http://download.opensuse.org/repositories/isv:/spb:/stable/CentOS_7/
 admins:
   - ["Nayanne Araújo", "nayanne.bonifacio@planejamento.gov.br"]
   - ["Marisa Souza dos Santos", "marisa.santos@planejamento.gov.br"]

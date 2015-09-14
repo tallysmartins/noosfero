@@ -71,7 +71,7 @@ if node['platform'] == 'centos'
     owner 'root'
     mode 0644
   end
-  cookbook_file '/etc/yum.repos.d/softwarepublico.repo' do
+  template '/etc/yum.repos.d/softwarepublico.repo' do
     owner 'root'
     mode 0644
   end
