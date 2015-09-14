@@ -14,7 +14,6 @@ Prefix: %{_prefix}
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://gitlab.com/softwarepublico/colab-deps
 BuildRequires: gettext, libxml2-devel, libxslt-devel, openssl-devel, libffi-devel, libjpeg-turbo-devel, zlib-devel, freetype-devel, postgresql-devel, python-devel, libyaml-devel, python-virtualenv, libev-devel, gcc
-Requires: python-virtualenv
 
 %description
 Integrated software development platform (Python dependencies).
