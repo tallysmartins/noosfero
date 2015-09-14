@@ -49,7 +49,7 @@ cp etc/init.d/noosfero %{buildroot}/etc/init.d/
 
 mkdir -p %{buildroot}/etc/noosfero/plugins
 ln -sf /etc/noosfero/database.yml %{buildroot}/usr/lib/noosfero/config/database.yml
-ln -sf /etc/noosfero/thin.yml %{buildroot}/usr/lib/noosfero/config/thin.yml
+ln -sf /etc/noosfero/unicorn.rb %{buildroot}/usr/lib/noosfero/config/unicorn.rb
 
 mkdir -p %{buildroot}/etc/noosfero/plugins
 cp config/plugins/README %{buildroot}/etc/noosfero/plugins
@@ -71,20 +71,10 @@ ln -sfT noosfero   %{buildroot}/usr/lib/noosfero/public/designs/themes/default
 ln -sfT tango      %{buildroot}/usr/lib/noosfero/public/designs/icons/default
 
 
-cat > %{buildroot}/etc/noosfero/thin.yml <<EOF
----
-chdir: /usr/lib/noosfero
-environment: production
-address: 0.0.0.0
-port: 3000
-timeout: 30
-log: log/thin.log
-pid: tmp/pids/thin.pid
-max_conns: 1024
-max_persistent_conns: 512
-require: []
-wait: 30
-daemonize: true
+cat > %{buildroot}/etc/noosfero/unicorn.rb <<EOF
+listen "127.0.0.1:3000"
+
+worker_processes `nproc`.to_i
 EOF
 
 cat > %{buildroot}/etc/noosfero/database.yml <<EOF
@@ -158,5 +148,5 @@ chkconfig --del noosfero
 /etc/noosfero/plugins/README
 %config(noreplace) /etc/default/noosfero
 %config(noreplace) /etc/noosfero/database.yml
-%config(noreplace) /etc/noosfero/thin.yml
+%config(noreplace) /etc/noosfero/unicorn.rb
 %doc
