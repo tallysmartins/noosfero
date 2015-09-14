@@ -91,7 +91,8 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   end
 
   def organization_ratings_title
-    Proc::new do "<h1 class='title'>#{_("Use reports")}</h1>" end
+    title = _('Use reports')
+    Proc::new do "<h1 class='title'>#{title}</h1>" end
   end
 
   def organization_ratings_plugin_extra_fields_show_data user_rating
