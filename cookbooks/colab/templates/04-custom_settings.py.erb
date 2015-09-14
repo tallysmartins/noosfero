@@ -5,11 +5,7 @@ TEMPLATE_DEBUG = False
 ## System admins
 ADMINS = [
 <%- node['config']['admins'].each do |admin| %>
-    [
-        <%- admin.each do |item| %>
-            "<%= item %>",
-        <%- end %>
-    ],
+  ("<%= admin[0] %>", "<%= admin[1] %>"),
 <% end %>
 ]
 
