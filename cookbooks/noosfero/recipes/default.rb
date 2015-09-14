@@ -40,11 +40,11 @@ plugins = [
   'people_block',
   'recent_content',
   'remote_user',
-  'software_communities', # from noosfero-spb
+  'organization_ratings',
   'statistics',
   'sub_organizations',
   'video',
-  'spb_migrations',
+  'community_block',
 ]
 
 execute 'plugins:enable' do
@@ -62,6 +62,22 @@ execute 'plugins:activate' do
   cwd '/usr/lib/noosfero'
   user 'noosfero'
   only_if 'bundle exec rake -P | grep enable_all'
+end
+
+
+plugins_spb = [
+  'software_communities',
+  'gov_user',
+  'spb_migrations',
+]
+
+#FIXME: We did it, because we have to enable each plugin and migrate it separately.
+plugins_spb.each do |plugin|
+  execute 'plugins_spb:activate' do
+    command '/usr/lib/noosfero/script/noosfero-plugin enable' + plugin +
+            ' && RAILS_ENV=production SCHEMA=/dev/null bundle exec ' +
+            'rake db:migrate'
+  end
 end
 
 execute 'theme:enable' do
