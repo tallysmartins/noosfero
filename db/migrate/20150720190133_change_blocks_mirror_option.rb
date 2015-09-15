@@ -4,26 +4,30 @@ class ChangeBlocksMirrorOption < ActiveRecord::Migration
     institution = Community["institution"]
     software = Community["software"]
 
-    boxTemplateInstitution = institution.boxes.where(:position => 2).first
+    if institution
+      boxTemplateInstitution = institution.boxes.where(:position => 2).first
 
-    boxTemplateInstitution.blocks.each do |block|
-      block.mirror = true
-      print "." if block.save
+      boxTemplateInstitution.blocks.each do |block|
+        block.mirror = true
+        print "." if block.save
+      end
     end
 
-    boxTemplateSoftware = software.boxes.where(:position => 2).first
+    if software
+      boxTemplateSoftware = software.boxes.where(:position => 2).first
 
-    boxTemplateSoftware.blocks.each do |block|
-      block.mirror = true
-      print "." if block.save
+      boxTemplateSoftware.blocks.each do |block|
+        block.mirror = true
+        print "." if block.save
+      end
     end
 
     blocks.each do |block|
       if !(block.owner.class == Environment) && block.owner.organization? && !block.owner.enterprise?
-        if block.owner.software?
+        if software && block.owner.software?
           software_block = boxTemplateSoftware.blocks.where(:title => block.title).first
           block.mirror_block_id = software_block.id if software_block
-        elsif block.owner.institution?
+        elsif institution && block.owner.institution?
           institution_block = boxTemplateInstitution.blocks.where(:title => block.title).first
           block.mirror_block_id = institution_block.id if institution_block
         end
