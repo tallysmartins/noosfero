@@ -22,7 +22,7 @@ class CommunitiesBlock
     valid_communities_string = Community.get_valid_communities_string
     Community.all.each{|community| delete_communities << community.id unless eval(valid_communities_string)}
 
-    visible_profiles = visible_profiles.where(["profiles.id NOT IN (?)", delete_communities])
+    visible_profiles = visible_profiles.where(["profiles.id NOT IN (?)", delete_communities]) unless delete_communities.empty?
 
     if !prioritize_profiles_with_image
       return visible_profiles.all(
