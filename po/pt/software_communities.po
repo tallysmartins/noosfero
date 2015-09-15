@@ -179,7 +179,7 @@ msgstr " campo finalidade em branco."
 
 #: plugins/software_communities/lib/create_software.rb:48
 msgid " this finality:<p><em>%{finality}</em></p>"
-msgstr "esta finalidade:<p><em>%{finality}</em></p>"
+msgstr " esta finalidade:<p><em>%{finality}</em></p>"
 
 #: plugins/software_communities/lib/create_software.rb:68
 msgid "%{requestor} wants to create software %{subject}"
