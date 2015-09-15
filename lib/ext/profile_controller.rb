@@ -25,17 +25,10 @@ class ProfileController
 
   def members
     if is_cache_expired?(profile.members_cache_key(params))
-      all_members = if params[:sort] and params[:sort] == "desc"
-        profile.members.order("name desc")
-      else
-        profile.members.order("name asc")
-      end
-      @profile_admins = profile.admins
-      @profile_members = all_members - @profile_admins
-      @profile_members = @profile_members.paginate(:per_page => members_per_page, :page => params[:npage], :total_entries => @profile_members.size)
-      @profile_admins = @profile_admins.paginate(:per_page => members_per_page, :page => params[:npage], :total_entries => @profile_admins.size)
-      @total_members = all_members.size
-      @profile_members_url = url_for(:controller => "profile", :action => "members")
+      sort = (params[:sort] == 'desc') ? params[:sort] : 'asc'
+      @profile_admins = profile.admins.includes(relations_to_include).order("name #{sort}").paginate(:per_page => members_per_page, :page => params[:npage])
+      @profile_members = profile.members.includes(relations_to_include).order("name #{sort}").paginate(:per_page => members_per_page, :page => params[:npage])
+      @profile_members_url = url_for(:controller => 'profile', :action => 'members')
     end
   end
 
