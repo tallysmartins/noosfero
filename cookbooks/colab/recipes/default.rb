@@ -148,6 +148,12 @@ template '/etc/colab/plugins.d/spb.py' do
   mode 0640
 end
 
+template '/etc/colab/plugins.d/raven.py' do
+  owner 'root'
+  group 'colab'
+  mode 0640
+end
+
 execute 'colab-admin migrate'
 
 service 'colab' do
