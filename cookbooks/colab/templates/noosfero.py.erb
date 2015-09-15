@@ -22,12 +22,12 @@ url = colab_url_factory('noosfero')
 
 menu_urls = (
     url(display=_('Users'), viewname='noosfero',
-        kwargs={'path': '/search/people'}, auth=False),
+        kwargs={'path': 'search/people'}, auth=False),
     url(display=_('Communities'), viewname='noosfero',
-        kwargs={'path': '/search/communities'}, auth=False),
+        kwargs={'path': 'search/communities'}, auth=False),
     url(display=_('Profile'), viewname='noosfero',
-        kwargs={'path': '/profile/~/'}, auth=True),
+        kwargs={'path': 'profile/~/'}, auth=True),
     url(display=_('Control Panel'), viewname='noosfero',
-        kwargs={'path': '/myprofile/~/'}, auth=True),
+        kwargs={'path': 'myprofile/~/'}, auth=True),
 
 )
