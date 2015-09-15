@@ -110,7 +110,7 @@ template '/etc/colab/settings.d/04-memcached.py' do
   mode 0640
 end
 
-template '/etc/colab/settings.d/05-redis.py' do
+template '/etc/colab/settings.d/05-celery.py' do
   owner 'root'
   group 'colab'
   mode 0640
