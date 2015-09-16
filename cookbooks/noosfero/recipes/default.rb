@@ -57,14 +57,6 @@ execute 'noosfero:migrate' do
   user 'noosfero'
 end
 
-execute 'plugins:activate' do
-  command "RAILS_ENV=production bundle exec rake noosfero:plugins:enable_all"
-  cwd '/usr/lib/noosfero'
-  user 'noosfero'
-  only_if 'bundle exec rake -P | grep enable_all'
-end
-
-
 plugins_spb = [
   'software_communities',
   'gov_user',
@@ -74,10 +66,21 @@ plugins_spb = [
 #FIXME: We did it, because we have to enable each plugin and migrate it separately.
 plugins_spb.each do |plugin|
   execute ('plugins_spb:activate:' + plugin) do
-    command '/usr/lib/noosfero/script/noosfero-plugin enable ' + plugin +
-            ' && RAILS_ENV=production SCHEMA=/dev/null bundle exec ' +
-            'rake db:migrate'
+    command '/usr/lib/noosfero/script/noosfero-plugins enable ' + plugin
   end
+
+  execute ('plugins_spb:migrate:' + plugin) do
+    command 'RAILS_ENV=production SCHEMA=/dev/null bundle exec rake db:migrate'
+    cwd '/usr/lib/noosfero'
+    user 'noosfero'
+  end
+end
+
+execute 'plugins:activate' do
+  command "RAILS_ENV=production bundle exec rake noosfero:plugins:enable_all"
+  cwd '/usr/lib/noosfero'
+  user 'noosfero'
+  only_if 'bundle exec rake -P | grep enable_all'
 end
 
 execute 'theme:enable' do
@@ -89,7 +92,7 @@ execute 'software:create_licenses' do
   command 'sudo -u noosfero bundle exec rake software:create_licenses RAILS_ENV=production'
 end
 
-template '/etc/noosfero/unicorn.rb' do
+cookbook_file '/etc/noosfero/unicorn.rb' do
   owner 'root'; group 'root'; mode 0644
   notifies :restart, 'service[noosfero]'
 end
