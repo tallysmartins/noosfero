@@ -66,9 +66,13 @@ plugins_spb = [
 #FIXME: We did it, because we have to enable each plugin and migrate it separately.
 plugins_spb.each do |plugin|
   execute ('plugins_spb:activate:' + plugin) do
-    command '/usr/lib/noosfero/script/noosfero-plugins enable ' + plugin +
-            ' && RAILS_ENV=production SCHEMA=/dev/null bundle exec ' +
-            'rake db:migrate'
+    command '/usr/lib/noosfero/script/noosfero-plugins enable ' + plugin
+  end
+
+  execute ('plugins_spb:migrate:' + plugin) do
+    command 'RAILS_ENV=production SCHEMA=/dev/null bundle exec rake db:migrate'
+    cwd '/usr/lib/noosfero'
+    user 'noosfero'
   end
 end
 
