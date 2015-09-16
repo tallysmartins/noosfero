@@ -236,12 +236,14 @@ class GovUserPlugin < Noosfero::Plugin
   end
 
   def organization_ratings_plugin_extra_fields_show_data user_rating
+    gov_user_self = self
+
     Proc::new {
       if logged_in?
         is_admin = environment.admins.include?(current_user.person)
         is_admin ||= user_rating.organization.admins.include?(current_user.person)
 
-        if is_admin and context.profile.software?
+        if is_admin and gov_user_self.context.profile.software?
             render :file => 'organization_ratings_extra_fields_show_institution',
                    :locals => {:user_rating => user_rating}
         end
