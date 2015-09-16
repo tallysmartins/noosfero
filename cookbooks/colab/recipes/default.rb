@@ -96,52 +96,20 @@ execute 'create-admin-token-gitlab' do
   user 'git'
 end
 
-execute 'create-admin-token-noosfero' do
-  user = "admin-noosfero"
-  email = "admin-noosfero@example.com"
-  password = SecureRandom.random_number.to_s
-
-  command "bundle exec rails c production <<EOF
-            user = User.create(login: \'#{user}\', email: \'#{email}\', password: \'#{password}\', password_confirmation: \'#{password}\')
-            user.activate
-            user.generate_private_token_if_not_exist
-            Environment.default.add_admin user.person
-            exit
-          "
-
-  user_exist = lambda do
-    Dir.chdir '/usr/lib/noosfero' do
-      `RAILS_ENV=production bundle exec rails runner \"puts User.find_by_identifier(\'admin-noosdero\').nil?\"`.strip
-    end
-  end
-
-  not_if {user_exist.call == "false"}
-
-  cwd '/usr/lib/noosfero'
-  user 'noosfero'
-end
-
 template '/etc/colab/settings.d/01-apps.yaml' do
   owner  'root'
   group  'colab'
   mode   0640
   notifies :restart, 'service[colab]'
 
-  get_gitlab_private_token =  lambda do
+  get_private_token =  lambda do
     Dir.chdir '/usr/lib/gitlab' do
       `sudo -u git RAILS_ENV=production bundle exec rails runner \"puts User.find_by_name(\'admin-gitlab\').private_token\"`.strip
     end
   end
 
-  get_noosfero_private_token =  lambda do
-    Dir.chdir '/usr/lib/noosfero' do
-      `sudo -u noosfero RAILS_ENV=production bundle exec rails runner \"puts User.find_by_name(\'admin-noosfero\').private_token\"`.strip
-    end
-  end
-
   variables(
-    :get_gitlab_private_token => get_gitlab_private_token,
-    :get_noosfero_private_token => get_noosfero_private_token
+    :get_private_token => get_private_token
   )
 end
 
