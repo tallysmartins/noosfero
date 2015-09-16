@@ -5,7 +5,7 @@ test_database_connectivity() {
 }
 
 test_noosfero_running() {
-  assertTrue 'Noosfero running' 'run_on social pgrep -u noosfero -f thin'
+  assertTrue 'Noosfero running' 'run_on social pgrep -u noosfero -f unicorn'
 }
 
 test_noosfero_on_subdir() {

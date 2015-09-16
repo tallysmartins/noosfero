@@ -40,11 +40,11 @@ plugins = [
   'people_block',
   'recent_content',
   'remote_user',
-  'software_communities', # from noosfero-spb
+  'organization_ratings',
   'statistics',
   'sub_organizations',
   'video',
-  'spb_migrations',
+  'community_block',
 ]
 
 execute 'plugins:enable' do
@@ -64,6 +64,22 @@ execute 'plugins:activate' do
   only_if 'bundle exec rake -P | grep enable_all'
 end
 
+
+plugins_spb = [
+  'software_communities',
+  'gov_user',
+  'spb_migrations',
+]
+
+#FIXME: We did it, because we have to enable each plugin and migrate it separately.
+plugins_spb.each do |plugin|
+  execute ('plugins_spb:activate:' + plugin) do
+    command '/usr/lib/noosfero/script/noosfero-plugin enable ' + plugin +
+            ' && RAILS_ENV=production SCHEMA=/dev/null bundle exec ' +
+            'rake db:migrate'
+  end
+end
+
 execute 'theme:enable' do
   command 'psql -h database -U noosfero --no-align --tuples-only -q -c "update environments set theme=\'noosfero-spb-theme\' where id=1;"'
 end
@@ -73,7 +89,7 @@ execute 'software:create_licenses' do
   command 'sudo -u noosfero bundle exec rake software:create_licenses RAILS_ENV=production'
 end
 
-template '/etc/noosfero/thin.yml' do
+template '/etc/noosfero/unicorn.rb' do
   owner 'root'; group 'root'; mode 0644
   notifies :restart, 'service[noosfero]'
 end
