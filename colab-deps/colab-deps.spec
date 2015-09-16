@@ -1,8 +1,8 @@
 %define name colab-deps
-%define version 1.10
+%define version 1.11
 %define release 1
 
-Summary: Collaboration platform for communities (Pyton dependencies)
+Summary: Collaboration platform for communities (Python dependencies)
 Name: %{name}
 Version: %{version}
 Release: %{release}
@@ -19,12 +19,14 @@ BuildRequires: gettext, libxml2-devel, libxslt-devel, openssl-devel, libffi-deve
 Integrated software development platform (Python dependencies).
 
 %prep
-%setup -n %{name}-%{version} -n %{name}-%{version}
+%setup -q
 
 %build
+cd %{_builddir}
 make
 
 %install
+cd %{_builddir}
 %make_install
 
 %clean

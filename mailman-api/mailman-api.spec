@@ -1,6 +1,6 @@
 %define name mailman-api
-%define version 0.2.10
-%define unmangled_version 0.2.10
+%define version 0.3c1
+%define unmangled_version 0.3c1
 %define release 1
 
 Summary: REST API daemon to interact with Mailman 2

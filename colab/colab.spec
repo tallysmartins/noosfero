@@ -1,6 +1,6 @@
 %define name colab
-%define version 1.10.3
-%define default_release 4
+%define version 1.11.0
+%define default_release 1
 %{!?release: %define release %{default_release}}
 %define buildvenv /var/tmp/%{name}-%{version}
 
@@ -14,10 +14,11 @@ Group: Development/Tools
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Prefix: %{_prefix}
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
-Url: https://github.com/colab-community/colab
+Url: https://github.com/colab/colab
 BuildArch: noarch
-BuildRequires: colab-deps >= 1.10, python-virtualenv
-Requires: colab-deps >= 1.10, solr, mailman-api
+BuildRequires: colab-deps >= 1.11, python-virtualenv
+# TODO: Set mailman-api version (0.3c1)
+Requires: colab-deps >= 1.11, solr, mailman-api
 
 %description
 Integrated software development platform.
@@ -29,7 +30,7 @@ Integrated software development platform.
 # install colab into virtualenv to make sure dependencies are OK
 rm -rf %{buildvenv}
 cp -r /usr/lib/colab %{buildvenv}
-PATH=%{buildvenv}/bin:$PATH pip install --no-index .
+PATH=%{buildvenv}/bin:$PATH pip install --use-wheel --no-index  .
 virtualenv --relocatable %{buildvenv}
 
 # cleanup virtualenv
@@ -43,13 +44,30 @@ rm -f cleanup.list
 find %{buildvenv} -type d -empty -delete
 
 %install
-mkdir -p %{buildroot}/etc/colab
-mkdir -p %{buildroot}/usr/lib
+
+# install config file
+install -d -m 0755 %{buildroot}/etc/colab
+install -m 0644 misc/etc/colab/gunicorn.py %{buildroot}/etc/colab/gunicorn.py.example
+
+# Create settings dirs
+install -d -m 0755 %{buildroot}/etc/colab/settings.d
+install -d -m 0755 %{buildroot}/etc/colab/plugins.d
+
+# create log dir
+install -d -m 0755 %{buildroot}/var/log/colab
+
+# create celery dir
+install -d -m 0755 %{buildroot}/var/lib/colab/celery
+
+# Create assets dir (stores static files)
+install -d -m 0755 %{buildroot}/var/lib/colab/assets
 
 # install virtualenv
+install -d -m 0755 %{buildroot}/usr/lib
 rm -rf %{buildroot}/usr/lib/colab
 cp -r %{buildvenv} %{buildroot}/usr/lib/colab
 mkdir -p %{buildroot}/%{_bindir}
+
 cat > %{buildroot}/%{_bindir}/colab-admin <<EOF
 #!/bin/sh
 set -e
@@ -65,6 +83,8 @@ chmod +x %{buildroot}/%{_bindir}/colab-admin
 # install initscript
 install -d -m 0755 %{buildroot}/lib/systemd/system
 install -m 0644 misc/lib/systemd/system/colab.service %{buildroot}/lib/systemd/system
+install -m 0644 misc/lib/systemd/system/celeryd.service %{buildroot}/lib/systemd/system
+install -m 0644 misc/lib/systemd/system/celerybeat.service %{buildroot}/lib/systemd/system
 # install crontab
 install -d -m 0755 %{buildroot}/etc/cron.d
 install -m 0644 misc/etc/cron.d/colab %{buildroot}/etc/cron.d
@@ -74,10 +94,22 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf %{buildvenv}
 
 %files
+%defattr(-, root, root)
+
 /usr/lib/colab
+#/var/lib/colab # XXX: remove if doesnt break
+/var/lib/colab/assets
+%attr(-, colab, colab) /var/lib/colab/celery
+%attr(-, colab, colab) /var/log/colab
 %{_bindir}/*
 /etc/cron.d/colab
+#/etc/colab # XXX: remove if doesnt break
+/etc/colab/settings.d
+/etc/colab/plugins.d
+/etc/colab/gunicorn.py.example
 /lib/systemd/system/colab.service
+/lib/systemd/system/celeryd.service
+/lib/systemd/system/celerybeat.service
 
 %post
 groupadd colab || true
@@ -85,111 +117,121 @@ if ! id colab; then
   useradd --system --gid colab  --home-dir /usr/lib/colab --no-create-home colab
 fi
 
-mkdir -p /etc/colab
+mv /etc/colab/gunicorn.py.example /etc/colab/gunicorn.py
 
-if [ ! -f /etc/colab/settings.yaml ]; then
+if [ ! -f /etc/colab/settings.py ]; then
   SECRET_KEY=$(openssl rand -hex 32)
-  cat > /etc/colab/settings.yaml <<EOF
-## Set to false in production
-DEBUG: true
-TEMPLATE_DEBUG: true
+  cat > /etc/colab/settings.py <<EOF
 
-## System admins
-ADMINS: &admin
-  -
-    - John Foo
-    - john@example.com
-  -
-    - Mary Bar
-    - mary@example.com
+# Set to false in production
+DEBUG = True
+TEMPLATE_DEBUG = True
 
-MANAGERS: *admin
+# System admins
+ADMINS = [['John Foo', 'john@example.com'], ['Mary Bar', 'mary@example.com']]
 
-COLAB_FROM_ADDRESS: '"Colab" <noreply@example.com>'
-SERVER_EMAIL: '"Colab" <noreply@example.com>'
+MANAGERS = ADMINS
 
-EMAIL_HOST: localhost
-EMAIL_PORT: 25
-EMAIL_SUBJECT_PREFIX: '[colab]'
+COLAB_FROM_ADDRESS = '"Colab" <noreply@example.com>'
+SERVER_EMAIL = '"Colab" <noreply@example.com>'
 
-SECRET_KEY: '$SECRET_KEY'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
+EMAIL_SUBJECT_PREFIX = '[colab]'
 
-SITE_URL: 'http://localhost:8001/'
-BROWSERID_AUDIENCES:
-  - http://localhost:8001
-#  - http://example.com
-#  - https://example.org
-#  - http://example.net
+SECRET_KEY = '$(openssl rand -hex 32)'
 
-ALLOWED_HOSTS:
-  - localhost
-#  - example.com
-#  - example.org
-#  - example.net
+ALLOWED_HOSTS = [
+    'localhost',
+#    'example.com',
+#    'example.org',
+#    'example.net',
+]
 
-## Disable indexing
-ROBOTS_NOINDEX: false
+# Database settings
+#
+#     When DEBUG is True colab will create the DB on
+#     the repository root. In case of production settings
+#     (DEBUG False) the DB settings must be set.
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': '/path/to/colab.sqlite3',
+#     }
+# }
 
-## Disable browser id authentication
-#  BROWSERID_ENABLED: true
+# Disable indexing
+ROBOTS_NOINDEX = False
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+
+    'formatters': {
+        'colab': { 'format' : '[colab] (%%(name)s) %%(levelname)s: %%(message)s'},
+        'verbose': { 'format' : '%%(asctime)s (%%(name)s) %%(levelname)s: %%(message)s'},
+    },
+
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+        'syslog': {
+            'level': 'WARNING',
+            'class': 'logging.handlers.SysLogHandler',
+            'formatter': 'colab',
+            'address': '/dev/log',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': '/var/log/colab/colab.log',
+            'interval': 24,  # 24 hours
+            'backupCount': 7,  # keep last 7 backups
+            'encoding': 'UTF-8',
+            'formatter': 'verbose',
+        },
+    },
+
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'syslog'],
+            'propagate': False,
+        },
+        'revproxy': {
+            'handlers': ['file', 'syslog'],
+            'propagate': False,
+            'level': 'ERROR',
+        },
+    },
+}
+
 EOF
-  chown root:colab /etc/colab/settings.yaml
-  chmod 0640 /etc/colab/settings.yaml
+
+  chown root:colab /etc/colab/settings.py
+  chmod 0640 /etc/colab/settings.py
 fi
 
-mkdir -p /etc/colab/settings.d
+install -d -m 0750 -o root -g colab /etc/colab/settings.d
 
-if [ ! -f /etc/colab/settings.d/00-database.yaml ]; then
-  cat > /etc/colab/settings.d/00-database.yaml <<EOF
-DATABASES:
-  default:
-    ENGINE: django.db.backends.postgresql_psycopg2
-    NAME: colab
-    USER: colab
-    HOST: localhost
-    PORT: 5432
-EOF
-  chown root:colab /etc/colab/settings.d/00-database.yaml
-  chmod 0640 /etc/colab/settings.d/00-database.yaml
+install -d -m 0755 -o colab -g colab /var/lib/colab-assets
+
+# If nginx is available serve assets using it
+if [ -d /usr/share/nginx ]; then
+    ln -s /var/lib/colab/assets /usr/share/nginx/colab
 fi
 
-# only applies if there is a local PostgreSQL server
-if [ -x /usr/bin/postgres ]; then
-
-  # start/enable the service
-  postgresql-setup initdb || true
-  systemctl start postgresql
-  systemctl enable postgresql
-
-  if [ "$(sudo -u postgres -i psql --quiet --tuples-only -c "select count(*) from pg_user where usename = 'colab';")" -eq 0 ]; then
-    # create user
-    sudo -u postgres -i createuser colab
-  fi
-
-  if [ "$(sudo -u postgres -i psql --quiet --tuples-only -c "select count(1) from pg_database where datname = 'colab';")" -eq 0 ]; then
-    # create database
-    sudo -u postgres -i createdb --owner=colab colab
-  fi
-
-  colab-admin migrate
-fi
-
-mkdir -p /var/lock/colab
-chown colab:colab /var/lock/colab
-
-mkdir -p /var/lib/colab-assets
-chown colab:colab /var/lib/colab-assets
-
-mkdir -p /usr/share/nginx/
-
-ln -s /var/lib/colab-assets /usr/share/nginx/colab
-
-yes yes | colab-admin collectstatic
+chown -R colab:colab /var/lib/colab/assets
+colab-admin collectstatic --noinput
 
 if [ $1 -gt 1 ]; then
   # upgrade; restart if running
   systemctl try-restart colab
 fi
+
+systemctl daemon-reload
 
 %preun
 if [ $1 -eq 0 ]; then
