@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="page-profile-header">
-  <%= render "blocks/profile_info_actions/join_leave_community" %>
+  <%= render "blocks/profile_info_actions/join_leave_community" if profile.class == "Community" %>
   <% if !user.nil? && user.has_permission?('edit_profile', profile) %>
     <div class="control-panel-button">
       <%= button :control_panel, _('Control Panel'), profile.admin_url %>
