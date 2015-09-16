@@ -57,14 +57,6 @@ execute 'noosfero:migrate' do
   user 'noosfero'
 end
 
-execute 'plugins:activate' do
-  command "RAILS_ENV=production bundle exec rake noosfero:plugins:enable_all"
-  cwd '/usr/lib/noosfero'
-  user 'noosfero'
-  only_if 'bundle exec rake -P | grep enable_all'
-end
-
-
 plugins_spb = [
   'software_communities',
   'gov_user',
@@ -78,6 +70,13 @@ plugins_spb.each do |plugin|
             ' && RAILS_ENV=production SCHEMA=/dev/null bundle exec ' +
             'rake db:migrate'
   end
+end
+
+execute 'plugins:activate' do
+  command "RAILS_ENV=production bundle exec rake noosfero:plugins:enable_all"
+  cwd '/usr/lib/noosfero'
+  user 'noosfero'
+  only_if 'bundle exec rake -P | grep enable_all'
 end
 
 execute 'theme:enable' do
