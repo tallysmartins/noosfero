@@ -1,0 +1,42 @@
+Exportação de Dados do Catálogo para CSV
+======
+
+Esta seção descreve como realizar a exportação dos dados do Catálogo de
+Software para arquivos CSV e como obter esses arquivos. Todo o procedimento
+deve ser realizado num *shell* onde o diretório atual é o repositório de
+controle de versão do SPB.
+
+Gerando os CSV
+----------------------
+
+Suponha que estamos realizando a exportação de dados do ambiente de produção,
+chamado de ``prod``; o comando para realizar uma *exportação atualizada* é o
+seguinte (note ``SPB_ENV=prod``)::
+
+    $ rake export_data:noosfero SPB_ENV=prod
+
+Esta operação vai executar o script na máquina *Social* para exportar os dados
+atuais do Catálogo de Software para arquivos CSVs e adicioná-los em um
+``tar.gz`` chamado *software_catalog_csvs.tar.gz*. Por fim, o comando ainda irá
+copiar o arquivo ``software_catalog_csvs.tar.gz`` para um subdiretório chamado
+``exported_data`` na sua estação de trabalho.
+
+Obtendo os arquivos
+---------------------------
+
+Ao final do procedimento de exportação de dados para CSV o arquivo
+``software_catalog_csvs.tar.gz`` será copiado para dentro do subdiretório
+``exported_data`` na sua estação de trabalho. Para extrair os arquivos para
+fora do ``software_catalog_csvs.tar.gz``, execute o seguinte comando::
+
+    $ tar -vzxf software_catalog_csvs.tar.gz
+
+Os seguintes arquivos ``*.csv`` devem ser extraídos na execução do comando
+acima:
+
+* *softwares.csv*: Contém os dados principais dos Softwares presentes no Catálogo de Software
+
+* *categories.csv*: Contém a lista de Categories de Software do SPB
+
+* *software_categories.csv*: Contém a relação dos Softwares e suas Categorias. Este arquivo é semelhante à uma tabela de Banco de Dados Relacional N x N, onde cada linha contém o ID do Software e o ID de uma de suas Categorias.
+
