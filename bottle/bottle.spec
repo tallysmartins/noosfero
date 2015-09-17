@@ -2,7 +2,7 @@
 %define version 0.13_dev
 %define unmangled_version 0.13-dev
 %define unmangled_version 0.13-dev
-%define release 3
+%define release 4
 
 Summary: Fast and simple WSGI-framework for small web-applications.
 Name: %{name}
