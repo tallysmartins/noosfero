@@ -16,6 +16,11 @@ package 'colab' do
   notifies :restart, 'service[colab]'
 end
 
+package 'colab-spb-theme' do
+  action :upgrade
+  notifies :restart, 'service[colab]'
+end
+
 directory '/etc/colab' do
   owner  'root'
   group  'root'
