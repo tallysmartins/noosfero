@@ -10,3 +10,4 @@ host    all             all             ::1/128                 ident
 host    colab     colab       <%= node['peers']['integration'] %>/32  trust
 host    gitlab    gitlab      <%= node['peers']['integration'] %>/32  trust
 host    noosfero  noosfero    <%= node['peers']['social'] %>/32       trust
+host    noosfero  colab       <%= node['peers']['integration'] %>/32  trust
