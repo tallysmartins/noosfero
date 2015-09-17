@@ -1,7 +1,7 @@
 %define name mailman-api
 %define version 0.3c1
 %define unmangled_version 0.3c1
-%define release 1
+%define release 2
 
 Summary: REST API daemon to interact with Mailman 2
 Name: %{name}
@@ -58,7 +58,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 %setup -n %{name}-%{unmangled_version} -n %{name}-%{unmangled_version}
 
 %build
-python setup.py build
+PATH="/usr/bin:$PATH" python setup.py build
 
 %install
 python setup.py install --single-version-externally-managed -O1 --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
