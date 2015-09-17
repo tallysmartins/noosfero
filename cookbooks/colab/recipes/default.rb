@@ -96,28 +96,28 @@ template '/etc/colab/settings.d/02-logging.py' do
   owner  'root'
   group  'colab'
   mode   0640
+  notifies :restart, 'service[colab]'
 end
 
 template '/etc/colab/settings.d/03-sentry.py' do
   owner  'root'
   group  'colab'
   mode   0640
+  notifies :restart, 'service[colab]'
 end
 
 template '/etc/colab/settings.d/04-memcached.py' do
   owner 'root'
   group 'colab'
   mode 0640
+  notifies :restart, 'service[colab]'
 end
 
 template '/etc/colab/settings.d/05-celery.py' do
   owner 'root'
   group 'colab'
   mode 0640
-end
-
-service 'colab' do
-  action :restart
+  notifies :restart, 'service[colab]'
 end
 
 # Adding plugins for colab
@@ -134,31 +134,32 @@ template '/etc/colab/plugins.d/gitlab.py' do
   variables(
     :get_private_token => get_private_token
   )
+
+  notifies :restart, 'service[colab]'
 end
 
 template '/etc/colab/plugins.d/noosfero.py' do
   owner 'root'
   group 'colab'
   mode 0640
+  notifies :restart, 'service[colab]'
 end
 
 template '/etc/colab/plugins.d/spb.py' do
   owner 'root'
   group 'colab'
   mode 0640
+  notifies :restart, 'service[colab]'
 end
 
 template '/etc/colab/plugins.d/raven.py' do
   owner 'root'
   group 'colab'
   mode 0640
+  notifies :restart, 'service[colab]'
 end
 
 execute 'colab-admin migrate'
-
-service 'colab' do
-  action :restart
-end
 
 # Static files
 directory '/var/lib/colab-assets/spb/' do
