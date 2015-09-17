@@ -51,17 +51,24 @@ execute 'plugins:enable' do
   command '/usr/lib/noosfero/script/noosfero-plugins enable ' + plugins.join(' ')
 end
 
+plugins_spb = [
+  'software_communities',
+  'gov_user',
+  'spb_migrations',
+]
+
+# HACK disable plugins_spb before migrating
+# FIXME fix the plugins to not depend on other pugins
+execute 'noosfero:plugins_spb:disable' do
+  command '/usr/lib/noosfero/script/noosfero-plugins disable ' + plugins_spb.join(' ')
+end
+
 execute 'noosfero:migrate' do
   command 'RAILS_ENV=production SCHEMA=/dev/null bundle exec rake db:migrate'
   cwd '/usr/lib/noosfero'
   user 'noosfero'
 end
 
-plugins_spb = [
-  'software_communities',
-  'gov_user',
-  'spb_migrations',
-]
 
 #FIXME: We did it, because we have to enable each plugin and migrate it separately.
 plugins_spb.each do |plugin|
@@ -126,6 +133,21 @@ cookbook_file '/usr/lib/noosfero/config/noosfero.yml' do
   owner 'root'; group 'root'; mode 0644
   source 'noosfero.yml'
   notifies :restart, 'service[noosfero]'
+end
+
+cookbook_file "/usr/local/bin/noosfero-create-api-user" do
+  mode 0755
+end
+
+execute 'create-admin-token-noosfero' do
+  command [
+    "RAILS_ENV=production bundle exec rails runner",
+    "/usr/local/bin/noosfero-create-api-user",
+    "admin-noosfero", # username
+    "noosfero@localhost.localdomain", # email
+  ].join(' ')
+  cwd '/usr/lib/noosfero'
+  user 'noosfero'
 end
 ###############################################
 #  SELinux: permission to access static files noosfero

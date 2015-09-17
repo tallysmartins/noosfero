@@ -136,6 +136,7 @@ task :bootstrap_common => 'config/local/ssh_config'
 
 unless ENV['nodeps']
   task 'converge:integration' => 'converge:database'
+  task 'converge:integration' => 'converge:social'
   task 'converge:social'      => 'converge:database'
 end
 
