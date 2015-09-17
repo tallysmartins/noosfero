@@ -1,0 +1,37 @@
+## Set to false in production
+DEBUG = False
+TEMPLATE_DEBUG = False
+
+## System admins
+ADMINS = [
+<%- node['config']['admins'].each do |admin| %>
+  ("<%= admin[0] %>", "<%= admin[1] %>"),
+<% end %>
+]
+
+MANAGERS = ADMINS
+
+# general Django settings
+DEFAULT_FROM_EMAIL = '<%= node['config']['colab_from_address'] %>'
+
+# colab-specific
+COLAB_FROM_ADDRESS = '<%= node['config']['colab_from_address'] %>'
+SERVER_EMAIL = '<%= node['config']['server_email'] %>'
+
+EMAIL_HOST = "localhost"
+EMAIL_PORT =  25
+EMAIL_SUBJECT_PREFIX = "<%= node['config']['email_subject_prefix'] %>"
+
+SECRET_KEY = "<%= File.read('/etc/colab/secret.key').strip %>"
+
+SITE_URL = "<%= node['config']['site_url'] %>"
+
+ALLOWED_HOSTS = ["<%= node['config']['external_hostname'] %>"]
+
+## Disable indexing
+ROBOTS_NOINDEX = False
+
+## Set URL of Colab home
+COLAB_HOME_URL = '/social'
+
+GOOGLE_ANALYTICS_TRACKING_ID = "<%= node['config']['google_analytics_id'] %>"

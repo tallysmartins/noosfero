@@ -12,3 +12,4 @@
 *.swo
 /backups
 /exported_data
+.vagrant
