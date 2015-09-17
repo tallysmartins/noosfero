@@ -134,6 +134,21 @@ cookbook_file '/usr/lib/noosfero/config/noosfero.yml' do
   source 'noosfero.yml'
   notifies :restart, 'service[noosfero]'
 end
+
+cookbook_file "/usr/local/bin/noosfero-create-api-user" do
+  mode 0755
+end
+
+execute 'create-admin-token-noosfero' do
+  command [
+    "RAILS_ENV=production bundle exec rails runner",
+    "/usr/local/bin/noosfero-create-api-user",
+    "admin-noosfero", # username
+    "noosfero@localhost.localdomain", # email
+  ].join(' ')
+  cwd '/usr/lib/noosfero'
+  user 'noosfero'
+end
 ###############################################
 #  SELinux: permission to access static files noosfero
 ################################################

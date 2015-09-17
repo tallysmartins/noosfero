@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+login = ARGV[0]
+email = ARGV[1]
+password = SecureRandom.random_number.to_s
+
+user = User.find_by_login(login)
+exit(0) if user
+
+user = User.create!(
+  login: login,
+  email: email,
+  password: password,
+  password_confirmation: password
+)
+user.activate
+user.generate_private_token_if_not_exist
