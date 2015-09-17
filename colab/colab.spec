@@ -18,7 +18,7 @@ Url: https://github.com/colab/colab
 BuildArch: noarch
 BuildRequires: colab-deps >= 1.11, python-virtualenv
 # TODO: Set mailman-api version (0.3c1)
-Requires: colab-deps >= 1.11, solr, mailman-api
+Requires: colab-deps >= 1.11, solr, mailman-api >= 0.3
 
 %description
 Integrated software development platform.
