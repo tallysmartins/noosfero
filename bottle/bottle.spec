@@ -2,7 +2,7 @@
 %define version 0.13_dev
 %define unmangled_version 0.13-dev
 %define unmangled_version 0.13-dev
-%define release 4
+%define release 5
 
 Summary: Fast and simple WSGI-framework for small web-applications.
 Name: %{name}
@@ -39,7 +39,7 @@ License: MIT (see LICENSE for details)
 %setup -n %{name}-%{unmangled_version} -n %{name}-%{unmangled_version}
 
 %build
-python setup.py build
+PATH="/usr/bin:$PATH" python setup.py build
 
 %install
 python setup.py install --single-version-externally-managed -O1 --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
