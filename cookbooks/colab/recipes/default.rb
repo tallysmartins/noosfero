@@ -148,6 +148,10 @@ template '/etc/colab/plugins.d/noosfero.py' do
   group 'colab'
   mode 0640
   notifies :restart, 'service[colab]'
+  get_private_token = lambda do
+    `psql --tuples-only --host database --user colab -c "select private_token from users where login = 'admin-noosfero'" noosfero`.strip
+  end
+  variables(:get_private_token => get_private_token)
 end
 
 template '/etc/colab/plugins.d/spb.py' do

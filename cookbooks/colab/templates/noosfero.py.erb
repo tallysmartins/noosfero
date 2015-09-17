@@ -10,6 +10,8 @@ verbose_name = 'Noosfero Plugin'
 
 upstream = 'http://<%= node['peers']['social'] %>:80/social/'
 
+private_token = '<%= @get_private_token.call %>'
+
 urls = {
     'include': 'colab_noosfero.urls',
     'namespace': 'noosfero',  # TODO: do not allow to change namespace
