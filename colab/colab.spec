@@ -1,6 +1,6 @@
 %define name colab
 %define version 1.11.0
-%define default_release 1
+%define default_release 2
 %{!?release: %define release %{default_release}}
 %define buildvenv /var/tmp/%{name}-%{version}
 
@@ -17,7 +17,6 @@ Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://github.com/colab/colab
 BuildArch: noarch
 BuildRequires: colab-deps >= 1.11, python-virtualenv
-# TODO: Set mailman-api version (0.3c1)
 Requires: colab-deps >= 1.11, solr, mailman-api >= 0.3
 
 %description
