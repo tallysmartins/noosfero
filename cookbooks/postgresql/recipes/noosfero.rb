@@ -14,3 +14,7 @@ execute 'createdb:noosfero' do
   end
 end
 
+execute 'grant:noosfero:colab' do
+  command 'psql -c "GRANT SELECT ON users TO colab" noosfero'
+  user 'postgres'
+end
