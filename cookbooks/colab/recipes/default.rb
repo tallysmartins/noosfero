@@ -125,6 +125,13 @@ template '/etc/colab/settings.d/05-celery.py' do
   notifies :restart, 'service[colab]'
 end
 
+template '/etc/colab/settings.d/06-raven-settings.py' do
+  owner 'root'
+  group 'colab'
+  mode 0640
+  notifies :restart, 'service[colab]'
+end
+
 # Adding plugins for colab
 template '/etc/colab/plugins.d/gitlab.py' do
   owner 'root'
