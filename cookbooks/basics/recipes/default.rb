@@ -74,8 +74,21 @@ if node['platform'] == 'centos'
   template '/etc/yum.repos.d/softwarepublico.repo' do
     owner 'root'
     mode 0644
+    notifies :run, "execute[yum_clean_cache]", :immediately
+    notifies :create, "ruby_block[yum-cache-reload]", :immediately
+  end
+  execute 'yum_clean_cache' do
+    command 'yum clean all'
+    action :nothing
+  end
+  # reload internal Chef yum cache
+  ruby_block "yum-cache-reload" do
+    block { Chef::Provider::Package::Yum::YumCache.instance.reload }
+    action :nothing
   end
 end
+
+
 
 # reload node[:fqdn] to make sure it reflects the contents of /etc/hosts
 # without that the variable :fqdn would not be available on first run
