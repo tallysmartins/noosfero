@@ -35,3 +35,10 @@ ROBOTS_NOINDEX = False
 COLAB_HOME_URL = '/social'
 
 GOOGLE_ANALYTICS_TRACKING_ID = "<%= node['config']['google_analytics_id'] %>"
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://localhost:8983/solr/',
+    }
+}
