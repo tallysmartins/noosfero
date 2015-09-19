@@ -149,6 +149,11 @@ execute 'create-admin-token-noosfero' do
   cwd '/usr/lib/noosfero'
   user 'noosfero'
 end
+
+execute 'grant:noosfero:colab' do
+  command 'psql -h database -U noosfero -c "GRANT SELECT ON users TO colab"'
+end
+
 ###############################################
 #  SELinux: permission to access static files noosfero
 ################################################
