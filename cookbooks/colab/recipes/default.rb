@@ -161,7 +161,7 @@ template '/etc/colab/plugins.d/spb.py' do
   notifies :restart, 'service[colab]'
 end
 
-template '/etc/colab/plugins.d/raven.py' do
+template '/etc/colab/plugins.d/sentry_client.py' do
   owner 'root'
   group 'colab'
   mode 0640
