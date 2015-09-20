@@ -46,10 +46,7 @@ execute 'secret-key' do
   notifies :create, 'template[/etc/colab/settings.d/00-custom_settings.py]'
 end
 
-template '/etc/sysconfig/colab' do
-  owner 'root'
-  group 'root'
-  mode '0640'
+template '/etc/colab/gunicorn.py' do
   notifies :restart, 'service[colab]'
 end
 
