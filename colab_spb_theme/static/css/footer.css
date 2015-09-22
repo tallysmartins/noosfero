@@ -52,7 +52,7 @@ footer #doormat-container dt {
     font-family: "open_sansbold", Arial, Helvetica, sans-serif;
 }
 
-footer #doormat-container dtfooter ,
+footer #doormat-container dt,
 footer #doormat-container dd {
     padding-left: 10px;
     margin-bottom: 4px;
@@ -76,13 +76,33 @@ footer #doormat-container .doormatColumn {
     text-align: left;
 }
 
-
-footer #footer .footer-logos {
+#footer .footer-logos {
     margin: 0 0 -20px;
     padding: 1.6em 0;
     max-width: 100%;
     background: #0041B1;
 }
+
+#footer .footer-logos div {
+    width: 960px;
+    margin: auto;
+    overflow: auto;
+}
+
+#footer .footer-logos div .logo-acesso-footer {
+    background-image: url("../img/acesso-a-informacao.png");
+    float: left;
+    width: 107px;
+    height: 49px;
+}
+
+
+#footer .footer-logos div .logo-brasil-footer {
+    background-image: url("../img/brasil.png");
+    float: right;
+    width: 153px;
+    height: 48px;
+ }
 
 footer #extra-footer p {
     margin: 1em auto;
@@ -110,6 +130,6 @@ footer .go-top i {
   font-size: 12px;
 }
 
-html footer div#wrapper-footer-brasil {
+html footer div#wrap-footer-brasil {
     padding: 0;
 }
