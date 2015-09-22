@@ -1,3 +1,26 @@
+
+# our custom repositories
+if node['platform'] == 'centos'
+  cookbook_file '/etc/yum.repos.d/softwarepublico.key' do
+    owner 'root'
+    mode 0644
+  end
+  template '/etc/yum.repos.d/softwarepublico.repo' do
+    owner 'root'
+    mode 0644
+  end
+
+  unless node['config']['keep_yum_cache']
+    execute 'yum_clean_cache' do
+      command 'yum clean all'
+    end
+    # reload internal Chef yum cache
+    ruby_block "yum-cache-reload" do
+      block { Chef::Provider::Package::Yum::YumCache.instance.reload }
+    end
+  end
+end
+
 # enable EPEL repository by default
 package 'epel-release'
 
@@ -64,31 +87,6 @@ end
 
 # FIXME on Debian it's postgresql-client
 package 'postgresql'
-
-# our custom repositories
-if node['platform'] == 'centos'
-  cookbook_file '/etc/yum.repos.d/softwarepublico.key' do
-    owner 'root'
-    mode 0644
-  end
-  template '/etc/yum.repos.d/softwarepublico.repo' do
-    owner 'root'
-    mode 0644
-    notifies :run, "execute[yum_clean_cache]", :immediately
-    notifies :create, "ruby_block[yum-cache-reload]", :immediately
-  end
-  execute 'yum_clean_cache' do
-    command 'yum clean all'
-    action :nothing
-  end
-  # reload internal Chef yum cache
-  ruby_block "yum-cache-reload" do
-    block { Chef::Provider::Package::Yum::YumCache.instance.reload }
-    action :nothing
-  end
-end
-
-
 
 # reload node[:fqdn] to make sure it reflects the contents of /etc/hosts
 # without that the variable :fqdn would not be available on first run

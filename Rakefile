@@ -52,6 +52,7 @@ end
 ips ||= YAML.load_file(ips_file)
 config ||= YAML.load_file(config_file)
 firewall ||= File.open(iptables_file).read
+config['keep_yum_cache'] = ENV['keep_yum_cache'] ? true : false
 $nodes.each do |node|
   node.data['environment'] = $SPB_ENV
   node.data['config'] = config
