@@ -17,7 +17,8 @@ Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://github.com/colab/colab
 BuildArch: noarch
 BuildRequires: colab-deps >= 1.11, python-virtualenv
-Requires: colab-deps >= 1.11, solr, mailman-api >= 0.3
+# FIXME colab should not depend on nginx!
+Requires: colab-deps >= 1.11, solr, mailman-api >= 0.3, nginx
 
 %description
 Integrated software development platform.
@@ -213,10 +214,8 @@ EOF
   chmod 0640 /etc/colab/settings.py
 fi
 
-# If nginx is available serve assets using it
-if [ -d /usr/share/nginx ]; then
-    ln -s /var/lib/colab/assets /usr/share/nginx/colab
-fi
+# FIXME colab should not depend on nginx
+ln -s /var/lib/colab/assets /usr/share/nginx/colab
 
 chown -R colab:colab /var/lib/colab/assets
 colab-admin collectstatic --noinput
