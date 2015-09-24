@@ -1,6 +1,0 @@
-include README.md
-include MANIFEST.in
-recursive-include colab_spb_theme/templates *
-recursive-include colab_spb_theme/static *
-recursive-exclude * __pycache__
-recursive-exclude * *.py[co]
