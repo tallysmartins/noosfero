@@ -220,7 +220,6 @@ fi
 # FIXME colab should not depend on nginx
 ln -s /var/lib/colab/assets /usr/share/nginx/colab
 
-chown -R colab:colab /var/lib/colab/assets
 colab-admin collectstatic --noinput
 
 if [ $1 -gt 1 ]; then
