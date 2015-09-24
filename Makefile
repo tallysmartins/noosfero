@@ -11,8 +11,8 @@ colab_dir=/usr/lib/colab
 
 dist: clean
 	mkdir -p $(DISTDIR)/$(PACKAGE_NAME) 
-	tar --exclude=.git --exclude=$(DISTDIR) -cf - * | (cd $(DISTDIR)/$(PACKAGE_NAME) && tar xaf -)
-	cd $(DISTDIR) &&  tar -caf $(TARBALL) $(PACKAGE_NAME)
+	tar --exclude=.git --exclude=$(DISTDIR) -cf - * | (cd $(DISTDIR)/$(PACKAGE_NAME) && tar xzf -)
+	cd $(DISTDIR) &&  tar -czf $(TARBALL) $(PACKAGE_NAME)
 	rm -r $(DISTDIR)/$(PACKAGE_NAME) 
 clean:
 	$(RM) $(TARBALL)
