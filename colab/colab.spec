@@ -111,11 +111,14 @@ rm -rf %{buildvenv}
 /lib/systemd/system/celeryd.service
 /lib/systemd/system/celerybeat.service
 
+
+%pre
+
+getent group colab > /dev/null || groupadd --system colab
+getent passwd colab > /dev/null || useradd --system --user-group colab --home-dir /usr/lib/colab --no-create-home colab
+
+
 %post
-groupadd colab || true
-if ! id colab; then
-  useradd --system --gid colab  --home-dir /usr/lib/colab --no-create-home colab
-fi
 
 mv /etc/colab/gunicorn.py.example /etc/colab/gunicorn.py
 
