@@ -1,15 +1,11 @@
-%define name colab-deps
-%define version 1.11.0
-%define release 1
-
 Summary: Collaboration platform for communities (Python dependencies)
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: %{name}-%{version}.tar.gz
+Name:    colab-deps
+Version: 1.11.0
+Release: 20
+Source0: colab-deps-%{version}.tar.gz
 License: Various
 Group: Development/Tools
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot: %{_tmppath}/colab-deps-%{version}-%{release}-buildroot
 Prefix: %{_prefix}
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://gitlab.com/softwarepublico/colab-deps
