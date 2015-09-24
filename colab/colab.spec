@@ -115,7 +115,7 @@ rm -rf %{buildvenv}
 %pre
 
 getent group colab > /dev/null || groupadd --system colab
-getent passwd colab > /dev/null || useradd --system --user-group colab --home-dir /usr/lib/colab --no-create-home colab
+getent passwd colab > /dev/null || useradd --system --gid colab --home-dir /usr/lib/colab --no-create-home colab
 
 
 %post
