@@ -2,7 +2,6 @@
 
 Name:           fcgi
 Version:        2.4.0
-Release:        22%{?dist}
 Summary:        FastCGI development kit
 
 Group:          Development/Languages

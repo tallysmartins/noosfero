@@ -4,7 +4,6 @@
 Name:             libev
 Summary:          High-performance event loop/event model with lots of features
 Version:          4.15
-Release:          4%{?dist}
 License:          BSD or GPLv2+
 URL:              http://software.schmorp.de/pkg/libev.html
 Source0:          http://dist.schmorp.de/libev/Attic/%{name}-%{version}.tar.gz

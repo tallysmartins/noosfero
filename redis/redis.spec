@@ -2,7 +2,6 @@
 Summary: redis
 Name: redis
 Version: 2.8.17
-Release: 1
 License: BSD
 Group: Applications/Multimedia
 URL: http://redis.io/

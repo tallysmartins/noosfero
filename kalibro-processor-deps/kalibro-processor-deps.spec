@@ -1,6 +1,5 @@
 Name:    kalibro-processor-deps
 Version: 1.0+really0.10.0
-Release: 1%{?dist}
 Summary: Ruby dependencies for kalibro-processor
 Group:   Development/Tools
 License: Various

@@ -7,7 +7,6 @@
 Summary: Solr is the search platform from Apache Lucene project.
 Name: solr
 Version: 4.6.1
-Release: 1
 
 License: Apache License, Version 2.0
 Group: Applications/Internet

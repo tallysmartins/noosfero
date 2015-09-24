@@ -7,7 +7,6 @@
 Summary: Fast and simple WSGI-framework for small web-applications.
 Name: %{name}
 Version: %{version}
-Release: %{release}
 Source0: %{name}-%{unmangled_version}.tar.gz
 License: MIT
 Group: Development/Libraries

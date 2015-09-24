@@ -3,7 +3,6 @@
 
 Name:    noosfero
 Version: 1.3~0+spb1
-Release: 1%{?dist}
 Summary: Social Networking Platform
 Group:   Applications/Publishing
 License: AGPLv3

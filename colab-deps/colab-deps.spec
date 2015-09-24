@@ -1,7 +1,6 @@
 Summary: Collaboration platform for communities (Python dependencies)
 Name:    colab-deps
 Version: 1.11.0
-Release: 20
 Source0: colab-deps-%{version}.tar.gz
 License: Various
 Group: Development/Tools

@@ -1,7 +1,6 @@
 %global gitcommit 333ff99
 Name:           fcgiwrap
 Version:        1.1.0
-Release:        1%{?dist}
 Summary:        Simple FastCGI wrapper for CGI scripts
 License:        MIT
 URL:            http://nginx.localdomain.pl/

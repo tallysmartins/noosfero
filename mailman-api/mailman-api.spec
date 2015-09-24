@@ -6,7 +6,6 @@
 Summary: REST API daemon to interact with Mailman 2
 Name: %{name}
 Version: %{version}
-Release: %{release}
 Source0: %{name}-%{unmangled_version}.tar.gz
 License: LICENSE.txt
 Group: Development/Libraries

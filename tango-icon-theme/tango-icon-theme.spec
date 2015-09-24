@@ -2,7 +2,6 @@
 
 Name: tango-icon-theme
 Version: 0.8.90
-Release: alt2
 
 Summary: Tango Icon Library
 License: Creative Commons Attribution Share-Alike license 2.5
