@@ -175,13 +175,13 @@ end
 execute 'colab-admin migrate'
 
 # Static files
-directory '/var/lib/colab-assets/spb/' do
+directory '/var/lib/colab/assets/spb/' do
   owner  'root'
   group  'root'
   mode   0755
 end
 
-cookbook_file '/var/lib/colab-assets/spb/fav.ico' do
+cookbook_file '/var/lib/colab/assets/spb/fav.ico' do
   owner 'root'
   group 'root'
   mode 0644
