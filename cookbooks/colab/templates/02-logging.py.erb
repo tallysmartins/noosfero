@@ -1,18 +1,12 @@
 LOGGING = {
-    'loggers': {
-        'revproxy': {
-            'handlers': ['file'],
-            'level': 'ERROR'},
-        'django': {
-              'handlers': ['file'],
-              'level': 'DEBUG'},
-    },
-    'version': 1, 'formatters': {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
         'verbose': {
             'format': '%(asctime)s (%(name)s) %(levelname)s: %(message)s'
         }
     },
-    'disable_existing_loggers': True, 'handlers': {
+    'handlers': {
         'file': {
             'level': 'DEBUG',
             'interval': 24,
@@ -20,7 +14,17 @@ LOGGING = {
             'encoding': 'UTF-8',
             'formatter': 'verbose',
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': '/var/log/colab/colab.log'
+            'filename': '/var/log/colab/colab.log',
         }
-    }
+    },
+    'loggers': {
+        'revproxy': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+        },
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+        },
+    },
 }
