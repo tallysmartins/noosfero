@@ -101,13 +101,6 @@ template '/etc/colab/settings.d/02-logging.py' do
   notifies :restart, 'service[colab]'
 end
 
-template '/etc/colab/settings.d/03-sentry.py' do
-  owner  'root'
-  group  'colab'
-  mode   0640
-  notifies :restart, 'service[colab]'
-end
-
 template '/etc/colab/settings.d/04-memcached.py' do
   owner 'root'
   group 'colab'
