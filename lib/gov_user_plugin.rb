@@ -289,7 +289,7 @@ class GovUserPlugin < Noosfero::Plugin
       :title => _('Institution Info'),
       :icon => 'edit-profile-group control-panel-instituton-link',
       :url => {
-        :controller => 'software_communities_plugin_myprofile',
+        :controller => 'gov_user_plugin_myprofile',
         :action => 'edit_institution'
       }
     }
