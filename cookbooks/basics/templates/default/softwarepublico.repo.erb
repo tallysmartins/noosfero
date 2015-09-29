@@ -1,8 +1,7 @@
 [isv_spb_spb]
 name=Software Publico Brasileiro (CentOS_7)
 type=rpm-md
-#baseurl=<%= node['config']['rpm_repository'] || 'http://download.opensuse.org/repositories/isv:/spb:/devel/CentOS_7/' %>
-baseurl=http://rpm.tracy.com.br/isv_spb_devel/
+baseurl=<%= node['config']['rpm_repository'] || 'http://download.opensuse.org/repositories/isv:/spb:/devel/CentOS_7/' %>
 gpgcheck=1
 gpgkey=file:///etc/yum.repos.d/softwarepublico.key
 enabled=1
