@@ -6,9 +6,11 @@ class GovUserPluginMyprofileController < MyProfileController
 
   def edit_institution
     @show_sisp_field = environment.admins.include?(current_user.person)
-    @state_list = NationalRegion.find(:all, :conditions =>
-    { :national_region_type_id =>  2 },
-    :order => 'name')
+    @state_list = NationalRegion.find(
+                    :all,
+                    :conditions => { :national_region_type_id => 2 },
+                    :order => 'name'
+                  )
     @institution = @profile.institution
     update_institution if request.post?
   end
@@ -26,7 +28,11 @@ class GovUserPluginMyprofileController < MyProfileController
         _("Could not find Governmental Power or Governmental Sphere"))
       end
     end
-    flash[:errors] = @institution.errors.full_messages unless @institution.valid?
+    if @institution.valid?
+      redirect_to :controller => 'profile_editor', :action => 'index', :profile => profile.identifier
+    else
+      flash[:errors] = @institution.errors.full_messages
+    end
   end
 
   def governmental_updates
