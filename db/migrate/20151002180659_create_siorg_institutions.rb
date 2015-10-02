@@ -26,7 +26,10 @@ class CreateSiorgInstitutions < ActiveRecord::Migration
         community.city = row["Cidade"]
         community.template = template if template
 
-        community.save!
+        unless community.save
+          print "F"
+          next
+        end
 
         juridical_nature = JuridicalNature.where("name ILIKE ? OR name ILIKE ?", "#{I18n.transliterate(row['Natureza Jurídica'].rstrip)}", "#{row['Natureza Jurídica'].rstrip}").first
 
