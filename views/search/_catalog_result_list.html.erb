@@ -9,7 +9,7 @@
       <% if multiple_search?(@searches) %>
         <h3><%= @names[name] %></h3>
         <% if search[:results].total_entries > SearchController::MULTIPLE_SEARCH_LIMIT %>
-          <%= link_to(_('see all (%d)') % search[:results].total_entries, params.merge(:action => name), :class => 'see-more' ) %>
+          <%= link_to(_("see all (%d)") % search[:results].total_entries, params.merge(:action => name), :class => 'see-more' ) %>
         <% end %>
       <% end %>
 
