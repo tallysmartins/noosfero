@@ -1,11 +1,10 @@
 <div class="software-metrics-block">
   <ul class="metrics-list">
-    <li><span class="arrow-globe-icon"></span><a href="#"><%= pluralize(profile.hits, 'visita', 'visitas') %></a></li>
-    <li><span class="downloads-icon"></span><a href="#"><%= pluralize(total_downloads, 'download', 'downloads') %></a></li>
-    <li><span class="face-icon"></span><a href="#"><%= block.benefited_people.to_s + _(' benefited people*') %></a></li>
-    <li><span class="pig-safe-icon"></span><a href="#"><strong class="saved-money"><%= number_to_currency(block.saved_resources, unit: 'R$ ', separator: ',', delimiter: '.') %></strong> <%= _(' saved resources*') %></a></li>
+    <li><span class="arrow-globe-icon"></span><%= pluralize(profile.hits, 'visita', 'visitas') %></li>
+    <li><span class="downloads-icon"></span><%= pluralize(total_downloads, 'download', 'downloads') %></li>
+    <li><span class="face-icon"></span><%= block.benefited_people.to_s + _(' benefited people*') %></li>
+    <li><span class="pig-safe-icon"></span><strong class="saved-money"><%= number_to_currency(block.saved_resources, unit: 'R$ ', separator: ',', delimiter: '.') %></strong> <%= _(' saved resources*') %></li>
   </ul>
-
 
   <div class="admin-estimation">* <%= _("Data estimated by the software administrator.") %></div>
 </div>
