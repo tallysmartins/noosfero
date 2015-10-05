@@ -36,7 +36,7 @@
               :controller => :search,
               :action => :software_infos,
               :selected_categories_id => [category.id],
-              :include_non_public => !community.software_info.public_software?
+              :software_type => params[:software_type]
             } %>
             </li>
           <% end %>
