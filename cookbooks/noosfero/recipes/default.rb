@@ -7,10 +7,12 @@ end
 # FIXME should not be needed. noosfero should depend on the right version
 package 'noosfero-deps' do
   action :upgrade
+  notifies :restart, 'service[noosfero]'
 end
 
 package 'noosfero' do
   action :upgrade
+  notifies :restart, 'service[noosfero]'
 end
 
 template '/etc/noosfero/database.yml' do
@@ -31,6 +33,7 @@ end
 
 package 'noosfero-spb' do
   action :upgrade
+  notifies :restart, 'service[noosfero]'
 end
 
 plugins = [
