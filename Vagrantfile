@@ -9,7 +9,7 @@ load './local.rake' if File.exists?('local.rake')
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = ENV.fetch("VAGRANT_BOX", 'chef/centos-7.0')
+  config.vm.box = ENV.fetch("VAGRANT_BOX", 'seocam/centos-7.0')
   proxy = ENV['http_proxy'] || ENV['HTTP_PROXY']
   if proxy
     config.vm.provision 'shell', path: 'utils/proxy.sh', args: [proxy]
