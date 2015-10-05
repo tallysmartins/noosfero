@@ -12,8 +12,8 @@ noosfero_dir=/usr/lib/noosfero
 
 dist: clean
 	mkdir $(DISTDIR)
-	tar --exclude=.git --exclude=$(DISTDIR) -cf - * | (cd $(DISTDIR) && tar xaf -)
-	tar --exclude=.git -caf $(TARBALL) $(DISTDIR)
+	tar --exclude=.git --exclude=$(DISTDIR) -cf - * | (cd $(DISTDIR) && tar xzf -)
+	tar --exclude=.git -czf $(TARBALL) $(DISTDIR)
 
 clean:
 	$(RM) $(TARBALL)
