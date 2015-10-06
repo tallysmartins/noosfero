@@ -214,6 +214,31 @@ class SearchControllerTest < ActionController::TestCase
     assert_not_includes assigns(:searches)[:software_infos][:results], software_one.community
   end
 
+  should "software_infos search return only enabled softwares" do
+    s1 = SoftwareInfo.first
+    s2 = SoftwareInfo.last
+
+    # First get them all normally
+    get(
+      :software_infos,
+      :query => "software"
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], s1.community
+    assert_includes assigns(:searches)[:software_infos][:results], s2.community
+
+    s2.community.disable
+
+    # Now it should not contain the disabled community
+    get(
+      :software_infos,
+      :query => "software"
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], s1.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], s2.community
+  end
+
   private
 
   def create_software_categories
