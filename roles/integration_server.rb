@@ -5,6 +5,7 @@ description "Server that runs COLAB (user authentication, visual integration and
 # point in the future
 run_list *[
   'recipe[basics::nginx]',
+  'recipe[email::destination]',
   'recipe[mailman-api]',
   'recipe[mailman]',
   'recipe[mailman::webui]',

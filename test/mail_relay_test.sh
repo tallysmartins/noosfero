@@ -1,6 +1,6 @@
 . $(dirname $0)/test_helper.sh
 
-test_inbound_mail() {
+test_inbound_list_mail() {
   run_on integration create-list mylist foo@example.com
 
   # sending FROM EMAIL RELAY HOST
@@ -10,7 +10,23 @@ test_inbound_mail() {
 
   run_on integration remove-list mylist
 
-  assertEquals 'Message arrives at the mailing list' '1' "$messages"
+  assertEquals 'Message did not arrive at the mailing list' '1' "$messages"
+}
+
+test_inbound_regular_mail() {
+  messages_before=$(run_on integration sudo grep -c '^From.*foo@example.com' /var/mail/root)
+  run_on email send-email foo@example.com root@softwarepublico.dev
+  n=0
+  while [ $n -lt 10 ]; do
+    sleep 1
+    messages=$(run_on integration sudo grep -c '^From.*foo@example.com' /var/mail/root)
+    if [ "$messages" -gt "$messages_before" ]; then
+      return
+    else
+      n=$(($n + 1))
+    fi
+  done
+  fail "didn't receive incoming email"
 }
 
 _test_outbound_email() {
@@ -24,7 +40,7 @@ _test_outbound_email() {
 
   run_on email clear-email-queue
 
-  assertEquals 'Message delivered through relay' 1 "$messages"
+  assertEquals 'Message was not delivered through relay' 1 "$messages"
 }
 
 test_outbound_email_integration() {
