@@ -1,1 +1,1 @@
-*   *   *   *   *   root    /usr/lib/mailman/bin/check_perms -f
+*   *   *   *   *   root    /usr/lib/mailman/bin/check_perms -f >/dev/null
