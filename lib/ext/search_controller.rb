@@ -89,7 +89,7 @@ class SearchController
   def get_communities_list software_list
     filtered_community_list = []
       software_list.each do |software|
-       if @all_selected || software.public_software?
+       if !@public_software_selected || software.public_software?
          filtered_community_list << software.community unless software.community.nil?
        end
     end
