@@ -1,5 +1,5 @@
 Name:    noosfero-spb
-Version: 4.0~rc2
+Version: 4.0~rc3
 Release: 0
 Summary: SPB-specific Noosfero plugins and themes
 Group:   Applications/Publishing
