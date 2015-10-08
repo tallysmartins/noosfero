@@ -12,7 +12,9 @@ _build/dns.rst: ../test/dns_test.sh
 	(cd .. && sh test/dns_test.sh --doc) > $@
 
 BUILT += $(patsubst %.svg, _build/%.png, $(wildcard *.svg))
-_build/%.png: %.svg
+_build/%.png: %.png
+
+arquitetura.png: arquitetura.svg
 	inkscape --export-area-page --export-width=800 --export-width=600 --export-png=$@ $<
 
 BUILT += $(patsubst %.in, _build/%, $(wildcard *.in))
