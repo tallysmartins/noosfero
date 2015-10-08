@@ -49,8 +49,8 @@ end
 
 require 'chake'
 
-if Gem::Version.new(Chake::VERSION) < Gem::Version.new('0.7')
-  fail "Please upgrade to chake 0.7+"
+if Gem::Version.new(Chake::VERSION) < Gem::Version.new('0.10')
+  fail "Please upgrade to chake 0.10+"
 end
 
 ips ||= YAML.load_file(ips_file)
@@ -137,7 +137,7 @@ namespace :export_data do
   end
 end
 
-task :bootstrap_common => 'config/local/ssh_config'
+task :bootstrap_common => :check_dependencies
 
 unless ENV['nodeps']
   task 'converge:integration' => 'converge:database'
