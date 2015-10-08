@@ -45,7 +45,7 @@ end
 
 require 'chake'
 
-if Chake::VERSION < '0.7'
+if Gem::Version.new(Chake::VERSION) < Gem::Version.new('0.7')
   fail "Please upgrade to chake 0.7+"
 end
 
