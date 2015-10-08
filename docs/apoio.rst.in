@@ -86,3 +86,30 @@ Alterando a senha de administrador do Mailman::
   $ cd /usr/lib/mailman/bin
   $ sudo ./mmsitepass nova_senha
 
+Gerenciando aliases de email
+----------------------------
+
+Como a máquina ``integration`` é o destino final de emails recebidos pela
+plataforma, é nela onde deve ser feita a gestão de aliases
+``@@@external_hostname@@``.
+
+Para fazer a configuração inicial, basta instruir o postfix a ler os aliases de
+um arquivo, digamos, ``/etc/postfix/aliases``::
+
+  $ sudo postconf virtual_alias_maps=hash:/etc/postix/aliases
+
+Em seguida é necessário fazer com que o serviço ``postfix`` recarregue as suas
+configurações::
+
+  $ sudo systemctl reload postfix
+
+Os aliases devem então ser mantidos neste arquivo. Um alias por linha, no
+formato ``<ALIAS> <DESTINO>``. Exemplo::
+
+  admin@@@external_hostname@@         softwarepublico@planejamento.gov.br
+  exemplo@@@external_hostname@@       exemplo@planejamento.gov.br
+
+Após cada alteração no ``/etc/postfix/aliases`` (incluindo a sua criação), é
+necessário compilá-lo num banco de dados otimizado com o seguinte comando::
+
+  $ sudo postmap /etc/postfix/aliases

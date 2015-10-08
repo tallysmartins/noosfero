@@ -24,6 +24,8 @@ O ambiente é composto por 5 máquinas com funções distintas:
 
   * Listas de email
 
+  * Backend final de email
+
 * email
 
   * relay de email
@@ -42,15 +44,15 @@ O ambiente é composto por 5 máquinas com funções distintas:
 
 Apenas as máquinas reverseproxy e email possuem IP's externos. A primeira para
 receber requisições HTTP/HTTPS (portas 80 e 443) e possibilitar que usuários
-utilizem os repositórios git (porta 22) e a última para receber emails (porta
-25). Além disso, todas as máquinas aceitam conexões ssh originadas apenas da
-máquina integration, ou seja, não é possível, de acordo com as regras de
-firewall, realizar conexões ssh nas demais máquinas se a conexão não for
-originada da integration. Conexões na porta 22 da máquina reverseproxy são
-redirecionadas para integration. As máquinas email, social e database aceitam
-conexão SSH vindas da integration na porta 22 e a reverseproxy em uma porta
-alternativa, especificada no arquivo de configuração do ambiente,
-config/$SPB_ENV/config.yaml pelo valor passado a 'alt_ssh_port'.
+utilizem os repositórios git (porta 22) e a segunda para receber emails (porta
+25) e enviar emails para fora de plataforma. Além disso, todas as máquinas
+aceitam conexões ssh originadas apenas da máquina integration, ou seja, não é
+possível, de acordo com as regras de firewall, realizar conexões ssh nas demais
+máquinas se a conexão não for originada da integration. Conexões na porta 22 da
+máquina reverseproxy são redirecionadas para integration. As máquinas email,
+social e database aceitam conexão SSH vindas da integration na porta 22 e a
+reverseproxy em uma porta alternativa, especificada no arquivo de configuração
+do ambiente, config/$SPB_ENV/config.yaml pelo valor passado a 'alt_ssh_port'.
 
 Por exemplo, para se conectar na máquina email é necessário estabelecer conexão
 SSH na porta 22 da reverseproxy, esta conexão será redirecionada para a máquina
