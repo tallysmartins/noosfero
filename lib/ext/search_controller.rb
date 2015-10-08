@@ -61,6 +61,7 @@ class SearchController
 
   def get_filtered_software_list
     params[:query] ||= ""
+    visible_communities = visible_profiles(Community)
 
     filtered_software_list = SoftwareInfo.search_by_query(params[:query])
 
@@ -70,6 +71,7 @@ class SearchController
       @public_software_selected = false
     end
 
+    filtered_software_list.select!{ |software| visible_communities.include?(software.community) }
     category_ids = get_filter_category_ids
 
     unless category_ids.empty?

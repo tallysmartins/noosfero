@@ -239,6 +239,23 @@ class SearchControllerTest < ActionController::TestCase
     assert_not_includes assigns(:searches)[:software_infos][:results], s2.community
   end
 
+  should "software_infos search not return software with secret community" do
+    software_one = create_software_info("Software ABC", :acronym => "SFO", :finality => "Help")
+    software_two = create_software_info("Python", :acronym => "SFT", :finality => "Task")
+    software_three = create_software_info("Software DEF", :acronym => "SFW", :finality => "Java")
+
+    software_one.community.secret = true
+    software_one.community.save!
+
+    get(
+      :software_infos,
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], software_two.community
+    assert_includes assigns(:searches)[:software_infos][:results], software_three.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], software_one.community
+  end
+
   private
 
   def create_software_categories
