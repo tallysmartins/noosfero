@@ -139,6 +139,7 @@ unless ENV['nodeps']
   task 'converge:integration' => 'converge:database'
   task 'converge:integration' => 'converge:social'
   task 'converge:social'      => 'converge:database'
+  task 'upload:reverseproxy'  => 'doc'
 end
 
 $ALT_SSH_PORT = config.fetch('alt_ssh_port', 2222)
