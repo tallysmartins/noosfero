@@ -15,7 +15,7 @@ BUILT += $(patsubst %.svg, _build/%.png, $(wildcard *.svg))
 _build/%.png: %.png
 	cp $< $@
 
-arquitetura.png: arquitetura.svg
+arquitetura.png:
 	inkscape --export-area-page --export-width=800 --export-width=600 --export-png=$@ $<
 
 BUILT += $(patsubst %.in, _build/%, $(wildcard *.in))
