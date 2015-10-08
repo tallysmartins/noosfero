@@ -25,7 +25,7 @@ _build/%: %.in build.rb
 CLEAN_FILES += $(BUILT)
 
 html latexpdf: $(BUILT)
-	$(MAKE) -C _build $@
+	$(MAKE) -C _build $@ BUILDDIR=$(SPB_ENV)
 
 clean:
 	$(RM) $(BUILT)

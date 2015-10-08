@@ -1,4 +1,4 @@
-docs = File.expand_path('../../../docs/_build/html', File.dirname(__FILE__))
+docs = File.expand_path("../../../docs/_build/#{node['environment']}/html", File.dirname(__FILE__))
 
 execute 'rsync::docs' do
   command "rsync -avp --delete #{docs}/ /srv/doc/"
