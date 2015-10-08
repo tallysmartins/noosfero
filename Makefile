@@ -1,5 +1,5 @@
 PACKAGE = noosfero-spb
-VERSION = 4.0~rc3
+VERSION = 4.1
 DISTDIR = $(PACKAGE)-$(VERSION)
 TARBALL = $(DISTDIR).tar.gz
 
@@ -12,7 +12,7 @@ noosfero_dir=/usr/lib/noosfero
 
 dist: clean
 	mkdir $(DISTDIR)
-	tar --exclude=.git --exclude=$(DISTDIR) -cf - * | (cd $(DISTDIR) && tar xzf -)
+	tar --exclude=.git --exclude=$(DISTDIR) -cf - * | (cd $(DISTDIR) && tar xaf -)
 	tar --exclude=.git -czf $(TARBALL) $(DISTDIR)
 
 clean:
