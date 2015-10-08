@@ -6,8 +6,12 @@ namespace :software do
         print 'Creating categories: '
         software = Category.create(:name => _("Software"), :environment => env)
         Category::SOFTWARE_CATEGORIES.each do |category_name|
-          print '.'
-          Category.create(:name => category_name, :environment => env, :parent => software)
+          unless Category.find_by_name(category_name)
+            print '.'
+            Category.create(:name => category_name, :environment => env, :parent => software)
+          else
+            print 'F'
+          end
         end
         puts ''
       end
