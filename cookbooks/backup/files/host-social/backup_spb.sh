@@ -1,6 +1,11 @@
 #!/bin/bash
+
+set -e
+
+BKP_DIR=/usr/lib/noosfero/tmp/backup
+
 cd /usr/lib/noosfero
 RAILS_ENV=production sudo -u noosfero bundle exec rake backup
 cd -
-# TODO fix regular expression
-mv /usr/lib/noosfero/tmp/backup/*.tar.gz noosfero_backup.tar.gz
+mv $BKP_DIR/`ls -tr $BKP_DIR | grep -E '[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{2}:[0-9]{2}\.tar\.gz' | tail -1` noosfero_backup.tar.gz
+
