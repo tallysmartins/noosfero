@@ -17,6 +17,8 @@ ENV['CHAKE_TMPDIR'] = "tmp/chake.#{$SPB_ENV}"
 
 ENV['CHAKE_SSH_CONFIG'] = ssh_config_file
 
+ENV['CHAKE_RSYNC_OPTIONS'] = '--exclude backups'
+
 if $SPB_ENV == 'lxc'
   system("mkdir -p config/lxc; sudo lxc-ls -f -F name,ipv4 | sed -e '/^softwarepublico/ !d; s/softwarepublico_//; s/_[0-9_]*/:/ ' > #{ips_file}.new")
   begin
