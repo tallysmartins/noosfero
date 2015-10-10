@@ -7,9 +7,10 @@ class ChangeSoftwareLayout < ActiveRecord::Migration
 
     softwares = SoftwareInfo.all
     softwares.each do |software|
-      change_layout(software.community)
+      if software.community
+        change_layout(software.community)
+      end
     end
-
     puts ""
   end
 
