@@ -47,6 +47,7 @@ plugins = [
   'statistics',
   'sub_organizations',
   'video',
+  'environment_notification',
   'community_block',
 ]
 
