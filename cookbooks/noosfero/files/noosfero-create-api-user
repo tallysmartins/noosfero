@@ -14,4 +14,4 @@ user = User.create!(
   password_confirmation: password
 )
 user.activate
-user.generate_private_token_if_not_exist
+user.generate_private_token!
