@@ -1,0 +1,36 @@
+  {% load i18n %}
+  {% for listname, description, latest, most_relevant, number_of_users in lists %}
+    {% if latest or most_relevant %}
+      <div id='discussions-content'>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <h4>{% trans 'latest'|title %}</h4>
+            {% for thread in latest %}
+    		<div class="message-discussion">
+              {% include "discussion-message-preview.html" with result=thread.latest_message %}
+		</div>
+            {% endfor %}
+          <div class="text-right">
+            <a href="{% url 'haystack_search' %}?order=latest&list={{ listname }}&type=thread">
+              {% trans "see all discussions" %}
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <h4>{% trans 'most relevant'|title %}</h4>
+            {% for thread in most_relevant %}
+    		<div class="message-discussion">
+              {% include "discussion-message-preview.html" with result=thread %}
+    		</div>
+            {% endfor %}
+          <div class="text-right">
+            <a href="{% url 'haystack_search' %}?list={{ listname }}&type=thread">
+              {% trans "see all discussions" %}
+            </a>
+          </div>
+        </div>
+      </div>
+      </div>
+    {% endif %}
+  {% endfor %}
