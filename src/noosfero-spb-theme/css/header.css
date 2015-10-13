@@ -1,0 +1,301 @@
+#theme-header {
+    height: auto;
+}
+
+.header-content * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  vertical-align: baseline;
+}
+
+.header-content li { display: inline; }
+
+.header-content #header {
+  padding: 15px 0 0 0;
+  color: #000;
+  background-color:#f0f2f1;
+  background-color:#ecedf1;
+  background-image: -webkit-radial-gradient(center, ellipse cover, #f0f2f1 1%, #ecedf1 100%)
+}
+
+.header-content #header > div {
+  max-width: 960px;
+  min-width: 960px;
+  margin: 0 auto;
+}
+
+.header-content #accessibility {
+    display: block;
+    float: left;
+    font-family: arial;
+    font-size: 10px;
+    width: 50%;
+}
+
+.header-content #accessibility a {
+  margin-right: 8px;
+  color: #2c66ce;
+}
+
+.header-content #accessibility span {
+    background: none repeat scroll 0 0 #2c66ce;
+    color: #FFFFFF;
+    padding: 0 3px;
+}
+
+/* logo */
+.header-content #logo {
+  padding: 0;
+  float: left;
+  width: 50%;
+}
+
+.header-content #logo span {
+  display: block;
+}
+
+.header-content #logo a {
+  display: block;
+  width: 100%;
+  color: #03316f;
+  margin: 1em 0px;
+}
+
+.header-content #logo a, 
+.header-content #logo #portal-title {
+  color: #03316f;
+}
+
+.header-content #logo #portal-title {
+  background-image: url("../images/logotipo_spb_beta.svg");
+  background-repeat: no-repeat;
+  background-size: 370px; 
+  height: 78px;
+  width: 374px;
+  margin: 10px 0px 10px 0px; 
+}
+
+.header-content #logo #portal-description {
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+/* Site Actions */
+.header-content #portal-siteactions {
+  display: block;
+  float: right;
+  clear: left;
+  padding-bottom: 2px;
+  margin-top: -15px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.header-content #portal-siteactions a {
+  color:#2c66ce;
+  text-decoration: none;
+  padding: 4px 0 4px 10px;
+  text-transform: uppercase;
+  font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+}
+
+.header-content #portal-siteactions a:hover {
+  color: #03316f;
+}
+
+.header-content #portal-siteactions li {
+  display: inline;
+  margin: 0 5px 0 0;
+  border-bottom: 1px dotted #2c66ce;
+}
+
+.header-content #portal-siteactions li a {
+  padding: 4px 0px;
+}
+
+.header-content #siteaction-accessibility,
+.header-content #siteaction-contraste,
+.header-content li#siteaction-mapadosite {
+  margin: 0px 48px 0px 0px; 
+}
+
+/* Top links */
+.header-content #header #sobre {
+  line-height: 30px;
+  font-size: 12px;
+  height: 30px;
+  clear: both;
+  background-color:#CFD0D2; 
+  max-width: 100%;
+  margin: 0px auto;
+  text-align: right;
+  padding: 0 0 0 10px;
+  border-right: none;
+}
+
+.header-content #sobre a {
+  color: #2c66ce;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+.header-content #links-rapidos{
+  width: 960px;
+  margin: 0 auto;
+  font-color:#fff;
+}
+
+.header-content #link-faq a {
+    border-right: 1px solid #2c66ce;
+    padding: 0 10px;  
+}
+
+.header-content #link-contact a {
+    padding-left: 10px;
+}
+
+/* Searchbox */
+.header-content .LSBox {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.header-content input.searchField {
+  -moz-appearance: none;
+}
+
+.header-content #portal-searchbox {
+  clear: right;
+  float: right;
+  font-size: 80%;
+  margin: 30px 0 15px; 
+  text-align: right;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid #CCCCCC;
+  background: #fff;
+  padding: 2px;
+}
+
+.header-content #portal-searchbox .searchField {
+  padding: 0.45em;
+  border-right: none;
+  border: none;
+  width: 171px;
+}
+
+.header-content #portal-searchbox form {
+  white-space: nowrap;
+}
+
+.header-content #portal-searchbox label {
+  font-weight: normal;
+}
+
+.header-content #searchGadget {
+  width: 13em;
+}
+
+.header-content #header input.searchButton {
+  padding: 0.3em;
+  background: transparent;
+  text-indent: -2000px;
+  padding: 4px 15px;
+  border: none;
+}
+
+.header-content #content input.searchField {
+  margin-bottom: 1em;
+}
+
+.header-content #header input.searchButton {
+  background-image: url("../images/search-button.png");
+  background-position: 8px 2px;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+}
+
+.header-content #LSResult {
+  z-index: 1;
+  margin-top: 0.5%;
+}
+
+/* Social Icons */
+
+.header-content #social-icons {
+  float: right;
+  clear: right;
+  margin: 0px 0px 17px;
+}
+
+.header-content #social-icons ul {
+  display: table-row;
+}
+
+.header-content #social-icons li {
+    float: right;
+    width: 20px;
+    margin-left: 4px;
+    display: table-cell;
+}
+
+.header-content #social-icons li a {
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    display: inline-block;
+    opacity: .85;
+    border: none;
+    background-repeat: no-repeat;
+}
+
+.header-content #social-icons span { 
+  display: none; 
+}
+
+.header-content #sb_face,
+.header-content #sb_tweet,
+.header-content #sb_youtb,
+.header-content #sb_flickr {
+  background: url(images/icones_home_branco.jpg) 0px;
+}
+
+.header-content #sb_flickr {
+  background-position: -100px;
+}
+
+.header-content #sb_face {
+  background-position: -12px;
+}
+
+.header-content #sb_tweet {
+  background-position: -42px;
+}
+
+.header-content #sb_youtb {
+  background-position: -71px;
+}
+
+.header-content #social-icons a:focus, 
+.header-content #social-icons a:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+/* end of Social Icons */
+
+/**** disable html****/
+#barra-psocial {
+  position: relative;
+  height: 40px;
+  margin: -3px 0px 0px 0px;
+  border: none;
+  background-color:rgb(236,237,241);
+}
+
+#barra-psocial li {
+  float: left;
+}
+/********** end disable html *************/

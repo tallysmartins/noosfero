@@ -1,0 +1,174 @@
+/*** Box ***/
+
+.no-boxes .block {
+  margin-top: 50px;
+}
+
+#content .box-2 .block-outer .block,
+#content .box-3 .block-outer .block{
+  margin-bottom: 45px;
+  clear: both;
+}
+
+/*** Block Title ***/
+#content .block-outer .block-title {
+  padding: 5px 8px 18px 7px;
+  margin: 0px 0px 2px 0px;
+	background: #eee;
+  border-bottom: none;
+  font-size: 12px;
+  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+  font-variant: normal;
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: 300;
+}
+
+#content .box-1 .block-title {
+  padding: 5px 8px 20px 10px;
+  font-size: 18px;
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+  text-transform: none;
+}
+
+/*** Pagination ***/
+
+#content .pagination {
+  margin: 48px auto 30px auto;
+  border-top: 0 none;
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+}
+
+#content .pagination a,
+#content .pagination em,
+#content .pagination span{
+  padding: 5px 9px;
+  margin-right: 4px;
+  color: #172738;
+  border: 1px solid #D3D6DE;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-table;
+}
+
+#content .pagination .current {
+  background-color: #ECEDF1;
+  font-style: normal;
+}
+
+#content .pagination .previous_page{
+  float: left;
+}
+
+#content .pagination .next_page{
+  float: right;
+}
+
+#content .pagination .previous_page,
+#content .pagination .next_page{
+  width: auto;
+  position: relative;
+  background-image: none;
+  font-weight: 500;
+}
+
+#content .pagination .disabled{
+  opacity: 0.5;
+}
+
+/*** Button ***/
+
+#content .button-bar a.button,
+#content .button-bar input {
+    margin: 0 10px 10px 0;
+}
+
+#content a.button.with-text{
+  height: 32px;
+  padding: 5px 15px;
+  background: #FFF none;
+  color: #3E67B1;
+  border-radius: 4px;
+  border: 1px solid #3E67B1;
+  font-size: 14px;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
+#content #article-actions a.button.with-text{
+  display: inline-block;
+  height: 18px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  background: #FFF none;
+  color: #3E67B1;
+  border-radius: 4px;
+  border: 1px solid #3E67B1;
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: none;
+}
+
+#content #article-actions a.button.with-text span{
+  padding: 0;
+}
+
+.action-profile-members #content .button-bar a.button.with-text{
+  height: auto;
+  border: 1px solid #D3D6DE;
+  font-size: 12px;
+  line-height: normal;
+  text-transform: none;
+}
+.action-profile-members #content .page-profile-header a.button.with-text{
+  border:none;
+}
+.action-profile-members #content .button-bar a.button.with-text:hover{
+  border-color: #3E67B1;
+}
+
+#content form input.button.with-text{
+  height: 42px;
+  max-height: 42px;
+  padding: 5px 15px;
+  background: #FFF none;
+  color: #3E67B1;
+  border-radius: 4px;
+  border: 1px solid #3E67B1;
+  font-size: 14px;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
+#content a.button:hover,
+#content #article-actions a.button.with-text:hover,
+#content input.button.with-text:hover{
+  background-color: #3E67B1;
+  color: #FFF;
+}
+
+/* This is a temporary solution until noosfero deals with logged-out comments in a better manner. */
+.comment-replies .comment-logged-out .comment-text,
+.comment-logged-out .comment-picture,
+.comment-logged-out h4 {
+  opacity: 1.0;
+}
+
+.comment-logged-out .comment-text,
+.comment-info {
+  color: black;
+}
+/**/
+
+/* Temporary solution to code block in tutorial page. */
+.article-body td {
+    background-color: white;
+}
+
+.article-body td:hover {
+    background-color: white;
+}
+/* End of temporary solution to code block in tutorial page. */

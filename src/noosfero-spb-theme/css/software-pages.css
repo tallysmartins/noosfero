@@ -1,0 +1,623 @@
+/*** Software Header ***/
+/*block title software button control painel*/
+.action-content_viewer-view_page #content .software-information-block .admin-link a{
+  padding: 5px 10px;
+  background: #3E67B1;
+  border-radius: 4px;
+  text-transform: none;
+  font-size: 12px;
+  margin-top:15px;
+  color:#fff;
+}
+.action-content_viewer-view_page #content .software-information-block .profile-big-image img{
+  margin-bottom:20px;
+}
+/**************************/
+
+#content .software-information-block {
+  margin: 0px 0px 60px 0px;
+}
+
+#content #software-information-block-table {
+  margin: 0px 15px;
+  width: auto;
+}
+
+#content #software-information-block-table td {
+  display: table-cell;
+}
+
+#content #software-information-block-table #col-software-name {
+  vertical-align: top;
+  font-style: normal;
+}
+
+#content #software-information-block-table #col-software-name h1 {
+  font: 700 34px/37px arial, open_sansbold, helvetica, sans-serif;
+  text-align: left;
+}
+
+#content #software-information-block-table #col-software-name b {
+  font: normal normal normal 15px/21px arial, 'open_sansregular', helvetica, sans-serif;
+}
+
+/*** end of Software Header ***/
+
+/*** Software Homepage ***/
+
+/* Software Download Block*/
+
+#content .download-block {
+  margin: 0px 15px;
+  border: 1px solid #D3D6DE;
+  border-radius: 10px;
+}
+
+#content .download-block .block-title {
+  padding: 11px 10px 7px 20px;
+  background-color: #D3D6DE;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+  margin: 0;
+  color: #172738;
+  font-size: 18px;
+}
+
+#content .download-block .download-list li {
+  padding: 30px 10px 25px 10px;
+  border-top: 1px solid #D3D6DE;
+  clear: both;
+}
+
+#content .download-block .download-list li:nth-child(even) {
+  background: #ECEDF1;
+}
+
+#content .download-block .download-button {
+  width: 80px;
+  float: left;
+  clear: both;
+}
+
+#content .download-block .download-button .download-image {
+  padding: 50px 0px 8px 0px;
+  border: 1px solid #2c66ce;
+  border-radius: 8px;
+  height: 18px;
+  background: #2C66CE url("../images/download-icon.png") center no-repeat;
+  display: block;
+}
+
+#content .download-block .download-button #download-size {
+  border: 1px solid #1a397d;
+  border-radius: 0px 0px 8px 8px;
+  background-color: #1a397d;
+  color: #ffffff;
+  font-size: 12px;
+  text-align: center;
+  display: none;
+}
+
+#content .download-block .download-info {
+  margin: 5px 0px 0px 100px;
+  position: relative;
+  font-size: 16px;
+}
+
+#content .download-block .download-info .download-name {
+  display: block;
+  font-weight: bold;
+}
+
+#content .download-block .download-info .download-platform {
+  display: block;
+  font-size: 14px;
+}
+
+#content .download-block .download-info .min-requirements {
+  font-size: 12px;
+}
+
+#content .download-block .download-info .min-requirements a {
+  line-height: 40px;
+  color: #3E67B1;
+  text-decoration: underline;
+}
+
+#content .download-block #licensed-software {
+  padding:14px;
+  border-top: 1px solid #D3D6DE;
+  border-radius: 0px 0px 8px 8px;
+  background-color: #D3D6DE;
+  font-size: 12px;
+  text-align: right;
+}
+
+#content .download-block #licensed-software a {
+  color: #3e67b1;
+  text-decoration: underline;
+}
+
+/* About Software - Article on homepage */
+
+.profile-homepage #article #article-toolbar #article-header h1 {
+  margin: 0px 0px 10px 0px;
+  padding: 0px;
+  color: #172738;
+  font: normal normal bold 22px/1.3em arial, 'open_sansbold', helvetica, sans-serif;
+}
+
+.profile-homepage #article #article-toolbar #article-header h1.title {
+  border: none;
+}
+
+.profile-homepage #article #article-header .publishing-info {
+  display: none;
+}
+
+.profile-homepage #article .article-body h1 {
+  border-top: 1px solid #ECEDF1;
+  border-bottom: none;
+  padding-top: 25px;
+}
+
+.profile-homepage #article .article-body p {
+  margin: 0px 0px 20px 0px;
+  line-height: 21px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.profile-homepage #article .article-body hr {
+  display: none;
+}
+
+.profile-homepage #article .article-body ul {
+  background-repeat: no-repeat;
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+.profile-homepage #article .article-body ul li {
+  line-height: 21px;
+  text-align: left;
+  font-size: 15px;
+  list-style: inherit;
+}
+
+/*** end of Software Homepage ***/
+
+/*** Categories and Tags block ***/
+
+#content .box-1  .categories-and-tags-block{
+  border-top: 4px solid #2C4B6B;
+}
+
+#content .box-1 .categories-and-tags-block .block-title{
+  display: inline-flex;
+  margin: 13px 10px 10px 0;
+  padding: 3px 0px;
+  background: none;
+  color: #5E82C6;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+#content .box-1 .categories-and-tags-block .category_cloud{
+  display: inline-flex;
+  margin: 13px 0 10px 0;
+  max-width: 87%;
+}
+
+#content .box-1 .categories-and-tags-block .category_cloud a{
+  display: inline-block;
+  padding: 3px 10px;
+  margin: 5px;
+  color: #3E67B1;
+  background-color: #ECEDF1;
+  border: 1px solid #D3D6DE;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+#content .box-1 .categories-and-tags-block .category_cloud a:hover{
+  border-color: #3a70d1;
+  background: #3a70d1;
+  color: white;
+}
+
+#content .box-1 .categories-and-tags-block .category_cloud a:link{
+  text-decoration: none;
+}
+
+/*** end of categories and tags block ***/
+
+/*** Right bar ***/
+
+/*** WARNING - WHITOUT BOX-4 ***/
+
+/* Link-list block */
+.template-default #content .box-3 .block-title{
+  border-top: 4px solid #4562b1;
+  line-height: 15px;
+  background: #eee;
+  color: #4562b1;
+}
+
+.template-default #content .box-3 .link-list-block li{
+  margin: 0px;
+  padding: 0px;
+  border-bottom: 1px solid #ddd;
+  border-top: none;
+}
+
+.template-default #content .box-3 .link-list-block li a{
+  border-right: none;
+  border-top: 0px solid #64946E;
+  border-radius: 0px 0px 0px 0px;
+  padding: 6px 5px 8px 18px;
+  width: auto;
+  line-height: 17px;
+  background-color: #fff;
+  background-position: 0px 50%;
+  color: #2C66CE;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.template-default #content .box-3 .link-list-block h3.empty + ul{
+  border-top: 1px solid #ddd;
+}
+
+.template-default #content .box-3 .link-list-block li a.link-this-page,
+.template-default #content .box-3 .link-list-block li a.link-this-page:hover{
+  border-right: none;
+}
+
+.template-default #content .box-3 .link-list-block li a:hover{
+  background-color: #FFFFFF;
+  color: #000;
+}
+
+.template-default #content .box-3 .link-list-block li a.link-this-page{
+  margin-left: 0px;
+  width: auto;
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+/* Repository and Wiki blocks */
+
+.template-default #content .box-3 .wiki-block,
+.template-default #content .box-3 .repository-block{
+  padding: 0 0 0 10px;
+}
+
+.template-default .box-3 #bt_wiki,
+.template-default .box-3 #bt_repositorio {
+  border-radius: 4px;
+  padding: 12px 10px;
+  background: #EAEBEE;
+  color: #2C66CE;
+  font: normal normal bold 12px 'open_sansbold', arial, helvetica, sans-serif;
+  text-transform: uppercase;
+  display: block;
+  position: relative;
+}
+
+.template-default .box-3 #bt_wiki:hover,
+.template-default .box-3 #bt_repositorio:hover {
+  color:#172738;
+}
+
+.template-default .box-3 #bt_wiki:after,
+.template-default .box-3 #bt_repositorio:after{
+  margin-top: -2px;
+  padding: 4px 0px 4px 2px;
+  border-radius: 4px;
+  width: 18px;
+  right: 10px;
+  line-height: 20px;
+  position: absolute;
+  background: #2C66CE;
+  color: #FFF;
+  font-size: 16px;
+  text-align: center;
+  content: url('../images/right-arrow.png');
+}
+
+.template-default .box-3 #content #bt_wiki:hover,
+.template-default .box-3 #content #bt_repositorio:hover{
+  color: #FFF;
+  background: #2C66CE;
+  text-decoration: none;
+}
+/*** END - WARNING - WHITOUT BOX-4 ***/
+
+/*** end of right bar ***/
+
+/************ DUPLICATE ************/
+
+/*
+    This part of the code is duplicated because, if there is
+    a change of layout from template-default to lefttopright
+    the CSS fit without many complication.
+ */
+
+/*** Right bar ***/
+
+/*** WARNING - WITH BOX-4 ***/
+
+/* Link-list block */
+.template-lefttopright #content .box-2 .block-title {
+  border-top: 4px solid #4562b1;
+  line-height: 15px;
+  background: #eee;
+  color: #4562b1;
+}
+
+.template-lefttopright #content .box-2 .link-list-block li {
+  margin: 0px;
+  padding: 0px;
+  border-bottom: 1px solid #ddd;
+  border-top: none;
+}
+
+.template-lefttopright #content .box-2 .link-list-block li a {
+  border-right: none;
+  border-top: 0px solid #64946E;
+  border-radius: 0px 0px 0px 0px;
+  padding: 6px 5px 8px 18px;
+  width: auto;
+  line-height: 17px;
+  background-color: #fff;
+  background-position: 0px 50%;
+  color: #2C66CE;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.template-lefttopright #content .box-2 .link-list-block h3.empty + ul {
+  border-top: 1px solid #ddd;
+}
+
+.template-lefttopright #content .box-2 .link-list-block li a.link-this-page,
+.template-lefttopright #content .box-2 .link-list-block li a.link-this-page:hover {
+  border-right: none;
+}
+
+.template-lefttopright #content .box-2 .link-list-block li a:hover {
+  background-color: #FFFFFF;
+  color: #000;
+}
+
+.template-lefttopright #content .box-2 .link-list-block li a.link-this-page {
+  margin-left: 0px;
+  width: auto;
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+/* Repository block */
+
+.template-lefttopright #content .box-2 .wiki-block,
+.template-lefttopright #content .box-2 .repository-block{
+  padding: 0 0 0 10px;
+}
+
+.template-lefttopright .box-2 #bt_wiki,
+.template-lefttopright .box-2 #bt_repositorio {
+  border-radius: 4px;
+  padding: 12px 10px;
+  background: #EAEBEE;
+  color: #2C66CE;
+  font: normal normal bold 12px 'open_sansbold', arial, helvetica, sans-serif;
+  text-transform: uppercase;
+  display: block;
+  position: relative;
+}
+
+.template-lefttopright .box-2 #bt_wiki:hover,
+.template-lefttopright .box-2 #bt_repositorio:hover {
+  color:#172738;
+}
+
+.template-lefttopright .box-2 #bt_wiki::after,
+.template-lefttopright .box-2 #bt_repositorio::after{
+  margin-top: -2px;
+  padding: 4px 0px 4px 2px;
+  border-radius: 4px;
+  width: 18px;
+  right: 10px;
+  line-height: 20px;
+  position: absolute;
+  background: #2C66CE;
+  color: #FFF;
+  font-size: 16px;
+  text-align: center;
+  content: url('../images/right-arrow.png');
+}
+
+.template-lefttopright .box-2 #content #bt_wiki:hover,
+.template-lefttopright .box-2 #content #bt_repositorio:hover{
+  color: #FFF;
+  background: #2C66CE;
+  text-decoration: none;
+}
+
+/*** WARNING - WITH BOX-4 ***/
+
+/* Metrics Block */
+.software-metrics-block {
+  font-family: Arial;
+  padding: 3px 0px 0px 10px;
+}
+
+.software-metrics-block .metrics-list {
+  border-bottom: 1px dotted #D3D6DE;
+}
+
+.software-metrics-block .metrics-list li {
+  display: table;
+  margin-bottom: 10px;
+}
+
+.software-metrics-block .metrics-list li span,
+.software-metrics-block .metrics-list li a {
+  display: table-cell;
+  vertical-align: top;
+}
+
+#content .software-metrics-block .metrics-list li a:link {
+  color: #2c66ce;
+}
+
+.software-metrics-block span.arrow-globe-icon {
+  background: url('../images/arrow-globe-icon.png') no-repeat center center;
+  width: 25px;
+  height: 18px;
+}
+
+.software-metrics-block span.downloads-icon {
+  background: url('../images/downloads-icon.png') no-repeat center center;
+  width: 25px;
+  height: 18px;
+}
+
+.software-metrics-block span.face-icon {
+  background: url('../images/beneficiados-icon.png') no-repeat center center;
+  width: 25px;
+  height: 20px;
+}
+
+.software-metrics-block span.pig-safe-icon {
+  background: url('../images/economizados-icon.png') no-repeat center center;
+  width: 25px;
+  height: 20px;
+}
+
+.software-metrics-block .metrics-list li a {
+  letter-spacing: -0.1px;
+  line-height: 20px;
+  padding-left: 5px;
+}
+
+.software-metrics-block .admin-estimation {
+  font-size: 11px;
+  line-height: 15px;
+  margin-top: 7px;
+  margin-left: 4px;
+}
+
+.software-metrics-block .metrics-list .saved-money {
+  font-size: 14px;
+}
+
+/*** end of right bar ***/
+
+/************ END DUPLICATE ************/
+
+
+/*** Software internal pages ***/
+
+/* FAQ page */
+
+#content .main-block .article-body ul.etapas-publicacao {
+  margin-bottom: 20px;
+}
+
+#content .main-block .article-body ul.etapas-publicacao li {
+  margin-bottom: 10px;
+  list-style: none;
+  list-style-position: inside;
+}
+
+#content .main-block .article-body ul.etapas-publicacao li strong {
+  margin-right: 6px;
+  border-radius: 50%;
+  padding: 1px;
+  background: #333;
+  height: 24px;
+  width: 24px;
+  color: #fff;
+  text-align: center;
+  float: left;
+}
+
+#content .main-block .article-body .etapas-publicacao-2 {
+  font-weight: bold;
+}
+
+/* Tutorial page */
+
+#content .main-block .article-body p strong {
+  font-size: 16px;
+}
+
+#content .main-block .article-body .etapas-publicacao .etapas-publicacao-2 {
+  display: table-cell;
+}
+
+#content .main-block .article-body .etapas-publicacao p {
+    margin: 0px 0 0 31px;
+}
+
+/* Manual page */
+
+#content .main-block #article .folder-content .item-info {
+  border-top: 1px solid #ccc;
+  padding: 30px 20px 32px 0px;
+}
+
+#content .main-block #article .folder-content .folder-item:last-child .item-info {
+  border-bottom: 1px solid #ccc;
+}
+
+#content .main-block #article .folder-content .item-icon {
+  margin: 2px 0px auto auto;
+  padding: 45px 40px 4px 10px;
+  border: 1px solid #2C66CE;
+  border-radius: 4px;
+  background: #2C66CE url("../images/download-mini_icon.png") center center no-repeat;
+  display: block;
+  float: left;
+}
+
+#content .main-block #article .folder-content .item-icon a {
+  display: none;
+}
+
+
+#content .main-block #article .folder-content .item-description {
+  margin-left: 65px;
+  padding-left: 0px;
+}
+
+#content .main-block #article .folder-content .item-description a {
+  color: #172938;
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+/* It's a Specific rule to the Google Chrome. */
+@supports (-webkit-appearance:none) {
+  #content .main-block #article .folder-content .item-description a {
+    color: #172938;
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: 700;
+    white-space: pre;
+    word-wrap: break-word;
+  }
+}
+
+#content .main-block #article .folder-content .item-date {
+  margin-left: 65px;
+  padding-left: 0px;
+}
+
+/*** end fo software internal pages ***/

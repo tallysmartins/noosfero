@@ -1,0 +1,477 @@
+/*** General Form Fields ***/
+
+/*** Edit Blog and Articles ***/
+
+.controller-cms #content .main-content h1{
+  margin: 0 0 10px 0;
+  padding: 0;
+  color: #172738;
+  border-bottom: none;
+  font-family: Arial;
+  font-size: 32px;
+  font-weight: bold;
+  font-variant: normal;
+}
+
+.controller-cms #content .main-content form{
+  font-size: 14px;
+  font-family: Arial;
+}
+
+.controller-cms #content .main-content form .required-field .pseudoformlabel,
+.controller-cms #content .main-content form .required-field label.formlabel:after {
+  color: #FF0366;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.controller-cms #content .main-content .formlabel{
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  padding: 10px 0 5px 0;
+  color: #231f20;
+  font-size: 14px;
+}
+
+.controller-cms #content .main-content .formfieldline .formfield code{
+  display: block;
+  width: auto;
+  height: 30px;
+  padding: 2px 0px 2px 0px;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: Arial, helvetica;
+}
+
+.controller-cms #content .main-content .formfieldline .formfield code *{
+  display: inline;
+}
+
+.controller-cms #content .main-content .formfieldline .formfield input[type="text"]{
+  padding: 6px;
+  color: #585858;
+  background: #FFF;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: Arial, helvetica;
+}
+
+.controller-cms #content .main-content .formfieldline textarea{
+  padding: 6px;
+  color: #585858;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: Arial, helvetica;
+  font-size: 15px;
+}
+
+.controller-cms #content .main-content .formfieldline .formfield code input[type="text"]:hover,
+.controller-cms #content .main-content .formfieldline .formfield code input[type="text"]:focus,
+.controller-cms #content .main-content .formfieldline textarea:hover,
+.controller-cms #content .main-content .formfieldline textarea:focus{
+  border: 1px solid #172738;
+}
+
+.controller-cms #content .main-content .formfieldline .type-file .type-file .formlabel{
+  display: none;
+}
+
+.controller-cms #content .main-content .formfieldline .type-file .type-file .type-text .formlabel{
+  display: block;
+}
+
+.controller-cms #content .formfield #article_image_builder_uploaded_data,
+.controller-cms #content .formfield #article_image_builder_label{
+  height: 19px;
+  padding: 6px;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  text-indent: 0px;
+}
+
+.controller-cms #content .formfield #article_image_builder_uploaded_data:hover,
+.controller-cms #content .formfield #article_image_builder_label:hover,
+.controller-cms #content .formfield #article_image_builder_uploaded_data:focus,
+.controller-cms #content .formfield #article_image_builder_label:focus{
+  border: 1px solid #172738;
+}
+
+.controller-cms #content .formfield #fetch-external-feed{
+  padding-left: 20px;
+  border-radius: 4px;
+}
+
+.controller-cms #content .formfield #fetch-external-feed > input{
+  height: 13px;
+  margin: 8px 8px 8px 0px;
+  vertical-align: middle;
+  width: 13px;
+}
+
+.controller-cms #content .formfield #fetch-external-feed #external-feed-options #external-feed-options-only-once input{
+  margin-right: 3px;
+  width: 13px;
+  vertical-align: middle;
+}
+
+.controller-cms #content .formfield #fetch-external-feed #external-feed-options #external-feed-options-only-once label{
+  margin-right: 250px;
+}
+
+.controller-cms #content .main-content form label.formlabel,
+.controller-cms #content .main-content form .article-translation-field {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #231f20;
+}
+
+.controller-cms #content .main-content form .article-translation-field {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.controller-cms #content .main-content form .button-bar input{
+  height: 30px;
+  padding: 2px 15px;
+  margin-right: 10px;
+  color: #FFF;
+  background: #3E67B1;
+  font-size: 15px;
+}
+
+.controller-cms #content .main-content form .button-bar input:hover{
+  background: #5E82C6;
+  border: none;
+}
+
+.controller-cms #content .main-content form .button-bar input.button.with-text{
+  height: 36px;
+}
+
+.controller-cms #content .main-content form .button-bar a.button{
+  height: 30px;
+  padding: 2px 15px;
+  color: #3E67B1;
+  background: #FFF;
+  border: 1px solid #3E67B1;
+  font-size: 14px;
+  text-align: center;
+}
+
+.controller-cms #content .main-content form .button-bar a.button:hover{
+  background: none;
+  color: #3E67B1;
+  border-color: #3E67B1;
+}
+
+.controller-cms #content .main-content form .box-title{
+  font-size: 15px;
+  font-family: Arial, helvetica;
+}
+
+.controller-cms #content .main-content #category-ajax-selector{
+  border-style: dotted;
+}
+
+.controller-cms #content .main-content #category-ajax-selector label{
+  font-size: 14px;
+}
+
+.controller-cms #content .main-content #category-ajax-selector .select-subcategory-link{
+  background: #FFF;
+  border: 1px solid #2C66CE;
+  color: #2C66CE;
+  padding: 3px;
+}
+ 
+.controller-cms #content .main-content #category-ajax-selector .select-subcategory-link:hover{
+  background: #2C66CE;
+  color: #FFF;
+}
+
+.controller-cms #content .main-content .inputosaurus-required{
+  background: none;
+  border: 1px solid #ccc;
+}
+
+.controller-cms #content .main-content .inputosaurus-required:hover,
+.controller-cms #content .main-content .inputosaurus-required:focus{
+  border: 1px solid #172738;
+}
+
+.controller-cms #content .main-content .inputosaurus-required input:hover{
+  background: none;
+}
+
+#content #edit-article-options h4 {
+  font-family: "open_sansbold", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#content #edit-article-options div div {
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+/*** Article's edition page ***/
+
+#content .text-editor-sidebar .header{
+  padding: 13px 10px;
+  color: #172738;
+  background: #D3D6DE;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: Arial;
+}
+
+#content .text-editor-sidebar .header a.button.icon-vertical-toggle{
+  padding: 0 15px;
+  background: #3E67B1;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: Arial;
+}
+
+#content .text-editor-sidebar .header a.button.icon-vertical-toggle:hover{
+  background: #5E82C6;
+}
+
+#content .text-editor-sidebar-box{
+  background: #ECEDF1;
+  border-radius: 4px;
+  border: 1px solid #D3D6DE;
+}
+
+/*New Software form*/
+
+.action-software_communities_plugin_myprofile-new_software #content.current-step h3 {
+  color: #F50054;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-block form input[type="text"] {
+  display: block;
+  height: 19px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 384px;
+  font-size: 15px;
+  font-family: arial, helvetica;
+  color: #585858;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .formfield input{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 76%;
+  word-wrap: break-word;
+  border-radius: 4px;
+}
+.action-software_communities_plugin_myprofile-new_software #content .main-content form label.formlabel.mandatory{
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #231f20;
+  font-weight: 300;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-content form .required-field .formlabel.mandatory:after{
+  color: #FF0366;
+  font-weight: 500;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .formfield textarea{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content #finality textarea {
+  resize: none;
+  height: 100px;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content #software-hostname {
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+  background: #EEE;
+  border: 1px solid #CFCFCF;
+  line-height: 22px;
+  padding: 0px 7px;
+  color: #4A4A4A;
+  font-size: 20px;
+  text-transform: lowercase;
+  min-width: 190px;
+  border-spacing: 20px;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-block form #profile_change_picture {
+  padding: 0 15px 15px 15px;
+  border: 1px dotted #ddd;
+  margin-top: 10px;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-content form p .required-field {
+  max-width: 500px;
+  padding: 15px 20px;
+  margin: 20px 0 30px 0;
+  border: 1px dotted #ccc;
+  border-left: 5px solid #FF0366;
+  border-radius: 3px;
+  display: block;
+  background: #fff;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+.action-software_communities_plugin_myprofile-new_software .explanation {
+font-style: italic;
+font-size: 10px;
+}
+
+/* new community form*/
+
+.action-memberships-new_community #content .main-block form input[type="text"] {
+  display: block;
+  height: 19px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 384px;
+  font-size: 15px;
+  font-family: arial, helvetica;
+  color: #585858;
+}
+
+.action-memberships-new_community .formfield input{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 76%;
+  word-wrap: break-word;
+  border-radius: 4px;
+}
+
+.action-memberships-new_community #content .main-content form label.formlabel{
+  font-size: 14px;
+  margin-bottom: 5px;
+  color:#231f20;
+  font-weight: 300;
+}
+
+.action-memberships-new_community #content .main-content form .required-field .formlabel:after {
+  color: #FF0366;
+  font-weight: 500;
+}
+
+.action-memberships-new_community .formfield textarea{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.action-memberships-new_community #content .main-block form #profile_change_picture {
+  padding: 0 15px 15px 15px;
+  border: 1px dotted #ddd;
+  margin-top: 10px;
+}
+
+.action-memberships-new_community #content .main-content form p .required-field {
+  max-width: 500px;
+  padding: 15px 20px;
+  margin: 20px 0 30px 0;
+  border: 1px dotted #ccc;
+  border-left: 5px solid #FF0366;
+  border-radius: 3px;
+  display: block;
+  background: #fff;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+/*Contact new form*/
+
+.action-contact-new #content .main-block form input[type="text"] {
+  display: block;
+  height: 19px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 384px;
+  font-size: 15px;
+  font-family: arial, helvetica;
+  color: #585858;
+}
+
+.action-contact-new .formfield input{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 76%;
+  word-wrap: break-word;
+  border-radius: 4px;
+}
+
+.action-contact-new #content .main-content form label.formlabel{
+  font-size: 14px;
+  margin-bottom: 5px;
+  color:#231f20;
+  font-weight: 300;
+}
+
+.action-contact-new #content .main-content form .required-field .formlabel:after {
+  color: #FF0366;
+  font-weight: 500;
+}
+.action-contact-new #content .main-content form label.formlabel{
+  font-size: 14px;
+  margin-bottom: 5px;
+  color:#231f20;
+  font-weight: 300;
+}
+
+.action-contact-new #content .main-content form .required-field .formlabel:after {
+  color: #FF0366;
+  font-weight: 500;
+}
+
+
+.action-contact-new .formfield textarea{
+  background: none #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #585858;
+  font-size: 16px;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.action-contact-new #content .main-content form p .required-field {
+  max-width: 500px;
+  padding: 15px 20px;
+  margin: 20px 0 30px 0;
+  border: 1px dotted #ccc;
+  border-left: 5px solid #FF0366;
+  border-radius: 3px;
+  display: block;
+  background: #fff;
+  line-height: 20px;
+  font-size: 13px;
+}

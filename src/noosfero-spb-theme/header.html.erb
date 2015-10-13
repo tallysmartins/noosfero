@@ -1,0 +1,97 @@
+<!-- barra do governo -->
+<div id="barra-brasil">
+  <a href="http://brasil.gov.br" title="Acesse para conhecer todos os serviços e informações do Governo Brasileiro na Internet.">Portal do Governo Brasileiro</a>
+</div>
+<!--fim barra do governo -->
+
+<div class="header-content">
+  <div role="banner" id="header">
+    <div>
+      <ul id="accessibility">
+        <li>
+          <a id="link-conteudo" href="#content" accesskey="1">
+            Ir para o conteúdo
+            <span>1</span>
+          </a>
+        </li>
+        <li>
+          <a id="link-navegacao" href="#barra-psocial" accesskey="2">
+            Ir para o menu
+            <span>2</span>
+          </a>
+        </li>
+        <li>
+          <a id="link-buscar" href="#portal-searchbox" accesskey="3">
+            Ir para a busca
+            <span>3</span>
+          </a>
+        </li>
+        <li>
+          <a id="link-rodape" href="#theme-footer" accesskey="4">
+            Ir para o rodapé
+            <span>4</span>
+          </a>
+        </li>
+      </ul>
+      <ul id="portal-siteactions">
+        <li id="siteaction-accessibility">
+          <a href="/software-publico-brasileiro/acessibilidade">Acessibilidade</a>
+        </li>
+        <li id="siteaction-contraste">
+          <a href="#">Alto Contraste</a>
+        </li>
+        <li id="siteaction-mapadosite">
+          <a href="/search">Mapa do Site</a>
+        </li>
+        <li id="siteaction-languages-pt">
+          <a href="?lang=pt" title="Português">Português</a>
+        </li>
+        <li id="siteaction-languages-en">
+          <a href="?lang=en" title="English">English</a>
+        </li>
+      </ul>
+      <div id="logo">
+        <a title="Software Público" href="/">
+          <span id="portal-title"></span>
+        </a>
+      </div>
+      <div role="search" id="portal-searchbox">
+        <form action="/search">
+          <input type="text" autocomplete="off" name="query" size="18" title="Buscar no Site" placeholder="Buscar no Site" accesskey="3" class="searchField" id="searchGadget">
+          <input type="submit" class="searchButton" value="Buscar">
+        </form>
+      </div>
+      <div id="social-icons">
+        <ul>
+          <li>
+            <a id="sb_flickr" title="Flickr" href="#"><span>Flickr</span></a>
+          </li>
+          <li>
+            <a id="sb_face" title="Facebook" href="#"><span>Facebook</span></a>
+          </li>
+          <li>
+            <a id="sb_youtb" title="Youtube" href="#"><span>Youtube</span></a>
+          </li>
+          <li>
+            <a id="sb_tweet" title="Twitter" href="#"><span>Twitter</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+      <div id="sobre">
+        <ul id="links-rapidos">
+          <li id="link-faq">
+            <a href="/ajuda/ajuda/duvidas-frequentes">Perguntas frequentes</a>
+          </li>
+          <li id="link-contact">
+            <a href="/contact/portal/new">Contato</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+  <div id="menucontainer">
+  </div>
+  <div id="categories_menu">
+    <%= theme_include 'categories' %>
+  </div>
+</div>
