@@ -1,0 +1,26 @@
+#complete_registration {
+  padding: 5px;
+  width: 100%;
+  background-color: #fff;
+}
+
+#complete_registration a {
+  text-decoration: none;
+}
+
+#complete_registration a:hover {
+  font-weight: bold;
+}
+
+#complete_registration_percentage {
+  width: 100%;
+  height: 20px;
+  background: #fff;
+  border: solid 1px #000;
+}
+
+.highlight-error {
+  outline: none;
+  border-color: #FF0000;
+  box-shadow: 0 0 10px #FF0000;
+}

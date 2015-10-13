@@ -1,0 +1,42 @@
+<div class="formfieldline">
+  <%= label_tag "user[secondary_email]", _('Secondary e-mail')+":", :class=>"formlabel" %>
+
+  <div class="formfield type-text">
+    <%= text_field_tag "user[secondary_email]", context.profile.user.secondary_email %>
+  </div>
+</div>
+
+
+<div class="formfieldline" id="select_institution">
+  <%= label_tag "user[institution_ids]", _('Institutions'), :class=>"formlabel" %>
+
+  <div class="institution_container">
+    <%= text_field_tag(:institution, "", :id=>"input_institution") %>
+
+    <% context.profile.user.institutions.each do |institution| %>
+    <%= hidden_field_tag("user[institution_ids][]", institution.id, :class => 'user_institutions') %>
+    <% end %>
+  </div>
+
+  <%= content_tag(:div, _("No institution found"), :id=>"institution_empty_ajax_message", :class=>"errorExplanation hide-field") %>
+  <%= link_to(_("Add new institution"), "#", :class=>'button with-text icon-add', :id => 'add_new_institution') %>
+  <%= link_to(_("Create new institution"), "#", :id=>"create_institution_link", :class=>'button with-text icon-add') %>
+  <%= content_tag(:div, "", :id=>"institution_dialog") %>
+
+  <%= hidden_field_tag("user[institution_ids][]", "", :class => 'user_institutions') %>
+  <%= hidden_field_tag("institution_selected", "") %>
+
+  <ul class="institutions_added">
+    <% context.profile.user.institutions.each do |institution| %>
+    <li data-institution="<%= institution.id %>">
+      <%= institution.name %>
+      <%= link_to("", "#", :class => "button without-text icon-remove remove-institution") %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= hidden_field_tag("full_name_error", _("Should begin with a capital letter and no special characters")) %>
+<%= hidden_field_tag("email_error", _("Email should have the following format: name@host.br")) %>
+<%= hidden_field_tag("site_error", _("Site should have a valid format: http://name.hosts")) %>
+<div id="email_public_message"><%= _("If you work in a public agency use your government e-Mail") %> </div>
