@@ -19,13 +19,13 @@
 
 .profile-homepage #content .organization-average-rating-container .rate-this-organization {
   font-size: 14px;
-  text-decoration: underline;
   margin: 4px 0px 0px 6px;
   padding: 0px 0px 0px 15px;
 }
 
 .profile-homepage #content .organization-average-rating-container .rate-this-organization a {
   color: #2c66ce;
+  text-decoration: underline;
 }
 
 .profile-homepage #content .organization-average-rating-container .star-container .medium-star-negative,
@@ -144,7 +144,7 @@
 }
 
 #content .main-content .star-rate-data .star-rate-form {
-  padding: 0 37px;
+  padding: 0 0 0 37px;
   letter-spacing: 0.1px;
   width: 100%;
 }
@@ -155,17 +155,22 @@
 }
 
 #content .main-content .star-rate-data .star-profile-information {
-  padding-left: 15px;
   width: 79px;
 }
 
 #content .main-content .star-rate-data .star-profile-information .star-profile-image {
-  padding-top: 1px;
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+  border-radius: 4px;
 }
 
 #content .main-content .star-rate-data .star-profile-information .star-profile-image img {
-  border-radius: 4px;
-  height: 60px;
+  height: auto;
+  width: 60px;
+}
+
+#content .main-content .star-rate-data .star-profile-information .star-profile-name{
   width: 60px;
 }
 
@@ -210,7 +215,7 @@
   font-weight: 700;
   text-transform: uppercase;
   color: #FFF;
-  padding: 5px;
+  padding: 5px 10px;
   height: 31px;
   line-height: 20px;
   font-family: Arial;
@@ -221,6 +226,7 @@
 }
 
 #content .main-content .star-rate-data .star-rate-form .star-comment-container .button-bar {
+  margin-top: 20px;
   padding-bottom: 50px;
 }
 
@@ -287,29 +293,31 @@
 }
 
 #content .star-rate-form .star-comment-container .comments-display-fields:hover span,
-#content .star-rate-form .star-comment-container .comments-display-fields:hover span:after {
+#content .star-rate-form .star-comment-container .comments-display-fields:hover span::after {
   opacity: 0.6;
 }
 
 #content .star-rate-form .star-comment-container .comments-display-fields span#comments-additional-information {
-  color: #172738;
-  display: block;
   float: left;
+  padding-bottom: 4px;
+  color: #172738;
   font-size: 14px;
   font-weight: 700;
-  padding-bottom: 4px;
+}
+
+#content .star-rate-form .star-comment-container .comments-display-fields span.comments-arrow-down,
+#content .star-rate-form .star-comment-container .comments-display-fields span.comments-arrow-up{
+  float: right;
 }
 
 .action-organization_ratings_plugin_profile-new_rating #content .star-rate-form .star-comment-container .comments-display-fields .comments-arrow-up::after {
   content: url('../images/top-arrow-black.png');
-  float: right;
   padding-top: 7px;
   padding-right: 6px;
 }
 
 .action-organization_ratings_plugin_profile-new_rating #content .star-rate-form .star-comment-container .comments-display-fields .comments-arrow-down::after {
   content: url('../images/bottom-arrow-black.png');
-  float: right;
   padding-top: 7px;
   padding-right: 6px;
 }
@@ -365,12 +373,20 @@
 
 .ratings-list .user-rating-block .star-profile-information .star-profile-name {
   line-height: 16px;
-  width: 70px;
+  width: 60px;
+}
+
+.ratings-list .star-profile-information .star-profile-image {
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin: auto;
 }
 
 .ratings-list .star-profile-information .star-profile-image img {
-  border-radius: 4px;
-  height: 60px;
+  height: auto;
+  width: 60px;
 }
 
 .ratings-list .user-rating-block .user-testimony-container {
@@ -447,7 +463,7 @@
 
 .make-report-block .star-profile-information .star-profile-name {
   margin-top: 8px;
-  width: 70px;
+  width: 60px;
 }
 
 .ratings-list .make-report-block .make-report-container {
@@ -460,39 +476,38 @@
   font-size: 18px;
 }
 
-.ratings-list .make-report-block .make-report-container .button-bar {
+#content .ratings-list .make-report-block .make-report-container .button-bar {
   padding-top: 6px;
 }
 
-.ratings-list .make-report-block .make-report-container .alert {
+#content .ratings-list .make-report-block .make-report-container .alert {
   margin-top: 37px;
   padding-left: 1px;
 }
 
-.ratings-list .make-report-block .make-report-container .button-bar a,
-.star-rate-data .rating-cooldown .button-bar a,
-.star-rate-data .rating-vote-once .button-bar a {
+#content .ratings-list .make-report-block .make-report-container .button-bar a,
+#content .star-rate-data .rating-cooldown .button-bar a,
+#content .star-rate-data .rating-vote-once .button-bar a {
   background-color: #3E67B1;
   background-image: none;
   color: #fff;
   font-weight: 700;
   font-size: 14px;
   font-style: normal;
-  height: 31px;
-  padding: 0px 7px 0px 7px;
+  padding: 8px 12px 8px 8px;
   text-transform: uppercase;
 }
 
-.star-rate-data .rating-cooldown,
-.star-rate-data .rating-vote-once {
+#content .star-rate-data .rating-cooldown,
+#content .star-rate-data .rating-vote-once {
   font-family: Arial;
   font-size: 18px;
   font-style: italic;
   word-break: break-word;
 }
 
-.star-rate-data .rating-cooldown .button-bar a.disabled-button,
-.star-rate-data .rating-vote-once .button-bar a.disabled-button {
+#content .star-rate-data .rating-cooldown .button-bar a.disabled-button,
+#content .star-rate-data .rating-vote-once .button-bar a.disabled-button {
   cursor: not-allowed;
   opacity: 0.4;
 }

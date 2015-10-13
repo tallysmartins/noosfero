@@ -20,19 +20,19 @@
 }
 
 #wrapper {
-    margin: 0 auto;
-    font-size: 1.2em;
-    width: 100%;
+  margin: 0 auto;
+  font-size: 1.2em;
+  width: 100%;
 }
 
 .main-content {
-    border-style: none;
-    box-shadow: none;
-    padding: 10px 20px;
+  border-style: none;
+  box-shadow: none;
+  padding: 10px 20px;
 }
 
 .profile-image-block .admin-link {
-    font-size: 100%;
+  font-size: 100%;
 }
 
 /* ==> blocks.css <== */

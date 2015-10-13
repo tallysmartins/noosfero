@@ -225,11 +225,13 @@ $('#link-buscar').click(function(e) {
   }
 
   function set_use_report_content() {
-    $('.make-report-block .make-report-container .button-bar a span').html('avaliar o software');
+    $('.profile-homepage .organization-average-rating-container .rate-this-organization a').html('Avalie este software');
+    $('.make-report-block .make-report-container .button-bar a span').html('Avalie este software');
+    $('.star-rate-data .star-rate-form.rating-cooldown .button-bar a span').html('Avalie este software');
     $('.make-report-block .make-report-container .make-report-message').html('Relate sua experiência ou do órgão/empresa com relação ao software.');
     $('.ratings-list .see-more a.icon-arrow-right-p').html('veja todos os relatos');
-    $('.main-content .star-rate-data .star-rate-form .star-comment-container .button-bar input').attr('value', 'enviar relato');
-    $('.main-content .star-rate-data .star-rate-form .star-rate-text').html('Avalie o software');
+    $('.main-content .star-rate-data .star-rate-form .star-comment-container .button-bar input').attr('value', 'Enviar');
+    $('.main-content .star-rate-data .star-rate-form .star-rate-text').html('Avalie este software');
     $('.main-content .star-rate-data .star-rate-form .star-comment-container .formlabel').html('Depoimento sobre o software');
     $('.star-rate-form .star-comment-container .comments-display-fields span#comments-additional-information').html('Dados adicionais (órgãos e empresas)');
     $('.star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments label').html('Nome do órgão ou empresa');

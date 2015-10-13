@@ -18,6 +18,7 @@
 
 /* Read More pattern */
 
+.controller-environment_design .box .block-outer .read-more,
 .action-home-index #content .box .block-outer .read-more{
   border-bottom: none;
   background: #eee;
@@ -26,6 +27,7 @@
   text-align: right;
 }
 
+.controller-environment_design #content .box .block-outer .read-more a,
 .action-home-index #content .box .block-outer .read-more a{
   padding: 8px;
   line-height: 20px;
@@ -33,10 +35,12 @@
   display: block;
 }
 
+.controller-environment_design #content .box .block-outer .read-more a:hover,
 .action-home-index #content .box .block-outer .read-more a:hover{
   background: #dedede;
 }
 
+.controller-environment_design #content .box .block-outer .read-more a::after,
 .action-home-index #content .box .block-outer .read-more a::after{
   margin-left: 7px;
   border-radius: 4px;
@@ -55,12 +59,14 @@
 
 /*** Software catalog search block **/
 
+.controller-environment_design #content #catalogo-software-search,
 .action-home-index #content #catalogo-software-search{
   width: 100%;
   background-color: #1A397D;
   border-radius: 4px;
 }
 
+.controller-environment_design #content #catalogo-software-search h1,
 .action-home-index #content #catalogo-software-search h1{
   margin: 0px 15px 10px 15px;
   border-bottom: none;
@@ -71,6 +77,7 @@
   text-align: left;
 }
 
+.controller-environment_design #content #catalogo-software-search #search-Gadget,
 .action-home-index #content  #catalogo-software-search #search-Gadget{
   margin: 0px 15px 9px 15px;
   border: none;
@@ -79,6 +86,7 @@
   width: 90%;
 }
 
+.controller-environment_design #content  #catalogo-software-search .searchButton-catalog,
 .action-home-index #content  #catalogo-software-search .searchButton-catalog{
   cursor: pointer;
   margin: 0px 0px 15px 15px;
@@ -92,7 +100,8 @@
   text-transform: uppercase;
 }
 
-.action-home-index #content  #catalogo-software-search #search-catalog-footer{
+.controller-environment_design #content #catalogo-software-search #search-catalog-footer,
+.action-home-index #content #catalogo-software-search #search-catalog-footer{
   border-top: 1px solid;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -100,24 +109,28 @@
   color: #FFFFFF;
 }
 
-.action-home-index #content  #catalogo-software-search #search-catalog-footer p{
+.controller-environment_design #content #catalogo-software-search #search-catalog-footer p,
+.action-home-index #content #catalogo-software-search #search-catalog-footer p{
   margin: 0px;
   font-size: 11px;
   text-align: right;
   text-transform: uppercase;
 }
 
-.action-home-index #content  #catalogo-software-search #search-catalog-footer a{
+.controller-environment_design #content #catalogo-software-search #search-catalog-footer a,
+.action-home-index #content #catalogo-software-search #search-catalog-footer a{
   padding: 7px 0px 12px 0px;
   color: #FFF;
   display: block;
 }
 
+.controller-environment_design #content #catalogo-software-search #search-catalog-footer a:hover,
 .action-home-index #content #catalogo-software-search #search-catalog-footer a:hover{
   background-color: #101A38;
 }
 
-.action-home-index #content  #catalogo-software-search #bt_catalog-search::after{
+.controller-environment_design #content #catalogo-software-search #bt_catalog-search::after,
+.action-home-index #content #catalogo-software-search #bt_catalog-search::after{
   margin: 0px 15px 0 5px;
   border-radius: 4px;
   padding: 0px 4px 0 7px;
@@ -132,11 +145,13 @@
 }
 
 /*** Softwares block **/
+.controller-environment_design #content .softwares-block,
 .action-home-index #content .softwares-block{
   margin: 0px;
   overflow: auto;
 }
 
+.controller-environment_design #content .softwares-block .block-title,
 .action-home-index #content .softwares-block .block-title{
   margin: 0px 0px 25px 0px;
   border-top: 4px solid #2c66ce;
@@ -145,6 +160,7 @@
   font-weight: 300;
 }
 
+.controller-environment_design #content .softwares-block .block-footer-content a,
 .action-home-index #content .softwares-block .block-footer-content a{
   display:none;
 }
@@ -236,6 +252,7 @@
 
 /*** News block - display content block **/
 
+.controller-environment_design #content .display-content-block .block-title,
 .action-home-index #content .display-content-block .block-title{
   margin: 0px;
   border-top: 4px solid #643C67;
@@ -244,21 +261,25 @@
   font-weight: 300;
 }
 
+.controller-environment_design #content .display-content-block li,
 .action-home-index #content .display-content-block li{
   border-top: 1px solid #eee;
   padding: 15px 0px 0px 0px;
   min-height: 150px;
 }
 
+.controller-environment_design #content .display-content-block li:first-child,
 .action-home-index #content .display-content-block li:first-child{
   border-top: 0px solid #eee;
 }
 
+.controller-environment_design #content .display-content-block .published-at,
 .action-home-index #content .display-content-block .published-at{
   padding: 0px 0px 15px 0px;
   color: #643C67;
 }
 
+.controller-environment_design #content .display-content-block .image,
 .action-home-index #content .display-content-block .image{
   padding-right: 25px;
   padding: 0px 25px 0px 0px;
@@ -267,6 +288,7 @@
   display: table-cell;
 }
 
+.controller-environment_design #content .display-content-block .image a,
 .action-home-index #content .display-content-block .image a{
   border-radius: 8px;
   height: 90px;
@@ -274,11 +296,13 @@
   display: block;
 }
 
+.controller-environment_design #content .display-content-block .image img,
 .action-home-index #content .display-content-block .image img{
   border: 0px solid #c0c1c1;
   max-width: 150px;
 }
 
+.controller-environment_design #content .display-content-block .title,
 .action-home-index #content .display-content-block .title{
   margin: 2px 0px 4px 0px;
   padding-right: 0px;
@@ -287,41 +311,51 @@
   overflow: hidden;
 }
 
+.controller-environment_design #content .display-content-block .title a,
 .action-home-index #content .display-content-block .title a{
   padding: 0px;
   color: #172738;
   font: normal normal bold 16px/1.3em arial, helvetica, sans-serif;
 }
 
+.controller-environment_design #content .display-content-block .lead,
 .action-home-index #content .display-content-block .lead{
   max-height: 47px;
   overflow: hidden;
 }
 
+.controller-environment_design #content .display-content-block .lead a,
 .action-home-index #content .display-content-block .lead a{
   color: #000000;
   font: 15px/1.3em arial;
 }
 
+.controller-environment_design #content .display-content-block .lead a:visited,
+.controller-environment_design #content .lead a:visited,
+.controller-environment_design #content .lead dl.portlet a:visited
 .action-home-index #content .display-content-block .lead a:visited,
 .action-home-index #content .lead a:visited,
 .action-home-index #content .lead dl.portlet a:visited{
   color: #172738;
 }
 
+.controller-environment_design #content .display-content-block .notice-info,
 .action-home-index #content .display-content-block .notice-info{
   display: table-cell;
   vertical-align: top;
 }
 
+.controller-environment_design #content .display-content-block .read_more,
 .action-home-index #content .display-content-block .read_more{
   display: none;
 }
 
+.controller-environment_design #content .display-content-block .read-more,
 .action-home-index #content .display-content-block .read-more{
   border-top: 1px solid #643C67;
 }
 
+.controller-environment_design #content .display-content-block .read-more a::after,
 .action-home-index #content .display-content-block .read-more a::after{
   background: #643C67;
 }
@@ -332,6 +366,7 @@
 
 /*** What Is block - Article block **/
 
+.template-default .controller-environment_design #content .box-3 .article-block .block-title,
 .template-default .action-home-index #content .box-3 .article-block .block-title{
   border-top: 4px solid #08A649;
   border-bottom: none;
@@ -343,19 +378,23 @@
   text-transform: none;
 }
 
+.template-default .controller-environment_design #content .box-3 .article-block .read-more,
 .template-default .action-home-index #content .box-3 .article-block .read-more{
   margin-top: 30px;
   border-top: 1px solid #08A649;
 }
 
+.template-default .controller-environment_design #content .box-3 .article-block .read-more a::after,
 .template-default .action-home-index #content .box-3 .article-block .read-more a::after{
   background: #08A649;
 }
 
+.template-default .controller-environment_design #content .box-3 .article-block .short-post,
 .template-default .action-home-index #content .box-3 .article-block .short-post{
   padding-top: 23px;
 }
 
+.template-default .controller-environment_design #content .box-3 .article-block p,
 .template-default .action-home-index #content .box-3 .article-block p{
   margin: 0px 0px 14px 0px;
   padding: 0px;
@@ -364,18 +403,20 @@
   text-transform: none;
 }
 
-/******* See As Well Block - Highlights block *******/
+/******* Software Highlights block *******/
 
+.controller-environment_design #content .highlights-block .block-title,
 .action-home-index #content .highlights-block .block-title{
   display: none;
 }
 
+.controller-environment_design #content .highlights-border,
 .action-home-index #content .highlights-border{
   border: 1px solid #c0c1c1;
   border-radius: 8px;
   width: auto;
-  height: 248px;
-  max-height: 250px;
+  height: 270px;
+  max-height: 270px;
   background-color: #e8e9ec;
   background-image: linear-gradient(
     0deg,
@@ -384,38 +425,44 @@
   background-size: 100% 100%;
 }
 
-.action-home-index #content .highlights-container{
-  border-radius: 8px;
+.controller-environment_design #content .highlights-container,
+.action-home-index #content .highlights-container {
+  border-radius: 8px 8px 0px 0px;
   border-width: 0px 0px 1px 0px;
   border-bottom: none;
   padding: 0;
   width: 100% !important;
-  max-height: 230px;
-  background: transparent;
+  max-height: 240px;
+  background: #FFF;
   position: relative;
   top: 0;
 }
 
-.action-home-index #content .highlights-image-link{
-  padding: 18px 0px 0px 0px;
+.controller-environment_design #content .highlights-image-link,
+.action-home-index #content .highlights-image-link {
+  display: block;
+  padding: 0px;
   border-radius: 0px 0px 8px 8px;
-  width: 220px;
-  max-height: 217px;
+  height: 250px !important;
   background-color: #fff;
+  opacity: 1.0 !important;
 }
 
-.action-home-index #content .highlights-image-link img{
-  height: 100px;
-  max-width: 200px;
+.controller-environment_design #content .highlights-image-link img,
+.action-home-index #content .highlights-image-link img {
+  height: 80px;
+  max-width: 160px;
+  padding: 30px;
+  background: #FFF;
 }
 
-.action-home-index #content .highlights-label{
+.controller-environment_design #content .highlights-label,
+.action-home-index #content .highlights-label {
   border-top: 4px solid #3b61a7;
-  padding: 23px 20px 46px 20px;
-  max-height: 60px;
+  padding: 20px;
+  height: 100px;
   width: 190px;
   position: relative;
-  bottom: -18px;
   background: #e8e9ec;
   color: #172638;
   text-align: center;
@@ -423,13 +470,16 @@
   vertical-align: middle;
 }
 
-.action-home-index #content .highlights-block-pager{
+.controller-environment_design #content .highlights-block-pager,
+.action-home-index #content .highlights-block-pager {
   float: none;
   display: block;
   text-align: center;
+  padding: 10px 0px;
 }
 
-.action-home-index #content .highlights-block-pager a{
+.controller-environment_design #content .highlights-block-pager a,
+.action-home-index #content .highlights-block-pager a {
   margin: 0 4px;
   border-color: transparent;
   border-radius: 50%;
@@ -443,32 +493,41 @@
   display: inline-block;
 }
 
-.action-home-index #content .highlights-block-pager a.activeSlide{
+.controller-environment_design #content .highlights-block-pager a.activeSlide,
+.action-home-index #content .highlights-block-pager a.activeSlide {
   border-color: transparent;
   background: #3e67b1;
   color: transparent;
 }
 
-/*** software highlights block ***/
-
+.controller-environment_design #content a.toggle-popover,
+.controller-environment_design #content a.toggle-popover:hover,
 .action-home-index #content a.toggle-popover,
 .action-home-index #content a.toggle-popover:hover{
   margin: 0 0 0 55px;
   color: #3867b7;
   cursor: pointer;
+  font-family: Arial, helvetica, sans-serif;
 }
 
-.action-home-index #content span.popover-span{
-  padding: 1px 6px;
-  border-radius: 50%;
+.controller-environment_design #content span.popover-span,
+.action-home-index #content span.popover-span {
+  padding-top: 2px;
   background-color: #3867b7;
   color: #ffffff;
   font-weight: bold;
   cursor: pointer;
+  height: 15px;
+  font-family: arial;
+  width: 17px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
 }
 
 /*** mais software block **/
-.action-home-index #content #mais-software-block{
+.controller-environment_design #content #mais-software-block,
+.action-home-index #content #mais-software-block {
   margin: 11px 0px;
   border: 1px solid #c0c1c1;
   border-radius: 8px;
@@ -478,6 +537,7 @@
   font: 14px arial;
 }
 
+.controller-environment_design #content #mais-software-block #sbp-information-softwares h2,
 .action-home-index #content #mais-software-block #sbp-information-softwares h2{
   margin: 10px 0px 0px 0px;
   padding: 0px 0px 17px 15px;
@@ -488,28 +548,34 @@
   text-transform: uppercase;
 }
 
+.controller-environment_design #content #mais-software-block #list-categories,
 .action-home-index #content #mais-software-block #list-categories{
   margin: 14px 14px 14px 14px;
 }
 
+.controller-environment_design #content #mais-software-block #list-categories p,
 .action-home-index #content #mais-software-block #list-categories p{
   margin: 0 0 16px 0;
   color: #464A55;
 }
 
+.controller-environment_design #content #mais-software-block #list-categories ul li,
 .action-home-index #content #mais-software-block #list-categories ul li{
   margin: 18px 5px 5px 5px;
 }
 
+.controller-environment_design #content #mais-software-block #list-categories li a,
 .action-home-index #content #mais-software-block #list-categories li a{
   color: #335277;
   font-weight: bold;
 }
 
+.controller-environment_design #content #mais-software-block #list-categories a:hover,
 .action-home-index #content #mais-software-block #list-categories a:hover{
   text-decoration: none;
 }
 
+.controller-environment_design #content #mais-software-block #footer-mais-software,
 .action-home-index #content #mais-software-block #footer-mais-software{
   margin: 0px;
   border-top: 1px solid #c0c1c1;
@@ -519,6 +585,7 @@
   text-transform: uppercase;
 }
 
+.controller-environment_design #content #mais-software-block #footer-mais-software a,
 .action-home-index #content #mais-software-block #footer-mais-software a{
   color: #464A55;
 }

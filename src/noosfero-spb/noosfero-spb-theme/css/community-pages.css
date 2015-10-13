@@ -171,6 +171,21 @@
   font-weight: 300;
 }
 
+/*tabs painel-admin*/
+.action-admin_panel-site_info .ui-tabs .ui-tabs-nav li{
+  white-space: normal;
+  word-wrap:break-word;
+}
+
+.action-admin_panel-site_info .ui-tabs .ui-tabs-nav .ui-tabs-anchor{
+  text-align: center;
+  width: 11.2em;
+  height: 2.5em;
+  max-height: 2.5em;
+  overflow: hidden;
+  line-height: 16px;
+}
+
 /* Community's area tabs */
 
 #content #discussions-content{
@@ -209,7 +224,7 @@
 }
 
 #discussions-content .quiet{
-  line-height: 21px;
+  margin-bottom: 10px;
 }
 
 #discussions-content div.quiet:last-child{
@@ -256,17 +271,22 @@
 }
 
 #content #discussions-content .subject{
-  font-weight: 800;
+  font-weight: 700;
   font-size: 16px
 }
 
-#repository-feed-tab .event-inline.event-item{
+/*Respository tabs*/
+
+#repository-feed-tab .event-inline.event-item,
+#repository-feed-tab .event-block.event-item{
   border-bottom: 1px solid #ECEDF1;
   margin-top:30px;
-  padding: 0px 0px 80px 0px;
+  padding: 0px 0px 30px 0px;
+  min-height: 50px;
 }
 
-#repository-feed-tab .event-inline.event-item img{
+#repository-feed-tab .event-inline.event-item img,
+#repository-feed-tab .event-block.event-item img{
   display: none;
 }
 
@@ -274,11 +294,12 @@
   border-right: 1px dotted #D3D6DE;
   float:left;
   width: 112px;
-  height: 55px;
+  height: 58px;
   margin-right: 20px;
 }
 #repository-feed-tab .event-item-timestamp .time_ago{
   color:#172738;
+  font-family: arial;
 }
 
 #repository-feed-tab .event-item-timestamp .time_ago:before{
@@ -289,11 +310,12 @@
 }
 
 #repository-feed-tab .event-title{
-  max-height: 55px;
+  /*max-height: 55px;
   overflow: hidden;
   float:left;
-  width: 70%;
+  width: 70%;*/
   font-size: 16px;
+  font-family: arial, Helvetica;
 }
 
 #content #repository-feed-tab .author_name{
@@ -304,6 +326,25 @@
 
 #content #repository-feed-tab .author_name a{
   color:#3E67B1;
+}
+
+#content #repository-feed-tab .project-name{
+  overflow: hidden;
+  height: 55px;
+}
+
+#repository-feed-tab .event-item .event-body .event-note{
+  font-size: 16px;
+  white-space: nowrap;
+  width: 400px;
+  overflow-x:hidden;
+  text-overflow:ellipsis;
+}
+
+#repository-feed-tab .event-item .event_commits,
+#repository-feed-tab .event-item .event-body .event-note .md,
+#repository-feed-tab .event-body img {
+  display: none;
 }
 
 #repository-feed-tab .see-more-repository{
@@ -340,6 +381,10 @@
 
 /* Blog tab*/
 
+#content #blog-tab .software-blog-post-empty{
+  margin-top: 30px;
+}
+
 #content #blog-tab .blog-posts{
   margin-top:15px;
 }
@@ -369,6 +414,7 @@
   background: center/cover no-repeat;
   float: left;
 }
+
 #content #blog-tab .blog .blog-post .publishing-info {
   border-top: none;
   color: #172838;
@@ -379,11 +425,13 @@
   display:inline;
   text-align: left;
 }
+
 #content #blog-tab .blog .blog-post .publishing-info .date {
   margin: 0px 0px 5px 0px;
-  display: table-cell;
+  display: block;
   font-size: 11px;
 }
+
 #content #blog-tab .blog .blog-post .author {
   display: none;
 }
@@ -463,7 +511,7 @@ float: left;
 
 /* Software Tab Data - Need to develop solution - Only display on profile page */
 
-.profile-type-is-community #content .software-tab-data-block{
+#content .software-tab-data-block{
   display: none;
 }
 
@@ -475,25 +523,31 @@ float: left;
 /*** Right bar ***/
 
 .template-default.profile-type-is-community .action-profile-index #content .box-3 .link-list-block,
-.template-lefttopright.profile-type-is-community .action-profile-index #content .box-2 .link-list-block
+.template-lefttopright.profile-type-is-community .action-profile-index #content .box-2 .link-list-block{
   display: none;
 }
 
 /*Block with Community information - Need to develop solution - Only display on profile page */
 
-.profile-type-is-community .community-block{
+.profile-type-is-community .block.community-block{
   display: none;
 }
 
-.profile-type-is-community .action-profile_design-index #content .community-block,
-.profile-type-is-community .action-profile-index #content .community-block{
+.profile-type-is-community .action-profile_design-index #content .block.community-block,
+.profile-type-is-community .action-profile-index #content .block.community-block{
   display: block;
+  margin-left: 10px;
   border: 1px solid #ECEDF1;
   border-radius: 4px;
 }
 
 .profile-type-is-community  #content .community-block-logo{
   border-bottom: 3px solid #3E67B1;
+  padding: 10px;
+  height: 100px;
+  width: 165px;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .profile-type-is-community  #content .community-block-title{
@@ -509,22 +563,18 @@ float: left;
   line-height: 20px;
 }
 
-.profile-type-is-community  #content .community-block-logo{
-  padding: 10px;
+.profile-type-is-community  #content .community-block-logo a{
+  display: block;
+  height: auto;
+  overflow: hidden;
+  text-align: center;
 }
 
 .profile-type-is-community  #content .community-block-logo img.logo{
   height: auto;
-  width: 100px;
-  min-width: 100px;
-  max-width: 170px;
-}
-
-.profile-type-is-community  #content .community-block-logo a{
-  display: block;
-  height: 100px;
-  overflow: hidden;
-  text-align: center;
+  width: auto;
+  max-width: 160px;
+  max-height: 100px;
 }
 
 /* Wiki block - Need to develop solution - Only display on profile page */
@@ -550,6 +600,7 @@ float: left;
 
 .profile-type-is-community #content .members-block{
   display: none;
+  margin-left: 10px;
   border: 1px solid #D3D6DE;
   border-radius: 4px;
 }
@@ -621,6 +672,7 @@ float: left;
   /*height: 70px;*/
   height: 100px;
   max-height: 100px;
+  margin: 0;
 }
 
 .profile-type-is-community #content .members-block .menu-submenu{
@@ -663,18 +715,20 @@ float: left;
 }
 
 .profile-type-is-community #content  .members-block .common-profile-list-block li{
-  margin: 0px !important;
+  margin: 0px;
 }
 
 .profile-type-is-community #content .members-block .common-profile-list-block .vcard .menu-submenu-trigger{
   display: block;
-  height: 13px;
-  top: 2px;
-  left: 3px;
+  height: 16px;
+  top: 3px;
+  left: 4px;
+  padding-top: 0px;
   padding-bottom: 0px;
+  margin: 0;
   background: #172738;
-  border: 1px solid #fff;
-  opacity: 0.7;
+  border: none;
+  border-radius: 4px;
 }
 
 .profile-type-is-community #content .members-block .common-profile-list-block .vcard .menu-submenu-trigger::before{
@@ -682,7 +736,7 @@ float: left;
   color: #fff;
   font-family: FontAwesome;
   font-size: 8px;
-  line-height: 11px;
+  line-height: 16px;
 }
 
 .profile-type-is-community #content .members-block .common-profile-list-block .fn {
@@ -708,9 +762,13 @@ float: left;
 }
 
 .profile-type-is-community #content .friends-block ul, #content .members-block ul {
-  min-width: 196px;
-  width: 192px;
-  margin: 0px 0px 0px 0px;
+  max-width: 174px;
+  min-width: 170px;
+  margin: 0px;
+  padding: 0px 5px;
+}
+
+.profile-type-is-community #content .members-block .menu-submenu ul{
   padding: 0px;
 }
 
@@ -722,7 +780,7 @@ float: left;
   line-height: 30px;
 }
 
-.profile-type-is-community #content .members-block .menu-submenu-content .menu-submenu-list li a.add-friend{
+.profile-type-is-community #content .members-block .menu-submenu-content .menu-submenu-list li:last-child a{
   border: none;
 }
 
@@ -811,10 +869,14 @@ float: left;
   margin-right: 5px;
 }
 
+
 .action-profile-members #content .page-members-header a.button.with-text:hover{
   border-color: #3E67B1;
 }
 
+.action-profile-members #content .box-1 .common-profile-list-block .page-members-header span{
+  margin-right: auto;
+}
 
 /* Tabs */
 
@@ -880,7 +942,7 @@ float: left;
 }
 
 .action-profile-members #content .profile-members-tabs-container .ui-tabs .ui-tabs-nav li.ui-tabs-active {
-  margin-bottom: -3px;
+  margin-bottom: -3px !important; /*important need in colab*/
   padding-bottom: 1px;
   border-bottom: 3px solid #FF0366;
 }
@@ -948,9 +1010,13 @@ float: left;
 }
 
 .action-profile-members .box-1 .common-profile-list-block span{
-  margin-right: 9px;
+  margin-right: 0px;
   width: 90px;
   height: 86px;
+}
+
+.action-profile-members .box-1 .common-profile-list-block .button-bar span{
+  margin: 0px
 }
 
 .action-profile-members .common-profile-list-block img{
@@ -1045,9 +1111,9 @@ float: left;
 .action-profile-members .common-profile-list-block .vcard .menu-submenu-trigger{
   display: block;
   background:#172738;
-  top:5px;
-  left:4px;
-  border:1px solid #172738;
+  top: 5px;
+  left: 4px;
+  border: 1px solid #172738;
   padding-bottom: 0px;
   border-radius: 5px;
   -moz-border-radius:5px;
