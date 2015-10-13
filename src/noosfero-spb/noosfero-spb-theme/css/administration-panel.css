@@ -57,11 +57,13 @@
 }
 
 .action-organizations-index .main-block form#manage-profiles .search-field{
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  display: block;
+  height: 30px;
 }
 
 .action-organizations-index .main-block form#manage-profiles .search-field .formfield {
-  width: 100%;
+  width: 60%;
   margin-right: 0.5em;
   float: left;
 }
@@ -80,13 +82,14 @@
 
 .action-organizations-index .main-block form#manage-profiles input.button.submit{
   height: 32px;
-  margin-top: 8px;
+  float: left;
+  margin-left: 10px;
   padding: 5px 15px;
   background: #3E67B1 none;
   color: #FFF;
   border-radius: 4px;
   border: 1px solid #3E67B1;
-  line-height: 22px;
+  line-height: 14px;
   font-size: 14px;
   text-transform: uppercase;
 }
@@ -105,6 +108,10 @@
   text-align: left;
   vertical-align: middle;
   padding: 2px 8px;
+}
+
+.action-organizations-index .main-block  table#organizations-list td{
+  padding: 8px 8px 0;
 }
 
 /*** Features Settings ***/
@@ -135,6 +142,98 @@
   font-size: 15px;
 }
 
+/* Manage Users */
+.action-users-index .main-block #search-users{
+  background-color: transparent;
+}
+
+.action-users-index .main-block #search-users .search-field{
+  margin-bottom: 20px;
+  display: block;
+  height: 30px;
+}
+
+.action-users-index .main-block #search-users .search-field .formfield {
+  width: 70%;
+  margin-right: 0.5em;
+  float: left;
+}
+
+.action-users-index .main-block #search-users .search-field .formfield input {
+  margin-top: 0px;
+  margin-right: 0.5em;
+  padding: 6px;
+  min-width: 97%;
+  height: 19px;
+  max-height: 19px;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.action-users-index .main-block #search-users input.button.submit{
+  height: 32px;
+  float: left;
+  margin-left: 10px;
+  padding: 5px 15px;
+  background: #3E67B1 none;
+  color: #FFF;
+  border-radius: 4px;
+  border: 1px solid #3E67B1;
+  line-height: 14px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.action-users-index .main-block #search-users input.button.submit:hover{
+  background: #5E82C6;
+}
+
+.action-users-index .main-block #users-list th{
+  text-align: left;
+  vertical-align: middle;
+  padding: 2px 8px;
+}
+
+.action-users-index .main-block #users-list td{
+  padding: 8px 8px 0;
+}
+
+/* Manage Roles */
+.action-role-index .main-block th{
+  text-align: left;
+  vertical-align: middle;
+  padding: 2px 8px;
+}
+
+.action-role-index .main-block td{
+  padding: 8px 8px 0;
+}
+
+.action-role-edit #content form input.button.with-text{
+  height: 30px;
+  padding: 5px 15px;
+  background: #FFF none;
+  color: #3E67B1;
+  border-radius: 4px;
+  border: 1px solid #3E67B1;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+/* Manage template */
+
+.action-templates-index #content .template-kind th{
+  text-align: left;
+  vertical-align: middle;
+  padding: 2px 8px;
+}
+
+.action-templates-index #content .template-kind td{
+  padding: 8px 8px 0;
+}
+
+
 /*** Community Admin pages ***/
 /* Homepage */
 .action-profile_editor-index #profile-editor-index h1.block-title{
@@ -156,4 +255,75 @@
 .action-spam-index .ui-widget-header {
   border: none;
   background: none;
+}
+
+/* Tasks - tmp adjust */
+.action-profile_editor-index #content .pending-tasks{
+  max-width: 500px;
+  padding: 15px 20px;
+  margin: 20px 0 30px 0;
+  border: 1px dotted #ccc;
+  border-left: 5px solid #FF0366;
+  border-radius: 3px;
+  display: block;
+  background: #fff;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+.action-profile_editor-index #content .pending-tasks .button.icon-todo.with-text{
+  background: #3E67B1;
+  color: #FFF;
+}
+
+.action-profile_editor-index #content .pending-tasks .button.icon-todo.with-text:hover{
+  background: #5E82C6;
+}
+
+/* Edit software page */
+
+.action-profile_editor-edit_software_community #profile-is-template{
+  margin-top: 10px;
+}
+
+.action-profile_editor-edit_software_community .field-privacy-selector{
+  vertical-align: bottom;
+}
+
+/*Edition configuration profile */
+
+.action-profile_editor-edit #delete-profile{
+  margin-top:0px;
+}
+
+/*form Change Password */
+.action-account-change_password #content form input.button.with-text.icon-ok.submit{
+  height: 32px;
+  padding:0px 10px;
+}
+
+.action-account-change_password input{
+padding: 6px;
+color: #585858;
+background: #FFF;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 15px;
+font-family: Arial, helvetica;
+}
+
+/* Members management */
+.action-profile_members-index #members-list td{
+  padding-top: 5px; 
+}
+
+/*recover behavior of noosfero*/
+.action-profile_members-change_role .role-permissions{
+  margin: 12px 0;
+  padding-left: 40px;
+}
+
+/*recover behavior of noosfero*/
+.action-profile_members-change_role .role-permissions li{
+  list-style: square;
 }

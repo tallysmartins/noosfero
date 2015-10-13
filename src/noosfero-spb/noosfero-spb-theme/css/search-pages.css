@@ -2,14 +2,22 @@
 
 .action-search-index #content form #search-header,
 .action-search-people #content form #search-header,
-.action-search-communities #content form #search-header{
-  margin-top: 5px;
+.action-search-communities #content form #search-header {
   float: right;
   border: none;
 }
 
+.action-search-index #content form #search-header {
+  margin-top: 5px;
+}
+
+.action-search-people #content form #search-header,
+.action-search-communities #content form #search-header {
+  margin: 0 0 15px 0 ;
+}
+
 .action-search-people #content form #search-header #search-filters .sod_select,
-.action-search-communities #content form #search-header #search-filters .sod_select{
+.action-search-communities #content form #search-header #search-filters .sod_select {
   color: #3E67B1;
   border: 1px solid #3E67B1;
   border-radius: 4px;
@@ -20,7 +28,7 @@
 }
 
 .action-search-people #content form #search-header #search-filters .sod_select .sod_list,
-.action-search-communities #content form #search-header #search-filters .sod_select .sod_list{
+.action-search-communities #content form #search-header #search-filters .sod_select .sod_list {
   margin: -2px 0 0 -1px;
   color: #3E67B1;
   border: 1px solid #3E67B1;
@@ -32,17 +40,17 @@
 }
 
 .action-search-people #content form #search-header #search-filters .sod_select .sod_list .active,
-.action-search-communities #content form #search-header #search-filters .sod_select .sod_list .active{
+.action-search-communities #content form #search-header #search-filters .sod_select .sod_list .active {
   border-radius: 0px 0px 4px 4px;
 }
 
 .action-search-people #content form #search-header #search-filters .sod_select .sod_list .selected,
-.action-search-communities #content form #search-header #search-filters .sod_select .sod_list .selected{
+.action-search-communities #content form #search-header #search-filters .sod_select .sod_list .selected {
   padding-right: 21px;
 }
 
 .action-search-people #content form #search-subheader .sod_select,
-.action-search-communities #content form #search-subheader .sod_select{
+.action-search-communities #content form #search-subheader .sod_select {
   line-height: 15px;
 }
 
@@ -55,51 +63,49 @@
 .action-search-index #content form .search-field .formfield,
 .action-search-people #content form .search-field .formfield,
 .action-search-communities #content form .search-field .formfield{
-  float: left;
   width: 99%;
 }
 .action-search-index #content form .search-field .formfield input,
 .action-search-people #content form .search-field .formfield input,
-.action-search-communities #content form .search-field .formfield input{
+.action-search-communities #content form .search-field .formfield input {
   margin-top: 0px;
   padding: 6px;
   height: 19px;
   max-height: 19px;
-  max-width: 98%;
   background: none;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 14px;
 }
 
 .action-search-index #content form input.button.submit,
 .action-search-people #content form input.button.submit,
-.action-search-communities #content form input.button.submit{
-  height: 32px;
-  margin-top: 8px;
-  padding: 5px 15px;
-  background: #3E67B1 none;
+.action-search-communities #content form input.button.submit {
+  background: #3E67B1;
   color: #FFF;
   border-radius: 4px;
-  border: 1px solid #3E67B1;
-  font-size: 14px;
+  width: 108px;
   line-height: 14px;
+  font-size: 14px;
+  font-family: "open_sansbold", Arial, sans-serif;
   text-transform: uppercase;
 }
 
 .action-search-index #content form input.button.submit:hover,
 .action-search-people #content form input.button.submit:hover,
-.action-search-communities #content form input.button.submit:hover{
+.action-search-communities #content form input.button.submit:hover {
   background: #5E82C6;
 }
 
 .action-search-people #search-results .search-results-type-people,
-.action-search-communities #search-results .search-results-type-community{
+.action-search-communities #search-results .search-results-type-community {
   background: none;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
 
-.action-search-index #search-results h3{
+.action-search-index #search-results h3 {
   margin: 20px 0 10px 0;
   color: #172738;
   font-size:18px;
@@ -109,7 +115,7 @@
   font-variant: normal;
 }
 
-.action-search-index #search-results .search-results-innerbox{
+.action-search-index #search-results .search-results-innerbox {
   background: none;
   border: 1px solid #ccc;
 }

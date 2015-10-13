@@ -65,7 +65,7 @@
 }
 
 #content .download-block .download-list li {
-  padding: 30px 10px 25px 10px;
+  padding: 30px 10px 25px 20px;
   border-top: 1px solid #D3D6DE;
   clear: both;
 }
@@ -156,10 +156,16 @@
   display: none;
 }
 
-.profile-homepage #article .article-body h1 {
-  border-top: 1px solid #ECEDF1;
+.profile-type-is-community .profile-homepage .main-block #article .article-body h1,
+.profile-type-is-community .profile-homepage .main-block #article .article-body h2,
+.profile-type-is-community .profile-homepage .main-block #article .article-body h3,
+.profile-type-is-community .profile-homepage .main-block #article .article-body h4,
+.profile-type-is-community .profile-homepage .main-block #article .article-body h5,
+.profile-type-is-community .profile-homepage .main-block #article .article-body h6 {
+  /* border-top: 1px solid #ECEDF1;
   border-bottom: none;
-  padding-top: 25px;
+  padding-top: 25px; */
+  font-size: 18px;
 }
 
 .profile-homepage #article .article-body p {
@@ -167,10 +173,6 @@
   line-height: 21px;
   text-align: left;
   font-size: 15px;
-}
-
-.profile-homepage #article .article-body hr {
-  display: none;
 }
 
 .profile-homepage #article .article-body ul {
@@ -301,7 +303,7 @@
   padding: 12px 10px;
   background: #EAEBEE;
   color: #2C66CE;
-  font: normal normal bold 12px 'open_sansbold', arial, helvetica, sans-serif;
+  font: normal normal normal 12px 'open_sansbold', arial, helvetica, sans-serif;
   text-transform: uppercase;
   display: block;
   position: relative;
@@ -312,8 +314,8 @@
   color:#172738;
 }
 
-.template-default .box-3 #bt_wiki:after,
-.template-default .box-3 #bt_repositorio:after{
+.template-default .box-3 #bt_wiki::after,
+.template-default .box-3 #bt_repositorio::after{
   margin-top: -2px;
   padding: 4px 0px 4px 2px;
   border-radius: 4px;
@@ -426,16 +428,16 @@
 
 .template-lefttopright .box-2 #bt_wiki::after,
 .template-lefttopright .box-2 #bt_repositorio::after{
+  width: 18px;
+  position: absolute;
+  right: 10px;
   margin-top: -2px;
   padding: 4px 0px 4px 2px;
   border-radius: 4px;
-  width: 18px;
-  right: 10px;
-  line-height: 20px;
-  position: absolute;
   background: #2C66CE;
   color: #FFF;
   font-size: 16px;
+  line-height: 12px;
   text-align: center;
   content: url('../images/right-arrow.png');
 }
@@ -461,23 +463,31 @@
 
 .software-metrics-block .metrics-list li {
   display: table;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-.software-metrics-block .metrics-list li span,
-.software-metrics-block .metrics-list li a {
+.software-metrics-block .metrics-list li span {
+  color: #2C66CE;
   display: table-cell;
   vertical-align: top;
 }
 
-#content .software-metrics-block .metrics-list li a:link {
-  color: #2c66ce;
+.software-metrics-block .metrics-list li span#visit-count {
+  padding-left: 1px;
 }
 
-.software-metrics-block span.arrow-globe-icon {
+.software-metrics-block .metrics-list li span#visit-count,
+.software-metrics-block .metrics-list li span#downloads-count,
+.software-metrics-block .metrics-list li span#benefited-people,
+.software-metrics-block .metrics-list li span#saved-resources {
+  padding-top: 4px;
+}
+
+.software-metrics-block li span.arrow-globe-icon {
   background: url('../images/arrow-globe-icon.png') no-repeat center center;
   width: 25px;
   height: 18px;
+  padding-left: 9px !important;
 }
 
 .software-metrics-block span.downloads-icon {
@@ -498,9 +508,9 @@
   height: 20px;
 }
 
-.software-metrics-block .metrics-list li a {
+.software-metrics-block .metrics-list li span {
   letter-spacing: -0.1px;
-  line-height: 20px;
+  line-height: 15px;
   padding-left: 5px;
 }
 
@@ -537,9 +547,9 @@
 #content .main-block .article-body ul.etapas-publicacao li strong {
   margin-right: 6px;
   border-radius: 50%;
-  padding: 1px;
+  padding: 1px 0 0 0;
   background: #333;
-  height: 24px;
+  height: 23px;
   width: 24px;
   color: #fff;
   text-align: center;

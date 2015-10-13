@@ -151,7 +151,7 @@
   font-size: 14px;
   line-height: 20px;
 }
-    
+
 .highlights-popover span {
   font-weight: bold;
   border-bottom: 1px dotted #FFFFFF;
@@ -163,17 +163,33 @@
 #content .highlights-popover a:link {
   font-weight: bold;
   color: #FFFFFF;
-  display: block;
-  padding: 8px 15px;
-  border-top: 1px dotted rgba(255,255,255,0.1);
 }
 
-.highlights-popover a:before {
+#content .highlights-popover .inner-content a,
+#content .highlights-popover .inner-content a:visited,
+#content .highlights-popover .inner-content a:hover,
+#content .highlights-popover .inner-content a:link{
+  font-weight: bold;
+  color: #FFFFFF;
+  border-bottom: dotted 1px;
+}
+
+#content .highlights-popover .see-all a,
+#content .highlights-popover .see-all a:visited,
+#content .highlights-popover .see-all a:hover,
+#content .highlights-popover .see-all a:link {
+  padding: 8px 15px;
+  border-top: 1px dotted rgba(255,255,255,0.1);
+  display: block;
+}
+
+.highlights-popover .see-all a:before {
   font-family: "FontAwesome";
   content: "\f067";
   vertical-align: middle;
   color: #ff0066;
   padding: 0 5px 0 0;
+  font-size: 10px;
 }
 
 .highlights-popover.top > .arrow,
