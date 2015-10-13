@@ -1,0 +1,12 @@
+<%= fields_for :operating_systems ,@operating_systems do |lib| %>
+
+<div id='operating_systems'>
+  <% operating_systems_fields = [] if operating_systems_fields.nil? %>
+	<% OperatingSystemHelper.operating_system_as_tables(operating_systems_fields).each do |tab| %>
+	  <%= tab.call %>
+	<% end %>
+</div>
+
+<div id='table_structure_operating_systems' style="display:none"><%= OperatingSystemHelper.add_dynamic_table %></div>
+<%= link_to _('New Operating System'), "#", :class=>"button icon-add with-text new-dynamic-table dynamic-operating_systems"%>
+<% end %>

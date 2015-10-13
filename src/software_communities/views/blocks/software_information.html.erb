@@ -1,0 +1,36 @@
+<div class="vcard">
+
+<% if block.owner.software_info.nil? %>
+  <%= _("This community needs a software to use this block") %>
+<% else %>
+  <table id="software-information-block-table">
+    <tr>
+      <td width="30%" id="col-profile-big-image">
+        <div class="profile-big-image">
+          <div class="profile-big-image-inner1">
+            <span class="profile-big-image-inner2">
+              <%= link_to profile_image(block.owner, :big) +"\n", profile.url %>
+            </span>
+            <div class='admin-link'>
+              <% if !user.nil? && user.has_permission?('edit_profile', profile) %>
+                <%= link_to _('Control panel'), block.owner.admin_url %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td width="70%" id="col-software-name">
+        <h1>
+          <%= _("#{block.owner.software_info.acronym} - ") unless block.owner.software_info.acronym.blank? %>
+          <%= _("#{block.owner.name}") %>
+        </h1>
+        <b>
+          <%= block.owner.software_info.finality %>
+        </b>
+
+        <%= @plugins.dispatch(:display_organization_average_rating, block.owner).collect { |content| instance_exec(&content) }.join("") %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+</div>

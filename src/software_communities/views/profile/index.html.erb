@@ -1,0 +1,26 @@
+<h1><%= h profile.name %></h1>
+
+<% if @action %>
+  <%= render :partial => 'private_profile' %>
+<% else %>
+  <% unless profile.description.blank? %>
+    <div class='public-profile-description'>
+      <%= profile.description %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-profile-header">
+  <%= render "blocks/profile_info_actions/join_leave_community" if profile.class == "Community" %>
+  <% if !user.nil? && user.has_permission?('edit_profile', profile) %>
+    <div class="control-panel-button">
+      <%= button :control_panel, _('Control Panel'), profile.admin_url %>
+    </div>
+  <% end %>
+</div>
+
+<% if @profile.public? || (logged_in? && current_person.follows?(@profile)) %>
+  <table class='profile'>
+
+  </table>
+<% end %>

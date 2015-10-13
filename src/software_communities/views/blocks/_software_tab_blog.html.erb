@@ -1,0 +1,17 @@
+<div id="article" class="blog">
+  <div class="article-body article-body-blog">
+    <% if block.posts.empty? %>
+      <div class="software-blog-post-empty">
+        <%= _("This community has no posts in its blog") %>
+      </div>
+    <% else %>
+      <div class="blog-posts">
+        <%= list_posts(block.posts, format: "short+pic", paginate: false) %>
+      </div>
+
+      <div class="read-more">
+        <%= link_to _("Read more"), block.actual_blog.url %>
+      </div>
+    <% end %>
+  </div>
+</div>

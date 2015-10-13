@@ -1,0 +1,138 @@
+<table>
+  <tr>
+    <th colspan='2'><%= _('Software Information')%></th>
+  </tr>
+
+  <%= display_mpog_field(_('Name:'), profile, :name, true) %>
+  <%= content_tag('tr', content_tag('td', _("Adherent to e_mag:")) + content_tag('td', profile.software_info.e_mag ? _("Yes") : _("No"))) %>
+  <%= content_tag('tr', content_tag('td', _("Adherent to icp_brasil:")) + content_tag('td', profile.software_info.icp_brasil ? _("Yes") : _("No"))) %>
+  <%= content_tag('tr', content_tag('td', _("Adherent to e_ping:")) + content_tag('td', profile.software_info.e_ping ? _("Yes") : _("No"))) %>
+  <%= content_tag('tr', content_tag('td', _("Adherent to e_arq:")) + content_tag('td', profile.software_info.e_arq ? _("Yes") : _("No"))) %>
+  <%= content_tag('tr', content_tag('td', _("Internacionalizable:")) + content_tag('td', profile.software_info.intern ? _("Yes") : _("No"))) %>
+  <%= display_mpog_field(_('Operating Platform:'), profile.software_info, :operating_platform, true) %>
+  <%= display_mpog_field(_('Demonstration URL:'), profile.software_info, :demonstration_url, true) %>
+  <%= display_mpog_field(_('Short Name:'), profile.software_info, :acronym, true) %>
+  <%= display_mpog_field(_('Objectives:'), profile.software_info, :objectives, true) %>
+  <%= display_mpog_field(_('Features:'), profile.software_info, :features, true) %>
+
+  <%= content_tag('tr', content_tag('td', _("License"))) %>
+  <%= display_mpog_field(_('Version:'), profile.software_info.license_info, :version, true) %>
+  <%= display_mpog_field(_('Link:'), profile.software_info.license_info, :link, true) %>
+</table>
+
+<table>
+  <tr>
+    <td><a href="#" class="libraries-button-show button with-text icon-add"><%= _('Show Libraries') %></a>
+      <a href="#" class="libraries-button-hide button with-text icon-remove"><%= _('Hide Libraries') %></a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <table class = "libraries-info">
+        <thead>
+          <tr>
+            <th colspan="2"><%= _("Libraries") %></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr> <td>
+            <% libraries = profile.software_info.libraries %>
+            <% LibraryHelper.libraries_as_tables(libraries, true).each do |tab| %>
+              <%= tab.call %>
+            <%end%>
+          </td> </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td><a href="#" class="database-button-show button with-text icon-add"><%= _('Show Database') %></a>
+      <a href="#" class="database-button-hide button with-text icon-remove"><%= _('Hide Database') %></a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <table class = "database-info">
+        <thead>
+          <tr>
+            <th colspan="2"><%= _("Software Databases") %></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr> <td>
+            <% databases = profile.software_info.software_databases %>
+            <% DatabaseHelper.database_as_tables(databases, true).each do |tab| %>
+              <%= tab.call %>
+            <%end%>
+          </td> </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td><a href="#" class="language-button-show button with-text icon-add"><%= _('Show Languages') %></a>
+      <a href="#" class="language-button-hide button with-text icon-remove"><%= _('Hide Languages') %></a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <table class = "language-info">
+        <thead>
+          <tr>
+            <th colspan="2"><%= _("Software Languages") %></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr> <td>
+            <% languages = profile.software_info.software_languages %>
+            <% SoftwareLanguageHelper.language_as_tables(languages, true).each do |tab| %>
+              <%= tab.call %>
+            <%end%>
+          </td> </tr>
+        </tbody>
+     </table>
+   </td>
+ </tr>
+
+  <tr>
+    <td><a href="#" class="operating-system-button-show button with-text icon-add"><%= _('Show Operating Systems') %></a>
+      <a href="#" class="operating-system-button-hide button with-text icon-remove"><%= _('Hide Operating Systems') %></a>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td>
+      <table class="operating-system-info">
+        <thead>
+          <tr>
+            <th colspan="2"><%= _("Operating System") %></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr> <td>
+            <% operating_systems = profile.software_info.operating_systems %>
+            <% OperatingSystemHelper.operating_system_as_tables(operating_systems, true).each do |tab| %>
+              <%= tab.call %>
+            <%end%>
+          </td> </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+ </tr>
+</table>

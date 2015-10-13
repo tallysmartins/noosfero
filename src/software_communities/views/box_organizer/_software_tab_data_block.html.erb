@@ -1,0 +1,15 @@
+<br />
+
+<% if not @block.blogs.empty? %>
+  <label for="block_displayed_blog">
+    <%= _("Which blog should have its posts displayed: ")%>
+  </label>
+
+  <br />
+
+  <%= select_tag 'block[displayed_blog]', options_from_collection_for_select(@block.blogs, :id, :name, @block.actual_blog.id) %>
+<% else %>
+  <div class="software-blog-empty">
+    <h2> <%= _("This community has no blogs") %> </h2>
+  </div>
+<% end %>

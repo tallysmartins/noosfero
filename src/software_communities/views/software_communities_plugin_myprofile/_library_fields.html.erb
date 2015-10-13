@@ -1,0 +1,12 @@
+<%= fields_for :library ,@library do |lib| %>
+
+<div id='libraries'>
+  <% libraries = [] if libraries.blank? %>
+	<% LibraryHelper.libraries_as_tables(libraries).each do |tab| %>
+	  <%= tab.call %>
+	<% end %>
+</div>
+
+<div id='table_structure_libraries' style="display:none"><%= LibraryHelper.add_dynamic_table %></div>
+<%= link_to _('New Library'), "#", :class=>"button icon-add with-text new-dynamic-table dynamic-libraries"%>
+<% end %>

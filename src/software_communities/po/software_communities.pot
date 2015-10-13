@@ -1,0 +1,1044 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.2-143-g8dfded9\n"
+"POT-Creation-Date: 2015-09-11 17:15-0000\n"
+"PO-Revision-Date: 2015-09-11 17:15-0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: plugins/software_communities/test/unit/software_info_validation_test.rb:108
+msgid "Features is too long (maximum is 4000 characters)"
+msgstr ""
+
+#: plugins/software_communities/test/unit/software_info_validation_test.rb:116
+msgid "Objectives is too long (maximum is 4000 characters)"
+msgstr ""
+
+#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:41
+#: plugins/software_communities/views/software_communities_plugin_myprofile/edit_software.html.erb:19
+msgid "Save and Configure Community"
+msgstr ""
+
+#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:45
+msgid "Software updated successfully"
+msgstr ""
+
+#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:49
+msgid "Could not update software"
+msgstr ""
+
+#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:130
+msgid "Your new software request will be evaluated by anadministrator. You will be notified."
+msgstr ""
+
+#: plugins/software_communities/controllers/software_communities_plugin_profile_controller.rb:7
+msgid "Could not find the download file"
+msgstr ""
+
+#: plugins/software_communities/controllers/software_communities_plugin_profile_controller.rb:8
+msgid "Invalid download params"
+msgstr ""
+
+#: plugins/software_communities/lib/operating_system.rb:12
+msgid "too long (maximum is 20 characters)"
+msgstr ""
+
+#: plugins/software_communities/lib/statistic_block.rb:9
+msgid "Software Statistics"
+msgstr ""
+
+#: plugins/software_communities/lib/statistic_block.rb:13
+msgid "This block displays software statistics."
+msgstr ""
+
+#: plugins/software_communities/lib/categories_and_tags_block.rb:8
+msgid "Categories and Tags"
+msgstr ""
+
+#: plugins/software_communities/lib/categories_and_tags_block.rb:12
+msgid "This block displays the categories and tags of a software."
+msgstr ""
+
+#: plugins/software_communities/lib/wiki_block.rb:8
+msgid "Wiki Link"
+msgstr ""
+
+#: plugins/software_communities/lib/wiki_block.rb:12
+msgid "This block displays a link to the software wiki."
+msgstr ""
+
+#: plugins/software_communities/lib/library.rb:5
+msgid "can't be blank"
+msgstr ""
+
+#: plugins/software_communities/lib/library.rb:8
+msgid "Too long (maximum is 20 characters)"
+msgstr ""
+
+#: plugins/software_communities/lib/search_catalog_block.rb:8
+msgid "Search Softwares catalog"
+msgstr ""
+
+#: plugins/software_communities/lib/search_catalog_block.rb:12
+msgid "This block displays the search categories field "
+msgstr ""
+
+#: plugins/software_communities/lib/software_database.rb:12
+msgid "Software database is too long (maximum is 20 characters)"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:5
+msgid "Agriculture, Fisheries and Extraction"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:6
+msgid "Science, Information and Communication"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:7
+msgid "Economy and Finances"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:8
+msgid "Public Administration"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:9
+msgid "Habitation, Sanitation and Urbanism"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:10
+msgid "Individual, Family and Society"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:11
+msgid "Health"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:12
+msgid "Social Welfare and Development"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:13
+msgid "Defense and Security"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:14
+msgid "Education"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:15
+msgid "Government and Politics"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:16
+msgid "Justice and Legislation"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:17
+msgid "International Relationships"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/category.rb:18
+msgid "Transportation and Transit"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/search_controller.rb:118
+msgid "Result Search"
+msgstr ""
+
+#: plugins/software_communities/lib/ext/search_controller.rb:142
+msgid "Selected options: "
+msgstr ""
+
+#: plugins/software_communities/lib/download_block.rb:15
+msgid "Download Stable Version"
+msgstr ""
+
+#: plugins/software_communities/lib/download_block.rb:19
+msgid "This block displays the stable version of a software."
+msgstr ""
+
+#: plugins/software_communities/lib/software_tab_data_block.rb:10
+msgid "Software Tab Data"
+msgstr ""
+
+#: plugins/software_communities/lib/software_tab_data_block.rb:14
+msgid "This block is used by colab to insert data into Noosfero"
+msgstr ""
+
+#: plugins/software_communities/lib/software_highlights_block.rb:4
+msgid "Software Highlights Block"
+msgstr ""
+
+#: plugins/software_communities/lib/software_highlights_block.rb:8
+msgid "This block displays the softwares icon into a highlight"
+msgstr ""
+
+#: plugins/software_communities/lib/dynamic_table_helper.rb:17
+#: plugins/software_communities/views/box_organizer/_download_block.html.erb:3
+#: plugins/software_communities/views/_main_software_editor_extras.html.erb:3
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:37
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_main_software_editor_extras.html.erb:3
+msgid "Name"
+msgstr ""
+
+#: plugins/software_communities/lib/dynamic_table_helper.rb:18
+msgid "Version"
+msgstr ""
+
+#: plugins/software_communities/lib/dynamic_table_helper.rb:19
+#: plugins/software_communities/views/profile/_software_tab.html.erb:18
+msgid "License"
+msgstr ""
+
+#: plugins/software_communities/lib/dynamic_table_helper.rb:91
+msgid "Autocomplete field, type something"
+msgstr ""
+
+#: plugins/software_communities/lib/dynamic_table_helper.rb:116
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:8
+#: plugins/software_communities/views/box_organizer/_download_list.html.erb:8
+msgid "Delete"
+msgstr ""
+
+#: plugins/software_communities/lib/create_software.rb:36
+msgid "New software"
+msgstr ""
+
+#: plugins/software_communities/lib/create_software.rb:44
+msgid "%{requestor} wants to create software %{subject} with"
+msgstr ""
+
+#: plugins/software_communities/lib/create_software.rb:46
+msgid " no finality."
+msgstr ""
+
+#: plugins/software_communities/lib/create_software.rb:48
+msgid " this finality:<p><em>%{finality}</em></p>"
+msgstr ""
+
+#: plugins/software_communities/lib/create_software.rb:68
+msgid "%{requestor} wants to create software %{subject}"
+msgstr ""
+
+#: plugins/software_communities/lib/create_software.rb:73
+msgid "User \"%{user}\" just requested to create software %{software}.\n      You have to approve or reject it through the \"Pending Validations\"\n      section in your control panel.\n"
+msgstr ""
+
+#: plugins/software_communities/lib/create_software.rb:80
+msgid "Your request for registering software %{software} at %{environment} was\n      just sent. Environment administrator will receive it and will approve or\n      reject your request according to his methods and criteria.\n\n      You will be notified as soon as environment administrator has a position\n      about your request."
+msgstr ""
+
+#: plugins/software_communities/lib/create_software.rb:90
+msgid "Your request for registering software %{software} at %{environment} was\n      not approved by the environment administrator. The following explanation\n      was given: \n\n%{explanation}"
+msgstr ""
+
+#: plugins/software_communities/lib/create_software.rb:99
+msgid "Your request for registering the software \"%{software}\" was approved.\n      You can access %{url} and finish the registration of your software."
+msgstr ""
+
+#: plugins/software_communities/lib/software_communities_plugin.rb:17
+msgid "Add Public Software and MPOG features."
+msgstr ""
+
+#: plugins/software_communities/lib/software_communities_plugin.rb:90
+msgid "Rate this software"
+msgstr ""
+
+#: plugins/software_communities/lib/software_communities_plugin.rb:136
+msgid "Software Info"
+msgstr ""
+
+#: plugins/software_communities/lib/software_communities_plugin.rb:147
+msgid "Create a new software"
+msgstr ""
+
+#: plugins/software_communities/lib/software_communities_plugin.rb:157
+msgid "Software"
+msgstr ""
+
+#: plugins/software_communities/lib/repository_block.rb:8
+msgid "Repository Link"
+msgstr ""
+
+#: plugins/software_communities/lib/repository_block.rb:12
+msgid "This block displays the repository link of a software."
+msgstr ""
+
+#: plugins/software_communities/lib/software_info.rb:151
+msgid "Name is too long (maximum is %{count} characters)"
+msgstr ""
+
+#: plugins/software_communities/lib/software_info.rb:219
+msgid "can't have more than 10 characteres"
+msgstr ""
+
+#: plugins/software_communities/lib/software_info.rb:222
+msgid "can't have whitespaces"
+msgstr ""
+
+#: plugins/software_communities/lib/software_info.rb:230 plugins/software_communities/lib/software_info.rb:236
+#: plugins/software_communities/lib/software_info.rb:242
+msgid ": at least one must be filled"
+msgstr ""
+
+#: plugins/software_communities/lib/software_information_block.rb:8
+msgid "Basic Software Information"
+msgstr ""
+
+#: plugins/software_communities/lib/software_information_block.rb:12
+msgid "This block displays the basic information of a software profile."
+msgstr ""
+
+#: plugins/software_communities/lib/software_language.rb:10
+msgid "Software language is too long (maximum is 20 characters)"
+msgstr ""
+
+#: plugins/software_communities/lib/categories_software_block.rb:8
+msgid "Categories Softwares"
+msgstr ""
+
+#: plugins/software_communities/lib/categories_software_block.rb:12
+msgid "This block displays the categories and the amount of softwares for\n      each category."
+msgstr ""
+
+#: plugins/software_communities/lib/softwares_block.rb:8
+msgid "Softwares"
+msgstr ""
+
+#: plugins/software_communities/lib/softwares_block.rb:13
+msgid "{#} generic software"
+msgid_plural "{#} generic softwares"
+msgstr[0] ""
+msgstr[1] ""
+
+#: plugins/software_communities/lib/softwares_block.rb:15
+msgid "{#} public software"
+msgid_plural "{#} public softwares"
+msgstr[0] ""
+msgstr[1] ""
+
+#: plugins/software_communities/lib/softwares_block.rb:17
+msgid "{#} software"
+msgid_plural "{#} softwares"
+msgstr[0] ""
+msgstr[1] ""
+
+#: plugins/software_communities/lib/softwares_block.rb:22
+msgid "This block displays the softwares in which the user is a member."
+msgstr ""
+
+#: plugins/software_communities/lib/softwares_block.rb:31 plugins/software_communities/lib/softwares_block.rb:37
+msgid "softwares|View all"
+msgstr ""
+
+#: plugins/software_communities/views/profile/members.html.erb:3 plugins/software_communities/views/profile/members.html.erb:26
+msgid "Members"
+msgstr ""
+
+#: plugins/software_communities/views/profile/members.html.erb:4
+msgid "%s"
+msgstr ""
+
+#: plugins/software_communities/views/profile/members.html.erb:43
+msgid "Administrators"
+msgstr ""
+
+#: plugins/software_communities/views/profile/members.html.erb:57
+msgid "Go back"
+msgstr ""
+
+#: plugins/software_communities/views/profile/members.html.erb:60
+msgid "Invite people to join"
+msgstr ""
+
+#: plugins/software_communities/views/profile/members.html.erb:63
+msgid "Send e-mail to members"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:3
+#: plugins/software_communities/views/_main_software_editor_extras.html.erb:1
+msgid "Software Information"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:6
+msgid "Name:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:7
+msgid "Adherent to e_mag:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:7 plugins/software_communities/views/profile/_software_tab.html.erb:8
+#: plugins/software_communities/views/profile/_software_tab.html.erb:9
+#: plugins/software_communities/views/profile/_software_tab.html.erb:10
+#: plugins/software_communities/views/profile/_software_tab.html.erb:11
+#: plugins/software_communities/views/profile_editor/_software_community.html.erb:49
+msgid "Yes"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:7 plugins/software_communities/views/profile/_software_tab.html.erb:8
+#: plugins/software_communities/views/profile/_software_tab.html.erb:9
+#: plugins/software_communities/views/profile/_software_tab.html.erb:10
+#: plugins/software_communities/views/profile/_software_tab.html.erb:11
+#: plugins/software_communities/views/profile_editor/_software_community.html.erb:50
+msgid "No"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:8
+msgid "Adherent to icp_brasil:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:9
+msgid "Adherent to e_ping:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:10
+msgid "Adherent to e_arq:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:11
+msgid "Internacionalizable:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:12
+msgid "Operating Platform:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:13
+msgid "Demonstration URL:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:14
+msgid "Short Name:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:15
+msgid "Objectives:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:16
+msgid "Features:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:19
+msgid "Version:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:20
+msgid "Link:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:25
+msgid "Show Libraries"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:26
+msgid "Hide Libraries"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:35
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:74
+msgid "Libraries"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:53
+msgid "Show Database"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:54
+msgid "Hide Database"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:63
+msgid "Software Databases"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:81
+msgid "Show Languages"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:82
+msgid "Hide Languages"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:91
+msgid "Software Languages"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:109
+msgid "Show Operating Systems"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:110
+msgid "Hide Operating Systems"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_software_tab.html.erb:120
+msgid "Operating System"
+msgstr ""
+
+#: plugins/software_communities/views/profile/index.html.erb:17
+msgid "Control Panel"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_profile_members_list.html.erb:2
+msgid "Sort by:"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_profile_members_list.html.erb:5
+#: plugins/software_communities/views/search/_software_search_form.html.erb:52
+msgid "Name A-Z"
+msgstr ""
+
+#: plugins/software_communities/views/profile/_profile_members_list.html.erb:6
+#: plugins/software_communities/views/search/_software_search_form.html.erb:53
+msgid "Name Z-A"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_software_tab_data_block.html.erb:5
+msgid "Which blog should have its posts displayed: "
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_software_tab_data_block.html.erb:13
+msgid "This community has no blogs"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_softwares_block.html.erb:2
+msgid "Limit of items"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_softwares_block.html.erb:3
+msgid "Software Type:"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_statistic_block.html.erb:5
+msgid "Benefited People"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_statistic_block.html.erb:6
+#: plugins/software_communities/views/box_organizer/_statistic_block.html.erb:8
+msgid "Portal suggested value: "
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_statistic_block.html.erb:7
+msgid "Saved Resources"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_download_block.html.erb:4
+msgid "Link"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_download_block.html.erb:5
+msgid "Platforms"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_download_block.html.erb:6 plugins/software_communities/views/blocks/download.html.erb:17
+msgid "Minimum Requirements"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_download_block.html.erb:7
+msgid "Size:"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_download_block.html.erb:16
+msgid "New link"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_wiki_block.html.erb:3
+msgid "Wiki link"
+msgstr ""
+
+#: plugins/software_communities/views/search/_catalog_filter.html.erb:4
+#: plugins/software_communities/views/blocks/categories_and_tags.html.erb:2
+msgid "Categories"
+msgstr ""
+
+#: plugins/software_communities/views/search/_catalog_filter.html.erb:10
+#: plugins/software_communities/views/search/_full_community.html.erb:35
+#: plugins/software_communities/views/search/_catalog_result_list.html.erb:41
+#: plugins/software_communities/views/blocks/categories_software.html.erb:15
+msgid "\"#{category.name}\""
+msgstr ""
+
+#: plugins/software_communities/views/search/_catalog_filter.html.erb:16
+msgid "More options"
+msgstr ""
+
+#: plugins/software_communities/views/search/_catalog_filter.html.erb:18
+msgid "Clean up"
+msgstr ""
+
+#: plugins/software_communities/views/search/_catalog_filter.html.erb:19
+msgid "Close"
+msgstr ""
+
+#: plugins/software_communities/views/search/_full_community.html.erb:27
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:65
+msgid "Software Categories"
+msgstr ""
+
+#: plugins/software_communities/views/search/_full_community.html.erb:46
+msgid "This software doesn't have categories"
+msgstr ""
+
+#: plugins/software_communities/views/search/_catalog_result_list.html.erb:12
+msgid "see all (%d)"
+msgstr ""
+
+#: plugins/software_communities/views/search/_catalog_result_list.html.erb:34
+msgid "No software found. Try more general filters"
+msgstr ""
+
+#: plugins/software_communities/views/search/_catalog_result_list.html.erb:36
+msgid "No software found. Try more general filters or check the software category individually"
+msgstr ""
+
+#: plugins/software_communities/views/search/_software_search_form.html.erb:3
+msgid "Search Public Software Catalog"
+msgstr ""
+
+#: plugins/software_communities/views/search/_software_search_form.html.erb:14
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:4
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:7
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:10
+msgid "Public Software"
+msgstr ""
+
+#: plugins/software_communities/views/search/_software_search_form.html.erb:15
+msgid "Projects that have passed by the Avalia SPB process according to the requirements of IN 01/2011."
+msgstr ""
+
+#: plugins/software_communities/views/search/_software_search_form.html.erb:18
+msgid "All"
+msgstr ""
+
+#: plugins/software_communities/views/search/_software_search_form.html.erb:19
+msgid "Projects included in the portal as cases provided by the IN 01/2011."
+msgstr ""
+
+#: plugins/software_communities/views/search/_software_search_form.html.erb:24
+msgid "Type words about the software you're looking for (the search begins after 3 characters)"
+msgstr ""
+
+#: plugins/software_communities/views/search/_software_search_form.html.erb:27
+msgid "Filter"
+msgstr ""
+
+#: plugins/software_communities/views/search/_software_search_form.html.erb:54
+msgid "Relevance"
+msgstr ""
+
+#: plugins/software_communities/views/search/software_infos.html.erb:6
+msgid "Type words about the %s you're looking for"
+msgstr ""
+
+#: plugins/software_communities/views/_main_software_editor_extras.html.erb:10
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:56
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_main_software_editor_extras.html.erb:14
+msgid "Finality"
+msgstr ""
+
+#: plugins/software_communities/views/_main_software_editor_extras.html.erb:15
+msgid "Licenses"
+msgstr ""
+
+#: plugins/software_communities/views/_main_software_editor_extras.html.erb:20
+msgid "License link"
+msgstr ""
+
+#: plugins/software_communities/views/_main_software_editor_extras.html.erb:29
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:89
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_main_software_editor_extras.html.erb:45
+msgid "Link to Repository: "
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:4
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:7
+msgid "Public software"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:12
+msgid "Adherent to e-PING ?"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:21
+msgid "Adherent to e-MAG ?"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:30
+msgid "Adherent to ICP-Brasil ?"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:39
+msgid "Adherent to e-ARQ ?"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:48
+msgid "Internacionalizable ?"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:59
+msgid "Operating Platform"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:64
+msgid "Features"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:69
+msgid "Demonstration url"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:82
+msgid "Operating Systems"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:90
+msgid "Programming languages"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:97
+msgid "Databases"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_database_fields.html.erb:11
+msgid "New Database"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_license_info_fields.html.erb:5
+msgid "Autocomplete field, type some license"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_license_info_fields.html.erb:8
+msgid "Read license"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_language_fields.html.erb:11
+msgid "New language"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_operating_system_fields.html.erb:11
+msgid "New Operating System"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:5
+msgid "Creating new software"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:9
+msgid "Enter the basic information about the software.<br>\n    You can add the details after you create it."
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:16
+msgid "Note that the creation of communities in this environment is restricted. Your request to create this new community will be sent to %{environment} administrators and will be approved or rejected according to their methods and criteria."
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:22
+msgid "\"Can`t create new software: #{@errors.length} errors\""
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:45
+msgid "Domain"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:57
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_main_software_editor_extras.html.erb:15
+msgid "What is the software for?"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:64
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_main_software_editor_extras.html.erb:21
+msgid "Software Logo"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:69
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_main_software_editor_extras.html.erb:26
+msgid "Image:"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:69
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_main_software_editor_extras.html.erb:26
+msgid "Max size: %s (.jpg, .gif, .png)"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:76
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_main_software_editor_extras.html.erb:33
+msgid "License Version: "
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:97
+msgid "Create"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:98
+msgid "Cancel"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_main_software_editor_extras.html.erb:8
+msgid "Short Name"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/edit_software.html.erb:1
+msgid "Edit Software"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/edit_software.html.erb:9
+msgid "Main Information"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/edit_software.html.erb:12
+msgid "Specifications"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/edit_software.html.erb:18
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:68
+msgid "Save"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/edit_software.html.erb:20
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:71
+msgid "Back to control panel"
+msgstr ""
+
+#: plugins/software_communities/views/software_communities_plugin_myprofile/_library_fields.html.erb:11
+msgid "New Library"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/categories_software.html.erb:4
+msgid "See more Software"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/categories_software.html.erb:8
+msgid "Categories:"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/categories_software.html.erb:23 plugins/software_communities/views/blocks/search_catalog.html.erb:9
+msgid "Access the complete catalog"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/wiki.html.erb:2
+#: plugins/software_communities/views/blocks/software_tab_data.html.erb:2 plugins/software_communities/views/blocks/download.html.erb:2
+#: plugins/software_communities/views/blocks/software_information.html.erb:4 plugins/software_communities/views/blocks/repository.html.erb:2
+msgid "This community needs a software to use this block"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/wiki.html.erb:4
+msgid "Wiki"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/main_area_softwares.html.erb:23
+msgid "See More"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/search_catalog.html.erb:2
+msgid "Catalog of Public Software"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/search_catalog.html.erb:5
+msgid "Search"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/categories_and_tags.html.erb:12
+msgid "Tags"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/software_tab_data.html.erb:6
+msgid "Discussions"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/software_tab_data.html.erb:7
+msgid "Blog"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/software_tab_data.html.erb:8
+msgid "Repository Feed"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/software_statistics.html.erb:5
+msgid " benefited people*"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/software_statistics.html.erb:6
+msgid " saved resources*"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/software_statistics.html.erb:10
+msgid "Data estimated by the software administrator."
+msgstr ""
+
+#: plugins/software_communities/views/blocks/download.html.erb:4
+msgid "\"Download #{block.owner.software_info.community.name}\""
+msgstr ""
+
+#: plugins/software_communities/views/blocks/download.html.erb:9
+msgid "Download the software"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/download.html.erb:15
+msgid "\"#{download[:name]}\""
+msgstr ""
+
+#: plugins/software_communities/views/blocks/download.html.erb:16
+msgid "\"Platform:#{download[:software_description]}\""
+msgstr ""
+
+#: plugins/software_communities/views/blocks/download.html.erb:23
+msgid "\"License: #{block.owner.software_info.license_info.version}\""
+msgstr ""
+
+#: plugins/software_communities/views/blocks/software_highlights.html.erb:13
+msgid "See all"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/_software_tab_blog.html.erb:5
+msgid "This community has no posts in its blog"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/_software_tab_blog.html.erb:13
+msgid "Read more"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/software_information.html.erb:16
+msgid "Control panel"
+msgstr ""
+
+#: plugins/software_communities/views/blocks/software_information.html.erb:24
+msgid "\"#{block.owner.software_info.acronym} - \""
+msgstr ""
+
+#: plugins/software_communities/views/blocks/software_information.html.erb:25
+msgid "\"#{block.owner.name}\""
+msgstr ""
+
+#: plugins/software_communities/views/blocks/repository.html.erb:4
+msgid "Repository"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/_software_community.html.erb:1
+msgid "General information"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/_software_community.html.erb:40
+msgid "Address"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/_software_community.html.erb:46
+msgid "WARNING!"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/_software_community.html.erb:47
+msgid "You are about to change the address, and this will break external links to the homepage or to content inside it. Do you really want to change?"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/_software_community.html.erb:63
+msgid "Enable \"contact us\""
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/_software_community.html.erb:68
+msgid "Products/Services catalog"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/_software_community.html.erb:69
+msgid "Number of products/services displayed per page on catalog"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:4
+msgid "Configure Software Community"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:8
+msgid "Set the basic settings of the software associated community"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:18
+msgid "This profile is a template"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:24
+msgid "Privacy options"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:28
+msgid "Public &mdash; show my contents to all internet users"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:31
+msgid "Private &mdash; show my contents only to friends"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:35
+msgid "Public &mdash; show content of this group to all internet users"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:38
+msgid "Private &mdash; show content of this group only to members"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:43
+msgid "Page to redirect after login"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:47
+msgid "Translations"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:49
+msgid "Automaticaly redirect the visitor to the article translated to his/her language"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:53
+msgid "Suggestions"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:55
+msgid "Send me relationship suggestions by email"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:77
+msgid "Delete software and community"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:80
+msgid "Deactivate software and community"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:80
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:82
+msgid "Are you sure you want to deactivate this profile?"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:82
+msgid "Activate software and community"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/_first_edit_software_community_extras.html.erb:3
+msgid "Step 1 - Software Creation"
+msgstr ""
+
+#: plugins/software_communities/views/profile_editor/_first_edit_software_community_extras.html.erb:7
+msgid "Step 2 - Community Settings"
+msgstr ""
+
+#: plugins/software_communities/views/comments_extra_fields.html.erb:3
+msgid "Additional informations"
+msgstr ""
+
+#: plugins/software_communities/views/comments_extra_fields.html.erb:11
+msgid "Number of Beneficiaries"
+msgstr ""
+
+#: plugins/software_communities/views/comments_extra_fields.html.erb:17
+msgid "Saved resources"
+msgstr ""

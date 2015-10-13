@@ -1,0 +1,22 @@
+<div id="mais-software-block">
+  <div id="sbp-information-softwares">
+
+  <h2><%= _("See more Software") %></h2>
+  </div>
+
+  <div id="list-categories">
+    <p><%= _("Categories:") %></p>
+    <ul class="categories-mais-software">
+
+      <% categories.each do |category| %>
+        <% unless category.software_infos.count < 1 %>
+          <li><%= link_to _("#{category.name}") + " (#{category.software_infos.count})", {:controller => :search, :action => :software_infos, :selected_categories_id => [category.id]} %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="footer-mais-software">
+    <%= link_to _("Access the complete catalog"), {controller: "search", action: "software_infos"}%>
+  </div>
+</div>

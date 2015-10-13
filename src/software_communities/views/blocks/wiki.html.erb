@@ -1,0 +1,6 @@
+<% if block.owner.software_info.nil? %>
+  <%= _("This community needs a software to use this block") %>
+<% else %>
+  <%= link_to _("Wiki") , block.wiki_link, :id => "bt_wiki", :target => "_blank" %>
+<% end %>
+

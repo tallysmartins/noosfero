@@ -1,0 +1,112 @@
+.mpog_hidden_field {
+  display: none;
+}
+
+.dynamic-table {
+  border: solid 1px #000;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.dynamic-table td, .dynamic-table tr {
+  border: none;
+}
+.dynamic-table input {
+  width: 220px;
+}
+
+#institution_dialog {
+  display: none;
+}
+
+.errorExplanation {
+  color: red;
+  margin-left: 10px;
+}
+
+.hide-field {
+  display: none !important;
+}
+
+.show-field {
+  display: block !important;
+}
+
+.formfieldline {
+  margin-top: 10px;
+}
+.formfieldline input[type="text"] {
+  width: 180px;
+}
+
+#profile-data .invalid {
+  border-color: rgb(127, 0, 0);
+  box-shadow: 0px 0px 7px red;
+}
+
+#profile-data .validated {
+  box-shadow: 0px 0px 7px green;
+  border-color: rgb(0, 80, 0);
+}
+
+#software-name-field {
+  padding-bottom: 10px;
+}
+
+#software-hostname {
+  padding: 0px 7px;
+  font-size: 18px;
+}
+
+.mandatory::after {
+  color: red;
+  content: ' (*)';
+}
+
+.autocomplete_validation_message {
+  color: red;
+}
+
+#content .softwares-block ul {
+  min-width: 196px;
+  width: 192px;
+  margin: 0px 0px 0px -3px;
+  padding: 0px;
+}
+
+#content .box-1 .softwares-block ul {
+  width: auto;
+  display: block;
+}
+
+#content .softwares-block .block-footer-content a {
+  background: url(../../../designs/themes/base/imgs/arrow-right-p.png) 100% 50% no-repeat;
+}
+
+/*FIX-ME: necessary while there is
+* not a defined theme style for the
+* forms */
+.improve_input_size {
+  width: 315px !important;
+}
+
+.software-block {
+  position: relative;
+  float: left;
+  overflow: hidden;
+}
+
+.software-block-content, .software-block-finality {
+  width: 100%;
+  position: absolute;
+}
+
+/*===== Communities rate hotspot extra fields =====*/
+
+.comments-software-extra-fields div {
+  display: none;
+}
+
+#content .star-rate-form .star-comment-container .comments-display-fields {
+  cursor: pointer;
+}
+

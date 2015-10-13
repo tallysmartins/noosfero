@@ -1,0 +1,47 @@
+
+<div class= <%= @error_community_name %> >
+  <%= label_tag("community[name]", _('Name'), {:class => 'formlabel mandatory'}) %>
+  <%= text_field_tag("community[name]", @profile.name, :id => 'community_name_id') %>
+</div>
+
+<div class= <%= @error_software_acronym %> >
+  <%= label_tag("software[acronym]", _('Short Name'), {:class => 'formlabel mandatory'}) %>
+  <%= text_field_tag("software[acronym]", @profile.software_info.acronym, :id => 'software_acronym_id', :maxlength=>"10") %>
+</div>
+
+<div class= <%= @error_software_finality %> >
+  <div id="finality" class="formfield type-text">
+    <%= label_tag("software[finality]", _('Finality'), {:class => 'formlabel mandatory'}) %>
+    <%= text_area_tag "software[finality]", @profile.software_info.finality, :placeholder => _("What is the software for?"), :maxlength => 120 %>
+  </div>
+</div>
+
+<div id="profile_change_picture_title" class="formlabel">
+  <label>
+    <%= _('Software Logo') %>
+  </label>
+</div>
+<div id="profile_change_picture">
+    <%= f.fields_for :image_builder, @profile.image do |i| %>
+      <%= file_field_or_thumbnail(_('Image:'), @profile.image, i) %><%= _("Max size: %s (.jpg, .gif, .png)")% Image.max_size.to_humanreadable %>
+    <% end %>
+</div>
+
+<div class= <%= @error_software_license %> >
+  <div id="profile_change_picture_title" class="formlabel formfieldline">
+    <label class="formlabel mandatory">
+      <%= _("License Version: ") %>
+    </label>
+      <%= render :partial => "license_info_fields", :locals => {
+        :license_version => @license_version,
+        :license_id => @license_id,
+        :another_version => @another_license_version,
+        :another_link => @another_license_link
+      } %>
+  </div>
+</div>
+
+<div class="formfieldline formfield type-text">
+  <%= label_tag("software[repository_link]", _('Link to Repository: '), {:class => 'formlabel'}) %>
+  <%= text_field_tag("software[repository_link]", @profile.software_info.repository_link, :class => "improve_input_size", :id => "software-info-repository-link") %>
+</div>

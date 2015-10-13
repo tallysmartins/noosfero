@@ -1,0 +1,14 @@
+<% LicenseHelper.getListLicenses.each do | license |  %>
+  <input type="hidden" id = "version_<%=license.id %>" value = "<%=license.link%>">
+<% end %>
+
+<%= text_field_tag "license_info[version]", license_version, :id=>"license_info_version", :class=>"license_info_version", :placeholder=>_('Autocomplete field, type some license') %>
+<%= hidden_field_tag "license[license_infos_id]", license_id, :id=>"license_info_id", :class=>"license_info_id", :data => {:label=>license_version} %>
+
+<a id = "version_link" href="#" target="_BLANK" class="hide-field"><%= _("Read license") %></a>
+
+<div id="another_license" class="<%= 'hide-field' if license_version != 'Another' %>">
+  <%= labelled_text_field "Licence version", "license[version]", another_version, :id=>"licence_version" %>
+  <br />
+  <%= labelled_text_field "Licence link", "license[link]", another_link, :id=>"licence_link" %>
+</div>

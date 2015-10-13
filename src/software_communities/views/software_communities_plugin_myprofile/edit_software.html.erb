@@ -1,0 +1,22 @@
+<h1><%= _('Edit Software') %></h1>
+
+<% tabs = [] %>
+
+<%= error_messages_for :software_info, :community %>
+
+<%= labelled_form_for :community, :html => { :multipart => true, :id => 'edit-form' } do |f| %>
+
+  <% tabs << {:title => _("Main Information"), :id => 'basic-info',
+    :content => (render :partial => 'main_software_editor_extras', :locals => {:f => f})} %>
+
+  <% tabs << {:title => _("Specifications"), :id => 'especific-info',
+    :content => (render :partial => 'public_software_info')} %>
+
+  <%= render_tabs(tabs) %>
+
+  <% button_bar do %>
+    <%= submit_button(:save, _('Save')) %>
+    <%= submit_button(:save, _('Save and Configure Community')) %>
+    <%= button(:back, _('Back to control panel'), :controller => 'profile_editor') %>
+  <% end %>
+<% end %>

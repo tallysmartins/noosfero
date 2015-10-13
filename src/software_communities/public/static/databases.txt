@@ -1,0 +1,101 @@
+Accumulo
+Adabas
+Aerospike
+AllegroGraph
+Altibase
+Berkeley DB
+Caché
+Cassandra
+CloudSearch
+Cloudant
+Coherence
+CouchDB
+Couchbase
+D3
+DB2
+DataEase
+Datameer
+Db4o
+Derby
+Drizzle
+DynamoDB
+Ehcache
+Elasticsearch
+Endeca
+EnterpriseDB
+FileMaker
+Firebird
+GemFire
+Google BigQuery
+Google Search Appliance
+Greenplum
+H2
+HBase
+Hazelcast
+Hive
+HyperSQL
+IDMS
+IMS
+Infinispan
+Infobright
+Informix
+Ingres
+Interbase
+Jackrabbit
+Jena
+LevelDB
+MariaDB
+MarkLogic
+MaxDB
+MemSQL
+Memcached
+Microsoft Access
+Microsoft Azure SQL Database
+Microsoft SQL Server
+Mnesia
+MongoDB
+MySQL
+Neo4j
+Netezza
+NuoDB
+ObjectStore
+OpenEdge
+Oracle
+Oracle NoSQL
+OrientDB
+ParAccel
+Percona Server
+PostgreSQL
+RavenDB
+Red Brick
+Redis
+Redshift
+RethinkDB
+Riak
+SAP HANA
+SQL Anywhere
+SQLite
+Sedna
+Sesame
+SimpleDB
+Solr
+Sparksee
+Sphinx
+Splunk
+Sybase ADS
+Sybase ASE
+Sybase IQ
+Teradata
+Teradata Aster
+TimesTen
+Titan
+UniData
+UniVerse
+Versant Object Database
+Vertica
+Virtuoso
+VoltDB
+dBASE
+jBASE
+mSQL
+Other

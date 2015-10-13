@@ -1,0 +1,12 @@
+<%= fields_for :database_description, @database_description do |db| %>
+
+<div id='databases'>
+  <% database = [] if database.blank? %>
+	<% DatabaseHelper.database_as_tables(database).each do |tab| %>
+	  <%= tab.call %>
+	<%end%>
+</div>
+
+<div id='table_structure_databases' style="display:none"><%= DatabaseHelper.add_dynamic_table %></div>
+<%= link_to _('New Database'), "#", :class=>"button icon-add with-text new-dynamic-table dynamic-databases"%>
+<% end %>

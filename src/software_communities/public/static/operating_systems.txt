@@ -1,0 +1,9 @@
+Debian
+Ubuntu
+Windows
+CentOS
+RedHat
+Mint
+MacOS
+Fedora
+Arch

@@ -1,0 +1,25 @@
+<% if block.owner.software_info.nil? %>
+  <%= _("This community needs a software to use this block") %>
+<% else %>
+    <h3 class="block-title"> <%= _("Download #{block.owner.software_info.community.name}") %> </h3>
+    <ul class="download-list">
+    <% block.downloads.each_with_index do |download, index| %>
+      <li id="download-item-<%=(index+1)%>">
+        <div class="download-button">
+          <%= link_to :controller => 'software_communities_plugin_profile', :action=> 'download_file', :block=>block.id, :download_index=> index , title: _("Download the software") do %>
+          <span class="download-image"></span>
+          <span class="download-size"><%= download[:size] %></span>
+          <% end %>
+        </div>
+        <div class="download-info">
+          <span class="download-name"><%= _("#{download[:name]}") %></span>
+          <span class="download-platform"><%= _("Platform:#{download[:software_description]}") %> </span>
+          <span class="min-requirements"><%= link_to _("Minimum Requirements"), download[:minimum_requirements] %></span>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+    <div id="licensed-software">
+      <%= link_to _("License: #{block.owner.software_info.license_info.version}"), block.owner.software_info.license_info.link %>
+  </div>
+<% end %>
