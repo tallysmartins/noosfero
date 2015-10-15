@@ -1,5 +1,5 @@
 %define name colab
-%define version 1.11.2
+%define version 1.11.3
 %define default_release 0
 %{!?release: %define release %{default_release}}
 %define buildvenv /var/tmp/%{name}-%{version}
@@ -16,9 +16,9 @@ Prefix: %{_prefix}
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://github.com/colab/colab
 BuildArch: noarch
-BuildRequires: colab-deps >= 1.11, python-virtualenv
+BuildRequires: colab-deps >= 1.11.3, python-virtualenv
 # FIXME colab should not depend on nginx!
-Requires: colab-deps >= 1.11, solr, mailman-api >= 0.3, nginx
+Requires: colab-deps >= 1.11.3, solr, mailman-api >= 0.3, nginx
 
 %description
 Integrated software development platform.
