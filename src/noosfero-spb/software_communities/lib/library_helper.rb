@@ -20,12 +20,7 @@ class LibraryHelper < DynamicTableHelper
 
   def self.valid_list_library? list_libraries
     return true if list_libraries.nil? or list_libraries.length == 0
-
-    list_libraries.each do |library|
-      return false unless library.valid?
-    end
-
-    true
+    return !list_libraries.any?{|library| !library.valid?}
   end
 
   def self.libraries_as_tables list_libraries, disabled=false

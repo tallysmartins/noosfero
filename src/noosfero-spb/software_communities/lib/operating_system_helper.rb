@@ -25,12 +25,8 @@ class OperatingSystemHelper < DynamicTableHelper
   end
 
   def self.valid_list_operating_system? list_operating_system
-    return !(list_operating_system.nil? || list_operating_system.length == 0)
-
-    list_operating_system.each do |operating_system|
-      return false unless operating_system.valid?
-    end
-    true
+    return false if (list_operating_system.nil? || list_operating_system.length == 0)
+    return !list_operating_system.any?{|os| !os.valid?}
   end
 
   def self.operating_system_as_tables(list_operating_system, disabled=false)

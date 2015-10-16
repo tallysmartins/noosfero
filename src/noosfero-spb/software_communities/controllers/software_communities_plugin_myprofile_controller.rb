@@ -9,13 +9,13 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
     @community = Community.new(params[:community])
     @community.environment = environment
-    @software_info = SoftwareInfo.new(params[:software_info])
 
-    @license_info = if params[:license].blank? or params[:license][:license_infos_id].blank?
-      LicenseInfo.new
-    else
-      LicenseInfo.find(params[:license][:license_infos_id])
-    end
+    @license_info = LicenseInfo.find_by_id(params[:license][:license_infos_id]) if params[:license]
+    @license_info ||= LicenseInfo.new
+
+    @software_info = SoftwareInfo.new(params[:software_info])
+    @software_info.community = @community
+    @software_info.license_info = @license_info
 
     control_software_creation
     update_new_software_errors
@@ -26,7 +26,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
     return unless request.post?
 
-    @software_info = constroy_software
+    @software_info = create_software
     software_info_insert_models.call(@list_libraries, 'libraries')
     software_info_insert_models.call(@list_languages, 'software_languages')
     software_info_insert_models.call(@list_databases, 'software_databases')
@@ -70,17 +70,25 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
   def add_software_erros
       @errors = []
-      @errors |= @community.errors.full_messages if @community
+      if @community
+        error = @community.errors.delete(:identifier)
+        @errors |= [_("Domain %s") % error.first ] if error
+        @errors |= @community.errors.full_messages
+      end
       @errors |= @software_info.errors.full_messages if @software_info
       @errors |= @license_info.errors.full_messages if @license_info
   end
 
   def control_software_creation
-    valid_models = request.post? && (@community.valid? && @software_info.valid? && @license_info.valid?)
-    if valid_models
-      send_software_to_moderation
-    else
-      add_software_erros
+    if request.post?
+      valid_models = @community.valid?
+      valid_models &= @software_info.valid?
+      valid_models &= @license_info.valid?
+      if valid_models
+        send_software_to_moderation
+      else
+        add_software_erros
+      end
     end
   end
 
@@ -91,7 +99,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
     }
   end
 
-  def constroy_software
+  def create_software
     @software_info = @profile.software_info
     another_license_version = nil
     another_license_link = nil
@@ -136,7 +144,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
     add_admin_to_community
 
-    if  !environment.admins.include?(current_user.person)
+    if !environment.admins.include?(current_user.person)
       session[:notice] = _('Your new software request will be evaluated by an'\
                            'administrator. You will be notified.')
       redirect_to user.admin_url
