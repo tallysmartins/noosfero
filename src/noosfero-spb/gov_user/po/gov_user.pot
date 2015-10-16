@@ -6,8 +6,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.2-141-g2924904\n"
-"POT-Creation-Date: 2015-09-11 17:06-0000\n"
+"Project-Id-Version: 1.3.1+spb2\n"
+"POT-Creation-Date: 2015-10-16 19:14-0000\n"
 "PO-Revision-Date: 2015-09-01 20:59-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,76 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: plugins/gov_user/lib/ext/search_controller.rb:17
-msgid "Institution Catalog"
+#: plugins/gov_user/test/unit/gov_user_person_test.rb:50
+#: plugins/gov_user/test/unit/gov_user_person_test.rb:56
+msgid "Name Should begin with a capital letter and no special characters"
+msgstr ""
+
+#: plugins/gov_user/controllers/gov_user_plugin_myprofile_controller.rb:28
+#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:168
+msgid "Could not find Governmental Power or Governmental Sphere"
+msgstr ""
+
+#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:18
+#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:43
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:80
+msgid "Select a Governmental Sphere"
+msgstr ""
+
+#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:19
+#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:44
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:87
+msgid "Select a Governmental Power"
+msgstr ""
+
+#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:20
+#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:45
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:93
+msgid "Select a Juridical Nature"
+msgstr ""
+
+#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:21
+#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:46
+msgid "Select a state"
+msgstr ""
+
+#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:214
+msgid "Institution successful created!"
+msgstr ""
+
+#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:219
+msgid "Institution could not be created!"
+msgstr ""
+
+#: plugins/gov_user/lib/gov_user_plugin.rb:17
+msgid "Add features related to Brazilian government."
+msgstr ""
+
+#: plugins/gov_user/lib/gov_user_plugin.rb:132
+#: plugins/gov_user/lib/gov_user_plugin.rb:163
+msgid "Create Institution"
+msgstr ""
+
+#: plugins/gov_user/lib/gov_user_plugin.rb:289
+msgid "Institution Info"
+msgstr ""
+
+#: plugins/gov_user/lib/gov_user_plugin.rb:314
+msgid "Institution"
+msgstr ""
+
+#: plugins/gov_user/lib/institution.rb:47
+msgid "invalid, only public and private institutions are allowed."
+msgstr ""
+
+#: plugins/gov_user/lib/institution.rb:59
+#: plugins/gov_user/lib/institution.rb:73
+#: plugins/gov_user/lib/institution.rb:86
+msgid "can't be blank"
+msgstr ""
+
+#: plugins/gov_user/lib/institution.rb:103
+msgid "invalid format"
 msgstr ""
 
 #: plugins/gov_user/lib/ext/user.rb:19
@@ -33,25 +101,12 @@ msgstr ""
 msgid "Invalid secondary email format."
 msgstr ""
 
+#: plugins/gov_user/lib/ext/search_controller.rb:17
+msgid "Institution Catalog"
+msgstr ""
+
 #: plugins/gov_user/lib/ext/organization_rating.rb:16
 msgid "not found"
-msgstr ""
-
-#: plugins/gov_user/lib/gov_user_plugin.rb:17
-msgid "Add features related to Brazilian government."
-msgstr ""
-
-#: plugins/gov_user/lib/gov_user_plugin.rb:132
-#: plugins/gov_user/lib/gov_user_plugin.rb:163
-msgid "Create Institution"
-msgstr ""
-
-#: plugins/gov_user/lib/gov_user_plugin.rb:287
-msgid "Institution Info"
-msgstr ""
-
-#: plugins/gov_user/lib/gov_user_plugin.rb:312
-msgid "Institution"
 msgstr ""
 
 #: plugins/gov_user/lib/institutions_block.rb:4
@@ -74,86 +129,6 @@ msgstr ""
 msgid "institutions|View all"
 msgstr ""
 
-#: plugins/gov_user/lib/institution.rb:47
-msgid "invalid, only public and private institutions are allowed."
-msgstr ""
-
-#: plugins/gov_user/lib/institution.rb:59
-#: plugins/gov_user/lib/institution.rb:73
-#: plugins/gov_user/lib/institution.rb:86
-msgid "can't be blank"
-msgstr ""
-
-#: plugins/gov_user/lib/institution.rb:103
-msgid "invalid format"
-msgstr ""
-
-#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:18
-#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:43
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:83
-msgid "Select a Governmental Sphere"
-msgstr ""
-
-#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:19
-#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:44
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:90
-msgid "Select a Governmental Power"
-msgstr ""
-
-#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:20
-#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:45
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:96
-msgid "Select a Juridical Nature"
-msgstr ""
-
-#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:21
-#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:46
-msgid "Select a state"
-msgstr ""
-
-#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:168
-#: plugins/gov_user/controllers/gov_user_plugin_myprofile_controller.rb:26
-msgid "Could not find Governmental Power or Governmental Sphere"
-msgstr ""
-
-#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:214
-msgid "Institution successful created!"
-msgstr ""
-
-#: plugins/gov_user/controllers/gov_user_plugin_controller.rb:219
-msgid "Institution could not be created!"
-msgstr ""
-
-#: plugins/gov_user/test/unit/gov_user_person_test.rb:50
-#: plugins/gov_user/test/unit/gov_user_person_test.rb:56
-msgid "Name Should begin with a capital letter and no special characters"
-msgstr ""
-
-#: plugins/gov_user/views/search/institutions.html.erb:3
-msgid "Type words about the %s you're looking for"
-msgstr ""
-
-#: plugins/gov_user/views/ratings_extra_field.html.erb:2
-msgid "Organization name or Enterprise name"
-msgstr ""
-
-#: plugins/gov_user/views/ratings_extra_field.html.erb:6
-#: plugins/gov_user/views/person_editor_extras.html.erb:21
-msgid "No institution found"
-msgstr ""
-
-#: plugins/gov_user/views/incomplete_registration.html.erb:3
-msgid "Complete Profile"
-msgstr ""
-
-#: plugins/gov_user/views/incomplete_registration.html.erb:6
-msgid "Complete your profile"
-msgstr ""
-
-#: plugins/gov_user/views/incomplete_registration.html.erb:7
-msgid "Hide"
-msgstr ""
-
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:1
 msgid "Edit Institution"
 msgstr ""
@@ -172,126 +147,94 @@ msgstr ""
 msgid "\"Can`t create new Institution: #{flash[:errors].length} errors\""
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:24
-msgid "All fields with (*) are mandatory"
-msgstr ""
-
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:31
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:28
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:37
 msgid "Public Institution"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:36
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:33
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:33
 msgid "Private Institution"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:43
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:40
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:44
 msgid "Institution name already exists"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:47
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:44
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:48
 msgid "Corporate Name"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:52
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:49
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:53
 msgid "Country"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:56
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:53
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:57
 msgid "State"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:66
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:63
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:66
 msgid "CNPJ"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:73
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:75
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:70
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:72
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:72
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:74
 msgid "Acronym"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:74
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:71
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:73
 msgid "Fantasy name"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:82
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:79
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:17
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:81
 msgid "Governmental Sphere:"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:89
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:86
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:16
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:88
 msgid "Governmental Power:"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:95
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:92
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:18
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:94
 msgid "Juridical Nature:"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:102
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:99
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:101
 msgid "SISP?"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:104
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:101
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:19
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:104
 msgid "Yes"
 msgstr ""
 
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:103
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:106
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:109
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:19
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:106
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:108
 msgid "No"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:114
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:111
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:114
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:118
 msgid "Save"
-msgstr ""
-
-#: plugins/gov_user/views/person_editor_extras.html.erb:2
-msgid "Secondary e-mail"
-msgstr ""
-
-#: plugins/gov_user/views/person_editor_extras.html.erb:22
-msgid "Add new institution"
-msgstr ""
-
-#: plugins/gov_user/views/person_editor_extras.html.erb:23
-msgid "Create new institution"
-msgstr ""
-
-#: plugins/gov_user/views/person_editor_extras.html.erb:39
-msgid "Should begin with a capital letter and no special characters"
-msgstr ""
-
-#: plugins/gov_user/views/person_editor_extras.html.erb:40
-msgid "Email should have the following format: name@host.br"
-msgstr ""
-
-#: plugins/gov_user/views/person_editor_extras.html.erb:41
-msgid "Site should have a valid format: http://name.hosts"
-msgstr ""
-
-#: plugins/gov_user/views/person_editor_extras.html.erb:42
-msgid "If you work in a public agency use your government e-Mail"
 msgstr ""
 
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:3
@@ -334,6 +277,43 @@ msgstr ""
 msgid "SISP:"
 msgstr ""
 
+#: plugins/gov_user/views/ratings_extra_field.html.erb:2
+msgid "Organization name or Enterprise name"
+msgstr ""
+
+#: plugins/gov_user/views/ratings_extra_field.html.erb:6
+#: plugins/gov_user/views/person_editor_extras.html.erb:21
+msgid "No institution found"
+msgstr ""
+
+#: plugins/gov_user/views/person_editor_extras.html.erb:2
+msgid "Secondary e-mail"
+msgstr ""
+
+#: plugins/gov_user/views/person_editor_extras.html.erb:22
+msgid "Add new institution"
+msgstr ""
+
+#: plugins/gov_user/views/person_editor_extras.html.erb:23
+msgid "Create new institution"
+msgstr ""
+
+#: plugins/gov_user/views/person_editor_extras.html.erb:39
+msgid "Should begin with a capital letter and no special characters"
+msgstr ""
+
+#: plugins/gov_user/views/person_editor_extras.html.erb:40
+msgid "Email should have the following format: name@host.br"
+msgstr ""
+
+#: plugins/gov_user/views/person_editor_extras.html.erb:41
+msgid "Site should have a valid format: http://name.hosts"
+msgstr ""
+
+#: plugins/gov_user/views/person_editor_extras.html.erb:42
+msgid "If you work in a public agency use your government e-Mail"
+msgstr ""
+
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:1
 msgid "New Institution"
 msgstr ""
@@ -353,4 +333,20 @@ msgstr ""
 
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:128
 msgid "Creating institution"
+msgstr ""
+
+#: plugins/gov_user/views/search/institutions.html.erb:3
+msgid "Type words about the %s you're looking for"
+msgstr ""
+
+#: plugins/gov_user/views/incomplete_registration.html.erb:3
+msgid "Complete Profile"
+msgstr ""
+
+#: plugins/gov_user/views/incomplete_registration.html.erb:6
+msgid "Complete your profile"
+msgstr ""
+
+#: plugins/gov_user/views/incomplete_registration.html.erb:7
+msgid "Hide"
 msgstr ""
