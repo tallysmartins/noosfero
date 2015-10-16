@@ -1,3 +1,5 @@
+/* globals modulejs */
+
 modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement'], function($, NoosferoRoot, SelectElement) {
   'use strict';
 
@@ -221,6 +223,11 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
       select : function (event, selected) {
         $("#institution_selected").val(selected.item.id).attr("data-name", selected.item.label);
+
+        // +("") -> 0; +("1") -> 1...
+        if (+($("#institution_selected").val()) !== 0) {
+          add_new_institution();
+        }
       }
     });
   }
@@ -234,24 +241,24 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
   }
 
 
-  function add_new_institution(evt) {
-    evt.preventDefault();
+  function add_new_institution() {
     var selected = $("#institution_selected");
-    var institution_already_added = $(".institutions_added li[data-institution='"+selected.val()+"']").length;
+    var already_added_to_list = is_institution_already_added_to_list(selected.val());
 
-    if(selected.val().length > 0 && institution_already_added === 0) {
+    if(selected.val().length > 0 && !already_added_to_list) {
       //field that send the institutions to the server
       $(".institution_container").append(get_clone_institution_data(selected.val()));
 
       // Visualy add the selected institution to the list
       add_selected_institution_to_list(selected.val(), selected.attr("data-name"));
 
-      // clean the institution flag
-      selected.val("").attr("data-name", "");
-      $("#input_institution").val("");
-
       $(".remove-institution").click(remove_institution);
     }
+  }
+
+
+  function is_institution_already_added_to_list(institution_id) {
+    return $(".institutions_added li[data-institution='"+institution_id+"']").length !== 0;
   }
 
 
@@ -368,8 +375,6 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     $('#cancel_institution_button').click(cancel_institution);
 
     $("#community_name").keyup(institution_already_exists);
-
-    $("#add_new_institution").click(add_new_institution);
 
     $(".remove-institution").click(remove_institution);
 

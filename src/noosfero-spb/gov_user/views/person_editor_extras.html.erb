@@ -19,8 +19,7 @@
   </div>
 
   <%= content_tag(:div, _("No institution found"), :id=>"institution_empty_ajax_message", :class=>"errorExplanation hide-field") %>
-  <%= link_to(_("Add new institution"), "#", :class=>'button with-text icon-add', :id => 'add_new_institution') %>
-  <%= link_to(_("Create new institution"), "#", :id=>"create_institution_link", :class=>'button with-text icon-add') %>
+    <%= link_to(_("Create new institution"), "#", :id=>"create_institution_link", :class=>'button with-text icon-add') %>
   <%= content_tag(:div, "", :id=>"institution_dialog") %>
 
   <%= hidden_field_tag("user[institution_ids][]", "", :class => 'user_institutions') %>

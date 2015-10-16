@@ -1,3 +1,5 @@
+/* globals modulejs */
+
 modulejs.define("GovUserCommentsExtraFields", ['jquery','CreateInstitution'], function($,CreateInstitution) {
 
     function set_events() {

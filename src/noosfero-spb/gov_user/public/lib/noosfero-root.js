@@ -1,3 +1,5 @@
+/* globals modulejs */
+
 modulejs.define('NoosferoRoot', function() {
   'use strict';
 

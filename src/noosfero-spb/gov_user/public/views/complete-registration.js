@@ -1,3 +1,5 @@
+/* globals modulejs */
+
 modulejs.define('CompleteRegistration', ['jquery', 'NoosferoRoot'], function($, NoosferoRoot) {
   'use strict';
 
