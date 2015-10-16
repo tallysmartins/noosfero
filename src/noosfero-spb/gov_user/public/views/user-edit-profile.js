@@ -1,3 +1,5 @@
+/* globals modulejs */
+
 modulejs.define('UserEditProfile', ['jquery', 'SelectElement', 'SelectFieldChoices', 'CreateInstitution'], function($, SelectElement, SelectFieldChoices, CreateInstitution) {
   'use strict';
 

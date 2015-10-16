@@ -1,3 +1,5 @@
+/* globals modulejs */
+
 modulejs.define('SelectFieldChoices', ['jquery', 'SelectElement'], function($, SelectElement) {
   'use strict';
 

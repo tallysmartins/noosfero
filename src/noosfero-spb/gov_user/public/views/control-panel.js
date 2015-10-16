@@ -1,3 +1,5 @@
+/* globals modulejs */
+
 modulejs.define('ControlPanel', ['jquery'], function($) {
   'use strict';
 
