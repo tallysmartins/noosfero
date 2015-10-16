@@ -1,0 +1,11 @@
+<div class="software-events-list-item">
+  <div class="software-events-list-item-calendar"></div>
+
+  <div class="software-events-list-item-date">
+    <%= event.start_date.strftime "%m/%d" %>
+  </div>
+
+  <div class="software-events-list-item-title">
+    <%= link_to event.title, event.url %>
+  </div>
+</div>
