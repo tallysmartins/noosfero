@@ -742,8 +742,8 @@ msgid "\"#{category.name}\""
 msgstr "\"#{category.name}\""
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:3
-msgid "Search Public Software Catalog"
-msgstr "Pesquisar Catálogo de Software Público"
+msgid "Search Software Catalog"
+msgstr "Pesquisar Catálogo de Software"
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:15
 msgid ""
@@ -1126,8 +1126,8 @@ msgid "\"#{block.owner.name}\""
 msgstr "\"#{block.owner.name}\""
 
 #: plugins/software_communities/views/blocks/search_catalog.html.erb:2
-msgid "Catalog of Public Software"
-msgstr "Catálogo de Software Público"
+msgid "Catalog of Software"
+msgstr "Catálogo de Software"
 
 #: plugins/software_communities/views/blocks/search_catalog.html.erb:5
 msgid "Search"

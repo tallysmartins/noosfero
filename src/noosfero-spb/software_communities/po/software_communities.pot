@@ -606,7 +606,7 @@ msgid "No software found. Try more general filters or check the software categor
 msgstr ""
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:3
-msgid "Search Public Software Catalog"
+msgid "Search Software Catalog"
 msgstr ""
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:14
