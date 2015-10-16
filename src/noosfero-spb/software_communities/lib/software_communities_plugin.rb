@@ -22,8 +22,8 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   end
 
   def profile_tabs
-    if context.profile.community?
-      return profile_tabs_software if context.profile.software?
+    if context.profile.community? && context.profile.software?
+      return profile_tabs_software
     end
   end
 
@@ -107,7 +107,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
         is_admin ||= user_rating.organization.admins.include?(current_user.person)
 
         if is_admin and profile.software?
-
             render :file => 'organization_ratings_extra_fields_show_data',
                    :locals => {:user_rating => user_rating}
         end

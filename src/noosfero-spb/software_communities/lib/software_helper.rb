@@ -23,22 +23,6 @@ module SoftwareHelper
   end
 
   def self.all_table_is_empty? table, ignored_fields=[]
-    filled_fields = []
-
-    table.each do |key, value|
-      unless ignored_fields.include? key
-        filled_fields << if value.empty?
-          false
-        else
-          true
-        end
-      end
-    end
-
-    if filled_fields.include? true
-      false
-    else
-      true
-    end
+    return !table.keys.any?{|key| ignored_fields.include?(key) ? false : !table[key].empty?}
   end
 end

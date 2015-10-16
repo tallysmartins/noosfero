@@ -5,12 +5,14 @@ class CreateSoftware < Task
   validates_presence_of :name
 
   attr_accessible :name, :finality, :repository_link, :requestor, :environment,
-                  :reject_explanation, :license_info
+                  :reject_explanation, :license_info, :identifier, :another_license_version,
+                  :another_license_link
 
   alias :environment :target
   alias :environment= :target=
 
-  DATA_FIELDS = ['name', 'finality', 'license_info', 'repository_link']
+  DATA_FIELDS = ['name', 'identifier', 'finality', 'license_info', 'repository_link',
+                 'another_license_version', 'another_license_link']
   DATA_FIELDS.each do |field|
     settings_items field.to_sym
   end
@@ -21,15 +23,21 @@ class CreateSoftware < Task
       template_id = software_template.id
     end
 
+    identifier = self.identifier
+    identifier ||= self.name.to_slug
+
     community = Community.create!(:name => self.name,
+                                  :identifier => identifier,
                                   :template_id => template_id)
 
     community.environment = self.environment
     community.add_admin(self.requestor)
 
-    software = SoftwareInfo.create!(:finality => self.finality,
+    software = SoftwareInfo.new(:finality => self.finality,
     :repository_link => self.repository_link, :community_id => community.id,
     :license_info => self.license_info)
+    software.verify_license_info(self.another_license_version, self.another_license_link)
+    software.save!
   end
 
   def title

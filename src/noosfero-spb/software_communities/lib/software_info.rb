@@ -84,7 +84,7 @@ class SoftwareInfo < ActiveRecord::Base
   validates_length_of :finality, :maximum => 120
   validates_length_of :objectives, :maximum => 4000
   validates_length_of :features, :maximum => 4000
-  validates_presence_of :finality
+  validates_presence_of :finality, :community
 
   validate :validate_acronym
 
@@ -166,13 +166,16 @@ class SoftwareInfo < ActiveRecord::Base
     another_license_link = attributes.delete(:another_license_link)
 
     software_info = SoftwareInfo.new(attributes)
-    if !environment.admins.include? requestor
+    unless environment.admins.include? requestor
       CreateSoftware.create!(
         attributes.merge(
           :requestor => requestor,
           :environment => environment,
           :name => name,
-          :license_info => license_info
+          :identifier => identifier,
+          :license_info => license_info,
+          :another_license_version => another_license_version,
+          :another_license_link => another_license_link
         )
       )
     else
@@ -189,15 +192,15 @@ class SoftwareInfo < ActiveRecord::Base
         community.template_id = software_template.id
       end
 
-      software_info.license_info = license_info
-      software_info.save
-      community.software_info = software_info
       community.save!
       community.add_admin(requestor)
+
+      software_info.community = community
+      software_info.license_info = license_info
+      software_info.verify_license_info(another_license_version, another_license_link)
+      software_info.save!
     end
 
-    software_info.verify_license_info(another_license_version, another_license_link)
-    software_info.save!
     software_info
   end
 
