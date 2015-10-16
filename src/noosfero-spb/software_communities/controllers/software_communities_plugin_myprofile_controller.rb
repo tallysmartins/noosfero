@@ -20,7 +20,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
     @software_info.license_info = @license_info
 
     control_software_creation
-    update_new_software_errors
+    update_software_highlight_errors
   end
 
   def edit_software
@@ -204,6 +204,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
       add_software_erros
     end
 
+  def update_software_highlight_errors
     @error_community_name = @community.errors.include?(:name) ? "highlight-error" : "" if @community
     @error_software_acronym = @software_info.errors.include?(:acronym) ? "highlight-error" : "" if @software_info
     @error_software_domain = @community.errors.include?(:identifier) ? "highlight-error" : "" if @community

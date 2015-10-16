@@ -183,16 +183,24 @@ class SoftwareInfo < ActiveRecord::Base
     another_license_link = attributes.delete(:another_license_link)
 
     software_info = SoftwareInfo.new(attributes)
+<<<<<<< HEAD
     if !requestor.is_admin?
+=======
+    unless environment.admins.include? requestor
+>>>>>>> Refactor software_communities.
       CreateSoftware.create!(
         attributes.merge(
           :requestor => requestor,
           :environment => environment,
           :name => name,
           :identifier => identifier,
+<<<<<<< HEAD
           :license_info => license_info,
           :another_license_version => another_license_version,
           :another_license_link => another_license_link
+=======
+          :license_info => license_info
+>>>>>>> Refactor software_communities.
         )
       )
     else
@@ -214,10 +222,18 @@ class SoftwareInfo < ActiveRecord::Base
 
       software_info.community = community
       software_info.license_info = license_info
+<<<<<<< HEAD
       software_info.verify_license_info(another_license_version, another_license_link)
       software_info.save!
     end
 
+=======
+      software_info.save!
+    end
+
+    software_info.verify_license_info(another_license_version, another_license_link)
+    software_info.save
+>>>>>>> Refactor software_communities.
     software_info
   end
 

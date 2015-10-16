@@ -131,7 +131,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
         is_admin = user.is_admin? || user_rating.organization.is_admin?(user)
 
         if is_admin and profile.software?
-
             render :file => 'organization_ratings_task_extra_fields_show_statistics',
                    :locals => {:user_rating => user_rating}
         end

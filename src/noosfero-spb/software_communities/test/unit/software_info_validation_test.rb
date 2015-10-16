@@ -55,6 +55,16 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     @software_info.community = @community
   end
 
+  def teardown
+    ProgrammingLanguage.destroy_all
+    SoftwareLanguage.destroy_all
+    DatabaseDescription.destroy_all
+    SoftwareDatabase.destroy_all
+    OperatingSystem.destroy_all
+    OperatingSystemName.destroy_all
+    SoftwareInfo.destroy_all
+  end
+
   should 'Save SoftwareInfo if all fields are filled' do
     assert_equal true, @software_info.save
   end
