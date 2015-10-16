@@ -8,6 +8,19 @@
   padding-bottom:30px;
   margin-bottom: 30px;
 }
+
+.action-profile-index #content .page-profile-header{
+  margin-bottom: 40px;
+  border-bottom: 1px solid #D3D6DE;
+  font-family: Arial;
+  height: 40px;
+}
+
+.action-profile-index .page-profile-header .control-panel-button{
+  float:left;
+  margin-right: 4px;
+}
+
 .action-profile-index .page-profile-header .join-leave-button.require-login-popup{
   float:left;
   width: 35%;
@@ -838,10 +851,10 @@ float: left;
 }
 
 .action-profile-members #content .page-members-header{
-  margin-bottom: 45px;
+  margin-bottom: 40px;
   border-bottom: 1px solid #D3D6DE;
   font-family: Arial;
-  height: 150px;
+  height: 140px;
 }
 
 .action-profile-members #content .page-members-header h1{
@@ -857,7 +870,6 @@ float: left;
 .action-profile-members #content .page-members-header ul li{
   float:left;
   margin:8px 0px 0px 0px;
-  width: 36%;
 
 }
 
