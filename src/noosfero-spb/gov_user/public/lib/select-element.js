@@ -1,3 +1,5 @@
+/* globals modulejs */
+
 modulejs.define('SelectElement', function() {
   'use strict';
 

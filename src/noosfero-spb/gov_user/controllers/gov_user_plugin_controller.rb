@@ -1,5 +1,9 @@
 #aqui deve ter so usuario   e instituicao
 class GovUserPluginController < ApplicationController
+  VERIFY_ERRORS_IN = [
+    :name, :country, :state, :city, :corporate_name, :cnpj,
+    :governmental_sphere, :governmental_power, :juridical_nature, :sisp
+  ]
 
   def hide_registration_incomplete_percentage
     response = false
@@ -13,15 +17,7 @@ class GovUserPluginController < ApplicationController
   end
 
   def create_institution
-    @show_sisp_field = environment.admins.include?(current_user.person)
-    @state_list = get_state_list()
-    @governmental_sphere = [[_("Select a Governmental Sphere"), 0]]|GovernmentalSphere.all.map {|s| [s.name, s.id]}
-    @governmental_power = [[_("Select a Governmental Power"), 0]]|GovernmentalPower.all.map {|g| [g.name, g.id]}
-    @juridical_nature = [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}
-    @state_options = [[_('Select a state'), '-1']] | @state_list.collect {|state| [state.name, state.name]}
-
-    params[:community] ||= {}
-    params[:institutions] ||= {}
+    create_institution_view_variables
 
     if request.xhr?
       render :layout=>false
@@ -30,26 +26,10 @@ class GovUserPluginController < ApplicationController
     end
   end
 
-  def split_http_referer http_referer
-    split_list = []
-    split_list = http_referer.split("/")
-    @url_token = split_list.last
-    return @url_token
-  end
-
   def create_institution_admin
-    @show_sisp_field = environment.admins.include?(current_user.person)
-    @state_list = get_state_list()
-    @governmental_sphere = [[_("Select a Governmental Sphere"), 0]]|GovernmentalSphere.all.map {|s| [s.name, s.id]}
-    @governmental_power = [[_("Select a Governmental Power"), 0]]|GovernmentalPower.all.map {|g| [g.name, g.id]}
-    @juridical_nature = [[_("Select a Juridical Nature"), 0]]|JuridicalNature.all.map {|j| [j.name, j.id]}
-    @state_options = [[_('Select a state'), '-1']] | @state_list.collect {|state| [state.name, state.name]}
+    create_institution_view_variables
 
     @url_token = split_http_referer request.original_url()
-
-    params[:community] ||= {}
-    params[:institutions] ||= {}
-
   end
 
   def new_institution
@@ -77,7 +57,7 @@ class GovUserPluginController < ApplicationController
   def institution_already_exists
     redirect_to "/" if !request.xhr? || params[:name].blank?
 
-    already_exists = !Community.where(:name=>params[:name]).empty?
+    already_exists = !Institution.find_by_name(params[:name]).nil?
 
     render :json=>already_exists.to_json
   end
@@ -85,18 +65,18 @@ class GovUserPluginController < ApplicationController
   def get_institutions
     redirect_to "/" if !request.xhr? || params[:query].blank?
 
-    list = Institution.search_institution(params[:query]).map{ |institution|
+    institutions = Institution.search_institution(params[:query]).select([:id, :name])
+    institutions_list = institutions.map { |institution|
       {:value=>institution.name, :id=>institution.id}
     }
 
-    render :json => list.to_json
+    render :json => institutions_list.to_json
   end
 
   def get_brazil_states
     redirect_to "/" unless request.xhr?
 
-    state_list = get_state_list()
-    render :json=>state_list.collect {|state| state.name }.to_json
+    render :json=>get_state_list().to_json
   end
 
   def get_field_data
@@ -122,6 +102,24 @@ class GovUserPluginController < ApplicationController
 
   protected
 
+  def split_http_referer http_referer=""
+    split_list = http_referer.split("/")
+    split_list.last
+  end
+
+  def create_institution_view_variables
+    params[:community] ||= {}
+    params[:institutions] ||= {}
+
+    @show_sisp_field = environment.admins.include?(current_user.person)
+    @governmental_sphere = get_governmental_spheres()
+    @governmental_power = get_governmental_powers()
+    @juridical_nature = get_juridical_natures()
+
+    state_list = get_state_list()
+    @state_options = state_list.zip(state_list).prepend([_('Select a state'), '-1'])
+  end
+
   def get_model_by_params_field
     case params[:field]
     when "software_language"
@@ -132,11 +130,26 @@ class GovUserPluginController < ApplicationController
   end
 
   def get_state_list
-    NationalRegion.find(
-    :all,
-    :conditions=>["national_region_type_id = ?", 2],
-    :order=>"name"
-    )
+    NationalRegion.select(:name).where(:national_region_type_id => 2).order(:name).map &:name
+  end
+
+  def get_governmental_spheres
+    spheres = [[_("Select a Governmental Sphere"), 0]]
+    spheres.concat get_model_as_option_list(GovernmentalSphere)
+  end
+
+  def get_governmental_powers
+    powers = [[_("Select a Governmental Power"), 0]]
+    powers.concat get_model_as_option_list(GovernmentalPower)
+  end
+
+  def get_juridical_natures
+    natures = [[_("Select a Juridical Nature"), 0]]
+    natures.concat get_model_as_option_list(JuridicalNature)
+  end
+
+  def get_model_as_option_list model
+    model.select([:id, :name]).map {|m| [m.name, m.id]}
   end
 
   def set_institution_type
@@ -236,16 +249,20 @@ class GovUserPluginController < ApplicationController
     institution.valid? if institution
     institution.community.valid? if institution.community
 
-    flash[:error_community_name] = institution.community.errors.include?(:name) ? "highlight-error" : ""
-    flash[:error_community_country] = institution.errors.include?(:country) ? "highlight-error" : ""
-    flash[:error_community_state] = institution.errors.include?(:state) ? "highlight-error" : ""
-    flash[:error_community_city] = institution.errors.include?(:city) ? "highlight-error" : ""
-    flash[:error_institution_corporate_name] = institution.errors.include?(:corporate_name) ? "highlight-error" : ""
-    flash[:error_institution_cnpj] = institution.errors.include?(:cnpj) ? "highlight-error" : ""
-    flash[:error_institution_governmental_sphere] = institution.errors.include?(:governmental_sphere) ? "highlight-error" : ""
-    flash[:error_institution_governmental_power] = institution.errors.include?(:governmental_power) ? "highlight-error" : ""
-    flash[:error_institution_juridical_nature] = institution.errors.include?(:juridical_nature) ? "highlight-error" : ""
-    flash[:error_institution_sisp] = institution.errors.include?(:sisp) ? "highlight-error" : ""
+    dispatch_flash_errors institution, "institution"
+    dispatch_flash_errors institution.community, "community"
+  end
+
+  def dispatch_flash_errors model, flash_key_base
+    model.errors.messages.keys.each do |error_key|
+      flash_key = "error_#{flash_key_base}_#{error_key}".to_sym
+
+      if VERIFY_ERRORS_IN.include? error_key
+        flash[flash_key] = "highlight-error"
+      else
+        flash[flash_key] = ""
+      end
+    end
   end
 
 end

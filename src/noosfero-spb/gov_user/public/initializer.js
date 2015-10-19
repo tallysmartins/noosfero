@@ -1,3 +1,5 @@
+/* globals modulejs */
+
 (function() {
   'use strict';
 
