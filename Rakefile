@@ -16,9 +16,10 @@ iptables_file = "config/#{$SPB_ENV}/iptables-filter-rules"
 ENV['CHAKE_TMPDIR'] = "tmp/chake.#{$SPB_ENV}"
 ENV['CHAKE_SSH_CONFIG'] = ssh_config_file
 
-ENV['CHAKE_RSYNC_OPTIONS'] ||= ''
-ENV['CHAKE_RSYNC_OPTIONS'] << ' ' << '--exclude backups'
-ENV['CHAKE_RSYNC_OPTIONS'] << ' ' << '--exclude src'
+chake_rsync_options = ENV['CHAKE_RSYNC_OPTIONS'].to_s.clone
+chake_rsync_options += ' --exclude backups'
+chake_rsync_options += ' --exclude src'
+ENV['CHAKE_RSYNC_OPTIONS'] = chake_rsync_options
 
 if $SPB_ENV == 'lxc'
   system("mkdir -p config/lxc; sudo lxc-ls -f -F name,ipv4 | sed -e '/^softwarepublico/ !d; s/softwarepublico_//; s/_[0-9_]*/:/ ' > #{ips_file}.new")
