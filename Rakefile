@@ -14,11 +14,11 @@ config_file = "config/#{$SPB_ENV}/config.yaml"
 iptables_file = "config/#{$SPB_ENV}/iptables-filter-rules"
 
 ENV['CHAKE_TMPDIR'] = "tmp/chake.#{$SPB_ENV}"
-
 ENV['CHAKE_SSH_CONFIG'] = ssh_config_file
 
-ENV['CHAKE_RSYNC_OPTIONS'] = '--exclude backups'
-ENV['CHAKE_RSYNC_OPTIONS'] = '--exclude src'
+ENV['CHAKE_RSYNC_OPTIONS'] ||= ''
+ENV['CHAKE_RSYNC_OPTIONS'] << ' ' << '--exclude backups'
+ENV['CHAKE_RSYNC_OPTIONS'] << ' ' << '--exclude src'
 
 if $SPB_ENV == 'lxc'
   system("mkdir -p config/lxc; sudo lxc-ls -f -F name,ipv4 | sed -e '/^softwarepublico/ !d; s/softwarepublico_//; s/_[0-9_]*/:/ ' > #{ips_file}.new")
