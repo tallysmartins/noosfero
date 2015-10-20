@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.2-143-g8dfded9\n"
-"POT-Creation-Date: 2015-09-11 17:14-0000\n"
+"Project-Id-Version: 1.3.1+spb2\n"
+"POT-Creation-Date: 2015-10-16 19:14-0000\n"
 "PO-Revision-Date: 2015-09-01 19:55-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,26 +22,26 @@ msgid "Name Should begin with a capital letter and no special characters"
 msgstr ""
 "Nome deve iniciar com letrar maiúscula e não deve conter carateres especiais"
 
-#: plugins/gov_user/controllers/gov_user_plugin_myprofile_controller.rb:26
+#: plugins/gov_user/controllers/gov_user_plugin_myprofile_controller.rb:28
 #: plugins/gov_user/controllers/gov_user_plugin_controller.rb:168
 msgid "Could not find Governmental Power or Governmental Sphere"
 msgstr "Não foi possível encontrar o Poder ou Esfera Governamental"
 
 #: plugins/gov_user/controllers/gov_user_plugin_controller.rb:18
 #: plugins/gov_user/controllers/gov_user_plugin_controller.rb:43
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:83
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:80
 msgid "Select a Governmental Sphere"
 msgstr "Selecione uma Esfera Governamental"
 
 #: plugins/gov_user/controllers/gov_user_plugin_controller.rb:19
 #: plugins/gov_user/controllers/gov_user_plugin_controller.rb:44
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:90
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:87
 msgid "Select a Governmental Power"
 msgstr "Selecione um Poder Governamental"
 
 #: plugins/gov_user/controllers/gov_user_plugin_controller.rb:20
 #: plugins/gov_user/controllers/gov_user_plugin_controller.rb:45
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:96
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:93
 msgid "Select a Juridical Nature"
 msgstr "Seleciona uma Natureza Jurídica"
 
@@ -67,11 +67,11 @@ msgstr "Adicionar funcionlidade relacionada com o governo brasileiro."
 msgid "Create Institution"
 msgstr "Criar Instituição"
 
-#: plugins/gov_user/lib/gov_user_plugin.rb:287
+#: plugins/gov_user/lib/gov_user_plugin.rb:289
 msgid "Institution Info"
 msgstr "Informações da Instituição"
 
-#: plugins/gov_user/lib/gov_user_plugin.rb:312
+#: plugins/gov_user/lib/gov_user_plugin.rb:314
 msgid "Institution"
 msgstr "Instituição"
 
@@ -152,95 +152,91 @@ msgid "\"Can`t create new Institution: #{flash[:errors].length} errors\""
 msgstr ""
 "\"Não foi possível criar nova Instituição: #{flash[:errors].length} erros\""
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:24
-msgid "All fields with (*) are mandatory"
-msgstr "Todos os campos com (*) são obrigatórios"
-
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:31
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:28
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:37
 msgid "Public Institution"
 msgstr "Instituição Pública"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:36
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:33
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:33
 msgid "Private Institution"
 msgstr "Instituição Privada"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:43
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:40
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:44
 msgid "Institution name already exists"
 msgstr "Nome de Instituição já existe"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:47
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:44
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:48
 msgid "Corporate Name"
 msgstr "Nome da Coorporação"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:52
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:49
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:53
 msgid "Country"
 msgstr "País"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:56
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:53
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:57
 msgid "State"
 msgstr "Estado"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:66
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:63
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:66
 msgid "CNPJ"
 msgstr "CNPJ"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:73
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:75
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:70
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:72
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:72
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:74
 msgid "Acronym"
 msgstr "Sigla"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:74
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:71
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:73
 msgid "Fantasy name"
 msgstr "Nome Fantasia"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:82
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:79
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:17
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:81
 msgid "Governmental Sphere:"
 msgstr "Esfera Governamental:"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:89
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:86
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:16
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:88
 msgid "Governmental Power:"
 msgstr "Poder Governamental:"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:95
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:92
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:18
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:94
 msgid "Juridical Nature:"
 msgstr "Natureza Jurídica:"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:102
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:99
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:101
 msgid "SISP?"
 msgstr "SISP?"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:104
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:101
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:19
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:104
 msgid "Yes"
 msgstr "Sim"
 
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:103
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:106
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:109
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:19
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:106
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:108
 msgid "No"
 msgstr "Não"
 
-#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:114
+#: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:111
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:114
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:118
 msgid "Save"
@@ -359,6 +355,9 @@ msgstr "Complete seu perfil"
 #: plugins/gov_user/views/incomplete_registration.html.erb:7
 msgid "Hide"
 msgstr "Ocultar"
+
+#~ msgid "All fields with (*) are mandatory"
+#~ msgstr "Todos os campos com (*) são obrigatórios"
 
 #~ msgid "A plugin that does this and that."
 #~ msgstr "Um plugin que faz isso e aquilo"
