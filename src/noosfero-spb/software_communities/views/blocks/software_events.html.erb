@@ -3,16 +3,11 @@
 
   <ul class="software-community-events-list">
     <% events.each do |event| %>
-    <li>
+    <li class="software-events-list-item">
       <%= render :partial=>"blocks/software_events_list_item",
                  :locals => {:event => event} %>
     </li>
     <% end %>
   </ul>
-
-  <% else %>
-    <div class="software-community-events-no-event">
-      <%= _("This community does not have any events yet") %>
-    </div>
   <% end %>
 </div>

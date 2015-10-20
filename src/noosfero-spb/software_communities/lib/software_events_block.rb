@@ -10,7 +10,7 @@ class SoftwareEventsBlock < Block
 
   def content(args={})
     today = DateTime.now.beginning_of_day
-    events = self.owner.events.where("start_date >= ? AND end_date >= ?", today, today).order(:start_date)
+    events = self.owner.events.where("end_date >= ?", today).order(:start_date)
 
     block = self
 
