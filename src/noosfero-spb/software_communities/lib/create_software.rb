@@ -2,11 +2,11 @@ class CreateSoftware < Task
   include Rails.application.routes.url_helpers
 
   validates_presence_of :requestor_id, :target_id
-  validates_presence_of :name
+  validates_presence_of :name, :finality
 
   attr_accessible :name, :finality, :repository_link, :requestor, :environment,
                   :reject_explanation, :license_info, :identifier, :another_license_version,
-                  :another_license_link
+                  :another_license_link, :target
 
   alias :environment :target
   alias :environment= :target=
@@ -19,9 +19,7 @@ class CreateSoftware < Task
 
   def perform
     software_template = SoftwareHelper.software_template
-    if (!software_template.blank? && software_template.is_template)
-      template_id = software_template.id
-    end
+    template_id = software_template.blank? ? nil : software_template.id
 
     identifier = self.identifier
     identifier ||= self.name.to_slug
