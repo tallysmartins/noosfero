@@ -179,8 +179,8 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
   end
 
   def set_software_as_template
-    software_template = Community['software']
-    software_valid = !software_template.blank? && software_template.is_template && !params['community'].blank?
+    software_template = SoftwareHelper.software_template
+    software_valid = !software_template.blank? && !params['community'].blank?
     if software_valid
       params['community']['template_id'] = software_template.id if software_valid
     end

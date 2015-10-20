@@ -18,7 +18,7 @@ class CreateSoftware < Task
   end
 
   def perform
-    software_template = Community["software"]
+    software_template = SoftwareHelper.software_template
     if (!software_template.blank? && software_template.is_template)
       template_id = software_template.id
     end

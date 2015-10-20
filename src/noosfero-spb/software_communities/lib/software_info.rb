@@ -204,7 +204,7 @@ class SoftwareInfo < ActiveRecord::Base
         )
       )
     else
-      software_template = Community["software"]
+      software_template = SoftwareHelper.software_template
 
       community_hash = {:name => name}
       community_hash[:identifier] = identifier
@@ -213,7 +213,7 @@ class SoftwareInfo < ActiveRecord::Base
       community = Community.new(community_hash)
       community.environment = environment
 
-      if (!software_template.blank? && software_template.is_template)
+      unless software_template.blank?
         community.template_id = software_template.id
       end
 

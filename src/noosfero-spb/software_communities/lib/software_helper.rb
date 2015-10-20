@@ -25,4 +25,19 @@ module SoftwareHelper
   def self.all_table_is_empty? table, ignored_fields=[]
     return !table.keys.any?{|key| ignored_fields.include?(key) ? false : !table[key].empty?}
   end
+
+  def self.software_template
+    identifier = SoftwareHelper.software_template_identifier
+
+    software_template = Community[identifier]
+    if !software_template.blank? && software_template.is_template
+      software_template
+    else
+      nil
+    end
+  end
+
+  def self.software_template_identifier
+    identifier = YAML::load(File.open(SoftwareCommunitiesPlugin.root_path + 'config.yml'))['software_template']
+  end
 end

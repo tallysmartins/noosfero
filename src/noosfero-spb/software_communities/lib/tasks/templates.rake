@@ -13,10 +13,11 @@ namespace :templates do
     task :software => :environment do
       Environment.all.each do |env|
         if env.plugin_enabled?("MpogSoftware") or env.plugin_enabled?("SoftwareCommunitiesPlugin")
-          software = Community["software"]
+          software = SoftwareHelper.software_template
 
           if software.nil?
-            software = Community.create!(:name => "Software", :identifier => "software")
+            identifier = YAML::load(File.open(SoftwareCommunitiesPlugin.root_path + 'config.yml'))['software_template']
+            software = Community.create!(:name => "Software", :identifier => identifier)
           end
 
           software.layout_template = "default"
