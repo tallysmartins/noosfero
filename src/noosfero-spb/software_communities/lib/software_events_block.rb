@@ -9,8 +9,7 @@ class SoftwareEventsBlock < Block
   end
 
   def content(args={})
-    today = DateTime.now.beginning_of_day
-    events = self.owner.events.where("end_date >= ?", today).order(:start_date)
+    events = community_events
 
     block = self
 
@@ -24,5 +23,10 @@ class SoftwareEventsBlock < Block
 
   def cacheable?
     false
+  end
+
+  def community_events
+    today = DateTime.now.beginning_of_day
+    self.owner.events.where("end_date >= ?", today).order(:start_date)
   end
 end
