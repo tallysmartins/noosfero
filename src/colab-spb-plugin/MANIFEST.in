@@ -1,5 +1,6 @@
 include README.rst
 include MANIFEST.in
+include VERSION
 recursive-include src/colab_spb/static *
 recursive-include src/colab_spb/locale *
 recursive-include src/colab_spb/templates *

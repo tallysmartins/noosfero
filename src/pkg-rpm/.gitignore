@@ -1,2 +1,4 @@
 /.obs
 /.config.mk
+*/*.tar.*
+/.virtualenv

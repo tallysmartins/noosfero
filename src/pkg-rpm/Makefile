@@ -1,9 +1,9 @@
 OBSPROJECT = isv:spb:devel
 COPR_PROJECT = softwarepublico/v5
-LOCAL_BUILD_DIR = $(PWD)/build
+LOCAL_BUILD_DIR = $(CURDIR)/build
 
 # Vagrant environment does not accept links from/to shared folder
-ifeq "$(PWD)" "/vagrant"
+ifeq "/vagrant" "$(shell ls -1d /vagrant 2>/dev/null)"
 LOCAL_BUILD_DIR = /home/vagrant/rpmbuild
 endif
 
@@ -57,7 +57,7 @@ checkout_packages_obs = $(patsubst %, %-checkout-obs, $(packages))
 upload_packages_obs = $(patsubst %, %-upload-obs, $(packages))
 diff_packages_obs = $(patsubst %, %-diff-obs, $(packages))
 
-.PHONY: $(build_packages) $(checkout_packages_obs) $(upload_packages_obs) $(diff_packages_obs)
+.PHONY: $(build_packages) $(checkout_packages_obs) $(upload_packages_obs) $(diff_packages_obs) copr-cli
 
 ### Targets
 
@@ -76,8 +76,14 @@ $(build_src_packages): %-build-src : %
 	rm -f $(LOCAL_BUILD_DIR)/SRPMS/$*-*.src.rpm
 	cd $* && $(BUILD_PREFIX) rpmbuild --define "_topdir $(LOCAL_BUILD_DIR)" -bs $*.spec --nodeps
 
-$(upload_packages): %-upload : %-build-src %
-	copr-cli build $(COPR_PROJECT) $(LOCAL_BUILD_DIR)/SRPMS/$*-*.src.rpm --nowait
+$(upload_packages): %-upload : %-build-src % copr-cli
+	.virtualenv/bin/copr-cli build $(COPR_PROJECT) $(LOCAL_BUILD_DIR)/SRPMS/$*-*.src.rpm --nowait
+
+copr-cli: .virtualenv/bin/copr-cli
+
+.virtualenv/bin/copr-cli:
+	virtualenv .virtualenv
+	.virtualenv/bin/pip install copr-cli
 
 ### OBS targets (deprecated)
 
@@ -102,3 +108,8 @@ diff-obs: $(diff_packages_obs)
 
 status-obs st-obs:
 	@$(MAKE) diff | diffstat -C
+
+clean:
+	rm -rf */*.tar.*
+	rm -rf build/
+	rm -rf .virtualenv/
