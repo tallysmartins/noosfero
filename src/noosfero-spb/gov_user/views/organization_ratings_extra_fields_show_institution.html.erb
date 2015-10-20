@@ -1,7 +1,7 @@
 <% if user_rating.institution %>
 <div class="aditional-informations">
   <div class="comments-user-institution">
-    <span>Institution :<span> <%= user_rating.institution.name unless user_rating.institution.nil? %>
+    <span><%=_("Institution")%> :<span> <%= user_rating.institution.name unless user_rating.institution.nil? %>
   </div>
 </div>
 <% end %>
