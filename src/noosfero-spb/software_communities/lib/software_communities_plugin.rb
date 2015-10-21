@@ -44,7 +44,7 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       SoftwareTabDataBlock => {:type => [Community], :position => 1},
       WikiBlock => {:type => [Community]},
       StatisticBlock => { :type => [Community] },
-      SoftwareEventsBlock => { :type => [Community], :position => 1 }
+      SoftwareEventsBlock => { :type => [Community] }
     }
   end
 
