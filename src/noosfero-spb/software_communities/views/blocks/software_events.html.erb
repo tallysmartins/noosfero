@@ -1,13 +1,22 @@
 <div class="software-community-events-block">
-  <% if not events.empty? %>
+  <% if block.has_events_to_display? %>
+    <ul class="software-community-events-list">
 
-  <ul class="software-community-events-list">
-    <% events.each do |event| %>
-    <li class="software-events-list-item">
-      <%= render :partial=>"blocks/software_events_list_item",
-                 :locals => {:event => event} %>
-    </li>
-    <% end %>
-  </ul>
+      <% if block.should_display_title? %>
+        <li class="software-events-list-item">
+          <span class="software-events-list-item-title">
+            <%= block.title %>
+          </span>
+        </li>
+      <% end %>
+
+      <% block.get_events_except(params[:page]).each do |event| %>
+        <li class="software-events-list-item">
+          <%= render :partial=>"blocks/software_events_list_item",
+                     :locals => {:event => event} %>
+        </li>
+      <% end %>
+
+    </ul>
   <% end %>
 </div>
