@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.3.1+spb2\n"
-"POT-Creation-Date: 2015-10-16 18:59-0000\n"
+"POT-Creation-Date: 2015-10-21 14:05-0000\n"
 "PO-Revision-Date: 2014-11-12 13:05-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -404,19 +404,16 @@ msgid "Saved Resources"
 msgstr "Recursos economizados"
 
 #: plugins/software_communities/views/profile/members.html.erb:4
-#, fuzzy
 msgid "Members (%d)"
-msgstr "Membros"
+msgstr "Membros (%d)"
 
 #: plugins/software_communities/views/profile/members.html.erb:21
-#, fuzzy
 msgid "%d Members"
-msgstr "Membros"
+msgstr "%d Membros"
 
 #: plugins/software_communities/views/profile/members.html.erb:34
-#, fuzzy
 msgid "%d Administrators"
-msgstr "Administradores"
+msgstr "%d Administradores"
 
 #: plugins/software_communities/views/profile/members.html.erb:44
 msgid "Go back"
