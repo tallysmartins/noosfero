@@ -4,7 +4,7 @@ LOCAL_BUILD_DIR = $(PWD)/build
 
 # Vagrant environment does not accept links from/to shared folder
 ifeq "$(PWD)" "/vagrant"
-LOCAL_BUILD_DIR = /home/vagrant/rpmbuild/
+LOCAL_BUILD_DIR = /home/vagrant/rpmbuild
 endif
 
 #############################################################################
@@ -17,10 +17,11 @@ obsdir = .obs
 all:
 	@echo "Usage:"
 	@echo
+	@echo '$$ make $${pkg}-build      builds package $${pkg} locally'
+	@echo '$$ make $${pkg}-build-src  builds SRPM package $${pkg} locally'
+	@echo '$$ make $${pkg}-upload     uploads package $${pkg} to Copr'
 	@echo
 	@echo '$${pkg} can be one of: $(packages)'
-	@echo
-	@echo '$$ make $${pkg}-build      builds package $${pkg} locally'
 	@echo
 	@echo 'Operations on all packages:'
 	@echo
@@ -48,6 +49,8 @@ all:
 build_packages = $(patsubst %, %-build, $(packages))
 build_src_packages = $(patsubst %, %-build-src, $(packages))
 
+# Copr
+upload_packages = $(patsubst %, %-upload, $(packages))
 
 # OBS
 checkout_packages_obs = $(patsubst %, %-checkout-obs, $(packages))
@@ -55,6 +58,8 @@ upload_packages_obs = $(patsubst %, %-upload-obs, $(packages))
 diff_packages_obs = $(patsubst %, %-diff-obs, $(packages))
 
 .PHONY: $(build_packages) $(checkout_packages_obs) $(upload_packages_obs) $(diff_packages_obs)
+
+### Targets
 
 build-all: $(build_packages)
 
@@ -65,11 +70,14 @@ $(build_packages): %-build : %
 	cd $* && $(BUILD_PREFIX) rpmbuild --define "_topdir $(LOCAL_BUILD_DIR)" -bb $*.spec
 
 $(build_src_packages): %-build-src : %
-	mkdir -p build/SOURCES
-	cp $*/*.tar.* build/SOURCES/
-	cp $*/*.patch build/SOURCES/ || true
-	cd $* && $(BUILD_PREFIX) rpmbuild --define "_topdir $(PWD)/build/" -bs $*.spec --nodeps
+	mkdir -p $(LOCAL_BUILD_DIR)/SOURCES
+	cp $*/*.tar.* $(LOCAL_BUILD_DIR)/SOURCES/
+	cp $*/*.patch $(LOCAL_BUILD_DIR)/SOURCES/ || true
+	rm $(LOCAL_BUILD_DIR)/SRPMS/$*-*.src.rpm
+	cd $* && $(BUILD_PREFIX) rpmbuild --define "_topdir $(LOCAL_BUILD_DIR)" -bs $*.spec --nodeps
 
+$(upload_packages): %-upload : %-build-src %
+	copr-cli build $(COPR_PROJECT) $(LOCAL_BUILD_DIR)/SRPMS/$*-*.src.rpm --nowait
 
 ### OBS targets (deprecated)
 
