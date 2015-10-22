@@ -1,4 +1,11 @@
 OBSPROJECT = isv:spb:devel
+COPR_PROJECT = softwarepublico/v4
+LOCAL_BUILD_DIR = $(PWD)/build
+
+# Vagrant environment does not accept links from/to shared folder
+ifeq "$(PWD)" "/vagrant"
+LOCAL_BUILD_DIR = /home/vagrant/rpmbuild/
+endif
 
 #############################################################################
 
@@ -20,7 +27,7 @@ all:
 	@echo '$$ make build-all          builds all packages locally'
 	@echo
 	@echo
-	@echo 'Working with OBS (deprecated):' 
+	@echo 'Working with OBS (deprecated):'
 	@echo
 	@echo '$$ make $${pkg}-checkout-obs   checkout $${pkg}'
 	@echo '$$ make $${pkg}-upload-obs     uploads package $${pkg}'
@@ -52,10 +59,10 @@ diff_packages_obs = $(patsubst %, %-diff-obs, $(packages))
 build-all: $(build_packages)
 
 $(build_packages): %-build : %
-	mkdir -p build/SOURCES
-	cp $*/*.tar.* build/SOURCES/
-	cp $*/*.patch build/SOURCES/ || true
-	cd $* && $(BUILD_PREFIX) rpmbuild --define "_topdir $(PWD)/build/" -bb $*.spec
+	mkdir -p $(LOCAL_BUILD_DIR)/SOURCES
+	cp $*/*.tar.* $(LOCAL_BUILD_DIR)/SOURCES/
+	cp $*/*.patch $(LOCAL_BUILD_DIR)/SOURCES/ || true
+	cd $* && $(BUILD_PREFIX) rpmbuild --define "_topdir $(LOCAL_BUILD_DIR)" -bb $*.spec
 
 $(build_src_packages): %-build-src : %
 	mkdir -p build/SOURCES
