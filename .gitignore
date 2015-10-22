@@ -13,3 +13,4 @@
 /backups
 /exported_data
 .vagrant
+src/pkg-rpm/build/

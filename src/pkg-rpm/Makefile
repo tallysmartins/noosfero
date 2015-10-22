@@ -37,8 +37,12 @@ all:
 	@echo '$$ make status-obs|st-obs      diffstat of all packages from OBS to git'
 	@echo '$$ make checkout-all-obs       checks out all packages from OBS'
 
-
+# Local
 build_packages = $(patsubst %, %-build, $(packages))
+build_src_packages = $(patsubst %, %-build-src, $(packages))
+
+
+# OBS
 checkout_packages_obs = $(patsubst %, %-checkout-obs, $(packages))
 upload_packages_obs = $(patsubst %, %-upload-obs, $(packages))
 diff_packages_obs = $(patsubst %, %-diff-obs, $(packages))
@@ -48,10 +52,16 @@ diff_packages_obs = $(patsubst %, %-diff-obs, $(packages))
 build-all: $(build_packages)
 
 $(build_packages): %-build : %
-	mkdir -p ~/rpmbuild/SOURCES
-	cp $(obsdir)/$(OBSPROJECT)/$*/*.tar.* ~/rpmbuild/SOURCES/
-	cp $*/*.patch ~/rpmbuild/SOURCES/ || true
-	cd $* && $(BUILD_PREFIX) rpmbuild -bb $*.spec
+	mkdir -p build/SOURCES
+	cp $*/*.tar.* build/SOURCES/
+	cp $*/*.patch build/SOURCES/ || true
+	cd $* && $(BUILD_PREFIX) rpmbuild --define "_topdir $(PWD)/build/" -bb $*.spec
+
+$(build_src_packages): %-build-src : %
+	mkdir -p build/SOURCES
+	cp $*/*.tar.* build/SOURCES/
+	cp $*/*.patch build/SOURCES/ || true
+	cd $* && $(BUILD_PREFIX) rpmbuild --define "_topdir $(PWD)/build/" -bs $*.spec --nodeps
 
 
 ### OBS targets (deprecated)
