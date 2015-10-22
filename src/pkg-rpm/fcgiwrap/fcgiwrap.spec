@@ -1,6 +1,7 @@
 %global gitcommit 333ff99
 Name:           fcgiwrap
 Version:        1.1.0
+Release:        3
 Summary:        Simple FastCGI wrapper for CGI scripts
 License:        MIT
 URL:            http://nginx.localdomain.pl/
@@ -8,7 +9,7 @@ Group:          System Environment/Daemons
 
 Source0:        fcgiwrap-%{version}.tar.gz
 
-BuildRequires:      autoconf
+BuildRequires:      automake
 BuildRequires:      fcgi-devel
 Requires:           spawn-fcgi
 

@@ -1,5 +1,6 @@
 Name:    gitlab-deps
 Version: 7.5.4
+Release: 2.1
 Summary: Ruby dependencies for Gitlab
 Group:   Development/Tools
 License: Various
