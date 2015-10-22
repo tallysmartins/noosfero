@@ -1,5 +1,5 @@
 OBSPROJECT = isv:spb:devel
-COPR_PROJECT = softwarepublico/v4
+COPR_PROJECT = softwarepublico/v5
 LOCAL_BUILD_DIR = $(PWD)/build
 
 # Vagrant environment does not accept links from/to shared folder
