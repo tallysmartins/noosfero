@@ -1,5 +1,6 @@
 Name:		gitlab-shell
 Version:	2.4.0
+Release:	5.1
 Summary:	Software Development Platform
 
 Group:		Development/Tools

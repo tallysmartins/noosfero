@@ -1,7 +1,6 @@
 %define name mailman-api
-%define version 0.3c1
-%define unmangled_version 0.3c1
-%define release 10
+%define version 0.3rc2
+%define unmangled_version 0.3rc2
 
 Summary: REST API daemon to interact with Mailman 2
 Name: %{name}
@@ -15,8 +14,9 @@ BuildArch: noarch
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Requires: mailman, python >= 2.7, python-paste >= 1.7.5.1, bottle >= 0.11.6
 Url: http://pypi.python.org/pypi/mailman-api/
-
+Release:  10
 BuildRequires: python >= 2.7, python-devel >= 2.7, python-setuptools >= 0.9.8
+BuildRequires: systemd-units
 
 %description
 mailman-api
