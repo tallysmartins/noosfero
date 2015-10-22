@@ -10,41 +10,42 @@ obsdir = .obs
 all:
 	@echo "Usage:"
 	@echo
-	@echo '$$ make $${pkg}-checkout   checkout $${pkg}'
-	@echo '$$ make $${pkg}-upload     uploads package $${pkg}'
-	@echo '$$ make $${pkg}-build      builds package $${pkg} locally'
-	@echo '$$ make $${pkg}-diff       diff from OBS to git for package $${pkg}'
 	@echo
 	@echo '$${pkg} can be one of: $(packages)'
+	@echo
+	@echo '$$ make $${pkg}-build      builds package $${pkg} locally'
+	@echo
+	@echo 'Operations on all packages:'
+	@echo
+	@echo '$$ make build-all          builds all packages locally'
+	@echo
+	@echo
+	@echo 'Working with OBS (deprecated):' 
+	@echo
+	@echo '$$ make $${pkg}-checkout-obs   checkout $${pkg}'
+	@echo '$$ make $${pkg}-upload-obs     uploads package $${pkg}'
+	@echo '$$ make $${pkg}-diff-obs       diff from OBS to git for package $${pkg}'
 	@echo
 	@echo Use OBSPROJECT=project:name to control where to upload to.
 	@echo '(currently: $(OBSPROJECT))'. Example:
 	@echo
-	@echo \ \ \ \ $$ make colab-upload OBSPROJECT=isv:spb:v3
+	@echo \ \ \ \ $$ make colab-upload-obs OBSPROJECT=isv:spb:v3
 	@echo
 	@echo 'Operations on all packages:'
 	@echo
-	@echo '$$ make diff               diff of all packages from OBS to git'
-	@echo '$$ make status|st          diffstat of all packages from OBS to git'
-	@echo '$$ make checkout-all       checks out all packages from OBS'
-	@echo '$$ make build-all          builds all packages locally'
+	@echo '$$ make diff-obs               diff of all packages from OBS to git'
+	@echo '$$ make status-obs|st-obs      diffstat of all packages from OBS to git'
+	@echo '$$ make checkout-all-obs       checks out all packages from OBS'
 
 
-checkout_packages = $(patsubst %, %-checkout, $(packages))
 build_packages = $(patsubst %, %-build, $(packages))
-upload_packages = $(patsubst %, %-upload, $(packages))
-diff_packages = $(patsubst %, %-diff, $(packages))
+checkout_packages_obs = $(patsubst %, %-checkout-obs, $(packages))
+upload_packages_obs = $(patsubst %, %-upload-obs, $(packages))
+diff_packages_obs = $(patsubst %, %-diff-obs, $(packages))
 
-.PHONY: $(checkout_packages) $(build_packages) $(upload_packages) $(diff_packages)
+.PHONY: $(build_packages) $(checkout_packages_obs) $(upload_packages_obs) $(diff_packages_obs)
 
-checkout-all: $(checkout_packages)
 build-all: $(build_packages)
-
-$(checkout_packages): %-checkout : %
-	mkdir -p $(obsdir)
-	[ -d $(obsdir)/$(OBSPROJECT)/$* ] && \
-		(cd $(obsdir)/$(OBSPROJECT)/$* && osc update) || \
-		(cd $(obsdir) && osc checkout $(OBSPROJECT) $*)
 
 $(build_packages): %-build : %
 	mkdir -p ~/rpmbuild/SOURCES
@@ -52,16 +53,27 @@ $(build_packages): %-build : %
 	cp $*/*.patch ~/rpmbuild/SOURCES/ || true
 	cd $* && $(BUILD_PREFIX) rpmbuild -bb $*.spec
 
-$(upload_packages): %-upload : %-checkout
-	$(MAKE) $*-diff
+
+### OBS targets (deprecated)
+
+checkout-all-obs: $(checkout_packages_obs)
+
+$(checkout_packages_obs): %-checkout-obs : %
+	mkdir -p $(obsdir)
+	[ -d $(obsdir)/$(OBSPROJECT)/$* ] && \
+		(cd $(obsdir)/$(OBSPROJECT)/$* && osc update) || \
+		(cd $(obsdir) && osc checkout $(OBSPROJECT) $*)
+
+$(upload_packages_obs): %-upload-obs : %-checkout-obs
+	$(MAKE) $*-diff-obs
 	@printf "Confirm upload? [y/N] "; read confirm; test "$$confirm" = y -o "$$confirm" = Y
 	cp $*/* $(obsdir)/$(OBSPROJECT)/$*
 	(cd $(obsdir)/$(OBSPROJECT)/$*; osc add *; osc commit -m "update $*")
 
-$(diff_packages): %-diff : %
+$(diff_packages_obs): %-diff-obs : %
 	@git diff --no-index $(obsdir)/$(OBSPROJECT)/$*/$*.spec $*/$*.spec || true
 
-diff: $(diff_packages)
+diff-obs: $(diff_packages_obs)
 
-status st:
+status-obs st-obs:
 	@$(MAKE) diff | diffstat -C
