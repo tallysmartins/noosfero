@@ -17,6 +17,10 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     _('Add Public Software and MPOG features.')
   end
 
+  def self.api_mount_points
+    [SoftwareCommunitiesPlugin::API]
+  end
+
   def profile_tabs
     if context.profile.community?
       return profile_tabs_software if context.profile.software?
