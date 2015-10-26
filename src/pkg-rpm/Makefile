@@ -73,7 +73,7 @@ $(build_src_packages): %-build-src : %
 	mkdir -p $(LOCAL_BUILD_DIR)/SOURCES
 	cp $*/*.tar.* $(LOCAL_BUILD_DIR)/SOURCES/
 	cp $*/*.patch $(LOCAL_BUILD_DIR)/SOURCES/ || true
-	rm $(LOCAL_BUILD_DIR)/SRPMS/$*-*.src.rpm
+	rm -f $(LOCAL_BUILD_DIR)/SRPMS/$*-*.src.rpm
 	cd $* && $(BUILD_PREFIX) rpmbuild --define "_topdir $(LOCAL_BUILD_DIR)" -bs $*.spec --nodeps
 
 $(upload_packages): %-upload : %-build-src %
