@@ -1,6 +1,7 @@
 Summary: Simple program for spawning FastCGI processes
 Name: spawn-fcgi
 Version: 1.6.3
+Release: 6.1
 License: BSD
 Group: System Environment/Daemons
 URL: http://redmine.lighttpd.net/projects/spawn-fcgi/
