@@ -93,8 +93,13 @@ Como a máquina ``integration`` é o destino final de emails recebidos pela
 plataforma, é nela onde deve ser feita a gestão de aliases
 ``@@@external_hostname@@``.
 
-Para fazer a configuração inicial, basta instruir o postfix a ler os aliases de
-um arquivo, digamos, ``/etc/postfix/aliases``::
+Configuração inicial
+********************
+
+**Nota::** esta configuração inicial só precisa ser feita uma vez. Após a primeira vez, apenas os passos em "Adicionando/modificando aliases" são necessários.
+
+Instruir o postfix a ler os aliases de um arquivo, digamos,
+``/etc/postfix/aliases``::
 
   $ sudo postconf virtual_alias_maps=hash:/etc/postfix/aliases
 
@@ -102,6 +107,9 @@ Em seguida é necessário fazer com que o serviço ``postfix`` recarregue as sua
 configurações::
 
   $ sudo systemctl reload postfix
+
+Adicionando/modificando aliases
+*******************************
 
 Os aliases devem então ser mantidos neste arquivo. Um alias por linha, no
 formato ``<ALIAS> <DESTINO>``. Exemplo::
