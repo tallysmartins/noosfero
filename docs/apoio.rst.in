@@ -96,7 +96,7 @@ plataforma, é nela onde deve ser feita a gestão de aliases
 Para fazer a configuração inicial, basta instruir o postfix a ler os aliases de
 um arquivo, digamos, ``/etc/postfix/aliases``::
 
-  $ sudo postconf virtual_alias_maps=hash:/etc/postix/aliases
+  $ sudo postconf virtual_alias_maps=hash:/etc/postfix/aliases
 
 Em seguida é necessário fazer com que o serviço ``postfix`` recarregue as suas
 configurações::
