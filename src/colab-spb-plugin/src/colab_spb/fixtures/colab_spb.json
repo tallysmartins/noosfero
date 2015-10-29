@@ -379,5 +379,35 @@
   },
   "model": "super_archives.emailaddress",
   "pk": 1
+},
+{
+  "fields": {
+    "description": null,
+    "created_at": "2015-09-29T14:36:58Z",
+    "user": null,
+    "identifier": "example_community",
+    "categories": [],
+    "name": "example_community"
+  },
+  "model": "colab_noosfero.noosferocommunity",
+  "pk": 69
+},
+{
+  "fields": {
+    "path": "example_community",
+    "name": "example_community",
+    "owner_id": null
+  },
+  "model": "colab_gitlab.gitlabgroup",
+  "pk": 23
+},
+{
+  "fields": {
+    "mail_list": 1,
+    "group": 23,
+    "community": 69
+  },
+  "model": "colab_spb.communityassociations",
+  "pk": 2
 }
 ]

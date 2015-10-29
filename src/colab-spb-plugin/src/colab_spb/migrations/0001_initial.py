@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('colab_gitlab', '0001_initial'),
-        ('colab_noosfero', '0001_initial'),
+        ('colab_noosfero', '__first__'),
         ('super_archives', '0002_mailinglist_is_private'),
     ]
 

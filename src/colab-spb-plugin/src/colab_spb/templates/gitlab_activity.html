@@ -1,0 +1,25 @@
+
+{% load i18n %}
+
+<script type='text/javascript' src='/static/spb/js/jquery-2.0.3.min.js'></script>
+<script type='text/javascript' src='/static/spb/js/jquery.timeago.js'></script>
+
+<div id='spb_content_gitlab_activity'>
+	{{message}}
+</div>
+
+<script type='text/javascript'>
+  var $tag = $('#spb_content_gitlab_activity');
+
+  {% if community_association %}
+
+  $.getJSON("{{community_association.repository}}",{limit: {{community_association.limit}}, offset: {{community_association.offset}}},function(msg, e){
+			$tag.html(msg.html);
+			$tag.append("<div class=\"see-more-repository\">" +
+			"<a href={{community_association.repository}}>" +
+			"veja toda a atividade no repositório" +
+			"</a></div>");
+			  });
+ {% endif %}
+</script>
+
