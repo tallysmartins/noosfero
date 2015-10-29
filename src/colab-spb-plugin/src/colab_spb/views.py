@@ -71,12 +71,12 @@ def get_community_association(community, limit=7, offset=0):
     if not community:
         return {}
 
-    associations = CommunityAssociations.objects.all()
-    for community_association in associations:
-        if community_association.community.identifier in community:
-            return {'community': community_association.community.identifier,
-                    'repository': community_association.group.url,
-                    'mailman_list': community_association.mail_list.name,
+    association = CommunityAssociations.objects.filter(
+        community__identifier=community).first()
+    if association:
+            return {'community': association.community.identifier,
+                    'repository': association.group.url,
+                    'mailman_list': association.mail_list.name,
                     'limit': limit,
                     'offset': offset}
     return {}
