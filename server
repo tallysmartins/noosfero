@@ -2,6 +2,7 @@
 
 set -e
 
+export SPB_ENV=$(rake env)
 if [ -f test/ip_helper.sh ]; then
   ROOTDIR=$(dirname $0)
   . test/ip_helper.sh
