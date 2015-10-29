@@ -90,6 +90,8 @@ if ['local', 'lxc'].include?($SPB_ENV)
     puts 'ERB %s' % t.name
   end
 end
+task 'bootstrap_common' => ssh_config_file
+task 'run_input' => ssh_config_file
 
 desc 'Downloads latest system backups to backups directory. WARNING: This overrides anything written in the backups directory'
 task :backup => ssh_config_file do
