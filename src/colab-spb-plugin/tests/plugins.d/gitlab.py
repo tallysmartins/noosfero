@@ -10,7 +10,7 @@ name = 'colab_gitlab'
 verbose_name = 'Gitlab Plugin'
 
 upstream = 'localhost'
-#middlewares = []
+# middlewares = []
 
 urls = {
     'include': 'colab_gitlab.urls',
