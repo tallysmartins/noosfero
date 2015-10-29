@@ -10,7 +10,7 @@ name = 'colab_noosfero'
 verbose_name = 'Noosfero Plugin'
 
 upstream = 'localhost'
-#middlewares = []
+# middlewares = []
 
 urls = {
     'include': 'colab_noosfero.urls',
