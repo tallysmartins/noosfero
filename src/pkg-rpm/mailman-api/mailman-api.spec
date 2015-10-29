@@ -14,7 +14,7 @@ BuildArch: noarch
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Requires: mailman, python >= 2.7, python-gunicorn >= 18.0, bottle >= 0.11.6
 Url: http://pypi.python.org/pypi/mailman-api/
-Release:  10
+Release:  11
 BuildRequires: python >= 2.7, python-devel >= 2.7, python-setuptools >= 0.9.8
 BuildRequires: systemd-units
 
@@ -66,6 +66,11 @@ cp init/systemd/%{name}.service $RPM_BUILD_ROOT%{_unitdir}
 
 %post
 %service_add_post mailman-api.service
+
+if [ $1 -gt 1 ]; then
+  # upgrade; restart if running
+  systemctl try-restart mailman-api
+fi
 
 %preun
 %systemd_preun mailman-api.service
