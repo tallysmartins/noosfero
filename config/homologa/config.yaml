@@ -1,4 +1,5 @@
 rpm_repository: https://copr-be.cloud.fedoraproject.org/results/softwarepublico/v4/epel-7-$basearch/
+rpm_gpgkey: https://copr-be.cloud.fedoraproject.org/results/softwarepublico/v4/pubkey.gpg
 admins:
   - ["Nayanne Araújo", "nayanne.bonifacio@planejamento.gov.br"]
   - ["Marisa Souza dos Santos", "marisa.santos@planejamento.gov.br"]
