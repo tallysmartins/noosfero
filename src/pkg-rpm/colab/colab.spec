@@ -7,7 +7,7 @@
 Summary: Collaboration platform for communities
 Name: %{name}
 Version: %{version}
-Release: 18.2
+Release: 19
 Source0: %{name}-%{version}.tar.gz
 License: GPLv2
 Group: Development/Tools
