@@ -13,7 +13,8 @@ OrganizationRating.class_eval do
   def verify_institution
     if self.institution != nil
       institution = Institution.find_by_id self.institution.id
-      self.errors.add :institution, _("not found") unless institution
+      self.errors.add :institution, _("institution not found") unless institution
+      return !!institution
     end
   end
 

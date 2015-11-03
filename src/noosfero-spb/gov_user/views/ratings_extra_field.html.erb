@@ -3,8 +3,11 @@
   <span class="star-tooltip" title="Órgão ou Empresa que você representa e utiliza o software"></span>
   <input type="text" id="input_institution">
 
-  <%= content_tag(:div, _("No institution found"),
-                  :id=>"institution_empty_ajax_message",
-                  :class=>"errorExplanation hide-field") %>
+  <div id="institution_empty_ajax_message" class="errorExplanation hide-field rating-create-institution-container">
+    <span class="institution-not-found"><%= _("No organization or company found") %></span>
+    <%= InstitutionModalHelper.modal_button(_("Add"), "none") %>
+  </div>
+
   <%= hidden_field_tag "organization_rating[institution_id]", "", id: "institution_selected" %>
 </div>
+

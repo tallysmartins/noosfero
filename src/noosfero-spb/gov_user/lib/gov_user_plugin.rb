@@ -146,12 +146,14 @@ class GovUserPlugin < Noosfero::Plugin
     lib/noosfero-root.js
     lib/select-element.js
     lib/select-field-choices.js
+    lib/modal-observer.js
     views/complete-registration.js
     views/control-panel.js
     views/create-institution.js
     views/new-community.js
     views/user-edit-profile.js
     views/gov-user-comments-extra-fields.js
+    views/institution-modal.js
     initializer.js
     app.js
     )

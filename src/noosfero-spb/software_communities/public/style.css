@@ -110,3 +110,7 @@
   cursor: pointer;
 }
 
+.extra-fields-container {
+  overflow: auto;
+}
+

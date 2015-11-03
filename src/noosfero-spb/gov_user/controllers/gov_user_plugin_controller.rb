@@ -117,7 +117,7 @@ class GovUserPluginController < ApplicationController
     @juridical_nature = get_juridical_natures()
 
     state_list = get_state_list()
-    @state_options = state_list.zip(state_list).prepend([_('Select a state'), '-1'])
+    @state_options = state_list.zip(state_list)
   end
 
   def get_model_by_params_field
