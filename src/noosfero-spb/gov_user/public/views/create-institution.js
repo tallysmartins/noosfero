@@ -4,8 +4,6 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
   'use strict';
 
   var AJAX_URL = {
-    create_institution_modal:
-      NoosferoRoot.urlWithSubDirectory("/plugin/gov_user/create_institution"),
     new_institution:
       NoosferoRoot.urlWithSubDirectory("/plugin/gov_user/new_institution"),
     institution_already_exists:
@@ -16,29 +14,10 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       NoosferoRoot.urlWithSubDirectory("/account/search_cities")
   };
 
-
-  function open_create_institution_modal(evt) {
-    evt.preventDefault();
-
-    $.get(AJAX_URL.create_institution_modal, function(response){
-      $("#institution_dialog").html(response);
-
-      set_form_count_custom_data();
-      set_events();
-
-      $("#institution_dialog").dialog({
-        modal: true,
-        width: 500,
-        height: 530,
-        position: 'center',
-        close: function() {
-          $("#institution_dialog").html("");
-          $('#institution_empty_ajax_message').switchClass("show-field", "hide-field");
-        }
-      });
-    });
+  function set_institution_field_name(name) {
+    $("#input_institution").attr("value", name);
+    $("#input_institution").autocomplete("search");
   }
-
 
   function show_public_institutions_fields() {
     $(".public-institutions-fields").show();
@@ -92,13 +71,28 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       var institution_name  = response.institution_data.name;
       var institution_id = response.institution_data.id;
 
-      $("#institution_dialog").html("<div class='errorExplanation'><h2>"+response.message+"</h2></div>");
-      $("#create_institution_errors").switchClass("show-field", "hide-field");
+      // Tell the user it was created
+      window.display_notice(response.message);
 
+      set_institution_field_name($("#community_name").val());
+      //settup_created_institution();
+
+      // Close modal
+      //$(".modal-header .close").trigger("click");
+
+      // Clear modal fields
+      $("#institution_modal_body").html(window.sessionStorage.getItem("InstitutionModalBody"));
+
+      // Reset modal events
+      init_module();
+
+
+      // If the page has a user institution list, update it without repeating the institution
       $(".institution_container").append(get_clone_institution_data(institution_id));
       add_selected_institution_to_list(institution_id, institution_name);
-
       $(".remove-institution").click(remove_institution);
+      //$('#institution_dialog').dialog('close');
+      $('#institution_modal').modal('toggle');
     } else {
       var errors = create_error_list(response);
       $("#create_institution_errors").switchClass("hide-field", "show-field").html("<h2>"+response.message+"</h2>"+errors);
@@ -172,7 +166,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
   function cancel_institution(evt){
     evt.preventDefault();
-    $('#institution_dialog').dialog('close');
+    $('#institution_modal').modal('toggle');
   }
 
 
@@ -196,6 +190,16 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     return user_institutions;
   }
 
+  function toggle_extra_fields_style_status(status) {
+      if(status) {
+        $('.extra-fields-container').css({ marginTop: "55px" });
+        $('.button-bar').css({ marginTop: "55px" });
+      } else {
+        $('.extra-fields-container').css({ marginTop: "0px" });
+        $('.button-bar').css({ marginTop: "20px" });
+      }
+  }
+
 
   function institution_autocomplete() {
     $("#input_institution").autocomplete({
@@ -209,8 +213,8 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
             if( result.length === 0 ) {
               $('#institution_empty_ajax_message').switchClass("hide-field", "show-field");
-            } else {
-              $('#institution_empty_ajax_message').switchClass("show-field", "hide-field");
+              toggle_extra_fields_style_status(true);
+              $("#institution_modal").css({display: "none"});
             }
           },
           error: function(ajax, stat, errorThrown) {
@@ -222,17 +226,13 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       minLength: 2,
 
       select : function (event, selected) {
+        $('#institution_empty_ajax_message').switchClass("show-field", "hide-field");
+        //$("#create_institution_link").remove();
+        toggle_extra_fields_style_status(false);
         $("#institution_selected").val(selected.item.id).attr("data-name", selected.item.label);
-
-        // +("") -> 0; +("1") -> 1...
-        if (+($("#institution_selected").val()) !== 0) {
-          add_new_institution();
-        }
       }
     });
   }
-
-
   function add_selected_institution_to_list(id, name) {
     var selected_institution = "<li data-institution='"+id+"'>"+name;
         selected_institution += "<a href='#' class='button without-text icon-remove remove-institution'></a></li>";
@@ -240,25 +240,24 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     $(".institutions_added").append(selected_institution);
   }
 
-
-  function add_new_institution() {
+  function add_new_institution(evt) {
+    evt.preventDefault();
     var selected = $("#institution_selected");
-    var already_added_to_list = is_institution_already_added_to_list(selected.val());
+    var institution_already_added = $(".institutions_added li[data-institution='"+selected.val()+"']").length;
 
-    if(selected.val().length > 0 && !already_added_to_list) {
+    if(selected.val().length > 0 && institution_already_added === 0) {
       //field that send the institutions to the server
       $(".institution_container").append(get_clone_institution_data(selected.val()));
 
       // Visualy add the selected institution to the list
       add_selected_institution_to_list(selected.val(), selected.attr("data-name"));
 
+      // clean the institution flag
+      selected.val("").attr("data-name", "");
+      $("#input_institution").val("");
+
       $(".remove-institution").click(remove_institution);
     }
-  }
-
-
-  function is_institution_already_added_to_list(institution_id) {
-    return $(".institutions_added li[data-institution='"+institution_id+"']").length !== 0;
   }
 
 
@@ -279,15 +278,19 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
 
   function show_hide_cnpj_city(country) {
-    var cnpj = $("#institutions_cnpj").parent().parent();
-    var city = $("#community_city").parent().parent();
-    var state = $("#community_state").parent().parent();
+    var cnpj = $("#institutions_cnpj").parent();
+    var city = $("#community_city").parent();
+    var state = $("#community_state").parent();
     var inst_type = $("input[name='institutions[type]']:checked").val();
+
     institution_type_actions(inst_type);
 
-    if( country === "-1" ) $("#community_country").val("BR");
+    if ( country === "-1" ) {
+      $("#community_country").val("BR");
+      country = "BR";
+    }
 
-    if( country !== "BR" ) {
+    if ( country !== "BR" ) {
       cnpj.hide();
       city.hide();
       state.hide();
@@ -364,17 +367,23 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     }
   }
 
-  function set_events() {
-    $("#create_institution_link").click(open_create_institution_modal);
 
+  function set_institution_name_into_modal() {
+    $("#community_name").val($("#input_institution").val());
+  }
+
+
+  function set_events() {
     $("input[name='institutions[type]']").click(function(){
       institution_type_actions(this.value);
-    });
+    }).trigger("click");
 
     $('#save_institution_button').click(save_institution);
     $('#cancel_institution_button').click(cancel_institution);
 
     $("#community_name").keyup(institution_already_exists);
+
+    $("#add_new_institution").click(add_new_institution);
 
     $(".remove-institution").click(remove_institution);
 
@@ -390,19 +399,22 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     $('#community_country').change(function(){
       autoCompleteCity();
     });
+
+    $("#create_institution_link").click(set_institution_name_into_modal);
   }
 
+
+  function init_module() {
+    set_form_count_custom_data();
+    set_events();
+  }
 
   return {
     isCurrentPage: function() {
       return $("#institution_form").length === 1;
     },
 
-
-    init: function() {
-      set_form_count_custom_data();
-      set_events();
-    },
+    init: init_module,
 
     institution_autocomplete: function(){
       institution_autocomplete();

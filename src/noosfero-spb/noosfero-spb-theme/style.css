@@ -9,6 +9,7 @@
 
 /*** SPB Theme section styles ***/
 @import url(css/overwriting-base-theme.css);
+@import url(css/spb-grid.css);
 @import url(css/header.css);
 @import url(css/footer.css);
 @import url(css/left-bar.css);
@@ -26,6 +27,7 @@
 @import url(css/tooltip.css);
 @import url(css/popover.css);
 @import url(css/notifications.css);
+@import url(css/modal.css);
 
 @font-face{
   font-weight: normal;
