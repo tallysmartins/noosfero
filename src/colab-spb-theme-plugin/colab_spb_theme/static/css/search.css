@@ -43,6 +43,10 @@
     font-size: 14px;
 }
 
+.btn:hover {
+    color: white;
+}
+
 .search-divisor {
     margin-top: 0px;
 }
