@@ -32,35 +32,50 @@
 {% block main-content %}
 <div class="search-results" style="width: 980px;margin: auto;">
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="search-form">
-        <h3 class="search-title"> {% trans "BUSCAR NO PORTAL" %} </h3>
-
-        <form accept-charset="UTF-8" action="/search/" method="get">
+<form accept-charset="UTF-8" action="/search/" method="get">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="search-form">
+          <h3 class="search-title"> {% trans "BUSCAR NO PORTAL" %} </h3>
           <div class="search-field">
             <span class="formfield">
               <input class="search-input" id="search-input" name="q" value="" type="text">
             </span>
           </div>
           <input class="btn search-blue with-text icon-search submit" name="commit" value="Buscar" type="submit">
-        </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container search-summary">
-  <div class="row">
-    <div class="col-xs-6 col-sm-8 col-md-10 col-lg-10">
-      <p class="text-left search-total">
-        {% trans "Total de "%}{{ page.paginator.count }}{% trans " respostas na sua pesquisa"%}
-      </p>
+  <div class="container search-summary">
+    <div class="row">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <p class="text-left search-total">
+          {% trans "Total de "%}{{ page.paginator.count }}{% trans " respostas na sua pesquisa"%}
+        </p>
+      </div>
+      <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
+      </div>
+      <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
+        <p class="text-right search-total">{% trans "Ordenar por:" %}
+        <select name="order" id="order_option" onchange="this.form.submit()">
+          <option value=""></option>
+          {% for option, dict_order in order_data.items %}
+            {% ifequal request.GET.order option %}
+              <option value="{{option}}" selected>{% trans option %}</option>
+            {% else %}
+              <option value="{{option}}">{% trans option %}</option>
+            {% endifequal %}
+          {% endfor %}
+        </select>
+        </p>
+      </div>
     </div>
+    <hr class="search-divisor" />
   </div>
-  <hr class="search-divisor" />
-</div>
+</form>
 
   <div class="row">
     <div class="col-md-12 col-lg-12">
