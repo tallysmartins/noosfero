@@ -7,7 +7,7 @@
 Summary: Collaboration platform for communities
 Name: %{name}
 Version: %{version}
-Release: 20
+Release: 21
 Source0: %{name}-%{version}.tar.gz
 License: GPLv2
 Group: Development/Tools
@@ -16,9 +16,9 @@ Prefix: %{_prefix}
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://github.com/colab/colab
 BuildArch: noarch
-BuildRequires: colab-deps >= 1.11.3, python-virtualenv
+BuildRequires: colab-deps >= 1.11.5, python-virtualenv
 # FIXME colab should not depend on nginx!
-Requires: colab-deps >= 1.11.3, solr, mailman-api >= 0.3rc3, nginx
+Requires: colab-deps >= 1.11.5, solr, mailman-api >= 0.3rc3, nginx
 
 %description
 Integrated software development platform.
