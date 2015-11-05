@@ -16,7 +16,7 @@ Prefix: %{_prefix}
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://github.com/colab/colab
 BuildArch: noarch
-BuildRequires: colab-deps >= 1.11.5, python-virtualenv
+BuildRequires: colab-deps >= 1.11.6, python-virtualenv
 # FIXME colab should not depend on nginx!
 Requires: colab-deps >= 1.11.5, solr, mailman-api >= 0.3rc3, nginx
 
