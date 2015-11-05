@@ -151,9 +151,9 @@
 #content .blog .page-1 .position-2,
 #content .blog .page-1 .position-3,
 #content .blog .page-1 .position-4 {
-  margin: 0px 0px 0px 0px;
-  padding: 20px  21px 45px 0px;
-  height: 235px;
+  margin: 0px;
+  padding: 20px 4.2% 5px 0px;
+  height: auto;
   width: 30.5%;
   display: block;
   float: left;
