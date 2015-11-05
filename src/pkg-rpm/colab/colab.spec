@@ -7,7 +7,7 @@
 Summary: Collaboration platform for communities
 Name: %{name}
 Version: %{version}
-Release: 0
+Release: 20
 Source0: %{name}-%{version}.tar.gz
 License: GPLv2
 Group: Development/Tools
@@ -226,6 +226,10 @@ if [ $1 -gt 1 ]; then
   # upgrade; restart if running
   systemctl try-restart colab
 fi
+
+colab-admin build_solr_schema > /var/tmp/schema.xml
+mv -f /var/tmp/schema.xml /usr/share/solr/example/solr/collection1/conf/schema.xml
+systemctl restart solr
 
 systemctl daemon-reload
 
