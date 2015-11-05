@@ -1,6 +1,7 @@
 @import url(footer.css);
 @import url(header.css);
 @import url(font-awesome.min.css);
+@import url(search.css);
 
 @font-face {
   font-weight: normal;
