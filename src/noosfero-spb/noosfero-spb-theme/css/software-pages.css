@@ -89,14 +89,15 @@
   display: block;
 }
 
-#content .download-block .download-button #download-size {
-  border: 1px solid #1a397d;
-  border-radius: 0px 0px 8px 8px;
-  background-color: #1a397d;
-  color: #ffffff;
-  font-size: 12px;
+#content .download-block .download-button .download-size {
   text-align: center;
-  display: none;
+  display: block;
+  background: rgb(0, 40, 140) none repeat scroll 0% 0%;
+  color: rgb(255, 255, 255);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-top: -15px;
+  line-height: 20px;
 }
 
 #content .download-block .download-info {
@@ -208,9 +209,7 @@
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud{
-  display: inline-flex;
   margin: 13px 0 10px 0;
-  max-width: 87%;
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud a{
@@ -590,7 +589,7 @@
   padding: 45px 40px 4px 10px;
   border: 1px solid #2C66CE;
   border-radius: 4px;
-  background: #2C66CE url("../images/download-mini_icon.png") center center no-repeat;
+  background: #2C66CE url("../images/history-mini_icon.png") center center no-repeat;
   display: block;
   float: left;
 }
