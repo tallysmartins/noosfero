@@ -1206,3 +1206,33 @@ float: left;
   font-family: Arial;
   line-height: 22px;
 }
+
+ul.software-community-events-list {
+  border: 1px solid #D3D6DE;
+  border-radius: 8px;
+  width: 100%;
+}
+
+li.software-events-list-item {
+  border-bottom: 1px dotted #D3D6DE;
+  font-size: 14px;
+  padding: 7px 0px;
+  padding-left: 16px;
+}
+
+.software-events-list-item-calendar {
+  background-image: url("../images/calendar-icon.png");
+  background-repeat: no-repeat;
+  width: 14px;
+  height: 14px;
+  float: left;
+  margin-top: 2px;
+}
+
+.software-events-list-item-date {
+  padding-left: 5px;
+}
+
+.software-events-list-item-title {
+  padding-left: 1px;
+}
