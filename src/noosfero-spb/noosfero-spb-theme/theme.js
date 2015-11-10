@@ -268,10 +268,15 @@ $('#link-buscar').click(function(e) {
     }
   }
 
+  function move_breadcrumbs() {
+    $('.breadcrumbs-plugin_content-breadcrumbs-block').prependTo('#wrap-2');
+  }
+
   $(document).ready(function(){
     add_tooltips();
     add_popovers();
     move_article_buttons();
+    move_breadcrumbs();
     insert_notice_div();
     set_uploaded_files_names();
     set_tooltip_content();

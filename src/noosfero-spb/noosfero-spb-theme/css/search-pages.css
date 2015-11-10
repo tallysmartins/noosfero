@@ -133,3 +133,7 @@
   background: none;
   border: 1px solid #ccc;
 }
+
+.search-software-item .search-software-content-block .search-content-result a {
+  color: #172738 !important;
+}
