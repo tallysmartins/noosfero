@@ -1,5 +1,6 @@
 Name:    prezento-spb-deps
 Version: 0.8.3.colab
+Release: 1
 Summary: Ruby dependencies for prezento
 Group:   Development/Tools
 License: Various
