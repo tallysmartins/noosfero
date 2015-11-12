@@ -1,6 +1,6 @@
 
 Name:           colab-spb-theme
-Version:        0.2.0
+Version:        5.0a0
 Release:        9.1
 Summary:        SPB-specific Colab theme
 License:        GPL-3.0
