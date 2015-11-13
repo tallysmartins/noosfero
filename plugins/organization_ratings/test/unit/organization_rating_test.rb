@@ -1,6 +1,18 @@
 require File.expand_path(File.dirname(__FILE__)) + '/../../../../test/test_helper'
 
 class OrganizationRatingTest < ActiveSupport::TestCase
+
+  def setup
+    @person = fast_create(Person)
+    @community = fast_create(Community)
+    @adminuser = Person[create_admin_user(Environment.default)]
+    @rating = fast_create(OrganizationRating, {:value => 1,
+                                               :person_id => @person.id,
+                                               :organization_id => @organization_id,
+                                               :comment_rejected => true
+                                              })
+  end
+
   test "The value must be between 1 and 5" do
     organization_rating1 = OrganizationRating.new :value => -1
     organization_rating2 = OrganizationRating.new :value => 6
@@ -19,6 +31,36 @@ class OrganizationRatingTest < ActiveSupport::TestCase
 
     assert_equal false, organization_rating1.errors[:value].include?("must be between 1 and 5")
     assert_equal false, organization_rating2.errors[:value].include?("must be between 1 and 5")
+  end
+
+  test "display rejected rating to env admin" do
+    assert @rating.display_comment_to?(@adminuser)
+  end
+
+  test "display rejected rating to owner" do
+    assert @rating.display_comment_to?(@person)
+  end
+
+  test "do not display rejected rating to regular user" do
+    regular_person = fast_create(Person)
+    assert_not @rating.display_comment_to?(@otherperson)
+  end
+
+  test "do not display rejected rating to not logged user" do
+    assert_not @rating.display_comment_to?(nil)
+  end
+
+  test "display rejected warning to env admin" do
+    assert @rating.display_rejected_message_to?(@adminuser)
+  end
+
+  test "display rejected warning to owner" do
+    assert @rating.display_rejected_message_to?(@person)
+  end
+
+  test "do not display rejected warnimg to regular user" do
+    regular_person = fast_create(Person)
+    assert_not @rating.display_rejected_message_to?(@otherperson)
   end
 
   test "Create task for create a rating comment" do
@@ -96,7 +138,7 @@ class OrganizationRatingTest < ActiveSupport::TestCase
     assert_equal 2, create_organization_rating_comment.status
     message = "Comment rejected"
     comment = Comment.find_by_id(create_organization_rating_comment.organization_rating_comment_id)
-    assert_equal message, comment.body
+    assert_equal "sample comment", comment.body
   end
 
   test "Check comment message when Task status = FINISHED" do

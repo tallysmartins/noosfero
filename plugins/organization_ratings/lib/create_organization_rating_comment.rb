@@ -9,11 +9,17 @@ class CreateOrganizationRatingComment < Task
   attr_accessible :organization_rating_id, :body, :requestor
   attr_accessible :reject_explanation, :target
 
-  before_save :update_comment_body
+  before_save :update_comment_body, :check_display_comment
 
   DATA_FIELDS = ['body']
   DATA_FIELDS.each do |field|
     settings_items field.to_sym
+  end
+
+  def check_display_comment
+    @rating = OrganizationRating.find_by_id(self.organization_rating_id)
+    @rating.comment_rejected = true if self.status == Status::CANCELLED
+    @rating.save
   end
 
   def update_comment_body
@@ -21,7 +27,7 @@ class CreateOrganizationRatingComment < Task
       create_comment
     else
       comment = Comment.find_by_id(self.organization_rating_comment_id)
-      comment.body = get_comment_message
+      comment.body = self.body
       comment.save
     end
   end
@@ -41,16 +47,6 @@ class CreateOrganizationRatingComment < Task
     rating = OrganizationRating.find(self.organization_rating_id)
     rating.comment = user_comment
     rating.save
-  end
-
-  def get_comment_message
-    if self.status == Status::CANCELLED
-      _("Comment rejected")
-    elsif self.status == Status::FINISHED
-      self.body
-    else
-      _("No comment")
-    end
   end
 
   def accept_details

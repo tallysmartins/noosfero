@@ -25,9 +25,9 @@
     </div>
 
     <div class="user-testimony">
-      <%= user_rate.comment.nil? ? _("No comment") : user_rate.comment.body %>
+      <p class="comment-rejected-msg"> <%= _("Comment rejected") if user_rate.display_rejected_message_to?(user) %> </p>
+      <p class="comment-body"> <%= user_rate.comment.body if user_rate.display_comment_to?(user) && user_rate.comment.present? %> </p>
     </div>
-
-    <%= @plugins.dispatch(:organization_ratings_plugin_extra_fields_show_data, user_rate).collect { |content| instance_exec(&content) }.join("") %>
+    <%= @plugins.dispatch(:organization_ratings_plugin_container_extra_fields, user_rate).collect { |content| instance_exec(&content) }.join("") %>
   </div>
 </div>
