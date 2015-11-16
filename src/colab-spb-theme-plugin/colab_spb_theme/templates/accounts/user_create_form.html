@@ -4,7 +4,6 @@
 <div class="colab-content container">
   <h2>Cadastre-se</h2>
   <h1>Informações pessoais</h1>
-  <hr>
 
   <form action="{% url "signup" %}" method="post" role="form" class="form-horizontal signup">
     {% csrf_token %}
@@ -113,6 +112,7 @@
             <hr>
             <p>Caso ainda permaneça com dúvidas fique à vontade para entrar em contato conosco através do email <a href="mailto:admin@softwarepublico.gov.br">admin@softwarepublico.gov.br</a></p>
           </div>
+        </div>
       </div>
     </div>
   </form>
