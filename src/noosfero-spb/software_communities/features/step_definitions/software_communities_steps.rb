@@ -151,7 +151,7 @@ Given /^the user "([^"]*)" has "([^"]*)" as secondary e\-mail$/ do |login, email
 end
 
 Given /^I click on anything with selector "([^"]*)"$/ do |selector|
-  evaluate_script "jQuery('#{selector}').trigger('click') && true"
+  page.evaluate_script("jQuery('##{selector}').click();")
 end
 
 Given /^I should see "([^"]*)" of this selector "([^"]*)"$/ do |quantity, selector|
