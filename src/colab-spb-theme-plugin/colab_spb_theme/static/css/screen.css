@@ -516,3 +516,9 @@ span.highlighted {
     padding: 40px 0 60px 0;
     color: #172738;
 }
+
+.colab-content {
+    max-width: 960px;
+    min-width: 960px;
+    padding: 40px 0 60px 0;
+}
