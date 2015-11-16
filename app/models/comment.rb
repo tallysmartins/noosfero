@@ -218,4 +218,8 @@ class Comment < ActiveRecord::Base
     user.present? && user == author
   end
 
+  def archived?
+    self.article.archived?
+  end
+
 end
