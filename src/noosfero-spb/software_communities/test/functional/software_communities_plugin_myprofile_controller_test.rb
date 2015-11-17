@@ -1,8 +1,7 @@
-require File.dirname(__FILE__) + '/../../../../test/test_helper'
-require File.dirname(__FILE__) + '/../helpers/software_test_helper'
-require(
-  File.dirname(__FILE__) +
-  '/../../controllers/software_communities_plugin_myprofile_controller'
+require 'test_helper'
+require_relative '../helpers/software_test_helper'
+require_relative(
+  '../../controllers/software_communities_plugin_myprofile_controller'
 )
 
 class SoftwareCommunitiesPluginMyprofileController; def rescue_action(e) raise e end;
@@ -93,7 +92,11 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     assert_equal SoftwareInfo.last.acronym, "test"
   end
 
-  should 'upgrade a generic software to a public software' do
+  should 'only admin upgrade a generic software to a public software' do
+    admin_person = create_user('admin').person
+    @environment.add_admin(admin_person)
+
+    login_as(admin_person.user_login)
     fields_software = software_fields
     fields = software_edit_specific_fields
 
@@ -103,15 +106,69 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     post(
       :edit_software,
       :profile => software.community.identifier,
-      :library => fields[0],
-      :language => fields[1],
-      :database => fields[2],
       :operating_system => fields[3],
       :software => fields[4],
-      :license => fields[5]
     )
 
-    assert_equal true, SoftwareInfo.last.public_software?
+    assert SoftwareInfo.last.public_software?
+  end
+
+  should 'not upgrade a generic software to a public software if user is not an admin' do
+    fields_software = software_fields
+    fields = software_edit_specific_fields
+
+    fields[4]['public_software'] = true
+    software = create_software fields_software
+
+    post(
+      :edit_software,
+      :profile => software.community.identifier,
+      :software => fields[4]
+    )
+
+    refute SoftwareInfo.last.public_software?
+  end
+
+  ["e_ping","e_mag","icp_brasil","e_arq","intern"].map do |attr|
+    define_method "test_should_#{attr}_not_be_changed_by_not_admin" do
+      fields_software = software_fields
+      fields = software_edit_specific_fields
+
+      fields[4][attr]=true
+
+      software = create_software fields_software
+
+      post(
+        :edit_software,
+        :profile => software.community.identifier,
+        :software => fields[4]
+      )
+
+      refute SoftwareInfo.last.send(attr)
+    end
+  end
+
+  ["e_ping","e_mag","icp_brasil","e_arq","intern"].map do |attr|
+    define_method "test_should_#{attr}_be_changed_by_admin" do
+      admin_person = create_user('admin').person
+      @environment.add_admin(admin_person)
+      login_as(admin_person.user_login)
+
+      fields_software = software_fields
+      fields = software_edit_specific_fields
+
+      fields[4][attr]=true
+
+      software = create_software fields_software
+
+      post(
+        :edit_software,
+        :profile => software.community.identifier,
+        :software => fields[4]
+      )
+
+      assert SoftwareInfo.last.send(attr)
+    end
   end
 
   should "create software_info with existing license_info" do

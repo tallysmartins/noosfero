@@ -1,56 +1,51 @@
 <div id = "public_software">
-  <% if @disabled_public_software_field == true %>
-    <%= check_box_tag("software[public_software]", "true", @software_info.public_software?, :disabled => "disabled") %>
-    <%= label_tag _("Public Software"), _("Public software"), :class => "public_software_disabled" %>
-  <% else %>
-    <%= check_box_tag("software[public_software]", "true", @software_info.public_software?) %>
-    <%= label_tag _("Public Software"), _("Public software"), :class => "public_software_enabled" %>
-  <% end %>
+  <%= check_box_tag("software[public_software]", "true", @software_info.public_software?, :disabled => @non_admin_status) %>
+  <%= label_tag _("Public Software"), _("Public software") %>
   <div class="public-software-fields">
     <h4> <%= _("Public Software") %> </h4>
     <div class="formfieldline">
       <%= label_tag _("Adherent to e-PING ?") %>
 
       <%= label_tag "e_ping_true", "Yes" %>
-      <%= radio_button_tag("software[e_ping]", true, @software_info.e_ping)%>
+      <%= radio_button_tag("software[e_ping]", true, @software_info.e_ping, :disabled => @non_admin_status) %>
       <%= label_tag "e_ping_false", "No"%>
-      <%= radio_button_tag("software[e_ping]", false, !@software_info.e_ping)%>
+      <%= radio_button_tag("software[e_ping]", false, !@software_info.e_ping, :disabled => @non_admin_status) %>
     </div>
 
     <div class="formfieldline">
       <%= label_tag _("Adherent to e-MAG ?") %>
 
       <%= label_tag "e_mag_true", "Yes"%>
-      <%= radio_button_tag("software[e_mag]", true, @software_info.e_mag)%>
+      <%= radio_button_tag("software[e_mag]", true, @software_info.e_mag, :disabled => @non_admin_status) %>
       <%= label_tag "e_mag_false", "No"%>
-      <%= radio_button_tag("software[e_mag]", false, !@software_info.e_mag)%>
+      <%= radio_button_tag("software[e_mag]", false, !@software_info.e_mag, :disabled => @non_admin_status) %>
     </div>
 
     <div class="formfieldline">
       <%= label_tag _("Adherent to ICP-Brasil ?") %>
 
       <%= label_tag "icp_brasil_true", "Yes"%>
-      <%= radio_button_tag("software[icp_brasil]", true, @software_info.icp_brasil)%>
+      <%= radio_button_tag("software[icp_brasil]", true, @software_info.icp_brasil, :disabled => @non_admin_status) %>
       <%= label_tag "icp_brasil_false", "No"%>
-      <%= radio_button_tag("software[icp_brasil]", false, !@software_info.icp_brasil)%>
+      <%= radio_button_tag("software[icp_brasil]", false, !@software_info.icp_brasil, :disabled => @non_admin_status) %>
     </div>
 
     <div class="formfieldline">
       <%= label_tag _("Adherent to e-ARQ ?") %>
 
       <%= label_tag "e_arq_true", "Yes"%>
-      <%= radio_button_tag("software[e_arq]", true, @software_info.e_arq)%>
+      <%= radio_button_tag("software[e_arq]", true, @software_info.e_arq, :disabled => @non_admin_status) %>
       <%= label_tag "e_arq_false", "No"%>
-      <%= radio_button_tag("software[e_arq]", false, !@software_info.e_arq)%>
+      <%= radio_button_tag("software[e_arq]", false, !@software_info.e_arq, :disabled => @non_admin_status) %>
     </div>
 
     <div class="formfieldline">
       <%= label_tag _("Internacionalizable ?") %>
 
       <%= label_tag "intern_true", "Yes" %>
-      <%= radio_button_tag("software[intern]", true, @software_info.intern)%>
+      <%= radio_button_tag("software[intern]", true, @software_info.intern, :disabled => @non_admin_status) %>
       <%= label_tag "intern_false", "No"%>
-      <%= radio_button_tag("software[intern]", false, !@software_info.intern)%>
+      <%= radio_button_tag("software[intern]", false, !@software_info.intern, :disabled => @non_admin_status) %>
     </div>
   </div>
 </div>
