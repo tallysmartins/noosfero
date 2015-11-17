@@ -538,7 +538,6 @@ span.highlighted {
 h4.help-pane-title {
     font-family: Arial;
     color: #172738;
-    text-align: justify;
 }
 
 #btn-cadastrar {
@@ -552,3 +551,14 @@ h4.help-pane-title {
     font-weight: normal;
     font-size: 16px;
 }
+
+#accordion1 ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#accordion1>li>a:hover, #accordion1>li>a:focus{
+  background: none;
+}
+
