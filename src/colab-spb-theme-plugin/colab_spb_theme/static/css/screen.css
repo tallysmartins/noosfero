@@ -167,14 +167,9 @@ ul.message-list li {
 
 
 /* Forms */
-.required label:before {
-    color: #f00;
-    content: "* ";
-}
-
 form.signup .form-group {
-    width: 90%;
-    margin-left: 0.5em;
+    margin-left: 0px;
+    margin-right: 22px;
 }
 
 div.submit {
@@ -523,19 +518,37 @@ span.highlighted {
     padding: 40px 0 60px 0;
 }
 
-
 .colab-content h2{
-  color: #FF0366;
-  font-size: 16px;
-  font-family: "open_sansregular",Arial, Helvetica,sans-serif;
-  font-weight: 300;
-  text-transform: uppercase;
+    color: #FF0366;
+    font-size: 16px;
+    font-family: "open_sansregular",Arial, Helvetica,sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
 }
 
 .colab-content h1{
-  padding: 5px 0 10px 0;
-  border-bottom: 1px solid #D3D6DE;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 35px;
-  font-variant: normal;
+    padding: 5px 0 10px 0;
+    border-bottom: 1px solid #D3D6DE;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    font-variant: normal;
+    font-weight: bold;
+}
+
+h4.help-pane-title {
+    font-family: Arial;
+    color: #172738;
+    text-align: justify;
+}
+
+#btn-cadastrar {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 27px 5px 27px;
+}
+
+.control-label {
+    font-family: Arial;
+    font-weight: normal;
+    font-size: 16px;
 }
