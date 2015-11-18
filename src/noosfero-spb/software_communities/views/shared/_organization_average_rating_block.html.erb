@@ -1,0 +1,10 @@
+<span class="average-rating-title"><%= _("Rating") %></span>
+<div class="star-container catalog_rating_block">
+  <% (1..5).each do |rate_number| %>
+    <% if rate_number <= OrganizationRating.average_rating(community.id) %>
+      <div class="small-star-positive"></div>
+    <% else %>
+      <div class="small-star-negative"></div>
+    <% end %>
+  <% end %>
+</div>

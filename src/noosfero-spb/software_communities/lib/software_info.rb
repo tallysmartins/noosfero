@@ -91,12 +91,12 @@ class SoftwareInfo < ActiveRecord::Base
   settings_items :another_license_version, :another_license_link
 
   # used on find_by_contents
-  scope :like_search, lambda{ |name|
+  def self.like_search name
     joins(:community).where(
       "name ILIKE ? OR acronym ILIKE ? OR finality ILIKE ?",
       "%#{name}%", "%#{name}%", "%#{name}%"
     )
-  }
+  end
 
   scope :search, lambda { |name="", database_description_id = "",
     programming_language_id = "", operating_system_name_id = "",

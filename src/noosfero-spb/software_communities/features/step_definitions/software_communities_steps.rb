@@ -200,3 +200,7 @@ Given /^I keyup on selector "([^"]*)"$/ do |selector|
   selector_founded = evaluate_script("jQuery('#{selector}').trigger('keyup').length != 0")
   selector_founded.should be_true
 end
+
+Then /^there should be (\d+) divs? with class "([^"]*)"$/ do |count, klass|
+  should have_selector("div.#{klass}", :count => count)
+end

@@ -80,3 +80,33 @@ Feature: Search software
     Then I should see "Software One"
     And I should see "Software Two"
     And I should see "Software Three"
+
+  @selenium
+  Scenario: See software rating on catalog
+    Given plugin "OrganizationRatings" is enabled on environment
+    And I am logged in as mpog_admin
+    And I go to /admin/plugins
+    And I check "Organization Ratings"
+    And I press "Save changes"
+    And I go to /admin/admin_panel/site_info
+    And I select "Software Público" from "environment_theme"
+    And I press "Save"
+    And I go to /account/logout
+    Given the following user
+      | login     | name       |
+      | joaosilva | Joao Silva |
+    And the following blocks
+      | owner         | type                      |
+      | software-two  | AverageRatingBlock        |
+      | software-two  | OrganizationRatingsBlock  |
+    And the environment domain is "localhost"
+    And I am logged in as "joaosilva"
+    And I go to /profile/software-two/plugin/organization_ratings/new_rating
+    And I press "Enviar"
+    And I go to /search/software_infos
+    When I select "Favorites" from "sort"
+    And I sleep for 3 seconds
+    Then I should see "Software Two" before "Software One"
+    And there should be 1 div with class "small-star-positive"
+    And there should be 4 divs with class "small-star-negative"
+
