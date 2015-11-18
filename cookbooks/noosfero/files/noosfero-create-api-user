@@ -5,13 +5,19 @@ email = ARGV[1]
 password = SecureRandom.random_number.to_s
 
 user = User.find_by_login(login)
-exit(0) if user
-
-user = User.create!(
-  login: login,
-  email: email,
-  password: password,
-  password_confirmation: password
-)
-user.activate
-user.generate_private_token!
+if user
+  if user.private_token_expired?
+    user.generate_private_token!
+  else
+    exit(0)
+  end
+else
+  user = User.create!(
+    login: login,
+    email: email,
+    password: password,
+    password_confirmation: password
+  )
+  user.activate
+  user.generate_private_token!
+end
