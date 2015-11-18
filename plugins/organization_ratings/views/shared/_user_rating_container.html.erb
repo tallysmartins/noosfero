@@ -25,7 +25,8 @@
     </div>
 
     <div class="user-testimony">
-      <%= user_rate.comment.nil? ? _("No comment") : user_rate.comment.body %>
+
+      <%= user_rate.comment.nil? ? _("No comment") : (user_rate.comment_rejected? ? "" : user_rate.comment.body) %>
     </div>
 
     <%= @plugins.dispatch(:organization_ratings_plugin_extra_fields_show_data, user_rate).collect { |content| instance_exec(&content) }.join("") %>

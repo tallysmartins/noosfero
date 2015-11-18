@@ -3,7 +3,7 @@ class OrganizationRating < ActiveRecord::Base
   belongs_to :organization
   belongs_to :comment
 
-  attr_accessible :value, :person, :organization, :comment
+  attr_accessible :value, :person, :organization, :comment, :comment_rejected
 
   validates :value,
             :presence => true, :inclusion => {
@@ -13,6 +13,9 @@ class OrganizationRating < ActiveRecord::Base
   validates :organization_id, :person_id,
             :presence => true
 
+  def comment_rejected?
+    return comment_rejected
+  end
 
   def self.average_rating organization_id
     average = OrganizationRating.where(organization_id: organization_id).average(:value)
