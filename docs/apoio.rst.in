@@ -65,6 +65,42 @@ Caso os ambientes já tenham sido convergidos anteriormente, não será possíve
 
 O output do comando acima é a sua chave pública, ela deverá ser copiada e colada, manualmente, em ``~/.ssh/authorized_keys`` do usuário desejado. Esse procedimento deve ser repetido em todas as máquinas listadas em ``config/@@SPB_ENV@@/ips.yaml``.
 
+Git push com HTTPS
+-----------------
+
+Para a utilização do git com protocolo HTTPS é necessário configurar a senha do perfil do seu usuário na ferramenta Gitlab, pois a senha do seu usuário do portal não é configurada no Gitlab já que a autenticação é feita via REMOTE_USER (cabeçalho HTTP). Para configurar a sua senha no Gitlab é necessário que já exista um usuário válido no portal e o mesmo esteja logado, em seguida, siga os passos a seguir:
+
+1- No menu, clique no botão "Desenvolvimento" para que apareça novas opções
+2- Nas opções apresentadas, clique em "Perfil" para ser direcionado para o seu perfil do Gitlab
+3- No seu perfil será apresentado um novo menu abaixo do menu do portal, nesse menu clique na aba "Password"
+4- Na aba "Password", indique que você esqueceu a sua senha clicando no link "Forgot your password?"
+5- Um email será enviado para o seu endereço de email configurado no seu usuário do portal
+6- Abra o email recebido e clique no link "Change my password", que irá redirecionar para uma página de configuração de uma nova senha
+7- Na página de configuração de uma nova senha digite a sua senha e a confirme (sugere-se que use a mesma senha do portal), finalizando a operação de configuração da senha do seu perfil no Gitlab
+
+Com a senha do seu perfil do Gitlab configurada pode-se utlizar normalmente o git com protocolo HTTPS, onde será solcitado o seu usuário e senha durante as operações. Lembrando que o usuário será o seu usuário do portal e a senha será a que foi configurada com o processo descrito anteriormente.
+
+No Portal do Software Público Brasileiro, assim como em outros portais do governo, temos problemas com o certificado digital. Para o git conseguir realizar as operções usando HTTPS é necessário ignorar o certificado, para isso, abra o terminal (com o git instalado) e execute o seguinte comando::
+
+  $ cd <caminho-do-diretório-do-projeto>
+  $ git config http.sslVerify "false"
+
+
+Integração manual entre repositórios
+---------------------------------
+
+Para empurrar modificações para mais de um repositório, por exemplo os repositórios do Portal do Software Público Brasileiro e Github, é necessário fazer algumas modificações nas configurações no git localmente (lado do cliente). Para isso, vamos configurar um apelido (alias) que aponte para as URLs dos nossos repositórios, e quando o comando ``git push <alias> <branch>`` for executado, as modificações serão empurradas para todos os nossos repositórios previamente configurados. Ou seja, apenas um comando será executado e todos os repositórios serão atualizados.
+
+Para realizar essa configuração é necessário que tenha o git instalado com um bash(terminal) e o repositório do seu projeto clonado localmente. Tendo isso, abra o bash e execute os comandos a seguir::
+
+  $ cd <caminho-do-diretório-do-projeto>
+  $ git remote set-url --add --push <apelido> <URL-repo1>
+  $ git remote set-url --add --push <apelido> <URL-repo2>
+  $ git remote set-url --add --push <apelido> <URL-repo3>
+
+Lembrando que o <apelido> de todos deve ser o mesmo, usualmente é usado o apelido "origin". Com isso, ao empurrar as suas modificações todos os repositórios configurados serão atualizados.
+
+
 Gerenciando listas de email
 ---------------------------
 O Mailman fornece alguns scripts para administração das listas de email, tais programas podem ser encontrados na máquina ``integration`` em ``/usr/lib/mailman/bin``.
