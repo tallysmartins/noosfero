@@ -30,4 +30,16 @@ module SearchHelper
     list
   end
 
+  def sort_by_average_rating list
+    list.sort! do |a, b|
+      rating_a = OrganizationRating.average_rating(a.id)
+      rating_a = 0 if rating_a.nil?
+      rating_b = OrganizationRating.average_rating(b.id)
+      rating_b = 0 if rating_b.nil?
+      rating_a - rating_b
+    end
+
+    list.reverse!
+  end
+
 end
