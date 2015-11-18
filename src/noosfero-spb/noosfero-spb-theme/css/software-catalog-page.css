@@ -53,7 +53,7 @@
     margin: 0 0 0 15px;
 }
 
- It's TEMPORARY 
+ It's TEMPORARY
 .action-search-software_infos #content .search-form .doubts-catalog-software {
     display: none;
 }*/
@@ -65,7 +65,7 @@
   line-height: 20px;
   position:absolute;
 }
-.action-search-software_infos .search-form label, 
+.action-search-software_infos .search-form label,
 .action-search-software_infos .search-form label{
   margin:0px 3px 4px 32px;
   line-height: 22px;
@@ -370,9 +370,19 @@
   opacity: inherit;
 }
 
-.action-search-software_infos #search-results .search-software-item-column-left .extra_info::before{
+.action-search-software_infos #search-results .search-software-item-column-left .extra_info .average-rating-title::before {
+  content: url("../images/ic-doc.png");
+  margin-right: 7px;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .software-date {
+  margin-top: 10px;
+  width: 110px;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .software-date::before{
   content: url("../images/ic-calendar.png");
-  margin: 6px 10px 20px 0;
+  margin: 0px 7px 20px 0;
   float: left;
 }
 
