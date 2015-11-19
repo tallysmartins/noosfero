@@ -1,6 +1,6 @@
 Name: kalibro-configurations
-Version: 1.0.0.backport
-Release: 2%{?dist}
+Version: 1.2.3
+Release: 1%{?dist}
 Summary: Mezuro metrics management backend
 Group: Development/Tools
 License: AGPLv3
@@ -64,9 +64,6 @@ cat > %{buildroot}/etc/kalibro-configurations/secrets.yml <<EOF
 production:
   secret_key_base: $(bundle exec rake secret)
 EOF
-
-#FIXME HACK, REMOVE LATER
-sed -i -e "s/require.*database_cleaner/# &/" %{buildroot}/usr/lib/kalibro-configurations/app/controllers/tests_controller.rb
 
 %post
 groupadd kalibro_configurations || true
