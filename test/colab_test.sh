@@ -5,7 +5,7 @@ test_database_connectivity() {
 }
 
 test_colab_config_is_in_place() {
-  assertTrue 'colab settings.yml is in place' 'run_on integration test -f /etc/colab/settings.yaml'
+  assertTrue 'colab settings.py is in place' 'run_on integration test -f /etc/colab/settings.py'
 }
 
 test_colab_running() {
