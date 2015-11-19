@@ -14,7 +14,15 @@ class OrganizationRating < ActiveRecord::Base
             :presence => true
 
   def comment_rejected?
-    return comment_rejected
+    comment_rejected
+  end
+
+  def display_comment_to? person
+    if person.present?
+      person.is_admin? || !comment_rejected?
+    else
+      !comment_rejected?
+    end
   end
 
   def self.average_rating organization_id

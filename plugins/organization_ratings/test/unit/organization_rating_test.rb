@@ -21,6 +21,11 @@ class OrganizationRatingTest < ActiveSupport::TestCase
     assert_equal false, organization_rating2.errors[:value].include?("must be between 1 and 5")
   end
 
+  test "display rating comment to env admin" do
+    p = fast_create(OrganizationRating)
+
+  end
+
   test "Create task for create a rating comment" do
     person = create_user('molly').person
     person.email = "person@email.com"

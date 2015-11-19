@@ -1,0 +1,4 @@
+class TestOrganizationRating
+
+
+end

@@ -19,6 +19,7 @@ class CreateOrganizationRatingComment < Task
   def check_display_comment
     @rating = OrganizationRating.find_by_id(self.organization_rating_id)
     @rating.comment_rejected = true if self.status == Status::CANCELLED
+    @rating.save
   end
 
   def update_comment_body
