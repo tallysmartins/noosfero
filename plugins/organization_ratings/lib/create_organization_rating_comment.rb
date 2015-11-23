@@ -49,16 +49,6 @@ class CreateOrganizationRatingComment < Task
     rating.save
   end
 
-  def get_comment_message
-    if self.status == Status::CANCELLED
-      _("Comment rejected")
-    elsif self.status == Status::FINISHED
-      self.body
-    else
-      _("No comment")
-    end
-  end
-
   def accept_details
     true
   end

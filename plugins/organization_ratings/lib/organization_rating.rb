@@ -19,9 +19,15 @@ class OrganizationRating < ActiveRecord::Base
 
   def display_comment_to? person
     if person.present?
-      person.is_admin? || !comment_rejected?
+      person.is_admin? || !comment_rejected? || person == self.person
     else
       !comment_rejected?
+    end
+  end
+
+  def display_rejected_message_to? person
+    if person.present?
+      comment_rejected? && (person.is_admin? || person == self.person)
     end
   end
 
