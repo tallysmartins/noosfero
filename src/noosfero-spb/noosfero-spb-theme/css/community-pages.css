@@ -548,6 +548,27 @@ float: left;
 
 /*Block with Community information - Need to develop solution - Only display on profile page */
 
+#content .software-events-block{
+  display: none;
+}
+
+.profile-type-is-community .action-profile-index #content .software-events-block{
+  display: block;
+}
+
+/*** Right bar ***/
+
+.template-default.profile-type-is-community .action-profile-index #content .box-3 .software-events-block,
+.template-lefttopright.profile-type-is-community .action-profile-index #content .box-2 .software-events-block{
+  display: none;
+}
+
+.template-lefttopright.profile-type-is-community .action-content_viewer-view_page #content .box-2 .software-events-block{
+  display: block;
+}
+
+/*Block with Community information - Need to develop solution - Only display on profile page */
+
 .profile-type-is-community .block.community-block{
   display: none;
 }
