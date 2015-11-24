@@ -1,4 +1,4 @@
-class CategoriesSoftwareBlock < Block
+class SoftwareCommunitiesPlugin::CategoriesSoftwareBlock < Block
 
   attr_accessible :show_name
   attr_accessible :search_catalog

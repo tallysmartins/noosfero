@@ -1,4 +1,4 @@
-class SoftwaresBlock < CommunitiesBlock
+class SoftwareCommunitiesPlugin::SoftwaresBlock < CommunitiesBlock
 
   settings_items :software_type, :default => "All"
   attr_accessible :accessor_id, :accessor_type, :role_id,

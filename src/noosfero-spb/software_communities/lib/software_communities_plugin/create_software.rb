@@ -1,4 +1,4 @@
-class CreateSoftware < Task
+class SoftwareCommunitiesPlugin::CreateSoftware < Task
   include Rails.application.routes.url_helpers
 
   validates_presence_of :requestor_id, :target_id
@@ -18,7 +18,7 @@ class CreateSoftware < Task
   end
 
   def perform
-    software_template = SoftwareHelper.software_template
+    software_template = SoftwareCommunitiesPlugin::SoftwareHelper.software_template
     template_id = software_template.blank? ? nil : software_template.id
 
     identifier = self.identifier
@@ -31,7 +31,7 @@ class CreateSoftware < Task
     community.environment = self.environment
     community.add_admin(self.requestor)
 
-    software = SoftwareInfo.new(:finality => self.finality,
+    software = SoftwareCommunitiesPlugin::SoftwareInfo.create!(:finality => self.finality,
     :repository_link => self.repository_link, :community_id => community.id,
     :license_info => self.license_info)
     software.verify_license_info(self.another_license_version, self.another_license_link)

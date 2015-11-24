@@ -1,30 +1,29 @@
-class WikiBlock < Block
+class SoftwareCommunitiesPlugin::RepositoryBlock < Block
 
-  attr_accessible :show_name, :wiki_link
+  attr_accessible :show_name
+
   settings_items :show_name, :type => :boolean, :default => false
-  settings_items :wiki_link, :type => :string, :default => ""
 
   def self.description
-    _('Wiki Link')
+    _('Repository Link')
   end
 
   def help
-    _('This block displays a link to the software wiki.')
+    _('This block displays the repository link of a software.')
   end
 
   def content(args={})
     block = self
     s = show_name
-
     lambda do |object|
       render(
-        :file => 'blocks/wiki',
+        :file => 'blocks/repository',
         :locals => { :block => block, :show_name => s }
       )
     end
   end
 
   def cacheable?
-    true
+    false
   end
 end

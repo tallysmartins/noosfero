@@ -1,4 +1,4 @@
-class SoftwareInfo < ActiveRecord::Base
+class SoftwareCommunitiesPlugin::SoftwareInfo < ActiveRecord::Base
   acts_as_having_settings :field => :settings
 
   SEARCHABLE_SOFTWARE_FIELDS = {
@@ -7,22 +7,22 @@ class SoftwareInfo < ActiveRecord::Base
   }
 
   SEARCHABLE_SOFTWARE_CLASSES = [
-    SoftwareInfo,
-    Community,
-    ProgrammingLanguage,
-    DatabaseDescription,
+    SoftwareCommunitiesPlugin::SoftwareInfo,
+    SoftwareCommunitiesPlugin::Community,
+    SoftwareCommunitiesPlugin::ProgrammingLanguage,
+    SoftwareCommunitiesPlugin::DatabaseDescription,
     Category
   ]
 
   scope :search_by_query, lambda { |query = "", env = Environment.default|
     filtered_query = query.gsub(/[\|\(\)\\\/\s\[\]'"*%&!:]/,' ').split.map{|w| w += ":*"}.join('|')
-    search_fields = SoftwareInfo.pg_search_plugin_fields
+    search_fields = SoftwareCommunitiesPlugin::SoftwareInfo.pg_search_plugin_fields
 
     if query.empty?
       SoftwareInfo.joins(:community).where("profiles.visible = ? AND environment_id = ? ", true, env.id)
     else
-      searchable_software_objects = SoftwareInfo.transform_list_in_methods_list(SEARCHABLE_SOFTWARE_CLASSES)
-      includes(searchable_software_objects).joins(:community).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')").where("profiles.visible = ? AND environment_id = ?", true, env.id)
+      searchable_software_objects = SoftwareCommunitiesPlugin::SoftwareInfo.transform_list_in_methods_list(SEARCHABLE_SOFTWARE_CLASSES)
+      includes(searchable_software_objects).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')").where("profiles.visible = ?", true)
     end
   }
 
@@ -30,9 +30,9 @@ class SoftwareInfo < ActiveRecord::Base
     methods_list = []
 
     list.each do |element|
-      if SoftwareInfo.instance_methods.include?(element.to_s.underscore.to_sym)
+      if SoftwareCommunitiesPlugin::SoftwareInfo.instance_methods.include?(element.to_s.underscore.to_sym)
         methods_list << element.to_s.underscore.to_sym
-      elsif SoftwareInfo.instance_methods.include?(element.to_s.underscore.pluralize.to_sym)
+      elsif SoftwareCommunitiesPlugin::SoftwareInfo.instance_methods.include?(element.to_s.underscore.pluralize.to_sym)
         methods_list << element.to_s.underscore.pluralize.to_sym
       end
     end
@@ -69,19 +69,17 @@ class SoftwareInfo < ActiveRecord::Base
   attr_accessible :community_id, :finality, :repository_link, :public_software,
                   :first_edit
 
-  has_many :libraries, :dependent => :destroy
-  has_many :software_databases
-  has_many :database_descriptions, :through => :software_databases
-  has_many :software_languages
-  has_many :operating_systems
-  has_many :programming_languages, :through => :software_languages
-  has_many :operating_system_names, :through => :operating_systems
+  has_many :libraries, :dependent => :destroy, :class_name => 'SoftwareCommunitiesPlugin::Library'
+  has_many :software_databases, :class_name => 'SoftwareCommunitiesPlugin::SoftwareDatabase'
+  has_many :database_descriptions, :through => :software_databases, :class_name => 'SoftwareCommunitiesPlugin::DatabaseDescription'
+  has_many :software_languages, :class_name => 'SoftwareCommunitiesPlugin::SoftwareLanguage'
+  has_many :operating_systems, :class_name => 'SoftwareCommunitiesPlugin::OperatingSystem'
+  has_many :programming_languages, :through => :software_languages, :class_name => 'SoftwareCommunitiesPlugin::ProgrammingLanguage'
+  has_many :operating_system_names, :through => :operating_systems, :class_name => 'SoftwareCommunitiesPlugin::OperatingSystemName'
   has_many :categories, :through => :community
 
   belongs_to :community, :dependent => :destroy
-  belongs_to :license_info
-
-  has_one :software_categories
+  belongs_to :license_info, :class_name => 'SoftwareCommunitiesPlugin::LicenseInfo'
 
   validates_length_of :finality, :maximum => 4000
   validates_length_of :objectives, :maximum => 4000
@@ -139,7 +137,8 @@ class SoftwareInfo < ActiveRecord::Base
   }
 
   def license_info
-    license_another = LicenseInfo.find_by_version("Another")
+    license = SoftwareCommunitiesPlugin::LicenseInfo.find_by_id self.license_info_id
+    license_another = SoftwareCommunitiesPlugin::LicenseInfo.find_by_version("Another")
 
     if license_another && self.license_info_id == license_another.id
       license_another.version = self.another_license_version
@@ -151,7 +150,7 @@ class SoftwareInfo < ActiveRecord::Base
   end
 
   def another_license(version, link)
-    license_another = LicenseInfo.find_by_version("Another")
+    license_another = SoftwareCommunitiesPlugin::LicenseInfo.find_by_version("Another")
 
     if license_another
       self.another_license_version = version
@@ -182,29 +181,19 @@ class SoftwareInfo < ActiveRecord::Base
     another_license_version = attributes.delete(:another_license_version)
     another_license_link = attributes.delete(:another_license_link)
 
-    software_info = SoftwareInfo.new(attributes)
-<<<<<<< HEAD
-    if !requestor.is_admin?
-=======
+    software_info = SoftwareCommunitiesPlugin::SoftwareInfo.new(attributes)
     unless environment.admins.include? requestor
->>>>>>> Refactor software_communities.
-      CreateSoftware.create!(
+      SoftwareCommunitiesPlugin::CreateSoftware.create!(
         attributes.merge(
           :requestor => requestor,
           :environment => environment,
           :name => name,
           :identifier => identifier,
-<<<<<<< HEAD
-          :license_info => license_info,
-          :another_license_version => another_license_version,
-          :another_license_link => another_license_link
-=======
           :license_info => license_info
->>>>>>> Refactor software_communities.
         )
       )
     else
-      software_template = SoftwareHelper.software_template
+      software_template = SoftwareCommunitiesPlugin::SoftwareHelper.software_template
 
       community_hash = {:name => name}
       community_hash[:identifier] = identifier
@@ -222,23 +211,15 @@ class SoftwareInfo < ActiveRecord::Base
 
       software_info.community = community
       software_info.license_info = license_info
-<<<<<<< HEAD
-      software_info.verify_license_info(another_license_version, another_license_link)
-      software_info.save!
-    end
-
-=======
-      software_info.save!
     end
 
     software_info.verify_license_info(another_license_version, another_license_link)
     software_info.save
->>>>>>> Refactor software_communities.
     software_info
   end
 
   def verify_license_info another_license_version, another_license_link
-    license_another = LicenseInfo.find_by_version("Another")
+    license_another = SoftwareCommunitiesPlugin::LicenseInfo.find_by_version("Another")
 
     if license_another && self.license_info_id == license_another.id
       version = another_license_version

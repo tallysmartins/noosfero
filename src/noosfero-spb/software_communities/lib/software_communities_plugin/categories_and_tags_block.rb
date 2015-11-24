@@ -1,4 +1,4 @@
-class SearchCatalogBlock < Block
+class SoftwareCommunitiesPlugin::CategoriesAndTagsBlock < Block
 
   attr_accessible :show_name
   attr_accessible :search_catalog
@@ -7,11 +7,11 @@ class SearchCatalogBlock < Block
   settings_items :search_catalog, :type => :string, :default => SearchController.catalog_list[:public_software].last
 
   def self.description
-    _('Search Softwares catalog')
+    _('Categories and Tags')
   end
 
   def help
-    _('This block displays the search categories field ')
+    _('This block displays the categories and tags of a software.')
   end
 
   def content(args={})
@@ -19,7 +19,7 @@ class SearchCatalogBlock < Block
     s = show_name
     lambda do |object|
       render(
-        :file => 'blocks/search_catalog',
+        :file => 'blocks/categories_and_tags',
         :locals => { :block => block, :show_name => s }
       )
     end

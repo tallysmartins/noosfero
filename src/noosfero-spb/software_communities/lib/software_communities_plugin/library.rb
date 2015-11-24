@@ -1,4 +1,4 @@
-class Library < ActiveRecord::Base
+class SoftwareCommunitiesPlugin::Library < ActiveRecord::Base
   attr_accessible :name, :version, :license, :software_info_id
 
   validates :name, :version, :license,

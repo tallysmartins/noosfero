@@ -1,11 +1,11 @@
-class DatabaseHelper < DynamicTableHelper
+class SoftwareCommunitiesPlugin::DatabaseHelper < SoftwareCommunitiesPlugin::DynamicTableHelper
   MODEL_NAME ="database"
   FIELD_NAME = "database_description_id"
 
   def self.valid_database? database
-    return false if SoftwareHelper.all_table_is_empty?(database)
+    return false if SoftwareCommunitiesPlugin::SoftwareHelper.all_table_is_empty?(database)
 
-    database_description_id_list = DatabaseDescription.select(:id).
+    database_description_id_list = SoftwareCommunitiesPlugin::DatabaseDescription.select(:id).
                                     collect {|dd| dd.id}
 
     return database_description_id_list.include?(
@@ -19,7 +19,7 @@ class DatabaseHelper < DynamicTableHelper
 
     new_databases.each do |new_database|
       if valid_database? new_database
-        database = SoftwareDatabase.new
+        database = SoftwareCommunitiesPlugin::SoftwareDatabase.new
 
         database.database_description_id =
           new_database[:database_description_id]
@@ -46,7 +46,7 @@ class DatabaseHelper < DynamicTableHelper
 
   def self.database_html_structure(database_data, disabled)
     database_id = database_data[:database_description_id]
-    database_name = database_id.blank? ? "" : DatabaseDescription.find(
+    database_name = database_id.blank? ? "" : SoftwareCommunitiesPlugin::DatabaseDescription.find(
         database_data[:database_description_id],
         :select=>"name"
       ).name

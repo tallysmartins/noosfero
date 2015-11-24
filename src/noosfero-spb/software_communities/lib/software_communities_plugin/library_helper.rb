@@ -1,13 +1,14 @@
-class LibraryHelper < DynamicTableHelper
-  MODEL_NAME = "library"
+class SoftwareCommunitiesPlugin::LibraryHelper < SoftwareCommunitiesPlugin::DynamicTableHelper
+  #FIXME Verify this name.
+  MODEL_NAME = "software_communities_plugin/library"
 
   def self.list_library new_libraries
     return [] if new_libraries.nil? or new_libraries.length == 0
     list_libraries = []
 
     new_libraries.each do |new_library|
-      unless SoftwareHelper.all_table_is_empty? new_library
-        library = Library.new
+      unless SoftwareCommunitiesPlugin::SoftwareHelper.all_table_is_empty? new_library
+        library = SoftwareCommunitiesPlugin::Library.new
         library.name = new_library[:name]
         library.version = new_library[:version]
         library.license = new_library[:license]
@@ -32,6 +33,7 @@ class LibraryHelper < DynamicTableHelper
 
   def self.library_html_structure library_data, disabled
     data = {
+      #FIXME Verify MODEL_NAME
       model_name: MODEL_NAME,
       name: {
         value: library_data[:name],

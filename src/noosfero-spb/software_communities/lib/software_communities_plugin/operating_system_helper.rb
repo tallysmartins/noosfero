@@ -1,5 +1,6 @@
-class OperatingSystemHelper < DynamicTableHelper
-  MODEL_NAME = "operating_system"
+class SoftwareCommunitiesPlugin::OperatingSystemHelper < SoftwareCommunitiesPlugin::DynamicTableHelper
+  #FIXME Verify model_name
+  MODEL_NAME = "software_communities_plugin/operating_system"
   FIELD_NAME = "operating_system_name_id"
 
   def self.list_operating_system new_operating_systems
@@ -7,13 +8,13 @@ class OperatingSystemHelper < DynamicTableHelper
     list_operating_system = []
 
     new_operating_systems.each do |new_operating_system|
-      unless SoftwareHelper.all_table_is_empty?(
+      unless SoftwareCommunitiesPlugin::SoftwareHelper.all_table_is_empty?(
           new_operating_system,
           ["operating_system_name_id"]
         )
 
-        operating_system = OperatingSystem.new
-        operating_system.operating_system_name = OperatingSystemName.find(
+        operating_system = SoftwareCommunitiesPlugin::OperatingSystem.new
+        operating_system.operating_system_name = SoftwareCommunitiesPlugin::OperatingSystemName.find(
           new_operating_system[:operating_system_name_id]
         )
 
@@ -38,11 +39,12 @@ class OperatingSystemHelper < DynamicTableHelper
 
   def self.operating_system_html_structure (operating_system_data, disabled)
     select_options = options_for_select(
-      OperatingSystemName.all.collect {|osn| [osn.name, osn.id]},
+      SoftwareCommunitiesPlugin::OperatingSystemName.all.collect {|osn| [osn.name, osn.id]},
       operating_system_data[:operating_system_name_id]
     )
 
     data = {
+      #FIXME Verify model_name
       model_name: MODEL_NAME,
       field_name: FIELD_NAME,
       name: {

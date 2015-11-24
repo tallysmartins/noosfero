@@ -1,4 +1,4 @@
-class DownloadBlock < Block
+class SoftwareCommunitiesPlugin::DownloadBlock < Block
 
   attr_accessible :show_name, :downloads
 
@@ -17,8 +17,8 @@ class DownloadBlock < Block
     Download.where(:id => removed_download_ids).destroy_all
 
     self.downloads.each do |download_hash|
-      download_record = Download.find_by_id(download_hash[:id].to_i)
-      download_record ||= Download.new(:download_block => self)
+      download_record = SoftwareCommunitiesPlugin::Download.find_by_id(download_hash[:id].to_i)
+      download_record ||= SoftwareCommunitiesPlugin::Download.new(:download_block => self)
       download_record.update_attributes(download_hash)
       download_hash[:id] = download_record.id
     end

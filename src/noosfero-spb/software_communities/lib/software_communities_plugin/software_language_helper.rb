@@ -1,11 +1,12 @@
-class SoftwareLanguageHelper < DynamicTableHelper
-  MODEL_NAME ="language"
+class SoftwareCommunitiesPlugin::SoftwareLanguageHelper < DynamicTableHelper
+  #FIX verify MODEL_NAME
+  MODEL_NAME = "language"
   FIELD_NAME = "programming_language_id"
 
   def self.valid_language? language
-    return false if SoftwareHelper.all_table_is_empty?(language)
+    return false if SoftwareCommunitiesPlugin::SoftwareHelper.all_table_is_empty?(language)
 
-    programming_language_id_list = ProgrammingLanguage.
+    programming_language_id_list = SoftwareCommunitiesPlugin::ProgrammingLanguage.
                                      select(:id).
                                      collect { |dd| dd.id }
 
@@ -20,9 +21,9 @@ class SoftwareLanguageHelper < DynamicTableHelper
 
     new_languages.each do |new_language|
       if valid_language? new_language
-        language = SoftwareLanguage.new
+        language = SoftwareCommunitiesPlugin::SoftwareLanguage.new
         language.programming_language =
-          ProgrammingLanguage.find(new_language[:programming_language_id])
+          SoftwareCommunitiesPlugin::ProgrammingLanguage.find(new_language[:programming_language_id])
         language.version = new_language[:version]
         list_languages << language
       end
@@ -52,7 +53,7 @@ class SoftwareLanguageHelper < DynamicTableHelper
     language_id = language_data[:programming_language_id]
     language_name = ""
     unless language_data[:programming_language_id].blank?
-      language_name = ProgrammingLanguage.find(
+      language_name = SoftwareCommunitiesPlugin::ProgrammingLanguage.find(
         language_data[:programming_language_id],
         :select=>"name"
       ).name

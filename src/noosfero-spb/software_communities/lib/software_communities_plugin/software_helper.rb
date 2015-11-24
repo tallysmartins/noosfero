@@ -1,4 +1,4 @@
-module SoftwareHelper
+module SoftwareCommunitiesPlugin::SoftwareHelper
   def self.select_options programming_languages, selected = 0
     value = ""
 
@@ -27,7 +27,7 @@ module SoftwareHelper
   end
 
   def self.software_template
-    identifier = SoftwareHelper.software_template_identifier
+    identifier = SoftwareCommunitiesPlugin::SoftwareHelper.software_template_identifier
 
     software_template = Community[identifier]
     if !software_template.blank? && software_template.is_template

@@ -1,5 +1,4 @@
-class Download < ActiveRecord::Base
-
+class SoftwareCommunitiesPlugin::Download < ActiveRecord::Base
   self.table_name = "software_communities_downloads"
   attr_accessible :name, :link, :software_description, :minimum_requirements, :size, :total_downloads, :download_block
 

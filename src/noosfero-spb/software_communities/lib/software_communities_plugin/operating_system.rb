@@ -1,8 +1,8 @@
-class OperatingSystem < ActiveRecord::Base
+class SoftwareCommunitiesPlugin::OperatingSystem < ActiveRecord::Base
   attr_accessible :version
 
-  belongs_to :software_info
-  belongs_to :operating_system_name
+  belongs_to :software_info, :class_name => 'SoftwareCommunitiesPlugin::SoftwareInfo'
+  belongs_to :operating_system_name, :class_name => 'SoftwareCommunitiesPlugin::OperatingSystemName'
 
   validates :operating_system_name, presence: true
   validates :version,

@@ -37,18 +37,18 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
 
   def self.extra_blocks
     {
-      SoftwaresBlock => { :type => [Environment, Person]  },
-      SoftwareInformationBlock => {  :type => [Community]  },
-      DownloadBlock => { :type => [Community] },
-      RepositoryBlock => { :type => [Community] },
-      CategoriesAndTagsBlock => { :type => [Community] },
-      CategoriesSoftwareBlock => { :type => [Environment] },
-      SearchCatalogBlock => { :type => [Environment] },
-      SoftwareHighlightsBlock => { :type => [Environment] },
-      SoftwareTabDataBlock => {:type => [Community], :position => 1},
+      SoftwareCommunitiesPlugin::SoftwaresBlock => { :type => [Environment, Person]  },
+      SoftwareCommunitiesPlugin::SoftwareInformationBlock => {  :type => [Community]  },
+      SoftwareCommunitiesPlugin::DownloadBlock => { :type => [Community] },
+      SoftwareCommunitiesPlugin::RepositoryBlock => { :type => [Community] },
+      SoftwareCommunitiesPlugin::CategoriesAndTagsBlock => { :type => [Community] },
+      SoftwareCommunitiesPlugin::CategoriesSoftwareBlock => { :type => [Environment] },
+      SoftwareCommunitiesPlugin::SearchCatalogBlock => { :type => [Environment] },
+      SoftwareCommunitiesPlugin::SoftwareHighlightsBlock => { :type => [Environment] },
+      SoftwareCommunitiesPlugin::SoftwareTabDataBlock => {:type => [Community], :position => 1},
       SispTabDataBlock => {:type => [Community], :position => 1},
-      WikiBlock => {:type => [Community]},
-      StatisticBlock => { :type => [Community] },
+      SoftwareCommunitiesPlugin::WikiBlock => {:type => [Community]},
+      SoftwareCommunitiesPlugin::StatisticBlock => { :type => [Community] }
       SoftwareEventsBlock => { :type => [Community] }
     }
   end
@@ -152,7 +152,7 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   protected
 
   def software_info_transaction
-    SoftwareInfo.transaction do
+    SoftwareCommunitiesPlugin::SoftwareInfo.transaction do
       context.profile.
         software_info.
         update_attributes!(context.params[:software_info])
@@ -160,7 +160,7 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
   end
 
   def license_transaction
-    license = LicenseInfo.find(context.params[:version])
+    license = SoftwareCommunitiesPlugin::LicenseInfo.find(context.params[:version])
     context.profile.software_info.license_info = license
     context.profile.software_info.save!
   end

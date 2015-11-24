@@ -1,8 +1,8 @@
-class SoftwareDatabase < ActiveRecord::Base
+class SoftwareCommunitiesPlugin::SoftwareDatabase < ActiveRecord::Base
   attr_accessible :version
 
-  belongs_to :software_info
-  belongs_to :database_description
+  belongs_to :software_info, :class_name => 'SoftwareCommunitiesPlugin::SoftwareInfo'
+  belongs_to :database_description, :class_name => 'SoftwareCommunitiesPlugin::DatabaseDescription'
 
   validates_presence_of :database_description_id, :version
 

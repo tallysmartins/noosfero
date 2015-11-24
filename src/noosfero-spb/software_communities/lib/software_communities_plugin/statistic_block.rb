@@ -1,4 +1,4 @@
-class StatisticBlock < Block
+class SoftwareCommunitiesPlugin::StatisticBlock < Block
 
   settings_items :benefited_people, :type => :integer, :default => 0
   settings_items :saved_resources, :type => :float, :default => 0.0
@@ -41,7 +41,7 @@ class StatisticBlock < Block
   private
 
   def get_profile_download_blocks profile
-    DownloadBlock.joins(:box).where("boxes.owner_id = ?", profile.id)
+    SoftwareCommunitiesPlugin::DownloadBlock.joins(:box).where("boxes.owner_id = ?", profile.id)
   end
 
   def get_downloads_from_block download_block

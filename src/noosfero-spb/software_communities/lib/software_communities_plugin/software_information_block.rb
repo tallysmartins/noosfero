@@ -1,4 +1,4 @@
-class SoftwareInformationBlock < Block
+class SoftwareCommunitiesPlugin::SoftwareInformationBlock < Block
 
   attr_accessible :show_name
 
@@ -31,7 +31,7 @@ class SoftwareInformationBlock < Block
   private
 
   def owner_has_ratings?
-    ratings = CommunityRating.where(community_id: block.owner.id)
+    ratings = OrganizationRating.where(community_id: block.owner.id)
     !ratings.empty?
   end
 end

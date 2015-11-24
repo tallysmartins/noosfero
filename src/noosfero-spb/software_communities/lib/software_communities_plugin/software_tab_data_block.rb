@@ -1,4 +1,4 @@
-class SoftwareTabDataBlock < Block
+class SoftwareCommunitiesPlugin::SoftwareTabDataBlock < Block
   attr_accessible :show_name, :displayed_blog
 
   settings_items :show_name, :type => :boolean, :default => false

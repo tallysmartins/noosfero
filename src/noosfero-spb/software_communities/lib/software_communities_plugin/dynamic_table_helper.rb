@@ -1,4 +1,4 @@
-class DynamicTableHelper
+class SoftwareCommunitiesPlugin::DynamicTableHelper
   extend(
     ActionView::Helpers::TagHelper,
     ActionView::Helpers::FormTagHelper,
