@@ -49,6 +49,7 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
 
     @software_info.features = "Do a lot of things"
     @software_info.objectives = "All tests should pass !"
+    @software_info.community = @community
   end
 
   def teardown

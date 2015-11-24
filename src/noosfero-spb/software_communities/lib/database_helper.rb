@@ -34,12 +34,7 @@ class DatabaseHelper < DynamicTableHelper
 
   def self.valid_list_database? list_databases
     return false if list_databases.nil? or list_databases.length == 0
-
-    list_databases.each do |database|
-      return false unless database.valid?
-    end
-
-    true
+    return !list_databases.any?{|database| !database.valid?}
   end
 
   def self.database_as_tables(list_databases, disabled=false)
@@ -51,14 +46,10 @@ class DatabaseHelper < DynamicTableHelper
 
   def self.database_html_structure(database_data, disabled)
     database_id = database_data[:database_description_id]
-    database_name = if database_data[:database_description_id].blank?
-      ""
-    else
-      DatabaseDescription.find(
+    database_name = database_id.blank? ? "" : DatabaseDescription.find(
         database_data[:database_description_id],
         :select=>"name"
       ).name
-    end
 
     data = {
       model_name: MODEL_NAME,

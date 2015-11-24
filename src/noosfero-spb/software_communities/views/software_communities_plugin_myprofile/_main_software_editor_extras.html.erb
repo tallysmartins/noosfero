@@ -5,7 +5,7 @@
 </div>
 
 <div class= <%= @error_software_acronym %> >
-  <%= label_tag("software[acronym]", _('Short Name'), {:class => 'formlabel mandatory'}) %>
+  <%= label_tag("software[acronym]", _('Short Name'), {:class => 'formlabel'}) %>
   <%= text_field_tag("software[acronym]", @profile.software_info.acronym, :id => 'software_acronym_id', :maxlength=>"10") %>
 </div>
 
