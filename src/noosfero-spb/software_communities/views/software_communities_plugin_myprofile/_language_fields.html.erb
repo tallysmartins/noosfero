@@ -2,11 +2,11 @@
 
 <div id='languages'>
   <% languages = [] if languages.blank? %>
-	<% SoftwareLanguageHelper.language_as_tables(languages).each do |tab| %>
+	<% SoftwareCommunitiesPlugin::SoftwareLanguageHelper.language_as_tables(languages).each do |tab| %>
 	  <%= tab.call %>
 	<%end%>
 </div>
 
-<div id='table_structure_languages' style="display:none"><%= SoftwareLanguageHelper.add_dynamic_table %></div>
+<div id='table_structure_languages' style="display:none"><%= SoftwareCommunitiesPlugin::SoftwareLanguageHelper.add_dynamic_table %></div>
 <%= link_to _('New language'), "#", :class=>"button icon-add with-text new-dynamic-table dynamic-languages"%>
 <% end %>

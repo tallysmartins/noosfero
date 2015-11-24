@@ -40,7 +40,7 @@
         <tbody>
           <tr> <td>
             <% libraries = profile.software_info.libraries %>
-            <% LibraryHelper.libraries_as_tables(libraries, true).each do |tab| %>
+            <% SoftwareCommuntiiesPlugin::LibraryHelper.libraries_as_tables(libraries, true).each do |tab| %>
               <%= tab.call %>
             <%end%>
           </td> </tr>
@@ -68,7 +68,7 @@
         <tbody>
           <tr> <td>
             <% databases = profile.software_info.software_databases %>
-            <% DatabaseHelper.database_as_tables(databases, true).each do |tab| %>
+            <% SoftwareCommuntiiesPlugin::DatabaseHelper.database_as_tables(databases, true).each do |tab| %>
               <%= tab.call %>
             <%end%>
           </td> </tr>
@@ -96,7 +96,7 @@
         <tbody>
           <tr> <td>
             <% languages = profile.software_info.software_languages %>
-            <% SoftwareLanguageHelper.language_as_tables(languages, true).each do |tab| %>
+            <% SoftwareCommuntiiesPlugin::SoftwareLanguageHelper.language_as_tables(languages, true).each do |tab| %>
               <%= tab.call %>
             <%end%>
           </td> </tr>
@@ -125,7 +125,7 @@
         <tbody>
           <tr> <td>
             <% operating_systems = profile.software_info.operating_systems %>
-            <% OperatingSystemHelper.operating_system_as_tables(operating_systems, true).each do |tab| %>
+            <% SoftwareCommuntiiesPlugin::OperatingSystemHelper.operating_system_as_tables(operating_systems, true).each do |tab| %>
               <%= tab.call %>
             <%end%>
           </td> </tr>
