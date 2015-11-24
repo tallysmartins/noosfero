@@ -3,7 +3,7 @@ require 'test_helper'
 class LicenseInfoTest < ActiveSupport::TestCase
 
   should "save if all informations are filled" do
-    @software_license_info = LicenseInfo.create(
+    @software_license_info = SoftwareCommunitiesPlugin::LicenseInfo.create(
                               :version => "GPL",
                               :link => "www.gpl2.com"
                             )
@@ -11,7 +11,7 @@ class LicenseInfoTest < ActiveSupport::TestCase
   end
 
   should "not save if license info version is empty" do
-    @software_license_info = LicenseInfo.create(
+    @software_license_info = SoftwareCommunitiesPlugin::LicenseInfo.create(
                               :version => "GPL",
                               :link => "www.gpl2.com"
                             )
@@ -20,7 +20,7 @@ class LicenseInfoTest < ActiveSupport::TestCase
   end
 
   should "save if link is empty" do
-    @software_license_info = LicenseInfo.create(
+    @software_license_info = SoftwareCommunitiesPlugin::LicenseInfo.create(
                               :version => "GPL",
                               :link => "www.gpl2.com")
     @software_license_info.link = nil

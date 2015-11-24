@@ -7,11 +7,11 @@ class CreateSoftwareTest < ActiveSupport::TestCase
   end
 
   should 'be a task' do
-    ok { CreateSoftware.new.kind_of?(Task) }
+    ok { SoftwareCommunitiesPlugin::CreateSoftware.new.kind_of?(Task) }
   end
 
   should 'require a requestor' do
-    task = CreateSoftware.new(:name => 'Software Test', :target => Environment.default)
+    task = SoftwareCommunitiesPlugin::CreateSoftware.new(:name => 'Software Test', :target => Environment.default)
     task.valid?
 
     assert task.errors[:requestor_id.to_s].present?
@@ -24,7 +24,7 @@ class CreateSoftwareTest < ActiveSupport::TestCase
   end
 
   should 'actually create new software community when confirmed' do
-    task = CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any")
+    task = SoftwareCommunitiesPlugin::CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any")
 
     assert_difference 'SoftwareInfo.count' do
       assert_difference 'Community.count' do
@@ -36,7 +36,7 @@ class CreateSoftwareTest < ActiveSupport::TestCase
   end
 
   should 'create new software community with all informed data when confirmed' do
-    task = CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any", :repository_link => "#", )
+    task = SoftwareCommunitiesPlugin::CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any", :repository_link => "#", )
 
     task.finish
     software = Community["software-test"].software_info
@@ -47,7 +47,7 @@ class CreateSoftwareTest < ActiveSupport::TestCase
   end
 
   should 'override message methods from Task' do
-    task = CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any")
+    task = SoftwareCommunitiesPlugin::CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any")
 
     task.finish
 
@@ -59,13 +59,13 @@ class CreateSoftwareTest < ActiveSupport::TestCase
   end
 
   should 'report as approved when approved' do
-    request = CreateSoftware.new
+    request = SoftwareCommunitiesPlugin::CreateSoftware.new
     request.stubs(:status).returns(Task::Status::FINISHED)
     assert request.approved?
   end
 
   should 'report as rejected when rejected' do
-    request = CreateSoftware.new
+    request = SoftwareCommunitiesPlugin::CreateSoftware.new
     request.stubs(:status).returns(Task::Status::CANCELLED)
     assert request.rejected?
   end

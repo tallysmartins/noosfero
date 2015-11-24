@@ -2,11 +2,16 @@ require 'test_helper'
 
 class SoftwareDatabaseTest < ActiveSupport::TestCase
   def setup
-    DatabaseDescription.create!(name: "PostgreSQL")
-    @software_database = SoftwareDatabase.new(
+    SoftwareCommunitiesPlugin::DatabaseDescription.create!(name: "PostgreSQL")
+    @software_database = SoftwareCommunitiesPlugin::SoftwareDatabase.new(
                           :version => "1.0"
                         )
     @software_database.database_description_id = 1
+  end
+
+  def teardown
+    SoftwareCommunitiesPlugin::DatabaseDescription.destroy_all
+    SoftwareCommunitiesPlugin::SoftwareDatabase.destroy_all
   end
 
   should "save if all informations of @software_database are filled" do

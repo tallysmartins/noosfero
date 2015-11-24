@@ -5,16 +5,16 @@ class DownloadBlockTest < ActiveSupport::TestCase
   include PluginTestHelper
 
   should 'inherit from Block' do
-    assert_kind_of Block, DownloadBlock.new
+    assert_kind_of Block, SoftwareCommunitiesPlugin::DownloadBlock.new
   end
 
   should 'declare its default title' do
-    DownloadBlock.any_instance.stubs(:profile_count).returns(0)
-    assert_equal Block.new.default_title, DownloadBlock.new.default_title
+    SoftwareCommunitiesPlugin::DownloadBlock.any_instance.stubs(:profile_count).returns(0)
+    assert_equal Block.new.default_title, SoftwareCommunitiesPlugin::DownloadBlock.new.default_title
   end
 
   should 'describe itself' do
-    assert_not_equal Block.description, DownloadBlock.description
+    assert_not_equal Block.description, SoftwareCommunitiesPlugin::DownloadBlock.description
   end
 
   should 'have software info to download it' do
@@ -45,7 +45,7 @@ class DownloadBlockTest < ActiveSupport::TestCase
       { :name=>"incomplete download", :link=>"", :software_description=>"Linux", :size=>"" }
     ]
 
-    download_block = DownloadBlock.create
+    download_block = SoftwareCommunitiesPlugin::DownloadBlock.create
     download_block.downloads = downloads_sample_data
 
     download_block.update_downloads

@@ -2,7 +2,7 @@ require 'test_helper'
 require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
 class SoftwareTabDataBlockTest < ActiveSupport::TestCase
-  include PluginTestHelper
+  include SoftwareCommunitiesPlugin::PluginTestHelper
 
   def setup
     @software_info = create_software_info("A new Software")
@@ -14,15 +14,15 @@ class SoftwareTabDataBlockTest < ActiveSupport::TestCase
     @soft_community.blogs << Blog.new(:name=>"Second blog")
     @soft_community.save!
 
-    SoftwareTabDataBlock.any_instance.stubs(:owner).returns(@soft_community)
+    SoftwareCommunitiesPlugin::SoftwareTabDataBlock.any_instance.stubs(:owner).returns(@soft_community)
   end
 
   should "get its owner blogs" do
-    assert_equal @soft_community.blogs, SoftwareTabDataBlock.new.blogs
+    assert_equal @soft_community.blogs, SoftwareCommunitiesPlugin::SoftwareTabDataBlock.new.blogs
   end
 
   should "actual_blog get the first blog if it is not defined" do
-    assert_equal @soft_community.blogs.first, SoftwareTabDataBlock.new.actual_blog
+    assert_equal @soft_community.blogs.first, SoftwareCommunitiesPlugin::SoftwareTabDataBlock.new.actual_blog
   end
 
   should "actual_blog get the defined community blog" do
@@ -46,13 +46,13 @@ class SoftwareTabDataBlockTest < ActiveSupport::TestCase
     soft_tab_data = create_software_tab_data_block(last_blog)
     craete_sample_posts(last_blog, 6)
 
-    assert_equal SoftwareTabDataBlock::TOTAL_POSTS_DYSPLAYED, soft_tab_data.posts.count
+    assert_equal SoftwareCommunitiesPlugin::SoftwareTabDataBlock::TOTAL_POSTS_DYSPLAYED, soft_tab_data.posts.count
   end
 
   private
 
   def create_software_tab_data_block blog
-    soft_tab_data = SoftwareTabDataBlock.new
+    soft_tab_data = SoftwareCommunitiesPlugin::SoftwareTabDataBlock.new
     soft_tab_data.displayed_blog = blog.id
     soft_tab_data
   end

@@ -9,31 +9,31 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
                   :name => 'New Software'
                 )
 
-    @language = ProgrammingLanguage.new(:name => 'C++')
+    @language = SoftwareCommunitiesPlugin::ProgrammingLanguage.new(:name => 'C++')
     @language.save
-    @software_language = SoftwareLanguage.new(
+    @software_language = SoftwareCommunitiesPlugin::SoftwareLanguage.new(
                           :version => '1'
                         )
     @software_language.programming_language = @language
     @software_language.save
 
-    @database = DatabaseDescription.new(:name => 'Oracle')
+    @database = SoftwareCommunitiesPlugin::DatabaseDescription.new(:name => 'Oracle')
     @database.save
-    @software_database = SoftwareDatabase.new(
+    @software_database = SoftwareCommunitiesPlugin::SoftwareDatabase.new(
                           :version => '2'
                         )
     @software_database.database_description = @database
     @software_database.save
 
-    @operating_system_name = OperatingSystemName.new(:name => 'Debian')
+    @operating_system_name = SoftwareCommunitiesPlugin::OperatingSystemName.new(:name => 'Debian')
     @operating_system_name.save
-    @operating_system = OperatingSystem.new(:version => '1.0')
+    @operating_system = SoftwareCommunitiesPlugin::OperatingSystem.new(:version => '1.0')
     @operating_system.operating_system_name = @operating_system_name
     @operating_system.save
 
     @license_info = LicenseInfo.create(:version => 'New License', :link => '#')
 
-    @software_info = SoftwareInfo.new(
+    @software_info = SoftwareCommunitiesPlugin::SoftwareInfo.new(
                       :acronym => "SFTW",
                       :e_mag => true,
                       :icp_brasil => true,
@@ -56,13 +56,13 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
   end
 
   def teardown
-    ProgrammingLanguage.destroy_all
-    SoftwareLanguage.destroy_all
-    DatabaseDescription.destroy_all
-    SoftwareDatabase.destroy_all
-    OperatingSystem.destroy_all
-    OperatingSystemName.destroy_all
-    SoftwareInfo.destroy_all
+    SoftwareCommunitiesPlugin::ProgrammingLanguage.destroy_all
+    SoftwareCommunitiesPlugin::SoftwareLanguage.destroy_all
+    SoftwareCommunitiesPlugin::DatabaseDescription.destroy_all
+    SoftwareCommunitiesPlugin::SoftwareDatabase.destroy_all
+    SoftwareCommunitiesPlugin::OperatingSystem.destroy_all
+    SoftwareCommunitiesPlugin::OperatingSystemName.destroy_all
+    SoftwareCommunitiesPlugin::SoftwareInfo.destroy_all
   end
 
   should 'Save SoftwareInfo if all fields are filled' do

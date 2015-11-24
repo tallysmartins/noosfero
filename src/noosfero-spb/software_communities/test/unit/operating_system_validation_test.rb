@@ -3,8 +3,8 @@ require 'test_helper'
 class OperatingSystemValidationTest < ActiveSupport::TestCase
 
   def setup
-    operating_system_name = OperatingSystemName::new :name=>"Linux"
-    @operating_system = OperatingSystem::new :version=>"3.0"
+    operating_system_name = SoftwareCommunitiesPlugin::OperatingSystemName::new :name=>"Linux"
+    @operating_system = SoftwareCommunitiesPlugin::OperatingSystem::new :version=>"3.0"
     @operating_system.operating_system_name = operating_system_name
     @operating_system
   end

@@ -7,6 +7,11 @@ class SoftwareLanguageValidationTest < ActiveSupport::TestCase
     @software_info.save
   end
 
+  def teardown
+    @software_info = nil
+    SoftwareCommunitiesPlugin::SoftwareInfo.destroy_all
+  end
+
   should "Save SoftwareLanguage if version and prog_language are filled" do
     @software_language = create_software_language
     assert_equal true, @software_language.save
@@ -33,15 +38,15 @@ class SoftwareLanguageValidationTest < ActiveSupport::TestCase
   private
 
   def create_software_language
-    software_language = SoftwareLanguage.new
+    software_language = SoftwareCommunitiesPlugin::SoftwareLanguage.new
     software_language.software_info = @software_info
-    software_language.programming_language = ProgrammingLanguage.last
+    software_language.programming_language = SoftwareCommunitiesPlugin::ProgrammingLanguage.last
     software_language.version = "version"
     software_language
   end
 
   def create_software_info
-    software_info = SoftwareInfo.new
+    software_info = SoftwareCommunitiesPlugin::SoftwareInfo.new
     software_info.community_id = fast_create(Community).id
     software_info.community.name = 'Noosfero'
     software_info.e_mag = true
@@ -56,9 +61,9 @@ class SoftwareLanguageValidationTest < ActiveSupport::TestCase
   end
 
   def create_programming_language
-    ProgrammingLanguage.create(:name=>"C")
-    ProgrammingLanguage.create(:name=>"C++")
-    ProgrammingLanguage.create(:name=>"Ruby")
-    ProgrammingLanguage.create(:name=>"Python")
+    SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name=>"C")
+    SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name=>"C++")
+    SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name=>"Ruby")
+    SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name=>"Python")
   end
 end
