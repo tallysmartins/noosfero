@@ -9,7 +9,7 @@ class SoftwareCommunitiesPluginProfileController < ProfileController
   }
 
   def download_file
-    download = Download.where(:id => params[:download_id].to_i).detect{ |b| b.download_block.environment.id == environment.id }
+    download = SoftwareCommunitiesPlugin::Download.where(:id => params[:download_id].to_i).detect{ |b| b.download_block.environment.id == environment.id }
 
     if download
       download.total_downloads += 1

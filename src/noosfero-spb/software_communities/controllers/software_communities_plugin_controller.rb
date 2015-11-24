@@ -5,8 +5,8 @@ class SoftwareCommunitiesPluginController < ApplicationController
   def get_license_data
     return render :json=>{} if !request.xhr? || params[:query].nil?
 
-    data = LicenseHelper.find_licenses(params[:query]) unless params[:query].blank?
-    data ||= LicenseHelper.all
+    data = SoftwareCommunitiesPlugin::LicenseHelper.find_licenses(params[:query]) if params[:query]
+    data ||= SoftwareCommunitiesPlugin::LicenseInfo.all
 
     render :json=> data.collect { |license|
       {:id=>license.id, :label=>license.version}
@@ -38,7 +38,7 @@ class SoftwareCommunitiesPluginController < ApplicationController
   protected
 
   def get_model_by_params_field
-    return DatabaseDescription unless params[:field] == "software_language"
-    return ProgrammingLanguage
+    return SoftwareCommunitiesPlugin::DatabaseDescription unless params[:field] == "software_language"
+    return SoftwareCommunitiesPlugin::ProgrammingLanguage
   end
 end
