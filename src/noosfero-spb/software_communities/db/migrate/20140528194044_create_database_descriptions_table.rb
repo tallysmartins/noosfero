@@ -3,9 +3,6 @@ class CreateDatabaseDescriptionsTable < ActiveRecord::Migration
     create_table :database_descriptions do |t|
       t.string :name
     end
-
-    path_to_file = "plugins/software_communities/public/static/databases.txt"
-    SoftwareHelper.create_list_with_file(path_to_file, DatabaseDescription)
   end
 
   def self.down
