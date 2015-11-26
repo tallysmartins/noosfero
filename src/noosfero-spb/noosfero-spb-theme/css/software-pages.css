@@ -64,8 +64,10 @@
   font-size: 18px;
 }
 
+/* THIS RULE WAS CHANGED TO REMOVE MINIMUM REQUIREMENTS - TEMPORARY */
+/* WAS: padding: 30px 10px 25px 20px; */
 #content .download-block .download-list li {
-  padding: 30px 10px 25px 20px;
+  padding: 30px 10px 65px 20px;
   border-top: 1px solid #D3D6DE;
   clear: both;
 }
@@ -120,10 +122,12 @@
   font-size: 12px;
 }
 
+/* THIS RULE WAS CHANGED TO REMOVE MINIMUM REQUIREMENTS - TEMPORARY */
 #content .download-block .download-info .min-requirements a {
   line-height: 40px;
   color: #3E67B1;
   text-decoration: underline;
+  display: none;
 }
 
 #content .download-block #licensed-software {
