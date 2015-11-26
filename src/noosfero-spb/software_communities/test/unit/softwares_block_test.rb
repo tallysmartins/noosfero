@@ -2,7 +2,7 @@ require 'test_helper'
 require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
 class SoftwaresBlockTest < ActiveSupport::TestCase
-  include SoftwareCommunitiesPlugin::PluginTestHelper
+  include PluginTestHelper
   should 'inherit from ProfileListBlock' do
     assert_kind_of ProfileListBlock, SoftwareCommunitiesPlugin::SoftwaresBlock.new
   end

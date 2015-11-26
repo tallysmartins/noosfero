@@ -20,7 +20,8 @@ class SoftwareRegistrationTest < ActiveSupport::TestCase
     task = SoftwareCommunitiesPlugin::CreateSoftware.create!(
             :name => "Teste One",
             :requestor => person,
-            :environment => @environment
+            :environment => @environment,
+            :finality => "Something"
            )
     assert_equal [task], Task.to(person).pending
   end

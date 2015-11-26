@@ -1,4 +1,4 @@
-class SoftwareCommunitiesPlugin::SoftwareLanguageHelper < DynamicTableHelper
+class SoftwareCommunitiesPlugin::SoftwareLanguageHelper < SoftwareCommunitiesPlugin::DynamicTableHelper
   #FIX verify MODEL_NAME
   MODEL_NAME = "language"
   FIELD_NAME = "programming_language_id"

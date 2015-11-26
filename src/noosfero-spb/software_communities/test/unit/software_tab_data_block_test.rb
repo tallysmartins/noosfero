@@ -2,7 +2,7 @@ require 'test_helper'
 require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
 class SoftwareTabDataBlockTest < ActiveSupport::TestCase
-  include SoftwareCommunitiesPlugin::PluginTestHelper
+  include PluginTestHelper
 
   def setup
     @software_info = create_software_info("A new Software")

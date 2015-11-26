@@ -26,7 +26,7 @@ class CreateSoftwareTest < ActiveSupport::TestCase
   should 'actually create new software community when confirmed' do
     task = SoftwareCommunitiesPlugin::CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any")
 
-    assert_difference 'SoftwareInfo.count' do
+    assert_difference 'SoftwareCommunitiesPlugin::SoftwareInfo.count' do
       assert_difference 'Community.count' do
         task.finish
       end

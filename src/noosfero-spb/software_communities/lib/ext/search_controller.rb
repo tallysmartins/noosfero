@@ -93,12 +93,11 @@ class SearchController
     params[:query] ||= ""
     visible_communities = visible_profiles(Community)
 
-    filtered_software_list = SoftwareInfo.search_by_query(params[:query], environment)
+    filtered_software_list = SoftwareCommunitiesPlugin::SoftwareInfo.search_by_query(params[:query])
 
     if params[:only_softwares] && params[:only_softwares].any?{ |word| !word.blank? }
       params[:only_softwares].collect!{ |software_name| software_name.to_slug }
-      #FIX-ME: This query is not appropriate
-      filtered_software_list = SoftwareInfo.all.select{ |s| params[:only_softwares].include?(s.identifier) }
+      filtered_software_list = SoftwareCommunitiesPlugin::SoftwareInfo.all.select{ |s| params[:only_softwares].include?(s.identifier) }
       @public_software_selected = false
     end
 
@@ -159,8 +158,8 @@ class SearchController
   def prepare_per_page
     return 15 if params[:software_display].nil?
 
-    if params[:software_display].downcase == "all"
-      SoftwareInfo.count
+    if params[:software_display] == "all"
+      SoftwareCommunitiesPlugin::SoftwareInfo.count
     else
       params[:software_display].to_i
     end

@@ -1,8 +1,9 @@
 class SoftwareCommunitiesPlugin::SoftwareLanguage < ActiveRecord::Base
-  attr_accessible :version
 
-  belongs_to :software_info, :class => "SoftwareCommunitiesPlugin::SoftwareInfo"
-  belongs_to :programming_language, :class => "SoftwareCommunitiesPlugin::ProgrammingLanguage"
+  belongs_to :software_info, :class_name  => "SoftwareCommunitiesPlugin::SoftwareInfo"
+  belongs_to :programming_language, :class_name => "SoftwareCommunitiesPlugin::ProgrammingLanguage"
+
+  attr_accessible :version
 
   validates_length_of(
     :version,

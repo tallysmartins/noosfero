@@ -7,8 +7,8 @@ class SoftwareCommunitiesPlugin::SoftwareInfo < ActiveRecord::Base
   }
 
   SEARCHABLE_SOFTWARE_CLASSES = [
+    Community,
     SoftwareCommunitiesPlugin::SoftwareInfo,
-    SoftwareCommunitiesPlugin::Community,
     SoftwareCommunitiesPlugin::ProgrammingLanguage,
     SoftwareCommunitiesPlugin::DatabaseDescription,
     Category
@@ -140,10 +140,11 @@ class SoftwareCommunitiesPlugin::SoftwareInfo < ActiveRecord::Base
     license = SoftwareCommunitiesPlugin::LicenseInfo.find_by_id self.license_info_id
     license_another = SoftwareCommunitiesPlugin::LicenseInfo.find_by_version("Another")
 
-    if license_another && self.license_info_id == license_another.id
-      license_another.version = self.another_license_version
-      license_another.link = self.another_license_link
-      license_another
+    if license_another && license.id == license_another.id
+      SoftwareCommunitiesPlugin::LicenseInfo.new(
+        :version => self.another_license_version,
+        :link => self.another_license_link
+      )
     else
       super
     end

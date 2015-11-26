@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
 class SoftwareInfoValidationTest < ActiveSupport::TestCase
 
-  include SoftwareCommunitiesPlugin::PluginTestHelper
+  include PluginTestHelper
 
   should "Return original license_info when license is not 'Another'" do
     @software_info = create_software_info("software_test")

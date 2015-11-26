@@ -1,8 +1,8 @@
 require 'test_helper'
 
-OperatingSystemName.create(:name=>"Debina")
-OperatingSystemName.create(:name=>"Fedora")
-OperatingSystemName.create(:name=>"CentOS")
+SoftwareCommunitiesPlugin::OperatingSystemName.create(:name=>"Debina")
+SoftwareCommunitiesPlugin::OperatingSystemName.create(:name=>"Fedora")
+SoftwareCommunitiesPlugin::OperatingSystemName.create(:name=>"CentOS")
 
 class OperatingSystemHelperTest < ActiveSupport::TestCase
 

@@ -10,7 +10,7 @@ class Community
 
   attr_accessible :visible
 
-  has_one :software_info, :dependent=>:destroy
+  has_one :software_info, :dependent=>:destroy, :class_name => "SoftwareCommunitiesPlugin::SoftwareInfo"
 
   settings_items :hits, :type => :integer, :default => 0
 
@@ -57,7 +57,7 @@ class Community
   def remove_of_community_search_software?
     return software?
   end
-  
+
   def hit
     self.hits += 1
     self.save!

@@ -1,7 +1,7 @@
 module SoftwareTestHelper
 
   def create_language language_fields
-    language = SoftwareLanguage.new
+    language = SoftwareCommunitiesPlugin::SoftwareLanguage.new
 
     language_fields[0].each do |k,v|
         language[k] = v
@@ -12,7 +12,7 @@ module SoftwareTestHelper
 
   def create_database database_fields
 
-    database  = SoftwareDatabase.new
+    database  = SoftwareCommunitiesPlugin::SoftwareDatabase.new
 
     database_fields[0].each do |k,v|
         database[k] = v
@@ -23,7 +23,7 @@ module SoftwareTestHelper
   end
 
   def create_library library_fields
-    library = Library.new
+    library = SoftwareCommunitiesPlugin::Library.new
 
     library_fields[0].each do |k,v|
         library[k] = v
@@ -33,7 +33,7 @@ module SoftwareTestHelper
   end
 
   def create_operating_system operating_system_hash
-    operating_system = OperatingSystem.new
+    operating_system = SoftwareCommunitiesPlugin::OperatingSystem.new
 
     operating_system_hash[0].each do |k,v|
         operating_system[k] = v
@@ -43,7 +43,7 @@ module SoftwareTestHelper
   end
 
   def create_license license_hash
-    license_info = LicenseInfo.new
+    license_info = SoftwareCommunitiesPlugin::LicenseInfo.new
 
     license_hash.each do |k,v|
       license_info[k] = v
@@ -53,7 +53,7 @@ module SoftwareTestHelper
   end
 
   def create_categories categories_hash
-    software_categories = SoftwareCategories.new
+    software_categories = SoftwareCommunitiesPlugin::SoftwareCategories.new
 
     categories_hash.each do |k,v|
       software_categories[k] = v
@@ -64,7 +64,7 @@ module SoftwareTestHelper
 
   def create_software fields
 
-    software = SoftwareInfo.new
+    software = SoftwareCommunitiesPlugin::SoftwareInfo.new
     community = Community.new
     software_hash = fields[2]
     license_system_hash = fields[0]
@@ -128,7 +128,7 @@ module SoftwareTestHelper
 
     #Fields for software language
     fields_language['version'] = 'test'
-    fields_language['programming_language_id'] = ProgrammingLanguage.last.id
+    fields_language['programming_language_id'] = SoftwareCommunitiesPlugin::ProgrammingLanguage.last.id
     fields_language['operating_system'] = 'test'
     list_language << fields_language
     list_language << {}
@@ -136,7 +136,7 @@ module SoftwareTestHelper
 
     #Fields for database
     fields_database['version'] = 'test'
-    fields_database['database_description_id'] = DatabaseDescription.last.id
+    fields_database['database_description_id'] = SoftwareCommunitiesPlugin::DatabaseDescription.last.id
     fields_database['operating_system'] = 'test'
     list_database << fields_database
     list_database << {}
@@ -144,7 +144,7 @@ module SoftwareTestHelper
 
     #Fields for operating system
     fields_operating_system['version'] = 'version'
-    fields_operating_system['operating_system_name_id'] = OperatingSystemName.last.id
+    fields_operating_system['operating_system_name_id'] = SoftwareCommunitiesPlugin::OperatingSystemName.last.id
     list_operating_system << fields_operating_system
     list_operating_system << {}
     hash_list << list_operating_system
@@ -158,7 +158,7 @@ module SoftwareTestHelper
     hash_list << fields_software
 
     #Fields for license
-    fields_license['license_infos_id'] = LicenseInfo.last.id
+    fields_license['license_infos_id'] = SoftwareCommunitiesPlugin::LicenseInfo.last.id
     hash_list << fields_license
 
     hash_list
@@ -169,7 +169,7 @@ module SoftwareTestHelper
 
     #Fields for license info
     fields_license = {
-      license_infos_id: LicenseInfo.last.id
+      license_infos_id: SoftwareCommunitiesPlugin::LicenseInfo.last.id
     }
     hash_list << fields_license
 
