@@ -1,14 +1,10 @@
 module Entities
   class SoftwareInfo < Noosfero::API::Entity
-    expose :id, :finality, :repository_link, :public_software
-  end
-
-  class SoftwareCommunity < Noosfero::API::Entity
-    root 'softwares', 'software'
-    expose :community, :using => Noosfero::API::Entities::Community  do |community, options|
-      community
+    root 'software_infos', 'software_info'
+    expose :id, :finality, :repository_link, :public_software, :acronym, :objectives,
+                :features,:license_info, :software_languages, :software_databases, :operating_system_names
+    expose :community_id do |software_info,options|
+      software_info.community.id
     end
-    expose :software_info, :using => SoftwareInfo
   end
-
 end
