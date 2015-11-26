@@ -1,12 +1,6 @@
 <div id='edit-download-block'>
-  <ul class="link-list-header">
-    <li class='download-list-name'><%= _('Name') %></li>
-    <li class='download-list-link'><%= _('Link') %></li>
-    <li class='download-list-software-description'><%= _('Platforms') %></li>
-    <li class='download-list-minimum-requirements'><%= _('Minimum Requirements') %></li>
-    <li class='download-list-size'><%= _('Size:') %></li>
-  </ul>
 
+  <h3><%= _('Download options') %></h3>
   <div id ="droppable-list-downloads">
     <% @block.downloads.each do |download| %>
       <%= render :partial => 'download_list', :locals => {:download => download} %>

@@ -117,3 +117,27 @@
 .catalog_rating_block {
   margin-top: 5px;
 }
+
+#droppable-list-downloads .download-forms{
+  margin-bottom: 20px;
+  margin-left: 0;
+}
+
+.download-forms ul li{
+  margin-bottom: 10px;
+}
+
+.download-forms ul li label{
+  display: block;
+  margin-bottom: 5px;
+}
+
+#edit-download-block ul.link-list-header{
+  display: none;
+}
+
+#edit-download-block{
+  margin-top: 10px;
+}
+
+/* end of profile_design download block */
