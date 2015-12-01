@@ -547,6 +547,31 @@ float: left;
 }
 
 /*Block with Community information - Need to develop solution - Only display on profile page */
+#agenda-toolbar a.button{
+  opacity: 1.0;
+}
+
+#content .software-events-block{
+  display: none;
+}
+
+.action-profile_design-index #content .software-events-block,
+.profile-type-is-community .action-profile-index #content .software-events-block{
+  display: block;
+}
+
+/*** Right bar ***/
+
+.template-default.profile-type-is-community .action-profile-index #content .box-3 .software-events-block,
+.template-lefttopright.profile-type-is-community .action-profile-index #content .box-2 .software-events-block{
+  display: none;
+}
+
+.template-lefttopright.profile-type-is-community .action-content_viewer-view_page #content .box-2 .software-events-block{
+  display: block;
+}
+
+/*Block with Community information - Need to develop solution - Only display on profile page */
 
 .profile-type-is-community .block.community-block{
   display: none;
@@ -1157,7 +1182,7 @@ float: left;
   overflow: hidden;
 }
 
-/*** Events ***/
+/*** Events internal page ***/
 
 #content .article-body-event .event-card{
   border-top: 1px dotted #D3D6D3;
@@ -1195,7 +1220,7 @@ float: left;
   letter-spacing: 0.48px;
 }
 
-#content .article-body-event .event-link a{
+#content .box-1 .article-body-event .event-link a{
   text-decoration: underline;
 }
 
@@ -1213,24 +1238,26 @@ float: left;
   line-height: 22px;
 }
 
-ul.software-community-events-list {
+/*software-events-block box-1*/
+
+.box-1 .software-events-block ul.software-community-events-list {
   border: 1px solid #D3D6DE;
   border-radius: 8px;
   width: 100%;
 }
 
-li.software-events-list-item {
+.box-1 .software-events-block li.software-events-list-item {
   border-bottom: 1px dotted #D3D6DE;
   font-size: 14px;
   padding: 7px 0px;
   padding-left: 16px;
 }
 
-li.software-events-list-item:last-child{
-  border: none;
+.box-1 .software-events-block li.software-events-list-item:last-child{
+  border:none;
 }
 
-.software-events-list-item-calendar {
+.box-1 .software-events-block .software-events-list-item-calendar {
   background-image: url("../images/calendar-icon.png");
   background-repeat: no-repeat;
   width: 14px;
@@ -1239,10 +1266,48 @@ li.software-events-list-item:last-child{
   margin-top: 2px;
 }
 
-.software-events-list-item-date {
+.box-1 .software-events-block .software-events-list-item-date {
   padding-left: 5px;
+  font-weight: 700;
 }
 
-.software-events-list-item-title {
+.box-1 .software-events-block .software-events-list-item-title {
   padding-left: 1px;
+}
+
+/*software-events-block - sidebar - box2*/
+
+#content .box-2 .software-events-block .software-community-events-block{
+  border:1px solid #C0C1C1;
+  border-radius:4px;
+  background-color:#ECEDF1;
+}
+
+#content .box-2 .software-events-block .software-events-list-item{
+  padding:10px 15px;
+  border-bottom:1px dotted #C0C1C1;
+  color:#2C4B6B;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+#content .box-2 .software-events-block .software-events-list-item-date{
+  font-weight: 800;
+}
+
+#content .box-2 .software-events-block .software-events-list-item-title a,
+#content .box-2 .software-events-block .software-events-list-item-title a:visited{
+  color:#2C4B6B;
+}
+
+#content .box-2 .software-events-block .software-events-list-item:first-child{
+  color:#172738;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-bottom: 1px solid #C0C1C1;
+  padding:10px 15px;
+}
+
+#content .box-2 .software-events-block .software-events-list-item:last-child{
+  border:none;
 }
