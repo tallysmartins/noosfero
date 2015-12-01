@@ -1220,6 +1220,10 @@ li.software-events-list-item {
   padding-left: 16px;
 }
 
+li.software-events-list-item:last-child{
+  border: none;
+}
+
 .software-events-list-item-calendar {
   background-image: url("../images/calendar-icon.png");
   background-repeat: no-repeat;
