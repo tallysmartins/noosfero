@@ -322,8 +322,12 @@
   padding-right: 6px;
 }
 
+/*FIX_ME - tmp css solution for development tmp solution, remove when fixed on plugin*/
+
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #organization_rating_people_benefited,
-#content .star-rate-form .star-comment-container .comments-software-extra-fields #organization_rating_saved_value {
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #organization_rating_saved_value,
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #people_benefited_tmp,
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #saved_value_tmp {
   display: block;
   height: 19px;
   width: 155px;
