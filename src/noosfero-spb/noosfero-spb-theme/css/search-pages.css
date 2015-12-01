@@ -133,3 +133,30 @@
   background: none;
   border: 1px solid #ccc;
 }
+
+.search-software-item .search-software-content-block .search-content-result a {
+  color: #172738 !important;
+}
+
+.action-search-institutions .common-profile-list-block .vcard a.profile_link, .comment-actions .vcard a.profile_link{
+  height: 108px;
+  max-height: 108px;
+}
+
+.action-search-institutions #content .search-results-box .vcard{
+  margin: 8.5px
+}
+
+.action-search-institutions .menu-submenu-content{
+  height: auto;
+}
+
+.action-search-institutions #content .menu-submenu h4{
+  text-align: center;
+}
+
+.action-search-institutions #content .menu-submenu-content ul a{
+  padding-left: 0;
+  text-align: center;
+}
+
