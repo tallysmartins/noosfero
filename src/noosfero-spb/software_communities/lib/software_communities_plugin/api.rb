@@ -9,13 +9,13 @@ class SoftwareCommunitiesPlugin::API < Grape::API
     get do
       authenticate!
       softwares = select_filtered_collection_of(environment,'communities',params).joins(:software_info)
-      present softwares, :with => Entities::SoftwareCommunity
+      present softwares.map{|o|o.software_info}, :with => Entities::SoftwareInfo
     end
 
     get ':id' do
       authenticate!
       software = SoftwareInfo.find_by_id(params[:id])
-      present software.community, :with => Entities::SoftwareCommunity
+      present software, :with => Entities::SoftwareInfo
     end
 
   end

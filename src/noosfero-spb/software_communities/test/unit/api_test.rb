@@ -17,7 +17,7 @@ class SoftwareCommunitiesApiTest < ActiveSupport::TestCase
 
     get "/api/v1/software_communities?#{params.to_query}"
     json = JSON.parse(last_response.body)
-    assert_equivalent [@software_info.id, @software_info2.id], json['softwares'].map {|c| c['software_info']['id']}
+    assert_equivalent [@software_info.id, @software_info2.id], json['software_infos'].map {|c| c['id']}
   end
 
   should 'get software by id' do
@@ -25,7 +25,7 @@ class SoftwareCommunitiesApiTest < ActiveSupport::TestCase
     get "/api/v1/software_communities/#{@software_info.id}?#{params.to_query}"
 
     json = JSON.parse(last_response.body)
-    assert_equal @software_info.id, json["software"]['software_info']["id"]
+    assert_equal @software_info.id, json["software_info"]["id"]
   end
 
 end

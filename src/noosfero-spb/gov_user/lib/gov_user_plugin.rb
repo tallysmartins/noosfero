@@ -9,6 +9,10 @@ class GovUserPlugin < Noosfero::Plugin
   include ActionDispatch::Routing
   include Rails.application.routes.url_helpers
 
+  def self.api_mount_points
+    [GovUserPlugin::API]
+  end
+
   def self.plugin_name
     "GovUserPlugin"
   end
