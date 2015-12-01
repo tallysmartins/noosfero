@@ -409,18 +409,19 @@
 }
 
 #content #blog-tab .blog .blog-post h1{
-  margin: 0px 0px 10px 0px;
+  margin: 0px 0px 4px 0px;
   padding: 0px 0px 0px 0px;
-  max-width: 555px;
+  max-width: 100%;
   max-height: 40px;
   border: none;
   font: normal normal bold 16px/20px Arial;
   overflow: hidden;
-  display: inline-block;
+  display: block;
+  text-align: left;
 }
 
 #content #blog-tab .blog .blog-post .post-pic{
-  margin:0 20px 5px 0px;
+  margin:0 20px 25px 0px;
   border-radius: 4px;
   height: 62px;
   width: 19%;
@@ -477,6 +478,7 @@
   color: #172738;
   padding-left:0px;
   text-align: left;
+  display: inline-block;
 }
 #content #blog-tab .blog .blog-post.position-1 .date{
   padding-left:0px;
@@ -492,6 +494,10 @@ float: left;
 }
 
 /* Read more button*/
+#content #blog-tab .blog .blog-post .read-more{
+  display: none;
+}
+
 #content #blog-tab .blog .read-more{
   text-align: right;
   display: block;
@@ -1205,4 +1211,38 @@ float: left;
   font-size: 15px;
   font-family: Arial;
   line-height: 22px;
+}
+
+ul.software-community-events-list {
+  border: 1px solid #D3D6DE;
+  border-radius: 8px;
+  width: 100%;
+}
+
+li.software-events-list-item {
+  border-bottom: 1px dotted #D3D6DE;
+  font-size: 14px;
+  padding: 7px 0px;
+  padding-left: 16px;
+}
+
+li.software-events-list-item:last-child{
+  border: none;
+}
+
+.software-events-list-item-calendar {
+  background-image: url("../images/calendar-icon.png");
+  background-repeat: no-repeat;
+  width: 14px;
+  height: 14px;
+  float: left;
+  margin-top: 2px;
+}
+
+.software-events-list-item-date {
+  padding-left: 5px;
+}
+
+.software-events-list-item-title {
+  padding-left: 1px;
 }

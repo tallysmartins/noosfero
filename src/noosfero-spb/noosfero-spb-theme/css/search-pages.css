@@ -2,7 +2,8 @@
 
 .action-search-index #content form #search-header,
 .action-search-people #content form #search-header,
-.action-search-communities #content form #search-header {
+.action-search-communities #content form #search-header,
+.action-search-institutions #content form #search-header {
   float: right;
   border: none;
 }
@@ -12,12 +13,14 @@
 }
 
 .action-search-people #content form #search-header,
-.action-search-communities #content form #search-header {
-  margin: 0 0 15px 0 ;
+.action-search-communities #content form #search-header,
+.action-search-institutions #content form #search-header {
+  margin: 0 0 15px 0;
 }
 
 .action-search-people #content form #search-header #search-filters .sod_select,
-.action-search-communities #content form #search-header #search-filters .sod_select {
+.action-search-communities #content form #search-header #search-filters .sod_select,
+.action-search-institutions #content form #search-header #search-filters .sod_select {
   color: #3E67B1;
   border: 1px solid #3E67B1;
   border-radius: 4px;
@@ -28,7 +31,8 @@
 }
 
 .action-search-people #content form #search-header #search-filters .sod_select .sod_list,
-.action-search-communities #content form #search-header #search-filters .sod_select .sod_list {
+.action-search-communities #content form #search-header #search-filters .sod_select .sod_list,
+.action-search-institutions #content form #search-header #search-filters .sod_select .sod_list {
   margin: -2px 0 0 -1px;
   color: #3E67B1;
   border: 1px solid #3E67B1;
@@ -40,34 +44,41 @@
 }
 
 .action-search-people #content form #search-header #search-filters .sod_select .sod_list .active,
-.action-search-communities #content form #search-header #search-filters .sod_select .sod_list .active {
+.action-search-communities #content form #search-header #search-filters .sod_select .sod_list .active,
+.action-search-institutions #content form #search-header #search-filters .sod_select .sod_list .active {
   border-radius: 0px 0px 4px 4px;
 }
 
 .action-search-people #content form #search-header #search-filters .sod_select .sod_list .selected,
-.action-search-communities #content form #search-header #search-filters .sod_select .sod_list .selected {
+.action-search-communities #content form #search-header #search-filters .sod_select .sod_list .selected,
+.action-search-institutions #content form #search-header #search-filters .sod_select .sod_list .selected {
   padding-right: 21px;
 }
 
 .action-search-people #content form #search-subheader .sod_select,
-.action-search-communities #content form #search-subheader .sod_select {
+.action-search-communities #content form #search-subheader .sod_select,
+.action-search-institutions #content form #search-subheader .sod_select {
   line-height: 15px;
 }
 
 .action-search-index #content form .search-field,
 .action-search-people #content form .search-field,
-.action-search-communities #content form .search-field{
+.action-search-communities #content form .search-field,
+.action-search-institutions #content form .search-field {
   margin-bottom: 30px;
 }
 
 .action-search-index #content form .search-field .formfield,
 .action-search-people #content form .search-field .formfield,
-.action-search-communities #content form .search-field .formfield{
+.action-search-communities #content form .search-field .formfield,
+.action-search-institutions #content form .search-field .formfield {
   width: 99%;
 }
+
 .action-search-index #content form .search-field .formfield input,
 .action-search-people #content form .search-field .formfield input,
-.action-search-communities #content form .search-field .formfield input {
+.action-search-communities #content form .search-field .formfield input,
+.action-search-institutions #content form .search-field .formfield input {
   margin-top: 0px;
   padding: 6px;
   height: 19px;
@@ -81,7 +92,8 @@
 
 .action-search-index #content form input.button.submit,
 .action-search-people #content form input.button.submit,
-.action-search-communities #content form input.button.submit {
+.action-search-communities #content form input.button.submit,
+.action-search-institutions #content form input.button.submit {
   background: #3E67B1;
   color: #FFF;
   border-radius: 4px;
@@ -94,12 +106,14 @@
 
 .action-search-index #content form input.button.submit:hover,
 .action-search-people #content form input.button.submit:hover,
-.action-search-communities #content form input.button.submit:hover {
+.action-search-communities #content form input.button.submit:hover,
+.action-search-institutions #content form input.button.submit:hover {
   background: #5E82C6;
 }
 
 .action-search-people #search-results .search-results-type-people,
-.action-search-communities #search-results .search-results-type-community {
+.action-search-communities #search-results .search-results-type-community,
+.action-search-institutions #search-results .search-results-type-institution {
   background: none;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -119,3 +133,31 @@
   background: none;
   border: 1px solid #ccc;
 }
+
+.search-software-item .search-software-content-block .search-content-result a {
+  color: #172738 !important;
+}
+
+.action-search-institutions .common-profile-list-block .vcard a.profile_link, .comment-actions .vcard a.profile_link{
+  height: 108px;
+  max-height: 108px;
+}
+
+.action-search-institutions #content .search-results-box .vcard{
+  margin: 8.5px
+}
+
+.action-search-institutions .menu-submenu-content{
+  height: auto;
+}
+
+.action-search-institutions #content .menu-submenu h4{
+  text-align: center;
+}
+
+.action-search-institutions #content .menu-submenu-content ul a{
+  padding-left: 0;
+  text-align: center;
+}
+
+
