@@ -494,6 +494,10 @@ float: left;
 }
 
 /* Read more button*/
+#content #blog-tab .blog .blog-post .read-more{
+  display: none;
+}
+
 #content #blog-tab .blog .read-more{
   text-align: right;
   display: block;
