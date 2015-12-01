@@ -21,6 +21,23 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     [SoftwareCommunitiesPlugin::API]
   end
 
+  SOFTWARE_CATEGORIES = [
+    _('Agriculture, Fisheries and Extraction'),
+    _('Science, Information and Communication'),
+    _('Economy and Finances'),
+    _('Public Administration'),
+    _('Habitation, Sanitation and Urbanism'),
+    _('Individual, Family and Society'),
+    _('Health'),
+    _('Social Welfare and Development'),
+    _('Defense and Security'),
+    _('Education'),
+    _('Government and Politics'),
+    _('Justice and Legislation'),
+    _('International Relationships'),
+    _('Transportation and Transit')
+  ]
+
   def profile_tabs
     if context.profile.community? && context.profile.software?
       return profile_tabs_software
@@ -51,6 +68,15 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       SoftwareCommunitiesPlugin::StatisticBlock => { :type => [Community] }
       SoftwareEventsBlock => { :type => [Community] }
     }
+  end
+
+  def self.software_categories
+    software_category = Category.find_by_name("Software")
+    if software_category.nil?
+      []
+    else
+      software_category.children
+    end
   end
 
   def stylesheet?

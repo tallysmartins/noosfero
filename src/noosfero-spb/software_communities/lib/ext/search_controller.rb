@@ -179,16 +179,13 @@ class SearchController
     end
   end
 
-  def prepare_software_infos_category_groups &software_condition_block
-    @categories = []
-    software_category = environment.categories.find_by_name("Software")
-    @categories = software_category.children.sort if software_category
-    @categories = @categories.select{|category| category.software_infos.any?{|software| software_condition_block.call(software)}}
-    @categories.sort!{|a, b| a.name <=> b.name}
+  def prepare_software_infos_category_groups
+    @categories = SoftwareCommunitiesPlugin.software_categories.sort{|a, b| a.name <=> b.name}
   end
 
   def prepare_software_infos_category_enable
     @enabled_check_box = Hash.new
+    categories = SoftwareCommunitiesPlugin.software_categories
 
     @categories.each do |category|
       if category.software_infos.count > 0
