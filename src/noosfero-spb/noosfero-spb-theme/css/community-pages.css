@@ -547,11 +547,15 @@ float: left;
 }
 
 /*Block with Community information - Need to develop solution - Only display on profile page */
+#agenda-toolbar a.button{
+  opacity: 1.0;
+}
 
 #content .software-events-block{
   display: none;
 }
 
+.action-profile_design-index #content .software-events-block,
 .profile-type-is-community .action-profile-index #content .software-events-block{
   display: block;
 }
