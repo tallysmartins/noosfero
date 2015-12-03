@@ -13,152 +13,152 @@
 {% endblock %}
 
 {% block main-content %}
+  <div class="colab-content container">
+    <div id="user-profile" class="row">
+      <div class="colab-vcard col-lg-4 col-md-4 col-sm-5">
+        <div class="thumbnail">
+          {% gravatar user_.email 200 %}
+        </div>
 
-  <div id="user-profile" class="row">
-    <div class="colab-vcard col-lg-4 col-md-4 col-sm-5">
-      <div class="thumbnail">
-        {% gravatar user_.email 200 %}
-      </div>
+        <h1>
+          <span>{{ user_.get_full_name }}</span>
+          <em>{{ user_.username }}</em>
+        </h1>
 
-      <h1>
-        <span>{{ user_.get_full_name }}</span>
-        <em>{{ user_.username }}</em>
-      </h1>
-
-      {% if request.user == user_ or request.user.is_superuser %}
-        <a class="btn btn-info" href="{% url 'user_profile_update' user_ %}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{% trans "edit profile"|title %}</a>
-        <a class="btn btn-info" href="{% url 'user_list_subscriptions' user_ %}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Inscreva-se nas listas de discussão</a>
-      {% endif %}
-
-      {% if request.user.is_active %}
-        {% if user_.bio %}
-          <div class="divider"></div>
-          <ul class="unstyled-list">
-            <li>
-              <strong>{% trans 'Bio' %}</strong>
-            </li>
-            <li class="text-muted"> {{ user_.bio }}</li>
-          </ul>
+        {% if request.user == user_ or request.user.is_superuser %}
+          <a class="btn btn-info" href="{% url 'user_profile_update' user_ %}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{% trans "edit profile"|title %}</a>
+          <a class="btn btn-info" href="{% url 'user_list_subscriptions' user_ %}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Inscreva-se nas listas de discussão</a>
         {% endif %}
-      {% endif %}
 
-      <div class="divider"></div>
-      {% if request.user.is_active %}
-        <ul class="unstyled-list">
-          <li><span class="icon-envelope icon-fixed-width"></span> <a href="mailto:{{ user_.email }}">{{ user_.email }}</a></li>
-        </ul>
-        <div class="divider"></div>
-      {% endif %}
-
-      <ul class="unstyled-list">
-        {% if user_.institution or user_.role %}
-          <li>
-            <span class="icon-briefcase icon-fixed-width"></span>
-            {{ user_.role }}
-            {% if user_.institution and user_.role %}-{% endif %}
-            {{ user_.institution }}
-          </li>
-        {% endif %}
         {% if request.user.is_active %}
-          {% if SOCIAL_NETWORK_ENABLED %}
-            <li>
-              {% if user_.twitter %}
-                <span class="icon-twitter icon-fixed-width" title="{% trans 'Twitter account' %}"></span> <a target="_blank" href="{{ user_.twitter_link }}" title="{% trans 'Twitter account' %}">{{ user_.twitter }}</a>
-              {% endif %}
-              {% if user_.facebook %}
-                <span class="icon-facebook icon-fixed-width" title="{% trans 'Facebook account' %}"></span> <a target="_blank" href="{{ user_.facebook_link }}" title="{% trans 'Facebook account' %}">{{ user_.facebook }}</a>
-              {% endif %}
-            </li>
-
-            {% if user_.google_talk %}
-              <li><span class="icon-google-plus icon-fixed-width" title="{% trans 'Google talk account' %}"></span> {{ user_.google_talk }}</li>
-            {% endif %}
-
-            {% if user_.github %}
-              <li><span class="icon-github icon-fixed-width" title="{% trans 'Github account' %}"></span> <a target="_blank" href="https://github.com/{{ user_.github }}">{{ user_.github }}</a></li>
-            {% endif %}
-
-            {% if user_.webpage %}
-              <li><span class="icon-link icon-fixed-width" title="{% trans 'Personal webpage' %}"></span> <a target="_blank" href="{{ user_.webpage }}" title="{% trans 'Personal webpage' %}">{{ user_.webpage }}</a></li>
-            {% endif %}
+          {% if user_.bio %}
+            <div class="divider"></div>
+            <ul class="unstyled-list">
+              <li>
+                <strong>{% trans 'Bio' %}</strong>
+              </li>
+              <li class="text-muted"> {{ user_.bio }}</li>
+            </ul>
           {% endif %}
         {% endif %}
-      </ul>
-      {% if user_.mailinglists %}
-        <b>Listas de discussão</b>
-        {% for list in user_.mailinglists %}
-          <a href="{% url 'haystack_search' %}?order=latest&amp;type=thread&amp;list={{ list }}"><span class="label label-primary">{{ list }}</span></a>
+
+        <div class="divider"></div>
+        {% if request.user.is_active %}
+          <ul class="unstyled-list">
+            <li><span class="icon-envelope icon-fixed-width"></span> <a href="mailto:{{ user_.email }}">{{ user_.email }}</a></li>
+          </ul>
+          <div class="divider"></div>
+        {% endif %}
+
+        <ul class="unstyled-list">
+          {% if user_.institution or user_.role %}
+            <li>
+              <span class="icon-briefcase icon-fixed-width"></span>
+              {{ user_.role }}
+              {% if user_.institution and user_.role %}-{% endif %}
+              {{ user_.institution }}
+            </li>
+          {% endif %}
+          {% if request.user.is_active %}
+            {% if SOCIAL_NETWORK_ENABLED %}
+              <li>
+                {% if user_.twitter %}
+                  <span class="icon-twitter icon-fixed-width" title="{% trans 'Twitter account' %}"></span> <a target="_blank" href="{{ user_.twitter_link }}" title="{% trans 'Twitter account' %}">{{ user_.twitter }}</a>
+                {% endif %}
+                {% if user_.facebook %}
+                  <span class="icon-facebook icon-fixed-width" title="{% trans 'Facebook account' %}"></span> <a target="_blank" href="{{ user_.facebook_link }}" title="{% trans 'Facebook account' %}">{{ user_.facebook }}</a>
+                {% endif %}
+              </li>
+
+              {% if user_.google_talk %}
+                <li><span class="icon-google-plus icon-fixed-width" title="{% trans 'Google talk account' %}"></span> {{ user_.google_talk }}</li>
+              {% endif %}
+
+              {% if user_.github %}
+                <li><span class="icon-github icon-fixed-width" title="{% trans 'Github account' %}"></span> <a target="_blank" href="https://github.com/{{ user_.github }}">{{ user_.github }}</a></li>
+              {% endif %}
+
+              {% if user_.webpage %}
+                <li><span class="icon-link icon-fixed-width" title="{% trans 'Personal webpage' %}"></span> <a target="_blank" href="{{ user_.webpage }}" title="{% trans 'Personal webpage' %}">{{ user_.webpage }}</a></li>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </ul>
+        {% if user_.mailinglists %}
+          <b>Listas de discussão</b>
+          {% for list in user_.mailinglists %}
+            <a href="{% url 'haystack_search' %}?order=latest&amp;type=thread&amp;list={{ list }}"><span class="label label-primary">{{ list }}</span></a>
+          {% endfor %}
+        {% endif %}
+
+        <div class="divider"></div>
+
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">{% trans "Collaborations by Type" %}</h3>
+          </div>
+          <div class="panel-body">
+            <div id="collabs"></div>
+            <div class="chart collabs">
+                <canvas width="200" height="200"></canvas>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-4 col-md-4 col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Participação por lista de discussão</h3>
+          </div>
+          <div class="panel-body">
+            <div class="chart collabs2">
+                <canvas width="200" height="200"></canvas>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- End of user-profile row -->
+
+    <div class="row">
+
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <h3>{% trans "Latest posted" %} </h3>
+        <ul class="message-list">
+        {% for doc in emails %}
+          {% include "message-preview.html" with result=doc %}
+        {% empty %}
+          <li>{% trans "There are no posts by this user so far." %}</li>
         {% endfor %}
-      {% endif %}
-
-      <div class="divider"></div>
-
-    </div>
-
-    <div class="col-lg-4 col-md-4 col-sm-7">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">{% trans "Collaborations by Type" %}</h3>
-        </div>
-        <div class="panel-body">
-          <div id="collabs"></div>
-          <div class="chart collabs">
-              <canvas width="200" height="200"></canvas>
-            <p></p>
-          </div>
-        </div>
+        </ul>
+        <a href="{% url 'haystack_search' %}?type=thread&amp;author={{ user_.username }}">
+          {% trans "View more posts..." %}
+        </a>
+        <div>&nbsp;</div>
       </div>
-    </div>
 
-
-    <div class="col-lg-4 col-md-4 col-sm-7">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Participação por lista de discussão</h3>
-        </div>
-        <div class="panel-body">
-          <div class="chart collabs2">
-              <canvas width="200" height="200"></canvas>
-            <p></p>
-          </div>
-        </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <h3>{% trans "Latest contributions" %}</h3>
+        <ul class="message-list">
+        {% for result in results %}
+          {% include "message-preview.html" %}
+        {% empty %}
+          <li>{% trans "No contributions of this user so far." %}</li>
+        {% endfor %}
+        </ul>
+        <a href="{% url 'haystack_search' %}?order=latest&amp;collaborators={{ user_.username }}">
+          {% trans "View more contributions..." %}
+        </a>
+        <div>&nbsp;</div>
       </div>
+
     </div>
-
-  </div> <!-- End of user-profile row -->
-
-  <div class="row">
-
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <h3>{% trans "Latest posted" %} </h3>
-      <ul class="message-list">
-      {% for doc in emails %}
-        {% include "message-preview.html" with result=doc %}
-      {% empty %}
-        <li>{% trans "There are no posts by this user so far." %}</li>
-      {% endfor %}
-      </ul>
-      <a href="{% url 'haystack_search' %}?type=thread&amp;author={{ user_.username }}">
-        {% trans "View more posts..." %}
-      </a>
-      <div>&nbsp;</div>
-    </div>
-
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <h3>{% trans "Latest contributions" %}</h3>
-      <ul class="message-list">
-      {% for result in results %}
-        {% include "message-preview.html" %}
-      {% empty %}
-        <li>{% trans "No contributions of this user so far." %}</li>
-      {% endfor %}
-      </ul>
-      <a href="{% url 'haystack_search' %}?order=latest&amp;collaborators={{ user_.username }}">
-        {% trans "View more contributions..." %}
-      </a>
-      <div>&nbsp;</div>
-    </div>
-
   </div>
-
 {% endblock %}
