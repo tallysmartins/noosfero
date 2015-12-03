@@ -1,4 +1,4 @@
-{% if 'sisp.gov.br' in request.META.HTTP_HOST|stringformat:"s" %}
+{% if SISP_URL in request.META.HTTP_HOST|stringformat:"s" %}
   {% include 'header_sisp.html' %}
 {% else %}
   {% include 'header_spb.html' %}
