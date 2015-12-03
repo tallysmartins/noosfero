@@ -38,3 +38,7 @@ menu_urls = (
         kwargs={'path': 'merge_requests'}, auth=True),
 
 )
+
+password_validators = (
+    'colab_gitlab.password_validators.min_length',
+)
