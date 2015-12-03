@@ -27,7 +27,7 @@
 
       {% if request.user == user_ or request.user.is_superuser %}
         <a class="btn btn-info" href="{% url 'user_profile_update' user_ %}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{% trans "edit profile"|title %}</a>
-        <a class="btn btn-info" href="{% url 'user_list_subscriptions' user_ %}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Inscrições nas listas de discussão</a>
+        <a class="btn btn-info" href="{% url 'user_list_subscriptions' user_ %}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Inscreva-se nas listas de discussão</a>
       {% endif %}
 
       {% if request.user.is_active %}

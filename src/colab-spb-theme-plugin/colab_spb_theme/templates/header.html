@@ -134,9 +134,19 @@
     </div>
     <div id="sobre">
       <ul>
-        <li id="softwarepublico-groups" class="softwarepublico-item">
-          <a href="{% url 'thread_list' %}" title="Listas de discussão">Listas de discussão</a>
-        </li>
+        {% if not user.is_authenticated %}
+          <li id="softwarepublico-groups" class="softwarepublico-item">
+            <a href="{% url 'thread_list' %}" title="Listas de discussão">Listas de discussão</a>
+          </li>
+        {% else %}
+          <li class="dropdown softwarepublico-item">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Listas de discussão <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'thread_list' %}">Acesse todas as listas</a></li>
+                <li><a href="{% url 'user_list_subscriptions' user %}">Inscreva-se nas listas</a></li>
+            </ul>
+          </li>
+        {% endif %}
         {% plugins_menu %}
         <li id="softwarepublico-perguntas-frequentes" class="softwarepublico-item">
           <a href="/social/spb/ajuda" title="Perguntas frequentes">Perguntas frequentes</a>

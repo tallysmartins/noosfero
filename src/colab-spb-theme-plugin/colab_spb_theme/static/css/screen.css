@@ -574,3 +574,7 @@ form.signup {
     font-family: Arial;
     padding-top: 7px;
 }
+
+a.btn {
+  margin: 2px 0 2px 0;
+}
