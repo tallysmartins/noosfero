@@ -57,13 +57,14 @@
 
 #content .blog .blog-post h1.title {
   margin: 0px 0px 10px 0px;
-  padding: 0px 0px 0px 0px;
-  max-width: 555px;
+  padding: 0px;
+  max-width: 100%;
   max-height: 40px;
   border: none;
   font: normal normal bold 16px/20px arial;
   overflow: hidden;
-  display: inline-block;
+  display: block;
+  white-space: normal;
 }
 
 #content .blog .blog-post h1.title a {
@@ -148,15 +149,24 @@
 
 
 /** Secondary News' Block **/
+
+#content .blog .page-1 .position-1 .title,
+#content .blog .page-1 .position-2 .title,
+#content .blog .page-1 .position-3 .title,
+#content .blog .page-1 .position-4 .title {
+  display: inline-block;
+}
+
 #content .blog .page-1 .position-2,
 #content .blog .page-1 .position-3,
 #content .blog .page-1 .position-4 {
-  margin: 0px 0px 0px 0px;
-  padding: 20px  21px 45px 0px;
-  height: 235px;
+  margin: 0px;
+  padding: 20px 4.2% 5px 0px;
+  height: auto;
   width: 30.5%;
   display: block;
   float: left;
+  border-bottom: none;
 }
 
 #content .blog .page-1 .position-2 p,
@@ -173,7 +183,7 @@
 #content .blog .page-1 .position-2 .post-pic,
 #content .blog .page-1 .position-3 .post-pic,
 #content .blog .page-1 .position-4 .post-pic {
-  margin-top: 12px;
+  margin-bottom: 12px;
   top: 10px;
   height: 120px;
   width: 100%;
@@ -200,6 +210,10 @@
 /* This rule serves to maintain the element in position-5 clear the
  *   configurations of float.
  */
+#content .blog .page-1 .blog-post.position-5{
+  border-top:1px solid #ccc;
+}
+
 #content .blog .blog-post.position-5 {
   clear: both;
 }

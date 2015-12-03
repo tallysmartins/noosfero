@@ -15,6 +15,24 @@ modulejs.define('CommentsSoftwareExtraFields', ['jquery'], function($) {
         $(".comments-software-extra-fields div").hide();
       }
     });
+    var organization_rating_saved_value = $("#organization_rating_saved_value");
+    var organization_rating_people_benefited = $("#organization_rating_people_benefited");
+    var people_benefited_tmp = $("#people_benefited_tmp");
+    var saved_value_tmp = $("#saved_value_tmp");
+
+    saved_value_tmp.mask("#.##0,00", {reverse: true});
+    people_benefited_tmp.mask("000.000.000", {reverse: true});
+
+    organization_rating_saved_value.closest("form").submit(function( event ) {
+        var unformated_saved_value = saved_value_tmp.val();
+        unformated_saved_value = unformated_saved_value.split(".").join("");
+        unformated_saved_value = unformated_saved_value.replace(",",".");
+        organization_rating_saved_value.val(unformated_saved_value);
+
+        var unformated_people_benefited = people_benefited_tmp.val();
+        unformated_people_benefited = unformated_people_benefited.split(".").join("");
+        organization_rating_people_benefited.val(unformated_people_benefited);
+    });
   }
 
   return {

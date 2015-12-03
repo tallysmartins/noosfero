@@ -50,10 +50,9 @@ class SoftwareLanguageHelper < DynamicTableHelper
 
   def self.language_html_structure(language_data, disabled)
     language_id = language_data[:programming_language_id]
-    language_name = if language_data[:programming_language_id].blank?
-      ""
-    else
-      ProgrammingLanguage.find(
+    language_name = ""
+    unless language_data[:programming_language_id].blank?
+      language_name = ProgrammingLanguage.find(
         language_data[:programming_language_id],
         :select=>"name"
       ).name

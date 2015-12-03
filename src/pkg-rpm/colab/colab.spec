@@ -1,13 +1,11 @@
 %define name colab
-%define version 1.11.3
-%define default_release 0
-%{!?release: %define release %{default_release}}
+%define version 1.11.4
 %define buildvenv /var/tmp/%{name}-%{version}
 
 Summary: Collaboration platform for communities
 Name: %{name}
 Version: %{version}
-Release: 19
+Release: 1
 Source0: %{name}-%{version}.tar.gz
 License: GPLv2
 Group: Development/Tools
@@ -16,9 +14,9 @@ Prefix: %{_prefix}
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://github.com/colab/colab
 BuildArch: noarch
-BuildRequires: colab-deps >= 1.11.3, python-virtualenv
+BuildRequires: colab-deps >= 1.11.6, python-virtualenv
 # FIXME colab should not depend on nginx!
-Requires: colab-deps >= 1.11.3, solr, mailman-api >= 0.3rc3, nginx
+Requires: colab-deps >= 1.11.6, solr, mailman-api >= 0.3rc3, nginx
 
 %description
 Integrated software development platform.
@@ -226,6 +224,10 @@ if [ $1 -gt 1 ]; then
   # upgrade; restart if running
   systemctl try-restart colab
 fi
+
+colab-admin build_solr_schema > /var/tmp/schema.xml
+mv -f /var/tmp/schema.xml /usr/share/solr/example/solr/collection1/conf/schema.xml
+systemctl restart solr
 
 systemctl daemon-reload
 

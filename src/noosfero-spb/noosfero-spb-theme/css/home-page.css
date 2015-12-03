@@ -283,9 +283,9 @@
 .action-home-index #content .display-content-block .image{
   padding-right: 25px;
   padding: 0px 25px 0px 0px;
-  border: 0px solid #c0c1c1;
-  width: 150px;
+  max-width: 150px;
   display: table-cell;
+  vertical-align: top;
 }
 
 .controller-environment_design #content .display-content-block .image a,
@@ -298,7 +298,6 @@
 
 .controller-environment_design #content .display-content-block .image img,
 .action-home-index #content .display-content-block .image img{
-  border: 0px solid #c0c1c1;
   max-width: 150px;
 }
 

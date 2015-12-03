@@ -9,13 +9,13 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
     @community = Community.new(params[:community])
     @community.environment = environment
-    @software_info = SoftwareInfo.new(params[:software_info])
 
-    @license_info = if params[:license].blank? or params[:license][:license_infos_id].blank?
-      LicenseInfo.new
-    else
-      LicenseInfo.find(params[:license][:license_infos_id])
-    end
+    @license_info = LicenseInfo.find_by_id(params[:license][:license_infos_id]) if params[:license]
+    @license_info ||= LicenseInfo.new
+
+    @software_info = SoftwareInfo.new(params[:software_info])
+    @software_info.community = @community
+    @software_info.license_info = @license_info
 
     control_software_creation
     update_new_software_errors
@@ -26,14 +26,15 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
     return unless request.post?
 
-    @software_info = constroy_software
+    @software_info = create_software
     software_info_insert_models.call(@list_libraries, 'libraries')
     software_info_insert_models.call(@list_languages, 'software_languages')
     software_info_insert_models.call(@list_databases, 'software_databases')
     software_info_insert_models.call(@list_operating_systems, 'operating_systems')
 
     begin
-      @software_info.save!
+      raise NotAdminException unless can_change_public_software?
+      @software_info.update_attributes!(params[:software])
 
       @community = @software_info.community
       @community.update_attributes!(params[:community])
@@ -44,31 +45,50 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
         redirect_to :controller => 'profile_editor', :action => 'index'
         session[:notice] = _('Software updated successfully')
       end
-    rescue ActiveRecord::RecordInvalid => invalid
+    rescue NotAdminException, ActiveRecord::RecordInvalid => invalid
       update_new_software_errors
       session[:notice] = _('Could not update software')
     end
   end
 
-  def disabled_public_software_field
-    !environment.admins.include?(current_user.person)
-  end
-
   private
+
+  def can_change_public_software?
+    if !user.is_admin?(environment)
+      if params[:software][:public_software]
+        @software_info.errors.add(:public_software, _("You don't have permission to change public software status"))
+        return false
+      end
+
+      if params[:software].keys.any?{|key| ["e_ping","e_mag","icp_brasil","e_arq","intern"].include?(key)}
+        @software_info.errors.add(:base, _("You don't have permission to change public software attributes"))
+        return false
+      end
+    end
+    return true
+  end
 
   def add_software_erros
       @errors = []
-      @errors |= @community.errors.full_messages if @community
+      if @community
+        error = @community.errors.delete(:identifier)
+        @errors |= [_("Domain %s") % error.first ] if error
+        @errors |= @community.errors.full_messages
+      end
       @errors |= @software_info.errors.full_messages if @software_info
       @errors |= @license_info.errors.full_messages if @license_info
   end
 
   def control_software_creation
-    valid_models = request.post? && (@community.valid? && @software_info.valid? && @license_info.valid?)
-    if valid_models
-      send_software_to_moderation
-    else
-      add_software_erros
+    if request.post?
+      valid_models = @community.valid?
+      valid_models &= @software_info.valid?
+      valid_models &= @license_info.valid?
+      if valid_models
+        send_software_to_moderation
+      else
+        add_software_erros
+      end
     end
   end
 
@@ -79,16 +99,14 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
     }
   end
 
-  def constroy_software
+  def create_software
     @software_info = @profile.software_info
-    params[:software][:public_software] ||= false unless @software_info.public_software?
-    @license = LicenseInfo.find(params[:license][:license_infos_id])
-    @software_info.license_info = @license
-    @software_info.update_attributes(params[:software])
-
     another_license_version = nil
     another_license_link = nil
     if params[:license]
+      @license = LicenseInfo.find(params[:license][:license_infos_id])
+      @software_info.license_info = @license
+
       another_license_version = params[:license][:version]
       another_license_link = params[:license][:link]
     end
@@ -126,7 +144,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
     add_admin_to_community
 
-    if  !environment.admins.include?(current_user.person)
+    if !environment.admins.include?(current_user.person)
       session[:notice] = _('Your new software request will be evaluated by an'\
                            'administrator. You will be notified.')
       redirect_to user.admin_url
@@ -143,7 +161,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
     @list_databases = @software_info.software_databases
     @list_languages = @software_info.software_languages
     @list_operating_systems = @software_info.operating_systems
-    @disabled_public_software_field = disabled_public_software_field
+    @non_admin_status = 'disabled' unless user.is_admin?(environment)
 
     @license_version = @software_info.license_info.version
     @license_id = @software_info.license_info.id
@@ -184,7 +202,6 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
       add_software_erros
     end
 
-
     @error_community_name = @community.errors.include?(:name) ? "highlight-error" : "" if @community
     @error_software_acronym = @software_info.errors.include?(:acronym) ? "highlight-error" : "" if @software_info
     @error_software_domain = @community.errors.include?(:identifier) ? "highlight-error" : "" if @community
@@ -192,3 +209,5 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
     @error_software_license = @license_info.errors.include?(:version) ? "highlight-error" : "" if @license_info
   end
 end
+
+class NotAdminException < Exception; end

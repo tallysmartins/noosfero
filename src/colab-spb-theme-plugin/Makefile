@@ -1,5 +1,5 @@
 PACKAGE = colab-spb-theme
-VERSION = 0.2.0
+VERSION = $(shell cat VERSION)
 DISTDIR = dist
 PACKAGE_NAME = $(PACKAGE)-$(VERSION)
 TARBALL = $(PACKAGE_NAME).tar.gz
@@ -10,10 +10,10 @@ all:
 colab_dir=/usr/lib/colab
 
 dist: clean
-	mkdir -p $(DISTDIR)/$(PACKAGE_NAME) 
-	tar --exclude=.git --exclude=$(DISTDIR) -cf - * | (cd $(DISTDIR)/$(PACKAGE_NAME) && tar xzf -)
+	mkdir -p $(DISTDIR)/$(PACKAGE_NAME)
+	tar --exclude=.git --exclude=$(DISTDIR) -cf - * | (cd $(DISTDIR)/$(PACKAGE_NAME) && tar xf -)
 	cd $(DISTDIR) &&  tar -czf $(TARBALL) $(PACKAGE_NAME)
-	rm -r $(DISTDIR)/$(PACKAGE_NAME) 
+	rm -r $(DISTDIR)/$(PACKAGE_NAME)
 clean:
 	$(RM) $(TARBALL)
 	$(RM) -r $(DISTDIR)

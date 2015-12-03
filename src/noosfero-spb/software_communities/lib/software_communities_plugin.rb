@@ -17,9 +17,13 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     _('Add Public Software and MPOG features.')
   end
 
+  def self.api_mount_points
+    [SoftwareCommunitiesPlugin::API]
+  end
+
   def profile_tabs
-    if context.profile.community?
-      return profile_tabs_software if context.profile.software?
+    if context.profile.community? && context.profile.software?
+      return profile_tabs_software
     end
   end
 
@@ -43,7 +47,8 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       SoftwareHighlightsBlock => { :type => [Environment] },
       SoftwareTabDataBlock => {:type => [Community], :position => 1},
       WikiBlock => {:type => [Community]},
-      StatisticBlock => { :type => [Community] }
+      StatisticBlock => { :type => [Community] },
+      SoftwareEventsBlock => { :type => [Community] }
     }
   end
 
@@ -102,7 +107,6 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
         is_admin ||= user_rating.organization.admins.include?(current_user.person)
 
         if is_admin and profile.software?
-
             render :file => 'organization_ratings_extra_fields_show_data',
                    :locals => {:user_rating => user_rating}
         end

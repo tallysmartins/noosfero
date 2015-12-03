@@ -11,9 +11,11 @@ install_requires = ['colab', 'colab_noosfero', 'colab_gitlab']
 
 tests_require = [ ]
 
+version = open('VERSION').read().strip()
+
 setup(
-    name='colab-spb',
-    version='0.1.0',
+    name='colab-spb-plugin',
+    version=version,
     author='Macartur Sousa',
     author_email='macartur.sc@gmail.com',
     url='https://portal.softwarepublico.gov.br/gitlab/softwarepublico/colab-spb-plugin/',

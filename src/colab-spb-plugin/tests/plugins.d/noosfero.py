@@ -14,7 +14,6 @@ upstream = 'localhost'
 
 urls = {
     'include': 'colab_noosfero.urls',
-    'namespace': 'noosfero',  # TODO: do not allow to change namespace
     'prefix': 'social',
 }
 

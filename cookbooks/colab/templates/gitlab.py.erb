@@ -9,6 +9,7 @@ verbose_name = 'Gitlab Plugin'
 upstream = 'http://<%= node['peers']['integration'] %>:81/gitlab/'
 
 private_token = '<%= @get_private_token.call %>'
+verify_ssl = False
 
 urls = {
     'include': 'colab_gitlab.urls',

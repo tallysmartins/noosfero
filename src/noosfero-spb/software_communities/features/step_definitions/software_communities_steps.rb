@@ -194,7 +194,7 @@ Given /^the user "([^"]*)" has "([^"]*)" as secondary e\-mail$/ do |login, email
 end
 
 Given /^I click on anything with selector "([^"]*)"$/ do |selector|
-  evaluate_script "jQuery('#{selector}').trigger('click') && true"
+  page.evaluate_script("jQuery('##{selector}').click();")
 end
 
 Given /^I should see "([^"]*)" of this selector "([^"]*)"$/ do |quantity, selector|
@@ -242,4 +242,8 @@ end
 Given /^I keyup on selector "([^"]*)"$/ do |selector|
   selector_founded = evaluate_script("jQuery('#{selector}').trigger('keyup').length != 0")
   selector_founded.should be_true
+end
+
+Then /^there should be (\d+) divs? with class "([^"]*)"$/ do |count, klass|
+  should have_selector("div.#{klass}", :count => count)
 end

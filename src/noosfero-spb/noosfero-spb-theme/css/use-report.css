@@ -322,8 +322,12 @@
   padding-right: 6px;
 }
 
+/*FIX_ME - tmp css solution for development tmp solution, remove when fixed on plugin*/
+
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #organization_rating_people_benefited,
-#content .star-rate-form .star-comment-container .comments-software-extra-fields #organization_rating_saved_value {
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #organization_rating_saved_value,
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #people_benefited_tmp,
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #saved_value_tmp {
   display: block;
   height: 19px;
   width: 155px;
@@ -344,13 +348,17 @@
 #content .star-rate-form .star-comment-container .star-tooltip {
   cursor: default;
   content: '?';
-  border-radius: 90%;
-  font-size: 12px;
-  font-weight: 700;
-  background: #3867b7;
-  color: #fff;
-  margin-left: 4px;
-  padding: 0px 6px;
+  padding-top: 2px;
+  background-color: #3867b7;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  height: 15px;
+  font-family: arial;
+  width: 17px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%
 }
 
 .ratings-list {

@@ -51,12 +51,13 @@
   color: #8a6d3b;
 }
 
-.environment-notification-plugin-notification-bar .warningnotification p a,
-.environment-notification-plugin-notification-notification-modal .warningnotification p a{
+#content .environment-notification-plugin-notification-bar .warningnotification p a,
+#content .environment-notification-plugin-notification-bar .warningnotification p a:visited,
+#content .environment-notification-plugin-notification-notification-modal .warningnotification p a
+#content .environment-notification-plugin-notification-notification-modal .warningnotification p a:visited{
   font-weight: bold;
   color: #8a6d3b;
 }
-
 
 .environment-notification-plugin-notification-bar .informationnotification,
 .environment-notification-plugin-notification-notification-modal .informationnotification{

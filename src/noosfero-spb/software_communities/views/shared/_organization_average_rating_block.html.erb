@@ -1,0 +1,9 @@
+<div class="star-container catalog_rating_block">
+  <% (1..5).each do |rate_number| %>
+    <% if rate_number <= OrganizationRating.average_rating(community.id) %>
+      <div class="medium-star-positive"></div>
+    <% else %>
+      <div class="medium-star-negative"></div>
+    <% end %>
+  <% end %>
+</div>

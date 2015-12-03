@@ -1,7 +1,14 @@
 <% software = community.software_info %>
 <li class="search-software-item">
+  <% organization_average_rating = '' %>
+  <% unless community.organization_ratings.empty?%>
+    <% organization_average_rating = render :partial => 'shared/organization_average_rating_block', :locals => {:community => community}%>
+  <% end %>
+
+  <% software_publish_date = render :partial => 'shared/software_publish_date', :locals => {:community => community, :order => @order} %>
+
   <div class="search-software-item-column-left">
-    <%= profile_image_link community, :portrait, 'div', community.send(@order + '_label') + show_date(community.created_at) %>
+    <%= profile_image_link community, :portrait, 'div', organization_average_rating + software_publish_date %>
   </div>
 
   <div class="search-software-item-column-right">
