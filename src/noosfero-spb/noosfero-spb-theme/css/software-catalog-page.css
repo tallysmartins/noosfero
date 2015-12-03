@@ -310,9 +310,9 @@
 
 /* Column left */
 
-.action-search-software_infos #search-results .search-software-item-column-left{
-  width: 130px;
-  height: 130px;
+.action-search-software_infos #search-results .search-software-item-column-left {
+  width: 140px;
+  height: 140px;
   float: left;
   border-right: 1px dotted  #ccc;
 }
@@ -359,7 +359,7 @@
 }
 
 .action-search-software_infos #search-results .search-software-item-column-left .extra_info {
-  width: 130px;
+  width: 140px;
   padding-right: 20px;
   top: 0px;
   position: absolute;
@@ -370,14 +370,9 @@
   opacity: inherit;
 }
 
-.action-search-software_infos #search-results .search-software-item-column-left .extra_info .average-rating-title::before {
-  content: url("../images/ic-doc.png");
-  margin-right: 7px;
-}
-
 .action-search-software_infos #search-results .search-software-item-column-left .software-date {
-  margin-top: 10px;
-  width: 110px;
+  margin-top: 20px;
+  width: 130px;
 }
 
 .action-search-software_infos #search-results .search-software-item-column-left .software-date::before{
@@ -386,12 +381,21 @@
   float: left;
 }
 
+.action-search-software_infos #search-results .search-software-item-column-left .star-container.catalog_rating_block {
+  width: 140px;
+  margin-left: 0px;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-left .software-date-value {
+  margin-left: 23px;
+}
+
 /* Column Right */
 
 .action-search-software_infos #search-results .search-software-item-column-right {
-  width: 70%;
+  width: 65%;
   float: left;
-  margin-left: 130px;
+  margin-left: 140px;
   padding: 0 0 0 8px;
   font-size: 15px;
   font-family: Arial;
@@ -449,3 +453,5 @@
   font-size: 13px;
   text-decoration: underline;
 }
+
+
