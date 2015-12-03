@@ -239,7 +239,7 @@
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields {
   height: 0;
-  overflow: hidden;
+  overflow: initial;
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments {
@@ -248,11 +248,11 @@
   height: 50px;
 }
 
-#content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments label {
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments > label {
   font-size: 12px;
 }
 
-#content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments input {
+#content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments > input {
   display: block;
   height: 19px;
   width: 335px;
