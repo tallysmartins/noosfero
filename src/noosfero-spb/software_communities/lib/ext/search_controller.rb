@@ -105,6 +105,8 @@ class SearchController
       communities_list.reverse!
     elsif params[:sort] && params[:sort] == "relevance"
       communities_list = sort_by_relevance(communities_list, params[:query]){ |community| [community.software_info.finality, community.name] }
+    elsif params[:sort] && params[:sort] == "rating"
+      communities_list = sort_by_average_rating(communities_list)
     end
     communities_list
   end
