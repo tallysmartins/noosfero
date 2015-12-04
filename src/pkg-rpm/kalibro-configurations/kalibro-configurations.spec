@@ -1,5 +1,5 @@
 Name: kalibro-configurations
-Version: 1.2.3
+Version: 1.2.5
 Release: 1%{?dist}
 Summary: Mezuro metrics management backend
 Group: Development/Tools
