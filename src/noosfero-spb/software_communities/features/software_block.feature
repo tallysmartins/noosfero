@@ -25,6 +25,7 @@ Feature: edit adherent fields
 
   Scenario: Change software block to generic software block
     Given I am logged in as mpog_admin
+    And I go to /myprofile/mpog_admin
     And I follow "Control panel"
     And I follow "Edit sideboxes"
     When I follow "Add a block"

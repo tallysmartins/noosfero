@@ -64,6 +64,53 @@ Given /^I type in "([^"]*)" in autocomplete list "([^"]*)" and I choose "([^"]*)
   sleep 1
 end
 
+Given /^Institutions has initial default values on database$/ do
+  GovernmentalPower.create(:name => "Executivo")
+  GovernmentalPower.create(:name => "Legislativo")
+  GovernmentalPower.create(:name => "Judiciario")
+
+  GovernmentalSphere.create(:name => "Federal")
+
+  JuridicalNature.create(:name => "Autarquia")
+  JuridicalNature.create(:name => "Administracao Direta")
+  JuridicalNature.create(:name => "Empresa Publica")
+  JuridicalNature.create(:name => "Fundacao")
+  JuridicalNature.create(:name => "Orgao Autonomo")
+  JuridicalNature.create(:name => "Sociedade")
+  JuridicalNature.create(:name => "Sociedade Civil")
+  JuridicalNature.create(:name => "Sociedade de Economia Mista")
+
+  national_region = NationalRegion.new
+  national_region.name = "Distrito Federal"
+  national_region.national_region_code = '35'
+  national_region.national_region_type_id = NationalRegionType::STATE
+  national_region.save
+end
+
+Given /^the following organization ratings$/ do |table|
+  table.hashes.each do |item|
+    person = User.where(login: item[:user_login]).first.person
+    organization = Organization.where(name: item[:organization_name]).first
+
+    rating = OrganizationRating.new
+    rating.value = item[:value]
+    rating.organization_id = organization.id
+    rating.person_id = person.id
+    rating.saved_value = item[:saved_value]
+    rating.institution_id = Institution.where(name: item[:institution_name]).first.id
+    rating.save
+
+    comment_task = CreateOrganizationRatingComment.create!(
+      :body => "empty comment",
+      :requestor => person,
+      :organization_rating_id => rating.id,
+      :target => organization)
+
+    comment_task.status = item[:task_status]
+    comment_task.save
+  end
+end
+
 Given /^the following public institutions?$/ do |table|
   # table is a Cucumber::Ast::Table
   table.hashes.each do |item|
@@ -246,4 +293,8 @@ end
 
 Then /^there should be (\d+) divs? with class "([^"]*)"$/ do |count, klass|
   should have_selector("div.#{klass}", :count => count)
+end
+
+Given /^I should see "([^"]*)" in the page/ do |message|
+  assert_match message, page.body
 end

@@ -166,7 +166,7 @@ class SoftwareInfo < ActiveRecord::Base
     another_license_link = attributes.delete(:another_license_link)
 
     software_info = SoftwareInfo.new(attributes)
-    unless environment.admins.include? requestor
+    if !requestor.is_admin?
       CreateSoftware.create!(
         attributes.merge(
           :requestor => requestor,

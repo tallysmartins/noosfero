@@ -18,7 +18,7 @@ class Community
     community = Community.new(attributes)
 
     if community.environment.enabled?('admin_must_approve_new_communities') &&
-      !community.environment.admins.include?(requestor)
+      !community.is_admin?(requestor)
 
       cc = CreateCommunity.create(attributes.merge(:requestor => requestor))
     else

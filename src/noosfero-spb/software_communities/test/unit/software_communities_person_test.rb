@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require File.dirname(__FILE__) + '/../../../../test/test_helper'
+require 'test_helper'
 require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
 class GovUserPluginPersonTest < ActiveSupport::TestCase
