@@ -13,7 +13,7 @@ server {
   listen                *:443 ssl;
 
   server_name           <%= node['config']['external_hostname'] %>;
-  client_max_body_size  150m;
+  client_max_body_size  500m;
 
   ssl on;
 
