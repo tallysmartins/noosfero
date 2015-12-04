@@ -46,8 +46,21 @@
     <hr/>
 
   <div class="row">
+
+    <form class="col-xs-12 col-sm-12 hidden-md hidden-lg" action="{% url "haystack_search" %}">
+      <div class="input-group">
+        <input type="text" class="form-control" name="q" placeholder="{% trans "Search here" %}"
+         {% if request.GET.q %}value="{{ request.GET.q }}"{% endif %} />
+        <div class="input-group-btn">
+          <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+      </div>
+    </form>
+    <br />
+
     <div class="col-md-12 col-lg-12">
-      <div class="container">
       {% for result in page.object_list  %}
         {% include "message-preview.html" %}
       {% empty %}
@@ -60,7 +73,6 @@
         </li>
       </ul>
       {% endfor %}
-      </div>
 
       {% if page.has_other_pages %}
         <div class="text-center">
