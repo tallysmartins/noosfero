@@ -230,7 +230,7 @@ class GovUserPluginControllerTest < ActionController::TestCase
     fields[:edit_institution_page] = false
     post :new_institution, fields
 
-    assert(Institution.last.community.admins.include?(admin2) )
+    assert(Institution.last.community.is_admin?(admin2) )
   end
 
 end

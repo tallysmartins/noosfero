@@ -54,9 +54,7 @@ class GovUserPlugin < Noosfero::Plugin
   def profile_editor_controller_filters
     block = proc do
       if request.post? && params[:institution]
-        is_admin = environment.admins.include?(current_user.person)
-
-        unless is_admin
+        unless user.is_admin?
           institution = profile.user.institutions
 
           if !params[:institution].blank? && params[:institution].class == Hash && !params[:institution][:sisp].nil?
@@ -241,16 +239,30 @@ class GovUserPlugin < Noosfero::Plugin
     Proc::new do render :file => 'ratings_extra_field' end
   end
 
-  def organization_ratings_plugin_extra_fields_show_data user_rating
+  def organization_ratings_plugin_task_extra_fields user_rating
     gov_user_self = self
 
     Proc::new {
       if logged_in?
-        is_admin = environment.admins.include?(current_user.person)
-        is_admin ||= user_rating.organization.admins.include?(current_user.person)
+        is_admin = user.is_admin? || user_rating.organization.is_admin?(user)
 
         if is_admin and gov_user_self.context.profile.software?
-            render :file => 'organization_ratings_extra_fields_show_institution',
+            render :file => 'organization_ratings_task_extra_fields_show_institution',
+                   :locals => {:user_rating => user_rating}
+        end
+      end
+    }
+  end
+
+  def organization_ratings_plugin_container_extra_fields user_rating
+    gov_user_self = self
+
+    Proc::new {
+      if logged_in?
+        is_admin = user.is_admin? || user_rating.organization.is_admin?(user)
+
+        if is_admin and gov_user_self.context.profile.software?
+            render :file => 'organization_ratings_container_extra_fields_show_institution',
                    :locals => {:user_rating => user_rating}
         end
       end

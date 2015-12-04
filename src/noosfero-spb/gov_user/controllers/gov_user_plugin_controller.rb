@@ -111,7 +111,7 @@ class GovUserPluginController < ApplicationController
     params[:community] ||= {}
     params[:institutions] ||= {}
 
-    @show_sisp_field = environment.admins.include?(current_user.person)
+    @show_sisp_field = user.is_admin?
     @governmental_sphere = get_governmental_spheres()
     @governmental_power = get_governmental_powers()
     @juridical_nature = get_juridical_natures()
@@ -209,7 +209,7 @@ class GovUserPluginController < ApplicationController
 
   def add_environment_admins_to_institution institution
     edit_page = params[:edit_institution_page] == false
-    if environment.admins.include?(current_user.person) && edit_page
+    if user.is_admin? && edit_page
       environment.admins.each do |adm|
         institution.community.add_admin(adm)
       end
