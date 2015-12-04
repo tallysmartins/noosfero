@@ -31,36 +31,19 @@
 
 {% block main-content %}
 <div class="search-results" style="width: 980px;margin: auto;">
-
-<div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <div class="search-form">
-        <h3 class="search-title"> {% trans "BUSCAR NO PORTAL" %} </h3>
-
-        <form accept-charset="UTF-8" action="/search/" method="get">
-          <div class="search-field">
-            <span class="formfield">
-              <input class="search-input" id="search-input" name="q" value="" type="text">
-            </span>
-          </div>
-          <input class="btn search-blue with-text icon-search submit" name="commit" value="Buscar" type="submit">
-        </form>
-      </div>
+    <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2">
+      <h2>{% trans "Search" %}</h2>
     </div>
-  </div>
-</div>
-
-<div class="container search-summary">
-  <div class="row">
     <div class="col-xs-6 col-sm-8 col-md-10 col-lg-10">
-      <p class="text-left search-total">
-        {% trans "Total de "%}{{ page.paginator.count }}{% trans " respostas na sua pesquisa"%}
+      <br/><br/>
+      <p class="text-right quiet">
+        {{ page.paginator.count }} {% trans "documents found" %}
       </p>
     </div>
   </div>
-  <hr class="search-divisor" />
-</div>
+
+    <hr/>
 
   <div class="row">
     <div class="col-md-12 col-lg-12">
