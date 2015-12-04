@@ -1,7 +1,8 @@
 require 'test_helper'
-require_relative '../helpers/software_test_helper'
-require_relative(
-  '../../controllers/software_communities_plugin_myprofile_controller'
+require File.dirname(__FILE__) + '/../helpers/software_test_helper'
+require(
+  File.dirname(__FILE__) +
+  '/../../controllers/software_communities_plugin_myprofile_controller'
 )
 
 class SoftwareCommunitiesPluginMyprofileController; def rescue_action(e) raise e end;

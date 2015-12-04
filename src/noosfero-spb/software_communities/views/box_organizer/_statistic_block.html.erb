@@ -1,10 +1,9 @@
 <div id='edit-softwares-block'>
-  <% suggestion_benefited_people = @block.owner.organization_ratings.collect{ |r| r.people_benefited.to_f }.inject(:+) || 0.0 %>
-  <% suggestion_saved_resources = @block.owner.organization_ratings.collect{ |r| r.saved_value.to_f }.inject(:+) || 0.0 %>
+  <% benefited_people = @block.owner.software_info.benefited_people + 5 %>
+  <% saved_resources = @block.owner.software_info.saved_resources  + 5 %>
 
-  <%= labelled_form_field _('Benefited People'), text_field(:block, :benefited_people) %>
-  <p> <%= _("Portal suggested value: ") %> <span> <%= "%d" % (suggestion_benefited_people) %> <span> </p>
-  <%= labelled_form_field _('Saved Resources'), text_field(:block, :saved_resources) %>
-  <p> <%= _("Portal suggested value: ") %> <span> <%= "R$%.2f" % (suggestion_saved_resources) %> <span> </p>
+  <p> <%= _("Statistics to be displayed ") %>
+
+  <p> <%= _("People Benefited: ") %> <span> <%= number_to_human(benefited_people) %> </span> </p>
+  <p> <%= _("Saved Resources: ") %> <span> <%= float_to_currency(saved_resources) %> </span> </p>
 </div>
-

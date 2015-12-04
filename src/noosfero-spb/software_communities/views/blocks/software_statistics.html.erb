@@ -1,36 +1,35 @@
 <div class="software-metrics-block">
   <ul class="metrics-list">
     <li>
-    	<span class="arrow-globe-icon"></span>
-    	<span id="visit-count">
-    		<%= pluralize(profile.hits, 'visita', 'visitas') %>
-    	</span>
+      <span class="arrow-globe-icon"></span>
+      <span id="visit-count">
+        <%= pluralize(profile.hits, 'visita', 'visitas') %>
+      </span>
     </li>
     <li>
-    	<span class="downloads-icon"></span>
-    	<span id="downloads-count">
-    		<%= pluralize(total_downloads, 'download', 'downloads') %>
-    	</span>
+      <span class="downloads-icon"></span>
+      <span id="downloads-count">
+        <%= pluralize(total_downloads, 'download', 'downloads') %>
+      </span>
     </li>
     <li>
-    	<span class="face-icon"></span>
-    	<span id="benefited-people">
-    		<%= block.benefited_people.to_s + _(' benefited people*') %>
-    	</span>
+      <span class="face-icon"></span>
+      <span id="benefited-people">
+        <%= number_to_human(statistics[:benefited_people]) + _(' benefited people*') %>
+      </span>
     </li>
     <li>
-    	<span class="pig-safe-icon"></span>
-    	<span id="saved-resources">
-    		<strong class="saved-money">
-    			<%= number_to_currency(block.saved_resources, unit: 'R$ ',
-    			 separator: ',', delimiter: '.') %>
-    		</strong>
-    		<%= _(' saved resources*') %>
-    	</span>
+      <span class="pig-safe-icon"></span>
+      <span id="saved-resources">
+        <strong class="saved-money">
+          <%= float_to_currency(statistics[:saved_resources]) %>
+        </strong>
+        <%= _(' saved resources*') %>
+      </span>
     </li>
   </ul>
 
   <div class="admin-estimation">
-  	* <%= _("Data estimated by the software administrator.") %>
+    * <%= _("Data estimated by the software administrator.") %>
   </div>
 </div>

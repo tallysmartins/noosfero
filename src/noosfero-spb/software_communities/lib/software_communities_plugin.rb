@@ -100,14 +100,38 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     Proc::new do "<h1 class='title'>#{title}</h1>" end
   end
 
-  def organization_ratings_plugin_extra_fields_show_data user_rating
+  def organization_ratings_plugin_container_extra_fields user_rating
     Proc::new {
       if logged_in?
-        is_admin = environment.admins.include?(current_user.person)
-        is_admin ||= user_rating.organization.admins.include?(current_user.person)
+        is_admin = user.is_admin? || user_rating.organization.is_admin?(user)
 
         if is_admin and profile.software?
-            render :file => 'organization_ratings_extra_fields_show_data',
+
+            render :file => 'organization_ratings_container_extra_fields_show_statistics',
+                   :locals => {:user_rating => user_rating}
+        end
+      end
+    }
+  end
+
+  def organization_ratings_plugin_rating_created rating, params
+    if params[:organization_rating].present? && (params[:organization_rating][:people_benefited].present? ||
+                                                  params[:organization_rating][:saved_value].present?)
+      CreateOrganizationRatingComment.create!(
+        :requestor => rating.person,
+        :organization_rating_id => rating.id,
+        :target => rating.organization) unless params[:comments] && params[:comments][:body].present?
+    end
+  end
+
+  def organization_ratings_plugin_task_extra_fields user_rating
+    Proc::new {
+      if logged_in?
+        is_admin = user.is_admin? || user_rating.organization.is_admin?(user)
+
+        if is_admin and profile.software?
+
+            render :file => 'organization_ratings_task_extra_fields_show_statistics',
                    :locals => {:user_rating => user_rating}
         end
       end

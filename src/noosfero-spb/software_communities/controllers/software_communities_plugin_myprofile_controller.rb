@@ -144,7 +144,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
     add_admin_to_community
 
-    if !environment.admins.include?(current_user.person)
+    if  !user.is_admin?
       session[:notice] = _('Your new software request will be evaluated by an'\
                            'administrator. You will be notified.')
       redirect_to user.admin_url
