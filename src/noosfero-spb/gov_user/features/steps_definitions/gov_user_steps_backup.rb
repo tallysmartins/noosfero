@@ -88,3 +88,6 @@ Given /^I am logged in as mpog_admin$/ do
   click_button("Log in")
 end
 
+Given /^I click on anything with selector "([^"]*)"$/ do |selector|
+  evaluate_script "jQuery('#{selector}').trigger('click') && true"
+end

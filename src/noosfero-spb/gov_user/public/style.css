@@ -24,3 +24,12 @@
   border-color: #FF0000;
   box-shadow: 0 0 10px #FF0000;
 }
+
+#institution_empty_ajax_message {
+  margin-top: 10px;
+  margin-left: 0px !important;
+}
+
+#create_institution_link {
+  margin-left: 8px;
+}

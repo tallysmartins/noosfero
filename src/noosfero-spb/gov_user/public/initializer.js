@@ -9,7 +9,8 @@
     'CompleteRegistration',
     'UserEditProfile',
     'NewCommunity',
-    'GovUserCommentsExtraFields'
+    'GovUserCommentsExtraFields',
+    'InstitutionModal'
   ];
 
 
