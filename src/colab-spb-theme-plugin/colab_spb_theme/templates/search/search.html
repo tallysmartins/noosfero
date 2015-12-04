@@ -61,6 +61,7 @@
       <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
         <p class="text-right search-total">{% trans "Ordenar por:" %}
         <select name="order" id="order_option" onchange="this.form.submit()">
+          <option value=""></option>
           {% for option, dict_order in order_data.items %}
             {% ifequal request.GET.order option %}
               <option value="{{option}}" selected>{% trans option %}</option>
