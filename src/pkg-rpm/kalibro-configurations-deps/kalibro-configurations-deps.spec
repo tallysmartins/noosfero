@@ -1,6 +1,6 @@
 Name:    kalibro-configurations-deps
 Version: 1.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Ruby dependencies for kalibro-configurations
 Group:   Development/Tools
 License: Various
