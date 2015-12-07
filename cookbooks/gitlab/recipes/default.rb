@@ -100,5 +100,5 @@ execute 'selinux-gitlab' do
 end
 
 execute 'fix-relative-url-for-assets' do
-  command 'sed -i \'s/# config.relative_url_root = "\/gitlab"/config.relative_url_root = "\/gitlab"/\' config/application.rb'
+  command 'sed -i \'s/# config.relative_url_root = "\/gitlab"/config.relative_url_root = "\/gitlab"/\' /usr/lib/gitlab/config/application.rb'
 end
