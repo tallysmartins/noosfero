@@ -1,0 +1,13 @@
+<% if user_rating.institution %>
+<div class="aditional-informations">
+  <div class="comments-user-institution">
+    <span><%=_("Institution")%> :</span> <%= user_rating.institution.name %>
+  </div>
+
+  <% if user_rating.institution.has_accepted_rating?(user_rating) %>
+    <div class="">
+       <span><%=_("This instiution already has an accepted rating. Accepting it will automatically update the saved value.") %></span>
+    </div>
+  <% end %>
+</div>
+<% end %>

@@ -20,13 +20,15 @@ class StatisticBlock < Block
     end
 
     block = self
+    statistics = get_software_statistics
 
     lambda do |object|
       render(
         :file => 'blocks/software_statistics',
         :locals => {
           :block => block,
-          :total_downloads => downloads.sum
+          :total_downloads => downloads.sum,
+          :statistics => statistics
         }
       )
     end
@@ -48,5 +50,13 @@ class StatisticBlock < Block
     end
     downloads.select! {|value| not value.nil? }
     downloads.sum
+  end
+
+  def get_software_statistics
+    statistics = {}
+    software = SoftwareInfo.find_by_community_id(self.owner.id)
+    statistics[:saved_resources] = software.saved_resources
+    statistics[:benefited_people] = software.benefited_people
+    statistics
   end
 end

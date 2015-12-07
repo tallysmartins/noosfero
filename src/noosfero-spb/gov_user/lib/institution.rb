@@ -36,6 +36,14 @@ class Institution < ActiveRecord::Base
            :verify_institution_type, :validate_format_cnpj
 
 
+  def has_accepted_rating? user_rating
+    rating_ids = OrganizationRating.where(institution_id: self.id, organization_id: user_rating.organization_id).map(&:id)
+    finished_tasks = CreateOrganizationRatingComment.finished.select {|task| rating_ids.include?(task.organization_rating_id)}
+    pending_tasks = CreateOrganizationRatingComment.pending.select{|c| c.organization_rating_id == user_rating.id}
+
+    !finished_tasks.empty? && !pending_tasks.empty?
+  end
+
   protected
 
   def verify_institution_type

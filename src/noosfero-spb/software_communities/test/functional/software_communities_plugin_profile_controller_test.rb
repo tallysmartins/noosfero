@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../../../test/test_helper'
+require 'test_helper'
 require File.dirname(__FILE__) + '/../helpers/software_test_helper'
 require File.dirname(__FILE__) + '/../../controllers/software_communities_plugin_profile_controller'
 

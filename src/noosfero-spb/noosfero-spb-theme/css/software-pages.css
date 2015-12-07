@@ -630,3 +630,107 @@
 }
 
 /*** end fo software internal pages ***/
+
+/*** organization-rating review page (tasks of software) ***/
+
+.task-list .task_boxes{
+  font-family: Arial;
+}
+
+.task-list .task_boxes .task_box .task_date{
+  position: absolute;
+  left: 80px;
+}
+
+.task_boxes .task_box .task_title{
+  position: absolute;
+  left: 80px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.task_boxes .task_box .task_responsible{
+  text-align: right;
+}
+
+.task_boxes .task_box .task_responsible span select{
+  padding: 4px 15px 1px 4px;
+}
+
+.task_boxes .task_box .task_decisions{
+  float: right;
+  padding-right: 5px;
+}
+
+.task_boxes .task_box .task_information{
+  margin-top: 40px;
+  font-size: 13px;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .aditional-informations .comments-people-benefited{
+  float: left;
+  font-weight: 900;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .aditional-informations .comments-saved-value{
+  font-weight: 900;
+  margin-left: 160px;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .aditional-informations{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #CDCDCD;
+  padding-bottom: 15px;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .aditional-informations .comments-user-institution span span{
+  font-weight: 900;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .aditional-informations .comments-people-benefited span{
+  font-weight: 100;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .aditional-informations .comments-saved-value span{
+  font-weight: 100;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .task-comment span{
+  font-weight: 600;
+  color: rgb(140, 140, 140);
+  font-size: 11px;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .task-comment{
+  margin-bottom: 15px;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .task-comment span p{
+  font-weight: 100;
+  font-size: 12px;
+  color: black;
+  line-height: 16px;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .task-comment{
+  line-height: 25px;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .rating-notice{
+  display: block;
+  color: #F11467;
+  padding: 5px 5px;
+  background: #ccc;
+}
+
+.task_boxes .task_box .organization-rating-comment-body .task-star-container{
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.action-tasks-index .task_box{
+  padding: 10px;
+}
+
+/*** end of organization-rating review page (tasks of software) ***/
