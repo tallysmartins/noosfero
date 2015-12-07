@@ -4,7 +4,11 @@ if node['platform'] == 'centos'
   end
 end
 
-package 'gitlab'
+package 'gitlab' do
+  action :upgrade
+  notifies :restart, 'service[gitlab]'
+end
+
 
 template '/etc/gitlab/database.yml' do
   owner 'root'
