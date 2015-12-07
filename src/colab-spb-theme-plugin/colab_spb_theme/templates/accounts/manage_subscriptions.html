@@ -3,7 +3,7 @@
 
 {% block main-content %}
   <div class="colab-content container">
-    <h2>{% blocktrans %}Group Subscriptions{% endblocktrans %}</h2>
+    <h2>Inscreva-se nas listas de discussão</h2>
     <h3>{% gravatar user_.email 50 %} {{ user_.get_full_name }} ({{ user_.username }})</h3>
     <br>
 
@@ -12,7 +12,7 @@
 
       <div class="row">
         {% for email, lists in membership.items %}
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">{{ email }}</h3>
@@ -32,7 +32,7 @@
       </div>
 
       <div class="row">
-        <div class="text-center">
+        <div class="col-md-12">
           <button class="btn btn-lg btn-primary" type="submit">{% trans 'Update subscriptions' %}</button>
         </div>
       </div>
