@@ -1,6 +1,6 @@
 Name:    gitlab
 Version: 7.6.2
-Release: 13.1
+Release: 13.2
 Summary: Software Development Platform
 Group:   Development/Tools
 License: Expat
@@ -117,6 +117,7 @@ mkdir -p /var/lib/gitlab/uploads
 touch /var/lib/gitlab/.gitconfig
 ln -s /var/lib/gitlab/.gitconfig /usr/lib/gitlab/.gitconfig
 chown -R git:git /var/lib/gitlab
+chown -R git:git /var/lib/gitlab-assets
 chmod u+rwx,g=rx,o-rwx /var/lib/gitlab/satellites
 
 if [ /usr/bin/redis-server ]; then
