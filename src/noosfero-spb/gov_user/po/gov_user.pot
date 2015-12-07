@@ -6,8 +6,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.3.1-42-ga3cd3c2\n"
-"POT-Creation-Date: 2015-12-03 19:28-0000\n"
+"Project-Id-Version: 1.3.1-45-g8f4a00d\n"
+"POT-Creation-Date: 2015-12-07 20:09-0000\n"
 "PO-Revision-Date: 2015-09-01 20:59-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,31 +54,32 @@ msgstr ""
 msgid "Add features related to Brazilian government."
 msgstr ""
 
-#: plugins/gov_user/lib/gov_user_plugin.rb:136
-#: plugins/gov_user/lib/gov_user_plugin.rb:169
+#: plugins/gov_user/lib/gov_user_plugin.rb:134
+#: plugins/gov_user/lib/gov_user_plugin.rb:167
 msgid "Create Institution"
 msgstr ""
 
-#: plugins/gov_user/lib/gov_user_plugin.rb:295
+#: plugins/gov_user/lib/gov_user_plugin.rb:307
 msgid "Institution Info"
 msgstr ""
 
-#: plugins/gov_user/lib/gov_user_plugin.rb:320
-#: plugins/gov_user/views/organization_ratings_extra_fields_show_institution.html.erb:4
+#: plugins/gov_user/lib/gov_user_plugin.rb:332
+#: plugins/gov_user/views/organization_ratings_container_extra_fields_show_institution.html.erb:4
+#: plugins/gov_user/views/organization_ratings_task_extra_fields_show_institution.html.erb:4
 msgid "Institution"
 msgstr ""
 
-#: plugins/gov_user/lib/institution.rb:47
+#: plugins/gov_user/lib/institution.rb:56
 msgid "invalid, only public and private institutions are allowed."
 msgstr ""
 
-#: plugins/gov_user/lib/institution.rb:59
-#: plugins/gov_user/lib/institution.rb:73
-#: plugins/gov_user/lib/institution.rb:86
+#: plugins/gov_user/lib/institution.rb:68
+#: plugins/gov_user/lib/institution.rb:82
+#: plugins/gov_user/lib/institution.rb:95
 msgid "can't be blank"
 msgstr ""
 
-#: plugins/gov_user/lib/institution.rb:103
+#: plugins/gov_user/lib/institution.rb:112
 msgid "invalid format"
 msgstr ""
 
@@ -179,20 +180,20 @@ msgid "State"
 msgstr ""
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:63
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:108
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:109
 msgid "CNPJ"
 msgstr ""
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:70
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:72
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:115
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:117
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:118
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:120
 msgid "Acronym"
 msgstr ""
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:71
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:71
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:116
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:119
 msgid "Fantasy name"
 msgstr ""
 
@@ -217,21 +218,21 @@ msgstr ""
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:101
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:19
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:165
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:168
 msgid "Yes"
 msgstr ""
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:103
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:106
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:19
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:170
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:174
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:173
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:177
 msgid "No"
 msgstr ""
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:111
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:184
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:187
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:190
 msgid "Save"
 msgstr ""
 
@@ -273,6 +274,12 @@ msgstr ""
 
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:19
 msgid "SISP:"
+msgstr ""
+
+#: plugins/gov_user/views/organization_ratings_task_extra_fields_show_institution.html.erb:9
+msgid ""
+"This instiution already has an accepted rating. Accepting it will "
+"automatically update the saved value."
 msgstr ""
 
 #: plugins/gov_user/views/ratings_extra_field.html.erb:2
@@ -327,32 +334,32 @@ msgstr ""
 msgid "City"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:125
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:128
 msgid "Governmental Sphere"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:136
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:139
 msgid "Governmental Power"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:147
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:150
 msgid "Juridical Nature"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:157
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:160
 msgid "SISP ?"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:185
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:188
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:191
 msgid "Cancel"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:189
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:192
 msgid "Could not send the form data to the server"
 msgstr ""
 
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:197
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:200
 msgid "Creating institution"
 msgstr ""
 
