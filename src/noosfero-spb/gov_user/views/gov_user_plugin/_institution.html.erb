@@ -105,7 +105,10 @@
 
     <div class="spb-row">
       <div class="spb-col spb-col-12">
-        <%= inst.label("cnpj" ,_("CNPJ"), :class=>"formlabel") %>
+         <label class="formlabel" for="institutions_cnpj">
+          <%= _("CNPJ") %>
+          <span class="required-field">(*)</span>
+        </label>
         <%= inst.text_field(:cnpj, :placeholder=>"99.999.999/9999-99", :class=>"intitution_cnpj_field", :value => params[:institutions][:cnpj]) %>
       </div>
     </div>
@@ -151,7 +154,7 @@
         <%= inst.select(:juridical_nature, @juridical_nature, :selected=>params[:institutions][:juridical_nature], :class => flash[:error_institution_juridical_nature])%>
       </div>
     </div>
-
+    
     <div class="spb-row public-institutions-fields">
       <div class="spb-col spb-col-12">
         <%= _("SISP ?") %>

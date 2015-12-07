@@ -23,6 +23,7 @@ class Institution < ActiveRecord::Base
                   :corporate_name, :siorg_code, :community
 
   validates :name, :presence=>true, :uniqueness=>true
+  validates :cnpj, :presence=>true, :uniqueness=>true
 
   before_save :verify_institution_type
 
