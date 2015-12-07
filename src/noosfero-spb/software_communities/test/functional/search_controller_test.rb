@@ -42,6 +42,10 @@ class SearchControllerTest < ActionController::TestCase
     @softwares[1].save!
   end
 
+  def teardown
+    SoftwareInfo.destroy_all
+  end
+
   should "communities searches don't have software" do
     community = create_community("Community One")
 
@@ -254,6 +258,65 @@ class SearchControllerTest < ActionController::TestCase
     assert_includes assigns(:searches)[:software_infos][:results], software_two.community
     assert_includes assigns(:searches)[:software_infos][:results], software_three.community
     assert_not_includes assigns(:searches)[:software_infos][:results], software_one.community
+  end
+
+  should "software_infos search not return sisp softwares" do
+    software_one = create_software_info("Software ABC", :acronym => "SFO", :finality => "Help")
+    software_two = create_software_info("Python", :acronym => "SFT", :finality => "Task")
+    software_three = create_software_info("Software DEF", :acronym => "SFW", :finality => "Java")
+
+    software_one.sisp = true
+    software_one.save!
+
+    get(
+      :software_infos,
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], software_two.community
+    assert_includes assigns(:searches)[:software_infos][:results], software_three.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], software_one.community
+  end
+
+  should "sisp search not return software without sisp" do
+    software_one = create_software_info("Software ABC", :acronym => "SFO", :finality => "Help")
+    software_two = create_software_info("Python", :acronym => "SFT", :finality => "Task")
+    software_three = create_software_info("Software DEF", :acronym => "SFW", :finality => "Java")
+
+    software_two.sisp = true
+    software_two.save!
+
+    software_three.sisp = true
+    software_three.save!
+
+    get(
+      :sisp,
+    )
+
+    assert_includes assigns(:searches)[:sisp][:results], software_two.community
+    assert_includes assigns(:searches)[:sisp][:results], software_three.community
+    assert_not_includes assigns(:searches)[:sisp][:results], software_one.community
+  end
+
+  should "sisp search by category" do
+    software_one = create_software_info("Software ABC", :acronym => "SFO", :finality => "Help")
+    software_two = create_software_info("Python", :acronym => "SFT", :finality => "Task")
+    software_three = create_software_info("Software DEF", :acronym => "SFW", :finality => "Java")
+
+    software_two.sisp = true
+    software_two.community.categories << Category.last
+    software_two.save!
+
+    software_three.sisp = true
+    software_three.save!
+
+    get(
+      :sisp,
+      :selected_categories_id => [Category.last.id]
+    )
+
+    assert_includes assigns(:searches)[:sisp][:results], software_two.community
+    assert_not_includes assigns(:searches)[:sisp][:results], software_three.community
+    assert_not_includes assigns(:searches)[:sisp][:results], software_one.community
   end
 
   private

@@ -1,6 +1,13 @@
+# encoding: UTF-8
+
 require_dependency 'search_controller'
 
 class SearchController
+
+  def self.catalog_list
+    { :public_software => ["Software Público", "software_infos"],
+      :sisp_software => ["SISP", "sisp"] }
+  end
 
   def communities
     delete_communities = []
@@ -14,8 +21,25 @@ class SearchController
   end
 
   def software_infos
-    prepare_software_search_page
-    results = filter_software_infos_list
+    software_public_condition_block = lambda do |software|
+      (!@public_software_selected || software.public_software?) && (!software.sisp)
+    end
+
+    prepare_software_search_page(:software_infos, &software_public_condition_block)
+    results = filter_software_infos_list(&software_public_condition_block)
+    @software_count = results.count
+    results = results.paginate(:per_page => @per_page, :page => params[:page])
+    @searches[@asset] = {:results => results}
+    @search = results
+
+    render :layout=>false if request.xhr?
+  end
+
+  def sisp
+    sisp_condition_block = lambda{|software| software.sisp }
+
+    prepare_software_search_page(:sisp, &sisp_condition_block)
+    results = filter_software_infos_list(&sisp_condition_block)
     @software_count = results.count
     results = results.paginate(:per_page => @per_page, :page => params[:page])
     @searches[@asset] = {:results => results}
@@ -45,9 +69,9 @@ class SearchController
     communities_list
   end
 
-  def filter_software_infos_list
+  def filter_software_infos_list &software_condition_block
     filtered_software_list = get_filtered_software_list
-    filtered_community_list = get_communities_list(filtered_software_list)
+    filtered_community_list = get_communities_list(filtered_software_list, &software_condition_block)
     sort_communities_list filtered_community_list
   end
 
@@ -88,10 +112,10 @@ class SearchController
     filtered_software_list
   end
 
-  def get_communities_list software_list
+  def get_communities_list software_list, &software_condition_block
     filtered_community_list = []
       software_list.each do |software|
-       if !@public_software_selected || software.public_software?
+       if software_condition_block.call(software)
          filtered_community_list << software.community unless software.community.nil?
        end
     end
@@ -111,15 +135,15 @@ class SearchController
     communities_list
   end
 
-  def prepare_software_search_page
-    prepare_software_infos_params
+  def prepare_software_search_page title, &software_condition_block
+    prepare_software_infos_params(title)
     prepare_software_infos_message
-    prepare_software_infos_category_groups
+    prepare_software_infos_category_groups(&software_condition_block)
     prepare_software_infos_category_enable
   end
 
-  def prepare_software_infos_params
-    @titles[:software_infos] = _("Result Search")
+  def prepare_software_infos_params title
+    @titles[title.to_sym] = _("Result Search")
     @selected_categories_id = params[:selected_categories_id]
     @selected_categories_id ||= []
     @selected_categories_id = @selected_categories_id.map(&:to_i)
@@ -152,15 +176,18 @@ class SearchController
     end
   end
 
-  def prepare_software_infos_category_groups
-    @categories = Category.software_categories.sort{|a, b| a.name <=> b.name}
+  def prepare_software_infos_category_groups &software_condition_block
+    @categories = []
+    software_category = environment.categories.find_by_name("Software")
+    @categories = software_category.children.sort if software_category
+    @categories = @categories.select{|category| category.software_infos.any?{|software| software_condition_block.call(software)}}
+    @categories.sort!{|a, b| a.name <=> b.name}
   end
 
   def prepare_software_infos_category_enable
     @enabled_check_box = Hash.new
-    categories = Category.software_categories
 
-    categories.each do |category|
+    @categories.each do |category|
       if category.software_infos.count > 0
         @enabled_check_box[category] = :enabled
       else

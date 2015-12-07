@@ -1,0 +1,106 @@
+<div id="article" class="blog">
+
+  <div class="software-about software-sisp">
+    <h2>Descrição geral</h2>
+    <p><%= block.owner.software_info.finality %></p>
+  </div>
+
+  <div class="software-identification software-sisp">
+    <h2>Identificação do software</h2>
+    <p><span>Nome:</span> <%= block.owner.software_info.community.name.presence || "--" %></p>
+    <p><span>Sigla:</span> <%= block.owner.software_info.acronym.presence || "--" %> </p>
+    <p><span>Subtipo:</span> <%= block.owner.software_info.community.categories.first.name.presence || "--" %></p>
+    <p><span>Tipo de Software:</span> <%= block.owner.software_info.sisp_type.presence || "--" %></p>
+  </div>
+
+  <div class="agency-identification software-sisp">
+    <h2>Identificação do órgão</h2>
+    <p><span>Abrangência:</span> <%= block.owner.software_info.agency_identification["Abrangência"].presence || "--" %></p>
+    <p><span>Esfera:</span> <%= block.owner.software_info.agency_identification["Esfera"].presence || "--" %></p>
+    <p><span>Natureza:</span> <%= block.owner.software_info.agency_identification["Natureza"].presence || "--" %></p>
+    <p><span>Nome da Empresa / Órgão:</span> <%= block.owner.software_info.agency_identification["Nome da Empresa/Órgão"].presence || "--" %></p>
+    <p><span>Sigla:</span> <%= block.owner.software_info.agency_identification["Sigla"].presence || "--" %></p>
+  </div>
+
+  <div class="software-responsible software-sisp">
+    <h2>Identificação do responsável no órgão para contato posterior</h2>
+    <p><span>Cargo/Função:</span> <%= block.owner.software_info.responsible["Cargo/Função"].presence || "--" %></p>
+    <p><span>E-mail:</span><a> <%= block.owner.software_info.responsible["E-mail"].presence || "--" %></a></p>
+    <p><span>Nome:</span> <%= block.owner.software_info.responsible["Nome"].presence || "--" %></p>
+    <p><span>Responsável pelo cadastro:</span>  <%= block.owner.software_info.responsible["Responsável pelo cadastro"].presence || "--" %></p>
+    <p><span>Telefone:</span> <%= block.owner.software_info.responsible["Telefone"].presence || "--" %></p>
+  </div>
+
+  <div class="software-responsible-for-acquirement software-sisp">
+    <h2>Responsáveis pelo Desenvolvimento</h2>
+    <p><span>Gestor do Sistema:</span> <%= block.owner.software_info.responsible_for_acquirement["Gestor do Sistema"].presence || "--" %> </p>
+    <p><span>Nome da Instituição que requisitou o Desenvolvimento/Aquisição:</span> <%= block.owner.software_info.responsible_for_acquirement["Nome da Instituição que requisitou o Desenvolvimento/Aquisição"].presence || "--" %> </p>
+    <p><span>Poder:</span> <%= block.owner.software_info.responsible_for_acquirement["Poder"].presence || "--" %> </p>
+    <p><span>Setor Econômico:</span> <%= block.owner.software_info.responsible_for_acquirement["Setor Econômico"].presence || "--" %> </p>
+    <p><span>Tipo de Utilização:</span> <%= block.owner.software_info.responsible_for_acquirement["Tipo de Utilização"].presence || "--" %> </p>
+  </div>
+
+  <div class="software-system-info software-sisp">
+    <h2>Sistema</h2>
+    <p><span>Data da entrada em produção:</span> <%= block.owner.software_info.system_info["Data da entrada em produção"].presence || "--" %> </p>
+    <p><span>Data do início do desenvolvimento:</span> <%= block.owner.software_info.system_info["Data do início do desenvolvimento"].presence || "--" %> </p>
+    <p><span>Justifique:</span> <%= block.owner.software_info.system_info["Justifique"].presence || "--" %> </p>
+    <p><span>O sistema pode ser replicado em outros órgãos SISP?:</span> <%= block.owner.software_info.system_info["O sistema pode ser replicado em outros órgãos SISP?"].presence || "--" %> </p>
+    <p><span>Objetivos do sistema:</span> <%= block.owner.software_info.system_info["Objetivos do sistema"].presence || "--" %> </p>
+    <p><span>Principais funcionalidades:</span> <%= block.owner.software_info.system_info["Principais funcionalidades"].presence || "--" %> </p>
+  </div>
+
+  <div class="software-development-info software-sisp">
+    <h2>Características do Desenvolvimento</h2>
+    <p><span>Código apresenta desenvolvimento:</span> <%= block.owner.software_info.development_info["Indique a empresa contratada para o desenvolvimento"].presence || "--" %> </p>
+    <p><span>Indique a empresa contratada para o desenvolvimento:</span> <%= block.owner.software_info.development_info["Indique a empresa contratada para o desenvolvimento"].presence || "--" %> </p>
+    <p><span>Informe detentor dos direitos do sistema aplicativo:</span> <%= block.owner.software_info.development_info["Informe detentor dos direitos do sistema aplicativo"].presence || "--" %> </p>
+    <p><span>O sistema/código pertence ao órgão?:</span> <%= block.owner.software_info.development_info["O sistema/código pertence ao órgão?"].presence || "--" %> </p>
+    <p><span>Tipo de Licença:</span> <%= block.owner.software_info.development_info["Tipo de Licença"].presence || "--" %> </p>
+
+    <h2>Manutenção do Sistema</h2>
+    <p><span>Existe contrato de manutenção corretiva?:</span> <%= block.owner.software_info.maintenance["Existe contrato de manutenção corretiva?"].presence || "--" %> </p>
+    <p><span>Existe plano aprovado de manutenção evolutiva?:</span> <%= block.owner.software_info.maintenance["Existe plano aprovado de manutenção evolutiva?"].presence || "--" %> </p>
+  </div>
+
+  <div class="software-standards-adherence software-sisp">
+    <h2>Aderência a padrões</h2>
+    <p><span>Acesso do usuário por múltiplas plataformas?:</span> <%= block.owner.software_info.standards_adherence["Acesso do usuário por múltiplas plataformas?"].presence || "--" %> </p>
+    <p><span>Aderente a:</span>  <%= block.owner.software_info.standards_adherence["Aderente a"].presence || "--" %> <span>Aderente ao:</span> <%= block.owner.software_info.standards_adherence["Aderente ao"].presence || "--" %> </p>
+    <p><span>Independente de banco de dados?:</span> <%= block.owner.software_info.standards_adherence["Independente de banco de dados?"].presence || "--" %> <span>Internacionalizável?:</span> <%= block.owner.software_info.standards_adherence["Internacionalizável?"].presence || "--" %> </p>
+
+    <h2>Ambiente / Plataforma</h2>
+    <p><span>Ambiente de produção/hospedagem:</span>  <%= block.owner.software_info.platform["Ambiente de produção/hospedagem"].presence || "--" %> </p>
+    <p><span>Ambiente do software (Plataforma Operacional):</span> <%= block.owner.software_info.platform["Ambiente do software (Plataforma Operacional)"].presence || "--" %> </p>
+  </div>
+
+  <div class="software-requirements software-sisp">
+    <h2>Requisitos de Software</h2>
+    <p><span>Bancos de dados:</span> <%= block.owner.software_info.software_requirements["Bancos de dados"].presence || "--" %> </p>
+    <p><span>Distribuição:</span> <%= block.owner.software_info.software_requirements["Distribuição"].presence || "--" %> </p>
+    <p><span>Linguagens:</span> <%= block.owner.software_info.software_requirements["Linguagens"].presence || "--" %> </p>
+    <p><span>Outros requisitos:</span> <%= block.owner.software_info.software_requirements["Outros requisitos"].presence || "--" %> </p>
+    <p><span>Padrões e protocolos:</span> <%= block.owner.software_info.software_requirements["Padrões e protocolos"].presence || "--" %> </p>
+    <p><span>Sistema Operacional:</span> <%= block.owner.software_info.software_requirements["Sistema Operacional"].presence || "--" %> </p>
+    <p><span>Versão:</span> <%= block.owner.software_info.software_requirements["Versão"].presence || "--" %> </p>
+  </div>
+
+  <div class="software-hardware-requirements software-sisp">
+    <h2>Requisitos de Hardware</h2>
+    <p><span>Armazenamento:</span> <%= block.owner.software_info.hardware_requirements["Armazenamento"].presence || "--" %> <span>Memória:</span> <%= block.owner.software_info.hardware_requirements["Memória"].presence || "--" %>  </p>
+    <p><span>Outros requisitos:</span> <%= block.owner.software_info.hardware_requirements["Outros requisitos"].presence || "--" %> <span>Processador:</span> <%= block.owner.software_info.hardware_requirements["Processador"].presence || "--" %> </p>
+  </div>
+
+  <div class="software-documentation software-sisp">
+    <h2>Documentação</h2>
+    <p><span>Possui os seguintes tipos de documentação:</span> <%= block.owner.software_info.hardware_requirements["Possui os seguintes tipos de documentação"].presence || "--" %> </p>
+  </div>
+
+  <div class="software-system-applications software-sisp">
+    <h2>Aplicação do Sistema</h2>
+    <p>
+      <span>Integrado a outros Sistemas:</span> <%= block.owner.software_info.hardware_requirements["Integrado a outros Sistemas"].presence || "--" %>
+      <span>Tipo de dependência:</span> <%= block.owner.software_info.hardware_requirements["Tipo de dependência"].presence || "--" %>
+    </p>
+  </div>
+</div>

@@ -119,7 +119,7 @@
 }
 
 #block-community-tabs .ui-widget-header{
-  background:#ECEDF1;
+  background: #F7F8F9;
   border:none;
   border-bottom: 3px solid #D3D6DE;
 }
@@ -137,7 +137,7 @@
 #block-community-tabs .ui-widget-content .ui-state-default,
 #block-community-tabs .ui-widget-header .ui-state-default{
   border:none;
-  background:#ECEDF1;
+  background: #F7F8F9;
   font-weight: normal;
   color:#172738;
 }
@@ -538,6 +538,38 @@ float: left;
 .profile-type-is-community .action-profile-index #content .software-tab-data-block{
   display: block;
 }
+
+/* SISP Tab Data - about tab */
+#block-community-tabs .software-sisp {
+  margin-top: 46px;
+}
+
+#block-community-tabs .software-sisp p,
+#block-community-tabs .software-sisp h2 {
+  font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+}
+
+#block-community-tabs .software-sisp h2 {
+  border-bottom: solid 2px #f7f8f9;
+  margin-bottom: 26px;
+  padding-bottom: 8px;
+  color: #172938;
+  font-size: 18px;
+}
+
+#block-community-tabs .software-sisp.software-about h2,
+#block-community-tabs .software-sisp.software-versions h2 {
+  font-size: 22px;
+}
+
+#block-community-tabs .software-sisp p {
+  color: #172938;
+}
+
+#block-community-tabs .software-sisp p span {
+  color: #797979;
+}
+
 
 /*** Right bar ***/
 

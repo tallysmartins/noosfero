@@ -4,9 +4,9 @@ namespace :software do
     Environment.all.each do |env|
       if env.plugin_enabled?("SoftwareCommunitiesPlugin") or env.plugin_enabled?("SoftwareCommunities")
         print 'Creating categories: '
-        software = Category.create(:name => _("Software"), :environment => env)
+        software = env.categories.find_or_create_by_name(_("Software"))
         Category::SOFTWARE_CATEGORIES.each do |category_name|
-          unless Category.find_by_name(category_name)
+          unless env.categories.find_by_name(category_name)
             print '.'
             Category.create(:name => category_name, :environment => env, :parent => software)
           else

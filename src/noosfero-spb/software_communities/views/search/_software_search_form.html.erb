@@ -11,13 +11,15 @@
       <%= hidden_field_tag :display, params[:display] %>
       <%= hidden_field_tag :filter, params[:filter] %>
 
-      <%= labelled_radio_button _('Public Software'), :software_type, 'public_software', @public_software_selected, :id => "public_software_radio_button", :class => "project-software" %>
-      <span class="doubts-catalog-software" title="<%= _('Projects that have passed by the Avalia SPB process according to the requirements of IN 01/2011.') %>">?</span>
-      <!-- Projetos que passaram pelo processo do Avalia SPB de acordo com os requisitos da IN 01/2011. -->
+      <div class="radio-buttons">
+        <%= labelled_radio_button _('Public Software'), :software_type, 'public_software', @public_software_selected, :id => "public_software_radio_button", :class => "project-software" %>
+        <span class="doubts-catalog-software" title="<%= _('Projects that have passed by the Avalia SPB process according to the requirements of IN 01/2011.') %>">?</span>
+        <!-- Projetos que passaram pelo processo do Avalia SPB de acordo com os requisitos da IN 01/2011. -->
 
-      <%= labelled_radio_button _('All'), :software_type, 'all', @all_selected, :id => "all_radio_button", :class => "project-software" %>
-      <span class="doubts-catalog-software" title="<%= _('Projects included in the portal as cases provided by the IN 01/2011.') %>">?</span>
-      <!-- Projetos incluídos no portal, conforme casos previstos na IN 01/2011. -->
+        <%= labelled_radio_button _('All'), :software_type, 'all', @all_selected, :id => "all_radio_button", :class => "project-software" %>
+        <span class="doubts-catalog-software" title="<%= _('Projects included in the portal as cases provided by the IN 01/2011.') %>">?</span>
+        <!-- Projetos incluídos no portal, conforme casos previstos na IN 01/2011. -->
+      </div>
 
       <div class="search-field">
         <span class="formfield">
