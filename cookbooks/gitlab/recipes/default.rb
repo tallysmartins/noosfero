@@ -100,8 +100,14 @@ execute 'selinux-gitlab' do
 end
 
 execute 'fix-relative-url-for-assets' do
+  command 'sed -i \'s/# config.relative_url_root = "\/gitlab"/config.relative_url_root = "\/gitlab"/\' /usr/lib/gitlab/config/application.rb'
+  only_if 'grep -q "# config.relative_url_root" /usr/lib/gitlab/config/application.rb'
+  notifies :run, 'execute[precompile-assets]'
+end
+
+execute 'precompile-assets' do
   user 'git'
   cwd '/usr/lib/gitlab'
-  command 'sed -i \'s/# config.relative_url_root = "\/gitlab"/config.relative_url_root = "\/gitlab"/\' /usr/lib/gitlab/config/application.rb'
   command 'bundle exec rake assets:precompile RAILS_ENV=production'
+  action :nothing
 end
