@@ -11,12 +11,14 @@ server {
   error_log             /var/log/nginx/colab.error.log;
   client_max_body_size  0;
 
+  # FIXME: Favico should be at right place and this
+  #     code should be removed.
   location ~ ^/static/img/fav\.[^.]+\.ico$ {
     alias /var/lib/colab/assets/spb/fav.ico;
   }
 
   location / {
-    root  /usr/share/nginx/colab;
+    root  /var/lib/colab/assets/;
     try_files $uri @colab-app;
   }
 

@@ -5,7 +5,7 @@
 Summary: Collaboration platform for communities
 Name: %{name}
 Version: %{version}
-Release: 1
+Release: 2
 Source0: %{name}-%{version}.tar.gz
 License: GPLv2
 Group: Development/Tools
@@ -15,8 +15,7 @@ Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://github.com/colab/colab
 BuildArch: noarch
 BuildRequires: colab-deps >= 1.12, python-virtualenv
-# FIXME colab should not depend on nginx!
-Requires: colab-deps >= 1.12, solr, mailman-api >= 0.3rc3, nginx
+Requires: colab-deps >= 1.12, solr, mailman-api >= 0.3rc3
 
 %description
 Integrated software development platform.
@@ -58,7 +57,7 @@ install -d -m 0755 %{buildroot}/var/log/colab
 install -d -m 0755 %{buildroot}/var/lib/colab/celery
 
 # Create assets dir (stores static files)
-install -d -m 0755 %{buildroot}/var/lib/colab/assets
+install -d -m 0755 %{buildroot}/var/lib/colab/assets/static
 
 # install virtualenv
 install -d -m 0755 %{buildroot}/usr/lib
@@ -94,20 +93,19 @@ rm -rf %{buildvenv}
 %files
 %defattr(-, root, root)
 
-/usr/lib/colab
-#/var/lib/colab # XXX: remove if doesnt break
-%attr(-, colab, colab) /var/lib/colab/assets
+%attr(-, colab, colab) /var/lib/colab/assets/static
 %attr(-, colab, colab) /var/lib/colab/celery
 %attr(-, colab, colab) /var/log/colab
 %{_bindir}/*
-/etc/cron.d/colab
-#/etc/colab # XXX: remove if doesnt break
-/etc/colab/settings.d
-/etc/colab/plugins.d
 /etc/colab/gunicorn.py.example
-/lib/systemd/system/colab.service
-/lib/systemd/system/celeryd.service
+/etc/colab/plugins.d
+/etc/colab/settings.d
+/etc/cron.d/colab
 /lib/systemd/system/celerybeat.service
+/lib/systemd/system/celeryd.service
+/lib/systemd/system/colab.service
+/usr/lib/colab
+/var/lib/colab/assets
 
 
 %pre
@@ -214,9 +212,6 @@ EOF
   chown root:colab /etc/colab/settings.py
   chmod 0640 /etc/colab/settings.py
 fi
-
-# FIXME colab should not depend on nginx
-ln -s /var/lib/colab/assets /usr/share/nginx/colab
 
 colab-admin collectstatic --noinput
 
