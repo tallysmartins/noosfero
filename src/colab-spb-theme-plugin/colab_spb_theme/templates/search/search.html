@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n highlight superarchives %}
+{% load i18n tz highlight superarchives search_preview_templates %}
 {% load static from staticfiles %}
 
 {% block title %}{% trans 'search'|title %}{% endblock %}
@@ -80,7 +80,8 @@
     <div class="col-md-12 col-lg-12">
       <div class="container">
       {% for result in page.object_list  %}
-        {% include "message-preview.html" %}
+        {% get_search_preview_templates result  as template_target %}
+        {% include template_target %}
       {% empty %}
       <ul class="list-unstyled">
         <li class="text-center">
