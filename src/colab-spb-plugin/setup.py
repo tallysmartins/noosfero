@@ -12,7 +12,7 @@ install_requires = ['colab', 'colab_noosfero', 'colab_gitlab']
 tests_require = [ ]
 
 setup(
-    name='colab-spb',
+    name='colab-spb-plugin',
     version='0.2',
     author='Macartur Sousa',
     author_email='macartur.sc@gmail.com',
