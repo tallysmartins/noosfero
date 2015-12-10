@@ -1,5 +1,5 @@
 
-.search-form {
+.colab-search-form {
     margin-top: 28px;
     padding-top: 0px;
     padding-bottom: 15px;
@@ -10,7 +10,7 @@
     border: 1px solid #d3d6de;
 }
 
-.search-title {
+.colab-search-title {
     color: #3e67b1;
     margin: 5px 0px 3px;
     padding: 16px 0px 0px 0px;
@@ -20,7 +20,7 @@
     text-transform: uppercase;
 }
 
-.search-input {
+.colab-search-input {
     width: 100%;
     padding: 7px;
     font-size: 14px;
@@ -30,7 +30,7 @@
     border: 1px solid #d3d6de;
 }
 
-.search-blue {
+.colab-search-blue {
     background: #3e67b1;
     color: white;
     width: auto;
