@@ -2,6 +2,7 @@ admins:
   - ["Paulo Meirelles", "paulo@softwarelivre.org"]
 site_url: https://softwarepublico.lappis
 external_hostname: softwarepublico.lappis
+sisp_external_hostname: sisp.lappis
 external_ip: 10.0.0.11
 colab_from_address: '"Portal do Software Publico" <noreply@softwarepublico.lappis>'
 server_email: '"Portal do Software Publico" <noreply@softwarepublico.lappis>'

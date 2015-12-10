@@ -2,6 +2,7 @@ admins:
   - ["Paulo Meirelles", "paulo@softwarelivre.org"]
 site_url: https://softwarepublico.dev
 external_hostname: softwarepublico.dev
+sisp_external_hostname: sisp.dev
 alternative_hostnames:
   - www.softwarepublico.dev
   - beta.softwarepublico.dev
