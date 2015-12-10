@@ -5,7 +5,7 @@ admins:
   - ["Marisa Souza dos Santos", "marisa.santos@planejamento.gov.br"]
 site_url: https://softwarepublico.gov.br
 external_hostname: softwarepublico.gov.br
-sisp_external_hostname: sisp.gov.br
+sisp_external_hostname: novo.sisp.gov.br
 alternative_hostnames:
   - www.softwarepublico.gov.br
   - portal.softwarepublico.gov.br
