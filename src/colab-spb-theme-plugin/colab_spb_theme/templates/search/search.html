@@ -63,9 +63,9 @@
         <select name="order" id="order_option" onchange="this.form.submit()">
           {% for option, dict_order in order_data.items %}
             {% ifequal request.GET.order option %}
-              <option value="{{option}}" selected>{% trans option %}</option>
+              <option value="{{option}}" selected>{% trans dict_order.name %}</option>
             {% else %}
-              <option value="{{option}}">{% trans option %}</option>
+              <option value="{{option}}">{% trans dict_order.name %}</option>
             {% endifequal %}
           {% endfor %}
         </select>
