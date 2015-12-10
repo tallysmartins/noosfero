@@ -570,11 +570,20 @@ form.signup {
     float: right;
 }
 
+.signup div.form-group.alert {
+    padding: 0px 10px 10px 10px;
+}
+
+.signup div.form-group.alert ul.errorlist {
+    padding-left: 15px;
+}
+
 .signup-help {
     font-size: 16px;
     font-family: Arial;
     padding-top: 7px;
-}
+
+  }
 
 a.btn {
   margin: 2px 0 2px 0;
