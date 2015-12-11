@@ -28,6 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       override.vm.network 'private_network', ip: ips['database'] if ips
     end
   end
+
   config.vm.define 'integration' do |integration|
     integration.vm.provider "virtualbox" do |vm, override|
       override.vm.network 'private_network', ip: ips['integration'] if ips
@@ -35,16 +36,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vm.cpus = 2
     end
   end
+
   config.vm.define 'email' do |email|
     email.vm.provider "virtualbox" do |vm, override|
       override.vm.network 'private_network', ip: ips['email'] if ips
     end
   end
+
   config.vm.define 'social' do |social|
     social.vm.provider "virtualbox" do |vm, override|
       override.vm.network 'private_network', ip: ips['social'] if ips
     end
   end
+
+  config.vm.define 'mezuro' do |mezuro|
+    mezuro.vm.provider "virtualbox" do |vm, override|
+      override.vm.network 'private_network', ip: ips['mezuro'] if ips
+    end
+  end
+
   config.vm.define 'reverseproxy' do |reverseproxy|
     reverseproxy.vm.provider "virtualbox" do |vm, override|
       override.vm.network 'private_network', ip: ips['reverseproxy'] if ips
