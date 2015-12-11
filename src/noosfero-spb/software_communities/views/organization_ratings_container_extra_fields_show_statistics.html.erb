@@ -1,10 +1,10 @@
 <div class="aditional-informations">
   <div class="comments-people-benefited">
-    <span><%=_("Benefited People")%>:</span> <%= number_with_delimiter(user_rating.people_benefited, :separator => environment.currency_separator, :delimiter => environment.currency_delimiter) unless user_rating.nil? %>
+    <span><%=_("Benefited People")%>:</span> <%= number_with_delimiter(user_rating.people_benefited, ) unless user_rating.nil? %>
   </div>
 
   <div class="comments-saved-value">
-    <span><%=_("Saved Resources")%>:</span> <%= float_to_currency(user_rating.saved_value) unless user_rating.nil? %>
+    <span><%=_("Saved Resources")%>:</span> <%= number_to_currency(user_rating.saved_value) unless user_rating.nil? %>
   </div>
 </div>
 
