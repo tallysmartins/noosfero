@@ -2,6 +2,7 @@
 # Allow access to PostgreSQL
 -A INPUT -s <%= node['peers']['integration'] %> -p tcp -m state --state NEW --dport 5432 -j ACCEPT
 -A INPUT -s <%= node['peers']['social'] %> -p tcp -m state --state NEW --dport 5432 -j ACCEPT
+-A INPUT -s <%= node['peers']['mezuro'] %> -p tcp -m state --state NEW --dport 5432 -j ACCEPT
 
 # Allow access to Redis
 -A INPUT -s <%= node['peers']['integration'] %> -p tcp -m state --state NEW --dport 6379 -j ACCEPT
