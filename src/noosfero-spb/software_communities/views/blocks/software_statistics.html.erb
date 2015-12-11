@@ -15,14 +15,14 @@
     <li>
       <span class="face-icon"></span>
       <span id="benefited-people">
-        <%= number_to_human(statistics[:benefited_people]) + _(' benefited people*') %>
+        <%= number_with_delimiter(statistics[:benefited_people], :locale => :pt) + _(' benefited people*') %>
       </span>
     </li>
     <li>
       <span class="pig-safe-icon"></span>
       <span id="saved-resources">
         <strong class="saved-money">
-          <%= float_to_currency(statistics[:saved_resources]) %>
+          <%= number_to_currency(statistics[:saved_resources]) %>
         </strong>
         <%= _(' saved resources*') %>
       </span>
