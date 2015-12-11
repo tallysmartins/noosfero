@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.3.1-45-g8f4a00d\n"
-"POT-Creation-Date: 2015-12-07 20:08-0000\n"
+"Project-Id-Version: 1.3.1-47-g17a7299\n"
+"POT-Creation-Date: 2015-12-11 17:55-0000\n"
 "PO-Revision-Date: 2014-11-12 13:05-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,11 +39,14 @@ msgstr "Não foi possível atualizar o software"
 
 #: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:59
 msgid "You don't have permission to change public software status"
-msgstr "Você não tem permissão para alterar o status do software para software público"
+msgstr ""
+"Você não tem permissão para alterar o status do software para software "
+"público"
 
 #: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:64
 msgid "You don't have permission to change public software attributes"
-msgstr "Você não tem permissão para alterar os atributos deste software público"
+msgstr ""
+"Você não tem permissão para alterar os atributos deste software público"
 
 #: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:75
 msgid "Domain %s"
@@ -1087,7 +1090,8 @@ msgid ""
 "other people can't join this community unless they are invited to."
 msgstr ""
 "Secreto &mdash; esconder a comunidade e todo seu conteúdo para não membros e "
-"outras pessoas que não podem entrar nessa comunidade a não ser que sejam convidadas."
+"outras pessoas que não podem entrar nessa comunidade a não ser que sejam "
+"convidadas."
 
 #: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:38
 msgid "Public &mdash; show content of this group to all internet users"

@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.3.1-45-g8f4a00d\n"
-"POT-Creation-Date: 2015-12-07 20:09-0000\n"
+"Project-Id-Version: 1.3.1-47-g17a7299\n"
+"POT-Creation-Date: 2015-12-11 17:55-0000\n"
 "PO-Revision-Date: 2015-09-01 19:55-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -286,8 +286,8 @@ msgid ""
 "This instiution already has an accepted rating. Accepting it will "
 "automatically update the saved value."
 msgstr ""
-"Esta instituição já possui um relato aceito. Ao aceitar o relato atual "
-"O recurso economizado será automaticamente atualizado."
+"Esta instituição já possui um relato aceito. Ao aceitar o relato atual O "
+"recurso economizado será automaticamente atualizado."
 
 #: plugins/gov_user/views/ratings_extra_field.html.erb:2
 msgid "Organization name or Enterprise name"
