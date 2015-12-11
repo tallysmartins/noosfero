@@ -11,3 +11,8 @@ host    colab     colab       <%= node['peers']['integration'] %>/32  trust
 host    gitlab    gitlab      <%= node['peers']['integration'] %>/32  trust
 host    noosfero  noosfero    <%= node['peers']['social'] %>/32       trust
 host    noosfero  colab       <%= node['peers']['integration'] %>/32  trust
+
+host    kalibro_processor       kalibro_processor       <%= node['peers']['mezuro'] %>/32       trust
+host    kalibro_configurations  kalibro_configurations  <%= node['peers']['integration'] %>/32  trust
+host    prezento                prezento                <%= node['peers']['integration'] %>/32  trust
+
