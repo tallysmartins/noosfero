@@ -6,4 +6,5 @@ run_list *[
   'recipe[postgresql::colab]', # must come before the other apps
   'recipe[postgresql::noosfero]',
   'recipe[postgresql::gitlab]',
+  'recipe[postgresql::mezuro]',
 ]
