@@ -1,10 +1,12 @@
 import requests
+import unicodedata
 
 from django.conf import settings
 
+from celery.utils.log import get_task_logger
+from colab.accounts.utils.mailman import create_list
 from colab.celery import app
 from colab.signals.signals import send
-from celery.utils.log import get_task_logger
 from colab_gitlab.models import GitlabGroup
 
 logger = get_task_logger(__name__)
@@ -137,14 +139,9 @@ def community_creation(self, **kwargs):
     group_id = create_group_from_community(noosfero_community)
     include_members_into_group(admins, group_id)
     create_project(noosfero_community.name, group_id)
+    listname = noosfero_community.name.replace(' ', '-')
+    listname = ''.join(c for c in unicodedata.normalize('NFD', unicode(
+        listname, 'utf-8')) if unicodedata.category(c) != 'Mn')
+    create_list(listname, admins[0])
 
-    return 6
-
-
-@app.task(bind=True)
-def community_updated(self, **kwargs):
-    f = open('/vagrant/community_updated', 'wb')
-    f.write(str(kwargs))
-    f.close()
-    logger.info('Community updated: {0}'.format(''.join(kwargs)))
-    return 7
+    return 0

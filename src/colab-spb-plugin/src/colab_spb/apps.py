@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 from colab.signals.signals import connect_signal, register_signal
 from celery.utils.log import get_task_logger
-from colab_spb.tasks import community_creation, community_updated
+from colab_spb.tasks import community_creation
 
 logger = get_task_logger(__name__)
 
@@ -20,4 +20,3 @@ class SpbAppConfig(AppConfig):
 
     def connect_signal(self):
         connect_signal('community_creation', 'noosfero', community_creation)
-        connect_signal('community_updated', 'noosfero', community_updated)
