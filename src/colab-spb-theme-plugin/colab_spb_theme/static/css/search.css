@@ -43,6 +43,15 @@
     font-size: 14px;
 }
 
+.colab-search-results div.container div.row a {
+    color: #172738;
+    text-decoration: none;
+}
+
+.colab-search-results div.container div.row a:hover {
+    text-decoration: none;
+}
+
 .btn:hover {
     color: white;
 }
@@ -59,4 +68,9 @@
     font-size: 14px;
     font-family: Arial;
     font-weight: bold;
+}
+
+.colab-result-register {
+    display: block;
+    padding-top: 40px;
 }
