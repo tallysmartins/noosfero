@@ -21,6 +21,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
   function show_public_institutions_fields() {
     $(".public-institutions-fields").show();
+    $("#cnpj_required_field_mark").html("");
   }
 
 
@@ -28,6 +29,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     $(".public-institutions-fields").hide();
     $("#institutions_governmental_power option").selected(0);
     $("#institutions_governmental_sphere option").selected(0);
+    $("#cnpj_required_field_mark").html("(*)");
   }
 
 
@@ -64,6 +66,17 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
   }
 
 
+  // If the page has a user institution list, update it without repeating the institution
+  function update_user_institutions_list() {
+    $(".institution_container").append(get_clone_institution_data(institution_id));
+    add_selected_institution_to_list(institution_id, institution_name);
+
+    $(".remove-institution").click(remove_institution);
+    //$('#institution_dialog').dialog('close');
+    $('#institution_modal').modal('toggle');
+  }
+
+
   function success_ajax_response(response) {
     close_loading();
 
@@ -75,24 +88,19 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       window.display_notice(response.message);
 
       set_institution_field_name($("#community_name").val());
-      //settup_created_institution();
 
       // Close modal
-      //$(".modal-header .close").trigger("click");
+      $(".modal-header .close").trigger("click");
 
       // Clear modal fields
       $("#institution_modal_body").html(window.sessionStorage.getItem("InstitutionModalBody"));
+      $(".modal .modal-body div").show();
 
       // Reset modal events
       init_module();
 
-
-      // If the page has a user institution list, update it without repeating the institution
-      $(".institution_container").append(get_clone_institution_data(institution_id));
-      add_selected_institution_to_list(institution_id, institution_name);
-      $(".remove-institution").click(remove_institution);
-      //$('#institution_dialog').dialog('close');
-      $('#institution_modal').modal('toggle');
+      // If the user is is his profile edition page
+      update_user_institutions_list();
     } else {
       var errors = create_error_list(response);
       $("#create_institution_errors").switchClass("hide-field", "show-field").html("<h2>"+response.message+"</h2>"+errors);
@@ -271,9 +279,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
 
   function add_mask_to_form_items() {
-    if ($.mask) {
-      $("#institutions_cnpj").mask("99.999.999/9999-99");
-    }
+    $("#institutions_cnpj").mask("99.999.999/9999-99");
   }
 
 

@@ -2,7 +2,7 @@
   <div class="spb-row no-margin-top">
     <% if environment.enabled?('admin_must_approve_new_communities') %>
       <div class='spb-col spb-col-12 explanation'>
-        <%= _("Note that the creation of communities in this environment is restricted. Your request to create this new community will be sent to %{environment} administrators and will be approved or rejected according to their methods and criteria.") % { :environment => environment.name }%>
+        <%= _("Note that the creation of institutions in this environment is restricted. Your request to create this new community will be sent to %{environment} administrators and will be approved or rejected according to their methods and criteria.") % { :environment => environment.name }%>
       </div>
     <% end %>
   </div>
@@ -107,7 +107,7 @@
       <div class="spb-col spb-col-12">
          <label class="formlabel" for="institutions_cnpj">
           <%= _("CNPJ") %>
-          <span class="required-field">(*)</span>
+          <span id="cnpj_required_field_mark" class="required-field"></span>
         </label>
         <%= inst.text_field(:cnpj, :placeholder=>"99.999.999/9999-99", :class=>"intitution_cnpj_field", :value => params[:institutions][:cnpj]) %>
       </div>
@@ -154,7 +154,7 @@
         <%= inst.select(:juridical_nature, @juridical_nature, :selected=>params[:institutions][:juridical_nature], :class => flash[:error_institution_juridical_nature])%>
       </div>
     </div>
-    
+
     <div class="spb-row public-institutions-fields">
       <div class="spb-col spb-col-12">
         <%= _("SISP ?") %>
