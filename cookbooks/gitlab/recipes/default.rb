@@ -105,6 +105,11 @@ execute 'fix-relative-url-for-assets' do
   notifies :run, 'execute[precompile-assets]'
 end
 
+execute 'change-cache-owner' do
+  command 'chown -R git:git /usr/lib/gitlab/tmp/cache'
+  only_if 'ls -l /usr/lib/gitlab/tmp/cache | grep root'
+end
+
 execute 'precompile-assets' do
   user 'git'
   cwd '/usr/lib/gitlab'
