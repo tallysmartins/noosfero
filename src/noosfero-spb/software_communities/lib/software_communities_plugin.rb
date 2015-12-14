@@ -190,3 +190,5 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       :start => true }
   end
 end
+
+require_dependency 'macros/allow_variables'
