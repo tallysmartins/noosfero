@@ -1,5 +1,5 @@
 .environment-notification-plugin-notification-bar{
-	display: block;
+  display: block;
 }
 
 #environment-notification-plugin-notification-manager{
@@ -53,10 +53,11 @@
 
 #content .environment-notification-plugin-notification-bar .warningnotification p a,
 #content .environment-notification-plugin-notification-bar .warningnotification p a:visited,
-#content .environment-notification-plugin-notification-notification-modal .warningnotification p a
+#content .environment-notification-plugin-notification-notification-modal .warningnotification p a,
 #content .environment-notification-plugin-notification-notification-modal .warningnotification p a:visited{
-  font-weight: bold;
-  color: #8a6d3b;
+  font-weight: normal;
+  color: #8A6D3B;
+  border-bottom: 1px dotted #8A6D3B;
 }
 
 .environment-notification-plugin-notification-bar .informationnotification,
