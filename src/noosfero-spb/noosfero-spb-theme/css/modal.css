@@ -161,11 +161,18 @@
 .modal .explanation {
   color: #3F60C6;
   font-size: 12px;
+  font-style: normal;
+  font-family: 'open_sansitalic';
 }
 
 .modal .required-field, .modal .errorExplanation {
   color: #EA1C00;
   font-size:12px;
+  margin-bottom: 20px;
+}
+
+.modal .required-field, .modal .errorExplanation:empty {
+  margin-bottom: 0px;
 }
 
 .modal .spb-row {

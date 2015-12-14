@@ -19,10 +19,13 @@ class PrivateInstitutionTest < ActiveSupport::TestCase
     Institution.destroy_all
   end
 
-  should "save without a cnpj" do
+  should "not save without a cnpj" do
     @institution.cnpj = nil
 
-    assert @institution.save
+    assert_equal false, @institution.save
+
+    @institution.cnpj = "11.111.111/1111-11"
+    assert_equal true, @institution.save
   end
 
   should "save without fantasy name" do
@@ -30,5 +33,11 @@ class PrivateInstitutionTest < ActiveSupport::TestCase
     @institution.community.save
 
     assert @institution.save
+  end
+
+  should "not verify cnpj if it isnt a brazilian institution" do
+    @institution.cnpj = nil
+    @institution.community.country = "AR"
+    assert_equal true, @institution.save
   end
 end

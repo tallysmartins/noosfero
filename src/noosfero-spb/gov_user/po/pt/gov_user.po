@@ -172,7 +172,7 @@ msgstr "Nome de Instituição já existe"
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:44
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:62
 msgid "Corporate Name"
-msgstr "Razão social"
+msgstr "Razão Social"
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:49
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:79
