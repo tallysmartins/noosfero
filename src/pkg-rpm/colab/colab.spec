@@ -1,11 +1,11 @@
 %define name colab
-%define version 1.12.4
+%define version 1.12.5
 %define buildvenv /var/tmp/%{name}-%{version}
 
 Summary: Collaboration platform for communities
 Name: %{name}
 Version: %{version}
-Release: 2
+Release: 1
 Source0: %{name}-%{version}.tar.gz
 License: GPLv2
 Group: Development/Tools
