@@ -7,8 +7,11 @@
     <a href="http://brasil.gov.br" style="background:#7F7F7F; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">Software Público Brasileiro</a>
   </div>
   <script src="//barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
-	<div id="header" role="banner">
-    <div>
+    <div id="header" role="banner">
+    <div id="spb-header-quick-access">
+      <p class='pull-right'>Acesso rápido: <a href="{% url 'home' %}">Software Público Brasileiro</a></p>
+    </div>
+    <div id="spb-header-content">
       <ul id="accessibility">
         <li>
           <a accesskey="1" href="#acontent" id="link-conteudo">
@@ -22,16 +25,16 @@
             <span>2</span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a accesskey="3" href="#nolivesearchGadget" id="link-buscar">
             Ir para a busca
             <span>3</span>
           </a>
-        </li>
+        </li> -->
         <li class="last-item">
-          <a accesskey="4" href="#afooter" id="link-rodape">
+          <a accesskey="3" href="#afooter" id="link-rodape">
             Ir para o rodapé
-            <span>4</span>
+            <span>3</span>
           </a>
         </li>
       </ul>
@@ -61,47 +64,13 @@
             </a>
           </li>
         </ul>
-        <ul id="login-menu">
-          {% if not user.is_authenticated %}
-            <li class="login-item"><a href="{% url 'signup' %}">Cadastre-se</a></li>
-            <li class="login-item last-item"><a href="{% url 'login' %}">Entrar</a></li>
-          {% else %}
-            <li id="user-menu" class="dropdown softwarepublico-item">
-              <a href="#" class="dropdown-toggle user" data-toggle="dropdown">{% gravatar user.email %} <b class="caret"></b>&nbsp;&nbsp;</a>
-              <ul id="login-menu-box" class="dropdown-menu" role="menu">
-                <li class="last-item">
-                  <div class="wrapper">
-                    <div class="thumbnail">{% gravatar user.email %}</div>
-                    <div class="user-info">
-                      <span><b>{{ user.get_full_name }}</b></span>
-                      <span class="quiet">{{ user.email }}</span>
-                    </div>
-                    <div>
-                      <a class="btn btn-default btn-spb-profile pull-left" href="{% url 'user_profile' user.username %}">Meu perfil</a>
-                      <a class="btn btn-default pull-right" href="{% url 'logout' %}">Sair</a>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          {% endif %}
-        </ul>
       </div>
       <div id="logo">
         <a id="portal-logo" title="" href="/">
           <span id="portal-title-1">Portal do</span>
-          <h1 id="portal-title" class="corto">Software Público Brasileiro</h1>
+          <h1 id="portal-title" class="corto">SISP</h1>
           <span id="portal-description">MINISTÉRIO DO PLANEJAMENTO, ORÇAMENTO E GESTÃO</span>
         </a>
-      </div>
-      <div id="portal-searchbox">
-        <form id="nolivesearchGadget_form" action="{% url 'haystack_search' %}">
-          <fieldset class="LSBox"><legend class="hiddenStructure">Buscar no portal</legend>
-            <label class="hiddenStructure" for="nolivesearchGadget">Buscar no portal</label>
-            <input name="q" type="text" size="18" value="{{ request.GET.q }}" title="Buscar no portal" placeholder="Buscar no portal" class="searchField" id="nolivesearchGadget">
-            <input class="searchButton" type="submit" value="Buscar no portal">
-          </fieldset>
-        </form>
       </div>
       <div id="social-icons">
         <ul>
@@ -134,10 +103,6 @@
     </div>
     <div id="sobre">
       <ul>
-        <li id="softwarepublico-groups" class="softwarepublico-item">
-          <a href="{% url 'thread_list' %}" title="Listas de discussão">Listas de discussão</a>
-        </li>
-        {% plugins_menu %}
         <li id="softwarepublico-perguntas-frequentes" class="softwarepublico-item">
           <a href="/social/spb/ajuda" title="Perguntas frequentes">Perguntas frequentes</a>
         </li>

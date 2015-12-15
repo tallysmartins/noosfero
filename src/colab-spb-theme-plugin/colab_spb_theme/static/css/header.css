@@ -408,3 +408,23 @@ header .thumbnail {
     min-width: 80px;
     max-width: 80px;
 }
+
+header #spb-header-quick-access {
+    border-bottom: 1px solid #d9dbde;
+    padding-bottom: 18px;
+}
+
+header #spb-header-quick-access p {
+    color: #54606d;
+    font-size: 11px;
+    margin-top:-8px;
+}
+
+header #spb-header-quick-access a {
+    color: #2C65CD;
+    font-weight: bold;
+}
+
+header #spb-header-content {
+    padding-top: 13px;
+}
