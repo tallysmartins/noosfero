@@ -7,7 +7,7 @@ License:        GPL-3.0
 Group:          Applications/Publishing
 Url:            https://softwarepublico.gov.br/gitlab/softwarepublico/colab-spb-theme-plugin
 Source0:        %{name}-%{version}.tar.gz
-Requires:       colab >= 1.12.3
+Requires:       colab >= 1.12.5
 BuildArch:      noarch
 
 %description
