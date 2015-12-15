@@ -28,6 +28,9 @@ SECRET_KEY = "<%= File.read('/etc/colab/secret.key').strip %>"
 
 SITE_URL = "<%= node['config']['site_url'] %>"
 
+SPB_HOST = "<%= node['config']['external_hostname'] %>"
+SISP_HOST = "<%= node['config']['sisp_external_hostname'] %>"
+
 ALLOWED_HOSTS = ["<%= node['config']['external_hostname'] %>",
                  "<%= node['config']['sisp_external_hostname'] %>"]
 
