@@ -1,5 +1,6 @@
 from django.conf import settings
 
 
-def sisp_url(request):
-    return {'SISP_URL': getattr(settings, 'SISP_URL', False)}
+def multiportal_url(request):
+    return {'SISP_HOST': getattr(settings, 'SISP_HOST', False),
+            'SPB_HOST': getattr(settings, 'SPB_HOST', False),}

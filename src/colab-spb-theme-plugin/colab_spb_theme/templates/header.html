@@ -1,5 +1,5 @@
-{% if SISP_URL in request.META.HTTP_HOST|stringformat:"s" %}
-  {% include 'header_sisp.html' %}
+{% if SISP_HOST in request.META.HTTP_HOST|stringformat:"s" %}
+  {% include 'header_sisp.html' with SPB_PORTAL='http://'|add:SPB_HOST %}
 {% else %}
-  {% include 'header_spb.html' %}
+  {% include 'header_spb.html'  with SISP_PORTAL='http://'|add:SISP_HOST %}
 {% endif %}
