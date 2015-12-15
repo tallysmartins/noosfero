@@ -55,8 +55,13 @@ class StatisticBlock < Block
   def get_software_statistics
     statistics = {}
     software = SoftwareInfo.find_by_community_id(self.owner.id)
-    statistics[:saved_resources] = software.saved_resources
-    statistics[:benefited_people] = software.benefited_people
+    if software.present?
+      statistics[:saved_resources] = software.saved_resources
+      statistics[:benefited_people] = software.benefited_people
+    else
+      statistics[:saved_resources] = 0
+      statistics[:benefited_people] = 0
+    end
     statistics
   end
 end
