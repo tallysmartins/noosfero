@@ -53,3 +53,25 @@ if external_relay
 else
   execute 'postconf -X relayhost'
 end
+
+template '/etc/postfix/master.cf' do
+  unless node['environment'] == "prod"
+      variables({ :postfix_service => "fs_mail",
+                :flag => "F",
+                :user => "spb",
+                :command => "tee --append /var/tmp/fs_mail.dump",
+                :extra => ""})
+    notifies :create, 'cookbook_file[/etc/postfix/main.cf]'
+  else
+     variables({ :postfix_service => "mailman",
+                :flag => "FR",
+                :user => "mailman:mailman",
+                :command => "/usr/lib/mailman/bin/postfix-to-mailman.py",
+                :extra => "{nexthop} ${user}}"})
+  end
+  notifies :reload, 'service[postfix]'
+end
+
+cookbook_file '/etc/postfix/main.cf' do
+  action :nothing
+end
