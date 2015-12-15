@@ -101,6 +101,7 @@
 }
 
 #content .download-block .download-info {
+  min-height: 80px;
   margin: 5px 0px 0px 100px;
   position: relative;
   font-size: 16px;
@@ -120,10 +121,12 @@
   font-size: 12px;
 }
 
+/* THIS RULE WAS CHANGED TO REMOVE MINIMUM REQUIREMENTS - TEMPORARY */
 #content .download-block .download-info .min-requirements a {
   line-height: 40px;
   color: #3E67B1;
   text-decoration: underline;
+  display: none;
 }
 
 #content .download-block #licensed-software {

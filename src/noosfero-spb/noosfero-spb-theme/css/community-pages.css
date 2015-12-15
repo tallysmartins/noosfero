@@ -1311,3 +1311,43 @@ float: left;
 #content .box-2 .software-events-block .software-events-list-item:last-child{
   border:none;
 }
+
+/* Events page - Solution temporary*/
+
+
+.action-events-events #content #agenda-title{
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 15px;
+  padding:15px 0px 5px 0px;
+
+}
+
+.action-events-events #agenda-toolbar a:first-child {
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  width: 130px;
+  text-align: left;
+  white-space: nowrap;
+  float: left;
+  line-height: 20px;
+  max-height: 19px;
+  position:absolute;
+  top: 10px;
+}
+
+.action-events-events #agenda td{
+  padding:10px 0;
+}
+
+.action-events-events #events-of-the-day{
+  font-size:15px;
+  padding-top:15px
+}
+
+.action-events-events .event-date{
+  background:none;
+  padding-left:0;
+
+}
