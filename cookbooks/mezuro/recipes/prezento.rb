@@ -34,3 +34,18 @@ execute 'prezento:migrate' do
   notifies :restart, 'service[prezento.target]'
 end
 
+#############################################################################
+# The next lines install the mezuro plugin for colab intergration           #
+# This shold be removed when the plugin were install thought pkg colab-deps #
+#############################################################################
+
+git '/home/vagrant/colab-mezuro-plugin' do
+  repository 'https://github.com/colab/colab-mezuro-plugin.git'
+  revision 'master'
+end
+
+execute 'pip:install:plugin' do
+  command '/usr/lib/colab/bin/pip install .'
+  cwd '/home/vagrant/colab-mezuro-plugin'
+  user 'root'
+end

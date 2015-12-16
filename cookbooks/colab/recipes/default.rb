@@ -175,6 +175,13 @@ template '/etc/colab/plugins.d/sentry_client.py' do
   notifies :restart, 'service[colab]'
 end
 
+template '/etc/colab/plugins.d/mezuro.py' do
+  owner 'root'
+  group 'colab'
+  mode 0640
+  notifies :restart, 'service[colab]'
+end
+
 execute 'colab-admin migrate'
 
 # Adding widgets for colab
