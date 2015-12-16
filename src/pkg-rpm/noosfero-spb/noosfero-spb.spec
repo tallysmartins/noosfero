@@ -1,6 +1,6 @@
 Name:    noosfero-spb
-Version: 4.2.1
-Release: 0
+Version: 4.2.3
+Release: 1
 Summary: SPB-specific Noosfero plugins and themes
 Group:   Applications/Publishing
 License: AGPLv3
