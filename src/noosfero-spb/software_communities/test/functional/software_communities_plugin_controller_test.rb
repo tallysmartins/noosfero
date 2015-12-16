@@ -56,16 +56,6 @@ class SoftwareCommunitiesPluginControllerTest < ActionController::TestCase
     assert_equal 0, licenses.count
   end
 
-  should 'render block template' do
-    xhr :get, :get_block_template
-
-    assert_tag :tag => 'input', :attributes => { :class => "block_download_name" }
-    assert_tag :tag => 'input', :attributes => { :class => "block_download_link" }
-    assert_tag :tag => 'input', :attributes => { :class => "block_download_software_description" }
-    assert_tag :tag => 'input', :attributes => { :class => "block_download_minimum_requirements" }
-    assert_tag :tag => 'input', :attributes => { :class => "block_download_size" }
-  end
-
   should 'return the programming languages' do
     xhr :get, :get_field_data, :query => "", :field => "software_language"
 
