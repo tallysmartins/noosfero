@@ -735,7 +735,7 @@ msgstr "Relevância"
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:55
 msgid "Favorites"
-msgstr "Favoritos"
+msgstr "Avaliação"
 
 #: plugins/software_communities/views/search/software_infos.html.erb:6
 msgid "Type words about the %s you're looking for"
