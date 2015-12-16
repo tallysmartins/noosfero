@@ -65,4 +65,15 @@ class PublicInstitutionTest < ActiveSupport::TestCase
     assert !@institution.save
     assert @institution.errors.full_messages.include? invalid_msg
   end
+
+
+  should "verify cnpj format if it is filled" do
+    @institution.cnpj = "123456789"
+
+    assert_equal false, @institution.save
+
+    @institution.cnpj = "11.222.333/4444-55"
+
+    assert_equal true, @institution.save
+  end
 end

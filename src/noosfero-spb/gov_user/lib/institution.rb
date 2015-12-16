@@ -6,6 +6,8 @@ class Institution < ActiveRecord::Base
     :display => %w[compact]
   }
 
+  CNPJ_FORMAT = /^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/
+
   def self.default_search_display
     'compact'
   end
@@ -23,7 +25,7 @@ class Institution < ActiveRecord::Base
                   :corporate_name, :siorg_code, :community
 
   validates :name, :presence=>true, :uniqueness=>true
-  validates :cnpj, :presence=>true, :uniqueness=>true
+  validates :cnpj, :length=>{maximum: 18}
 
   before_save :verify_institution_type
 
@@ -34,7 +36,7 @@ class Institution < ActiveRecord::Base
   }
 
   validate :validate_country, :validate_state, :validate_city,
-           :verify_institution_type, :validate_format_cnpj
+           :verify_institution_type
 
 
   def has_accepted_rating? user_rating
@@ -98,19 +100,5 @@ class Institution < ActiveRecord::Base
     end
 
     return true
-  end
-
-  def validate_format_cnpj
-    return true if self.community.blank? && self.community.country != "BR"
-    return true if self.cnpj.blank?
-
-    format =  /^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/
-
-    if !self.cnpj.blank? && format.match(self.cnpj)
-      return true
-    else
-      self.errors.add(:cnpj, _("invalid format"))
-      return false
-    end
   end
 end
