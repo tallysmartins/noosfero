@@ -347,13 +347,6 @@
   margin-top: 35px;
 }
 
-.action-search-software_infos #search-results .search-software-item-column-left .vcard img {
-  max-width: 90px;
-  max-height: 130px;
-  height: auto;
-  margin-left:170px;
-}
-
 .action-search-software_infos #search-results .search-software-item-column-left .org {
   display: none;
 }
@@ -395,10 +388,30 @@
 .action-search-software_infos #search-results .search-software-item-column-right {
   width: 65%;
   float: left;
-  margin-left: 140px;
+  margin-left: 20px;
   padding: 0 0 0 8px;
   font-size: 15px;
   font-family: Arial;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-right .search-software-profile-img {
+  position: relative;
+  float: left;
+  width: 20%;
+  margin-top: 8px;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-right .search-software-profile-img img {
+  max-width: 90px;
+  max-height: 130px;
+  height: auto;
+}
+
+.action-search-software_infos #search-results .search-software-item-column-right .search-software-content-block {
+  position: relative;
+  float: left;
+  width: 79%;
+  margin-top: 8px;
 }
 
 .action-search-software_infos #search-results .search-software-item-column-right .search-software-content-block h4{
@@ -410,22 +423,15 @@
   font-size: 19px;
 }
 
-.action-search-software_infos #search-results .search-software-item-column-right .search-software-content-block:last-child {
-  margin-top: 30px;
-}
-
-.action-search-software_infos #search-results .search-software-item-column-right span{
-  width: 100%;
-}
-
-.action-search-software_infos #search-results .search-software-item-column-right span b{
+.action-search-software_infos #search-results .search-software-item-column-right .search-software-categories span {
+  width: auto;
+  float: left;
   font-weight: normal;
   font-size: 13px;
 }
 
-.action-search-software_infos #search-results .search-software-item-column-right .search-software-content-block:last-child span{
-  width: auto;
-  float: left;
+.action-search-software_infos #search-results .search-software-item-column-right .search-software-categories {
+  margin-top: 30px;
 }
 
 .action-search-software_infos #search-results .search-software-content-block #categories-list li {

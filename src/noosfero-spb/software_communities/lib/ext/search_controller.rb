@@ -4,6 +4,8 @@ require_dependency 'search_controller'
 
 class SearchController
 
+  DEFAULT_SOFTWARE_SORT = 'rating'
+
   def self.catalog_list
     { :public_software => ["Software Público", "software_infos"],
       :sisp_software => ["SISP", "sisp"] }
@@ -144,6 +146,8 @@ class SearchController
 
   def prepare_software_infos_params title
     @titles[title.to_sym] = _("Result Search")
+    params[:sort] ||= DEFAULT_SOFTWARE_SORT
+
     @selected_categories_id = params[:selected_categories_id]
     @selected_categories_id ||= []
     @selected_categories_id = @selected_categories_id.map(&:to_i)
