@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.3.1-47-g17a7299\n"
-"POT-Creation-Date: 2015-12-11 17:55-0000\n"
+"Project-Id-Version: 1.3.1-53-g4c56c68\n"
+"POT-Creation-Date: 2015-12-17 17:10-0000\n"
 "PO-Revision-Date: 2014-11-12 13:05-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,6 +87,10 @@ msgstr "Categorias e Marcadores"
 #: plugins/software_communities/lib/categories_and_tags_block.rb:12
 msgid "This block displays the categories and tags of a software."
 msgstr "Este block apresenta as categorias e marcadores de um software."
+
+#: plugins/software_communities/lib/macros/allow_variables.rb:5
+msgid "Insert Profile"
+msgstr "Completar Perfil"
 
 #: plugins/software_communities/lib/wiki_block.rb:8
 msgid "Wiki Link"
@@ -205,7 +209,7 @@ msgid "This block displays the softwares icon into a highlight"
 msgstr "Esse bloco apresenta o ícone do software em destaque"
 
 #: plugins/software_communities/lib/dynamic_table_helper.rb:17
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:3
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:4
 #: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:37
 #: plugins/software_communities/views/software_communities_plugin_myprofile/_main_software_editor_extras.html.erb:3
 msgid "Name"
@@ -225,8 +229,7 @@ msgid "Autocomplete field, type something"
 msgstr "Campo automático, digite algo"
 
 #: plugins/software_communities/lib/dynamic_table_helper.rb:116
-#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:8
-#: plugins/software_communities/views/box_organizer/_download_list.html.erb:8
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:23
 msgid "Delete"
 msgstr "Deletar"
 
@@ -567,16 +570,15 @@ msgid "Control Panel"
 msgstr "Painel de Controle"
 
 #: plugins/software_communities/views/profile/_profile_members_list.html.erb:2
+#: plugins/software_communities/views/search/_software_search_form.html.erb:48
 msgid "Sort by:"
 msgstr "Ordenar por:"
 
 #: plugins/software_communities/views/profile/_profile_members_list.html.erb:5
-#: plugins/software_communities/views/search/_software_search_form.html.erb:52
 msgid "Name A-Z"
 msgstr "Nome A-Z"
 
 #: plugins/software_communities/views/profile/_profile_members_list.html.erb:6
-#: plugins/software_communities/views/search/_software_search_form.html.erb:53
 msgid "Name Z-A"
 msgstr "Nome Z-A"
 
@@ -589,6 +591,23 @@ msgstr "Pessoas Beneficiadas"
 #: plugins/software_communities/views/organization_ratings_task_extra_fields_show_statistics.html.erb:7
 msgid "Saved Resources"
 msgstr "Recursos economizados"
+
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:8
+msgid "Link"
+msgstr "Link"
+
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:12
+msgid "Platforms"
+msgstr "Plataformas"
+
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:16
+#: plugins/software_communities/views/blocks/download.html.erb:17
+msgid "Minimum Requirements"
+msgstr "Requisitos Mínimos"
+
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:20
+msgid "Size"
+msgstr "Tamanho"
 
 #: plugins/software_communities/views/box_organizer/_software_tab_data_block.html.erb:5
 msgid "Which blog should have its posts displayed: "
@@ -618,24 +637,11 @@ msgstr "Pessoas Beneficiadas: "
 msgid "Saved Resources: "
 msgstr "Recursos economizados: "
 
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:4
-msgid "Link"
-msgstr "Link"
+#: plugins/software_communities/views/box_organizer/_download_block.html.erb:3
+msgid "Download options"
+msgstr "Opções de Download"
 
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:5
-msgid "Platforms"
-msgstr "Plataformas"
-
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:6
-#: plugins/software_communities/views/blocks/download.html.erb:17
-msgid "Minimum Requirements"
-msgstr "Requisitos Mínimos"
-
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:7
-msgid "Size:"
-msgstr "Tamanho:"
-
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:16
+#: plugins/software_communities/views/box_organizer/_download_block.html.erb:10
 msgid "New link"
 msgstr "Novo link"
 
@@ -723,19 +729,15 @@ msgid ""
 "characters)"
 msgstr ""
 "Digite palavras sobre o software que você está procurando (a busca começa "
-"depois de 3 caracteres"
+"depois de 3 caracteres)"
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:27
 msgid "Filter"
 msgstr "Filtro"
 
-#: plugins/software_communities/views/search/_software_search_form.html.erb:54
-msgid "Relevance"
-msgstr "Relevância"
-
-#: plugins/software_communities/views/search/_software_search_form.html.erb:55
-msgid "Favorites"
-msgstr "Avaliação"
+#: plugins/software_communities/views/search/_software_search_form.html.erb:41
+msgid "Show:"
+msgstr "Exibir:"
 
 #: plugins/software_communities/views/search/software_infos.html.erb:6
 msgid "Type words about the %s you're looking for"
@@ -1163,6 +1165,12 @@ msgstr "Número de beneficiados"
 msgid "Saved resources"
 msgstr "Recursos economizados"
 
+#~ msgid "Relevance"
+#~ msgstr "Relevância"
+
+#~ msgid "Favorites"
+#~ msgstr "Avaliação"
+
 #~ msgid "Portal suggested value: "
 #~ msgstr "Valor sugerido pelo portal: "
 
@@ -1377,9 +1385,6 @@ msgstr "Recursos economizados"
 
 #~ msgid "Activate profile"
 #~ msgstr "Ativar perfil"
-
-#~ msgid "Complete Profile"
-#~ msgstr "Completar Perfil"
 
 #~ msgid "Complete your profile"
 #~ msgstr "Complete seu perfil"
