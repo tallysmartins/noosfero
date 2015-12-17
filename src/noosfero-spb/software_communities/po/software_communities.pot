@@ -6,8 +6,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.3.1-47-g17a7299\n"
-"POT-Creation-Date: 2015-12-11 17:55-0000\n"
+"Project-Id-Version: 1.3.1-53-g4c56c68\n"
+"POT-Creation-Date: 2015-12-17 17:10-0000\n"
 "PO-Revision-Date: 2015-09-11 17:15-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,6 +82,10 @@ msgstr ""
 
 #: plugins/software_communities/lib/categories_and_tags_block.rb:12
 msgid "This block displays the categories and tags of a software."
+msgstr ""
+
+#: plugins/software_communities/lib/macros/allow_variables.rb:5
+msgid "Insert Profile"
 msgstr ""
 
 #: plugins/software_communities/lib/wiki_block.rb:8
@@ -201,7 +205,7 @@ msgid "This block displays the softwares icon into a highlight"
 msgstr ""
 
 #: plugins/software_communities/lib/dynamic_table_helper.rb:17
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:3
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:4
 #: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:37
 #: plugins/software_communities/views/software_communities_plugin_myprofile/_main_software_editor_extras.html.erb:3
 msgid "Name"
@@ -221,8 +225,7 @@ msgid "Autocomplete field, type something"
 msgstr ""
 
 #: plugins/software_communities/lib/dynamic_table_helper.rb:116
-#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:8
-#: plugins/software_communities/views/box_organizer/_download_list.html.erb:8
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:23
 msgid "Delete"
 msgstr ""
 
@@ -544,16 +547,15 @@ msgid "Control Panel"
 msgstr ""
 
 #: plugins/software_communities/views/profile/_profile_members_list.html.erb:2
+#: plugins/software_communities/views/search/_software_search_form.html.erb:48
 msgid "Sort by:"
 msgstr ""
 
 #: plugins/software_communities/views/profile/_profile_members_list.html.erb:5
-#: plugins/software_communities/views/search/_software_search_form.html.erb:52
 msgid "Name A-Z"
 msgstr ""
 
 #: plugins/software_communities/views/profile/_profile_members_list.html.erb:6
-#: plugins/software_communities/views/search/_software_search_form.html.erb:53
 msgid "Name Z-A"
 msgstr ""
 
@@ -565,6 +567,23 @@ msgstr ""
 #: plugins/software_communities/views/organization_ratings_container_extra_fields_show_statistics.html.erb:7
 #: plugins/software_communities/views/organization_ratings_task_extra_fields_show_statistics.html.erb:7
 msgid "Saved Resources"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:8
+msgid "Link"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:12
+msgid "Platforms"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:16
+#: plugins/software_communities/views/blocks/download.html.erb:17
+msgid "Minimum Requirements"
+msgstr ""
+
+#: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:20
+msgid "Size"
 msgstr ""
 
 #: plugins/software_communities/views/box_organizer/_software_tab_data_block.html.erb:5
@@ -595,24 +614,11 @@ msgstr ""
 msgid "Saved Resources: "
 msgstr ""
 
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:4
-msgid "Link"
+#: plugins/software_communities/views/box_organizer/_download_block.html.erb:3
+msgid "Download options"
 msgstr ""
 
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:5
-msgid "Platforms"
-msgstr ""
-
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:6
-#: plugins/software_communities/views/blocks/download.html.erb:17
-msgid "Minimum Requirements"
-msgstr ""
-
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:7
-msgid "Size:"
-msgstr ""
-
-#: plugins/software_communities/views/box_organizer/_download_block.html.erb:16
+#: plugins/software_communities/views/box_organizer/_download_block.html.erb:10
 msgid "New link"
 msgstr ""
 
@@ -700,12 +706,8 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: plugins/software_communities/views/search/_software_search_form.html.erb:54
-msgid "Relevance"
-msgstr ""
-
-#: plugins/software_communities/views/search/_software_search_form.html.erb:55
-msgid "Favorites"
+#: plugins/software_communities/views/search/_software_search_form.html.erb:41
+msgid "Show:"
 msgstr ""
 
 #: plugins/software_communities/views/search/software_infos.html.erb:6

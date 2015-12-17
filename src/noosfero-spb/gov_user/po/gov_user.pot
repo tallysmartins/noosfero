@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.3.1-47-g17a7299\n"
-"POT-Creation-Date: 2015-12-11 17:55-0000\n"
+"POT-Creation-Date: 2015-12-17 16:44-0000\n"
 "PO-Revision-Date: 2015-09-01 20:59-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,32 +55,28 @@ msgid "Add features related to Brazilian government."
 msgstr ""
 
 #: plugins/gov_user/lib/gov_user_plugin.rb:134
-#: plugins/gov_user/lib/gov_user_plugin.rb:167
+#: plugins/gov_user/lib/gov_user_plugin.rb:166
 msgid "Create Institution"
 msgstr ""
 
-#: plugins/gov_user/lib/gov_user_plugin.rb:307
+#: plugins/gov_user/lib/gov_user_plugin.rb:306
 msgid "Institution Info"
 msgstr ""
 
-#: plugins/gov_user/lib/gov_user_plugin.rb:332
+#: plugins/gov_user/lib/gov_user_plugin.rb:331
 #: plugins/gov_user/views/organization_ratings_container_extra_fields_show_institution.html.erb:4
 #: plugins/gov_user/views/organization_ratings_task_extra_fields_show_institution.html.erb:4
 msgid "Institution"
 msgstr ""
 
-#: plugins/gov_user/lib/institution.rb:56
+#: plugins/gov_user/lib/institution.rb:58
 msgid "invalid, only public and private institutions are allowed."
 msgstr ""
 
-#: plugins/gov_user/lib/institution.rb:68
-#: plugins/gov_user/lib/institution.rb:82
-#: plugins/gov_user/lib/institution.rb:95
+#: plugins/gov_user/lib/institution.rb:70
+#: plugins/gov_user/lib/institution.rb:84
+#: plugins/gov_user/lib/institution.rb:97
 msgid "can't be blank"
-msgstr ""
-
-#: plugins/gov_user/lib/institution.rb:112
-msgid "invalid format"
 msgstr ""
 
 #: plugins/gov_user/lib/ext/user.rb:19
@@ -136,7 +132,6 @@ msgid "Edit Institution"
 msgstr ""
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:5
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:5
 msgid ""
 "Note that the creation of communities in this environment is restricted. "
 "Your request to create this new community will be sent to %{environment} "
@@ -278,7 +273,7 @@ msgstr ""
 
 #: plugins/gov_user/views/organization_ratings_task_extra_fields_show_institution.html.erb:9
 msgid ""
-"This instiution already has an accepted rating. Accepting it will "
+"This institution already has an accepted rating. Accepting it will "
 "automatically update the saved value."
 msgstr ""
 
@@ -316,6 +311,14 @@ msgstr ""
 
 #: plugins/gov_user/views/person_editor_extras.html.erb:41
 msgid "If you work in a public agency use your government e-Mail"
+msgstr ""
+
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:5
+msgid ""
+"Note that the creation of institutions in this environment is restricted. "
+"Your request to create this new community will be sent to %{environment} "
+"administrators and will be approved or rejected according to their methods "
+"and criteria."
 msgstr ""
 
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:11

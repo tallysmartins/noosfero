@@ -38,14 +38,15 @@
 
     <div id="catalog-display-options-show-and-sort">
       <div id="catalog-display-options-show">
-        Show:
+        <%= _('Show:') %>
         <%= select_tag("software_display",
           options_for_select(['15', '30', '90', 'All'], :selected=>params[:display])
           ) %>
       </div>
 
       <div id="catalog-display-options-sort">
-        Sort by:
+        <%= _('Sort by:') %>
+        <%= select_tag("software_display",
         <%= select_tag("sort",
           options_for_select(
             [
