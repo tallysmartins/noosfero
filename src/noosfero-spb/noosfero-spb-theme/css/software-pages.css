@@ -633,3 +633,103 @@
 }
 
 /*** end fo software internal pages ***/
+
+/*Secundary page discussion*/
+
+#content .model-discussion-page{
+  text-align: left;
+  font-color:#172738;
+}
+
+#content .model-discussion-page .frequently-questions-top h2,
+#content .model-discussion-page .frequently-questions-middle h2,
+#content .model-discussion-page .frequently-questions-last h2{
+  font-size: 22px;
+}
+
+#content .main-block .model-discussion-page p strong{
+  font-size: 14px;
+}
+
+
+.model-discussion-page .frequently-questions-top ul,
+.model-discussion-page .frequently-questions-middle ul,
+.model-discussion-page .frequently-questions-last ul{
+  margin:0;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.model-discussion-page .frequently-questions-top li,
+.model-discussion-page .frequently-questions-middle li,
+.model-discussion-page .frequently-questions-last li {
+  display: inline-table; 
+  padding:15px 10px 8px 10px;
+  margin-right:2px;
+  border:1px solid #ECEDF1;
+  border-radius: 3px;
+  background:#ECEDF1;
+  width: 28%;
+  text-align: left;
+}
+
+.model-discussion-page .frequently-questions-top li a,
+.model-discussion-page .frequently-questions-middle li a,
+.model-discussion-page .frequently-questions-last li a {
+  text-decoration: none;
+  color:#000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.model-discussion-page .send-glyph a:before,
+.model-discussion-page .list-glyph a:before,
+.model-discussion-page .cancel-glyph a:before{
+  font-family: FontAwesome;
+  font-size: 14px;
+  margin-right: 10px;
+  font-weight: normal;
+  float: left;
+  margin:2px 10px 45px 0px;
+}
+
+.model-discussion-page .send-glyph a:before{
+  content: "\f1d8";
+}
+
+.model-discussion-page .list-glyph a:before{
+  content: "\f00b";
+}
+
+.model-discussion-page .cancel-glyph a:before{
+  content: "\f05e";
+}
+
+.model-discussion-page .item-discussion-page-list{
+  font-size: 15px;
+  font-weight: 800;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+.model-discussion-page .frequently-questions-top #list-glyph,
+.model-discussion-page .frequently-questions-middle #cancel-glyph,
+.model-discussion-page .frequently-questions-last #send-glyph {
+  background: #D3D6DE;
+}
+
+.model-discussion-page .email-list,
+.model-discussion-page .sub-question{
+  display: block;
+}
+#content .model-discussion-page .email-list a,
+#content .model-discussion-page .email-list a:hover{
+  color:#3E67B1;
+}
+
+.model-discussion-page .sub-question{
+  font-weight: 800;
+  padding-top: 30px;
+}
