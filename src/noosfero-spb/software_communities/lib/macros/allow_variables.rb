@@ -10,6 +10,6 @@ class SoftwareCommunitiesPlugin::AllowVariables < Noosfero::Plugin::Macro
   end
 
   def parse(params, inner_html, source)
-    source.profile.identifier
+    URI.unescape(inner_html).gsub(/{profile}/,source.profile.identifier)
   end
 end
