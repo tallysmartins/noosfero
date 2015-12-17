@@ -43,6 +43,12 @@
     font-size: 14px;
 }
 
+.colab-search-results div.container div.row h4 a {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 21px;
+}
+
 .colab-search-results div.container div.row a {
     color: #172738;
     text-decoration: none;
