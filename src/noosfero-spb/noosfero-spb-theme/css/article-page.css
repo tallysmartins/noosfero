@@ -254,3 +254,28 @@
 }
 
 /*** end of help page ***/
+
+/*** article lists ***/
+
+.article-body ul,
+.article-body ol{
+  margin-bottom: 20px;
+}
+
+.article-body li ul,
+.article-body li ol{
+  margin-bottom: 0px;
+  margin-left: 20px;
+}
+
+.article-body ul li{
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.article-body ol li{
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
+/*** end of article numbered lists ***/
