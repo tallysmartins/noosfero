@@ -1,2 +1,3 @@
 # Allow mezuro connect to HTTP
--A INPUT -s <%= node['peers']['integration'] %> -p tcp -m state --state NEW -m multiport --dports 8082 -j ACCEPT
+-A INPUT -s <%= node['peers']['integration'] %> -p tcp -m state --state NEW --dport 83 -j ACCEPT
+-A INPUT -s <%= node['peers']['integration'] %> -p tcp -m state --state NEW --dport 82 -j ACCEPT
