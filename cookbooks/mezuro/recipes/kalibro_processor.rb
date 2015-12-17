@@ -4,18 +4,22 @@ execute 'download:mezuro' do
   user 'root'
 end
 
+package 'kalibro-processor'
+
+service 'kalibro-processor.target' do
+  action [:enable, :start]
+end
+
+service 'nginx' do
+  action [:enable, :start]
+end
+
 template '/etc/mezuro/kalibro-processor/database.yml' do
   source 'kalibro_processor/database.yml.erb'
   owner 'kalibro_processor'
   group 'kalibro_processor'
   mode '0600'
   notifies :restart, 'service[kalibro-processor.target]'
-end
-
-package 'kalibro-processor'
-
-service 'kalibro-processor.target' do
-  action [:enable, :start]
 end
 
 PROCESSOR_DIR='/usr/share/mezuro/kalibro-processor'
@@ -31,4 +35,12 @@ execute 'kalibro-processor:migrate' do
   cwd PROCESSOR_DIR
   user 'kalibro_processor'
   notifies :restart, 'service[kalibro-processor.target]'
+end
+
+template '/etc/nginx/conf.d/kalibro-processor.conf' do
+  source 'kalibro_processor/nginx.conf.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :restart, 'service[nginx]'
 end

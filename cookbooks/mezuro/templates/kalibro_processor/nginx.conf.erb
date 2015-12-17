@@ -1,0 +1,20 @@
+# MANAGED WITH CHEF; DO NOT CHANGE BY HAND
+
+server {
+  listen *:82;
+  server_name <%= node['peers']['mezuro'] %>;
+  underscores_in_headers  on;
+  access_log            /var/log/nginx/kalibro-processor.access.log;
+  error_log             /var/log/nginx/kalibro-processor.error.log;
+  client_max_body_size  0;
+
+  location / {
+    try_files $uri @kalibro-processor;
+  }
+
+  location @kalibro-processor {
+    proxy_pass        http://localhost:8082;
+    proxy_set_header  X-Real-IP $remote_addr;
+    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+}
