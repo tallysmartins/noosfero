@@ -13,7 +13,7 @@ tests_require = [ ]
 
 setup(
     name='colab-spb-plugin',
-    version='0.2.1',
+    version='0.2.2',
     author='Macartur Sousa',
     author_email='macartur.sc@gmail.com',
     url='https://portal.softwarepublico.gov.br/gitlab/softwarepublico/colab-spb-plugin/',
