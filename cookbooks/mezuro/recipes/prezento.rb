@@ -5,7 +5,7 @@ execute 'download:mezuro' do
   user 'root'
 end
 
-package 'prezento'
+package 'prezento-spb'
 
 service 'prezento.target' do
   action [:enable, :start]
