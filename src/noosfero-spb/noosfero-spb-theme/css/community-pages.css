@@ -1276,11 +1276,15 @@ float: left;
 }
 
 /*software-events-block - sidebar - box2*/
-
 #content .box-2 .software-events-block .software-community-events-block{
   border:1px solid #C0C1C1;
   border-radius:4px;
   background-color:#ECEDF1;
+  display: none;
+}
+
+.article-type-event #content .box-2 .software-events-block .software-community-events-block {
+  display: block;
 }
 
 #content .box-2 .software-events-block .software-events-list-item{

@@ -138,6 +138,12 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
     }
   end
 
+  def html_tag_classes
+    lambda do
+      "article-type-#{@page.css_class_name}" if @page
+    end
+  end
+
   # FIXME - if in error log apears has_permission?, try to use this method
   def has_permission?(person, permission, target)
     person.has_permission_without_plugins?(permission, target)
