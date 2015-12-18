@@ -161,8 +161,8 @@
 .modal .explanation {
   color: #3F60C6;
   font-size: 12px;
-  font-style: normal;
-  font-family: 'open_sansitalic';
+  font-style: italic;
+  font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
 }
 
 .modal .required-field, .modal .errorExplanation {
