@@ -5,7 +5,7 @@
 Summary: Collaboration platform for communities
 Name: %{name}
 Version: %{version}
-Release: 3
+Release: 4
 Source0: %{name}-%{version}.tar.gz
 License: GPLv2
 Group: Development/Tools
@@ -14,8 +14,8 @@ Prefix: %{_prefix}
 Vendor: Sergio Oliveira <sergio@tracy.com.br>
 Url: https://github.com/colab/colab
 BuildArch: noarch
-BuildRequires: colab-deps >= 1.12.6, python-virtualenv
-Requires: colab-deps >= 1.12.6, solr, mailman-api >= 0.3rc3
+BuildRequires: colab-deps >= 1.12.7, python-virtualenv
+Requires: colab-deps >= 1.12.7, solr, mailman-api >= 0.3rc3
 
 %description
 Integrated software development platform.
