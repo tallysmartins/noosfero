@@ -51,7 +51,7 @@ function alignBlocks(containerIndex){
 // Foco no botao de busca
 
 $('#link-buscar').click(function(e) {
-    e.preventDefault();
+    e.defaultPrevented();
     window.location.hash = '#portal-searchbox';
     $('.searchField').focus()
 })
@@ -195,34 +195,36 @@ $('#link-buscar').click(function(e) {
     $('.star-tooltip').html("?");
   }
 
-  // TODO: fix calls for this function below
-  // TODO: comments-additional-information --> comments-display-fields
+
   function set_arrow_direction() {
     var additional_data_bar = $('.comments-display-fields');
-    var arrow = $('.comments-arrow-down');
-    var state = 0;
+
     additional_data_bar.on('click', function() {
-      animateExtraFields();
+      var arrow = additional_data_bar.find('span[class*="comments-arrow"]');
+      var additional_fields = $('.comments-software-extra-fields');
+
+      if (additional_fields) {
+        animateExtraFields(additional_fields, arrow);
+      }
     });
   }
 
-  function animateExtraFields() {
-    var additional_data_bar = $('.comments-display-fields');
-    var arrow = ($('.comments-arrow-down')[0])? $('.comments-arrow-down') : $('.comments-arrow-up');
-    console.log(arrow);
-    var fields = $('.comments-software-extra-fields');
-    if(fields) {
-      var innerHeight = fields[0].offsetHeight;
-      if(fields.height()!==0) {
-        arrow.attr('class', "comments-arrow-down");
-        fields.animate({height: 0});
-      }
-      else {
-        arrow.attr('class', "comments-arrow-up");
-        fields.animate({height: 140});
-      }
+
+  function animateExtraFields(additional_fields, arrow) {
+    var innerHeight = additional_fields[0].offsetHeight;
+
+    if(additional_fields.height() !== 0) {
+      arrow.attr('class', "comments-arrow-down");
+      additional_fields.animate({height: 0});
+    } else {
+      arrow.attr('class', "comments-arrow-up");
+      additional_fields.animate({height: additional_fields.get(0).scrollHeight}, 1000 );
     }
+
+    // Fix for the arrow change on modal display to block, killing the entire page
+    $("#institution_modal").css({'display':'none'});
   }
+
 
   function set_use_report_content() {
     $('.profile-homepage .organization-average-rating-container .rate-this-organization a').html('Avalie este software');

@@ -237,6 +237,11 @@
   margin-left: 10px;
 }
 
+#content .star-rate-form .star-comment-container .extra-fields-container{
+  height: 56px;
+  overflow: hidden;
+}
+
 #content .star-rate-form .star-comment-container .comments-software-extra-fields {
   height: 0;
   overflow: initial;
@@ -245,7 +250,7 @@
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments {
   margin-bottom: 19px;
   margin-top: 16px;
-  height: 50px;
+  height: auto;
 }
 
 #content .star-rate-form .star-comment-container .comments-software-extra-fields #input_institution_comments > label {
