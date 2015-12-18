@@ -1283,6 +1283,7 @@ float: left;
   display: none;
 }
 
+.article-type-event #content .box-2 .software-events-block,
 .article-type-event #content .box-2 .software-events-block .software-community-events-block {
   display: block;
 }
