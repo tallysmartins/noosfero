@@ -6,13 +6,8 @@ execute 'download:mezuro' do
 end
 
 package 'kalibro-configurations'
-package 'nginx'
 
 service 'kalibro-configurations.target' do
-  action [:enable, :start]
-end
-
-service 'nginx' do
   action [:enable, :start]
 end
 

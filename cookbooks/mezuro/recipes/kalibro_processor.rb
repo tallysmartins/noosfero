@@ -10,10 +10,6 @@ service 'kalibro-processor.target' do
   action [:enable, :start]
 end
 
-service 'nginx' do
-  action [:enable, :start]
-end
-
 template '/etc/mezuro/kalibro-processor/database.yml' do
   source 'kalibro_processor/database.yml.erb'
   owner 'kalibro_processor'
