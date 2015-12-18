@@ -673,11 +673,11 @@
   text-align: left;
 }
 
-.model-discussion-page .frequently-questions-top li a,
-.model-discussion-page .frequently-questions-middle li a,
-.model-discussion-page .frequently-questions-last li a {
+#content .model-discussion-page .frequently-questions-top li a,
+#content .model-discussion-page .frequently-questions-middle li a,
+#content .model-discussion-page .frequently-questions-last li a {
   text-decoration: none;
-  color:#000;
+  color:#172738;
   font-size: 12px;
   font-weight: 700;
   line-height: 18px;
@@ -708,16 +708,18 @@
 
 .model-discussion-page .item-discussion-page-list{
   font-size: 15px;
+  font-family:'open_sansregular';
   font-weight: 800;
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
   padding-bottom: 5px;
 }
 
-.model-discussion-page .frequently-questions-top #list-glyph,
-.model-discussion-page .frequently-questions-middle #cancel-glyph,
-.model-discussion-page .frequently-questions-last #send-glyph {
-  background: #D3D6DE;
+.model-discussion-page .frequently-questions-top .list-glyph,
+.model-discussion-page .frequently-questions-middle .cancel-glyph,
+.model-discussion-page .frequently-questions-last .send-glyph {
+  background:#C4C7CC;
+  border:1px solid #C4C7CC;
 }
 
 .model-discussion-page .email-list,
@@ -730,6 +732,7 @@
 }
 
 .model-discussion-page .sub-question{
+  font-family: 'open_sansregular';
   font-weight: 800;
   padding-top: 30px;
 }
