@@ -281,8 +281,8 @@ msgid ""
 "This institution already has an accepted rating. Accepting it will "
 "automatically update the saved value."
 msgstr ""
-"Esta instituição já possui um relato aceito. Ao aceitar o relato atual o "
-"recurso economizado será automaticamente atualizado."
+"* Você já aprovou uma avaliação desse órgão/empresa. Ao aceitar este relato, "
+"o novo valor será adicionado."
 
 #: plugins/gov_user/views/ratings_extra_field.html.erb:2
 msgid "Organization name or Enterprise name"
