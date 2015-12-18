@@ -41,12 +41,12 @@ namespace :templates do
 
   desc "Copy mail list article from template to all Communities"
   task :copy_mail_article => :environment do
-    article = Profile['software'].articles.find_by_slug('registro-na-lista')
+    article = Profile['software'].articles.find_by_slug('como-participar-da-lista-de-discussao')
     puts "Copying article #{article.title}: "
     if article.present?
       SoftwareInfo.find_each do |software|
         community = software.community
-        a_copy = article.copy_without_save
+        a_copy = community.articles.find_by_slug('como-participar-da-lista-de-discussao') || article.copy_without_save
         a_copy.profile = software.community
         a_copy.save if a_copy.profile.present?
         box =  community.boxes.detect {|x| x.blocks.find_by_title("Participe") } if community.present?
