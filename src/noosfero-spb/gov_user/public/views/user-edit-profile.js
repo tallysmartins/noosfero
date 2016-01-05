@@ -158,7 +158,6 @@ modulejs.define('UserEditProfile', ['jquery', 'SelectElement', 'SelectFieldChoic
     try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_contact_phone"));
     try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_cell_phone"));
     try_to_remove(containers, $("#select_institution"));
-    try_to_remove(containers, $("#user_secondary_email").parent().parent());
     try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_email"));
     try_to_remove(containers, get_privacy_selector_parent_div("#profile_data_name"));
     try_to_remove(containers, $(".pseudoformlabel").parent().parent());
@@ -191,7 +190,6 @@ modulejs.define('UserEditProfile', ['jquery', 'SelectElement', 'SelectFieldChoic
     fix_phone_mask_format("#profile_data_contact_phone");
 
     add_blur_fields("#profile_data_email", "email_error", invalid_email_validation);
-    add_blur_fields("#user_secondary_email", "email_error", invalid_email_validation, true);
     add_blur_fields("#profile_data_personal_website", "site_error", invalid_site_validation);
     add_blur_fields("#profile_data_organization_website", "site_error", invalid_site_validation);
   }

@@ -1,8 +1,7 @@
 require_dependency 'profile_helper'
 
 module ProfileHelper
-  PERSON_CATEGORIES[:mpog_profile_information] = [:secondary_email,
-                                                  :institutions]
+  PERSON_CATEGORIES[:mpog_profile_information] = [:institutions]
 
   def display_mpog_field(title, profile, field, force = false)
     unless force || profile.may_display_field_to?(field, user)

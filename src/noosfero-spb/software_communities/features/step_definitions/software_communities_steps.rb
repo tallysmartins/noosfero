@@ -236,10 +236,6 @@ Given /^I click on the last button with class "([^"]*)"$/ do |selector|
   evaluate_script "jQuery('#{selector}').last().trigger('click') && true"
 end
 
-Given /^the user "([^"]*)" has "([^"]*)" as secondary e\-mail$/ do |login, email|
-  User[login].update_attributes(:secondary_email => email)
-end
-
 Given /^I click on anything with selector "([^"]*)"$/ do |selector|
   page.evaluate_script("jQuery('##{selector}').click();")
 end

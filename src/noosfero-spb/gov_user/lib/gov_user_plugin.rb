@@ -187,7 +187,7 @@ class GovUserPlugin < Noosfero::Plugin
     identifier
     name)
 
-    fields[:user_fields] = %w(secondary_email email)
+    fields[:user_fields] = %w(email)
     fields
   end
 

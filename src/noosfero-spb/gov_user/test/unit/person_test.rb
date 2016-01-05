@@ -12,7 +12,6 @@ class SoftwareCommunitiesPluginPersonTest < ActiveSupport::TestCase
                 "user@email.com",
                 "123456",
                 "123456",
-                "user@secondaryemail.com",
                 "Any State",
                 "Some City"
               )
@@ -22,7 +21,7 @@ class SoftwareCommunitiesPluginPersonTest < ActiveSupport::TestCase
     @person.cell_phone = "76888919"
     @person.contact_phone = "987654321"
 
-    assert_equal(67, @plugin.calc_percentage_registration(@person))
+    assert_equal(64, @plugin.calc_percentage_registration(@person))
 
     @person.comercial_phone = "11223344"
     @person.country = "I dont know"
@@ -33,11 +32,5 @@ class SoftwareCommunitiesPluginPersonTest < ActiveSupport::TestCase
     @person.save
 
     assert_equal(100, @plugin.calc_percentage_registration(@person))
-  end
-
-  should 'return true when the email has not gov.br,jus.br,leg.br or mp.br' do
-    @user.secondary_email = "test_email@com.br"
-    @user.email = "test_email@net.br"
-    assert @user.save
   end
 end

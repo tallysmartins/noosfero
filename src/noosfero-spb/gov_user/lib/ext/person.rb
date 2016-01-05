@@ -14,14 +14,6 @@ class Person
     false
   end
 
-  def secondary_email
-    self.user.secondary_email unless self.user.nil?
-  end
-
-  def secondary_email= value
-    self.user.secondary_email = value unless self.user.nil?
-  end
-
   def institutions
     institutions = []
     unless self.user.institutions.nil?

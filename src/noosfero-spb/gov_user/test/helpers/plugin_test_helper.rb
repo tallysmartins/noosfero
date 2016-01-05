@@ -2,13 +2,12 @@ require File.dirname(__FILE__) + '/../helpers/institution_test_helper'
 
 module PluginTestHelper
 
-  def create_person name, email, password, password_confirmation, secondary_email, state="state", city="city"
+  def create_person name, email, password, password_confirmation, state="state", city="city"
     user = create_user(
             name.to_slug,
             email,
             password,
-            password_confirmation,
-            secondary_email
+            password_confirmation
             )
     person = Person::new
 
@@ -26,14 +25,13 @@ module PluginTestHelper
     person
   end
 
-  def create_user login, email, password, password_confirmation, secondary_email
+  def create_user login, email, password, password_confirmation
     user = User.new
 
     user.login = login
     user.email = email
     user.password = password
     user.password_confirmation = password_confirmation
-    user.secondary_email = secondary_email
 
     user
   end
