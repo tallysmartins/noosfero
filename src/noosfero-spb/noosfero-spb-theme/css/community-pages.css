@@ -1052,7 +1052,7 @@ float: left;
   padding-bottom: 30px;
 }
 
-.action-profile-members .box-1 .common-profile-list-block span{
+.action-profile-members .box-1 .common-profile-list-block .profile-list-members span{
   margin-right: 0px;
   width: 90px;
   height: 86px;
