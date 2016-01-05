@@ -4,6 +4,7 @@ admins:
   - ["Nayanne Araújo", "nayanne.bonifacio@planejamento.gov.br"]
   - ["Marisa Souza dos Santos", "marisa.santos@planejamento.gov.br"]
 external_hostname: homologa.softwarepublico.gov.br
+sisp_external_hostname: homologa.sisp.gov.br
 external_ip: 189.9.151.65
 alt_ssh_port: 55555
 site_url: https://homologa.softwarepublico.gov.br

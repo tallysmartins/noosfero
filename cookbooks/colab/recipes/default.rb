@@ -11,6 +11,11 @@ if node['platform'] == 'centos'
   end
 end
 
+# remove link left behind by old colab packages
+file '/usr/share/nginx/colab' do
+  action :delete
+end
+
 package 'colab' do
   action :upgrade
   notifies :restart, 'service[colab]'
@@ -190,6 +195,11 @@ execute 'colab-mailman-group' do
   command "usermod -a -G mailman colab"
 end
 
+# Collect static is here instead of colab.spec because
+#   plugins might provide their own static files, as
+#   the package don't know about installed plugins
+#   collectstatic needs to run after package install
+#   and plugins instantiated. Same for migrate.
 execute 'colab-admin migrate'
 execute 'colab-admin:collectstatic' do
   command 'colab-admin collectstatic --noinput'

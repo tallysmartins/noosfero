@@ -1,6 +1,7 @@
 admins:
   - ["Paulo Meirelles", "paulo@softwarelivre.org"]
 external_hostname: spb.cdtc.unb.br
+sisp_external_hostname: sisp.cdtc.unb.br
 external_ip: 164.41.9.49
 site_url: https://spb.cdtc.unb.br
 colab_from_address: '"Portal do Software Publico" <noreply@spb.cdtc.unb.br>'

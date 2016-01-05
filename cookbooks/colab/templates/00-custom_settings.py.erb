@@ -28,7 +28,8 @@ SECRET_KEY = "<%= File.read('/etc/colab/secret.key').strip %>"
 
 SITE_URL = "<%= node['config']['site_url'] %>"
 
-ALLOWED_HOSTS = ["<%= node['config']['external_hostname'] %>"]
+ALLOWED_HOSTS = ["<%= node['config']['external_hostname'] %>",
+                 "<%= node['config']['sisp_external_hostname'] %>"]
 
 ## Disable indexing
 ROBOTS_NOINDEX = False

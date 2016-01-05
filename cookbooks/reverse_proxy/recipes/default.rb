@@ -6,6 +6,13 @@ cookbook_file "/etc/nginx/#{node['config']['external_hostname']}.crt" do
   notifies :restart, 'service[nginx]'
 end
 
+cookbook_file "/etc/nginx/#{node['config']['sisp_external_hostname']}.crt" do
+  owner 'root'
+  group 'root'
+  mode 0600
+  notifies :restart, 'service[nginx]'
+end
+
 cookbook_file "/etc/sysctl.d/ip_forward.conf" do
   owner 'root'
   group 'root'
@@ -17,6 +24,13 @@ execute 'sysctl -w net.ipv4.ip_forward=1' do
 end
 
 cookbook_file "/etc/nginx/#{node['config']['external_hostname']}.key" do
+  owner 'root'
+  group 'root'
+  mode 0600
+  notifies :restart, 'service[nginx]'
+end
+
+cookbook_file "/etc/nginx/#{node['config']['sisp_external_hostname']}.key" do
   owner 'root'
   group 'root'
   mode 0600

@@ -15,7 +15,7 @@ version = open('VERSION').read().strip()
 
 setup(
     name='colab-spb-plugin',
-    version=version,
+    version='0.2.3',
     author='Macartur Sousa',
     author_email='macartur.sc@gmail.com',
     url='https://portal.softwarepublico.gov.br/gitlab/softwarepublico/colab-spb-plugin/',
