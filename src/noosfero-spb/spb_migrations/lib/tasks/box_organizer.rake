@@ -6,10 +6,14 @@ namespace :software do
     software_template = Community["software"]
     next unless software_template.is_template?
 
+    existing_blocks = Block.count
+
+    puts "Last block id: #{Block.last.id}"
+    puts "Create template boxes:"
+
     software_area_four = software_template.boxes.find_by_position 4
     four = false
 
-    puts "Area Four Blocks"
     if software_area_four.blocks.first.class != BreadcrumbsPlugin::ContentBreadcrumbsBlock
       template_breadcrumbs_block = BreadcrumbsPlugin::ContentBreadcrumbsBlock.new :mirror => true, :move_modes => "none", :edit_modes => "none"
       template_breadcrumbs_block.settings[:fixed] = true
@@ -19,7 +23,6 @@ namespace :software do
       software_area_four.blocks << template_breadcrumbs_block
       software_area_four.save!
 
-      # Puts the breadcrumbs as the first one on area four
       pos = software_area_four.blocks.order(:position).first.position
       change_block_pos(software_area_four, template_breadcrumbs_block, pos)
       print "."
@@ -31,7 +34,6 @@ namespace :software do
     software_area_two = software_template.boxes.find_by_position 2
     two = false
 
-    puts "Area Two Blocks"
     if software_area_two.blocks.last.class != SoftwareEventsBlock
       template_software_events = SoftwareEventsBlock.new :mirror => true, :move_modes => "none", :edit_modes => "all"
       template_software_events.title = "Outros Eventos"
@@ -41,7 +43,6 @@ namespace :software do
       software_area_two.blocks << template_software_events
       software_area_two.save!
 
-      # Puts the breadcrumbs as the first one on area four
       pos = software_area_two.blocks.order(:position).last.position
       change_block_pos(software_area_four, template_software_events, pos+1)
       print "."
@@ -53,7 +54,6 @@ namespace :software do
     software_area_one = software_template.boxes.find_by_position 1
     one = false
 
-    puts "Area One Blocks"
     if software_area_one.blocks[-2].class != SoftwareEventsBlock
       second_template_software_events = SoftwareEventsBlock.new :mirror => true, :move_modes => "none", :edit_modes => "all"
       second_template_software_events.display = "except_home_page"
@@ -62,7 +62,6 @@ namespace :software do
       software_area_one.blocks << second_template_software_events
       software_area_one.save!
 
-      # Puts the breadcrumbs as the first one on area four
       pos = software_area_one.blocks.order(:position).last.position
       change_block_pos(software_area_one, second_template_software_events, pos)
       print "."
@@ -70,10 +69,11 @@ namespace :software do
     end
 
 
+    puts "\nCreate software community boxes:"
     Community.joins(:software_info).each do |software_community|
       software_area_four = software_community.boxes.find_by_position 4
 
-      if four
+      if four && software_area_four.blocks.first.class != BreadcrumbsPlugin::ContentBreadcrumbsBlock
         breadcrumbs_block = BreadcrumbsPlugin::ContentBreadcrumbsBlock.new :mirror => true, :move_modes => "none", :edit_modes => "none"
         breadcrumbs_block.settings[:fixed] = true
         breadcrumbs_block.display = "always"
@@ -129,17 +129,20 @@ namespace :software do
     end
 
     print "\n"
-  end
-def change_block_pos(box, block, pos) 
-  box.blocks.each do |b|
-    if b.position >= pos
-      b.position += 1
-      b.save
-    end
+
+    puts "Created blocks: #{Block.count - existing_blocks}"
   end
 
-  block.position = pos
-  block.save
-end
+  def change_block_pos(box, block, pos)
+    box.blocks.each do |b|
+      if b.position >= pos
+        b.position += 1
+        b.save
+      end
+    end
+
+    block.position = pos
+    block.save
+  end
 end
 
