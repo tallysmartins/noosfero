@@ -2,7 +2,7 @@
 %define cache_dirs javascripts/cache stylesheets/cache
 
 Name:    noosfero
-Version: 1.3.5
+Version: 1.3.6
 Release: 1
 Summary: Social Networking Platform
 Group:   Applications/Publishing
