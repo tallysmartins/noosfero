@@ -1,0 +1,119 @@
+{% load i18n gravatar plugins %}
+{% load static from staticfiles %}
+
+<header>
+<div class="colab-style">
+  <div id="barra-brasil">
+    <a href="http://brasil.gov.br" style="background:#7F7F7F; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">Software Público Brasileiro</a>
+  </div>
+  <script src="//barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
+    <div id="header" role="banner">
+    <div id="sisp-header-quick-access">
+      <p class='pull-right'>Acesso rápido: <a href="{{ SPB_PORTAL }}">Software Público Brasileiro</a></p>
+    </div>
+    <div id="sisp-header-content">
+      <ul id="accessibility">
+        <li>
+          <a accesskey="1" href="#acontent" id="link-conteudo">
+            Ir para o conteúdo
+            <span>1</span>
+          </a>
+        </li>
+        <li>
+          <a accesskey="2" href="#sobre" id="link-navegacao">
+            Ir para o menu
+            <span>2</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a accesskey="3" href="#nolivesearchGadget" id="link-buscar">
+            Ir para a busca
+            <span>3</span>
+          </a>
+        </li> -->
+        <li class="last-item">
+          <a accesskey="3" href="#afooter" id="link-rodape">
+            Ir para o rodapé
+            <span>3</span>
+          </a>
+        </li>
+      </ul>
+      <!-- <ul id="language">
+        <li class="language-es">
+          <a href="#">Espa&#241;ol</a>
+        </li>
+        <li class="language-en">
+          <a href="#">English</a>
+        </li>
+      </ul>-->
+      <div id="second-nav">
+        <ul id="portal-siteactions">
+          <li id="siteaction-accessibility">
+            <a href="/social/sisp/acessibilidade" title="Acessibilidade" accesskey="5">
+              Acessibilidade
+            </a>
+          </li>
+          <li id="siteaction-contraste">
+            <a href="#" title="Alto Contraste" accesskey="6">
+              Alto Contraste
+            </a>
+          </li>
+          <li id="siteaction-mapadosite">
+            <a href="/social/sisp/mapa-do-site" title="Mapa do Site" accesskey="7">
+              Mapa do Site
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="logo">
+        <a id="portal-logo" title="" href="/">
+          <span id="portal-title-1">Portal do</span>
+          <h1 id="portal-title" class="corto">SISP</h1>
+          <span id="portal-description">MINISTÉRIO DO PLANEJAMENTO, ORÇAMENTO E GESTÃO</span>
+        </a>
+      </div>
+      <div id="social-icons">
+        <ul>
+          <li id="portalredes-facebook" class="portalredes-item">
+            <a href="#">Facebook</a>
+          </li>
+          <li id="portalredes-googleplus" class="portalredes-item">
+            <a href="#">Google+</a>
+          </li>
+          <li id="portalredes-instagram" class="portalredes-item">
+            <a href="#">Instagram</a>
+          </li>
+          <li id="portalredes-twitter" class="portalredes-item">
+            <a href="#">Twitter</a>
+          </li>
+          <li id="portalredes-youtube" class="portalredes-item">
+            <a href="#">YouTube</a>
+          </li>
+          <li id="portalredes-soundcloud" class="portalredes-item">
+            <a href="#">SoundCloud</a>
+          </li>
+          <li id="portalredes-slideshare" class="portalredes-item">
+            <a href="#">Slideshare</a>
+          </li>
+          <li id="portalredes-rss" class="portalredes-item last-item">
+            <a href="#">RSS</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="sobre">
+      <ul>
+        <li id="softwarepublico-perguntas-frequentes" class="softwarepublico-item">
+          <a href="/social/sisp/ajuda" title="Perguntas frequentes">Perguntas frequentes</a>
+        </li>
+        <li id="softwarepublico-contato" class="softwarepublico-item">
+          <a href="/social/sisp/contato" title="Contato">Contato</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% block main_content %}
+  <a name="acontent" id="acontent"></a>
+{% endblock %}

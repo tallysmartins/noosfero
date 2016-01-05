@@ -1,0 +1,157 @@
+{% load i18n gravatar plugins %}
+{% load static from staticfiles %}
+
+<header>
+<div class="colab-style">
+  <div id="barra-brasil">
+    <a href="http://brasil.gov.br" style="background:#7F7F7F; height: 20px; padding:4px 0 4px 10px; display: block; font-family:sans,sans-serif; text-decoration:none; color:white; ">Software Público Brasileiro</a>
+  </div>
+  <script src="//barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
+	<div id="header" role="banner">
+    <div id="spb-header-quick-access">
+      <p class='pull-right'>Acesso rápido: <a href="{{ SISP_PORTAL }}">Portal do SISP</a></p>
+    </div>
+    <div id="spb-header-content">
+      <ul id="accessibility">
+        <li>
+          <a accesskey="1" href="#acontent" id="link-conteudo">
+            Ir para o conteúdo
+            <span>1</span>
+          </a>
+        </li>
+        <li>
+          <a accesskey="2" href="#sobre" id="link-navegacao">
+            Ir para o menu
+            <span>2</span>
+          </a>
+        </li>
+        <li>
+          <a accesskey="3" href="#nolivesearchGadget" id="link-buscar">
+            Ir para a busca
+            <span>3</span>
+          </a>
+        </li>
+        <li class="last-item">
+          <a accesskey="4" href="#afooter" id="link-rodape">
+            Ir para o rodapé
+            <span>4</span>
+          </a>
+        </li>
+      </ul>
+      <!-- <ul id="language">
+        <li class="language-es">
+          <a href="#">Espa&#241;ol</a>
+        </li>
+        <li class="language-en">
+          <a href="#">English</a>
+        </li>
+      </ul>-->
+      <div id="second-nav">
+        <ul id="portal-siteactions">
+          <li id="siteaction-accessibility">
+            <a href="/social/spb/acessibilidade" title="Acessibilidade" accesskey="5">
+              Acessibilidade
+            </a>
+          </li>
+          <li id="siteaction-contraste">
+            <a href="#" title="Alto Contraste" accesskey="6">
+              Alto Contraste
+            </a>
+          </li>
+          <li id="siteaction-mapadosite">
+            <a href="/social/spb/mapa-do-site" title="Mapa do Site" accesskey="7">
+              Mapa do Site
+            </a>
+          </li>
+        </ul>
+        <ul id="login-menu">
+          {% if not user.is_authenticated %}
+            <li class="login-item"><a href="{% url 'signup' %}">Cadastre-se</a></li>
+            <li class="login-item last-item"><a href="{% url 'login' %}">Entrar</a></li>
+          {% else %}
+            <li id="user-menu" class="dropdown softwarepublico-item">
+              <a href="#" class="dropdown-toggle user" data-toggle="dropdown">{% gravatar user.email %} <b class="caret"></b>&nbsp;&nbsp;</a>
+              <ul id="login-menu-box" class="dropdown-menu" role="menu">
+                <li class="last-item">
+                  <div class="wrapper">
+                    <div class="thumbnail">{% gravatar user.email %}</div>
+                    <div class="user-info">
+                      <span><b>{{ user.get_full_name }}</b></span>
+                      <span class="quiet">{{ user.email }}</span>
+                    </div>
+                    <div>
+                      <a class="btn btn-default btn-spb-profile pull-left" href="{% url 'user_profile' user.username %}">Meu perfil</a>
+                      <a class="btn btn-default pull-right" href="{% url 'logout' %}">Sair</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+      <div id="logo">
+        <a id="portal-logo" title="" href="/">
+          <span id="portal-title-1">Portal do</span>
+          <h1 id="portal-title" class="corto">Software Público Brasileiro</h1>
+          <span id="portal-description">MINISTÉRIO DO PLANEJAMENTO, ORÇAMENTO E GESTÃO</span>
+        </a>
+      </div>
+      <div id="portal-searchbox">
+        <form id="nolivesearchGadget_form" action="{% url 'haystack_search' %}">
+          <fieldset class="LSBox"><legend class="hiddenStructure">Buscar no portal</legend>
+            <label class="hiddenStructure" for="nolivesearchGadget">Buscar no portal</label>
+            <input name="q" type="text" size="18" value="{{ request.GET.q }}" title="Buscar no portal" placeholder="Buscar no portal" class="searchField" id="nolivesearchGadget">
+            <input class="searchButton" type="submit" value="Buscar no portal">
+          </fieldset>
+        </form>
+      </div>
+      <div id="social-icons">
+        <ul>
+          <li id="portalredes-facebook" class="portalredes-item">
+            <a href="#">Facebook</a>
+          </li>
+          <li id="portalredes-googleplus" class="portalredes-item">
+            <a href="#">Google+</a>
+          </li>
+          <li id="portalredes-instagram" class="portalredes-item">
+            <a href="#">Instagram</a>
+          </li>
+          <li id="portalredes-twitter" class="portalredes-item">
+            <a href="#">Twitter</a>
+          </li>
+          <li id="portalredes-youtube" class="portalredes-item">
+            <a href="#">YouTube</a>
+          </li>
+          <li id="portalredes-soundcloud" class="portalredes-item">
+            <a href="#">SoundCloud</a>
+          </li>
+          <li id="portalredes-slideshare" class="portalredes-item">
+            <a href="#">Slideshare</a>
+          </li>
+          <li id="portalredes-rss" class="portalredes-item last-item">
+            <a href="#">RSS</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="sobre">
+      <ul>
+        <li id="softwarepublico-groups" class="softwarepublico-item">
+          <a href="{% url 'thread_list' %}" title="Listas de discussão">Listas de discussão</a>
+        </li>
+        {% plugins_menu %}
+        <li id="softwarepublico-perguntas-frequentes" class="softwarepublico-item">
+          <a href="/social/spb/ajuda" title="Perguntas frequentes">Perguntas frequentes</a>
+        </li>
+        <li id="softwarepublico-contato" class="softwarepublico-item">
+          <a href="/social/spb/contato" title="Contato">Contato</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% block main_content %}
+  <a name="acontent" id="acontent"></a>
+{% endblock %}

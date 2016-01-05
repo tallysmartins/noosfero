@@ -5,6 +5,7 @@ name = "colab_spb"
 verbose_name = "SPB Plugin"
 
 middlewares = ['colab_spb.middleware.ForceLangMiddleware']
+context_processors = ['colab_spb.context_processors.multiportal_url']
 
 urls = {
          "include":"colab_spb.urls",
