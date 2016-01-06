@@ -21,6 +21,7 @@ DEFAULT_EMAIL_HOST = '<%= node['config']['lists_hostname'] %>'
 MTA = None
 POSTFIX_STYLE_VIRTUAL_DOMAINS = ['<%= node['config']['lists_hostname']%>']
 DEFAULT_URL_PATTERN = 'https://%s/mailman/cgi-bin/'
+DEFAULT_SERVER_LANGUAGE = 'pt_BR'
 
 ###############################################################
 # copied from default mailman config file
