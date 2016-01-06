@@ -1,5 +1,9 @@
-.sisp-tab-data-block a {
+.sisp-tab-data-block #article a:link{
   color: #5E82C6;
   text-decoration: none;
+}
+
+.sisp-tab-data-block #article a:hover{
+  text-decoration: underline;
 }
 

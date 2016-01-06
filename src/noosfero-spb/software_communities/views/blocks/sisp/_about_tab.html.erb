@@ -25,7 +25,7 @@
   <div class="software-responsible software-sisp">
     <h2>Identificação do responsável no órgão para contato posterior</h2>
     <p><span>Cargo/Função:</span> <%= block.owner.software_info.responsible["Cargo/Função"].presence || "--" %></p>
-    <p><span>E-mail:</span><a> <%= block.owner.software_info.responsible["E-mail"].presence || "--" %></a></p>
+    <p><span>E-mail:</span><a href="mailto:<%= block.owner.software_info.responsible["E-mail"] %>"> <%= block.owner.software_info.responsible["E-mail"].presence %></a></p>
     <p><span>Nome:</span> <%= block.owner.software_info.responsible["Nome"].presence || "--" %></p>
     <p><span>Responsável pelo cadastro:</span>  <%= block.owner.software_info.responsible["Responsável pelo cadastro"].presence || "--" %></p>
     <p><span>Telefone:</span> <%= block.owner.software_info.responsible["Telefone"].presence || "--" %></p>
