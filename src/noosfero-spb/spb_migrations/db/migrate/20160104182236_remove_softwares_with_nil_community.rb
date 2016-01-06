@@ -1,4 +1,4 @@
-class RemoveSoftwareWithoutCommunity < ActiveRecord::Migration
+class RemoveSoftwaresWithNilCommunity < ActiveRecord::Migration
   def up
     execute('DELETE FROM software_infos where community_id IS NULL;')
   end
