@@ -1,0 +1,26 @@
+# encoding: UTF-8
+
+"pt-BR": &pt-BR
+
+  activerecord:
+    attributes:
+      community:
+        name: 'Nome'
+        state: 'Estado'
+        city: 'Cidade'
+      software_info:
+        finality: 'Finalidade'
+      license_info:
+        version: 'Versão'
+      institution:
+        name: 'Nome'
+        state: 'Estado'
+        city: 'Cidade'
+        governmental_power: 'Poder Governamental'
+        governmental_sphere: 'Esfera Governamental'
+        juridical_nature: 'Natureza Jurídica'
+
+'pt_BR':
+  <<: *pt-BR
+'pt':
+  <<: *pt-BR

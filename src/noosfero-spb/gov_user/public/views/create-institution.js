@@ -113,12 +113,8 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     var errors = "<ul>";
     var field_name;
 
-    for(var error_key in response.errors) {
-      field_name = adjust_error_key(error_key);
-
-      if(response.errors[error_key].length > 0){
-        errors += "<li><b>"+field_name+"</b>: "+response.errors[error_key]+"</li>";
-      }
+    for(var error in response.errors) {
+        errors += "<li>"+response.errors[error]+"</li>";
     }
 
     errors += "</ul>";
@@ -144,14 +140,6 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
     fields_with_errors.addClass("highlight-error");
     selects_with_errors.addClass("highlight-error");
-  }
-
-
-  function adjust_error_key(error_key) {
-    var text = error_key.replace(/_/, " ");
-    text = text.charAt(0).toUpperCase() + text.slice(1);
-
-    return text;
   }
 
 

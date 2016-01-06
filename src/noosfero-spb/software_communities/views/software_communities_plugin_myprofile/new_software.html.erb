@@ -19,7 +19,7 @@
 
 <% unless @errors.blank? %>
 <div class="errorExplanation" id="errorExplanation">
-  <h2> <%= _("Can`t create new software: #{@errors.length} errors") %> </h2>
+  <h2> <%= _("Can`t create new software: %s errors") % @errors.length %> </h2>
   <ul>
   <% @errors.each do |error| %>
     <li> <%= error %> </li>
