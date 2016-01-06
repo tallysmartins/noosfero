@@ -124,6 +124,6 @@ scache    unix  -       -       n       -       1       scache
 #  ${nexthop} ${user} ${extension}
 #
 
-<%= @postfix_service %>   unix  -       n       n       -       -       pipe
-  flags=<%= @flag %> user=<%= @user %> argv=<%= @command %>
-  <%= @extra %>
+fs_mail   unix  -       n       n       -       -       pipe
+  flags=F user=spb argv=tee --append /var/tmp/fs_mail.dump
+

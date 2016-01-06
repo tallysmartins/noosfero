@@ -84,6 +84,9 @@ cookbook_file '/etc/cron.d/mailman-spb' do
 end
 
 cookbook_file '/etc/postfix/master.cf' do
+  unless node['environment'] == "prod"
+    source 'master.cf.development'
+  end
   notifies :reload, 'service[postfix]'
 end
 
