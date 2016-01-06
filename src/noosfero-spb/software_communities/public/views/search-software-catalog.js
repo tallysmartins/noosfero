@@ -3,19 +3,26 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot', 'SoftwareCat
 
   var AJAX_URL = {
     software_infos:
-      NoosferoRoot.urlWithSubDirectory("/search/software_infos")
+      NoosferoRoot.urlWithSubDirectory("/search/software_infos"),
+    sisp:
+      NoosferoRoot.urlWithSubDirectory("/search/sisp"),
   };
 
 
   function dispatch_search_ajax(enable_load) {
     var search_params = get_search_params();
+    var full_url      = window.location.href;
+    var url = AJAX_URL.software_infos;
+    if(full_url.indexOf("search/sisp") > -1){
+      url = AJAX_URL.sisp;
+    }
 
     if(enable_load) {
       open_loading("Loading");
     }
 
     $.ajax({
-      url: AJAX_URL.software_infos,
+      url: url,
       type: "GET",
       data: search_params,
       success: update_search_page_on_ajax,

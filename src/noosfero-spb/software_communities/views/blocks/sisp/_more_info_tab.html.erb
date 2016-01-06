@@ -1,0 +1,13 @@
+<div id="article" class="blog">
+  <div class="software-versions software-sisp">
+    <h2>Versões em uso</h2>
+    <p><span>Versão:</span> <%= block.owner.software_info.active_versions["Versão"] %> </p>
+    <p><span>Data da versão:</span> <%= block.owner.software_info.active_versions["Data da versão"] %> </p>
+  </div>
+
+  <div class="software-estimated-cost software-sisp">
+    <h2>Custo Estimado</h2>
+    <p><span>Custo do sistema:</span> <%= block.owner.software_info.estimated_cost["Custo do sistema"] %> </p>
+    <p><span>Custo de manutenção:</span> <%= block.owner.software_info.estimated_cost["Custo de Manutenção"] %> </p>
+  </div>
+</div>

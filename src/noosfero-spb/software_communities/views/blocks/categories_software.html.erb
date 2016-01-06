@@ -10,13 +10,13 @@
 
       <% categories.each do |category| %>
         <% unless category.software_infos.count < 1 %>
-          <li><%= link_to _("#{category.name}") + " (#{category.software_infos.count})", {:controller => :search, :action => :software_infos, :selected_categories_id => [category.id]} %></li>
+          <li><%= link_to _("#{category.name}") + " (#{category.software_infos.count})", {:controller => :search, :action => block.search_catalog, :selected_categories_id => [category.id]} %></li>
         <% end %>
       <% end %>
     </ul>
   </div>
 
   <div id="footer-mais-software">
-    <%= link_to _("Access the complete catalog"), {controller: "search", action: "software_infos"}%>
+    <%= link_to _("Access the complete catalog"), { controller: "search", action: block.search_catalog }%>
   </div>
 </div>

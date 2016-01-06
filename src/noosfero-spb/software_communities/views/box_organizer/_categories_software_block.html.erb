@@ -1,0 +1,6 @@
+<div id='edit-search-block' class="formfieldline">
+  <% catalog_list = SearchController.catalog_list.collect{|i,v| v} %>
+
+  <label class="formlabel"><%= _("Catalog: ") %></label>
+  <%= select 'block', 'search_catalog', catalog_list %>
+</div>

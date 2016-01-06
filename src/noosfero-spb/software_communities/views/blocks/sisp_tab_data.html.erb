@@ -1,0 +1,12 @@
+<% if block.owner.software_info.nil? %>
+  <%= _("This community needs a software to use this block") %>
+<% else %>
+  <div id="block-community-tabs">
+    <% tabs = [] %>
+    <% tabs << {:title => "Sobre o Software", :id => 'about-sisp-tab', :content => (render partial: "blocks/sisp/about_tab", :locals => {block: block})}  %>
+    <% tabs << {:title => "Informações Complementares", :id => 'sisp-more-info-tab', :content => (render partial: "blocks/sisp/more_info_tab", :locals => {block: block})} %>
+
+    <%= render_tabs(tabs) %>
+  </div>
+<% end %>
+

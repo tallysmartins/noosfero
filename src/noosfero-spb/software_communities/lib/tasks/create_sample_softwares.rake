@@ -1,5 +1,30 @@
 NUMBER_OF_SOFTWARES = 10
 
+def create_community(name)
+  community = Community.new
+  community.name = name
+  community.save
+  community
+end
+
+def create_software_info(name, acronym = "", finality = "default")
+  community = create_community(name)
+  software_info = SoftwareInfo.new
+  software_info.community = community
+  software_info.public_software = true
+  software_info.acronym = acronym
+  software_info.finality = finality
+  software_info.license_info = LicenseInfo.first
+
+  if software_info.community.valid? && software_info.valid?
+    print "."
+    software_info.save
+    software_info
+  else
+    print "F"
+    nil
+  end
+end
 namespace :software do
   desc "Create sample softwares"
   task :create_sample_softwares => :environment do
@@ -44,28 +69,3 @@ namespace :software do
   end
 end
 
-def create_community(name)
-  community = Community.new
-  community.name = name
-  community.save
-  community
-end
-
-def create_software_info(name, acronym = "", finality = "default")
-  community = create_community(name)
-  software_info = SoftwareInfo.new
-  software_info.community = community
-  software_info.public_software = true
-  software_info.acronym = acronym
-  software_info.finality = finality
-  software_info.license_info = LicenseInfo.first
-
-  if software_info.community.valid? && software_info.valid?
-    print "."
-    software_info.save
-    software_info
-  else
-    print "F"
-    nil
-  end
-end

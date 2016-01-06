@@ -81,7 +81,7 @@ class SoftwareInfo < ActiveRecord::Base
 
   has_one :software_categories
 
-  validates_length_of :finality, :maximum => 120
+  validates_length_of :finality, :maximum => 4000
   validates_length_of :objectives, :maximum => 4000
   validates_length_of :features, :maximum => 4000
   validates_presence_of :finality, :community
@@ -89,6 +89,22 @@ class SoftwareInfo < ActiveRecord::Base
   validate :validate_acronym
 
   settings_items :another_license_version, :another_license_link
+  settings_items :sisp, :default => false
+
+  serialize :agency_identification
+  serialize :software_requirements
+  serialize :hardware_requirements
+  serialize :documentation
+  serialize :system_applications
+  serialize :active_versions
+  serialize :estimated_cost
+  serialize :responsible
+  serialize :responsible_for_acquirement
+  serialize :system_info
+  serialize :development_info
+  serialize :maintenance
+  serialize :standards_adherence
+  serialize :platform
 
   # used on find_by_contents
   def self.like_search name
