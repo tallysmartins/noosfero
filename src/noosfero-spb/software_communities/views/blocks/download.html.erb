@@ -13,7 +13,7 @@
         </div>
         <div class="download-info">
           <span class="download-name"><%= _("#{download[:name]}") %></span>
-          <span class="download-platform"><%= _("Platform:#{download[:software_description]}") %> </span>
+          <span class="download-platform"><%= _("Platform:") + _("#{download[:software_description]}") %> </span>
           <span class="min-requirements"><%= link_to _("Minimum Requirements"), download[:minimum_requirements] %></span>
         </div>
       </li>

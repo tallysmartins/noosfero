@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.3.1-54-gb05a71b\n"
-"POT-Creation-Date: 2015-12-18 17:06-0000\n"
+"Project-Id-Version: 1.3.1-60-ge543027\n"
+"POT-Creation-Date: 2016-01-06 18:14-0000\n"
 "PO-Revision-Date: 2014-11-12 13:05-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -603,7 +603,7 @@ msgid "Platforms"
 msgstr "Plataformas"
 
 #: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:16
-#: plugins/software_communities/views/blocks/download.html.erb:17
+#: plugins/software_communities/views/blocks/download.html.erb:18
 msgid "Minimum Requirements"
 msgstr "Requisitos Mínimos"
 
@@ -1005,12 +1005,17 @@ msgid "\"#{download[:name]}\""
 msgstr "\"#{download[:name]}\""
 
 #: plugins/software_communities/views/blocks/download.html.erb:16
-msgid "\"Platform:#{download[:software_description]}\""
-msgstr "\"Platform:#{download[:software_description]}\""
+#: plugins/software_communities/views/blocks/download.html.erb:17
+msgid "Platform:"
+msgstr "Plataforma:"
 
-#: plugins/software_communities/views/blocks/download.html.erb:23
+#: plugins/software_communities/views/blocks/download.html.erb:17
+msgid "\"#{download[:software_description]}\""
+msgstr "\"#{download[:software_description]}\""
+
+#: plugins/software_communities/views/blocks/download.html.erb:24
 msgid "\"License: #{block.owner.software_info.license_info.version}\""
-msgstr "\"License: #{block.owner.software_info.license_info.version}\""
+msgstr "\"Licença: #{block.owner.software_info.license_info.version}\""
 
 #: plugins/software_communities/views/blocks/software_highlights.html.erb:18
 msgid "See all"
