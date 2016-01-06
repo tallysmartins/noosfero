@@ -46,10 +46,20 @@ class SoftwareEventsBlockTest < ActiveSupport::TestCase
   should "tell if there are events to be displayed" do
     assert_equal true, @software_events_block.has_events_to_display?
 
-    @community.events.update_all :start_date => (DateTime.now - 2.days),
-                                 :end_date => (DateTime.now - 1.day)
+    update_all_events (DateTime.now - 2.days), (DateTime.now - 1.day)
 
     assert_equal false, @software_events_block.has_events_to_display?
+  end
+
+  should "tell if there are events to be displayed when given a event page slug" do
+    update_all_events (DateTime.now - 2.days), (DateTime.now - 1.day)
+
+    last_event = @community.events.last
+    last_event.end_date = DateTime.now + 10.days
+    last_event.save!
+
+    assert_equal true, @software_events_block.has_events_to_display?
+    assert_equal false, @software_events_block.has_events_to_display?(last_event.slug)
   end
 
   should "tell that the block must show the title in other areas that are no the main area" do
@@ -60,4 +70,10 @@ class SoftwareEventsBlockTest < ActiveSupport::TestCase
 
     assert_equal true, @software_events_block.should_display_title?
   end
+
+  private
+
+    def update_all_events start_date, end_date
+      @community.events.update_all :start_date => start_date, :end_date => end_date
+    end
 end
