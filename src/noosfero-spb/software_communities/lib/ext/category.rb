@@ -32,4 +32,8 @@ class Category
     software_list.collect { |x| software_list.delete(x) unless x.software? }
     software_list
   end
+
+  def name
+    _(self[:name].to_s)
+  end
 end
