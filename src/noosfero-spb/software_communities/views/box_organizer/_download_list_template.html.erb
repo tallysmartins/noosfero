@@ -1,23 +1,23 @@
 <li class='download-option download-forms'>
   <ul>
     <li>
-      <%= labelled_form_field(_('Name'), text_field_tag('block[downloads][][name]')) %>
+      <%= labelled_form_field(_('Name'), text_field_tag('block[downloads][][name]', (defined? download) ? download[:name] : '')) %>
     </li>
 
     <li>
-      <%= labelled_form_field(_('Link'), text_field_tag('block[downloads][][link]')) %>
+      <%= labelled_form_field(_('Link'), text_field_tag('block[downloads][][link]', (defined? download) ? download[:link] : '')) %>
     </li>
 
     <li>
-      <%= labelled_form_field(_('Platforms'), text_field_tag('block[downloads][][software_description]')) %>
+      <%= labelled_form_field(_('Platforms'), text_field_tag('block[downloads][][software_description]', (defined? download) ? download[:software_description] : '')) %>
     </li>
 
     <li>
-      <%= labelled_form_field(_('Minimum Requirements'), text_field_tag('block[downloads][][minimum_requirements]')) %>
+      <%= labelled_form_field(_('Minimum Requirements'), text_field_tag('block[downloads][][minimum_requirements]', (defined? download) ? download[:minimum_requirements] : '')) %>
     </li>
 
     <li>
-      <%= labelled_form_field(_('Size'), text_field_tag('block[downloads][][size]')) %>
+      <%= labelled_form_field(_('Size'), text_field_tag('block[downloads][][size]', (defined? download) ? download[:size] : '')) %>
     </li>
 
     <li class='delete-download-button'><%= button_without_text(:delete, _('Delete'), "#" , { :onclick => 'softwareDownload.deleteDownload(this); return false', :class=>"delete-link-list-row" }) %></li>
