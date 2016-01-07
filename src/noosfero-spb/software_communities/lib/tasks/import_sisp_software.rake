@@ -94,7 +94,7 @@ namespace :sisp do
 
     $created_software={}
 
-    $sisp_template = Community.find_by_identifier("sisp")
+    $sisp_template = $env.communities.find_by_identifier("sisp")
 
     print 'Creating SISP Softwares: '
     $imported_data.keys.each do |key|
@@ -135,7 +135,7 @@ def create_sisp_community name
   name = name + " copy#{$created_software[identifier]}" if ($created_software[identifier] != 0)
   identifier = (identifier + "-copy#{$created_software[identifier]}") if ($created_software[identifier] != 0)
 
-  community = Community.find_or_initialize_by_name(name)
+  community = $env.communities.find_or_initialize_by_name(name)
 
   community.identifier = identifier
   community.template = $sisp_template
@@ -161,7 +161,7 @@ def create_sisp_software_info name, finality = "blank", acronym = ""
 end
 
 def set_software_category software, category_name
-  category = Category.find_by_name(category_name)
+  category = $env.categories.find_by_name(category_name)
   category ||= Category.create(:name => category_name, :parent => $software_category, :environment => $env)
   software.community.categories << category unless software.community.categories.include?(category)
 end
@@ -189,7 +189,7 @@ def create_identifier name
 end
 
 def create_sisp_user #TODO change user info
-  user = User.find_by_login('sisp')
+  user = $env.users.find_by_login('sisp-admin')
   user ||= User.new(:login => 'sisp-admin', :email => 'sisp_user@changeme.com', :password => 'sisp1234', :password_confirmation => 'sisp1234', :environment => $env)
   user.save!
   user.activate if !user.activated?
@@ -204,7 +204,7 @@ def create_institution sisp_hash
     return nil
   end
 
-  institution_community = Community.find_or_initialize_by_identifier(name.to_slug)
+  institution_community = $env.communities.find_or_initialize_by_identifier(name.to_slug)
 
   #puts institution_community.inspect
   institution = PublicInstitution.find_or_initialize_by_name(name)
@@ -230,7 +230,7 @@ def create_institution sisp_hash
 end
 
 def create_ratings community_identifier, sisp_hash
-  software_community = Community.find_by_identifier(community_identifier)
+  software_community = $env.communities.find_by_identifier(community_identifier)
 
   institution = create_institution(sisp_hash)
   if institution.nil?
