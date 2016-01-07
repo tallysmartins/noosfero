@@ -19,6 +19,11 @@
   display: none;
 }
 
+#wrap-2 .block.breadcrumbs-plugin_content-breadcrumbs-block #breadcrumbs-you-are-here{
+  color: #000;
+  margin-right: 0.5em;
+}
+
 /*** Software Header ***/
 /*block title software button control painel*/
 .action-content_viewer-view_page #content .software-information-block .admin-link a{

@@ -272,6 +272,7 @@ $('#link-buscar').click(function(e) {
 
   function move_breadcrumbs() {
     $('.breadcrumbs-plugin_content-breadcrumbs-block').prependTo('#wrap-2');
+    $('<span id="breadcrumbs-you-are-here">Você está aqui:</span>').insertBefore($('.breadcrumbs-plugin_content-breadcrumbs-block .block-inner-2').children().first());
   }
 
   $(document).ready(function(){
