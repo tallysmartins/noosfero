@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.3.1-60-ge543027\n"
-"POT-Creation-Date: 2016-01-06 18:14-0000\n"
+"Project-Id-Version: 1.3.1-61-g25bc299\n"
+"POT-Creation-Date: 2016-01-07 12:39-0000\n"
 "PO-Revision-Date: 2014-11-12 13:05-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,17 +108,25 @@ msgstr "não pode ficar em branco"
 msgid "Too long (maximum is 20 characters)"
 msgstr "Muito grande(máximo é 20 caracteres"
 
-#: plugins/software_communities/lib/search_catalog_block.rb:8
+#: plugins/software_communities/lib/search_catalog_block.rb:10
 msgid "Search Softwares catalog"
 msgstr "Busca do catálogo de software"
 
-#: plugins/software_communities/lib/search_catalog_block.rb:12
+#: plugins/software_communities/lib/search_catalog_block.rb:14
 msgid "This block displays the search categories field "
 msgstr "Este bloco apresenta a busca do campo de categorias"
 
 #: plugins/software_communities/lib/software_database.rb:12
 msgid "Software database is too long (maximum is 20 characters)"
 msgstr "Banco de dados do software está muito grande(máximo é 20 caracteres)"
+
+#: plugins/software_communities/lib/sisp_tab_data_block.rb:3
+msgid "Sisp Tab Data"
+msgstr "Aba de dados do SISP"
+
+#: plugins/software_communities/lib/sisp_tab_data_block.rb:7
+msgid "This block is used to display SISP Data"
+msgstr "Esse bloco é usado para mostrar os dados do SISP"
 
 #: plugins/software_communities/lib/ext/category.rb:5
 msgid "Agriculture, Fisheries and Extraction"
@@ -176,11 +184,11 @@ msgstr "Relações Internacionais"
 msgid "Transportation and Transit"
 msgstr "Transporte e Trânsito"
 
-#: plugins/software_communities/lib/ext/search_controller.rb:122
+#: plugins/software_communities/lib/ext/search_controller.rb:148
 msgid "Result Search"
 msgstr "Resultado da pesquisa"
 
-#: plugins/software_communities/lib/ext/search_controller.rb:146
+#: plugins/software_communities/lib/ext/search_controller.rb:174
 msgid "Selected options: "
 msgstr "Opções selecionadas: "
 
@@ -309,23 +317,23 @@ msgstr ""
 msgid "Add Public Software and MPOG features."
 msgstr "Adicionar Software Público e Funcionalidades."
 
-#: plugins/software_communities/lib/software_communities_plugin.rb:95
+#: plugins/software_communities/lib/software_communities_plugin.rb:96
 msgid "Rate this software"
 msgstr "Avalie esse software"
 
-#: plugins/software_communities/lib/software_communities_plugin.rb:99
+#: plugins/software_communities/lib/software_communities_plugin.rb:100
 msgid "Use reports"
 msgstr "Relatos de uso"
 
-#: plugins/software_communities/lib/software_communities_plugin.rb:172
+#: plugins/software_communities/lib/software_communities_plugin.rb:173
 msgid "Software Info"
 msgstr "Informação de Software"
 
-#: plugins/software_communities/lib/software_communities_plugin.rb:183
+#: plugins/software_communities/lib/software_communities_plugin.rb:184
 msgid "Create a new software"
 msgstr "Criar um novo software"
 
-#: plugins/software_communities/lib/software_communities_plugin.rb:193
+#: plugins/software_communities/lib/software_communities_plugin.rb:194
 msgid "Software"
 msgstr "Software"
 
@@ -345,21 +353,21 @@ msgstr "Configurar Comunidade do Software"
 msgid "This block displays the software community events in a list."
 msgstr "Esse bloco apresenta o ícone do software em destaque"
 
-#: plugins/software_communities/lib/software_info.rb:151
+#: plugins/software_communities/lib/software_info.rb:167
 msgid "Name is too long (maximum is %{count} characters)"
 msgstr "Nome é muito longo(máximo é %{count} caracteres)"
 
-#: plugins/software_communities/lib/software_info.rb:222
+#: plugins/software_communities/lib/software_info.rb:238
 msgid "can't have more than 10 characteres"
 msgstr "não pode ter mais de 10 caracteres"
 
-#: plugins/software_communities/lib/software_info.rb:225
+#: plugins/software_communities/lib/software_info.rb:241
 msgid "can't have whitespaces"
 msgstr "não pode ter espaços em branco"
 
-#: plugins/software_communities/lib/software_info.rb:233
-#: plugins/software_communities/lib/software_info.rb:239
-#: plugins/software_communities/lib/software_info.rb:245
+#: plugins/software_communities/lib/software_info.rb:249
+#: plugins/software_communities/lib/software_info.rb:255
+#: plugins/software_communities/lib/software_info.rb:261
 msgid ": at least one must be filled"
 msgstr ": ao menos um deve ser preenchido"
 
@@ -375,11 +383,11 @@ msgstr "Este bloco apresenta a informação básica de um perfil de software."
 msgid "Software language is too long (maximum is 20 characters)"
 msgstr "Linguagem do software está muito grande (máximo de 20 caracteres)"
 
-#: plugins/software_communities/lib/categories_software_block.rb:8
+#: plugins/software_communities/lib/categories_software_block.rb:10
 msgid "Categories Softwares"
 msgstr "Categorias de Softwares"
 
-#: plugins/software_communities/lib/categories_software_block.rb:12
+#: plugins/software_communities/lib/categories_software_block.rb:14
 msgid ""
 "This block displays the categories and the amount of softwares for\n"
 "      each category."
@@ -570,17 +578,17 @@ msgid "Control Panel"
 msgstr "Painel de Controle"
 
 #: plugins/software_communities/views/profile/_profile_members_list.html.erb:2
-#: plugins/software_communities/views/search/_software_search_form.html.erb:48
+#: plugins/software_communities/views/search/_software_search_form.html.erb:50
 msgid "Sort by:"
 msgstr "Ordenar por:"
 
 #: plugins/software_communities/views/profile/_profile_members_list.html.erb:5
-#: plugins/software_communities/views/search/_software_search_form.html.erb:52
+#: plugins/software_communities/views/search/_software_search_form.html.erb:54
 msgid "Name A-Z"
 msgstr "Nome A-Z"
 
 #: plugins/software_communities/views/profile/_profile_members_list.html.erb:6
-#: plugins/software_communities/views/search/_software_search_form.html.erb:53
+#: plugins/software_communities/views/search/_software_search_form.html.erb:55
 msgid "Name Z-A"
 msgstr "Nome Z-A"
 
@@ -594,6 +602,11 @@ msgstr "Pessoas Beneficiadas"
 msgid "Saved Resources"
 msgstr "Recursos economizados"
 
+#: plugins/software_communities/views/box_organizer/_search_catalog_block.html.erb:4
+#: plugins/software_communities/views/box_organizer/_categories_software_block.html.erb:4
+msgid "Catalog: "
+msgstr "Catálogo: "
+
 #: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:8
 msgid "Link"
 msgstr "Link"
@@ -603,7 +616,7 @@ msgid "Platforms"
 msgstr "Plataformas"
 
 #: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:16
-#: plugins/software_communities/views/blocks/download.html.erb:18
+#: plugins/software_communities/views/blocks/download.html.erb:17
 msgid "Minimum Requirements"
 msgstr "Requisitos Mínimos"
 
@@ -656,8 +669,8 @@ msgid "Categories"
 msgstr "Categorias"
 
 #: plugins/software_communities/views/search/_catalog_filter.html.erb:10
-#: plugins/software_communities/views/search/_full_community.html.erb:42
-#: plugins/software_communities/views/search/_catalog_result_list.html.erb:41
+#: plugins/software_communities/views/search/_full_community.html.erb:38
+#: plugins/software_communities/views/search/_catalog_result_list.html.erb:42
 #: plugins/software_communities/views/blocks/categories_software.html.erb:13
 msgid "\"#{category.name}\""
 msgstr "\"#{category.name}\""
@@ -674,24 +687,29 @@ msgstr "Limpar"
 msgid "Close"
 msgstr "Fechar"
 
-#: plugins/software_communities/views/search/_full_community.html.erb:34
+#: plugins/software_communities/views/search/_full_community.html.erb:31
 #: plugins/software_communities/views/profile_editor/edit_software_community.html.erb:68
 msgid "Software Categories"
 msgstr "Categorias de Software"
 
-#: plugins/software_communities/views/search/_full_community.html.erb:53
+#: plugins/software_communities/views/search/_full_community.html.erb:49
 msgid "This software doesn't have categories"
 msgstr "Este software nào contém categorias"
+
+#: plugins/software_communities/views/search/sisp.html.erb:6
+#: plugins/software_communities/views/search/software_infos.html.erb:6
+msgid "Type words about the %s you're looking for"
+msgstr "Digite palavras sobre o %s que você está procurando"
 
 #: plugins/software_communities/views/search/_catalog_result_list.html.erb:12
 msgid "see all (%d)"
 msgstr "ver todos (%d)"
 
-#: plugins/software_communities/views/search/_catalog_result_list.html.erb:34
+#: plugins/software_communities/views/search/_catalog_result_list.html.erb:35
 msgid "No software found. Try more general filters"
 msgstr "Nenhum software encontrado. Tente outros filtros"
 
-#: plugins/software_communities/views/search/_catalog_result_list.html.erb:36
+#: plugins/software_communities/views/search/_catalog_result_list.html.erb:37
 msgid ""
 "No software found. Try more general filters or check the software category "
 "individually"
@@ -703,13 +721,13 @@ msgstr ""
 msgid "Search Software Catalog"
 msgstr "Pesquisar Catálogo de Software"
 
-#: plugins/software_communities/views/search/_software_search_form.html.erb:14
+#: plugins/software_communities/views/search/_software_search_form.html.erb:15
 #: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:3
 #: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:5
 msgid "Public Software"
 msgstr "Software Público"
 
-#: plugins/software_communities/views/search/_software_search_form.html.erb:15
+#: plugins/software_communities/views/search/_software_search_form.html.erb:16
 msgid ""
 "Projects that have passed by the Avalia SPB process according to the "
 "requirements of IN 01/2011."
@@ -717,15 +735,15 @@ msgstr ""
 "Projetos que passaram pelo processo Avalia SPB de acordo com os Requisitos "
 "da IN 01/2011."
 
-#: plugins/software_communities/views/search/_software_search_form.html.erb:18
+#: plugins/software_communities/views/search/_software_search_form.html.erb:19
 msgid "All"
 msgstr "Todos"
 
-#: plugins/software_communities/views/search/_software_search_form.html.erb:19
+#: plugins/software_communities/views/search/_software_search_form.html.erb:20
 msgid "Projects included in the portal as cases provided by the IN 01/2011."
 msgstr "Projetos incluidos no portal como os casos fornecidos pela IN 01/2011."
 
-#: plugins/software_communities/views/search/_software_search_form.html.erb:24
+#: plugins/software_communities/views/search/_software_search_form.html.erb:26
 msgid ""
 "Type words about the software you're looking for (the search begins after 3 "
 "characters)"
@@ -733,25 +751,21 @@ msgstr ""
 "Digite palavras sobre o software que você está procurando (a busca começa "
 "depois de 3 caracteres)"
 
-#: plugins/software_communities/views/search/_software_search_form.html.erb:27
+#: plugins/software_communities/views/search/_software_search_form.html.erb:29
 msgid "Filter"
 msgstr "Filtro"
 
-#: plugins/software_communities/views/search/_software_search_form.html.erb:41
+#: plugins/software_communities/views/search/_software_search_form.html.erb:43
 msgid "Show:"
 msgstr "Exibir:"
 
-#: plugins/software_communities/views/search/_software_search_form.html.erb:54
+#: plugins/software_communities/views/search/_software_search_form.html.erb:56
 msgid "Relevance"
 msgstr "Relevância"
 
-#: plugins/software_communities/views/search/_software_search_form.html.erb:55
-msgid "Favorites"
+#: plugins/software_communities/views/search/_software_search_form.html.erb:57
+msgid "Rating"
 msgstr "Avaliação"
-
-#: plugins/software_communities/views/search/software_infos.html.erb:6
-msgid "Type words about the %s you're looking for"
-msgstr "Digite palavras sobre o %s que você está procurando"
 
 #: plugins/software_communities/views/software_communities_plugin_myprofile/_public_software_info.html.erb:3
 msgid "Public software"
@@ -941,6 +955,7 @@ msgid "Access the complete catalog"
 msgstr "Acessar o catálogo completo"
 
 #: plugins/software_communities/views/blocks/wiki.html.erb:2
+#: plugins/software_communities/views/blocks/sisp_tab_data.html.erb:2
 #: plugins/software_communities/views/blocks/software_tab_data.html.erb:2
 #: plugins/software_communities/views/blocks/download.html.erb:2
 #: plugins/software_communities/views/blocks/software_information.html.erb:4
@@ -1005,15 +1020,14 @@ msgid "\"#{download[:name]}\""
 msgstr "\"#{download[:name]}\""
 
 #: plugins/software_communities/views/blocks/download.html.erb:16
-#: plugins/software_communities/views/blocks/download.html.erb:17
 msgid "Platform:"
 msgstr "Plataforma:"
 
-#: plugins/software_communities/views/blocks/download.html.erb:17
+#: plugins/software_communities/views/blocks/download.html.erb:16
 msgid "\"#{download[:software_description]}\""
 msgstr "\"#{download[:software_description]}\""
 
-#: plugins/software_communities/views/blocks/download.html.erb:24
+#: plugins/software_communities/views/blocks/download.html.erb:23
 msgid "\"License: #{block.owner.software_info.license_info.version}\""
 msgstr "\"Licença: #{block.owner.software_info.license_info.version}\""
 
@@ -1179,6 +1193,9 @@ msgstr "Número de beneficiados"
 #: plugins/software_communities/views/comments_extra_fields.html.erb:19
 msgid "Saved resources"
 msgstr "Recursos economizados"
+
+#~ msgid "Favorites"
+#~ msgstr "Avaliação"
 
 #~ msgid "Portal suggested value: "
 #~ msgstr "Valor sugerido pelo portal: "

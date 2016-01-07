@@ -156,13 +156,14 @@
     </div>
 
     <div class="spb-row public-institutions-fields">
-      <div class="spb-col spb-col-12">
-        <%= _("SISP ?") %>
-      </div>
-
       <div class="spc-col spb-col-12 sisp-fields">
         <div class="spb-col spb-col-3">
           <% if @show_sisp_field %>
+
+          <div class="spb-col spb-col-12">
+            <%= _("SISP?") %>
+          </div>
+
           <div class="spb-col spb-col-5">
             <%= inst.radio_button(:sisp, true, :class => "#{flash[:error_institution_sisp]}" ) %>
             <%= inst.label :sisp ,_("Yes"), :value => true %>
@@ -172,10 +173,6 @@
             <%= inst.radio_button(:sisp, false, :checked=>"checked", :class => "#{flash[:error_institution_sisp]}") %>
             <%= inst.label :sisp ,_("No"), :value => false %>
           </div>
-          <% else %>
-            <div class="spb-col spb-col-6">
-              <%= inst.label("sisp", _("No")) %>
-            </div>
           <% end %>
         </div>
       </div>

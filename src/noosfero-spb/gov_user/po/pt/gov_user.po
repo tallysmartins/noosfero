@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.3.1-60-ge543027\n"
-"POT-Creation-Date: 2016-01-06 18:14-0000\n"
+"Project-Id-Version: 1.3.1-61-g25bc299\n"
+"POT-Creation-Date: 2016-01-07 12:39-0000\n"
 "PO-Revision-Date: 2015-09-01 19:55-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -213,26 +213,26 @@ msgid "Juridical Nature:"
 msgstr "Natureza Jurídica:"
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:99
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:164
 msgid "SISP?"
 msgstr "SISP?"
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:101
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:19
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:168
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:169
 msgid "Yes"
 msgstr "Sim"
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:103
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:106
 #: plugins/gov_user/views/profile/_institution_tab.html.erb:19
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:173
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:177
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:174
 msgid "No"
 msgstr "Não"
 
 #: plugins/gov_user/views/gov_user_plugin_myprofile/edit_institution.html.erb:111
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:184
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:187
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:190
 msgid "Save"
 msgstr "Salvar"
 
@@ -360,20 +360,16 @@ msgstr "Poder Governamental:"
 msgid "Juridical Nature"
 msgstr "Natureza Jurídica:"
 
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:160
-msgid "SISP ?"
-msgstr "SISP ?"
-
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:185
 #: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:188
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:191
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:192
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:189
 msgid "Could not send the form data to the server"
 msgstr "Não foi possível enviar os dados do formulário para o servidor"
 
-#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:200
+#: plugins/gov_user/views/gov_user_plugin/_institution.html.erb:197
 msgid "Creating institution"
 msgstr "Criar instituição"
 
@@ -392,6 +388,9 @@ msgstr "Complete seu perfil"
 #: plugins/gov_user/views/incomplete_registration.html.erb:7
 msgid "Hide"
 msgstr "Ocultar"
+
+#~ msgid "SISP ?"
+#~ msgstr "SISP ?"
 
 #~ msgid "invalid format"
 #~ msgstr "formato inválido"
