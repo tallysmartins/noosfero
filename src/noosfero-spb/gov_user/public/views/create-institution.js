@@ -200,11 +200,9 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
   function toggle_extra_fields_style_status(status) {
       if(status) {
-        $('.extra-fields-container').css({ marginTop: "55px" });
-        $('.button-bar').css({ marginTop: "55px" });
+        $('.comments-software-extra-fields').css({height: "180px" });
       } else {
-        $('.extra-fields-container').css({ marginTop: "0px" });
-        $('.button-bar').css({ marginTop: "20px" });
+        $('.comments-software-extra-fields').css({height: "140px" });
       }
   }
 
