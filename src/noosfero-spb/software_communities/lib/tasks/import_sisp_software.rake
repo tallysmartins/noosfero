@@ -190,7 +190,7 @@ end
 
 def create_sisp_user #TODO change user info
   user = User.find_by_login('sisp')
-  user ||= User.new(:login => 'sisp', :email => 'sisp_user@changeme.com', :password => 'sisp1234', :password_confirmation => 'sisp1234', :environment => $env)
+  user ||= User.new(:login => 'sisp-admin', :email => 'sisp_user@changeme.com', :password => 'sisp1234', :password_confirmation => 'sisp1234', :environment => $env)
   user.save!
   user.activate if !user.activated?
   user
