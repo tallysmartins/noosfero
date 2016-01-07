@@ -122,7 +122,7 @@ scache    unix  -       -       n       -       1       scache
 #scalemail-backend unix -       n       n       -       2       pipe
 #  flags=R user=scalemail argv=/usr/lib/scalemail/bin/scalemail-store
 #  ${nexthop} ${user} ${extension}
-#
+
 mailman   unix  -       n       n       -       -       pipe
   flags=FR user=mailman:mailman argv=/usr/lib/mailman/bin/postfix-to-mailman.py
   ${nexthop} ${user}
