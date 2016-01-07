@@ -31,4 +31,8 @@ class Category
     software_list = self.communities.collect{|community| community.software_info if community.software?}
     software_list
   end
+
+  def name
+    _(self[:name].to_s)
+  end
 end
