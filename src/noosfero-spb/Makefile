@@ -1,5 +1,5 @@
 PACKAGE = noosfero-spb
-VERSION = 4.2.10
+VERSION = 4.2.11
 DISTDIR = $(PACKAGE)-$(VERSION)
 TARBALL = $(DISTDIR).tar.gz
 
