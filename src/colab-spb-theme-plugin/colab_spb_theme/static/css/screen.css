@@ -588,3 +588,56 @@ form.signup {
 a.btn {
   margin: 2px 0 2px 0;
 }
+
+.colab-mailinglist-name {
+  font-size: 34px;
+}
+
+.colab-thread-modified-time,
+.colab-thread-modified-author {
+  color: #999;
+  font-size: 12px
+}
+
+.colab-thread-modified-author:hover,
+.colab-thread-modified-author:focus {
+  color: #999;
+  text-decoration: none;
+}
+
+.colab-thread-subject {
+  font-weight: bold;
+  font-size: 18px;
+  color: #172738;
+}
+
+.colab-thread-subject:hover,
+.colab-thread-subject:focus {
+  color: #172738;
+  text-decoration: none;
+}
+
+.colab-thread-latest-message {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.colab-thread-order,
+.colab-thread-total {
+    position: relative;
+    top: 15px;
+}
+
+.colab-thread-order {
+    float: left;
+    margin-right: 10px;
+}
+
+.colab-thread-order-select {
+    position: relative;
+    top: 10px;
+}
+
+.btn-colab-mailinglist-members {
+    margin-bottom: 40px;
+}
