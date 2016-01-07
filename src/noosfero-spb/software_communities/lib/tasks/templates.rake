@@ -41,21 +41,25 @@ namespace :templates do
 
   desc "Copy mail list article from template to all Communities"
   task :copy_mail_article => :environment do
+    env = Environment.find_by_name("SPB") || Environment.default
     article = Profile['software'].articles.find_by_slug('como-participar-da-lista-de-discussao')
-    puts "Copying article #{article.title}: "
+    Article.connection.execute("DELETE FROM articles WHERE slug='como-participar-da-lista-de-discussao' AND id NOT IN (#{article.id})")
+    puts "Copying article #{article.title}: " if article.present?
     if article.present?
-      SoftwareInfo.find_each do |software|
-        community = software.community
+      env.communities.find_each do |community|
+        next unless community.software?
         a_copy = community.articles.find_by_slug('como-participar-da-lista-de-discussao') || article.copy_without_save
-        a_copy.profile = software.community
-        a_copy.save if a_copy.profile.present?
+        a_copy.profile = community
+        a_copy.save
         box =  community.boxes.detect {|x| x.blocks.find_by_title("Participe") } if community.present?
         block = box.blocks.find_by_title("Participe") if box.present?
-        link = block.links.detect { |l| l["name"] == "Lista de E-mails" } if block.present?
+        link = block.links.detect { |l| l["name"] == "Listas de discussão" } if block.present?
         link["address"] = "/{profile}/#{a_copy.path}" if link.present?
         block.save if block.present?
         print "."
       end
+    else
+      puts "Article not found"
     end
   end
 end
