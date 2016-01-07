@@ -1,7 +1,6 @@
-<div class="software-community-events-block">
-  <% if block.has_events_to_display? %>
+<% if block.has_events_to_display? params[:page] %>
+  <div class="software-community-events-block">
     <ul class="software-community-events-list">
-
       <% if block.should_display_title? %>
         <li class="software-events-list-item">
           <span class="software-events-list-item-title">
@@ -18,5 +17,5 @@
       <% end %>
 
     </ul>
-  <% end %>
-</div>
+  </div>
+<% end %>

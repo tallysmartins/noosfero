@@ -8,6 +8,10 @@ class SoftwareEventsBlock < Block
     _('This block displays the software community events in a list.')
   end
 
+  def default_title
+    _('Other events')
+  end
+
   def content(args={})
     block = self
 
@@ -34,8 +38,8 @@ class SoftwareEventsBlock < Block
     get_events.where("slug NOT IN (?)", event_slug)
   end
 
-  def has_events_to_display?
-    not get_events.empty?
+  def has_events_to_display? current_event_slug=""
+    not get_events_except(current_event_slug).empty?
   end
 
   def should_display_title?
