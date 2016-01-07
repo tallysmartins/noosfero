@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.3.1-61-g25bc299\n"
-"POT-Creation-Date: 2016-01-07 12:39-0000\n"
+"POT-Creation-Date: 2016-01-07 13:00-0000\n"
 "PO-Revision-Date: 2014-11-12 13:05-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -347,7 +347,7 @@ msgstr "Este bloco apresenta o link para o repositório do software."
 
 #: plugins/software_communities/lib/software_events_block.rb:4
 msgid "Software community events"
-msgstr "Configurar Comunidade do Software"
+msgstr "Eventos da comunidade do software"
 
 #: plugins/software_communities/lib/software_events_block.rb:8
 msgid "This block displays the software community events in a list."
