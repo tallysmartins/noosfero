@@ -12,18 +12,18 @@
 
   <div class="search-software-item-column-right">
     <div class="search-software-profile-img">
-      <%= link_to_homepage(profile_image(community, :portrait), community.identifier) %>
+      <%= link_to(profile_image(community, :portrait), community.url) %>
     </div>
 
     <div class="search-software-content-block">
         <% link_name = software.acronym.blank? ? community.name : "#{software.acronym} - #{community.name}" %>
         <h4>
-          <%= link_to_homepage(link_name, community.identifier) %>
+          <%= link_to(link_name, community.url) %>
         </h4>
 
         <div class="search-content-description">
           <% body_stripped = strip_tags(software.finality) %>
-          <%= link_to_homepage(excerpt(body_stripped, body_stripped.first(3), 200),  community.identifier)  if body_stripped %>
+          <%= link_to(excerpt(body_stripped, body_stripped.first(3), 200), community.url) if body_stripped %>
         </div>
 
       <div class="search-software-categories">
