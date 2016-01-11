@@ -227,8 +227,8 @@
 }
 
 #content .box-1 .categories-and-tags-block .block-title{
-  display: inline-flex;
-  margin: 13px 10px 10px 0;
+  float: left;
+  margin: 13px 0px 10px 0;
   padding: 3px 0px;
   background: none;
   color: #5E82C6;
@@ -238,7 +238,9 @@
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud{
-  margin: 13px 0 10px 0;
+  margin: 0px;
+  position: relative;
+  top: 7px;
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud a{
