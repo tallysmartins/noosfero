@@ -10,25 +10,25 @@ Feature: edit adherent fields
       | joaosilva  | Joao Silva  | joaosilva@example.com  |
       | mariasilva | Maria Silva | mariasilva@example.com |
     And the following softwares
-      | name           | public_software | finality                |
-      | basic software | true            | basic software finality |
+      | name           | public_software | finality                | owner     |
+      | basic software | true            | basic software finality | joaosilva |
     And SoftwareInfo has initial default values on database
     And I am logged in as mpog_admin
     And I go to /admin/plugins
     And I check "SoftwareCommunitiesPlugin"
     Then I press "Save changes"
 
-  Scenario: Disable public software checkbox to non admin users
+  Scenario: Disable public software checkbox to non environment admin users
     Given I am logged in as "joaosilva"
     And I go to /myprofile/basic-software/plugin/software_communities/edit_software
     And I follow "Specifications"
-    Then I should see "Public software" within ".public_software_disabled"
+    Then the "#software_public_software" button should be disabled
 
   Scenario: Enable public software checkbox to admin users
     Given I am logged in as mpog_admin
     And I go to /myprofile/basic-software/plugin/software_communities/edit_software
     And I follow "Specifications"
-    Then I should see "Public software" within ".public_software_enabled"
+    Then the "#software_public_software" button should be enabled
 
   @selenium
   Scenario: Show adherent fields when checkbox are checked

@@ -23,8 +23,7 @@ Feature: go to software search when click on category
       | Software Three | false           | Education         | some finality |
 
   Scenario: Search softwares by education category
-    Given I am logged in as mpog_admin
-    And I go to software-three's control panel
+    Given I go to software-three's control panel
     And I follow "Edit sideboxes"
     And I follow "Add a block"
     And I choose "Categories and Tags"

@@ -34,10 +34,10 @@ Feature: Use report
   Scenario: Test Additional Fields JavaScript
     Given I go to /profile/noosfero/plugin/organization_ratings/new_rating
     Then I should not see "Number of Beneficiaries"
-    And I should not see "Saved Resources"
+    And I should not see "Saved resources"
     When I click on anything with selector "comments-additional-information"
     Then I should see "Number of Beneficiaries"
-    And I should see "Saved Resources"
+    And I should see "Saved resources"
 
    @selenium
    Scenario: Validate Use Report fields format
@@ -49,8 +49,8 @@ Feature: Use report
     And I am on Noosfero's homepage
     And I follow "Rate Community"
     When I click on anything with selector "comments-additional-information"
-    And I fill in "organization_rating_people_benefited" with "123123"
-    And I fill in "organization_rating_saved_value" with "7654321"
+    And I fill in "people_benefited_tmp" with "123123"
+    And I fill in "saved_value_tmp" with "7654321"
     And I press "Save"
-    Then I should see "Benefited People: 123.123"
-    And I should see "Saved Resources: $ 76,543.21"
+    Then I should see "Benefited People: 123,123"
+    And I should see "Saved Resources: $76,543.21"

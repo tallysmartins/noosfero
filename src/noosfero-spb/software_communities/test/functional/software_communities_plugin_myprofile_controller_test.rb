@@ -62,6 +62,10 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     fields = software_edit_basic_fields
 
     software = create_software fields_software
+
+    software.community.add_admin(@person)
+    software.save!
+
     post(
       :edit_software,
       :profile => software.community.identifier,
@@ -80,6 +84,10 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     fields = software_edit_specific_fields
 
     software = create_software fields_software
+
+    software.community.add_admin(@person)
+    software.save!
+
     post(
       :edit_software,
       :profile => software.community.identifier,
@@ -91,6 +99,29 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :license => fields[5]
     )
     assert_equal SoftwareInfo.last.acronym, "test"
+  end
+
+  should 'non admin cant edit a new software' do
+    fields_software = software_fields
+    fields = software_edit_specific_fields
+
+    software = create_software fields_software
+
+    software.community.add_admin(@person)
+    software.save!
+
+    post(
+      :edit_software,
+      :profile => software.community.identifier,
+      :library => fields[0],
+      :language => fields[1],
+      :database => fields[2],
+      :operating_system => fields[3],
+      :software => fields[4],
+      :license => fields[5]
+    )
+
+    assert_response 302
   end
 
   should 'only admin upgrade a generic software to a public software' do

@@ -46,7 +46,7 @@ Feature: Search software
   Scenario: Show software ordered by name when "Name A-Z" is selected
     Given I go to /search/software_infos
     And I select "Name A-Z" from "sort"
-    And I press "Filter"
+    And I sleep for 3 seconds
     Then I should see "Software One" before "Software Two"
 
   @selenium
@@ -59,7 +59,7 @@ Feature: Search software
   @selenium
   Scenario: Show only "Software Two" when searching for "Education" category
     Given I go to /search/software_infos
-    And I click on anything with selector "#filter-option-catalog-software"
+    And I click on anything with selector "filter-option-catalog-software"
     And I check "Education"
     Then I should see "Software Two"
     And I should not see "Software One"
@@ -67,7 +67,7 @@ Feature: Search software
   @selenium
   Scenario: Show both Software "One" and "Two" when searching for "Health" category
     Given I go to /search/software_infos
-    And I click on anything with selector "#filter-option-catalog-software"
+    And I click on anything with selector "filter-option-catalog-software"
     And I check "Health"
     Then I should see "Software One"
     And I should see "Software Two"
@@ -75,8 +75,7 @@ Feature: Search software
   @selenium
   Scenario: Show not "public_software" when "Include in results" is checked
     Given I go to /search/software_infos
-    And I click on anything with selector "#filter-option-catalog-software"
-    And I check "include_non_public"
+    And I choose "all_radio_button"
     Then I should see "Software One"
     And I should see "Software Two"
     And I should see "Software Three"
@@ -107,6 +106,5 @@ Feature: Search software
     When I select "Favorites" from "sort"
     And I sleep for 3 seconds
     Then I should see "Software Two" before "Software One"
-    And there should be 1 div with class "small-star-positive"
-    And there should be 4 divs with class "small-star-negative"
-
+    And I should see "1" of this selector "div.medium-star-positive"
+    And I should see "4" of this selector "div.medium-star-negative"

@@ -15,8 +15,7 @@ Feature: edit adherent fields
     | Generic Software | false           | some finality |
 
   Scenario: Add software block
-    Given I am logged in as mpog_admin
-    And I follow "Control panel"
+    Given I follow "Control panel"
     And I follow "Edit sideboxes"
     When I follow "Add a block"
     And I choose "Softwares"
@@ -24,9 +23,7 @@ Feature: edit adherent fields
     Then I should see "softwares"
 
   Scenario: Change software block to generic software block
-    Given I am logged in as mpog_admin
-    And I go to /myprofile/mpog_admin
-    And I follow "Control panel"
+    Given I follow "Control panel"
     And I follow "Edit sideboxes"
     When I follow "Add a block"
     And I choose "Softwares"
@@ -37,8 +34,7 @@ Feature: edit adherent fields
     Then I should see "generic software"
 
   Scenario: Change software block to generic software block
-    Given I am logged in as mpog_admin
-    And I follow "Control panel"
+    Given I follow "Control panel"
     And I follow "Edit sideboxes"
     When I follow "Add a block"
     And I choose "Softwares"
