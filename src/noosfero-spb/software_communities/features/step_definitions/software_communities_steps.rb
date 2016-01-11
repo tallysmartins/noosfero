@@ -175,7 +175,8 @@ end
 Given /^the following softwares$/ do |table|
   table.hashes.each do |item|
     software_info = SoftwareInfo.new
-    software_info.community = Community.create(:name=>item[:name])
+    community = Community.create(:name=>item[:name])
+    software_info.community = community
 
     software_info.finality = item[:finality] if item[:finality]
     software_info.acronym = item[:acronym] if item[:acronym]
@@ -211,8 +212,13 @@ Given /^the following softwares$/ do |table|
 
       categories.each do |category_name|
         category = Category.find_by_name category_name
-        software_info.community.categories << category
+        community.categories << category
       end
+    end
+
+    if item[:owner]
+      owner = item[:owner]
+      community.add_admin Profile[owner]
     end
 
     software_info.save!

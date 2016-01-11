@@ -1,6 +1,8 @@
 class SoftwareCommunitiesPluginMyprofileController < MyProfileController
   append_view_path File.join(File.dirname(__FILE__) + '/../views')
 
+  protect 'edit_software', :profile, :except => [:destroy_profile]
+
   def index
   end
 
