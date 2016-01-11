@@ -86,3 +86,8 @@ end
 cookbook_file '/etc/postfix/master.cf' do
   notifies :reload, 'service[postfix]'
 end
+
+execute 'set-mailman-default-list' do
+  command "printf 'mlist.archive = False\nmlist.archive_private = 1' > /tmp/set_mailman_list && \
+  sudo /usr/lib/mailman/bin/config_list -i /tmp/set_mailman_list mailman"
+end
