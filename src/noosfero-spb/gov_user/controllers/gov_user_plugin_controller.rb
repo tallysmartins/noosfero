@@ -217,8 +217,8 @@ class GovUserPluginController < ApplicationController
   end
 
   def save_institution institution
-    inst_errors = institution.errors.messages
-    com_errors = institution.community.errors.messages
+    inst_errors = institution.errors.full_messages
+    com_errors = institution.community.errors.full_messages
 
     set_errors institution
 
@@ -230,7 +230,7 @@ class GovUserPluginController < ApplicationController
     else
       { :success => false,
         :message => _("Institution could not be created!"),
-        :errors => inst_errors.merge(com_errors)
+        :errors => inst_errors + com_errors
       }
     end
   end

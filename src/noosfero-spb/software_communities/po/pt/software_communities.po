@@ -860,8 +860,8 @@ msgstr ""
 "e critérios"
 
 #: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:22
-msgid "\"Can`t create new software: #{@errors.length} errors\""
-msgstr "\"Não foi possível criar o software: #{@errors.length} errors\""
+msgid "Can`t create new software: %s errors"
+msgstr "Não foi possível criar o software: %s erros"
 
 #: plugins/software_communities/views/software_communities_plugin_myprofile/new_software.html.erb:45
 msgid "Domain"
