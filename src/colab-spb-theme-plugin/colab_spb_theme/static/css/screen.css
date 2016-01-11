@@ -64,6 +64,8 @@ body {
 
 #main-content {
   margin-top: 0;
+  padding-bottom: 60px;
+  color: #172738;
 }
 
 li hr {
@@ -506,11 +508,6 @@ span.highlighted {
 }
 .chart > p > label {
     margin: 0 2px;
-}
-
-#main-content {
-    padding: 40px 0 60px 0;
-    color: #172738;
 }
 
 .colab-content {
