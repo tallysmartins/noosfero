@@ -6,17 +6,30 @@ from django.conf import settings
 from celery.utils.log import get_task_logger
 from colab.accounts.utils.mailman import create_list
 from colab.celery import app
-from colab.signals.signals import send
 from colab_gitlab.models import GitlabGroup
 
 logger = get_task_logger(__name__)
 
 
+def normalize_name(name):
+    """
+    Removes letters' accents, replaces whitespaces for dash (-), and lowercases
+    all letters
+    """
+    name = name.replace(' ', '-')
+    name = ''.join(c for c in unicodedata.normalize('NFD', unicode(
+        name, 'utf-8')) if unicodedata.category(c) != 'Mn')
+    name = name.lower()
+    return name
+
+
 def create_group_from_community(noosfero_community):
     """ Create a group into Gitlab  from a Noosfero's Community"""
 
+    group_name = normalize_name(noosfero_community.name)
+
     # If project already exist
-    group = GitlabGroup.objects.filter(name=noosfero_community.name)
+    group = GitlabGroup.objects.filter(name=group_name)
     if group:
         return group[0].id
 
@@ -30,7 +43,7 @@ def create_group_from_community(noosfero_community):
     users_endpoint = '{}/api/v3/groups'.format(upstream)
 
     params = {
-        'name': noosfero_community.name,
+        'name': group_name,
         'path': noosfero_community.identifier,
         'private_token': private_token
     }
@@ -40,18 +53,18 @@ def create_group_from_community(noosfero_community):
                                  verify=verify_ssl)
     except Exception as excpt:
         reason = 'Request to API failed ({})'.format(excpt)
-        logger.error(error_msg, noosfero_community.name, reason)
+        logger.error(error_msg, group_name, reason)
         return
 
     if response.status_code != 201:
         if response.status_code is 404:
             pass  # TODO: should request the existing group id if error 404
         reason = 'Unknown [{}].'.format(response.status_code)
-        logger.error(error_msg, noosfero_community.name, reason)
+        logger.error(error_msg, group_name, reason)
         return
     else:
         group_id = response.json().get('id')
-        logger.info('Group {0} created'.format(noosfero_community.name))
+        logger.info('Group {0} created'.format(group_name))
 
     return group_id
 
@@ -99,6 +112,9 @@ def include_members_into_group(admins, group_id):
 
 def create_project(project_name, group_id):
     """ Create a project into Gitlab group """
+
+    project_name = normalize_name(project_name)
+
     app_config = settings.COLAB_APPS.get('colab_gitlab', {})
     private_token = app_config.get('private_token')
     upstream = app_config.get('upstream', '').rstrip('/')
@@ -124,24 +140,20 @@ def create_project(project_name, group_id):
 
 
 @app.task(bind=True)
-def community_creation(self, **kwargs):
-    f = open('/vagrant/community_creation', 'wb')
-    f.write(str(kwargs))
-    f.close()
+def list_group_and_repository_creation(self, **kwargs):
     logger.info('Community created: {0}'.format(''.join(kwargs)))
-
-    send('create_repo', 'spb')
-    send('create_mail_list', 'spb')
 
     noosfero_community = kwargs['community']
     admins = noosfero_community.admins.all()
+    if not len(admins):
+        logger.error('Failed to create list, the software does not '
+                     'have an admin.')
+        return -1
 
     group_id = create_group_from_community(noosfero_community)
     include_members_into_group(admins, group_id)
     create_project(noosfero_community.name, group_id)
-    listname = noosfero_community.name.replace(' ', '-')
-    listname = ''.join(c for c in unicodedata.normalize('NFD', unicode(
-        listname, 'utf-8')) if unicodedata.category(c) != 'Mn')
+    listname = normalize_name(noosfero_community.name)
     create_list(listname, admins[0])
 
     return 0

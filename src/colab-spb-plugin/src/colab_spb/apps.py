@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 from colab.signals.signals import connect_signal, register_signal
 from celery.utils.log import get_task_logger
-from colab_spb.tasks import community_creation
+from colab_spb.tasks import list_group_and_repository_creation
 
 logger = get_task_logger(__name__)
 
@@ -19,4 +19,5 @@ class SpbAppConfig(AppConfig):
         register_signal(self.short_name, self.signals_list)
 
     def connect_signal(self):
-        connect_signal('community_creation', 'noosfero', community_creation)
+        connect_signal('community_creation', 'noosfero',
+                       list_group_and_repository_creation)
