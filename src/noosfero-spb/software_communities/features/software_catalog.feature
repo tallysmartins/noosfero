@@ -103,7 +103,7 @@ Feature: Search software
     And I go to /profile/software-two/plugin/organization_ratings/new_rating
     And I press "Enviar"
     And I go to /search/software_infos
-    When I select "Favorites" from "sort"
+    When I select "Rating" from "sort"
     And I sleep for 3 seconds
     Then I should see "Software Two" before "Software One"
     And I should see "1" of this selector "div.medium-star-positive"
