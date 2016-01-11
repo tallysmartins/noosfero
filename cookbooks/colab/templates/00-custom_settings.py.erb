@@ -34,6 +34,10 @@ SISP_HOST = "<%= node['config']['sisp_external_hostname'] %>"
 ALLOWED_HOSTS = ["<%= node['config']['external_hostname'] %>",
                  "<%= node['config']['sisp_external_hostname'] %>"]
 
+<% unless node['environment'] == "prod" %>
+ROBOTS_NOINDEX = True
+<% end %>
+
 ## Disable indexing
 ROBOTS_NOINDEX = False
 
