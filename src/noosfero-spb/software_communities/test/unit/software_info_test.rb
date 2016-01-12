@@ -41,4 +41,19 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     assert_equal @software_info.license_info.link, another_license_link
   end
 
+  should "search softwares on the correct environment when multi environments available" do
+    software_info = create_software_info("soft1")
+    another_software_info = create_software_info("soft2")
+    other_env = Environment.create!(name: "sisp")
+    another_soft_profile = another_software_info.community
+    another_soft_profile.environment_id = other_env.id
+    another_soft_profile.save
+
+    assert_equal 2, SoftwareInfo.count
+    assert_equal 1, SoftwareInfo.search_by_query("", Environment.default).count
+    assert_equal software_info, SoftwareInfo.search_by_query("", Environment.default).first
+    assert_equal 1, SoftwareInfo.search_by_query("", other_env).count
+    assert_equal true, SoftwareInfo.search_by_query("", other_env).includes?(another_software_info)
+  end
+
 end

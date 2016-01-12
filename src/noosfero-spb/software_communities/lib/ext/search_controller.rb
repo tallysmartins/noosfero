@@ -89,10 +89,11 @@ class SearchController
     params[:query] ||= ""
     visible_communities = visible_profiles(Community)
 
-    filtered_software_list = SoftwareInfo.search_by_query(params[:query])
+    filtered_software_list = SoftwareInfo.search_by_query(params[:query], environment)
 
     if params[:only_softwares]
       params[:only_softwares].collect!{ |software_name| software_name.to_slug }
+      #FIX-ME: This query is not appropriate
       filtered_software_list = SoftwareInfo.all.select{ |s| params[:only_softwares].include?(s.identifier) }
       @public_software_selected = false
     end

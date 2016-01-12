@@ -3,6 +3,30 @@
 namespace :sisp do
   desc "Creates SISP env, template, and import data"
   task :all => :environment do
+    unless ENV["DOMAIN"].present?
+      puts "You didn't choose any domain. The default domain is 'novo.sisp.gov.br'"
+      puts "You can run rake sisp:all DOMAIN=domain.url"
+      puts "Continue and create SISP Environment with default domain? (y/N)"
+      response = $stdin.gets.strip
+
+      unless ['y', 'yes'].include?(response.downcase)
+        puts "*** ABORTED."
+        exit 1
+      end
+    end
+
+    unless ENV["ADMINUSER"].present?
+      puts "You didn't enter any user to be selected from the default Environment"
+      puts "You can run rake sisp:all ADMINUSER=jose"
+      puts "Continue and create SISP Environment without an admin user? (y/N)"
+      response = $stdin.gets.strip
+
+      unless ['y', 'yes'].include?(response.downcase)
+        puts "*** ABORTED."
+        exit 1
+      end
+    end
+
     Rake::Task['sisp:create_env'].invoke
     Rake::Task['noosfero:plugins:enable_all'].invoke
     Rake::Task['sisp:create_template'].invoke
@@ -12,14 +36,42 @@ namespace :sisp do
   desc "Creates the SISP Environment"
   task :create_env => :environment do
     env = Environment.find_or_create_by_name("SISP")
-    domain = Domain.find_or_create_by_name("novo.sisp.gov.br")
+    domain_name = ENV["DOMAIN"] || "novo.sisp.gov.br"
+    domain = Domain.find_or_create_by_name(domain_name)
     env.domains << domain unless env.domains.include?(domain)
 
     env.theme = "noosfero-spb-theme"
     create_link_blocks env
     env.save
 
-    puts "SISP Environment created"
+    user = Environment.default.users.find_by_login(ENV["ADMINUSER"])
+    if user.present?
+      password = SecureRandom.base64
+      sisp_user = env.users.find_by_login(user.login)
+
+      unless sisp_user.present?
+        sisp_user = User.new(:login => user.login, :email => user.email, :password => password, :password_confirmation => password, :environment => env)
+      end
+
+      sisp_user.save
+      sisp_user.activate
+      env.add_admin sisp_user.person
+      puts "SISP admin user created with success!"
+      puts "Type the password for this user"
+      $stdin.echo = false
+      sisp_user.password = $stdin.gets.strip
+      puts "Type the password confirmation"
+      sisp_user.password_confirmation = $stdin.gets.strip
+
+      puts "Password not changed! Enter rails console and make it manually" unless sisp_user.save
+      $stdin.echo = true
+    else
+      puts "\nWARNING!!!!!!***********************************************"
+      puts "No user found with the given login '#{ENV['ADMINUSER']}'.... skipping"
+      puts "You can run this task again passing a valid user login with the following command:"
+      puts "rake sisp:create_env ADMINUSER=userlogin"
+    end
+    puts "\n\nSISP Environment created"
   end
 
   def create_link_blocks template
@@ -189,8 +241,9 @@ def create_identifier name
 end
 
 def create_sisp_user #TODO change user info
-  user = $env.users.find_by_login('sisp-admin')
-  user ||= User.new(:login => 'sisp-admin', :email => 'sisp_user@changeme.com', :password => 'sisp1234', :password_confirmation => 'sisp1234', :environment => $env)
+  user = $env.users.find_by_login('sisp_admin')
+  password = SecureRandom.base64
+  user ||= User.new(:login => 'sisp_admin', :email => 'sisp_user@changeme.com', :password => password, :password_confirmation => password, :environment => $env)
   user.save!
   user.activate if !user.activated?
   user
