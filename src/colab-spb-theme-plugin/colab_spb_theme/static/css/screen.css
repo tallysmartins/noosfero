@@ -64,6 +64,8 @@ body {
 
 #main-content {
   margin-top: 0;
+  padding: 20px 0 60px 0;
+  color: #172738;
 }
 
 li hr {
