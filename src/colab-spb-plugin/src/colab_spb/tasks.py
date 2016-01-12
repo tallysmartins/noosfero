@@ -1,5 +1,5 @@
 import requests
-import unicodedata
+from unicodedata import normalize, category
 
 from django.conf import settings
 
@@ -17,10 +17,13 @@ def normalize_name(name):
     all letters
     """
     name = name.replace(' ', '-')
-    name = ''.join(c for c in unicodedata.normalize('NFD', unicode(
-        name, 'utf-8')) if unicodedata.category(c) != 'Mn')
-    name = name.lower()
-    return name
+
+    if not isinstance(name, unicode):
+        name = unicode(name, 'utf-8')
+
+    name = ''.join(c for c in normalize('NFD', name) if category(c) != 'Mn')
+
+    return name.lower()
 
 
 def create_group_from_community(noosfero_community):
