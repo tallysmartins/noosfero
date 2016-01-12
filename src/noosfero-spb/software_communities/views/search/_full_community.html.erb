@@ -37,7 +37,7 @@
               <li>
               <%= link_to _("#{category.name}"), {
                 :controller => :search,
-                :action => :software_infos,
+                :action => params[:action],
                 :selected_categories_id => [category.id],
                 :software_type => params[:software_type]
               } %>
