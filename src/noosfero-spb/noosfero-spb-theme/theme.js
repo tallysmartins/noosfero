@@ -275,6 +275,13 @@ $('#link-buscar').click(function(e) {
     $('<span id="breadcrumbs-you-are-here">Você está aqui:</span>').insertBefore($('.breadcrumbs-plugin_content-breadcrumbs-block .block-inner-2').children().first());
   }
 
+  function remove_suspension_points_in_buttons() {
+    $(".template-kind a span:contains('...')").each(function(index, element) {
+      element.innerHTML = element.innerHTML.replace(/(\...)/, "");
+    });
+  }
+
+
   $(document).ready(function(){
     add_tooltips();
     add_popovers();
@@ -286,5 +293,6 @@ $('#link-buscar').click(function(e) {
     set_arrow_direction();
     set_use_report_content();
     setEvents();
+    remove_suspension_points_in_buttons();
     });
 })(jQuery);
