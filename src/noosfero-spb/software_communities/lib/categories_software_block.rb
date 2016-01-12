@@ -21,7 +21,7 @@ class CategoriesSoftwareBlock < Block
 
     software_category = environment.categories.find_by_name("Software")
     categories = []
-    categories = software_category.children.sort if software_category
+    categories = software_category.children.order(:name).all if software_category
 
     lambda do |object|
       render(
