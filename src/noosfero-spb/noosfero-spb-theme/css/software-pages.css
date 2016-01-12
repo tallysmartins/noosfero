@@ -205,19 +205,6 @@
   font-size: 15px;
 }
 
-.profile-homepage #article .article-body ul {
-  background-repeat: no-repeat;
-  list-style-position: inside;
-  list-style-type: disc;
-}
-
-.profile-homepage #article .article-body ul li {
-  line-height: 21px;
-  text-align: left;
-  font-size: 15px;
-  list-style: inherit;
-}
-
 /*** end of Software Homepage ***/
 
 /*** Categories and Tags block ***/
