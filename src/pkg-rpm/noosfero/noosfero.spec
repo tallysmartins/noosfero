@@ -3,7 +3,7 @@
 
 Name:    noosfero
 Version: 1.3.6+spb3
-Release: 1
+Release: 2
 Summary: Social Networking Platform
 Group:   Applications/Publishing
 License: AGPLv3
@@ -44,8 +44,22 @@ rm -rf %{buildroot}/usr/lib/noosfero/debian
 rm -rf %{buildroot}/usr/lib/noosfero/config/plugins
 
 # install config files
-mkdir -p %{buildroot}/etc/init.d
-cp etc/init.d/noosfero %{buildroot}/etc/init.d/
+mkdir -p %{buildroot}/etc/systemd/system
+cat > %{buildroot}/etc/systemd/system/noosfero.service <<EOF
+[Unit]
+Description=Noosfero service
+
+[Service]
+Type=forking
+User=noosfero
+WorkingDirectory=/usr/lib/noosfero
+ExecStart=/usr/lib/noosfero/script/production start
+ExecStop=/usr/lib/noosfero/script/production stop
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target
+EOF
 
 mkdir -p %{buildroot}/etc/noosfero/plugins
 ln -sf /etc/noosfero/database.yml %{buildroot}/usr/lib/noosfero/config/database.yml
@@ -144,7 +158,7 @@ chkconfig --del noosfero
 
 %files
 /usr/lib/noosfero
-/etc/init.d/noosfero
+/etc/systemd/system/noosfero.service
 /etc/noosfero/plugins/README
 %config(noreplace) /etc/default/noosfero
 %config(noreplace) /etc/noosfero/database.yml
