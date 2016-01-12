@@ -1,6 +1,8 @@
 class GovUserPluginMyprofileController < MyProfileController
   append_view_path File.join(File.dirname(__FILE__) + '/../views')
 
+  protect "edit_institution", :profile
+
   def index
   end
 
@@ -19,7 +21,7 @@ class GovUserPluginMyprofileController < MyProfileController
 
   def update_institution
     @institution.community.update_attributes(params[:community])
-    @institution.update_attributes(params[:institutions].except(:governmental_power, :governmental_sphere, :juridical_nature))
+    @institution.update_attributes(params[:institutions].except(:governmental_power, :governmental_sphere, :juridical_nature).merge({:name => params[:community][:name]}))
     if @institution.type == "PublicInstitution"
       begin
         governmental_updates

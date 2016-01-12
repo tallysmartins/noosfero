@@ -19,6 +19,10 @@
 
 <div id = 'create_institution_errors' class='errorExplanation hide-field'></div>
 
+<div class="spb-row spb-col spb-col-12 required-field">
+  <%= _("The highlighted fields are mandatory") %>
+</div>
+
 <div>
   <%= labelled_form_for :community,:html => { :multipart => true, :id=>"institution_form" } do |f| %>
     <%= hidden_field_tag "edit_institution_page", true %>
@@ -26,25 +30,19 @@
       <span class=''>
           <div class='formfield type-radio'>
             <label> <%= _("Public Institution") %>
-              <%= radio_button_tag("institutions[type]", "PublicInstitution", (@institution.type == "PublicInstitution" ? true : false)) %>
+              <%= radio_button_tag("institutions[type]", "PublicInstitution", (@institution.type == "PublicInstitution")) %>
             </label>
 
             <label>
               <%= _("Private Institution") %>
-              <%= radio_button_tag("institutions[type]" ,"PrivateInstitution", (@institution.type == "PrivateInstitution" ? true : false))%>
+              <%= radio_button_tag("institutions[type]" ,"PrivateInstitution", (@institution.type == "PrivateInstitution"))%>
             </label>
           </div>
         </span>
 
-      <%= required f.text_field(:name, :value => @institution.community.name) %>
-      <%= content_tag :span, _("Institution name already exists"), :id=>"already_exists_text", :class=>"errorExplanation hide-field" %>
+      <%= required labelled_form_field(_('Corporate Name'), text_field_tag('community[name]', @institution.community.name)) %>
 
-      <span class='required-field'>
-        <div class="formfield type-text">
-          <%= inst.label "corporate_name", _("Corporate Name"), :class=>"formlabel" %>
-          <%= required inst.text_field(:corporate_name, :value => @institution.corporate_name) %>
-        </div>
-      </span>
+      <%= labelled_form_field(_('Fantasy name'), inst.text_field(:corporate_name, :value => @institution.corporate_name)) %>
 
       <%= required select_country(_('Country'), 'community', 'country', {:class => 'type-select', :id => "community_country"}, :selected => @institution.community.country) %>
 
