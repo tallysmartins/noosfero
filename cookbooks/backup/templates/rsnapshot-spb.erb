@@ -1,4 +1,4 @@
-<%if node['config']['dev_backup']%>
+<%if node['config']['dev_backup_frequency']%>
 20   23   1   *   *   root    rsnapshot monthly
 <%else%>
 0   */6   *   *   *   root    rsnapshot hourly

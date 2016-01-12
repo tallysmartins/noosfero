@@ -14,4 +14,4 @@ relay_ip: 10.0.0.15
 alt_ssh_port: 5555
 from_address: noreply@softwarepublico.lappis
 # define less frequent backup for dev envs
-dev_backup: true
+dev_backup_frequency: true
