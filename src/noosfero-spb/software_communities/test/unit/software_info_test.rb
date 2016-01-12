@@ -36,7 +36,6 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     @software_info.another_license(another_license_version, another_license_link)
 
     assert_equal @software_info.license_info_id, @license_another.id
-    assert_equal @software_info.license_info.id, nil
     assert_equal @software_info.license_info.version, another_license_version
     assert_equal @software_info.license_info.link, another_license_link
   end
@@ -53,7 +52,16 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     assert_equal 1, SoftwareInfo.search_by_query("", Environment.default).count
     assert_equal software_info, SoftwareInfo.search_by_query("", Environment.default).first
     assert_equal 1, SoftwareInfo.search_by_query("", other_env).count
-    assert_equal true, SoftwareInfo.search_by_query("", other_env).includes?(another_software_info)
+    assert_equal true, SoftwareInfo.search_by_query("", other_env).include?(another_software_info)
   end
 
+  should "start another license with default values" do
+    software_info = create_software_info("software_test")
+    license_another = create_license_info("Another")
+
+    software_info.license_info_id = license_another.id
+
+    assert_equal software_info.license_info.version, "Another"
+    assert_equal software_info.license_info.link, "#"
+  end
 end
