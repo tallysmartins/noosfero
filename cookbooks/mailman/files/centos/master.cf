@@ -126,3 +126,8 @@ scache    unix  -       -       n       -       1       scache
 mailman   unix  -       n       n       -       -       pipe
   flags=FR user=mailman:mailman argv=/usr/lib/mailman/bin/postfix-to-mailman.py
   ${nexthop} ${user}
+
+fs_mail   unix  -       n       n       -       -       pipe
+  flags=F user=spb argv=tee --append /var/tmp/fs_mail.dump
+
+

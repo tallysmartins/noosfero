@@ -83,18 +83,18 @@ cookbook_file '/etc/cron.d/mailman-spb' do
   mode 0644
 end
 
-execute 'postfix:disable-email-prod' do
+execute 'postfix:disable-send-emails' do
   command "postconf 'default_transport = fs_mail'"
-  not_if  "cat /etc/postfix/main.cf | grep 'default_transport = fs_mail'"
-  action :nothing
+  only_if "#{node['config']['disable_send_emails']}"
+end
+
+execute 'postfix:enable-send-emails' do
+  command "postconf 'default_transport = smtp'"
+  not_if "#{node['config']['disable_send_emails']}"
 end
 
 cookbook_file '/etc/postfix/master.cf' do
-  unless node['environment'] == "prod"
-    source 'master.cf.development'
-    notifies :run, 'execute[postfix:disable-email-prod]'
-  end
-  notifies :restart, 'service[postfix]'
+  notifies :reload, 'service[postfix]'
 end
 
 execute 'set-mailman-default-list' do
