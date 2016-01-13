@@ -77,6 +77,13 @@ done
 for dir in %{cache_dirs}; do
   ln -sfT /var/lib/noosfero/cache %{buildroot}/usr/lib/noosfero/public/$dir
 done
+
+mkdir /var/tmp/noosfero
+mkdir /var/log/noosfero
+chown -R noosfero:root /var/tmp/noosfeo
+chown -R noosfero:root /var/log/noosfeo
+
+mkdir -p %{buildroot}/usr/lib/noosfero/log
 ln -sfT /var/tmp/noosfero %{buildroot}/usr/lib/noosfero/tmp
 ln -sfT /var/log/noosfero %{buildroot}/usr/lib/noosfero/log
 
