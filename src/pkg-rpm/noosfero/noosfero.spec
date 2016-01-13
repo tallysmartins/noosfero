@@ -3,7 +3,7 @@
 
 Name:    noosfero
 Version: 1.3.6+spb3
-Release: 2
+Release: 3
 Summary: Social Networking Platform
 Group:   Applications/Publishing
 License: AGPLv3
@@ -78,12 +78,6 @@ for dir in %{cache_dirs}; do
   ln -sfT /var/lib/noosfero/cache %{buildroot}/usr/lib/noosfero/public/$dir
 done
 
-mkdir /var/tmp/noosfero
-mkdir /var/log/noosfero
-chown -R noosfero:root /var/tmp/noosfeo
-chown -R noosfero:root /var/log/noosfeo
-
-mkdir -p %{buildroot}/usr/lib/noosfero/log
 ln -sfT /var/tmp/noosfero %{buildroot}/usr/lib/noosfero/tmp
 ln -sfT /var/log/noosfero %{buildroot}/usr/lib/noosfero/log
 
@@ -132,8 +126,14 @@ for dir in %{writable_dirs}; do
 done
 mkdir -p /var/lib/noosfero/cache
 
-chown -R noosfero:noosfero /var/lib/noosfero
+mkdir -p /var/lib/noosfero/cache
 
+mkdir -p /var/log/noosfero/
+mkdir -p /var/tmp/noosfero/
+chown -R noosfero:root /var/tmp/noosfero
+chown -R noosfero:root /var/log/noosfero
+
+chown -R noosfero:noosfero /var/lib/noosfero
 /etc/init.d/noosfero setup
 
 cd /usr/lib/noosfero/
