@@ -11,6 +11,10 @@ service 'prezento.target' do
   action [:enable, :start]
 end
 
+service 'nginx' do
+  action [:enable, :start]
+end
+
 template '/etc/mezuro/prezento/database.yml' do
   source 'prezento/database.yml.erb'
   owner 'prezento'
@@ -42,24 +46,11 @@ template PREZENTO_DIR + '/config/kalibro.yml' do
   notifies :restart, 'service[prezento.target]'
 end
 
-#############################################################################
-# The next lines install the mezuro plugin for colab intergration           #
-# This shold be removed when the plugin were install thought pkg colab-deps #
-#############################################################################
-
-service 'colab' do
-  action [:enable, :start]
-end
-
-git '/home/vagrant/colab-mezuro-plugin' do
-  repository 'https://github.com/colab/colab-mezuro-plugin.git'
-  revision 'master'
-end
-
-execute 'pip:install:plugin' do
-  command '/usr/lib/colab/bin/pip install .'
-  cwd '/home/vagrant/colab-mezuro-plugin'
-  user 'root'
-  notifies :restart, 'service[colab]'
+template '/etc/nginx/conf.d/prezento.conf' do
+  source 'prezento/nginx.conf.erb'
+  owner 'root'
+  group 'root'
+  mode 0644
+  notifies :restart, 'service[nginx]'
 end
 
