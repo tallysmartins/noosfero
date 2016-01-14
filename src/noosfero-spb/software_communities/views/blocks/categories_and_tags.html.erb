@@ -3,7 +3,7 @@
 
 	<div class="category_cloud">
 	<% block.owner.categories.each do |category| %>
-		<%= link_to category.name, {:controller => :search, :action => :software_infos, :selected_categories_id => [category.id], :software_type => 'all'}, :id => "select-category-1-link", :class => "select-subcategory-link", :target => "_blank" %>
+		<%= link_to category.name, {:controller => :search, :action => block.search_catalog, :selected_categories_id => [category.id], :software_type => 'all'}, :id => "select-category-1-link", :class => "select-subcategory-link", :target => "_blank" %>
 	<% end %>
 	</div><!-- end class='category_cloud' -->
 <% end %>
