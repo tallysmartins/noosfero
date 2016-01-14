@@ -18,6 +18,8 @@ module Entities
     expose :software_languages
     expose :software_databases
     expose :operating_system_names
+    expose :created_at, :format_with => :timestamp
+    expose :updated_at, :format_with => :timestamp
     expose :community_id do |software_info,options|
       software_info.community.id
     end
