@@ -26,3 +26,8 @@ Host email
   Hostname 10.10.40.48
   # connect via reverseproxy host
   ProxyCommand ssh 164.41.9.49 -p %p nc %h %p
+
+Host mezuro 
+  Hostname 10.10.40.44
+  # connect via reverseproxy host
+  ProxyCommand ssh 164.41.9.49 -p %p nc %h %p
