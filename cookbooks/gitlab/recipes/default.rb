@@ -110,6 +110,11 @@ execute 'change-cache-owner' do
   only_if 'ls -l /usr/lib/gitlab/tmp/cache | grep root'
 end
 
+execute 'change-assets-owner' do
+  command 'chown -R git:git /usr/lib/gitlab/public/assets'
+  only_if 'ls -l /usr/lib/gitlab/public/assets | grep root'
+end
+
 execute 'precompile-assets' do
   user 'git'
   cwd '/usr/lib/gitlab'
