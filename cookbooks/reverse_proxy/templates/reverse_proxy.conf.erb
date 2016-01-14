@@ -67,6 +67,10 @@ server {
   access_log            /var/log/nginx/ssl-<%= node['config']['sisp_external_hostname'] %>.access.log;
   error_log             /var/log/nginx/ssl-<%= node['config']['sisp_external_hostname'] %>.error.log;
 
+  location = / {
+    rewrite ^ /social/search/sisp;
+  }
+
   # TODO caching
   location / {
     proxy_pass              http://colab;
