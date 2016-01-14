@@ -13,7 +13,7 @@ cookbook_file '/usr/local/bin/backup_spb.sh' do
   mode  0755
 end
 
-cookbook_file '/etc/cron.d/rsnapshot-spb' do
+template '/etc/cron.d/rsnapshot-spb' do
   owner 'root'
   group 'root'
   mode 0644
