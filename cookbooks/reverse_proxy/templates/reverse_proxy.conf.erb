@@ -68,7 +68,7 @@ server {
   error_log             /var/log/nginx/ssl-<%= node['config']['sisp_external_hostname'] %>.error.log;
 
   location = / {
-    rewrite ^ /social/search/sisp;
+    rewrite ^ /social/search/sisp?sort=asc;
   }
 
   # TODO caching
