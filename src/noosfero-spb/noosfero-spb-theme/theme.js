@@ -275,12 +275,17 @@ $('#link-buscar').click(function(e) {
     $('<span id="breadcrumbs-you-are-here">Você está aqui:</span>').insertBefore($('.breadcrumbs-plugin_content-breadcrumbs-block .block-inner-2').children().first());
   }
 
+  // temporary solution for the suspension_point in some buttons
   function remove_suspension_points_in_buttons() {
     $(".template-kind a span:contains('...')").each(function(index, element) {
       element.innerHTML = element.innerHTML.replace(/(\...)/, "");
     });
   }
 
+  // temporary solution for the text in send_email buttons
+  function replace_send_email_button_text() {
+    $('.action-profile-members .page-members-header .icon-menu-mail').html('Contatar administradores');
+  }
 
   $(document).ready(function(){
     add_tooltips();
@@ -294,5 +299,6 @@ $('#link-buscar').click(function(e) {
     set_use_report_content();
     setEvents();
     remove_suspension_points_in_buttons();
+    replace_send_email_button_text();
     });
 })(jQuery);
