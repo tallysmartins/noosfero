@@ -1,5 +1,5 @@
 PACKAGE = colab-spb-theme
-VERSION = 0.3.11
+VERSION = 0.3.12
 DISTDIR = dist
 PACKAGE_NAME = $(PACKAGE)-$(VERSION)
 TARBALL = $(PACKAGE_NAME).tar.gz
