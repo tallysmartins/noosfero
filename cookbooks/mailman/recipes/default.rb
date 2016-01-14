@@ -83,6 +83,16 @@ cookbook_file '/etc/cron.d/mailman-spb' do
   mode 0644
 end
 
+execute 'postfix:disable-send-emails' do
+  command "postconf 'default_transport = fs_mail'"
+  only_if "#{node['config']['disable_send_emails']}"
+end
+
+execute 'postfix:enable-send-emails' do
+  command "postconf 'default_transport = smtp'"
+  not_if "#{node['config']['disable_send_emails']}"
+end
+
 cookbook_file '/etc/postfix/master.cf' do
   notifies :reload, 'service[postfix]'
 end
