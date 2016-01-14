@@ -1,3 +1,5 @@
+include_recipe 'mezuro::service'
+
 # TODO: remove before define main repo
 execute 'download:mezuro' do
   command 'wget https://bintray.com/mezurometrics/rpm/rpm -O bintray-mezurometrics-rpm.repo'
@@ -6,10 +8,6 @@ execute 'download:mezuro' do
 end
 
 package 'kalibro-configurations'
-
-service 'kalibro-configurations.target' do
-  action [:enable, :start]
-end
 
 template '/etc/mezuro/kalibro-configurations/database.yml' do
   source 'kalibro_configurations/database.yml.erb'

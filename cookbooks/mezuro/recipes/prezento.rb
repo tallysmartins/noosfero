@@ -1,4 +1,6 @@
-# change this to COPR repo
+include_recipe 'mezuro::service'
+
+# change this to COPR repo when gets ready
 execute 'download:mezuro' do
   command 'wget https://bintray.com/mezurometrics/rpm/rpm -O bintray-mezurometrics-rpm.repo'
   cwd '/etc/yum.repos.d'
@@ -6,14 +8,6 @@ execute 'download:mezuro' do
 end
 
 package 'prezento-spb'
-
-service 'prezento.target' do
-  action [:enable, :start]
-end
-
-service 'nginx' do
-  action [:enable, :start]
-end
 
 template '/etc/mezuro/prezento/database.yml' do
   source 'prezento/database.yml.erb'
