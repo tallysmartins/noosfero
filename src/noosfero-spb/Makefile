@@ -1,5 +1,5 @@
 PACKAGE = noosfero-spb
-VERSION = 4.2.13
+VERSION = $(shell cat VERSION)
 DISTDIR = $(PACKAGE)-$(VERSION)
 TARBALL = $(DISTDIR).tar.gz
 
@@ -11,9 +11,10 @@ themes_dir=/usr/lib/noosfero/public/designs/themes
 noosfero_dir=/usr/lib/noosfero
 
 dist: clean
-	mkdir $(DISTDIR)
-	tar --exclude=.git --exclude=$(DISTDIR) -cf - * | (cd $(DISTDIR) && tar xaf -)
-	tar --exclude=.git -czf $(TARBALL) $(DISTDIR)
+	mkdir -p dist/$(DISTDIR)
+	tar --exclude=.git --exclude=$(DISTDIR) -cf - * | (cd dist/$(DISTDIR) && tar xaf -)
+	cd dist/ && tar --exclude=.git -czf $(TARBALL) $(DISTDIR)
+	$(RM) -r $(DISTDIR)
 
 clean:
 	$(RM) -r dist/
