@@ -1,5 +1,5 @@
 Name:           colab-spb-plugin
-Version:        5.0a0
+Version:        5.0a1
 Release:        1
 Summary:        SPB-specific Colab plugin
 License:        GPL-3.0
