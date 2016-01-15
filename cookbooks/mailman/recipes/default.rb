@@ -85,12 +85,12 @@ end
 
 execute 'postfix:disable-send-emails' do
   command "postconf 'default_transport = fs_mail'"
-  only_if node['config']['disable_send_emails']
+  only_if { node['config']['disable_send_emails'] }
 end
 
 execute 'postfix:enable-send-emails' do
   command "postconf 'default_transport = smtp'"
-  not_if node['config']['disable_send_emails']
+  not_if { node['config']['disable_send_emails'] }
 end
 
 cookbook_file '/etc/postfix/master.cf' do
