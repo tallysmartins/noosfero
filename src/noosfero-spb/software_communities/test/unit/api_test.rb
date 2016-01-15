@@ -28,4 +28,17 @@ class SoftwareCommunitiesApiTest < ActiveSupport::TestCase
     assert_equal @software_info.id, json["software_info"]["id"]
   end
 
+  should 'list only softwares with visible community' do
+    @software_info = create_software_info("software_test")
+    @software_info2 = create_software_info("software_test2")
+
+    @software_info2.community.visible = false
+    @software_info2.community.save!
+
+    get "/api/v1/software_communities?#{params.to_query}"
+    json = JSON.parse(last_response.body)
+
+    assert_includes json['software_infos'].map{|c| c['id']}, @software_info.id
+    assert_not_includes json['software_infos'].map{|c| c['id']}, @software_info2.id
+  end
 end
