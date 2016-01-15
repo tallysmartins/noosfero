@@ -173,7 +173,7 @@ $('#link-buscar').click(function(e) {
       var folderList = article.getElementsByClassName('folder-content')[0];
       var folderItens = folderList.getElementsByClassName('item-description');
 
-      for(var i = 0, var loop_length = folderItens.length; i < loop_length; i++) {
+      for(var i = 0, loop_length = folderItens.length; i < loop_length; i++) {
         split_file_extension(folderItens[i].getElementsByTagName('a')[0]);
       }
     } catch(e) {
