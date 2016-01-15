@@ -9,6 +9,7 @@ class SoftwareCommunitiesPlugin::API < Grape::API
     get do
       authenticate!
       softwares = select_filtered_collection_of(environment,'communities',params).joins(:software_info)
+      softwares = softwares.visible_for_person(current_person)
       present softwares.map{|o|o.software_info}, :with => Entities::SoftwareInfo
     end
 
