@@ -14,3 +14,4 @@ relay_ip: 164.41.9.48
 alt_ssh_port: 55555
 from_address: noreply@spb.cdtc.unb.br
 dev_backup_frequency: true
+disable_send_emails: true

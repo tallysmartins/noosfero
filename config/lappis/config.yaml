@@ -15,3 +15,4 @@ alt_ssh_port: 5555
 from_address: noreply@softwarepublico.lappis
 # define less frequent backup for dev envs
 dev_backup_frequency: true
+disable_send_emails: true
