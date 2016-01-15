@@ -27,3 +27,4 @@ google_analytics_id: 'UA-64206731-1'
 munin_master: 10.21.0.10
 colab_http_workers: 32
 dev_backup_frequency: false 
+disable_send_emails: false
