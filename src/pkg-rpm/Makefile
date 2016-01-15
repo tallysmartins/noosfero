@@ -77,7 +77,7 @@ $(build_src_packages): %-build-src : %
 	cd $* && $(BUILD_PREFIX) rpmbuild --define "_topdir $(LOCAL_BUILD_DIR)" -bs $*.spec --nodeps
 
 $(upload_packages): %-upload : %-build-src % copr-cli
-	copr-cli build $(COPR_PROJECT) $(LOCAL_BUILD_DIR)/SRPMS/$*-*.src.rpm --nowait
+	.virtualenv/bin/copr-cli build $(COPR_PROJECT) $(LOCAL_BUILD_DIR)/SRPMS/$*-*.src.rpm --nowait
 
 copr-cli: .virtualenv/bin/copr-cli
 
