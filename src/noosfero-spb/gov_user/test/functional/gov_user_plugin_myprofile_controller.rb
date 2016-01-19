@@ -18,29 +18,30 @@ class GovUserPluginMyprofileControllerTest < ActionController::TestCase
     @offer_1 = create_user('Ana de Souza')
     @offer_2 = create_user('Angelo Roberto')
 
-    login_as(@person.user_login)
-    @environment = Environment.default
-    @environment.enable_plugin('GovUserPlugin')
-    @environment.save!
-  end
-  should "user edit its community institution" do
-    govPower = GovernmentalPower.create(:name=>"Some Gov Power")
-    govSphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
+    gov_power = GovernmentalPower.create(:name=>"Some Gov Power")
+    gov_sphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
     juridical_nature = JuridicalNature.create(:name => "Autarquia")
-
-    institution = InstitutionTestHelper.create_public_institution(
+    @institution = InstitutionTestHelper.create_public_institution(
       "Ministerio Publico da Uniao",
       "MPU",
       "BR",
       "DF",
       "Gama",
       juridical_nature,
-      govPower,
-      govSphere,
+      gov_power,
+      gov_sphere,
       "12.345.678/9012-45"
     )
 
-    identifier = institution.community.identifier
+    login_as(@person.user_login)
+    @environment = Environment.default
+    @environment.enable_plugin('GovUserPlugin')
+    @environment.save!
+  end
+
+  should "admin user edit an institution" do
+    @institution.community.add_admin @person
+    identifier = @institution.community.identifier
 
     fields = InstitutionTestHelper.generate_form_fields(
       "institution new name",
@@ -53,7 +54,7 @@ class GovUserPluginMyprofileControllerTest < ActionController::TestCase
 
     post(
       :edit_institution,
-      :profile=>institution.community.identifier,
+      :profile=>@institution.community.identifier,
       :community=>fields[:community],
       :institutions=>fields[:institutions]
     )
@@ -62,25 +63,31 @@ class GovUserPluginMyprofileControllerTest < ActionController::TestCase
     assert_not_equal "Ministerio Publico da Uniao", institution.community.name
   end
 
-  should "not user edit its community institution with wrong values" do
-    govPower = GovernmentalPower.create(:name=>"Some Gov Power")
-    govSphere = GovernmentalSphere.create(:name=>"Some Gov Sphere")
-    juridical_nature = JuridicalNature.create(:name => "Autarquia")
-
-    institution = InstitutionTestHelper.create_public_institution(
-      "Ministerio Publico da Uniao",
-      "MPU",
+  should "regular user should not edit an institution" do
+    identifier = @institution.community.identifier
+    fields = InstitutionTestHelper.generate_form_fields(
+      "institution new name",
       "BR",
       "DF",
       "Gama",
-      juridical_nature,
-      govPower,
-      govSphere,
-      "12.345.678/9012-45"
+      "12.345.678/9012-45",
+      "PrivateInstitution"
     )
 
-    identifier = institution.community.identifier
+    post(
+      :edit_institution,
+      :profile=>@institution.community.identifier,
+      :community=>fields[:community],
+      :institutions=>fields[:institutions]
+    )
 
+    institution = Community[identifier].institution
+    assert_equal "Ministerio Publico da Uniao", institution.community.name
+    assert_response 403
+  end
+
+  should "not user edit its community institution with wrong values" do
+    identifier = @institution.community.identifier
     fields = InstitutionTestHelper.generate_form_fields(
       "",
       "BR",
@@ -92,7 +99,7 @@ class GovUserPluginMyprofileControllerTest < ActionController::TestCase
 
     post(
       :edit_institution,
-      :profile=>institution.community.identifier,
+      :profile=>@institution.community.identifier,
       :community=>fields[:community],
       :institutions=>fields[:institutions]
     )
