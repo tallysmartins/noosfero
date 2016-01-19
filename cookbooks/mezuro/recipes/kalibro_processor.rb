@@ -31,6 +31,12 @@ execute 'kalibro-processor:migrate' do
   notifies :restart, 'service[kalibro-processor.target]'
 end
 
+execute 'kalibro-processor:open_port' do
+  command 'semanage port -a -t http_port_t -p tcp 82'
+  user 'root'
+  only_if '! semanage port -l | grep "^\(http_port_t\)\(.\)\+\(\s82,\)"'
+end
+
 template '/etc/nginx/conf.d/kalibro-processor.conf' do
   source 'kalibro_processor/nginx.conf.erb'
   owner 'root'

@@ -40,6 +40,12 @@ template PREZENTO_DIR + '/config/kalibro.yml' do
   notifies :restart, 'service[prezento.target]'
 end
 
+execute 'prezento:open_port' do
+  command 'semanage port -a -t http_port_t -p tcp 84'
+  user 'root'
+  only_if '! semanage port -l | grep "^\(http_port_t\)\(.\)\+\(\s84,\)"'
+end
+
 template '/etc/nginx/conf.d/prezento.conf' do
   source 'prezento/nginx.conf.erb'
   owner 'root'
