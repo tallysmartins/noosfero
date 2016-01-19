@@ -218,6 +218,23 @@ class SearchControllerTest < ActionController::TestCase
     assert_not_includes assigns(:searches)[:software_infos][:results], software_one.community
   end
 
+  should "software_infos search return only the software in params order by Z-A" do
+    software_one = create_software_info("Software One", :acronym => "SFO", :finality => "Help")
+    software_two = create_software_info("Java", :acronym => "SFT", :finality => "Task")
+    software_three = create_software_info("Software Three", :acronym => "SFW", :finality => "Java")
+
+    get(
+      :software_infos,
+      :only_softwares => ["software-three", "java"],
+      :sort => "desc"
+    )
+
+    assert_equal assigns(:searches)[:software_infos][:results][0], software_three.community
+    assert_equal assigns(:searches)[:software_infos][:results][1], software_two.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], software_one.community
+  end
+
+
   should "software_infos search return only enabled softwares" do
     s1 = SoftwareInfo.first
     s2 = SoftwareInfo.last

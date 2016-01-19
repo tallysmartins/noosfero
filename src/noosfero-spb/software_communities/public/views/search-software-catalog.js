@@ -52,6 +52,8 @@ modulejs.define('SearchSoftwareCatalog', ['jquery', 'NoosferoRoot', 'SoftwareCat
       params.software_type = $("#public_software_radio_button").val();
     }
 
+    params.only_softwares = $("#only_softwares_hidden").val().split(' ');
+
     return params;
   }
 
