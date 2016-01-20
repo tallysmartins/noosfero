@@ -64,7 +64,7 @@
 }
 
 #content #software-information-block-table #col-software-name b {
-  font: normal normal normal 15px/21px arial, 'open_sansregular', helvetica, sans-serif;
+  font: normal normal normal 16px/21px arial, 'open_sansregular', helvetica, sans-serif;
 }
 
 /*** end of Software Header ***/
@@ -211,6 +211,10 @@
 
 #content .box-1  .categories-and-tags-block{
   border-top: 4px solid #2C4B6B;
+  margin-top: 26px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #D3D6DE;
+  margin-bottom: 60px;
 }
 
 #content .box-1 .categories-and-tags-block .block-title{
@@ -219,7 +223,7 @@
   padding: 3px 0px;
   background: none;
   color: #5E82C6;
-  font-family: Arial;
+  font-family: Arial, verdana;
   font-size: 12px;
   font-weight: 300;
 }
@@ -227,18 +231,19 @@
 #content .box-1 .categories-and-tags-block .category_cloud{
   margin: 0px;
   position: relative;
-  top: 7px;
+  top: 9px;
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud a{
   display: inline-block;
-  padding: 3px 10px;
+  padding: 1px 10px;
   margin: 5px;
   color: #3E67B1;
   background-color: #ECEDF1;
   border: 1px solid #D3D6DE;
   border-radius: 3px;
   font-size: 12px;
+  font-family: Arial, verdana;
 }
 
 #content .box-1 .categories-and-tags-block .category_cloud a:hover{
