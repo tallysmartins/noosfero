@@ -178,7 +178,7 @@ end
 execute 'colab-admin migrate'
 
 # Adding widgets for colab
-template '/etc/colab/widgets.d/dashboard.py' do
+cookbook_file '/etc/colab/widgets.d/dashboard.py' do
   owner 'root'
   group 'colab'
   mode 0640
@@ -186,7 +186,7 @@ template '/etc/colab/widgets.d/dashboard.py' do
   notifies :restart, 'service[colab]'
 end
 
-template '/etc/colab/widgets.d/profile.py' do
+cookbook_file '/etc/colab/widgets.d/profile.py' do
   owner 'root'
   group 'colab'
   mode 0640
