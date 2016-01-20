@@ -39,7 +39,7 @@
       <div id="individually-category">
         <% @selected_categories.each do |category| %>
           <br />
-          <%= link_to _("#{category.name}") + " (#{category.software_infos.count})", {:controller => :search, :action => params[:action], :selected_categories_id => [category.id]} %>
+          <%= link_to "#{category.name} (#{category.software_infos.count})", {:controller => :search, :action => params[:action], :selected_categories_id => [category.id]} %>
         <% end %>
       </div>
 

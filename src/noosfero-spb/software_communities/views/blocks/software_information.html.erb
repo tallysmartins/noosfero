@@ -21,8 +21,8 @@
       </td>
       <td width="70%" id="col-software-name">
         <h1>
-          <%= _("#{block.owner.software_info.acronym} - ") unless block.owner.software_info.acronym.blank? %>
-          <%= _("#{block.owner.name}") %>
+          <%= "#{block.owner.software_info.acronym} - " unless block.owner.software_info.acronym.blank? %>
+          <%= block.owner.name %>
         </h1>
         <b>
           <%= block.owner.software_info.finality %>

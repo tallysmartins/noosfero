@@ -143,6 +143,10 @@
   font-size: 14px;
 }
 
+#content .download-block label {
+  padding-right: 2px;
+}
+
 #content .download-block .download-info .min-requirements {
   font-size: 12px;
 }

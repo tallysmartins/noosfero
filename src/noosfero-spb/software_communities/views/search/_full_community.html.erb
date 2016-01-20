@@ -35,7 +35,7 @@
           <ul id="categories-list">
             <% community.categories.each do |category| %>
               <li>
-              <%= link_to _("#{category.name}"), {
+              <%= link_to category.name, {
                 :controller => :search,
                 :action => params[:action],
                 :selected_categories_id => [category.id],
