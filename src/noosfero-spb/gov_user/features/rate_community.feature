@@ -27,8 +27,8 @@ Feature: rate_community
     And Institutions has initial default values on database
     And the following public institutions
       | name                       | acronym | country | state | city       | cnpj               | juridical_nature | governmental_power | governmental_sphere | corporate_name |
-      | Ministerio das Cidades     | MC      | BR      | DF    | Gama       | 58.745.189/0001-21 | Autarquia        | Executivo          | Federal             | Ministerio das Cidades |
-      | Ministerio do Planejamento | MP      | BR      | DF    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             | Ministerio do Planejamento |
+      | Ministerio das Cidades     | MC      | BR      | Distrito Federal    | Gama       | 58.745.189/0001-21 | Autarquia        | Executivo          | Federal             | Ministerio das Cidades |
+      | Ministerio do Planejamento | MP      | BR      | Distrito Federal    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             | Ministerio do Planejamento |
 
   Scenario: display message on task when a rating with the same institution exists on the same software
     Given the following organization ratings
@@ -38,7 +38,7 @@ Feature: rate_community
     And I go to mycommunity's control panel
     And I follow "Process requests" within ".pending-tasks"
     And I choose "Accept" within ".task_decisions"
-    Then I should see "This institution already has an accepted rating." in the page
+    Then I should see "This institution already has an accepted rating" in the page
 
   Scenario: do not display message on task when a rating with the same institution does not exist on the same software
     Given the following organization ratings

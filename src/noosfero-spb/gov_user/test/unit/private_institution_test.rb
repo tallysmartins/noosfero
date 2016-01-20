@@ -8,7 +8,7 @@ class PrivateInstitutionTest < ActiveSupport::TestCase
                       "Simple Private Institution",
                       "SPI",
                       "BR",
-                      "DF",
+                      "Distrito Federal",
                       "Gama",
                       "00.000.000/0001-00"
                     )

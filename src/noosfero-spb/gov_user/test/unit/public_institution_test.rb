@@ -12,7 +12,7 @@ class PublicInstitutionTest < ActiveSupport::TestCase
                     "Ministerio Publico da Uniao",
                     "MPU",
                     "BR",
-                    "DF",
+                    "Distrito Federal",
                     "Gama",
                     @juridical_nature,
                     @gov_power,

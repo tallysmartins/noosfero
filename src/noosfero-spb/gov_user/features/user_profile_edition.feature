@@ -24,9 +24,9 @@ Feature: Institution Field
     And Institutions has initial default values on database
     And the following public institutions
       | name                       | acronym | country | state | city       | cnpj               | juridical_nature | governmental_power | governmental_sphere | corporate_name |
-      | Ministerio das Cidades     | MC      | BR      | DF    | Gama       | 58.745.189/0001-21 | Autarquia        | Executivo          | Federal             | Ministerio das Cidades |
-      | Governo do DF              | GDF     | BR      | DF    | Taguatinga | 12.645.166/0001-44 | Autarquia        | Legislativo        | Federal             | Governo do DF |
-      | Ministerio do Planejamento | MP      | BR      | DF    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             | Ministerio do Planejamento |
+      | Ministerio das Cidades     | MC      | BR      | Distrito Federal    | Gama       | 58.745.189/0001-21 | Autarquia        | Executivo          | Federal             | Ministerio das Cidades |
+      | Governo do DF              | GDF     | BR      | Distrito Federal    | Taguatinga | 12.645.166/0001-44 | Autarquia        | Legislativo        | Federal             | Governo do DF |
+      | Ministerio do Planejamento | MP      | BR      | Distrito Federal    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             | Ministerio do Planejamento |
 
 	@selenium
   Scenario: Go to control panel when clicked on 'Complete your profile' link
