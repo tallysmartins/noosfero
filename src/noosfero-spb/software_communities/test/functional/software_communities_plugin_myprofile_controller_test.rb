@@ -54,7 +54,9 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :license => fields[0],
       :software_info => fields[2]
     )
-    assert_equal SoftwareInfo.last.community.name, "Debian"
+
+    new_software = Community.find_by_identifier("debian").software_info
+    assert_equal new_software.community.name, "Debian"
   end
 
   should 'edit a new software adding basic information' do
@@ -76,7 +78,9 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :language => {},
       :database => {}
     )
-    assert_equal SoftwareInfo.last.repository_link, "www.github.com/test"
+
+    edited_software = Community.find_by_identifier("debian").software_info
+    assert_equal edited_software.repository_link, "www.github.com/test"
   end
 
   should 'edit a new software adding specific information' do
@@ -98,7 +102,9 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :software => fields[4],
       :license => fields[5]
     )
-    assert_equal SoftwareInfo.last.acronym, "test"
+
+    edited_software = Community.find_by_identifier("debian").software_info
+    assert_equal edited_software.acronym, "test"
   end
 
   should 'non admin cant edit a new software' do
@@ -124,6 +130,32 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     assert_response 302
   end
 
+  should 'edit a software and does not change Another License values' do
+    another_license = LicenseInfo.create(:version => "Another", :link => "#")
+    software = create_software(software_fields)
+    software.community.add_admin(@person)
+    software.save!
+
+    post(
+      :edit_software,
+      :profile => software.community.identifier,
+      :license => { "license_infos_id"=>another_license.id, "version"=>"Another Version", "link"=>"www.link.com" },
+      :software => {},
+      :library => {},
+      :operating_system => {},
+      :language => {},
+      :database => {}
+    )
+
+    another_license.reload
+    edited_software = Community.find_by_identifier("debian").software_info
+
+    assert_equal edited_software.another_license_version, "Another Version"
+    assert_equal edited_software.another_license_link, "www.link.com"
+    assert_equal another_license.version, "Another"
+    assert_equal another_license.link, "#"
+  end
+
   should 'only admin upgrade a generic software to a public software' do
     admin_person = create_user('admin').person
     @environment.add_admin(admin_person)
@@ -142,7 +174,8 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :software => fields[4],
     )
 
-    assert SoftwareInfo.last.public_software?
+    edited_software = Community.find_by_identifier("debian").software_info
+    assert edited_software.public_software?
   end
 
   should 'not upgrade a generic software to a public software if user is not an admin' do
@@ -158,7 +191,8 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :software => fields[4]
     )
 
-    refute SoftwareInfo.last.public_software?
+    edited_software = Community.find_by_identifier("debian").software_info
+    refute edited_software.public_software?
   end
 
   ["e_ping","e_mag","icp_brasil","e_arq","intern"].map do |attr|
@@ -176,7 +210,8 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
         :software => fields[4]
       )
 
-      refute SoftwareInfo.last.send(attr)
+      edited_software = Community.find_by_identifier("debian").software_info
+      refute edited_software.send(attr)
     end
   end
 
@@ -199,7 +234,8 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
         :software => fields[4]
       )
 
-      assert SoftwareInfo.last.send(attr)
+      edited_software = Community.find_by_identifier("debian").software_info
+      assert edited_software.send(attr)
     end
   end
 
@@ -214,7 +250,8 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :profile => @person.identifier
     )
 
-    assert_equal SoftwareInfo.last.license_info, LicenseInfo.last
+    new_software = Community.find_by_identifier("new-software").software_info
+    assert_equal new_software.license_info, LicenseInfo.last
   end
 
   should "create software_info with 'Another' license_info" do
@@ -235,10 +272,11 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :profile => @person.identifier
     )
 
-    assert_equal license_another.id, SoftwareInfo.last.license_info_id
-    assert_equal nil, SoftwareInfo.last.license_info.id
-    assert_equal another_license_version, SoftwareInfo.last.license_info.version
-    assert_equal another_license_link, SoftwareInfo.last.license_info.link
+    new_software = Community.find_by_identifier("new-software").software_info
+    assert_equal license_another.id, new_software.license_info_id
+    assert_equal license_another.id, new_software.license_info.id
+    assert_equal another_license_version, new_software.license_info.version
+    assert_equal another_license_link, new_software.license_info.link
   end
 
   should "create software_info after finish task with 'Another' license_info" do
@@ -251,6 +289,7 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :new_software,
       :community => { :name => "New Software", :identifier => "new-software" },
       :software_info => { :finality => "something", :repository_link => "" },
+      :license_info => { :version => license_another.version },
       :license => { :license_infos_id => license_another.id,
         :version => another_license_version,
         :link=> another_license_link
@@ -261,10 +300,11 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     @environment.add_admin(@person)
     Task.last.send('finish', @person)
 
-    assert_equal license_another.id, SoftwareInfo.last.license_info_id
-    assert_equal nil, SoftwareInfo.last.license_info.id
-    assert_equal another_license_version, SoftwareInfo.last.license_info.version
-    assert_equal another_license_link, SoftwareInfo.last.license_info.link
+    new_software = Community.find_by_identifier("new-software").software_info
+    assert_equal license_another.id, new_software.license_info_id
+    assert_equal license_another.id, new_software.license_info.id
+    assert_equal another_license_version, new_software.license_info.version
+    assert_equal another_license_link, new_software.license_info.link
   end
 
   should "show error messages on create software_info" do
@@ -316,8 +356,9 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     @environment.add_admin(@person)
     Task.last.send('finish', @person)
 
+    new_software = Community.find_by_identifier("new-software").software_info
     assert_equal "New Software", Task.last.data[:name]
-    assert_equal "New Software", SoftwareInfo.last.community.name
+    assert_equal "New Software", new_software.community.name
   end
 
   should "dont create software without accept task" do

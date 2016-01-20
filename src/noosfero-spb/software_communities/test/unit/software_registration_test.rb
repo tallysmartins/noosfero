@@ -5,6 +5,8 @@ class SoftwareRegistrationTest < ActiveSupport::TestCase
   def setup
     @environment = Environment.default
     @environment.enable_plugin(SoftwareCommunitiesPlugin)
+
+    @license_info = LicenseInfo.create(:version => "New License", :link => "#")
   end
 
   def teardown
@@ -31,7 +33,8 @@ class SoftwareRegistrationTest < ActiveSupport::TestCase
             :name => "Teste Two",
             :requestor => person,
             :environment => @environment,
-            :finality => "something"
+            :finality => "something",
+            :license_info => @license_info
            )
 
     software_count = SoftwareInfo.count

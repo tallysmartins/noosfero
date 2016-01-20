@@ -31,6 +31,8 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     @operating_system.operating_system_name = @operating_system_name
     @operating_system.save
 
+    @license_info = LicenseInfo.create(:version => 'New License', :link => '#')
+
     @software_info = SoftwareInfo.new(
                       :acronym => "SFTW",
                       :e_mag => true,
@@ -41,7 +43,8 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
                       :operating_platform => true,
                       :objectives => "",
                       :features => "",
-                      :finality => "something"
+                      :finality => "something",
+                      :license_info => @license_info
                     )
     @software_info.software_languages << @software_language
     @software_info.software_databases << @software_database
@@ -118,5 +121,11 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
 
     assert_equal false, @software_info.save
     assert_equal true, @software_info.errors.full_messages.include?(error_msg)
+  end
+
+  should "not save software without license" do
+    @software_info.license_info = nil
+
+    assert_equal false, @software_info.save
   end
 end

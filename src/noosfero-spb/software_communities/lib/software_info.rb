@@ -84,11 +84,12 @@ class SoftwareInfo < ActiveRecord::Base
   validates_length_of :finality, :maximum => 4000
   validates_length_of :objectives, :maximum => 4000
   validates_length_of :features, :maximum => 4000
-  validates_presence_of :finality, :community
+  validates_presence_of :finality, :community, :license_info
 
   validate :validate_acronym
 
-  settings_items :another_license_version, :another_license_link
+  settings_items :another_license_version, :default => 'Another'
+  settings_items :another_license_link, :default => '#'
   settings_items :sisp, :default => false
 
   serialize :agency_identification
@@ -136,16 +137,14 @@ class SoftwareInfo < ActiveRecord::Base
   }
 
   def license_info
-    license = LicenseInfo.find_by_id self.license_info_id
     license_another = LicenseInfo.find_by_version("Another")
 
-    if license_another && license.id == license_another.id
-      LicenseInfo.new(
-        :version => self.another_license_version,
-        :link => self.another_license_link
-      )
+    if license_another && self.license_info_id == license_another.id
+      license_another.version = self.another_license_version
+      license_another.link = self.another_license_link
+      license_another
     else
-      license
+      super
     end
   end
 

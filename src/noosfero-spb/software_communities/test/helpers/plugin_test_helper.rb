@@ -9,9 +9,12 @@ module PluginTestHelper
   end
 
   def create_software_info name, finality = "something", acronym = ""
+    license = create_license_info("GPL")
     community = create_community(name)
+
     software_info = SoftwareInfo.new
     software_info.community = community
+    software_info.license_info = license
     software_info.finality = finality
     software_info.acronym = acronym
     software_info.public_software = true
@@ -55,7 +58,7 @@ module PluginTestHelper
   end
 
   def create_license_info version, link = ""
-    license = LicenseInfo.create(:version => version)
+    license = LicenseInfo.find_or_create_by_version(version)
     license.link = link
     license.save
 
