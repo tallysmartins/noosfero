@@ -18,6 +18,14 @@
   margin: 0 0 15px 0;
 }
 
+.action-search-people #content form #search-header #search-filters,
+.action-search-communities #content form #search-header #search-filters,
+.action-search-institutions #content form #search-header #search-filters {
+	position: absolute;
+	top: 40px;
+	right: 18px; 
+}
+
 .action-search-people #content form #search-header #search-filters .sod_select,
 .action-search-communities #content form #search-header #search-filters .sod_select,
 .action-search-institutions #content form #search-header #search-filters .sod_select {
