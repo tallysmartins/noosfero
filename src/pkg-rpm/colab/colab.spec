@@ -1,5 +1,5 @@
 %define name colab
-%define version 1.12.7
+%define version 1.13.0
 %define buildvenv /var/tmp/%{name}-%{version}
 
 Summary: Collaboration platform for communities
@@ -49,6 +49,7 @@ install -m 0644 misc/etc/colab/gunicorn.py %{buildroot}/etc/colab/gunicorn.py.ex
 # Create settings dirs
 install -d -m 0755 %{buildroot}/etc/colab/settings.d
 install -d -m 0755 %{buildroot}/etc/colab/plugins.d
+install -d -m 0755 %{buildroot}/etc/colab/widgets.d
 
 # create log dir
 install -d -m 0755 %{buildroot}/var/log/colab
@@ -99,6 +100,7 @@ rm -rf %{buildvenv}
 %{_bindir}/*
 /etc/colab/gunicorn.py.example
 /etc/colab/plugins.d
+/etc/colab/widgets.d
 /etc/colab/settings.d
 /etc/cron.d/colab
 /lib/systemd/system/celerybeat.service
