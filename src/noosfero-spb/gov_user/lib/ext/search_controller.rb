@@ -3,6 +3,7 @@ require_dependency 'search_controller'
 class SearchController
 
   def communities
+    @titles[:communities] = _("Communities Search")
     delete_communities = []
     valid_communities_string = Community.get_valid_communities_string
     Community.all.each{|community| delete_communities << community.id unless eval(valid_communities_string)}
@@ -14,7 +15,7 @@ class SearchController
   end
 
   def institutions
-    @titles[:institutions] = _("Institution Catalog")
+    @titles[:institutions] = _("Institutions Search")
     results = filter_communities_list{|community| community.institution?}
     results = results.paginate(:per_page => 24, :page => params[:page])
     @searches[@asset] = {:results => results}

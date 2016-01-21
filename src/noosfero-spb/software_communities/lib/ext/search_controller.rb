@@ -12,6 +12,7 @@ class SearchController
   end
 
   def communities
+    @titles[:communities] = _("Communities Search")
     delete_communities = []
     valid_communities_string = Community.get_valid_communities_string
     Community.all.each{|community| delete_communities << community.id unless eval(valid_communities_string)}
