@@ -2,7 +2,7 @@ class Institution < ActiveRecord::Base
   has_many :comments
 
   SEARCH_FILTERS = {
-    :order => %w[],
+    :order => %w[more_recent more_popular more_active],
     :display => %w[compact]
   }
 
