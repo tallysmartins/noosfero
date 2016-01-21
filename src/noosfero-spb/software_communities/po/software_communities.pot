@@ -6,8 +6,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.3.1-61-g25bc299\n"
-"POT-Creation-Date: 2016-01-07 13:00-0000\n"
+"Project-Id-Version: 1.3.1-64-g92ff843\n"
+"POT-Creation-Date: 2016-01-21 17:42-0000\n"
 "PO-Revision-Date: 2015-09-11 17:15-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,40 +17,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: plugins/software_communities/test/unit/software_info_validation_test.rb:109
+#: plugins/software_communities/test/unit/software_info_validation_test.rb:112
 msgid "Features is too long (maximum is 4000 characters)"
 msgstr ""
 
-#: plugins/software_communities/test/unit/software_info_validation_test.rb:117
+#: plugins/software_communities/test/unit/software_info_validation_test.rb:120
 msgid "Objectives is too long (maximum is 4000 characters)"
 msgstr ""
 
-#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:42
+#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:44
 #: plugins/software_communities/views/software_communities_plugin_myprofile/edit_software.html.erb:19
 msgid "Save and Configure Community"
 msgstr ""
 
-#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:46
+#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:48
 msgid "Software updated successfully"
 msgstr ""
 
-#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:50
+#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:52
 msgid "Could not update software"
 msgstr ""
 
-#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:59
+#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:61
 msgid "You don't have permission to change public software status"
 msgstr ""
 
-#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:64
+#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:66
 msgid "You don't have permission to change public software attributes"
 msgstr ""
 
-#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:75
+#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:77
 msgid "Domain %s"
 msgstr ""
 
-#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:148
+#: plugins/software_communities/controllers/software_communities_plugin_myprofile_controller.rb:150
 msgid ""
 "Your new software request will be evaluated by anadministrator. You will be "
 "notified."
@@ -76,11 +76,11 @@ msgstr ""
 msgid "This block displays software statistics."
 msgstr ""
 
-#: plugins/software_communities/lib/categories_and_tags_block.rb:8
+#: plugins/software_communities/lib/categories_and_tags_block.rb:10
 msgid "Categories and Tags"
 msgstr ""
 
-#: plugins/software_communities/lib/categories_and_tags_block.rb:12
+#: plugins/software_communities/lib/categories_and_tags_block.rb:14
 msgid "This block displays the categories and tags of a software."
 msgstr ""
 
@@ -180,11 +180,11 @@ msgstr ""
 msgid "Transportation and Transit"
 msgstr ""
 
-#: plugins/software_communities/lib/ext/search_controller.rb:148
+#: plugins/software_communities/lib/ext/search_controller.rb:149
 msgid "Result Search"
 msgstr ""
 
-#: plugins/software_communities/lib/ext/search_controller.rb:174
+#: plugins/software_communities/lib/ext/search_controller.rb:175
 msgid "Selected options: "
 msgstr ""
 
@@ -332,21 +332,25 @@ msgstr ""
 msgid "This block displays the software community events in a list."
 msgstr ""
 
-#: plugins/software_communities/lib/software_info.rb:167
+#: plugins/software_communities/lib/software_events_block.rb:12
+msgid "Other events"
+msgstr ""
+
+#: plugins/software_communities/lib/software_info.rb:166
 msgid "Name is too long (maximum is %{count} characters)"
 msgstr ""
 
-#: plugins/software_communities/lib/software_info.rb:238
+#: plugins/software_communities/lib/software_info.rb:237
 msgid "can't have more than 10 characteres"
 msgstr ""
 
-#: plugins/software_communities/lib/software_info.rb:241
+#: plugins/software_communities/lib/software_info.rb:240
 msgid "can't have whitespaces"
 msgstr ""
 
-#: plugins/software_communities/lib/software_info.rb:249
-#: plugins/software_communities/lib/software_info.rb:255
-#: plugins/software_communities/lib/software_info.rb:261
+#: plugins/software_communities/lib/software_info.rb:248
+#: plugins/software_communities/lib/software_info.rb:254
+#: plugins/software_communities/lib/software_info.rb:260
 msgid ": at least one must be filled"
 msgstr ""
 
@@ -580,6 +584,7 @@ msgid "Saved Resources"
 msgstr ""
 
 #: plugins/software_communities/views/box_organizer/_search_catalog_block.html.erb:4
+#: plugins/software_communities/views/box_organizer/_categories_and_tags_block.html.erb:4
 #: plugins/software_communities/views/box_organizer/_categories_software_block.html.erb:4
 msgid "Catalog: "
 msgstr ""
@@ -645,22 +650,22 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: plugins/software_communities/views/search/_catalog_filter.html.erb:10
+#: plugins/software_communities/views/search/_catalog_filter.html.erb:11
 #: plugins/software_communities/views/search/_full_community.html.erb:38
 #: plugins/software_communities/views/search/_catalog_result_list.html.erb:42
 #: plugins/software_communities/views/blocks/categories_software.html.erb:13
 msgid "\"#{category.name}\""
 msgstr ""
 
-#: plugins/software_communities/views/search/_catalog_filter.html.erb:16
+#: plugins/software_communities/views/search/_catalog_filter.html.erb:18
 msgid "More options"
 msgstr ""
 
-#: plugins/software_communities/views/search/_catalog_filter.html.erb:18
+#: plugins/software_communities/views/search/_catalog_filter.html.erb:20
 msgid "Clean up"
 msgstr ""
 
-#: plugins/software_communities/views/search/_catalog_filter.html.erb:19
+#: plugins/software_communities/views/search/_catalog_filter.html.erb:21
 msgid "Close"
 msgstr ""
 
@@ -985,7 +990,7 @@ msgid "\"#{download[:name]}\""
 msgstr ""
 
 #: plugins/software_communities/views/blocks/download.html.erb:16
-msgid "Platform:"
+msgid "Platform: "
 msgstr ""
 
 #: plugins/software_communities/views/blocks/download.html.erb:16
