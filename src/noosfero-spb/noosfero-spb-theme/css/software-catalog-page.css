@@ -13,8 +13,7 @@
   box-shadow: none;
 }
 
-.action-search-software_infos #content .main-content h2,
-.action-search-sisp #content .main-content h2{
+.action-search-software_infos #content .main-content h2 {
   color: #FF0366;
   font-size: 16px;
   font-family: "open_sansregular",Arial, Helvetica,sans-serif;
@@ -22,13 +21,20 @@
   text-transform: uppercase;
 }
 
-.action-search-software_infos #content .main-content h1,
-.action-search-sisp #content .main-content h1{
+.action-search-sisp #content .main-content h2 {
+  display: none;
+}
+
+.action-search-software_infos #content .main-content h1 {
   padding: 5px 0 10px 0;
   border-bottom: 1px solid #D3D6DE;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 35px;
   font-variant: normal;
+}
+
+.action-search-sisp #content .main-content h1 {
+  display: none;
 }
 /*** end of title and subtitle ***/
 
@@ -177,7 +183,7 @@
 .controller-search #filter-catalog-software #filter-categories-option {
   border: none;
   height: 0;
-  max-height: 620px;
+  max-height: 100%;
   position: relative;
   overflow: hidden;
   padding: 0 15px;
