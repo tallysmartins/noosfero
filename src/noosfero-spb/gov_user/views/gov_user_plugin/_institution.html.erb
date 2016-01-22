@@ -39,17 +39,11 @@
   <%= fields_for :institutions do |inst| %>
     <div class="spb-row no-margin-top">
       <div class='spb-col spb-col-3'>
-        <label class="formlabel">
-          <%= radio_button_tag("institutions[type]" ,"PrivateInstitution", true)%>
-          <%= _("Private Institution") %>
-        </label>
+        <%= labelled_radio_button _('Public Institution'), 'institutions[type]', 'PublicInstitution', true %>
       </div>
 
       <div class="spb-col spb-col-3">
-        <label class="formlabel">
-          <%= radio_button_tag("institutions[type]", "PublicInstitution") %>
-          <%= _("Public Institution") %>
-        </label>
+        <%= labelled_radio_button _('Private Institution'), 'institutions[type]', 'PrivateInstitution' %>
       </div>
 
       <div class="spb-col spb-col-3"></div>
