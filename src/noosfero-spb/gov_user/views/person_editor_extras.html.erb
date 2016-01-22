@@ -3,6 +3,7 @@
 
   <div class="institution_container">
     <%= text_field_tag(:institution, "", :id=>"input_institution") %>
+    <%= link_to(_("Add institution"), "#", :class=>'button with-text icon-add', :id => 'add_institution_link') %>
 
     <% context.profile.user.institutions.each do |institution| %>
     <%= hidden_field_tag("user[institution_ids][]", institution.id, :class => 'user_institutions') %>

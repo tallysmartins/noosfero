@@ -38,7 +38,7 @@ Feature: rate_community
     And I go to mycommunity's control panel
     And I follow "Process requests" within ".pending-tasks"
     And I choose "Accept" within ".task_decisions"
-    Then I should see "This instiution already has an accepted rating" in the page
+    Then I should see "This institution already has an accepted rating." in the page
 
   Scenario: do not display message on task when a rating with the same institution does not exist on the same software
     Given the following organization ratings

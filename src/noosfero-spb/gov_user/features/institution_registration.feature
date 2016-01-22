@@ -5,9 +5,12 @@ Feature: Institution Field
 
   Background:
     Given "GovUserPlugin" plugin is enabled
+    And "SoftwareCommunitiesPlugin" plugin is enabled
     And I am logged in as mpog_admin
+    And I go to /admin/environment_themes/set/noosfero-spb-theme
     And I go to /admin/plugins
     And I check "GovUserPlugin"
+    And I check "SoftwareCommunitiesPlugin"
     And I press "Save changes"
     And Institutions has initial default values on database
     And I am logged in as mpog_admin
@@ -27,6 +30,6 @@ Feature: Institution Field
     And I should see "CNPJ"
     And I should see "Acronym"
     And I choose "Public Institution"
-    Then I should see "Governmental Sphere:"
-    And I should see "Governmental Power:"
-    And I should see "Juridical Nature:"
+    Then I should see "Governmental Sphere"
+    And I should see "Governmental Power"
+    And I should see "Juridical Nature"
