@@ -14,7 +14,6 @@ class SoftwareCommunitiesPluginPersonTest < ActiveSupport::TestCase
                 "My Name",
                 "user@email.com",
                 "123456",
-                "123456",
                 "user2@email.com",
                 "Any State",
                 "Some City"

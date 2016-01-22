@@ -5,12 +5,15 @@ Feature: Institution Field
 
   Background:
     Given "GovUserPlugin" plugin is enabled
+    And "SoftwareCommunitiesPlugin" plugin is enabled
     And the following users
       | login | name        |
       | joao  | Joao Silva  |
     And I am logged in as admin
+    And I go to /admin/environment_themes/set/noosfero-spb-theme
     And I go to /admin/plugins
     And I check "GovUserPlugin"
+    And I check "SoftwareCommunitiesPlugin"
     And I press "Save changes"
     And feature "skip_new_user_email_confirmation" is enabled on environment
     And I go to /admin/features/manage_fields
@@ -25,12 +28,12 @@ Feature: Institution Field
       | Governo do DF              | GDF     | BR      | DF    | Taguatinga | 12.645.166/0001-44 | Autarquia        | Legislativo        | Federal             | Governo do DF |
       | Ministerio do Planejamento | MP      | BR      | DF    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             | Ministerio do Planejamento |
 
+	@selenium
   Scenario: Go to control panel when clicked on 'Complete your profile' link
     Given I am logged in as "joao"
     And I am on joao's control panel
     When I follow "Complete your profile"
     Then I should see "Profile settings for "
-    And I should see "Personal information"
 
   @selenium
   Scenario: Verify text information to use governmental e-mail
@@ -44,13 +47,12 @@ Feature: Institution Field
     Given I am logged in as "joao"
     And I am on joao's control panel
     When I follow "Edit Profile"
-    And I follow "Add new institution"
     And I type in "Minis" in autocomplete list "#input_institution" and I choose "Ministerio do Planejamento"
-    And I follow "Add new institution"
+    And I follow "Add institution"
     And I type in "Gover" in autocomplete list "#input_institution" and I choose "Governo do DF"
-    And I follow "Add new institution"
-    Then I should see "Ministerio do Planejamento" within ".institutions_added"
-    And I should see "Governo do DF" within ".institutions_added"
+    And I follow "Add institution"
+    Then I should see "Ministerio do Planejamento"
+    And I should see "Governo do DF"
 
   @selenium
   Scenario: Verify if field 'city' is shown when Brazil is selected
@@ -75,3 +77,14 @@ Feature: Institution Field
     And I fill in "input_institution" with "Some Nonexistent Institution"
     And I sleep for 1 seconds
     Then I should see "No institution found"
+
+  @selenium
+  Scenario: Does not suggest institution that already exists
+    Given I am logged in as "joao"
+    And I am on joao's control panel
+    When I follow "Edit Profile"
+    And I type in "Minis" in autocomplete list "#input_institution" and I choose "Ministerio do Planejamento"
+    And I follow "Add institution"
+    And I fill in "input_institution" with "Minis"
+    And I sleep for 1 seconds
+    Then I should not see "Ministerio do Planejamento" within "ul.ui-autocomplete"

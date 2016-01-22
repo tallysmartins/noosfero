@@ -16,15 +16,14 @@ class OrganizationRatingTest < ActiveSupport::TestCase
     private_institution = build_private_institution "huehue", "hue", "11.222.333/4444-55"
 
     community_rating = OrganizationRating.new(:person => person, :value => 3, :organization => community, :institution => private_institution)
-    assert_equal false, community_rating.valid?
 
-    assert_equal true, community_rating.errors[:institution].include?("not found")
+    assert_equal false, community_rating.valid?
 
     private_institution.save
     community_rating.institution = private_institution
 
     assert_equal true, community_rating.valid?
-    assert_equal false, community_rating.errors[:institution].include?("not found")
+    assert_equal false, community_rating.errors[:institution].include?("institution not found")
   end
 
   private

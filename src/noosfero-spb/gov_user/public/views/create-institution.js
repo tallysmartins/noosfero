@@ -202,12 +202,13 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
         $.ajax({
           type: "GET",
           url: AJAX_URL.get_institutions,
-          data: {query: request.term},
+          data: {query: request.term, selected_institutions: get_selected_institutions()},
           success: function(result){
             response(result);
 
             if( result.length === 0 ) {
               $('#institution_empty_ajax_message').switchClass("hide-field", "show-field");
+              $('#add_institution_link').hide();
               toggle_extra_fields_style_status(true);
               $("#institution_modal").css({display: "none"});
             }
@@ -222,12 +223,22 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
       select : function (event, selected) {
         $('#institution_empty_ajax_message').switchClass("show-field", "hide-field");
-        //$("#create_institution_link").remove();
+        $('#add_institution_link').show();
         toggle_extra_fields_style_status(false);
         $("#institution_selected").val(selected.item.id).attr("data-name", selected.item.label);
       }
     });
   }
+
+  function get_selected_institutions() {
+    var selected_institutions = []
+    $('.institutions_added').find('li').each(function() {
+      selected_institutions.push($(this).attr('data-institution'));
+    });
+
+    return selected_institutions;
+  }
+
   function add_selected_institution_to_list(id, name) {
     var selected_institution = "<li data-institution='"+id+"'>"+name;
         selected_institution += "<a href='#' class='button without-text icon-remove remove-institution'></a></li>";
@@ -246,6 +257,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
       // Visualy add the selected institution to the list
       add_selected_institution_to_list(selected.val(), selected.attr("data-name"));
+      $(this).hide();
 
       // clean the institution flag
       selected.val("").attr("data-name", "");
@@ -311,7 +323,6 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     var divisor_option = SelectElement.generateOption("-1", "--------------------------------");
     var default_option = SelectElement.generateOption("BR", "Brazil");
 
-
     var inst_type = $("input[name='institutions[type]']:checked").val();
     var country = $("#community_country").val();
 
@@ -322,6 +333,10 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       $('#community_country').find("option[value='']").remove();
       $('#community_country').prepend(divisor_option);
       $('#community_country').prepend(default_option);
+
+      if ($('#add_institution_link').length > 0) {
+        $('#add_institution_link').hide();
+      }
 
       if($("#edit_institution_page").val() === "false") {
         $('#community_country').val("BR");
@@ -379,7 +394,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
     $("#community_name").keyup(institution_already_exists);
 
-    $("#add_new_institution").click(add_new_institution);
+    $("#add_institution_link").click(add_new_institution);
 
     $(".remove-institution").click(remove_institution);
 

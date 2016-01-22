@@ -105,9 +105,9 @@ class GovUserPluginControllerTest < ActionController::TestCase
 
     fields = InstitutionTestHelper.generate_form_fields(
       "Some Private Institution",
-      "BR",
-      "DF",
-      "Brasilia",
+      "EN",
+      "NY",
+      "New York",
       "",
       "PrivateInstitution"
     )
