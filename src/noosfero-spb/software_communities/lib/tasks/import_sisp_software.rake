@@ -1,37 +1,25 @@
 # encoding: UTF-8
 
 namespace :sisp do
-  desc "Creates SISP env, template, and import data"
-  task :all => :environment do
+  desc "Creates SISP env and templates"
+  task :prepare => :environment do
     unless ENV["DOMAIN"].present?
       puts "You didn't choose any domain. The default domain is 'novo.sisp.gov.br'"
-      puts "You can run rake sisp:all DOMAIN=domain.url"
-      puts "Continue and create SISP Environment with default domain? (y/N)"
-      response = $stdin.gets.strip
-
-      unless ['y', 'yes'].include?(response.downcase)
-        puts "*** ABORTED."
-        exit 1
-      end
+      puts "You can run rake sisp:prepare DOMAIN=domain.url to add a domain"
     end
 
     unless ENV["ADMINUSER"].present?
       puts "You didn't enter any user to be selected from the default Environment"
-      puts "You can run rake sisp:all ADMINUSER=jose"
-      puts "Continue and create SISP Environment without an admin user? (y/N)"
-      response = $stdin.gets.strip
-
-      unless ['y', 'yes'].include?(response.downcase)
-        puts "*** ABORTED."
-        exit 1
-      end
+      puts "You can run rake sisp:prepare ADMINUSER=jose"
     end
 
     Rake::Task['sisp:create_env'].invoke
     Rake::Task['noosfero:plugins:enable_all'].invoke
     Rake::Task['sisp:create_template'].invoke
-    Rake::Task['sisp:import_data'].invoke
   end
+
+  desc "Create SISP environment and import data"
+  task :all => [:prepare, :import_data]
 
   desc "Creates the SISP Environment"
   task :create_env => :environment do
@@ -56,15 +44,8 @@ namespace :sisp do
       sisp_user.save
       sisp_user.activate
       env.add_admin sisp_user.person
-      puts "SISP admin user created with success!"
-      puts "Type the password for this user"
-      $stdin.echo = false
-      sisp_user.password = $stdin.gets.strip
-      puts "Type the password confirmation"
-      sisp_user.password_confirmation = $stdin.gets.strip
 
-      puts "Password not changed! Enter rails console and make it manually" unless sisp_user.save
-      $stdin.echo = true
+      puts "User created with a random password. You can change in the console." unless sisp_user.save
     else
       puts "\nWARNING!!!!!!***********************************************"
       puts "No user found with the given login '#{ENV['ADMINUSER']}'.... skipping"
@@ -104,7 +85,7 @@ namespace :sisp do
       template = Community.create!(name: "Sisp", identifier: "sisp", is_template: true, environment: env)
 
       template.home_page = template.blog
-      template.update_layout_template("leftbar")
+      template.update_layout_template("nosidebars")
       template.save
 
       create_template_blocks template
@@ -134,10 +115,14 @@ namespace :sisp do
 
   desc "Import sisp software from yml"
   task :import_data => :environment do
-
     $imported_data = YAML.load_file('plugins/software_communities/public/static/sisp-catalog.yml')
     $env = Environment.find_by_name("SISP")
+    unless $env
+      puts "SISP environment not FOUND!"
+      exit 1
+    end
 
+    $license = LicenseInfo.find_or_create_by_version("Another")
     $software_category = $env.categories.find_or_create_by_name("Software")
     $software_category.environment = $env
     $software_category.save!
@@ -205,6 +190,7 @@ def create_sisp_software_info name, finality = "blank", acronym = ""
   end
 
   software_info = SoftwareInfo.new
+  software_info.license_info = $license
   software_info.community = community
   software_info.finality = finality
   software_info.acronym = acronym
