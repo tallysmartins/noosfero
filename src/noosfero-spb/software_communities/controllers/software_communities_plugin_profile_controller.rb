@@ -9,15 +9,11 @@ class SoftwareCommunitiesPluginProfileController < ProfileController
   }
 
   def download_file
-    download_block = DownloadBlock.find_by_id params[:block]
-    index = params[:download_index].to_i
+    download = Download.where(:id => params[:download_id].to_i).detect{ |b| b.download_block.environment.id == environment.id }
 
-    if download_block and (index < download_block.downloads.size)
-      download = Download.new(download_block.downloads[index])
-
+    if download
       download.total_downloads += 1
-      download_block.downloads[index] = download.to_hash
-      download_block.save
+      download.save
 
       redirect_to download.link
     else
@@ -29,8 +25,8 @@ class SoftwareCommunitiesPluginProfileController < ProfileController
   private
 
   def validate_download_params
-    valid_block = (!params[:block].nil?) and (params[:block].to_i > 0)
-    valid_index = params[:download_index].to_i >= 0
+    valid_block = (!params[:block_id].nil?) and (params[:block_id].to_i > 0)
+    valid_index = params[:download_id].to_i >= 0
 
     if !valid_block or !valid_index
       session[:notice] = ERROR_MESSAGES[:invalid_params]

@@ -1,0 +1,24 @@
+<li class='download-option download-forms'>
+  <%= hidden_field_tag 'block[downloads][][id]',  ((defined? download) ? download.id : '') %>
+
+  <%= labelled_form_field(_('Name'), text_field_tag('block[downloads][][name]', (defined? download) ? download.name : '')) %>
+  <%= button_without_text(:edit, _('Edit'), "#" , { :onclick => 'softwareDownload.toggleForm(this); return false', :class=>"edit-link-list-row" }) %>
+
+  <div class="toggle-form <%= (defined? download) ? 'closed' : 'opened' %>">
+    <%= labelled_form_field(_('Link'), text_field_tag('block[downloads][][link]', (defined? download) ? download.link : '')) %>
+    <ul>
+      <% @block.uploaded_files.each do |file| %>
+        <%= render :partial => 'download_file', :locals => {:file => file} %>
+      <% end %>
+      <li style="clear: both"></li>
+    </ul>
+
+    <%= labelled_form_field(_('Platforms'), text_field_tag('block[downloads][][software_description]', (defined? download) ? download.software_description : '')) %>
+    <%= labelled_form_field(_('Minimum Requirements'), text_field_tag('block[downloads][][minimum_requirements]', (defined? download) ? download.minimum_requirements : '')) %>
+    <%= labelled_form_field(_('Size'), text_field_tag('block[downloads][][size]', (defined? download) ? download.size : '')) %>
+
+    <span class='delete-download-button'>
+      <%= button_without_text(:delete, _('Delete'), "#" , { :onclick => 'softwareDownload.deleteDownload(this); return false', :class=>"delete-link-list-row" }) %>
+    </span>
+  </div>
+</li>

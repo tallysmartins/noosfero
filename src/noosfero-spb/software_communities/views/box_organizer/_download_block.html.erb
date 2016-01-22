@@ -1,11 +1,15 @@
 <div id='edit-download-block'>
 
   <h3><%= _('Download options') %></h3>
-  <div id ="droppable-list-downloads">
-    <% @block.downloads.each do |download| %>
-      <%= render :partial => 'download_list', :locals => {:download => download} %>
+  <ul id="droppable-list-downloads">
+    <% @block.download_records.sort_by(&:id).each do |download| %>
+      <%= render :partial => 'download_list_item', :locals => {:download => download} %>
     <% end %>
-  </div>
+  </ul>
 
   <%= link_to_function _('New link'), 'softwareDownload.addNewDonwload(); return false', :class => 'button icon-add with-text download-new-link-button' %>
+
+  <div id="download-list-item-template" style="display: none;">
+    <%= render :partial => 'download_list_item' %>
+  </div>
 </div>

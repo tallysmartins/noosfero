@@ -1,0 +1,6 @@
+<li class="file-item">
+  <a onclick="softwareDownload.selectFile(this)">
+   <i class="fa fa-plus"></i><span class="file-name"><%= file.name%></span> - <span class="file-size"><%= number_to_human_size(file.size, precision: 2) %></span>
+   <%= hidden_field_tag :file_path, "/#{file.profile.identifier}/#{file.path}", :class => "file-path" %>
+  </a>
+</li>

@@ -45,8 +45,8 @@ class StatisticBlock < Block
   end
 
   def get_downloads_from_block download_block
-    downloads = download_block.downloads.map do |download|
-      download[:total_downloads] unless download[:total_downloads].nil?
+    downloads = download_block.download_records.map do |download|
+      download.total_downloads unless download.total_downloads.nil?
     end
     downloads.select! {|value| not value.nil? }
     downloads.sum

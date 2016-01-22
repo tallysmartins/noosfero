@@ -33,21 +33,13 @@ class DownloadTest < ActiveSupport::TestCase
     assert_equal @downloads_sample_data.last[:total_downloads], with_total_downloads.total_downloads
   end
 
-  should "Remove downloads without a name" do
-    @downloads_sample_data[1] = @downloads_sample_data[1].slice! :name
-    downloads = Download.validate_download_list @downloads_sample_data
-
-    assert_equal 1, downloads.size
-    assert_equal @downloads_sample_data[0][:name], downloads[0][:name]
-  end
-
   should "Only set total_downloads if the value is integer" do
     download = Download.new(@downloads_sample_data.last)
 
-    download.total_downloads = "456"
-    assert_not_equal 456, download.total_downloads
+    download.total_downloads = "not-a-number"
+    assert_false download.valid?
 
     download.total_downloads = 456
-    assert_equal 456, download.total_downloads
+    assert_true download.valid?
   end
 end

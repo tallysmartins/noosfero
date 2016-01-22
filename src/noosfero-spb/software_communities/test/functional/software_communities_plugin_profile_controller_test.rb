@@ -20,39 +20,39 @@ class SoftwareCommunitiesPluginProfileControllerTest < ActionController::TestCas
       :version=>"CC-GPL-V2",
       :link=>"http://creativecommons.org/licenses/GPL/2.0/legalcode.pt"
     )
-    @download_data = {
+
+    download_data = [{
       :name=>"Google",
       :link=>"http://google.com",
       :software_description=>"all",
       :minimum_requirements=>"none",
       :size=>"?",
       :total_downloads=>0
-    }
+    }]
 
     @software = create_software(software_fields)
     @software.save!
 
-    download_block = DownloadBlock.new
-    download_block.downloads = Download.validate_download_list([@download_data])
-    download_block.save!
+    @download_block = DownloadBlock.new
+    @download_block.downloads = download_data
+    @download_block.save!
 
-    @software.community.blocks << download_block
+    @software.community.blocks << @download_block
     @software.community.save!
   end
 
   should 'redirect to download link with correct params' do
-    download_block = DownloadBlock.last
-    get :download_file, :profile=>@software.community.identifier,
-        :block => download_block.id, :download_index => 0
+    DownloadBlock.any_instance.stubs(:environment).returns(@environment)
+    get :download_file, :profile => @software.community.identifier,
+        :block_id => @download_block.id, :download_id => @download_block.download_records.first.id
 
     assert_equal nil, session[:notice]
-    assert_redirected_to download_block.downloads[0][:link]
+    assert_redirected_to @download_block.download_records.first.link
   end
 
   should "notice when the download was not found" do
-    download_block = DownloadBlock.last
-    get :download_file, :profile=>@software.community.identifier,
-        :block => 123, :download_index => 0
+    get :download_file, :profile => @software.community.identifier,
+        :block_id => @download_block.id, :download_id => @download_block.download_records.first.id + 10
 
     assert_equal "Could not find the download file", session[:notice]
   end
@@ -89,9 +89,8 @@ class SoftwareCommunitiesPluginProfileControllerTest < ActionController::TestCas
   end
 
   should "notice when given invalid download params" do
-    download_block = DownloadBlock.last
-    get :download_file, :profile=>@software.community.identifier,
-        :block => download_block.id, :download_index => -5
+    get :download_file, :profile => @software.community.identifier,
+        :block_id => "-3", :download_id => "-50"
 
     assert_equal "Invalid download params", session[:notice]
   end
