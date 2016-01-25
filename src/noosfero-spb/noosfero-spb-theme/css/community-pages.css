@@ -179,6 +179,7 @@
   margin:0px 45%;
   color:#FF0366;
 }
+
 #block-community-tabs .ui-tabs .ui-tabs-nav li.ui-tabs-active a{
   color: #FF0366;
   font-weight: 300;
@@ -485,12 +486,12 @@
 }
 
 #content #blog-tab .blog .blog-post.position-1 .post-pic {
-margin: 0 20px 5px 0px;
-border-radius: 4px;
-height: 210px;
-width: 100%;
-background: center/cover no-repeat;
-float: left;
+  margin: 0 20px 5px 0px;
+  border-radius: 4px;
+  height: 210px;
+  width: 100%;
+  background: center/cover no-repeat;
+  float: left;
 }
 
 /* Read more button*/
@@ -541,17 +542,17 @@ float: left;
 
 /* SISP Tab Data - about tab */
 #block-community-tabs .software-sisp {
-  margin-top: 46px;
+  margin-top: 40px;
 }
 
 #block-community-tabs .software-sisp p,
 #block-community-tabs .software-sisp h2 {
-  font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #block-community-tabs .software-sisp h2 {
   border-bottom: solid 2px #f7f8f9;
-  margin-bottom: 26px;
+  margin-bottom: 20px;
   padding-bottom: 8px;
   color: #172938;
   font-size: 18px;
@@ -563,7 +564,12 @@ float: left;
 }
 
 #block-community-tabs .software-sisp p {
+  margin-bottom: 10px;
   color: #172938;
+}
+
+#block-community-tabs .software-about p {
+  margin-bottom: 20px;
 }
 
 #block-community-tabs .software-sisp p span {
