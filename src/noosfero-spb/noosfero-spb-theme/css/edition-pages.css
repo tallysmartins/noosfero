@@ -275,15 +275,17 @@
   color: #585858;
 }
 
+.action-software_communities_plugin_myprofile-new_software #content .main-block form textarea{
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: arial, helvetica;
+  padding: 10px;
+}
+
 .action-software_communities_plugin_myprofile-new_software #content .formfield input{
   background: none #FFFFFF;
-  border: 1px solid #DDDDDD;
-  color: #585858;
-  font-size: 16px;
-  width: 76%;
-  word-wrap: break-word;
-  border-radius: 4px;
 }
+
 .action-software_communities_plugin_myprofile-new_software #content .main-content form label.formlabel.mandatory{
   font-size: 14px;
   margin-bottom: 5px;
@@ -317,20 +319,16 @@
 }
 
 .action-software_communities_plugin_myprofile-new_software #software-name-field span #community-identifier{
-  width: auto;
+  width: 500px;
 }
 
 .action-software_communities_plugin_myprofile-new_software #content #software-hostname {
-  line-height: 22px;
-  padding: 0px;
-  color: #4A4A4A;
-  font-size: 20px;
-  text-transform: lowercase;
-  border-spacing: 20px;
+  position: absolute;
+  font-size: 15px;
+  padding: 5px 10px;
 }
 
 .action-software_communities_plugin_myprofile-new_software #content .main-block form #profile_change_picture {
-  padding: 0 15px 15px 15px;
   border: 1px dotted #ddd;
   margin-top: 10px;
 }
@@ -464,7 +462,6 @@ font-size: 10px;
   font-weight: 500;
 }
 
-
 .action-contact-new .formfield textarea{
   background: none #FFFFFF;
   border: 1px solid #DDDDDD;
@@ -503,7 +500,6 @@ font-size: 10px;
   display: none;
 }
 
-
 .action-tasks-index select{
   background: none;
   border: 1px solid #D3D6DE;
@@ -512,6 +508,7 @@ font-size: 10px;
   margin: 0px 0px 0px 10px;
   font-size: 14px;
 }
+
 .action-tasks-index #content .main-block form input[type="text"] {
   display: block;
   height: 19px;
@@ -544,7 +541,18 @@ font-size: 10px;
   line-height: 20px;
   position: absolute;
 }
+
 .action-tasks-index .task_decisions label{
   margin: 2px 0px 2px 30px;
   line-height: 22px;
+}
+
+#content .new-software-form .button-bar .button.with-text.icon-save.submit{
+  background: #3E67B1;
+  color: #FFF;
+}
+
+#content .new-software-form .button-bar .button.with-text.icon-save.submit:hover{
+  background: #FFF;
+  color: #3E67B1;
 }

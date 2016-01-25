@@ -751,3 +751,125 @@
   font-weight: 800;
   padding-top: 30px;
 }
+
+/* software_communites new software page refactor */
+.new-software-form .optional-box{
+  margin-bottom: 20px;
+}
+
+.new-software-form div#errorExplanation{
+  margin-left: 0px;
+  color: #FF0366;
+}
+
+.new-software-form div#errorExplanation ul li{
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.new-software-form div#errorExplanation h2{
+  color: #000;
+  padding: 0px;
+  font-size: 16px;
+  background: none;
+  text-align: left;
+}
+
+.new-software-form .step-explanation span{
+  font-size: 14px;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-block form .highlight-error[type="text"],
+.action-software_communities_plugin_myprofile-new_software #content .main-block form .highlight-error{
+  border: 1px solid #FF0366;
+  box-shadow: none;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-block form #software_info_finality{
+  width: 490px;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-block form .obrigatory-field .highlight-error[type="text"],
+.action-software_communities_plugin_myprofile-new_software #content .main-block form .optional-field input[type="text"],
+.action-software_communities_plugin_myprofile-new_software #content .main-block form .obrigatory-field input[type="text"]{
+  width: 500px;
+}
+
+.action-software_communities_plugin_myprofile-new_software .new-software-form #software-name-field #community-identifier{
+  width: 277px;
+  padding-left: 228px;
+}
+
+.new-software-form .optional-field label.formlabel,
+.new-software-form .optional-box label {
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #231f20;
+}
+
+.new-software-form #content .main-block form .optional-box #profile_change_picture.software-label-box{
+  width: 470px;
+  border-radius: 4px;
+}
+
+.action-software_communities_plugin_myprofile-new_software #content .main-block form #profile_change_picture{
+  border: none;
+}
+
+.new-software-form .formfieldline{
+  padding: 0px;
+}
+
+.new-software-form #community_image_builder_uploaded_data{
+  border: none;
+}
+
+.new-software-form #community_image_builder_label{
+  display: none !important;
+}
+
+.new-software-form .formfield input{
+  text-indent: 0px;
+  padding: 0px;
+  font-size: 14px;
+}
+
+/* end of software_communites new software page refactor */
+
+/* software_steps */
+.software-step-info{
+  padding-bottom: 30px;
+  display: block;
+}
+
+.software-step-info ul li{
+  float: left;
+  margin-right: 30px;
+  border-right: 1px solid #eee;
+  padding-right: 30px;
+  font-size: 14px;
+}
+
+.software-step-info ul li:last-child{
+  border: none;
+}
+
+.software-step-info ul li .current-step{
+  background: #FF0366;
+}
+
+.software-step-info ul li span{
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  margin-right: 6px;
+  background: #333;
+  padding: 1px 0 0 0;
+  font-weight: 700;
+}
+/* end of software_steps */

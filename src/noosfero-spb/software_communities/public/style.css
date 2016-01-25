@@ -82,11 +82,8 @@
   background: url(../../../designs/themes/base/imgs/arrow-right-p.png) 100% 50% no-repeat;
 }
 
-/*FIX-ME: necessary while there is
-* not a defined theme style for the
-* forms */
-.improve_input_size {
-  width: 315px !important;
+#software-info-repository-link{
+  width: 315px;
 }
 
 .software-block {
@@ -141,3 +138,13 @@
 }
 
 /* end of profile_design download block */
+
+/* new_software page */
+.new-software-form .obrigatory-field {
+  margin-bottom: 20px;
+}
+
+.new-software-form .optional-field {
+  margin-bottom: 20px;
+}
+/* end of new_software page */
