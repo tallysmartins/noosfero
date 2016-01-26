@@ -33,3 +33,7 @@
 #create_institution_link {
   margin-left: 8px;
 }
+
+#add_institution_link {
+  display: none;
+}
