@@ -66,8 +66,9 @@ class GovUserPluginController < ApplicationController
     redirect_to "/" if !request.xhr? || params[:query].blank?
 
     selected_institutions = Institution.where(id: params[:selected_institutions]).select([:id, :name])
-    institutions = Institution.search_institution(params[:query]).select([:id, :name])
+    institutions = Institution.search_institution(params[:query], environment).select("institutions.id, institutions.name")
     institutions -= selected_institutions
+
     institutions_list = institutions.map { |institution|
       {:value=>institution.name, :id=>institution.id}
     }

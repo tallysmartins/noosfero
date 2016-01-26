@@ -18,6 +18,30 @@ Given /^SoftwareInfo has initial default values on database$/ do
   OperatingSystemName.create(:name=>"CentOS")
 end
 
+Given /^Institutions has initial default values on database$/ do
+  GovernmentalPower.create(:name => "Executivo")
+  GovernmentalPower.create(:name => "Legislativo")
+  GovernmentalPower.create(:name => "Judiciario")
+
+  GovernmentalSphere.create(:name => "Federal")
+
+  JuridicalNature.create(:name => "Autarquia")
+  JuridicalNature.create(:name => "Administracao Direta")
+  JuridicalNature.create(:name => "Empresa Publica")
+  JuridicalNature.create(:name => "Fundacao")
+  JuridicalNature.create(:name => "Orgao Autonomo")
+  JuridicalNature.create(:name => "Sociedade")
+  JuridicalNature.create(:name => "Sociedade Civil")
+  JuridicalNature.create(:name => "Sociedade de Economia Mista")
+
+  national_region = NationalRegion.new
+  national_region.name = "Distrito Federal"
+  national_region.national_region_code = '35'
+  national_region.national_region_type_id = NationalRegionType::STATE
+  national_region.save
+end
+                                  
+
 Given /^I type in "([^"]*)" in autocomplete list "([^"]*)" and I choose "([^"]*)"$/ do |typed, input_field_selector, should_select|
   # Wait the page javascript load
   sleep 1
