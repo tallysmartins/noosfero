@@ -15,18 +15,7 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     assert_equal @software_info.license_info, @license_info
   end
 
-  should "Return license_info with nil id when license is 'Another'" do
-    @software_info = create_software_info("software_test")
-    @license_another = create_license_info("Another")
-
-    @software_info.license_info = @license_another
-    @software_info.save!
-
-    assert_equal @software_info.license_info_id, @license_another.id
-    assert_equal @software_info.license_info.id, nil
-  end
-
-  should "Return fake license_info when call method another_license" do
+  should "Return license_info with another values" do
     @software_info = create_software_info("software_test")
     @license_another = create_license_info("Another")
 
