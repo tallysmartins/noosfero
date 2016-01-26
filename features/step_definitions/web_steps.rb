@@ -39,7 +39,15 @@ end
 
 When /^(?:|I )follow "([^"]*)"(?: within "([^"]*)")?$/ do |link, selector|
   with_scope(selector) do
-    click_link(link, :match => :prefer_exact)
+
+    obj = find_link(link, :match => :prefer_exact)
+
+    #FIXME need to investigate why selenium click is not working proprerly with
+    if page.driver.class.name.include? "Selenium"
+      page.driver.execute_script("document.evaluate('#{obj.path}', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();")
+    else
+      obj.click
+    end
   end
 end
 
