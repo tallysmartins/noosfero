@@ -26,7 +26,7 @@ package 'colab-spb-theme' do
   notifies :restart, 'service[colab]'
 end
 
-package 'colab-spb-theme' do
+package 'colab-spb-plugin' do
   action :upgrade
   notifies :restart, 'service[colab]'
 end
