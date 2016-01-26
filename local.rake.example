@@ -1,2 +1,7 @@
 # copy this file to local.rake and adjust to your local environment
 ENV['CHAKE_RSYNC_OPTIONS'] = '--exclude tmp/dump'
+
+# if you have vagrant lxc installed and want to use it, just copy the settings below to your local.rake
+# and run vagrant up --provider lxc
+#ENV['VAGRANT_BOX'] = 'frensjan/centos-7-64-lxc' #you can figure out a different  lxc box if you want
+#ENV['SPB_ENV'] = 'lxc'
