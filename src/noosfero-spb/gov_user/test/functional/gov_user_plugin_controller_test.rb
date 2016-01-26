@@ -26,7 +26,7 @@ class GovUserPluginControllerTest < ActionController::TestCase
       "Ministerio Publico da Uniao",
       "MPU",
       "BR",
-      "DF",
+      "Distrito Federal",
       "Gama",
       @juridical_nature,
       @gov_power,
@@ -37,7 +37,7 @@ class GovUserPluginControllerTest < ActionController::TestCase
       "Tribunal Regional da Uniao",
       "TRU",
       "BR",
-      "DF",
+      "Distrito Federal",
       "Brasilia",
       @juridical_nature,
       @gov_power,
@@ -84,7 +84,7 @@ class GovUserPluginControllerTest < ActionController::TestCase
     fields = InstitutionTestHelper.generate_form_fields(
       "foo bar",
       "BR",
-      "DF",
+      "Distrito Federal",
       "Brasilia",
       "12.234.567/8900-10",
       "PublicInstitution"
@@ -100,18 +100,41 @@ class GovUserPluginControllerTest < ActionController::TestCase
     assert json_response["success"]
   end
 
-  should "create a institution without cnpj" do
+  should "not create a private institution without cnpj" do
     @controller.stubs(:verify_recaptcha).returns(true)
 
     fields = InstitutionTestHelper.generate_form_fields(
       "Some Private Institution",
-      "EN",
-      "NY",
-      "New York",
+      "BR",
+      "Distrito Federal",
+      "Brasilia",
       "",
       "PrivateInstitution"
     )
     fields[:institutions][:acronym] = "SPI"
+
+    xhr :get, :new_institution, fields
+
+    json_response = ActiveSupport::JSON.decode(@response.body)
+
+    assert_false json_response["success"]
+    assert json_response["errors"].include? "Cnpj can't be blank"
+  end
+
+  should "create public institution without cnpj" do
+    @controller.stubs(:verify_recaptcha).returns(true)
+
+    fields = InstitutionTestHelper.generate_form_fields(
+      "Some Private Institution",
+      "BR",
+      "Distrito Federal",
+      "Brasilia",
+      "56.366.790/0001-88",
+      "PublicInstitution"
+    )
+    fields[:institutions][:governmental_power] = @gov_power.id
+    fields[:institutions][:governmental_sphere] = @gov_sphere.id
+    fields[:institutions][:juridical_nature] = @juridical_nature.id
 
     xhr :get, :new_institution, fields
 
@@ -144,7 +167,7 @@ class GovUserPluginControllerTest < ActionController::TestCase
     fields = InstitutionTestHelper.generate_form_fields(
       "Some Private Institution",
       "BR",
-      "DF",
+      "Distrito Federal",
       "Brasilia",
       "12.345.567/8900-10",
       "PrivateInstitution"
@@ -162,7 +185,7 @@ class GovUserPluginControllerTest < ActionController::TestCase
     fields = InstitutionTestHelper.generate_form_fields(
       "Some Private Institution",
       "BR",
-      "DF",
+      "Distrito Federal",
       "Brasilia",
       "56.366.790/0001-88",
       "PrivateInstitution"
@@ -221,7 +244,7 @@ class GovUserPluginControllerTest < ActionController::TestCase
     fields = InstitutionTestHelper.generate_form_fields(
       "Private Institution",
       "BR",
-      "DF",
+      "Distrito Federal",
       "Brasilia",
       "12.323.557/8900-10",
       "PrivateInstitution"

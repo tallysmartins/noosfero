@@ -284,9 +284,10 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
   function show_hide_cnpj_city(country) {
     var cnpj = $("#institutions_cnpj").parent().parent();
-    var city = $("#community_city").parent();
+    var city = $("#community_city");
     var city_label = $('label[for="community_city"]');
-    var state = $("#community_state").parent();
+    var state = $("#community_state");
+    var state_label = $('label[for="community_state"]');
     var inst_type = $("input[name='institutions[type]']:checked").val();
 
     institution_type_actions(inst_type);
@@ -298,13 +299,17 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
     if ( country !== "BR" ) {
       cnpj.hide();
-      city.find('input').val(''); city.hide();
+      city.val('');
+      city.hide();
       city_label.hide();
+      state.val("");
       state.hide();
+      state_label.hide();
     } else {
       cnpj.show();
       city.show();
       city_label.show();
+      state_label.show();
       state.show();
     }
   }
@@ -315,33 +320,6 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
       show_public_institutions_fields();
     } else {
       show_private_institutions_fields();
-    }
-  }
-
-
-  function set_form_count_custom_data() {
-    var divisor_option = SelectElement.generateOption("-1", "--------------------------------");
-    var default_option = SelectElement.generateOption("BR", "Brazil");
-
-    var inst_type = $("input[name='institutions[type]']:checked").val();
-    var country = $("#community_country").val();
-
-    institution_type_actions(inst_type);
-    show_hide_cnpj_city(country);
-
-    if( $('#community_country').find("option[value='']").length === 1 ) {
-      $('#community_country').find("option[value='']").remove();
-      $('#community_country').prepend(divisor_option);
-      $('#community_country').prepend(default_option);
-
-      if ($('#add_institution_link').length > 0) {
-        $('#add_institution_link').hide();
-      }
-
-      if($("#edit_institution_page").val() === "false") {
-        $('#community_country').val("BR");
-        show_hide_cnpj_city($('#community_country').val());
-      }
     }
   }
 
@@ -416,7 +394,7 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
 
 
   function init_module() {
-    set_form_count_custom_data();
+    show_hide_cnpj_city($('#community_country').val());
     set_events();
   }
 

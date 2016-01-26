@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class Institution < ActiveRecord::Base
   has_many :comments
 
@@ -7,6 +9,12 @@ class Institution < ActiveRecord::Base
   }
 
   CNPJ_FORMAT = /^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/
+
+  VALID_STATES = { "AC"=>"Acre", "AL"=>"Alagoas", "AM"=>"Amazonas", "AP"=>"Amapá", "BA"=>"Bahia", "CE"=>"Ceará",
+                   "DF"=>"Distrito Federal", "ES"=>"Espírito Santo", "GO"=>"Goiás", "MA"=>"Maranhão", "MT"=>"Mato Grosso",
+                   "MS"=>"Mato Grosso do Sul", "MG"=>"Minas Gerais", "PA"=>"Pará", "PB"=>"Paraíba", "PR"=>"Paraná",
+                   "PE"=>"Pernambuco", "PI"=>"Piauí", "RJ"=>"Rio de Janeiro", "RN"=>"Rio Grande do Norte", "RO"=>"Rondônia",
+                   "RS"=>"Rio Grande do Sul", "RR"=>"Roraima", "SC"=>"Santa Catarina", "SE"=>"Sergipe", "SP"=>"São Paulo", "TO"=>"Tocantins" }
 
   def self.default_search_display
     'compact'
@@ -76,12 +84,12 @@ class Institution < ActiveRecord::Base
   end
 
   def validate_state
-    unless self.community.blank?
-      if self.community.country == "BR" &&
-        (self.community.state.blank? || self.community.state == "-1") &&
-        self.errors[:state].blank?
-
-        self.errors.add(:state, _("can't be blank"))
+    if self.community.present? && self.community.country == "BR"
+      if self.community.state.blank?
+        self.errors.add(:state, _("can't be blank")) if self.errors[:state].blank?
+        return false
+      elsif !VALID_STATES.values.include?(self.community.state)
+        self.errors.add(:state, _("invalid state")) if self.errors[:state].blank?
         return false
       end
     end

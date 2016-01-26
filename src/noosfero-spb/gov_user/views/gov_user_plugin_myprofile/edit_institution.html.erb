@@ -44,14 +44,11 @@
 
       <%= labelled_form_field(_('Fantasy name'), inst.text_field(:corporate_name, :value => @institution.corporate_name)) %>
 
-      <%= required select_country(_('Country'), 'community', 'country', {:class => 'type-select', :id => "community_country"}, :selected => @institution.community.country) %>
+      <%= required labelled_form_field(_('Country'), select("community", "country", [[_('Select a country'), -1]] + country_helper.countries,
+                                                            {:selected => @institution.community.country, :class => "type-select #{flash[:error_community_country]}"})) %>
 
-      <span class='required-field'>
-        <div class="formfield">
-          <label for="community_state" class="formlabel"><%= _("State") %></label>
-          <%= f.select(:state, @state_list.collect {|state| [state.name, state.name]}, :selected => @institution.community.state) %>
-        </div>
-      </span>
+      <%= required labelled_form_field(_('State'), select("community", "state", [[_('Select a state'), '']] + @state_list.collect {|state| [state.name, state.name]},
+                                                          {:selected => @institution.community.state, :class => "type-select #{flash[:error_community_state]}"})) %>
 
       <%= required f.text_field(:city, :value => @institution.community.city) %>
 

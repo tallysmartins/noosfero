@@ -33,3 +33,16 @@ Feature: Institution Field
     Then I should see "Governmental Sphere"
     And I should see "Governmental Power"
     And I should see "Juridical Nature"
+
+  @selenium
+  Scenario: Clean state and city values when country is diferent of Brazil
+    Given I follow "Edit Profile"
+    When I follow "Create new institution"
+    And I select "Brazil" from "community_country"
+    And I select "Distrito Federal" from "community_state"
+    And I fill in "community_city" with "Gama"
+    And I select "United States" from "community_country"
+    Then I should not see "community_state"
+    And I should not see "community_city"
+    And I select "Brazil" from "community_country"
+    Then I should not see "Gama"

@@ -72,7 +72,7 @@
           <span class="required-field">(*)</span>
         </label>
 
-        <%= select("community", "country", [[_('Select a country'), nil]] + country_helper.countries, {:class => "type-select #{flash[:error_community_country]}"}) %>
+        <%= select("community", "country", [[_('Select a country'), -1]] + country_helper.countries, {:class => "type-select #{flash[:error_community_country]}"}) %>
       </div>
 
       <div class="spb-col spb-col-2">
@@ -81,7 +81,7 @@
           <span class="required-field">(*)</span>
         </label>
 
-        <%= f.select(:state, @state_options, {:selected => params[:community][:state]}, {:class => flash[:error_community_state]}) %>
+        <%= select("community", "state", [[_('Select a state'), '']] + @state_options,  {:class => "type-select #{flash[:error_community_state]}"}) %>
       </div>
 
       <div class="spb-col spb-col-5">

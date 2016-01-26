@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../../../../test/unit/api/test_helper'
 require File.dirname(__FILE__) + '/../helpers/plugin_test_helper'
 
-class GovUserApiTest < ActiveSupport::TestCase
+class GovUserPlugin::ApiTest < ActiveSupport::TestCase
 
   include PluginTestHelper
 
@@ -16,7 +16,7 @@ class GovUserApiTest < ActiveSupport::TestCase
                       "Ministerio Publico da Uniao",
                       "MPU",
                       "BR",
-                      "DF",
+                      "Distrito Federal",
                       "Gama",
                       @juridical_nature,
                       @gov_power,
@@ -29,7 +29,7 @@ class GovUserApiTest < ActiveSupport::TestCase
                       "Instituicao bacana",
                       "IB",
                       "BR",
-                      "DF",
+                      "Distrito Federal",
                       "Gama",
                       @juridical_nature,
                       @gov_power,

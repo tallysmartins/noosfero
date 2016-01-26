@@ -25,7 +25,7 @@ class GovUserPluginMyprofileControllerTest < ActionController::TestCase
       "Ministerio Publico da Uniao",
       "MPU",
       "BR",
-      "DF",
+      "Distrito Federal",
       "Gama",
       juridical_nature,
       gov_power,
@@ -46,7 +46,7 @@ class GovUserPluginMyprofileControllerTest < ActionController::TestCase
     fields = InstitutionTestHelper.generate_form_fields(
       "institution new name",
       "BR",
-      "DF",
+      "Distrito Federal",
       "Gama",
       "12.345.678/9012-45",
       "PrivateInstitution"
@@ -68,7 +68,7 @@ class GovUserPluginMyprofileControllerTest < ActionController::TestCase
     fields = InstitutionTestHelper.generate_form_fields(
       "institution new name",
       "BR",
-      "DF",
+      "Distrito Federal",
       "Gama",
       "12.345.678/9012-45",
       "PrivateInstitution"
@@ -91,7 +91,7 @@ class GovUserPluginMyprofileControllerTest < ActionController::TestCase
     fields = InstitutionTestHelper.generate_form_fields(
       "",
       "BR",
-      "DF",
+      "Distrito Federal",
       "Gama",
       "6465465465",
       "PrivateInstitution"
