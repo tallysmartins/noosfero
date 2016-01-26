@@ -68,8 +68,8 @@ class GovUserPluginControllerTest < ActionController::TestCase
 
     json_response = ActiveSupport::JSON.decode(@response.body)
 
-    assert_equal "Ministerio Publico da Uniao", json_response[0]["value"]
-    assert_equal "Tribunal Regional da Uniao", json_response[1]["value"]
+    assert json_response.any?{|r| r["value"] == "Ministerio Publico da Uniao"}
+    assert json_response.any?{|r| r["value"] == "Tribunal Regional da Uniao"}
   end
 
   should "method create_institution return the html for modal" do
@@ -114,11 +114,10 @@ class GovUserPluginControllerTest < ActionController::TestCase
     fields[:institutions][:acronym] = "SPI"
 
     xhr :get, :new_institution, fields
-
     json_response = ActiveSupport::JSON.decode(@response.body)
 
     assert_false json_response["success"]
-    assert json_response["errors"].include? "Cnpj can't be blank"
+    assert_false json_response["errors"].blank?
   end
 
   should "create public institution without cnpj" do

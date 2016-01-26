@@ -39,8 +39,8 @@ class Institution < ActiveRecord::Base
 
   belongs_to :community
 
-  scope :search_institution, lambda{ |value|
-    where("name ilike ? OR acronym ilike ?", "%#{value}%", "%#{value}%" )
+  scope :search_institution, lambda{ |value, env|
+    joins(:community).where("(profiles.name ilike ? OR institutions.acronym ilike ?) AND profiles.environment_id = ?", "%#{value}%", "%#{value}%", env.id)
   }
 
   validate :validate_country, :validate_state, :validate_city,
