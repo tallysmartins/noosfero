@@ -168,3 +168,6 @@
   text-align: center;
 }
 
+#search-subheader{
+	display: none;
+}
