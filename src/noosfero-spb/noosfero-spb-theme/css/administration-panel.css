@@ -290,6 +290,72 @@
   vertical-align: bottom;
 }
 
+/* Categories */
+
+.action-categories-index #content .main-content > div{
+  padding: 0px 0px 20px;
+  border-bottom: 1px solid #EEE;
+  height: 30px;
+}
+
+.action-categories-index #content .main-content > div a{
+  border: 1px solid #3E67B1;
+  display: block;
+  padding: 7px;
+  width: 85px;
+  border-radius: 5px;
+  color: #3E67B1;
+}
+
+.action-categories-index .tree{
+  margin-top: 20px;
+}
+
+.action-categories-index .tree li{
+  margin-bottom: 20px;
+}
+
+.action-categories-index .tree li li{
+  margin-left: 30px;
+}
+
+.action-categories-index .tree li *{
+  border-bottom: none;
+  list-style-type: disc;
+}
+
+.action-categories-index .treeitem{
+  margin-bottom: 20px;
+}
+
+.action-categories-index .treeitem .color_marker{
+  border-bottom: 1px solid;
+}
+
+.action-categories-index .treeitem span{
+  font-weight: 600;
+}
+
+.action-categories-index .treeitem div{
+  margin-top: 6px;
+}
+
+.action-categories-index .treeitem ul{
+  margin-left: 10px;
+}
+
+.action-categories-index .treeitem .button{
+  margin-left: 10px;
+}
+
+.action-categories-index #content .treeitem a,
+.action-categories-index #content .treeitem a:focus,
+.action-categories-index #content .treeitem a:visited,
+.action-categories-index #content .treeitem a:link{
+  margin-right: 10px;
+  color: #3E67B1;
+}
+
 /*Edition configuration profile */
 
 .action-profile_editor-edit #delete-profile{
