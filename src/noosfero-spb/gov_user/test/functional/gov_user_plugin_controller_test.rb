@@ -9,7 +9,7 @@ class GovUserPluginControllerTest < ActionController::TestCase
   def setup
     @admin = create_user("adminuser").person
     @admin.stubs(:has_permission?).returns("true")
-    @controller.stubs(:current_user).returns(@admin.user)
+    login_as(@admin.user_login)
 
     @environment = Environment.default
     @environment.enabled_plugins = ['SoftwareCommunitiesPlugin']
@@ -255,4 +255,28 @@ class GovUserPluginControllerTest < ActionController::TestCase
     assert(Institution.last.community.is_admin?(admin2) )
   end
 
+  should "admin user can access action create_institution_admin" do
+    login_as(@admin.user_login)
+
+    post :create_institution_admin
+
+    assert_response 200
+  end
+
+  should "disconnected user can not access action create_institution_admin" do
+    logout
+
+    post :create_institution_admin
+
+    assert_response 403
+  end
+
+  should "regular user can not access action create_institution_admin" do
+    disconnected_user = create_user("another_admin").person
+    login_as(disconnected_user.user_login)
+
+    post :create_institution_admin
+
+    assert_response 403
+  end
 end
