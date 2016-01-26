@@ -116,8 +116,8 @@ class GovUserPluginControllerTest < ActionController::TestCase
     xhr :get, :new_institution, fields
     json_response = ActiveSupport::JSON.decode(@response.body)
 
-    assert_false json_response["success"]
-    assert_false json_response["errors"].blank?
+    assert_equal false, json_response["success"]
+    assert_equal false, json_response["errors"].blank?
   end
 
   should "create public institution without cnpj" do
