@@ -23,9 +23,17 @@ class SoftwareEventsBlockTest < ActiveSupport::TestCase
     @e3 = Event.new :name=>"Event 3", :body=>"Event 3 body",
                   :start_date=>(DateTime.now - 20.days), :end_date=>(DateTime.now - 10.days)
 
+    @e4 = Event.new :name=>"Event 4", :body=>"Event 4 body",
+    :start_date=>(DateTime.now), :end_date=>(DateTime.now)
+
+    @e5 = Event.new :name=>"Event 5", :body=>"Event 5 body",
+    :start_date=>(DateTime.now - 5.days)
+
     @community.events << @e1
     @community.events << @e2
     @community.events << @e3
+    @community.events << @e4
+    @community.events << @e5
     @community.save!
   end
 
@@ -33,8 +41,15 @@ class SoftwareEventsBlockTest < ActiveSupport::TestCase
     events = @software_events_block.get_events
 
     assert_equal false, events.include?(@e3)
+    assert_equal true, events.include?(@e4)
     assert_equal @e2, events.first
     assert_equal @e1, events.last
+  end
+
+  should "include community events that have no end date" do
+    events = @software_events_block.get_events
+
+    assert_equal true, events.include?(@e5)
   end
 
   should "give community events except by a event with a given slug" do

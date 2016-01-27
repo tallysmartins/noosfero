@@ -28,8 +28,8 @@ class SoftwareEventsBlock < Block
   end
 
   def get_events
-    today = DateTime.now.beginning_of_day
-    self.owner.events.where("end_date >= ?", today).order(:start_date)
+    yesterday = DateTime.yesterday.end_of_day
+    self.owner.events.where("end_date > ? OR end_date IS NULL", yesterday).order(:start_date)
   end
 
   def get_events_except event_slug=""
