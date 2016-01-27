@@ -12,17 +12,10 @@ class CommunitiesBlockTest < ActiveSupport::TestCase
     @community = create_community("Nova Comunidade")
     @community.add_member(@person)
 
-
     @comminities_block = CommunitiesBlock.new
     @comminities_block.expects(:owner).at_least_once.returns(@person)
   end
 
-  def teardown
-    CommunitiesBlock.destroy_all
-    @person = nil
-    @community = nil
-    @software_info = nil
-  end
   should "not have community of software or institution in block" do
     assert_includes @comminities_block.profile_list, @community
     assert_not_includes @comminities_block.profile_list, @software_info.community

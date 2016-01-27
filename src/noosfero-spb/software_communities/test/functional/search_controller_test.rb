@@ -42,10 +42,6 @@ class SearchControllerTest < ActionController::TestCase
     @softwares[1].save!
   end
 
-  def teardown
-    SoftwareInfo.destroy_all
-  end
-
   should "communities searches don't have software" do
     community = create_community("Community One")
 

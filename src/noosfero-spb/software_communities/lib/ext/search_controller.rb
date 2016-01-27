@@ -102,7 +102,7 @@ class SearchController
       @public_software_selected = false
     end
 
-    filtered_software_list.select!{ |software| visible_communities.include?(software.community) }
+    filtered_software_list = filtered_software_list.select{ |software| visible_communities.include?(software.community) }
     category_ids = get_filter_category_ids
 
     unless category_ids.empty?

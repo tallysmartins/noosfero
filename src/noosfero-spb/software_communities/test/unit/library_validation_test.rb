@@ -9,10 +9,6 @@ class LibraryValidationTest < ActiveSupport::TestCase
     @library.license = "license"
   end
 
-  def teardown
-    @Libray = nil
-  end
-
   should "Save Libray if all fields are filled" do
     assert @library.save
   end

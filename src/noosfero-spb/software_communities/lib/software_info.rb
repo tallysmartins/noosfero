@@ -22,7 +22,7 @@ class SoftwareInfo < ActiveRecord::Base
       SoftwareInfo.joins(:community).where("profiles.visible = ? AND environment_id = ? ", true, env.id)
     else
       searchable_software_objects = SoftwareInfo.transform_list_in_methods_list(SEARCHABLE_SOFTWARE_CLASSES)
-      includes(searchable_software_objects).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')").where("profiles.visible = ? AND profiles.environment_id = ?", true, env.id)
+      includes(searchable_software_objects).joins(:community).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')").where("profiles.visible = ? AND environment_id = ?", true, env.id)
     end
   }
 

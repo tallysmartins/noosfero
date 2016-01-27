@@ -9,10 +9,6 @@ class LibraryHelperTest < ActiveSupport::TestCase
       {"name" => "license3" ,"version" => "2.2", "license" => "debian", "software_id" => "1"}]
   end
 
-  def teardown
-    @license_objects = nil
-  end
-
   should "return an empty list" do
     empty_list = []
     assert_equal  [],LibraryHelper.list_library(empty_list)

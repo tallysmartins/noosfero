@@ -9,19 +9,12 @@ class GovUserPluginPersonTest < ActiveSupport::TestCase
   def setup
     @plugin = SoftwareCommunitiesPlugin.new
 
-    @user = fast_create(User)
-    @person = create_person(
-    "My Name",
-    "user@email.com",
-    "123456",
-    "123456",
-    "Any State",
-    "Some City"
+    @user = create_user(
+      "user",
+      "user@email.com",
+      "123456",
+      "123456"
     )
-  end
-
-  def teardown
-    @plugin = nil
   end
 
   should 'get a list of softwares of a person' do
@@ -29,11 +22,11 @@ class GovUserPluginPersonTest < ActiveSupport::TestCase
     software2 = create_software_info "colab"
     community = create_community "simple_community"
 
-    software1.community.add_member @person
+    software1.community.add_member @user.person
     software1.save!
-    community.add_member @person
+    community.add_member @user.person
     community.save!
 
-    assert_equal 1, @person.softwares.count
+    assert_equal 1, @user.person.softwares.count
   end
 end

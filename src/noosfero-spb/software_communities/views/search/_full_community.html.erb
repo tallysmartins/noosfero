@@ -23,7 +23,7 @@
 
         <div class="search-content-description">
           <% body_stripped = strip_tags(software.finality) %>
-          <%= link_to(excerpt(body_stripped, body_stripped.first(3), 200), community.url) if body_stripped %>
+          <%= link_to(excerpt(body_stripped, body_stripped.first(3), radius: 200), community.url) if body_stripped %>
         </div>
 
       <div class="search-software-categories">

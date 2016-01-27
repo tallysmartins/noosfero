@@ -9,12 +9,6 @@ class SoftwareRegistrationTest < ActiveSupport::TestCase
     @license_info = LicenseInfo.create(:version => "New License", :link => "#")
   end
 
-  def teardown
-    Community.destroy_all
-    SoftwareInfo.destroy_all
-    Task.destroy_all
-  end
-
   should 'include software registration task if is admin' do
     person = create_user('molly').person
     @environment.add_admin(person)

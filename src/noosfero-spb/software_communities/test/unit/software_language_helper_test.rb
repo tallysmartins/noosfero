@@ -13,11 +13,6 @@ class SoftwareLanguageHelperTest < ActiveSupport::TestCase
     @software_language_objects
   end
 
-  def teardown
-    @software_language_objects = nil
-    ProgrammingLanguage.destroy_all
-  end
-
   should "return an empty list" do
     empty_list = []
     assert_equal [], SoftwareLanguageHelper.list_language(empty_list)

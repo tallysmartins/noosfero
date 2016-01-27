@@ -35,11 +35,6 @@ class ProfileEditorControllerTest < ActionController::TestCase
     @environment.save
   end
 
-  def teardown
-    Community.destroy_all
-    SoftwareInfo.destroy_all
-  end
-
   should "redirect to edit_software_community on edit community of software" do
     software = create_software(software_fields)
     post :edit, :profile => software.community.identifier

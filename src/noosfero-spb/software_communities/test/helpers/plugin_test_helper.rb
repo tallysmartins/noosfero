@@ -28,22 +28,14 @@ module PluginTestHelper
       name.to_slug,
       email,
       password,
-      password_confirmation,
+      password_confirmation
     )
-    person = Person::new
 
-    user.person = person
-    person.user = user
-
-    person.name = name
-    person.identifier = name.to_slug
-    person.state = state
-    person.city = city
+    user.person.state = state
+    user.person.city = city
 
     user.save
-    person.save
-
-    person
+    user.person
   end
 
   def create_user login, email, password, password_confirmation
@@ -54,6 +46,7 @@ module PluginTestHelper
     user.password = password
     user.password_confirmation = password_confirmation
 
+    user.save
     user
   end
 

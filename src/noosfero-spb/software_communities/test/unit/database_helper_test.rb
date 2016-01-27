@@ -12,12 +12,6 @@ class DatabaseHelperTest < ActiveSupport::TestCase
     ]
   end
 
-  def teardown
-    @database_objects = nil
-    SoftwareDatabase.destroy_all
-    DatabaseDescription.destroy_all
-  end
-
   should "return an empty list" do
     empty_list = []
     assert_equal [], DatabaseHelper.list_database(empty_list)
