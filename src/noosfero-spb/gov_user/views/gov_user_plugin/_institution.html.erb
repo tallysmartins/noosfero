@@ -13,16 +13,16 @@
 </div>
 
 <div class="spb-row spb-col spb-col-12">
-  <% unless flash[:errors].blank? %>
-    <div class="errorExplanation" id="errorExplanation">
+  <div class="errorExplanation" id="create_institution_errors">
+    <% unless flash[:errors].blank? %>
       <h2><%= _("Can`t create new Institution: #{flash[:errors].length} errors") %></h2>
       <ul>
       <% flash[:errors].each do |error| %>
         <li><%= error %></li>
       <% end %>
       </ul>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <%= form_for :community, :url => {:action=>"new_institution"}, :html => { :multipart => true, :id=>"institution_form" } do |f| %>
