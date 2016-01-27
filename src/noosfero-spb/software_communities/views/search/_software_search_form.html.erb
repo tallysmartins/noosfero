@@ -28,38 +28,39 @@
 
       <%= submit_button(:search, _('Filter')) %>
       </div>
-    <%= render :partial => 'search_form_extra_fields' %>
-    <%= render :partial => 'catalog_filter' %>
+      <%= render :partial => 'search_form_extra_fields' %>
+      <%= render :partial => 'catalog_filter' %>
+
+      <div id="catalog-display-options">
+        <div id="catalog-display-options-count">
+          <strong id="software-count"><%= "#{@software_count} Software(s)" %></strong>
+        </div>
+
+        <div id="catalog-display-options-show-and-sort">
+          <div id="catalog-display-options-show">
+            <%= _('Show:') %>
+            <%= select_tag("software_display",
+              options_for_select(['15', '30', '90', 'All'], :selected=>params[:software_display])
+              ) %>
+          </div>
+
+          <div id="catalog-display-options-sort">
+            <%= _('Sort by:') %>
+            <%= select_tag("sort",
+              options_for_select(
+                [
+                  [_("Name A-Z"), 'asc'],
+                  [_("Name Z-A"), 'desc'],
+                  [_("Relevance"), 'relevance'],
+                  [_("Rating"), 'rating']
+                  ], :selected=>params[:sort])
+                  ) %>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 
-  <div id="catalog-display-options">
-    <div id="catalog-display-options-count">
-      <strong id="software-count"><%= "#{@software_count} Software(s)" %></strong>
-    </div>
-
-    <div id="catalog-display-options-show-and-sort">
-      <div id="catalog-display-options-show">
-        <%= _('Show:') %>
-        <%= select_tag("software_display",
-          options_for_select(['15', '30', '90', 'All'], :selected=>params[:display])
-          ) %>
-      </div>
-
-      <div id="catalog-display-options-sort">
-        <%= _('Sort by:') %>
-        <%= select_tag("sort",
-          options_for_select(
-            [
-              [_("Name A-Z"), 'asc'],
-              [_("Name Z-A"), 'desc'],
-              [_("Relevance"), 'relevance'],
-              [_("Rating"), 'rating']
-              ], :selected=>params[:sort])
-              ) %>
-      </div>
-    </div>
-  </div>
 </div>
 
 <% if @empty_query %>
@@ -68,3 +69,5 @@
     <div class="search-hint"><%= hint %></div>
   <% end %>
 <% end %>
+
+<%= hidden_field_tag :only_softwares_hidden, params[:only_softwares] %>

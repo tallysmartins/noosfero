@@ -32,6 +32,7 @@ class SearchController
     results = filter_software_infos_list(&software_public_condition_block)
     @software_count = results.count
     results = results.paginate(:per_page => @per_page, :page => params[:page])
+
     @searches[@asset] = {:results => results}
     @search = results
 
@@ -92,7 +93,7 @@ class SearchController
 
     filtered_software_list = SoftwareInfo.search_by_query(params[:query], environment)
 
-    if params[:only_softwares]
+    if params[:only_softwares] && params[:only_softwares].any?{ |word| !word.blank? }
       params[:only_softwares].collect!{ |software_name| software_name.to_slug }
       #FIX-ME: This query is not appropriate
       filtered_software_list = SoftwareInfo.all.select{ |s| params[:only_softwares].include?(s.identifier) }
@@ -161,7 +162,7 @@ class SearchController
   def prepare_per_page
     return 15 if params[:software_display].nil?
 
-    if params[:software_display] == "all"
+    if params[:software_display].downcase == "all"
       SoftwareInfo.count
     else
       params[:software_display].to_i
