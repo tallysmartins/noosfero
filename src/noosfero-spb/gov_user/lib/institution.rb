@@ -8,7 +8,7 @@ class Institution < ActiveRecord::Base
     :display => %w[compact]
   }
 
-  CNPJ_FORMAT = /^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/
+  CNPJ_FORMAT = /\A\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}\z/
 
   VALID_STATES = { "AC"=>"Acre", "AL"=>"Alagoas", "AM"=>"Amazonas", "AP"=>"Amapá", "BA"=>"Bahia", "CE"=>"Ceará",
                    "DF"=>"Distrito Federal", "ES"=>"Espírito Santo", "GO"=>"Goiás", "MA"=>"Maranhão", "MT"=>"Mato Grosso",

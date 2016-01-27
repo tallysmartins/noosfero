@@ -23,6 +23,7 @@ class InstitutionsBlockTest < ActiveSupport::TestCase
   end
 
   should 'list institutions' do
+    Noosfero::Plugin::Manager.any_instance.stubs(:enabled_plugins).returns([GovUserPlugin.new])
     user = create_person("Jose_Augusto",
             "jose_augusto@email.com",
             "aaaaaaa",
@@ -40,7 +41,6 @@ class InstitutionsBlockTest < ActiveSupport::TestCase
                     "00.111.222/3333-44"
                    )
     institution.community.add_member(user)
-
     block = InstitutionsBlock.new
     block.expects(:owner).at_least_once.returns(user)
 

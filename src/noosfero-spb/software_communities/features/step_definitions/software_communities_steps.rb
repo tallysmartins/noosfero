@@ -252,6 +252,9 @@ Given /^I am logged in as mpog_admin$/ do
   user.person = person
   user.save!
 
+  person.user_id = user.id
+  person.save!
+
   user.activate
   e = Environment.default
   e.add_admin(user.person)

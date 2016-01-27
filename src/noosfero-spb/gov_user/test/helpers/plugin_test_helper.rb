@@ -9,17 +9,17 @@ module PluginTestHelper
             password,
             password_confirmation
             )
-    person = Person::new
-
-    user.person = person
-    person.user = user
+    person = Person.new
 
     person.name = name
     person.identifier = name.to_slug
     person.state = state
     person.city = city
 
+    user.person = person
     user.save
+
+    person.user_id = user.id
     person.save
 
     person
