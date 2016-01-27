@@ -114,7 +114,7 @@
   padding: 8px 8px 0;
 }
 
-/*** Features Settings ***/
+/* Features Settings */
 
 .controller-features #content form *{
   font-size: 15px;
@@ -231,6 +231,105 @@
 
 .action-templates-index #content .template-kind td{
   padding: 8px 8px 0;
+}
+
+/* Create Instituition */
+
+/*Temporary - Best fix html structure*/
+.action-gov_user_plugin-create_institution_admin #institution_form{
+  font-size: 12px;
+  font-family: Arial;
+}
+
+.action-gov_user_plugin-create_institution_admin input[type="text"],
+.action-gov_user_plugin-create_institution_admin select {
+  height: 30px;
+  border-radius: 5px;
+  border: solid 1px #ccc;
+  background-color: #fff;
+  padding: 0px 5px;
+}
+
+.action-gov_user_plugin-create_institution_admin select{
+  height: 32px;
+  font-size: 12px;
+  font-family: Arial;
+}
+
+.action-gov_user_plugin-create_institution_admin input[type="radio"] {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.action-gov_user_plugin-create_institution_admin label.formlabel {
+  margin: 10px 0px 3px 0px;
+}
+
+.action-gov_user_plugin-create_institution_admin .explanation {
+  color: #3F60C6;
+  font-size: 12px;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 25px;
+}
+
+.action-gov_user_plugin-create_institution_admin .required-field,
+.action-gov_user_plugin-create_institution_admin .errorExplanation {
+  color: #EA1C00;
+  font-size:12px;
+  margin-bottom: 20px;
+  font-family: Arial;
+}
+
+.action-gov_user_plugin-create_institution_admin .errorExplanation:empty {
+  margin-bottom: 10px;
+}
+
+.action-gov_user_plugin-create_institution_admin #community_name {
+  width: 200px;
+}
+
+.action-gov_user_plugin-create_institution_admin #institutions_corporate_name {
+  width: 310px;
+}
+
+.action-gov_user_plugin-create_institution_admin #community_country {
+  width: 213px;
+}
+
+.action-gov_user_plugin-create_institution_admin #community_state {
+  width: 81px;
+}
+
+.action-gov_user_plugin-create_institution_admin #community_city {
+  width: 222px;
+}
+
+.action-gov_user_plugin-create_institution_admin #institutions_cnpj,
+.action-gov_user_plugin-create_institution_admin #institutions_acronym {
+  text-indent: 5px;
+  width: 530px;
+}
+
+.action-gov_user_plugin-create_institution_admin .modal-form-actions {
+  margin-top: 20px;
+}
+
+.action-gov_user_plugin-create_institution_admin .sisp-fields {
+  margin-top: 15px;
+}
+
+.action-gov_user_plugin-create_institution_admin #content form input.button.with-text {
+  background-color: #3E67B1;
+  color: #fff;
+  font-size: 14px;
+  font-family: "open_sansregular", Arial;
+  height: 32px;
+  line-height: 17px;
+}
+
+.action-gov_user_plugin-create_institution_admin #content form a.button.with-text{
+  padding: 7px 15px;
 }
 
 
