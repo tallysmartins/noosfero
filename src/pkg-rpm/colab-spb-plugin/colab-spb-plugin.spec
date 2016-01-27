@@ -1,5 +1,5 @@
 Name:           colab-spb-plugin
-Version:        5.0a3
+Version:        5.0a4
 Release:        1
 Summary:        SPB-specific Colab plugin
 License:        GPL-3.0
@@ -8,7 +8,7 @@ Url:            https://softwarepublico.gov.br/gitlab/softwarepublico/softwarepu
 Source0:        %{name}-%{version}.tar.gz
 Requires:       colab >= 1.11
 BuildArch:      noarch
-BuildRequires:  colab, colab-deps >= 1.11.4, python-virtualenv
+BuildRequires:  colab, colab-deps >= 1.12.13, python-virtualenv
 
 %description
 This package contains Colab plugin for the Software Público Brasileiro platform.
