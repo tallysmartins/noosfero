@@ -9,26 +9,28 @@ stages:
   - smoke-tests
   - all-tests
 
-smoke:
-  script: bundle exec rake ci:smoke
-  stage: smoke-tests
-  only:
-    - /^issue-.*$/
-  # use special keyword
-  except:
-    - branches
+#smoke:
+#  script: bundle exec rake ci:smoke
+#  stage: smoke-tests
 
 units:
   script: bundle exec rake test:units
   stage: all-tests
+  tags: 
+    - units
+
 
 functionals:
   script: bundle exec rake test:functionals
   stage: all-tests
+  tags:
+    - nosel
 
 integration:
   script: bundle exec rake test:integration
   stage: all-tests
+  tags:
+    - integration
 
 cucumber:
   script: bundle exec rake cucumber
