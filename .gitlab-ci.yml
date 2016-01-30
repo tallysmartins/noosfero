@@ -12,6 +12,11 @@ stages:
 smoke:
   script: bundle exec rake ci:smoke
   stage: smoke-tests
+  only:
+    - /^issue-.*$/
+  # use special keyword
+  except:
+    - branches
 
 units:
   script: bundle exec rake test:units
