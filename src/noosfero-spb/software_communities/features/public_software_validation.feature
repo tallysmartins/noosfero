@@ -25,15 +25,13 @@ Feature: edit adherent fields
     Then the "#software_public_software" button should be disabled
 
   Scenario: Enable public software checkbox to admin users
-    Given I am logged in as mpog_admin
-    And I go to /myprofile/basic-software/plugin/software_communities/edit_software
+    Given I go to /myprofile/basic-software/plugin/software_communities/edit_software
     And I follow "Specifications"
     Then the "#software_public_software" button should be enabled
 
   @selenium
   Scenario: Show adherent fields when checkbox are checked
-    Given I am logged in as mpog_admin
-    And I go to /myprofile/basic-software/plugin/software_communities/edit_software
+    Given I go to /myprofile/basic-software/plugin/software_communities/edit_software
     And I follow "Specifications"
     And I uncheck "software[public_software]"
     And I check "software[public_software]"
@@ -41,8 +39,7 @@ Feature: edit adherent fields
 
   @selenium
   Scenario: Don't show adherent fields when checkbox are not checked
-    Given I am logged in as mpog_admin
-    And I go to /myprofile/basic-software/plugin/software_communities/edit_software
+    Given I go to /myprofile/basic-software/plugin/software_communities/edit_software
     And I follow "Specifications"
     And I check "software[public_software]"
     And I uncheck "software[public_software]"

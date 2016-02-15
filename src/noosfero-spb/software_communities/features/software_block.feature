@@ -15,21 +15,18 @@ Feature: edit adherent fields
       | Generic Software | false           | some finality |
     And the following blocks
       | owner            | type              |
-      | mpog-admin       | SoftwaresBlock    |
+      | environment      | SoftwaresBlock    |
 
   Scenario: Change software block to generic software block
-    Given I follow "Control panel"
-    And I follow "Edit sideboxes"
-    And I print the page
-    And I follow "Edit" within ".softwares-block"
+    Given I go to /admin/environment_design
+    And I follow "Edit" within ".block.softwares-block"
     When I select "Generic" from "block_software_type"
     And I press "Save"
-    Then I should see "generic software"
+    Then I should see "Generic Software"
 
   Scenario: Change software block to generic software block
-    Given I follow "Control panel"
-    And I follow "Edit sideboxes"
-    And I follow "Edit" within ".softwares-block"
+    Given I go to /admin/environment_design
+    And I follow "Edit" within ".block.softwares-block"
     When I select "Public" from "block_software_type"
     And I press "Save"
-    Then I should see "public software"
+    Then I should see "Public Software"
