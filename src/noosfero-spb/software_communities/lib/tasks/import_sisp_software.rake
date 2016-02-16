@@ -32,7 +32,7 @@ namespace :sisp do
     create_link_blocks env
     env.save
 
-    user = Environment.default.users.find_by_login(ENV["ADMINUSER"])
+    user = Environment.default.users.find_by_email(ENV["ADMINUSER"])
     if user.present?
       password = SecureRandom.base64
       sisp_user = env.users.find_by_login(user.login)
@@ -249,7 +249,7 @@ def create_institution sisp_hash
   institution = PublicInstitution.find_or_initialize_by_name(name)
   institution_community.name = name
   institution_community.country = "BR"
-  institution_community.state = "DF"
+  institution_community.state = "Distrito Federal"
   institution_community.city = "Unknown"
   institution_community.environment = $env
   institution_community.save!
