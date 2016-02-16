@@ -16,7 +16,8 @@ Feature: Institution Field
 
   @selenium
   Scenario: Show new institution fields when clicked in create new institution
-    Given I follow "Edit Profile"
+    Given I follow "Control panel"
+    And I follow "Edit Profile"
     When I follow "Create new institution"
     And I should see "New Institution"
     And I should see "Public Institution"
@@ -35,7 +36,8 @@ Feature: Institution Field
 
   @selenium
   Scenario: Clean state and city values when country is diferent of Brazil
-    Given I follow "Edit Profile"
+    Given I follow "Control panel"
+    And I follow "Edit Profile"
     When I follow "Create new institution"
     And I select "Brazil" from "community_country"
     And I select "Distrito Federal" from "community_state"

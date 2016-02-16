@@ -25,9 +25,9 @@ Feature: Create institution on user report
     And I should not see "Saved resources"
     And I should not see "Organization name or Enterprise name"
     When I click on anything with selector "comments-additional-information"
-    Then I should see "Número de beneficiados"
-    And I should see "Nome do órgão ou empresa"
-    And I should see "Recursos economizados"
+    Then I should see "Number of Beneficiaries"
+    And I should see "Organization Name or Enterprise Name"
+    And I should see "Saved Resources"
 
   @selenium
   Scenario: Show new institution fields when clicked in add new institution
@@ -61,7 +61,7 @@ Feature: Create institution on user report
     When I click on anything with selector "create_institution_link"
     And I fill in "community_name" with "Noosfero Institution"
     And I select "United States" from "Country"
-    And I sleep for 1 seconds
+    And I sleep for 2 seconds
     And I follow "Save"
     Then I should see "Noosfero Institution"
 
