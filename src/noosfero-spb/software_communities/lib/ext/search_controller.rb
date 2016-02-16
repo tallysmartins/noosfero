@@ -105,12 +105,7 @@ class SearchController
 
     unless category_ids.empty?
       filtered_software_list.select! do |software|
-        if software.nil? || software.community.nil?
-          false
-        else
-          result_ids = (software.community.category_ids & category_ids).sort
-          result_ids == category_ids.sort
-        end
+        !(software.community.category_ids & category_ids).empty?
       end
     end
 
