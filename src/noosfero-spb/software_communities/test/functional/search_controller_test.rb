@@ -94,6 +94,22 @@ class SearchControllerTest < ActionController::TestCase
     assert_not_includes assigns(:searches)[:software_infos][:results], @softwares.last.community
   end
 
+  should "software_infos search softwares with one or more selected categories" do
+    software = create_software_info("Software Two", :acronym => "SFT", :finality => "Task")
+    software.save!
+
+    get(
+      :software_infos,
+      :query => "",
+      :selected_categories_id => [Category.all[0], Category.all[1]]
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], @softwares.first.community
+    assert_includes assigns(:searches)[:software_infos][:results], @softwares.last.community
+    assert_not_includes assigns(:searches)[:software_infos][:results], software.community
+  end
+
+
   should "software_infos search by programming language" do
     @softwares.first.software_languages << create_software_language("Python", "1.0")
     @softwares.last.software_languages << create_software_language("Java", "8.1")
