@@ -11,6 +11,11 @@ upstream = 'http://<%= node['peers']['integration'] %>:81/gitlab/'
 private_token = '<%= @get_private_token.call %>'
 verify_ssl = False
 
+middlewares = [
+    'colab.middlewares.cookie_middleware.CookiePreHandlerMiddleware',
+    'colab.middlewares.cookie_middleware.CookiePostHandlerMiddleware'
+]
+
 urls = {
     'include': 'colab_gitlab.urls',
     'namespace': 'gitlab',  # TODO: do not allow to change namespace
