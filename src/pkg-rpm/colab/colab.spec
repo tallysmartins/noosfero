@@ -1,5 +1,5 @@
 %define name colab
-%define version 1.13.1
+%define version 1.13.2
 %define buildvenv /var/tmp/%{name}-%{version}
 
 Summary: Collaboration platform for communities
