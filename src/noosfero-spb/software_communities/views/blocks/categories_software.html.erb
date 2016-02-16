@@ -10,7 +10,7 @@
 
       <% categories.each do |category| %>
         <% unless category.software_infos.count < 1 %>
-          <li><%= link_to _("#{category.name}") + " (#{category.software_infos.count})", {:controller => :search, :action => block.search_catalog, :selected_categories_id => [category.id]} %></li>
+          <li><%= link_to _("#{category.name}") + " (#{category.software_infos.count})", {:controller => :search, :action => block.search_catalog, :selected_categories_id => [category.id], :software_type => "all" } %></li>
         <% end %>
       <% end %>
     </ul>
