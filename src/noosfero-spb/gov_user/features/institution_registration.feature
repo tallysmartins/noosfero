@@ -13,7 +13,6 @@ Feature: Institution Field
     And I check "SoftwareCommunitiesPlugin"
     And I press "Save changes"
     And Institutions has initial default values on database
-    And I am logged in as mpog_admin
 
   @selenium
   Scenario: Show new institution fields when clicked in create new institution

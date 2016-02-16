@@ -40,7 +40,7 @@ Given /^Institutions has initial default values on database$/ do
   national_region.national_region_type_id = NationalRegionType::STATE
   national_region.save
 end
-                                  
+
 
 Given /^I type in "([^"]*)" in autocomplete list "([^"]*)" and I choose "([^"]*)"$/ do |typed, input_field_selector, should_select|
   # Wait the page javascript load
@@ -283,5 +283,6 @@ Then /^I should see "([^"]*)" in "([^"]*)" field$/ do |content, field|
 end
 
 Given /^I should see "([^"]*)" in the page/ do |message|
-  assert_match message, page.body
+  match = page.body =~ /#{message}/
+  match.should_not be nil
 end
