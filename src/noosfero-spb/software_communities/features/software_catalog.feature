@@ -40,7 +40,7 @@ Feature: Search software
     And I fill in "search-input" with "One"
     And I keyup on selector "#search-input"
     Then I should see "Software One"
-    Then I should not see "Software Two"
+    And I should not see "Software Two"
 
   @selenium
   Scenario: Show software ordered by name when "Name A-Z" is selected

@@ -246,18 +246,21 @@ end
 
 Given /^I am logged in as mpog_admin$/ do
   visit('/account/logout')
+  user = User.find_by_login('admin_user')
 
-  user = User.new(:login => 'admin_user', :password => '123456', :password_confirmation => '123456', :email => 'admin_user@example.com')
-  person = Person.new :name=>"Mpog Admin", :identifier=>"mpog-admin"
-  user.person = person
-  user.save!
+  unless user
+    user = User.new(:login => 'admin_user', :password => '123456', :password_confirmation => '123456', :email => 'admin_user@example.com')
+    person = Person.new :name=>"Mpog Admin", :identifier=>"mpog-admin"
+    user.person = person
+    user.save!
 
-  person.user_id = user.id
-  person.save!
+    person.user_id = user.id
+    person.save!
 
-  user.activate
-  e = Environment.default
-  e.add_admin(user.person)
+    user.activate
+    e = Environment.default
+    e.add_admin(user.person)
+  end
 
   visit('/account/login')
   fill_in("Username", :with => user.login)
@@ -266,12 +269,12 @@ Given /^I am logged in as mpog_admin$/ do
 end
 
 Given /^I should see "([^"]*)" before "([^"]*)"$/ do |before, after|
-  assert page.body.index("#{before}") < page.body.index("#{after}")
+  expect(page.body.index("#{before}")).to be < page.body.index("#{after}")
 end
 
 Given /^I keyup on selector "([^"]*)"$/ do |selector|
   selector_founded = evaluate_script("jQuery('#{selector}').trigger('keyup').length != 0")
-  selector_founded.should be_true
+  selector_founded.should be true
 end
 
 Then /^there should be (\d+) divs? with class "([^"]*)"$/ do |count, klass|
@@ -283,6 +286,5 @@ Then /^I should see "([^"]*)" in "([^"]*)" field$/ do |content, field|
 end
 
 Given /^I should see "([^"]*)" in the page/ do |message|
-  match = page.body =~ /#{message}/
-  match.should_not be nil
+  expect(page.body =~ /#{message}/).not_to be nil
 end
