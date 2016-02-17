@@ -1,5 +1,13 @@
 class SoftwareEventsBlock < Block
 
+  settings_items :amount_of_events, :type => :integer, :default => 3
+  attr_accessible :amount_of_events
+
+  validates :amount_of_events,
+            :presence => true, :numericality => {
+              greater_than_or_equal_to: 1
+            }
+
   def self.description
     _('Software community events')
   end
@@ -29,7 +37,7 @@ class SoftwareEventsBlock < Block
 
   def get_events
     yesterday = DateTime.yesterday.end_of_day
-    self.owner.events.where("end_date > ? OR end_date IS NULL", yesterday).order(:start_date)
+    self.owner.events.where("start_date > ?", yesterday).order(:start_date, :id).limit(self.amount_of_events)
   end
 
   def get_events_except event_slug=""
