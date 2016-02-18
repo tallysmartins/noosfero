@@ -97,7 +97,7 @@
   border-radius: 4px;
   height: 80px;
   width: 20%;
-  background: center/cover no-repeat;
+  background: center/contain no-repeat;
   float: left;
 }
 
