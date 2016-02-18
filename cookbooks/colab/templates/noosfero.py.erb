@@ -10,6 +10,11 @@ verbose_name = 'Noosfero Plugin'
 
 upstream = 'http://<%= node['peers']['social'] %>:80/social/'
 
+middlewares = [
+    'colab.middlewares.cookie_middleware.CookiePreHandlerMiddleware',
+    'colab.middlewares.cookie_middleware.CookiePostHandlerMiddleware'
+]
+
 private_token = '<%= @get_private_token.call %>'
 
 urls = {
