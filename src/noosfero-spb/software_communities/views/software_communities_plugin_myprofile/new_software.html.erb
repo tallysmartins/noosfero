@@ -5,10 +5,10 @@
 <h1><%= _('Creating new software') %></h1>
 
 <div class='step-explanation'>
-  <spam>
+  <span>
     <%= _('Enter the basic information about the software.<br>
     You can add the details after you create it.') %>
-  </spam>
+  </span>
 </div>
 
 <% if environment.enabled?('admin_must_approve_new_communities') %>
@@ -16,80 +16,81 @@
     <%= _("Note that the creation of communities in this environment is restricted. Your request to create this new community will be sent to %{environment} administrators and will be approved or rejected according to their methods and criteria.") % { :environment => environment.name }%>
   </div>
 <%end %>
+<div class="new-software-form">
 
-<% unless @errors.blank? %>
-<div class="errorExplanation" id="errorExplanation">
-  <h2> <%= _("Can`t create new software: %s errors") % @errors.length %> </h2>
-  <ul>
-  <% @errors.each do |error| %>
-    <li> <%= error %> </li>
-  <% end %>
-  </ul>
-</div>
-<% end %>
-
-<div>
   <%= labelled_form_for :community, :html => { :multipart => true } do |f| %>
 
     <%= required_fields_message %>
 
-    <div class= <%= @error_community_name %> >
+    <% unless @errors.blank? %>
+      <div class="errorExplanation" id="errorExplanation">
+        <h2> <%= _("Can`t create new software: %s errors") % @errors.length %> </h2>
+        <ul>
+          <% @errors.each do |error| %>
+            <li> <%= error %> </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="obrigatory-field">
       <%= label("name", _('Name'), {:class => 'formlabel mandatory'}) %>
-      <%= required text_field(:community, :name, :size => 30, :maxlength => 100, :id => 'community_name_id') %>
+      <%= required text_field(:community, :name, :size => 30, :maxlength => 100, :id => 'community_name_id', :class => @error_community_name) %>
     </div>
 
-    <br>
-    <br>
-
-    <div class= <%= @error_software_domain %> >
+    <div class="obrigatory-field">
       <%= label("domain", _('Domain'), {:class => "formlabel mandatory"}) %>
       <div id='software-name-field' class='formfield'>
-
-        <span id='software-hostname'><%= environment.default_hostname %>/</span>
-        <%= required text_field(:community, :identifier, :size => 30, :maxlength => 100, :id => 'community-identifier') %>
+        <span id='software-hostname'><%= top_url %>/</span>
+        <%= required text_field(:community, :identifier, :size => 30, :maxlength => 100, :class => @error_software_domain, :id => 'community-identifier') %>
       </div>
     </div>
 
-    <div class= <%= @error_software_finality %> >
+    <div class="obrigatory-field">
       <%= fields_for @software_info do |swf| %>
         <div id="finality" class="formfield type-text">
           <%= swf.label("finality" ,_("Finality"), :class=>"formlabel mandatory") %>
-          <%= required swf.text_area(:finality, :placeholder => _("What is the software for?"), :maxlength => 120) %>
+          <%= required swf.text_area(:finality, :placeholder => _("What is the software for?"), :maxlength => 120, :class => @error_software_finality) %>
         </div>
       <% end %>
     </div>
 
-    <div id="profile_change_picture_title" class="formlabel">
-      <label>
-        <%= _('Software Logo') %>
-      </label>
-    </div>
-    <div id="profile_change_picture">
+    <div class="optional-box">
+      <div id="profile_change_picture_title" class="formlabel software-label">
+        <label>
+          <%= _('Software Logo') %>
+        </label>
+      </div>
+      <div id="profile_change_picture" class="software-label-box">
         <%= f.fields_for :image_builder, @community.image do |i| %>
-          <%= file_field_or_thumbnail(_('Image:'), @community.image, i) %><%= _("Max size: %s (.jpg, .gif, .png)")% Image.max_size.to_humanreadable %>
+          <%= file_field_or_thumbnail(_('Image:'), @community.image, i) %>
+          <%= _("Max size: %s (.jpg, .gif, .png)")% Image.max_size.to_humanreadable %>
         <% end %>
+      </div>
     </div>
 
-    <div class= <%= @error_software_license %> >
+    <div class="obrigatory-field">
       <div id="profile_change_picture_title" class="formlabel formfieldline">
         <label class="formlabel mandatory">
           <%= _("License Version: ") %>
         </label>
-          <%= render :partial => "license_info_fields", :locals => {
-            :license_version => "",
-            :license_id => "",
-            :another_version=>"",
-            :another_link=>""
-          } %>
+        <%= render :partial => "license_info_fields", :locals => {
+          :license_version => "",
+          :license_id => "",
+          :another_version=>"",
+          :another_link=>""
+        } %>
       </div>
     </div>
 
-    <%= fields_for @software_info do |swf| %>
-      <div class="formfieldline formfield type-text">
-        <%= swf.label "repository_url", _("Link to Repository: "), :class => "formlabel"%>
-        <%= swf.text_field :repository_link, :class => "improve_input_size", :id => "software-info-repository-link" %>
-      </div>
-    <% end %>
+    <div class="optional-field">
+      <%= fields_for @software_info do |swf| %>
+        <div class="formfieldline formfield type-text">
+          <%= swf.label "repository_url", _("Link to Repository: "), :class => "formlabel" %>
+          <%= swf.text_field :repository_link, :class => "improve_input_size", :id => "software-info-repository-link" %>
+        </div>
+      <% end %>
+    </div>
 
     <%= hidden_field_tag('back_to', @back_to) %>
 
