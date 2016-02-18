@@ -57,6 +57,37 @@ class SoftwareCommunitiesPluginProfileControllerTest < ActionController::TestCas
     assert_equal "Could not find the download file", session[:notice]
   end
 
+  should "display limited community events" do
+    @e1 = Event.new :name=>"Event 1", :body=>"Event 1 body",
+                   :start_date=>DateTime.now,
+                   :end_date=>(DateTime.now + 1.month)
+
+    @e2 = Event.new :name=>"Event 2", :body=>"Event 2 body",
+                  :start_date=>(DateTime.now + 10.days),
+                  :end_date=>(DateTime.now + 11.days)
+
+    @e3 = Event.new :name=>"Event 3", :body=>"Event 3 body",
+                  :start_date=>(DateTime.now + 20.days),
+                  :end_date=>(DateTime.now + 30.days)
+
+    @software.community.events << @e1
+    @software.community.events << @e2
+    @software.community.events << @e3
+    @software.community.save!
+
+    events_block = SoftwareEventsBlock.new
+    events_block.amount_of_events = 2
+    events_block.display = "always"
+    box = MainBlock.last.box
+    events_block.box = box
+    events_block.save!
+
+    get :index, :profile=>@software.community.identifier
+    assert_tag :tag => 'div', :attributes => { :class => 'software-community-events-block' }, :descendant => { :tag => 'a', :content => 'Event 1' }
+    assert_tag :tag => 'div', :attributes => { :class => 'software-community-events-block' }, :descendant => { :tag => 'a', :content => 'Event 2' }
+    assert_no_tag :tag => 'div', :attributes => { :class => 'software-community-events-block' }, :descendant => { :tag => 'a', :content => 'Event 3' }
+  end
+
   should "notice when given invalid download params" do
     download_block = DownloadBlock.last
     get :download_file, :profile=>@software.community.identifier,
