@@ -433,6 +433,7 @@
 
 .action-categories-index .treeitem span{
   font-weight: 600;
+  font-size: 14px;
 }
 
 .action-categories-index .treeitem div{
@@ -468,13 +469,13 @@
 }
 
 .action-account-change_password input{
-padding: 6px;
-color: #585858;
-background: #FFF;
-border: 1px solid #ccc;
-border-radius: 4px;
-font-size: 15px;
-font-family: Arial, helvetica;
+  padding: 6px;
+  color: #585858;
+  background: #FFF;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: Arial, helvetica;
 }
 
 /* Members management */
