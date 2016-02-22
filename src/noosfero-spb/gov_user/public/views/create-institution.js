@@ -290,12 +290,12 @@ modulejs.define('CreateInstitution', ['jquery', 'NoosferoRoot', 'SelectElement']
     var state_label = $('label[for="community_state"]');
     var inst_type = $("input[name='institutions[type]']:checked").val();
 
-    institution_type_actions(inst_type);
-
     if ( country === "-1" ) {
       $("#community_country").val("BR");
       country = "BR";
     }
+
+    institution_type_actions(inst_type);
 
     if ( country !== "BR" ) {
       cnpj.hide();
