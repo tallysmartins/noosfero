@@ -585,6 +585,10 @@ form.signup {
     font-family: Arial;
 }
 
+.mailinglist-help {
+    position: absolute;
+}
+
 .list-container {
     padding-top: 30px;
 }

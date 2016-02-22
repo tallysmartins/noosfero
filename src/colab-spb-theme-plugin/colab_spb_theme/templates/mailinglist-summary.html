@@ -49,20 +49,22 @@
     <div class="row">
       <div class="list-container">
         <div class="col-md-8">
-          <div style="border-right: 1px solid #ccc; padding-right: 32px; min-height: 450px">
-            {% for thread in thread_list %}
+          <div class="thread-list">
+            <div style="border-right: 1px solid #ccc; padding-right: 32px; min-height: 450px">
+              {% for thread in thread_list %}
               <div class="row colab-thread">
                 <div class="col-md-12 colab-thread">
                   <small class="colab-thread-modified-time">{{ thread.latest_message.received_time|date:"d F Y" }} {% trans "at" %} {{thread.latest_message.received_time|date:"h:m" }} - <a class="colab-thread-modified-author" href="{{thread.latest_message.author_url}}">{{thread.latest_message.author }}</a>
                   </small><br>
                   <h4><a class="colab-thread-subject" href="{{thread.get_absolute_url}}">{{ thread.latest_message.subject_clean }}</h4>
-                  {% with thread.latest_message.body|truncatechars:"85" as description %}
+                    {% with thread.latest_message.body|truncatechars:"85" as description %}
                     <span class="colab-thread-latest-message">{{description | default_if_none:"a"}}</span></a><br>
-                  {% endwith %}
-                  <hr/>
+                    {% endwith %}
+                    <hr/>
+                  </div>
                 </div>
+                {% endfor %}
               </div>
-            {% endfor %}
           </div>
         </div>
 
@@ -127,4 +129,26 @@
     {% endif %}
   {% endblock %}
   </div>
+
+  <script>
+  $(function() {
+    var $sidebar = $(".mailinglist-help"),
+      $window = $(window),
+      offset = $sidebar.offset(),
+      topPadding = 5; // that's what avoiding div from overlapping footer
+
+    $window.scroll(function() {
+      if($window.scrollTop() > offset.top) {
+        $sidebar.stop().animate({
+          marginTop: $window.scrollTop() - offset.top - topPadding,
+        });
+      } else {
+        $sidebar.stop().animate({
+          marginTop: 0
+        });
+      }
+    });
+  });
+  </script>
+
 {% endblock %}
