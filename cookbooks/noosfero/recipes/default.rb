@@ -87,6 +87,12 @@ plugins_spb.each do |plugin|
   end
 end
 
+execute 'sisp:environment:prepare' do
+  command "RAILS_ENV=production bundle exec rake sisp:prepare ADMINUSER=#{node['config']['admins'].first[1]} DOMAIN=#{node['config']['sisp_external_hostname']}"
+  cwd '/usr/lib/noosfero'
+  user 'noosfero'
+end
+
 execute 'plugins:activate' do
   command "RAILS_ENV=production bundle exec rake noosfero:plugins:enable_all"
   cwd '/usr/lib/noosfero'
