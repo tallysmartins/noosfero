@@ -958,3 +958,29 @@
 .action-admin_panel-site_info #content .main-content #thanks-for-signing p:nth-child(10) {
   margin-bottom: 31px;
 }
+
+/* Editing sideboxes - Help icon same of the noosfero */
+.action-environment_design-index #content #block-types .slick-list .slick-track div .button-bar .icon-help span,
+.action-profile_design-index #content #block-types .slick-list .slick-track div .button-bar .icon-help span {
+  display: none;
+}
+
+.action-environment_design-index #content #block-types .slick-list .slick-track div .button-bar a.button.icon-help.with-text.modal-toggle,
+.action-profile_design-index #content #block-types .slick-list .slick-track div .button-bar a.button.icon-help.with-text.modal-toggle {
+  background-image: url(../../../icons/tango/Tango/16x16/apps/gnome-help.png);
+  background-repeat: no-repeat;
+  background-color: #EEE;
+  background-position: 3px 50%;
+  color: #FFF;
+  border: 1px solid #aaaaaa;
+  text-decoration: none;
+  padding: 0px 2px 0px 22px;
+  margin: 0px 0px 0px 0px;
+  height: 20px;
+}
+
+.action-environment_design-index #content #block-types .slick-list .slick-track div .button-bar a.button.icon-help.with-text.modal-toggle:hover,
+.action-profile_design-index #content #block-types .slick-list .slick-track div .button-bar a.button.icon-help.with-text.modal-toggle:hover {
+  background-color: #555;
+}
+/*** End - Editing sideboxes - Help icon same of the noosfero ***/
