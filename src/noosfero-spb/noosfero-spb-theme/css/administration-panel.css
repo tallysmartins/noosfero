@@ -621,7 +621,9 @@
 
 .action-profile_editor-edit #content .main-content #category-ajax-selector #select-categories div a{
   padding: 2px 5px;
+  margin: 2px 0;
   background: #fff;
+  display: inline-block;
 }
 
 .action-profile_editor-edit #content .main-content #profile-data #image-builder-remove-checkbox{
