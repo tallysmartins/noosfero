@@ -194,6 +194,14 @@ cookbook_file '/etc/colab/widgets.d/profile.py' do
   notifies :restart, 'service[colab]'
 end
 
+cookbook_file '/etc/colab/widgets.d/gitlab_profile.py' do
+  owner 'root'
+  group 'colab'
+  mode 0640
+
+  notifies :restart, 'service[colab]'
+end
+
 # Static files
 directory '/var/lib/colab/assets/spb/' do
   owner  'root'
