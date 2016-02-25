@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
-{% load i18n tz superarchives %}
+{% load i18n tz superarchives staticfiles %}
+
+{% block head_js %}
+  <script src="{% static 'js/scroll.js' %}"></script>
+{% endblock %}
 
 {% block title %}{{ mailinglist.name|title }} - Listas de discussão - SPB{% endblock %}
 
@@ -131,27 +135,7 @@
   </div>
 
   <script>
-  $(function() {
-    var $sidebar = $(".mailinglist-help"),
-      $window = $(window),
-      offset = $sidebar.offset(),
-      maxMarginTop = $(".list-container .thread-list").height() - $sidebar.height();
-
-    $window.scroll(function() {
-      if($window.scrollTop() > offset.top) {
-        var marginTop = $window.scrollTop() - offset.top;
-        marginTop = marginTop > maxMarginTop ? maxMarginTop : marginTop;
-
-        $sidebar.stop().animate({
-          marginTop: marginTop
-        });
-      } else {
-        $sidebar.stop().animate({
-          marginTop: 0
-        });
-      }
-    });
-  });
+    $(colab.init('.mailinglist-help', '.thread-list'));
   </script>
 
 {% endblock %}

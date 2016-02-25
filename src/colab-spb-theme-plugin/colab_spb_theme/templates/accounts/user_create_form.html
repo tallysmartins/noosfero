@@ -1,5 +1,9 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n staticfiles %}
+
+{% block head_js %}
+  <script src="{% static 'js/scroll.js' %}"></script>
+{% endblock %}
 
 {% block title %}Cadastre-se - SPB{% endblock %}
 {% block main-content %}
@@ -41,26 +45,6 @@
 </div>
 
   <script>
-  $(function() {
-    var $sidebar = $(".signup-help"),
-      $window = $(window),
-      offset = $sidebar.offset(),
-      maxMarginTop = $(".signup-fields").height() - $sidebar.height();
-
-    $window.scroll(function() {
-      if($window.scrollTop() > offset.top) {
-        var marginTop = $window.scrollTop() - offset.top;
-        marginTop = marginTop > maxMarginTop ? maxMarginTop : marginTop;
-
-        $sidebar.stop().animate({
-          marginTop: marginTop
-        });
-      } else {
-        $sidebar.stop().animate({
-          marginTop: 0
-        });
-      }
-    });
-  });
+    $(colab.init('.signup-help', '.signup-fields'));
   </script>
 {% endblock %}
