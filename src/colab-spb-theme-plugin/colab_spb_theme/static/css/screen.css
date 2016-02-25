@@ -62,7 +62,7 @@ body {
   bottom: 0;
 }
 
-#main-content {
+body div#main-content {
   margin-top: 0;
   padding-bottom: 60px;
   color: #172738;
@@ -577,10 +577,22 @@ form.signup {
 
 .signup-help {
     font-size: 16px;
-    font-family: Arial;
-    padding-top: 7px;
+}
 
-  }
+.mailinglist-help,
+.signup-help {
+    padding-top: 7px;
+    font-family: Arial;
+    position: absolute;
+}
+
+.mailinglist-help {
+    font-size: 15px;
+}
+
+.list-container {
+    padding-top: 30px;
+}
 
 a.btn {
   margin: 2px 0 2px 0;

@@ -1,5 +1,11 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n staticfiles %}
+
+{% block head_js %}
+  <script src="{% static 'js/scroll.js' %}"></script>
+{% endblock %}
+
+{% block title %}Cadastre-se - SPB{% endblock %}
 {% block main-content %}
 <div class="colab-content container">
   <h2>Cadastre-se</h2>
@@ -9,6 +15,7 @@
     {% csrf_token %}
     <div class="row">
       <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+        <div class="signup-fields">
           <fieldset>
             {% for field in user_form %}
               <div class="form-group{% if field.field.required %} required{% endif %}{% if field.errors %} alert alert-danger has-error{% endif %}">
@@ -22,17 +29,22 @@
           </fieldset>
 
           <input type="submit" value="Cadastrar" id="btn-cadastrar" class="btn btn-primary">
+        </div>
       </div>
       <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
         <div style="border-left: 1px solid #ccc; padding-left: 52px; min-height: 450px">
           <div class="signup-help">
-            <p>Em caso de dúvidas visite a seção de <a href="/social/spb/ajuda#faq">Ajuda</a></p>
+            <p>Em caso de dúvidas, visite a seção de <a href="/social/spb/ajuda#faq">Ajuda</a></p>
             <hr>
-            <p>Caso ainda permaneça com dúvidas, fique à vontade para entrar em contato conosco através do email <a href="mailto:admin@softwarepublico.gov.br">admin@softwarepublico.gov.br</a></p>
+            <p>Caso ainda permaneça com dúvidas, fique à vontade para entrar em contato conosco através do email: <a href="mailto:admin@softwarepublico.gov.br">admin@softwarepublico.gov.br</a></p>
           </div>
         </div>
       </div>
     </div>
   </form>
 </div>
+
+  <script>
+    $(colab.init('.signup-help', '.signup-fields'));
+  </script>
 {% endblock %}

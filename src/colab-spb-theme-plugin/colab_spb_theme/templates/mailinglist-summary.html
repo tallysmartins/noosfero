@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
-{% load i18n tz superarchives %}
+{% load i18n tz superarchives staticfiles %}
 
-{% block title %}{{ mailinglist.name|title }}{% endblock %}
+{% block head_js %}
+  <script src="{% static 'js/scroll.js' %}"></script>
+{% endblock %}
+
+{% block title %}{{ mailinglist.name|title }} - Listas de discussão - SPB{% endblock %}
 
 {% block main-content %}
   <div class="colab-content container">
@@ -46,19 +50,37 @@
   {% endblock %}
 
   {% block mailinglist_view_thread_list %}
-    {% for thread in thread_list %}
-      <div class="row colab-thread">
-        <div class="col-md-12 colab-thread">
-          <small class="colab-thread-modified-time">{{ thread.latest_message.received_time|date:"d F Y" }} {% trans "at" %} {{thread.latest_message.received_time|date:"h:m" }} - <a class="colab-thread-modified-author" href="{{thread.latest_message.author_url}}">{{thread.latest_message.author }}</a>
-          </small><br>
-          <h4><a class="colab-thread-subject" href="{{thread.get_absolute_url}}">{{ thread.latest_message.subject_clean }}</h4>
-          {% with thread.latest_message.body|truncatechars:"85" as description %}
-            <span class="colab-thread-latest-message">{{description | default_if_none:"a"}}</span></a><br>
-          {% endwith %}
-        <hr/>
+    <div class="row">
+      <div class="list-container">
+        <div class="col-md-8">
+          <div class="thread-list">
+            <div style="border-right: 1px solid #ccc; padding-right: 32px; min-height: 450px">
+              {% for thread in thread_list %}
+              <div class="row colab-thread">
+                <div class="col-md-12 colab-thread">
+                  <small class="colab-thread-modified-time">{{ thread.latest_message.received_time|date:"d F Y" }} {% trans "at" %} {{thread.latest_message.received_time|date:"h:m" }} - <a class="colab-thread-modified-author" href="{{thread.latest_message.author_url}}">{{thread.latest_message.author }}</a>
+                  </small><br>
+                  <h4><a class="colab-thread-subject" href="{{thread.get_absolute_url}}">{{ thread.latest_message.subject_clean }}</h4>
+                    {% with thread.latest_message.body|truncatechars:"85" as description %}
+                    <span class="colab-thread-latest-message">{{description | default_if_none:"a"}}</span></a><br>
+                    {% endwith %}
+                    <hr/>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="mailinglist-help">
+            <p>Em caso de dúvidas, visite o <a href="/social/spb/ajuda#faq">Guia de Uso</a></p>
+            <hr>
+            <p>Caso ainda permaneça com dúvidas, fique à vontade para entrar em contato conosco através do email: <a href="mailto:admin@softwarepublico.gov.br">admin@softwarepublico.gov.br</a></p>
+          </div>
         </div>
       </div>
-    {% endfor %}
+    </div>
   {% endblock %}
 
   {% block mailinglist_view_paginator %}
@@ -111,4 +133,9 @@
     {% endif %}
   {% endblock %}
   </div>
+
+  <script>
+    $(colab.init('.mailinglist-help', '.thread-list'));
+  </script>
+
 {% endblock %}
