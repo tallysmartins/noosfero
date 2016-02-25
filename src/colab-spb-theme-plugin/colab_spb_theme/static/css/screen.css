@@ -62,7 +62,7 @@ body {
   bottom: 0;
 }
 
-#main-content {
+body div#main-content {
   margin-top: 0;
   padding-bottom: 60px;
   color: #172738;
