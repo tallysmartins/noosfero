@@ -583,11 +583,9 @@ form.signup {
 .signup-help {
     padding-top: 7px;
     font-family: Arial;
-}
-
-.mailinglist-help {
     position: absolute;
 }
+
 
 .list-container {
     padding-top: 30px;

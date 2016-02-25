@@ -9,6 +9,7 @@
     {% csrf_token %}
     <div class="row">
       <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+        <div class="signup-fields">
           <fieldset>
             {% for field in user_form %}
               <div class="form-group{% if field.field.required %} required{% endif %}{% if field.errors %} alert alert-danger has-error{% endif %}">
@@ -22,6 +23,7 @@
           </fieldset>
 
           <input type="submit" value="Cadastrar" id="btn-cadastrar" class="btn btn-primary">
+        </div>
       </div>
       <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
         <div style="border-left: 1px solid #ccc; padding-left: 52px; min-height: 450px">
@@ -35,4 +37,28 @@
     </div>
   </form>
 </div>
+
+  <script>
+  $(function() {
+    var $sidebar = $(".signup-help"),
+      $window = $(window),
+      offset = $sidebar.offset(),
+      maxMarginTop = $(".signup-fields").height() - $sidebar.height();
+
+    $window.scroll(function() {
+      if($window.scrollTop() > offset.top) {
+        var marginTop = $window.scrollTop() - offset.top;
+        marginTop = marginTop > maxMarginTop ? maxMarginTop : marginTop;
+
+        $sidebar.stop().animate({
+          marginTop: marginTop
+        });
+      } else {
+        $sidebar.stop().animate({
+          marginTop: 0
+        });
+      }
+    });
+  });
+  </script>
 {% endblock %}

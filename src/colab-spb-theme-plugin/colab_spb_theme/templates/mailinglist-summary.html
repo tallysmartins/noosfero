@@ -135,12 +135,15 @@
     var $sidebar = $(".mailinglist-help"),
       $window = $(window),
       offset = $sidebar.offset(),
-      topPadding = 5; // that's what avoiding div from overlapping footer
+      maxMarginTop = $(".list-container .thread-list").height() - $sidebar.height();
 
     $window.scroll(function() {
       if($window.scrollTop() > offset.top) {
+        var marginTop = $window.scrollTop() - offset.top;
+        marginTop = marginTop > maxMarginTop ? maxMarginTop : marginTop;
+
         $sidebar.stop().animate({
-          marginTop: $window.scrollTop() - offset.top - topPadding,
+          marginTop: marginTop
         });
       } else {
         $sidebar.stop().animate({
