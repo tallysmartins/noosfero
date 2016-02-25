@@ -458,8 +458,217 @@
 
 /*Edition configuration profile */
 
+.action-profile_editor-edit #content .main-content #profile-data #profile-is-template{
+  background-color: #F0F1F1;
+  padding: 6px;
+  font-size: 14px;
+  font-family: 'open_sansregular';
+  margin-bottom: 10px;
+  max-width: 405px;
+}
+
+.action-profile_editor-edit div#errorExplanation{
+  margin-left: 0px;
+  color: #FF0366;
+}
+
+.action-profile_editor-edit div#errorExplanation ul li{
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data #profile-is-template input[type="checkbox"]{
+  margin: 0 10px 0 10px;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data div{
+  margin: 5px 0 5px 0;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data #profile_change_picture div{
+  margin-bottom: 0px;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data #institution_modal_container{
+  margin: 15px 0 11px 0;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data #institution_modal_container a{
+  margin-left: 0px;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data .formlabel,
+.action-profile_editor-edit #content .main-content #profile-data .formfieldline label{
+  color: #231F20;
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data div span div div #email_public_message{
+  color: #888;
+  font-size: 12px;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+
+.action-profile_editor-edit #content .main-content #profile-data .formlabel::after{
+  color:#F00;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data p .required-field{
+  max-width: 374px;
+  padding: 15px 20px;
+  margin: 20px 0px 25px;
+  border-width: 1px 1px 1px 5px;
+  border-style: dotted dotted dotted solid;
+  border-color: #CCC #CCC #CCC #FF0366;
+  -moz-border-top-colors: none;
+
+
+  -moz-border-right-colors: none;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  border-image: none;
+  border-radius: 3px;
+  display: block;
+  background: #FFF none repeat scroll 0% 0%;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data input[type="text"]{
+  background: none;
+  display: block;
+  height: 19px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 405px;
+  font-size: 15px;
+  font-family arial, helvetica;
+  color: #585858;
+}
+
+.action-profile_editor-edit #content #profile_change_picture div div div div div div input[type="file"]{
+  background: none;
+  color: #999;
+  padding: 0px;
+  text-indent: 0px;
+  border: 1px solid #bbb;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.action-profile_editor-edit #content #profile_change_picture{
+  margin-top: 0px;
+}
+
+.action-profile_editor-edit #content .main-content form div input[type="radio"],
+.action-profile_editor-edit #content .main-content form input[type="checkbox"]{
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data .field-with-privacy-selector:hover{
+  background-color: #FFF;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data .field-with-privacy-selector .field-privacy-selector{
+  position: relative;
+  top: 6px;
+  text-align: right;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data .field-with-privacy-selector .field-privacy-selector div{
+  text-align: right;
+  top: 0px;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data .field-with-privacy-selector .field-privacy-selector label,
+.action-profile_editor-edit #content .main-content #profile-data #profile_change_picture_title span label{
+  font-size: 12px;
+  font-family: 'open_sansregular';
+}
+
+.action-profile_editor-edit #content .main-content #category-ajax-selector{
+  border-radius: 4px;
+  background: #F0F1F1;
+  border-color: #ccc;
+  margin-bottom: 10px;
+  max-width: 405px;
+}
+
+.action-profile_editor-edit #content .main-content #category-ajax-selector #select-categories .toplevel-categories hr{
+  border-color: #ccc;
+}
+
+.action-profile_editor-edit #content .main-content #category-ajax-selector #selected-categories .label,
+.action-profile_editor-edit #content .main-content #category-ajax-selector #select-categories div .category-helper-label{
+  font-size: 14px;
+}
+
+.action-profile_editor-edit #content .main-content #category-ajax-selector #select-categories div .category-helper-label{
+  color: #888;
+}
+
+.action-profile_editor-edit #content .main-content #category-ajax-selector #select-categories div a:hover{
+  cursor: move;
+  border: 1px solid #3E67B1;
+}
+
+.action-profile_editor-edit #content .main-content #category-ajax-selector #select-categories div a{
+  padding: 2px 5px;
+  background: #fff;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data #image-builder-remove-checkbox{
+  float: left;
+  width: 100%;
+  position: relative;
+  margin-top: 0px;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data #image-builder-remove-checkbox div label{
+  position: absolute;
+  left: 20px;
+  padding-top: 0px;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data #image-builder-remove-checkbox div div {
+  margin-top: 0px;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data .button-bar{
+  margin: 15px 0 30px 0;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data .button-bar .submit{
+  background-color: #3E67B1;
+  color: #FFF;
+  margin-right: 10px;
+}
+
 .action-profile_editor-edit #delete-profile{
   margin-top:0px;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data #delete-profile a{
+  border-color: #df3e3e;
+  color: #df3e3e;
+}
+
+.action-profile_editor-edit #content .main-content #profile-data #delete-profile a:hover{
+  color: #FFF;
+  background: #df3e3e;
+}
+
+.action-profile_editor-edit .controller-profile_editor #profile-data{
+  display: block;
 }
 
 /*form Change Password */
