@@ -1,0 +1,76 @@
+before_script:
+  - git config --global http.sslVerify false
+  - git submodule init && git submodule update
+  - cd noosfero
+  - mkdir -p locale # makes quick-start skip compiling translations
+  - ./script/noosfero-plugins disableall
+  - git checkout db/schema.rb
+  - unlink plugins/software_communities || true
+  - unlink plugins/gov_user || true
+  - unlink plugins/spb_migrations || true
+  - unlink public/designs/themes/noosfero-spb-theme || true
+  - ./script/silent-quick-start
+
+stages:
+  - spb-plugins
+  - all-tests
+
+units:
+  script: bundle exec rake test:units
+  stage: all-tests
+  only:
+    - /^ci_.*$/
+    - master_noosfero
+
+functionals:
+  script: bundle exec rake test:functionals
+  stage: all-tests
+  only:
+    - /^ci_.*$/
+    - master_noosfero
+
+integration:
+  script: bundle exec rake test:integration
+  stage: all-tests
+  only:
+    - /^ci_.*$/
+    - master_noosfero
+
+cucumber:
+  script: bundle exec rake cucumber
+  stage: all-tests
+  only:
+    - /^ci_.*$/
+    - master_noosfero
+
+selenium:
+  script: bundle exec rake selenium
+  stage: all-tests
+  only:
+    - /^ci_.*$/
+    - master_noosfero
+
+plugins:
+  script: bundle exec rake test:noosfero_plugins
+  stage: all-tests
+  only:
+    - /^ci_.*$/
+    - master_noosfero
+
+gov_user:
+  script:
+    - ./../script/plugins_spb_ci_setup.sh
+    - ./../script/gov_user_ci.sh
+  stage: spb-plugins
+  only:
+    - /^ci_.*$/
+    - master_noosfero
+
+software_communities:
+  script:
+    - ./../script/plugins_spb_ci_setup.sh
+    - ./../script/software_communities_ci.sh
+  stage: spb-plugins
+  only:
+    - /^ci_.*$/
+    - master_noosfero
