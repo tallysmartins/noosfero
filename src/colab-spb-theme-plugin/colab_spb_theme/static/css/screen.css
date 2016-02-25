@@ -586,6 +586,9 @@ form.signup {
     position: absolute;
 }
 
+.mailinglist-help {
+    font-size: 15px;
+}
 
 .list-container {
     padding-top: 30px;
