@@ -5,8 +5,8 @@ class SoftwareCommunitiesPluginController < ApplicationController
   def get_license_data
     return render :json=>{} if !request.xhr? || params[:query].nil?
 
-    data = LicenseHelper.find_licenses(params[:query]) if params[:query]
-    data ||= LicenseInfo.all
+    data = LicenseHelper.find_licenses(params[:query]) unless params[:query].blank?
+    data ||= LicenseHelper.all
 
     render :json=> data.collect { |license|
       {:id=>license.id, :label=>license.version}

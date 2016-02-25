@@ -5,4 +5,5 @@ class LicenseInfo < ActiveRecord::Base
 
   has_many :software_info
 
+  scope :without_another, -> { where.not(version: 'Another') }
 end
