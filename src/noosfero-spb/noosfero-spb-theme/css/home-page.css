@@ -66,8 +66,8 @@
   border-radius: 4px;
 }
 
-.controller-environment_design #content #catalogo-software-search h1,
-.action-home-index #content #catalogo-software-search h1{
+.controller-environment_design #content #catalogo-software-search h2,
+.action-home-index #content #catalogo-software-search h2 {
   margin: 0px 15px 10px 15px;
   border-bottom: none;
   padding: 10px 0px 0px 0px;
