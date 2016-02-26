@@ -10,14 +10,10 @@ namespace :software do
     if env.present?
       env.communities.find_each do |c|
         if c.software? || c.identifier == "software"
-          breadcrumbs = c.blocks.select{ |bl|
-                          bl.type == "BreadcrumbsPlugin::ContentBreadcrumbsBlock" ||
-                          bl.type == "SoftwareEventsBlock"
-                        }
-
-          breadcrumbs.each do |b|
-            b.destroy
-            print "."
+          c.boxes.each do |box|
+            Block.where("(type = 'BreadcrumbsPlugin::ContentBreadcrumbsBlock' OR 
+                         type = 'SoftwareEventsBlock') AND
+                         box_id = #{box.id}").destroy_all
           end
         end
       end
@@ -28,21 +24,19 @@ namespace :software do
   task :fix_blocks_position => :environment do
     env = Environment.find_by_name("SPB")
     if env.present?
-      env.communities.find_each do |c|
-        c.boxes.each do |box|
-          n = box.blocks.count
-          pos = 1.upto(n).to_a
-          blocks_ids = box.blocks.map(&:id)
-          pos.each do |p|
-            ActiveRecord::Migration.execute("UPDATE blocks SET position = #{p} WHERE id = #{blocks_ids[p-1]}")
-          end
-        end
-      end
+      ActiveRecord::Migration.execute("
+        UPDATE blocks SET position = newpos FROM (SELECT blocks.id, blocks.position, boxes.owner_id, row_number() over
+        (partition by boxes.id ORDER BY blocks.position ASC) as newpos FROM blocks INNER JOIN boxes ON
+        blocks.box_id = boxes.id INNER JOIN profiles ON boxes.owner_id = profiles.id INNER JOIN environments ON
+        profiles.environment_id = environments.id WHERE profiles.type = 'Community' AND environments.id = #{env.id}) as
+        t WHERE blocks.id = t.id;
+      ")
     end
   end
 
   desc "Create missing blocks in software and templates"
   task :box_organize => :environment do
+    a = Profile['sgdoc'].boxes[0].blocks
     env = Environment.find_by_name("SPB")
     software_template = env.communities.find_by_identifier "software"
 
@@ -64,12 +58,14 @@ namespace :software do
 
       box_one.blocks << template_breadcrumbs
       box_one.save!
-
       pos = box_one.blocks.order(:position).first.position
       change_block_pos(box_one, template_breadcrumbs, pos)
       print "."
     end
     ############################################################################
+
+    software_template = env.communities.find_by_identifier "software"
+    box_one = software_template.boxes.find_by_position 1
 
     template_software_events_1 = nil
 
@@ -80,12 +76,10 @@ namespace :software do
                                     :edit_modes => "none")
       template_software_events_1.display = "except_home_page"
       template_software_events_1.save!
-
       box_one.blocks << template_software_events_1
       box_one.save!
 
       pos = box_one.blocks.detect { |bl| bl.type == "SoftwareTabDataBlock"}.position
-
       change_block_pos(box_one, template_software_events_1, pos)
       print "."
     end
@@ -115,7 +109,6 @@ namespace :software do
     end
     ############################################################################
 
-
     puts "\nCreate software community boxes:"
     env.communities.each do |community|
       next unless community.software?
@@ -137,8 +130,10 @@ namespace :software do
         pos = box_one.blocks.order(:position).first.position
         change_block_pos(box_one, breadcrumbs_block, pos)
         print "."
-
       end
+
+      community.reload
+      box_one = community.boxes.find_by_position 1
 
       ############################################################################
       unless box_has_block_of_type?(box_one, "SoftwareEventsBlock")
@@ -148,7 +143,6 @@ namespace :software do
         software_events_block_1.display = "except_home_page"
         software_events_block_1.mirror_block_id = template_software_events_1.id if template_software_events_1
         software_events_block_1.save!
-
         box_one.blocks << software_events_block_1
         box_one.save!
 
@@ -171,7 +165,6 @@ namespace :software do
         software_events_block_2.display = "except_home_page"
         software_events_block_2.mirror_block_id = template_software_events_2.id if template_software_events_2
         software_events_block_2.save!
-
         box_two.blocks << software_events_block_2
         box_two.save!
 
@@ -180,8 +173,6 @@ namespace :software do
         change_block_pos(box_two, software_events_block_2, pos+1)
         print "."
       end
-      ############################################################################
-
     end
 
     puts "All blocks  created with success."
@@ -190,13 +181,10 @@ namespace :software do
   def change_block_pos(box, block, pos)
     box.blocks.each do |b|
       if b.position >= pos
-        b.position += 1
-        b.save
+        ActiveRecord::Migration.execute("UPDATE blocks set position = #{b.position+1} WHERE id = #{b.id}")
       end
     end
-
-    block.position = pos
-    block.save
+    ActiveRecord::Migration.execute("UPDATE blocks set position = #{pos} WHERE id = #{block.id}")
   end
 
   def box_has_block_of_type?(box, block_type)
