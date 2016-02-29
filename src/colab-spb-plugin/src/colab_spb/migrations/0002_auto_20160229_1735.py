@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
 
         for community in NoosferoCommunity.objects.all():
             try:
-                maillist = MailingList.objects.get(name__iexact=community.name)
+                maillist = MailingList.objects.get(name__iexact=community.identifier)
 
                 community_association = CommunityAssociations()
 
