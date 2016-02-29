@@ -11,7 +11,7 @@ def get_community(mailinglist):
 
     try:
         community_association = CommunityAssociations.objects.get(mail_list=ml)
-        community = community_association.community
+        community = community_association.community.name
     except CommunityAssociations.DoesNotExist:
         community = "software"
 
