@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         for community_association in CommunityAssociations.objects.all():
             try:
                 community = community_association.community
-                group = GitlabGroup.objects.get(name__iexact=community.name)
+                group = GitlabGroup.objects.get(name__iexact=community.identifier)
                 community_association.group = group
                 community_association.save()
             except GitlabGroup.DoesNotExist:
