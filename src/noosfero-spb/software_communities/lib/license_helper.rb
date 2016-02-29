@@ -5,7 +5,7 @@ module LicenseHelper
   end
 
   def self.all
-    licenses = LicenseInfo.all.without_another.select("id, version")
+    licenses = LicenseInfo.without_another.select("id, version")
     put_another_at_the_end licenses
   end
 
