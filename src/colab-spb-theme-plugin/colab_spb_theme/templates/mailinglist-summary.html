@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n tz superarchives staticfiles %}
+{% load i18n tz superarchives staticfiles spb_extra %}
 
 {% block head_js %}
   <script src="{% static 'js/scroll.js' %}"></script>
@@ -74,7 +74,7 @@
 
         <div class="col-md-4">
           <div class="mailinglist-help">
-            <p>Em caso de dúvidas, visite o <a href="/social/spb/ajuda#faq">Guia de Uso</a></p>
+            <p>Em caso de dúvidas, visite o <a href="/social/{% get_community mailinglist %}/como-participar-da-lista-de-discussao">Guia de Uso</a></p>
             <hr>
             <p>Caso ainda permaneça com dúvidas, fique à vontade para entrar em contato conosco através do email: <a href="mailto:admin@softwarepublico.gov.br">admin@softwarepublico.gov.br</a></p>
           </div>
