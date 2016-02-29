@@ -1,148 +1,195 @@
 #encoding: utf-8
 
 namespace :software do
+  desc "Adds breadcrumbs and events block to softwares"
+  task :boxes_all => [:clear_breadcrumbs_and_event_blocks, :fix_blocks_position, :box_organize]
+
+  desc "Delete breadcrumbs and events block from softwares"
+  task :clear_breadcrumbs_and_event_blocks => :environment do
+    env = Environment.find_by_name("SPB")
+    if env.present?
+      env.communities.find_each do |c|
+        if c.software? || c.identifier == "software"
+          c.boxes.each do |box|
+            Block.where("(type = 'BreadcrumbsPlugin::ContentBreadcrumbsBlock' OR 
+                         type = 'SoftwareEventsBlock') AND
+                         box_id = #{box.id}").destroy_all
+          end
+        end
+      end
+    end
+  end
+
+  desc "Fixes all blocks position in all softwares"
+  task :fix_blocks_position => :environment do
+    env = Environment.find_by_name("SPB")
+    if env.present?
+      ActiveRecord::Migration.execute("
+        UPDATE blocks SET position = newpos FROM (SELECT blocks.id, blocks.position, boxes.owner_id, row_number() over
+        (partition by boxes.id ORDER BY blocks.position ASC) as newpos FROM blocks INNER JOIN boxes ON
+        blocks.box_id = boxes.id INNER JOIN profiles ON boxes.owner_id = profiles.id INNER JOIN environments ON
+        profiles.environment_id = environments.id WHERE profiles.type = 'Community' AND environments.id = #{env.id}) as
+        t WHERE blocks.id = t.id;
+      ")
+    end
+  end
+
   desc "Create missing blocks in software and templates"
   task :box_organize => :environment do
-    software_template = Community["software"]
-    next unless software_template.is_template?
+    a = Profile['sgdoc'].boxes[0].blocks
+    env = Environment.find_by_name("SPB")
+    software_template = env.communities.find_by_identifier "software"
 
-    existing_blocks = Block.count
+    puts "Searching for software template and environment..."
+    return if software_template.nil? || env.nil?
 
-    puts "Last block id: #{Block.last.id}"
-    puts "Create template boxes:"
+    puts "Creating template boxes:"
+    template_breadcrumbs = nil
+    box_one = software_template.boxes.find_by_position 1
 
-    software_area_four = software_template.boxes.find_by_position 4
-    four = false
+    unless box_has_block_of_type?(box_one, "BreadcrumbsPlugin::ContentBreadcrumbsBlock")
+      template_breadcrumbs = BreadcrumbsPlugin::ContentBreadcrumbsBlock.new(
+                              :mirror => true,
+                              :move_modes => "none",
+                              :edit_modes => "none")
+      template_breadcrumbs.settings[:fixed] = true
+      template_breadcrumbs.display = "always"
+      template_breadcrumbs.save!
 
-    if software_area_four.blocks.first.class != BreadcrumbsPlugin::ContentBreadcrumbsBlock
-      template_breadcrumbs_block = BreadcrumbsPlugin::ContentBreadcrumbsBlock.new :mirror => true, :move_modes => "none", :edit_modes => "none"
-      template_breadcrumbs_block.settings[:fixed] = true
-      template_breadcrumbs_block.display = "always"
-      template_breadcrumbs_block.save!
-
-      software_area_four.blocks << template_breadcrumbs_block
-      software_area_four.save!
-
-      pos = software_area_four.blocks.order(:position).first.position
-      change_block_pos(software_area_four, template_breadcrumbs_block, pos)
+      box_one.blocks << template_breadcrumbs
+      box_one.save!
+      pos = box_one.blocks.order(:position).first.position
+      change_block_pos(box_one, template_breadcrumbs, pos)
       print "."
-
-      four = true
     end
     ############################################################################
 
-    software_area_two = software_template.boxes.find_by_position 2
-    two = false
+    software_template = env.communities.find_by_identifier "software"
+    box_one = software_template.boxes.find_by_position 1
 
-    if software_area_two.blocks.last.class != SoftwareEventsBlock
-      template_software_events = SoftwareEventsBlock.new :mirror => true, :move_modes => "none", :edit_modes => "all"
-      template_software_events.title = "Outros Eventos"
-      template_software_events.display = "except_home_page"
-      template_software_events.save!
+    template_software_events_1 = nil
 
-      software_area_two.blocks << template_software_events
-      software_area_two.save!
+    unless box_has_block_of_type?(box_one, "SoftwareEventsBlock")
+      template_software_events_1 = SoftwareEventsBlock.new(
+                                    :mirror => true,
+                                    :move_modes => "none",
+                                    :edit_modes => "none")
+      template_software_events_1.display = "except_home_page"
+      template_software_events_1.save!
+      box_one.blocks << template_software_events_1
+      box_one.save!
 
-      pos = software_area_two.blocks.order(:position).last.position
-      change_block_pos(software_area_four, template_software_events, pos+1)
+      pos = box_one.blocks.detect { |bl| bl.type == "SoftwareTabDataBlock"}.position
+      change_block_pos(box_one, template_software_events_1, pos)
       print "."
-
-      two = true
     end
     ############################################################################
 
-    software_area_one = software_template.boxes.find_by_position 1
-    one = false
+    template_software_events_2 = nil
+    box_two = software_template.boxes.find_by_position 2
 
-    if software_area_one.blocks[-2].class != SoftwareEventsBlock
-      second_template_software_events = SoftwareEventsBlock.new :mirror => true, :move_modes => "none", :edit_modes => "all"
-      second_template_software_events.display = "except_home_page"
-      second_template_software_events.save!
+    unless box_has_block_of_type?(box_two, "SoftwareEventsBlock")
+      pos = box_two.blocks.order(:position).last.position
 
-      software_area_one.blocks << second_template_software_events
-      software_area_one.save!
+      template_software_events_2 = SoftwareEventsBlock.new(
+                                    :mirror => true,
+                                    :move_modes => "none",
+                                    :edit_modes => "none",
+                                    :amount_of_events => 5)
+      template_software_events_2.title = "Outros Eventos"
+      template_software_events_2.display = "except_home_page"
+      template_software_events_2.save
 
-      pos = software_area_one.blocks.order(:position).last.position
-      change_block_pos(software_area_one, second_template_software_events, pos)
+      box_two.blocks << template_software_events_2
+      box_two.save!
+
+      pos = box_two.blocks.order(:position).last.position
+      change_block_pos(box_two, template_software_events_2, pos+1)
       print "."
-      one = true
     end
-
+    ############################################################################
 
     puts "\nCreate software community boxes:"
-    Community.joins(:software_info).each do |software_community|
-      software_area_four = software_community.boxes.find_by_position 4
+    env.communities.each do |community|
+      next unless community.software?
+      box_one = community.boxes.find_by_position 1
 
-      if four && software_area_four.blocks.first.class != BreadcrumbsPlugin::ContentBreadcrumbsBlock
-        breadcrumbs_block = BreadcrumbsPlugin::ContentBreadcrumbsBlock.new :mirror => true, :move_modes => "none", :edit_modes => "none"
+      unless box_has_block_of_type?(box_one, "BreadcrumbsPlugin::ContentBreadcrumbsBlock")
+        breadcrumbs_block = BreadcrumbsPlugin::ContentBreadcrumbsBlock.new(
+                              :move_modes => "none", :edit_modes => "none"
+                            )
         breadcrumbs_block.settings[:fixed] = true
         breadcrumbs_block.display = "always"
-        breadcrumbs_block.mirror_block_id = template_breadcrumbs_block.id
+        breadcrumbs_block.mirror_block_id = template_breadcrumbs.id if template_breadcrumbs
         breadcrumbs_block.save!
 
-        software_area_four.blocks << breadcrumbs_block
-        software_area_four.save!
+        box_one.blocks << breadcrumbs_block
+        box_one.save!
 
-        # Puts the breadcrumbs as the first one on area four
-        pos = software_area_four.blocks.order(:position).first.position
-        change_block_pos(software_area_four, breadcrumbs_block, pos)
-        print "."
-
-      end
-      ############################################################################
-
-      software_area_two = software_community.boxes.find_by_position 2
-
-      if two
-        software_events = SoftwareEventsBlock.new :mirror => true, :move_modes => "none", :edit_modes => "all"
-        software_events.title = "Outros Eventos"
-        software_events.display = "except_home_page"
-        software_events.mirror_block_id = template_software_events.id
-        software_events.save!
-
-        software_area_two.blocks << software_events
-        software_area_two.save!
-
-        # Puts the breadcrumbs as the first one on area four
-        pos = software_area_two.blocks.order(:position).last.position
-        change_block_pos(software_area_four, software_events, pos+1)
+        # Puts the breadcrumbs as the first one on box one
+        pos = box_one.blocks.order(:position).first.position
+        change_block_pos(box_one, breadcrumbs_block, pos)
         print "."
       end
+
+      community.reload
+      box_one = community.boxes.find_by_position 1
+
       ############################################################################
+      unless box_has_block_of_type?(box_one, "SoftwareEventsBlock")
+        software_events_block_1 = SoftwareEventsBlock.new(
+                                    :move_modes => "none",
+                                    :edit_modes => "none")
+        software_events_block_1.display = "except_home_page"
+        software_events_block_1.mirror_block_id = template_software_events_1.id if template_software_events_1
+        software_events_block_1.save!
+        box_one.blocks << software_events_block_1
+        box_one.save!
 
-      software_area_one = software_community.boxes.find_by_position 1
+        pos = box_one.blocks.detect { |bl| bl.type == "SoftwareTabDataBlock"}.position
+        # Puts the software events block above Software Tab Data on area one
+        change_block_pos(box_one, software_events_block_1, pos)
+        print "."
+      end
 
-      if one
-        software_events = SoftwareEventsBlock.new :mirror => true, :move_modes => "none", :edit_modes => "all"
-        software_events.display = "except_home_page"
-        software_events.mirror_block_id = second_template_software_events.id
-        software_events.save!
+      ############################################################################
+      box_two = community.boxes.find_by_position 2
 
-        software_area_one.blocks << software_events
-        software_area_one.save!
+      unless box_has_block_of_type?(box_two, "SoftwareEventsBlock")
+        software_events_block_2 = SoftwareEventsBlock.new(
+                                    :move_modes => "none",
+                                    :edit_modes => "none",
+                                    :amount_of_events => 5)
 
-        # Puts the breadcrumbs as the first one on area four
-        pos = software_area_one.blocks.order(:position).last.position
-        change_block_pos(software_area_one, software_events, pos)
+        software_events_block_2.title = "Outros Eventos"
+        software_events_block_2.display = "except_home_page"
+        software_events_block_2.mirror_block_id = template_software_events_2.id if template_software_events_2
+        software_events_block_2.save!
+        box_two.blocks << software_events_block_2
+        box_two.save!
+
+        # Puts the software events block as the last one on area two
+        pos = box_two.blocks.order(:position).last.position
+        change_block_pos(box_two, software_events_block_2, pos+1)
         print "."
       end
     end
 
-    print "\n"
-
-    puts "Created blocks: #{Block.count - existing_blocks}"
+    puts "All blocks  created with success."
   end
 
   def change_block_pos(box, block, pos)
     box.blocks.each do |b|
       if b.position >= pos
-        b.position += 1
-        b.save
+        ActiveRecord::Migration.execute("UPDATE blocks set position = #{b.position+1} WHERE id = #{b.id}")
       end
     end
+    ActiveRecord::Migration.execute("UPDATE blocks set position = #{pos} WHERE id = #{block.id}")
+  end
 
-    block.position = pos
-    block.save
+  def box_has_block_of_type?(box, block_type)
+   blocks = box.blocks.detect {|bl| bl.type == block_type}
+   blocks.present?
   end
 end
 
