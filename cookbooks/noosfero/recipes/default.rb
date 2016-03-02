@@ -81,7 +81,7 @@ plugins_spb.each do |plugin|
   end
 
   execute ('plugins_spb:migrate:' + plugin) do
-    command 'RAILS_ENV=production SCHEMA=/dev/null bundle exec rake db:migrate'
+    command "RAILS_ENV=production SCHEMA=/dev/null bundle exec rake db:migrate > /tmp/#{plugin}"
     cwd '/usr/lib/noosfero'
     user 'noosfero'
   end
