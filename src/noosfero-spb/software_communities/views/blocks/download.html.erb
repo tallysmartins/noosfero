@@ -1,35 +1,21 @@
 <% if block.owner.software_info.nil? %>
   <%= _("This community needs a software to use this block") %>
 <% else %>
-  <h3 class="block-title">
-    <label><%= _("Download") %></label>
-    <%= block.owner.software_info.community.name %>
-  </h3>
-
-  <ul class="download-list">
-    <% block.downloads.each_with_index do |download, index| %>
-      <li id="download-item-<%=(index+1)%>">
+    <h3 class="block-title"> <%= _("Download #{block.owner.software_info.community.name}") %> </h3>
+    <ul class="download-list">
+    <% block.download_records.sort_by(&:id).each do |download| %>
+      <li id="download-item-<%= download.id %>">
         <div class="download-button">
-          <%= link_to({controller: 'software_communities_plugin_profile',
-                       action: 'download_file',
-                       block: block.id,
-                       download_index: index},
-                       title: _("Download the software")) do %>
-            <span class="download-image"></span>
-            <span class="download-size"><%= download[:size] %></span>
+          <%= link_to :controller => 'software_communities_plugin_profile', :action => 'download_file', :block_id => block.id, :download_id => download.id , title: _("Download the software") do %>
+          <span class="download-image"></span>
+          <span class="download-size"><%= download[:size] %></span>
           <% end %>
         </div>
 
         <div class="download-info">
-          <span class="download-name"><%= download[:name] %></span>
-          <span class="download-platform">
-            <label><%= _("Platform:")%></label>
-            <%= download[:software_description] %>
-          </span>
-
-          <span class="min-requirements">
-            <%= link_to _("Minimum Requirements"), download[:minimum_requirements] %>
-          </span>
+          <span class="download-name"><%= _("#{download.name}") %></span>
+          <span class="download-platform"><%= _("Platform: ") + _("#{download.software_description}") %> </span>
+          <span class="min-requirements"><%= link_to _("Minimum Requirements"), download.minimum_requirements %></span>
         </div>
       </li>
     <% end %>

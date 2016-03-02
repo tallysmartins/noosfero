@@ -14,10 +14,6 @@ class SoftwareCommunitiesPluginController < ApplicationController
 
   end
 
-  def get_block_template
-    render 'box_organizer/_download_list_template', :layout => false
-  end
-
   def get_field_data
     condition = !request.xhr? || params[:query].nil? || params[:field].nil?
     return render :json=>{} if condition

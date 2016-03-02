@@ -1,48 +1,43 @@
 modulejs.define('SoftwareDownload', ['jquery', 'NoosferoRoot'], function($, NoosferoRoot) {
   'use strict';
 
-  var AJAX_URL = {
-    get_download_template:
-      NoosferoRoot.urlWithSubDirectory("/plugin/software_communities/get_block_template")
-  };
-
-  var $download_html_template;
-
-  function getDownloadListTemplate() {
-    var block_template = sessionStorage.getItem('download_list_block_template');
-
-    if(block_template && block_template.length > 0) {
-      $download_html_template = block_template;
-    } else {
-      $.get(AJAX_URL.get_download_template, function(response) {
-        $download_html_template = response;
-        sessionStorage.setItem('download_list_block_template', response);
-      });
-    }
-  }
-
-
   function SoftwareDownload() {
-    getDownloadListTemplate();
   }
-
 
   SoftwareDownload.prototype.addNewDonwload = function() {
-    var new_download = $($download_html_template);
+    var new_download = $('#download-list-item-template').html();
     $("#droppable-list-downloads").append(new_download);
   }
 
+  SoftwareDownload.prototype.selectFile = function(element) {
+    var path = $(element).find('.file-path').val();
+    var size = $(element).find('.file-size').html();
 
-  SoftwareDownload.prototype.deleteDownload = function(element) {
-    var delete_download = $(element).parent().parent().parent().remove();
+    var download_option = $(element).find('.file-size').closest('.download-option');
+    download_option.find('#block_downloads__link').val(path);
+    download_option.find('#block_downloads__size').val(size);
+
+    var fileElements = $(element).parent().parent().find('.file-item');
+    for (var i = 0; i < fileElements.length; i++) {
+      fileElements[i].classList.remove('selected');
+    }
+    $(element).parent()[0].classList.add('selected');
   }
 
+  SoftwareDownload.prototype.toggleForm = function(element) {
+    var files_ul = $(element).parent().find('.toggle-form')[0];
+    files_ul.classList.toggle('opened');
+    files_ul.classList.toggle('closed');
+  }
+
+  SoftwareDownload.prototype.deleteDownload = function(element) {
+    var delete_download = $(element).closest('.download-option').remove();
+  }
 
   return {
     isCurrentPage: function() {
       return $('.download-block').length !== 0;
     },
-
 
     init: function() {
       window.softwareDownload = new SoftwareDownload();

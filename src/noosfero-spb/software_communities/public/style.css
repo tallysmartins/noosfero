@@ -115,18 +115,11 @@
   margin-top: 5px;
 }
 
+/* profile_design download block */
+
 #droppable-list-downloads .download-forms{
   margin-bottom: 20px;
   margin-left: 0;
-}
-
-.download-forms ul li{
-  margin-bottom: 10px;
-}
-
-.download-forms ul li label{
-  display: block;
-  margin-bottom: 5px;
 }
 
 #edit-download-block ul.link-list-header{
@@ -135,6 +128,95 @@
 
 #edit-download-block{
   margin-top: 10px;
+  width: 450px;
+}
+
+.download-forms {
+  position: relative;
+}
+
+.download-forms .toggle-form {
+  transition: all ease .35s;
+  overflow: hidden;
+  width: 381px;
+}
+
+.download-forms .toggle-form.closed {
+  height: 0px;
+}
+
+.download-forms .toggle-form.opened {
+  min-height: 200px;
+}
+
+.download-forms .toggle-form ul {
+  background: #eee;
+}
+
+.download-forms ul li {
+  margin-bottom: 10px;
+}
+
+.download-forms ul li label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.download-forms .formfieldline input[type="text"] {
+  width: 380px;
+}
+
+.download-forms .toggle-form .formfieldline:first-child {
+  margin-top: 20px;
+  padding: 5px 10px;
+  background: #eee;
+}
+
+.download-forms .toggle-form .formfieldline:first-child input[type="text"] {
+  width: 360px;
+}
+
+.download-forms .toggle-form ul {
+  max-height: 119px;
+  overflow: scroll;
+}
+
+.download-forms .file-item {
+  cursor: pointer;
+  line-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+}
+
+.download-forms .file-item.selected {
+  font-weight: bold;
+  background: #cacaca;
+}
+
+.download-forms .file-item a {
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.download-forms .file-item a i {
+  margin-right: 7px;
+}
+
+.download-forms a.icon-edit {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  background-position: left;
+  padding: 3px 5px 3px 15px;
+}
+.download-forms a.icon-edit span {
+  display: inline;
+}
+
+.download-forms .delete-download-button {
+  display: inline-flex;
+  margin: 20px 0 30px;
 }
 
 /* end of profile_design download block */
