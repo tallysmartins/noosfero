@@ -3,3 +3,4 @@ database: 10.21.0.6
 social: 10.21.0.5
 email: 10.21.0.7
 integration: 10.21.0.8
+mezuro: 10.21.0.11
