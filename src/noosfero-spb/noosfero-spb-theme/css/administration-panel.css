@@ -265,12 +265,17 @@
   margin: 10px 0px 3px 0px;
 }
 
+.action-software_communities_plugin_myprofile-new_software .explanation,
 .action-gov_user_plugin-create_institution_admin .explanation {
   color: #3F60C6;
   font-size: 12px;
   font-style: italic;
   font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 25px;
+}
+
+.action-software_communities_plugin_myprofile-new_software .explanation{
+  margin-top: 5px;
 }
 
 .action-gov_user_plugin-create_institution_admin .required-field,
@@ -381,12 +386,39 @@
 
 /* Edit software page */
 
-.action-profile_editor-edit_software_community #profile-is-template{
+.action-profile_editor-edit_software_community #profile-data{
+  display: block;
+}
+
+.action-profile_editor-edit_software_community #profile-data #profile-is-template{
   margin-top: 10px;
+}
+
+.action-profile_editor-edit_software_community #profile-data #profile-is-template input[type="checkbox"]{
+  margin: 0 10px 0 10px;
 }
 
 .action-profile_editor-edit_software_community .field-privacy-selector{
   vertical-align: bottom;
+}
+
+.action-profile_editor-edit_software_community #profile-data #profile_data_invite_friends_only,
+.action-profile_editor-edit_software_community #profile-data #profile_data_closed_true,
+.action-profile_editor-edit_software_community #profile-data #profile_data_closed_false,
+.action-profile_editor-edit_software_community #profile-data #profile_data_moderated_articles_true,
+.action-profile_editor-edit_software_community #profile-data #profile_data_moderated_articles_false,
+.action-profile_editor-edit_software_community #profile-data input[type="checkbox"],
+.action-profile_editor-edit_software_community #profile-data input[type="radio"],
+.action-profile_editor-edit_software_community #profile-data #profile_data_allow_members_to_invite{
+  margin: 0 10px 0 10px;
+}
+
+.action-profile_editor-edit_software_community #profile-data div{
+  margin-bottom: 5px;
+}
+
+.action-profile_editor-edit_software_community #profile-data div br{
+  display: none;
 }
 
 /* Categories */
@@ -458,6 +490,7 @@
 
 /*Edition configuration profile */
 
+.action-profile_editor-edit_software_community #content .main-content #profile-data #profile-is-template,
 .action-profile_editor-edit #content .main-content #profile-data #profile-is-template{
   background-color: #F0F1F1;
   padding: 6px;
@@ -539,6 +572,7 @@
   font-size: 13px;
 }
 
+.action-profile_editor-edit_software_community #content .main-content #profile-data input[type="text"],
 .action-profile_editor-edit #content .main-content #profile-data input[type="text"]{
   background: none;
   display: block;
@@ -550,6 +584,21 @@
   font-size: 15px;
   font-family: Arial, helvetica;
   color: #585858;
+}
+
+.action-profile_editor-edit_software_community #content .main-content #profile-data .field-with-privacy-selector:hover{
+  background: none;
+}
+
+.action-profile_editor-edit_software_community #content .main-content #profile-data .field-with-privacy-selector label{
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 300;
+}
+
+.action-profile_editor-edit_software_community #content .main-content #profile-data .field-with-privacy-selector .field-privacy-selector{
+  position: relative;
+  bottom: 20px;
 }
 
 .action-profile_editor-edit #content #profile_change_picture div div div div div div input[type="file"]{
@@ -593,6 +642,7 @@
   font-family: 'open_sansregular';
 }
 
+.action-profile_editor-edit_software_community .main-content #category-ajax-selector,
 .action-profile_editor-edit #content .main-content #category-ajax-selector{
   border-radius: 4px;
   background: #F0F1F1;
@@ -601,11 +651,20 @@
   max-width: 405px;
 }
 
+.action-profile_editor-edit_software_community #content .main-content #category-ajax-selector hr,
+.action-profile_editor-edit #content .main-content #category-ajax-selector hr{
+  border-bottom: 1px solid #ddd;
+}
+
+.action-profile_editor-edit_software_community #content .main-content #category-ajax-selector{
+  margin-bottom: 15px;
+}
+
 .action-profile_editor-edit #content .main-content #category-ajax-selector #select-categories .toplevel-categories hr{
   border-color: #ccc;
 }
 
-.action-profile_editor-edit #content .main-content #category-ajax-selector #selected-categories .label,
+.action-profile_editor-edit_software_community #content .main-content #category-ajax-selector #selected-categories .label,
 .action-profile_editor-edit #content .main-content #category-ajax-selector #select-categories div .category-helper-label{
   font-size: 14px;
 }
@@ -614,16 +673,23 @@
   color: #888;
 }
 
+.action-profile_editor-edit_software_community #content .main-content #category-ajax-selector #select-categories div a:hover,
+.action-profile_editor-edit #content .main-content #category-ajax-selector .select-subcategory-link:hover,
+.action-profile_editor-edit_software_community #content .main-content #category-ajax-selector .select-subcategory-link:hover,
 .action-profile_editor-edit #content .main-content #category-ajax-selector #select-categories div a:hover{
   cursor: move;
   border: 1px solid #3E67B1;
 }
 
+.action-profile_editor-edit_software_community #content .main-content #category-ajax-selector #select-categories div a,
+.action-profile_editor-edit_software_community #content .main-content #category-ajax-selector .select-subcategory-link,
+.action-profile_editor-edit #content .main-content #category-ajax-selector .select-subcategory-link,
 .action-profile_editor-edit #content .main-content #category-ajax-selector #select-categories div a{
   padding: 2px 5px;
   margin: 2px 0;
   background: #fff;
   display: inline-block;
+  border: 1px solid #bbb;
 }
 
 .action-profile_editor-edit #content .main-content #profile-data #image-builder-remove-checkbox{
@@ -643,10 +709,16 @@
   margin-top: 0px;
 }
 
+.action-profile_editor-edit_software_community #content .main-content #profile-data .button-bar,
 .action-profile_editor-edit #content .main-content #profile-data .button-bar{
   margin: 15px 0 30px 0;
 }
 
+.action-profile_editor-edit_software_community #content .main-content #profile-data .button-bar{
+  margin-bottom: 90px;
+}
+
+.action-profile_editor-edit_software_community #content .main-content #profile-data .button-bar .submit,
 .action-profile_editor-edit #content .main-content #profile-data .button-bar .submit{
   background-color: #3E67B1;
   color: #FFF;
@@ -657,11 +729,15 @@
   margin-top:0px;
 }
 
+
+.action-profile_editor-edit_software_community .main-content #profile-data #delete-profile a,
 .action-profile_editor-edit #content .main-content #profile-data #delete-profile a{
   border-color: #df3e3e;
   color: #df3e3e;
 }
 
+
+.action-profile_editor-edit_software_community #content .main-content #profile-data #delete-profile a:hover,
 .action-profile_editor-edit #content .main-content #profile-data #delete-profile a:hover{
   color: #FFF;
   background: #df3e3e;
