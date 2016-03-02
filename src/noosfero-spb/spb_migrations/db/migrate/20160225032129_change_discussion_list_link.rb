@@ -13,7 +13,7 @@ class ChangeDiscussionListLink < ActiveRecord::Migration
                                       l["name"] == "Lista de E-mails"
                                     }
           if link.present?
-            link["address"] = "/archives/mailinglist/{profile}?order=rating" if link.present?
+            link["address"] = "/../archives/mailinglist/{profile}?order=rating" if link.present?
             link["name"] = "Listas de discussão"
             block.save
             print "."
