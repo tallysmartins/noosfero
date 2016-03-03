@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ChangeDiscussionListLink < ActiveRecord::Migration
   def up
     env = Environment.find_by_name("SPB") || Environment.default
