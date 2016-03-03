@@ -1,0 +1,30 @@
+from django.utils.translation import ugettext_lazy as _
+from colab.plugins.utils.menu import colab_url_factory
+
+name = 'colab_mezuro'
+verbose_name = 'Mezuro Plugin'
+
+upstream = 'http://<%= node['peers']['integration'] %>:84/mezuro/'
+#middlewares = []
+extra = {'processor_address' : 'http://<%= node['peers']['mezuro'] %>:82' , 
+         'configurations_address' : 'http://<%= node['peers']['mezuro'] %>:83'}
+
+urls = {
+    'include': 'colab_mezuro.urls',
+    'prefix': '^mezuro/',
+}
+
+#menu_title = _('Code Quality')
+
+url = colab_url_factory('mezuro')
+
+#menu_urls = (
+#    url(display=_('Projects'), viewname='mezuro',
+#        kwargs={'path': 'projects'}, auth=False),
+#    url(display=_('Repositories'), viewname='mezuro',
+#        kwargs={'path': 'repositories'}, auth=False),
+#    url(display=_('Configurations'), viewname='mezuro',
+#        kwargs={'path': 'kalibro_configurations'}, auth=False),
+#    url(display=_('Reading Groups'), viewname='mezuro',
+#        kwargs={'path': 'reading_groups'}, auth=False),
+#)
