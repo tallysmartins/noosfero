@@ -21,3 +21,4 @@ raven_dsn: https://a5e2f92a83774dfc9de66486e0fe970b:1a9229a4e1d2483582144d302fb5
 colab_http_workers: 1
 dev_backup_frequency: true
 disable_send_emails: true
+munin_master: 10.10.10.7

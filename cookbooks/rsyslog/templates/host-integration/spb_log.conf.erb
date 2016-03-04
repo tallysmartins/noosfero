@@ -1,0 +1,102 @@
+# TODO: configure gitlab to send logs to syslog directly
+# Configuration to forward GitLab logs
+$ModLoad imfile
+# Unicor Error
+$InputFileName /var/log/gitlab/unicorn.stderr.log
+$InputFileTag gitlab-unicorerr
+$InputFileStateFile gitlab-unicor
+$InputFileSeverity 'error'
+$InputFileFacility gitlabunicorerr
+$InputRunFileMonitor
+
+# Unicor Out
+$InputFileName /var/log/gitlab/unicorn.stdout.log
+$InputFileTag gitlab-unicorout
+$InputFileStateFile gitlab-unicoroutlog
+$InputFileSeverity 'info'
+$InputFileFacility gitlabunicorout
+$InputRunFileMonitor
+
+# Applications log
+$InputFileName /var/log/gitlab/application.log
+$InputFileTag gitlab-app
+$InputFileStateFile gitlab-applog
+$InputFileSeverity 'info'
+$InputFileFacility gitlabapp
+$InputRunFileMonitor
+
+# Production logs
+$InputFileName /var/log/gitlab/production.log
+$InputFileTag gitlab-prod
+$InputFileStateFile gitlab-prodlog
+$InputFileSeverity 'info'
+$InputFileFacility gitlabprod
+$InputRunFileMonitor
+
+# Sidekiq logs
+$InputFileName /var/log/gitlab/sidekiq.log
+$InputFileTag gitlab-sidekiq
+$InputFileStateFile gitlab-sidekiqlog
+$InputFileSeverity 'info'
+$InputFileFacility gitlabsidekiq
+$InputRunFileMonitor
+
+# Shell logs
+$InputFileName /var/log/gitlab-shell/gitlab-shell.log
+$InputFileTag gitlab-shell
+$InputFileStateFile gitlab-shelllog
+$InputFileSeverity 'info'
+$InputFileFacility gitlabshell
+$InputRunFileMonitor
+
+#### Nginx log files
+# Colab-Nginx logs
+$InputFileName /var/log/nginx/colab.access.log
+$InputFileTag nginx-colab-access
+$InputFileStateFile nginx-colab-accesslog
+$InputFileSeverity 'access'
+$InputFileFacility nginxcolabaccess
+$InputRunFileMonitor
+
+# Colab-Nginx error log
+$InputFileName /var/log/nginx/colab.error.log
+$InputFileTag nginx-colab-error
+$InputFileStateFile nginx-colab-errorlog
+$InputFileSeverity 'error'
+$InputFileFacility nginxcolaberror
+$InputRunFileMonitor
+
+# Mailman-Nginx logs
+$InputFileName /var/log/nginx/mailman.access.log
+$InputFileTag nginx-mailman-access
+$InputFileStateFile nginx-mailman-accesslog
+$InputFileSeverity 'access'
+$InputFileFacility nginxmailmanaccess
+$InputRunFileMonitor
+
+# Mailman-Nginx error log
+$InputFileName /var/log/nginx/mailman.error.log
+$InputFileTag nginx-mailman-error
+$InputFileStateFile nginx-mailman-errorlog
+$InputFileSeverity 'error'
+$InputFileFacility nginxmailmanerror
+$InputRunFileMonitor
+
+# Gitlab-Nginx logs
+$InputFileName /var/log/nginx/gitlab.access.log
+$InputFileTag nginx-gitlab-access
+$InputFileStateFile nginx-gitlab-accesslog
+$InputFileSeverity 'access'
+$InputFileFacility nginxgitlabaccess
+$InputRunFileMonitor
+
+# Gitlab-Nginx error log
+$InputFileName /var/log/nginx/gitlab.error.log
+$InputFileTag nginx-gitlab-error
+$InputFileStateFile nginx-gitlab-errorlog
+$InputFileSeverity 'error'
+$InputFileFacility nginxgitlaberror
+$InputRunFileMonitor
+
+# Sending <%= node.name %> logs
+*.*                                                     @@<%= node['peers']['monitor'] %>

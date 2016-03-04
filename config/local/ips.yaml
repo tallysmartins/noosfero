@@ -3,4 +3,5 @@ email:        10.10.10.3
 social:       10.10.10.4
 database:     10.10.10.5
 reverseproxy: 10.10.10.6
+monitor:      10.10.10.7
 mezuro:       10.10.10.8

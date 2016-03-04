@@ -55,7 +55,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define 'reverseproxy' do |reverseproxy|
+  config.vm.define 'monitor' do |monitor|
+    monitor.vm.provider "virtualbox" do |vm, override|
+      override.vm.network 'private_network', ip: ips['monitor'] if ips
+    end
+  end
+
+  config.vm.define 'reverseproxy', autostart: false do |reverseproxy|
     reverseproxy.vm.provider "virtualbox" do |vm, override|
       override.vm.network 'private_network', ip: ips['reverseproxy'] if ips
     end

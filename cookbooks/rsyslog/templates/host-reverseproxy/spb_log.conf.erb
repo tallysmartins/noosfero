@@ -1,0 +1,36 @@
+$ModLoad imfile
+#### Nginx log files
+# SSL-SoftwarePublico-Nginx logs
+$InputFileName /var/log/nginx/ssl-softwarepublico.dev.access.log
+$InputFileTag nginx-spb-access
+$InputFileStateFile nginx-spb-accesslog
+$InputFileSeverity 'access'
+$InputFileFacility nginxspbaccess
+$InputRunFileMonitor
+
+# SSL-SoftwarePublico-Nginx error log
+$InputFileName /var/log/nginx/ssl-softwarepublico.dev.error.log
+$InputFileTag nginx-spb-error
+$InputFileStateFile nginx-spb-errorlog
+$InputFileSeverity 'error'
+$InputFileFacility nginxspberror
+$InputRunFileMonitor
+
+# SSL-List-SoftwarePublico-Nginx logs
+$InputFileName /var/log/nginx/ssl-listas-softwarepublico.dev.access.log
+$InputFileTag nginx-lista-spb-access
+$InputFileStateFile nginx-lista-spb-accesslog
+$InputFileSeverity 'access'
+$InputFileFacility nginxlistasspbaccess
+$InputRunFileMonitor
+
+# SSL-SoftwarePublico-Nginx error log
+$InputFileName /var/log/nginx/ssl-listas-softwarepublico.dev.error.log
+$InputFileTag nginx-listas-spb-error
+$InputFileStateFile nginx-listas-spb-errorlog
+$InputFileSeverity 'error'
+$InputFileFacility nginxlistasspberror
+$InputRunFileMonitor
+
+# Sending <%= node.name %> logs
+*.*                                                     @@<%= node['peers']['monitor'] %>

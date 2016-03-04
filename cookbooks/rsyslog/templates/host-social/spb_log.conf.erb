@@ -1,0 +1,46 @@
+# TODO: configure nginx to send logs to syslog directly
+# Configuration to forward Nginx
+$ModLoad imfile
+# Noosfero-Nginx access log
+$InputFileName /var/log/nginx/noosfero.access.log
+$InputFileTag nginx-noosfero-access
+$InputFileStateFile nginx-noosfero-accesslog
+$InputFileSeverity 'access'
+$InputFileFacility nginxnoosferoaccess
+$InputRunFileMonitor
+
+# Noosfero-Nginx error log
+$InputFileName /var/log/nginx/noosfero.error.log
+$InputFileTag nginx-noosfero-error
+$InputFileStateFile nginx-noosfero-errorlog
+$InputFileSeverity 'error'
+$InputFileFacility nginxnoosferoerror
+$InputRunFileMonitor
+
+# TODO: this can be done by noosfero app
+# Noosfero production log
+$InputFileName /var/log/noosfero/production.log
+$InputFileTag noosfero-prod
+$InputFileStateFile noosfero-prodlog
+$InputFileSeverity 'info'
+$InputFileFacility noosferoprod
+$InputRunFileMonitor
+
+# Noosfero production delay
+$InputFileName /var/log/nginx/production_delayed_job.log
+$InputFileTag noosfero-prod-delay
+$InputFileStateFile noosfero-prod-delaylog
+$InputFileSeverity 'info'
+$InputFileFacility noosferoproddelay
+$InputRunFileMonitor
+
+# Noosfero production spammers
+$InputFileName /var/log/nginx/production_spammers.log
+$InputFileTag noosfero-prod-spammers
+$InputFileStateFile noosfero-prod-spammerslog
+$InputFileSeverity 'info'
+$InputFileFacility noosferoprodspammers
+$InputRunFileMonitor
+
+# Sending <%= node.name %> logs
+*.*                                                     @@<%= node['peers']['monitor'] %>

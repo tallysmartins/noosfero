@@ -1,0 +1,15 @@
+# Provides TCP syslog reception
+$ModLoad imtcp
+$InputTCPServerRun 514
+
+# Setting up dir to storage the logs from SPB env
+# Dir to storage Social logs
+if $fromhost-ip=='<%= node['peers']['social']%>' then /var/log/spb/social/social.log
+# Dir to storage Email logs
+if $fromhost-ip=='<%= node['peers']['email']%>' then /var/log/spb/email/email.log
+# Dir to storage database logs
+if $fromhost-ip=='<%= node['peers']['database']%>' then /var/log/spb/database/database.log
+# Dir to storage integration logs
+if $fromhost-ip=='<%= node['peers']['integration']%>' then /var/log/spb/integration/integration.log
+# Dir to storage reverseproxy logs
+if $fromhost-ip=='<%= node['peers']['reverseproxy']%>' then /var/log/spb/reverseproxy/reverseproxy.log
