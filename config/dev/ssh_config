@@ -35,6 +35,12 @@ Host mezuro
   # connect via reverseproxy host
   ProxyCommand ssh spb@189.9.151.16 nc %h %p
 
+Host monitor
+  Hostname 10.18.0.21
+  User spb
+  # connect via reverseproxy host
+  ProxyCommand ssh spb@189.9.151.16 nc %h %p
+
 Host integration
   Hostname 189.9.151.16
   User spb
