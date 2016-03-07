@@ -1,3 +1,3 @@
 name 'monitoring_server'
 description 'Monitoring server'
-run_list 'recipe[munin]', 'recipe[rsyslog]'
+run_list 'recipe[munin]', 'recipe[rsyslog]', 'recipe[loganalyzer]'
