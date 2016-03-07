@@ -650,3 +650,43 @@ a.btn {
 .btn-colab-mailinglist-members {
     margin-bottom: 40px;
 }
+
+#colab_profile-content label.control-label {
+    width: auto;
+    padding-left: 0;
+    font-size: 16px;
+}
+
+#colab_profile-content input.form-control {
+    font-size: 14px;
+}
+
+#colab_profile-content h3.panel-title {
+    font-size: 16px;
+}
+
+#colab_profile-content .panel .emails,
+#colab_profile-content .btn,
+#colab_profile-content .panel label {
+    font-size: 14px;
+}
+
+#colab_profile-content .links-group .btn.btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 6px;
+}
+
+#colab_profile-content .btn.btn-primary {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+
+#colab_profile-content .panel .label {
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    display: inline;
+}
