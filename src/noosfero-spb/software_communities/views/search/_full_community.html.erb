@@ -2,7 +2,8 @@
 <li class="search-software-item">
   <div class="search-software-item-column-left">
     <div class="vcard">
-      <% unless community.organization_ratings.empty?%>
+
+      <% unless community.organization_ratings.empty? %>
         <%= render :partial => 'shared/organization_average_rating_block', :locals => {:community => community}%>
       <% end %>
 

@@ -15,7 +15,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
     @license_info = SoftwareCommunitiesPlugin::LicenseInfo.find_by_id(params[:license][:license_infos_id]) if params[:license]
     @license_info ||= SoftwareCommunitiesPlugin::LicenseInfo.new
 
-    @software_info = SoftwareCommunitiesPlugin::SoftwareInfo.new(params[:software_info])
+    @software_info = SoftwareCommunitiesPlugin::SoftwareInfo.new(params[:software_communities_plugin_software_info])
     @software_info.community = @community
     @software_info.license_info = @license_info
 
@@ -103,6 +103,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
 
   def create_software
     @software_info = @profile.software_info
+
     params[:software][:public_software] ||= false unless @software_info.public_software?
     @license = SoftwareCommunitiesPlugin::LicenseInfo.find(params[:license][:license_infos_id])
     @software_info.license_info = @license
@@ -111,7 +112,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
     another_license_version = nil
     another_license_link = nil
     if params[:license]
-      @license = LicenseInfo.find(params[:license][:license_infos_id])
+      @license = SoftwareCommunitiesPlugin::LicenseInfo.find(params[:license][:license_infos_id])
       @software_info.license_info = @license
 
       another_license_version = params[:license][:version]
@@ -140,7 +141,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
       another_license_link = params[:license][:link]
     end
     @software_info = SoftwareCommunitiesPlugin::SoftwareInfo.create_after_moderation(user,
-                        params[:software_info].merge({
+                        params[:software_communities_plugin_software_info].merge({
                           :environment => environment,
                           :name => params[:community][:name],
                           :identifier => params[:community][:identifier],
@@ -208,6 +209,7 @@ class SoftwareCommunitiesPluginMyprofileController < MyProfileController
       @license_info.valid? if @license_info
       add_software_erros
     end
+  end
 
   def update_software_highlight_errors
     @error_community_name = @community.errors.include?(:name) ? "highlight-error" : "" if @community

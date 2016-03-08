@@ -18,12 +18,12 @@ class OrganizationRatingsPluginProfileControllerTest < ActionController::TestCas
     @environment.enabled_plugins = ['SoftwareCommunitiesPlugin']
     @environment.save
 
-    LicenseInfo.create(:version=>"CC-GPL-V2",
+    SoftwareCommunitiesPlugin::LicenseInfo.create(:version=>"CC-GPL-V2",
                       :link=>"http://creativecommons.org/licenses/GPL/2.0/legalcode.pt")
 
     @person = create_user('testuser').person
     @software = create_software(software_fields)
-    @statistic_block = StatisticBlock.new
+    @statistic_block = SoftwareCommunitiesPlugin::StatisticBlock.new
     @software.community.blocks << @statistic_block
     @software.community.save!
 

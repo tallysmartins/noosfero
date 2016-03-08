@@ -97,7 +97,7 @@ module SoftwareTestHelper
     hash_list << fields
 
     #Fields for license info
-    fields_license['license_infos_id'] = LicenseInfo.last.id
+    fields_license['license_infos_id'] = SoftwareCommunitiesPlugin::LicenseInfo.last.id
     hash_list << fields_license
 
     hash_list

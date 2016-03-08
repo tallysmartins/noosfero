@@ -15,7 +15,7 @@ class ProfileEditorControllerTest < ActionController::TestCase
     @response   = ActionController::TestResponse.new
     @profile = create_user('default_user').person
 
-    LicenseInfo.create(
+    SoftwareCommunitiesPlugin::LicenseInfo.create(
       :version=>"CC-GPL-V2",
       :link=>"http://creativecommons.org/licenses/GPL/2.0/legalcode.pt"
     )

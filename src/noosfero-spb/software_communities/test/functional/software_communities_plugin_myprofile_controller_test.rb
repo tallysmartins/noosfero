@@ -19,14 +19,14 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     @offer_1 = create_user('Ana de Souza')
     @offer_2 = create_user('Angelo Roberto')
 
-    LicenseInfo.create(
+    SoftwareCommunitiesPlugin::LicenseInfo.create(
       :version=>"CC-GPL-V2",
       :link=>"http://creativecommons.org/licenses/GPL/2.0/legalcode.pt"
     )
 
-    ProgrammingLanguage.create(:name =>"language")
-    DatabaseDescription.create(:name => "database")
-    OperatingSystemName.create(:name=>"Debian")
+    SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name =>"language")
+    SoftwareCommunitiesPlugin::DatabaseDescription.create(:name => "database")
+    SoftwareCommunitiesPlugin::OperatingSystemName.create(:name=>"Debian")
 
     login_as(@person.user_login)
     @environment = Environment.default
@@ -52,7 +52,7 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :profile => @person.identifier,
       :community => fields[1],
       :license => fields[0],
-      :software_info => fields[2]
+      :software_communities_plugin_software_info => fields[2]
     )
 
     new_software = Community.find_by_identifier("debian").software_info
@@ -131,7 +131,7 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
   end
 
   should 'edit a software and does not change Another License values' do
-    another_license = LicenseInfo.create(:version => "Another", :link => "#")
+    another_license = SoftwareCommunitiesPlugin::LicenseInfo.create(:version => "Another", :link => "#")
     software = create_software(software_fields)
     software.community.add_admin(@person)
     software.save!
@@ -172,6 +172,7 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :profile => software.community.identifier,
       :operating_system => fields[3],
       :software => fields[4],
+      :license =>{:license_infos_id => SoftwareCommunitiesPlugin::LicenseInfo.last.id}
     )
 
     edited_software = Community.find_by_identifier("debian").software_info
@@ -231,7 +232,8 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       post(
         :edit_software,
         :profile => software.community.identifier,
-        :software => fields[4]
+        :software => fields[4],
+        :license =>{:license_infos_id => SoftwareCommunitiesPlugin::LicenseInfo.last.id}
       )
 
       edited_software = Community.find_by_identifier("debian").software_info
@@ -245,17 +247,17 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     post(
       :new_software,
       :community => {:name =>"New Software", :identifier => "new-software"},
-      :software_info => {:finality => "something", :repository_link => ""},
-      :license =>{:license_infos_id => LicenseInfo.last.id},
+      :software_communities_plugin_software_info => {:finality => "something", :repository_link => ""},
+      :license =>{:license_infos_id => SoftwareCommunitiesPlugin::LicenseInfo.last.id},
       :profile => @person.identifier
     )
 
     new_software = Community.find_by_identifier("new-software").software_info
-    assert_equal new_software.license_info, LicenseInfo.last
+    assert_equal new_software.license_info, SoftwareCommunitiesPlugin::LicenseInfo.last
   end
 
   should "create software_info with 'Another' license_info" do
-    license_another = LicenseInfo.create(:version => "Another", :link => "#")
+    license_another = SoftwareCommunitiesPlugin::LicenseInfo.create(:version => "Another", :link => "#")
     @environment.add_admin(@person)
 
     another_license_version = "Different License"
@@ -264,7 +266,7 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     post(
       :new_software,
       :community => { :name => "New Software", :identifier => "new-software" },
-      :software_info => { :finality => "something", :repository_link => "" },
+      :software_communities_plugin_software_info => { :finality => "something", :repository_link => "" },
       :license => { :license_infos_id => license_another.id,
         :version => another_license_version,
         :link=> another_license_link
@@ -272,15 +274,14 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
       :profile => @person.identifier
     )
 
-    new_software = Community.find_by_identifier("new-software").software_info
-    assert_equal license_another.id, new_software.license_info_id
-    assert_equal license_another.id, new_software.license_info.id
-    assert_equal another_license_version, new_software.license_info.version
-    assert_equal another_license_link, new_software.license_info.link
+    assert_equal SoftwareCommunitiesPlugin::SoftwareInfo.last.license_info_id, license_another.id
+    assert_equal SoftwareCommunitiesPlugin::SoftwareInfo.last.license_info.id, nil
+    assert_equal SoftwareCommunitiesPlugin::SoftwareInfo.last.license_info.version, another_license_version
+    assert_equal SoftwareCommunitiesPlugin::SoftwareInfo.last.license_info.link, another_license_link
   end
 
   should "create software_info after finish task with 'Another' license_info" do
-    license_another = LicenseInfo.create(:version => "Another", :link => "#")
+    license_another = SoftwareCommunitiesPlugin::LicenseInfo.create(:version => "Another", :link => "#")
 
     another_license_version = "Different License"
     another_license_link = "http://diferent.link"
@@ -288,8 +289,7 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     post(
       :new_software,
       :community => { :name => "New Software", :identifier => "new-software" },
-      :software_info => { :finality => "something", :repository_link => "" },
-      :license_info => { :version => license_another.version },
+      :software_communities_plugin_software_info => { :finality => "something", :repository_link => "" },
       :license => { :license_infos_id => license_another.id,
         :version => another_license_version,
         :link=> another_license_link
@@ -300,18 +300,17 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     @environment.add_admin(@person)
     Task.last.send('finish', @person)
 
-    new_software = Community.find_by_identifier("new-software").software_info
-    assert_equal license_another.id, new_software.license_info_id
-    assert_equal license_another.id, new_software.license_info.id
-    assert_equal another_license_version, new_software.license_info.version
-    assert_equal another_license_link, new_software.license_info.link
+    assert_equal SoftwareCommunitiesPlugin::SoftwareInfo.last.license_info_id, license_another.id
+    assert_equal SoftwareCommunitiesPlugin::SoftwareInfo.last.license_info.id, nil
+    assert_equal SoftwareCommunitiesPlugin::SoftwareInfo.last.license_info.version, another_license_version
+    assert_equal SoftwareCommunitiesPlugin::SoftwareInfo.last.license_info.link, another_license_link
   end
 
   should "show error messages on create software_info" do
     post(
       :new_software,
       :community => {},
-      :software_info => {},
+      :software_communities_plugin_software_info => {},
       :license => {},
       :profile => @person.identifier
     )
@@ -327,15 +326,15 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     post(
       :new_software,
       :community => {:name =>"New Software", :identifier => "new-software"},
-      :software_info => {:finality => "something", :repository_link => ""},
-      :license =>{:license_infos_id => LicenseInfo.last.id},
+      :software_communities_plugin_software_info => {:finality => "something", :repository_link => ""},
+      :license =>{:license_infos_id => SoftwareCommunitiesPlugin::LicenseInfo.last.id},
       :profile => @person.identifier
     )
     post(
       :new_software,
       :community => {:name =>"New Software", :identifier => "new-software"},
-      :software_info => {:finality => "something", :repository_link => ""},
-      :license =>{:license_infos_id => LicenseInfo.last.id},
+      :software_communities_plugin_software_info => {:finality => "something", :repository_link => ""},
+      :license =>{:license_infos_id => SoftwareCommunitiesPlugin::LicenseInfo.last.id},
       :profile => @person.identifier
     )
 
@@ -348,8 +347,8 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
     post(
       :new_software,
       :community => {:name =>"New Software", :identifier => "new-software"},
-      :software_info => {:finality => "something", :repository_link => ""},
-      :license =>{:license_infos_id => LicenseInfo.last.id},
+      :software_communities_plugin_software_info => {:finality => "something", :repository_link => ""},
+      :license =>{:license_infos_id => SoftwareCommunitiesPlugin::LicenseInfo.last.id},
       :profile => @person.identifier
     )
 
@@ -362,12 +361,12 @@ class SoftwareCommunitiesPluginMyprofileControllerTest < ActionController::TestC
   end
 
   should "dont create software without accept task" do
-    assert_no_difference 'SoftwareInfo.count' do
+    assert_no_difference 'SoftwareCommunitiesPlugin::SoftwareInfo.count' do
       post(
         :new_software,
         :community => {:name =>"New Software", :identifier => "new-software"},
-        :software_info => {:finality => "something", :repository_link => ""},
-        :license =>{:license_infos_id => LicenseInfo.last.id},
+        :software_communities_plugin_software_info => {:finality => "something", :repository_link => ""},
+        :license =>{:license_infos_id => SoftwareCommunitiesPlugin::LicenseInfo.last.id},
         :profile => @person.identifier
       )
     end

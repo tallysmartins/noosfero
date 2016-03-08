@@ -22,7 +22,7 @@ class SoftwareCommunitiesPlugin::SoftwareInfo < ActiveRecord::Base
       SoftwareCommunitiesPlugin::SoftwareInfo.joins(:community).where("profiles.visible = ? AND environment_id = ? ", true, env.id)
     else
       searchable_software_objects = SoftwareCommunitiesPlugin::SoftwareInfo.transform_list_in_methods_list(SEARCHABLE_SOFTWARE_CLASSES)
-      includes(searchable_software_objects).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')").where("profiles.visible = ?", true)
+      includes(searchable_software_objects).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')").where("profiles.visible = ?", true).references(searchable_software_objects)
     end
   }
 
@@ -30,10 +30,10 @@ class SoftwareCommunitiesPlugin::SoftwareInfo < ActiveRecord::Base
     methods_list = []
 
     list.each do |element|
-      if SoftwareCommunitiesPlugin::SoftwareInfo.instance_methods.include?(element.to_s.underscore.to_sym)
-        methods_list << element.to_s.underscore.to_sym
-      elsif SoftwareCommunitiesPlugin::SoftwareInfo.instance_methods.include?(element.to_s.underscore.pluralize.to_sym)
-        methods_list << element.to_s.underscore.pluralize.to_sym
+      if SoftwareCommunitiesPlugin::SoftwareInfo.instance_methods.include?(element.to_s.gsub("SoftwareCommunitiesPlugin::", "").underscore.to_sym)
+        methods_list << element.to_s.gsub("SoftwareCommunitiesPlugin::", "").underscore.to_sym
+      elsif SoftwareCommunitiesPlugin::SoftwareInfo.instance_methods.include?(element.to_s.gsub("SoftwareCommunitiesPlugin::", "").underscore.pluralize.to_sym)
+        methods_list << element.to_s.gsub("SoftwareCommunitiesPlugin::", "").underscore.pluralize.to_sym
       end
     end
 
@@ -183,18 +183,20 @@ class SoftwareCommunitiesPlugin::SoftwareInfo < ActiveRecord::Base
     another_license_link = attributes.delete(:another_license_link)
 
     software_info = SoftwareCommunitiesPlugin::SoftwareInfo.new(attributes)
-    unless environment.admins.include? requestor
+    if !requestor.is_admin?
       SoftwareCommunitiesPlugin::CreateSoftware.create!(
         attributes.merge(
           :requestor => requestor,
           :environment => environment,
           :name => name,
           :identifier => identifier,
-          :license_info => license_info
+          :license_info => license_info,
+          :another_license_version => another_license_version,
+          :another_license_link => another_license_link
         )
       )
     else
-      software_template = SoftwareCommunitiesPlugin::SoftwareHelper.software_template
+      software_template = Community["software"]
 
       community_hash = {:name => name}
       community_hash[:identifier] = identifier
@@ -203,7 +205,7 @@ class SoftwareCommunitiesPlugin::SoftwareInfo < ActiveRecord::Base
       community = Community.new(community_hash)
       community.environment = environment
 
-      unless software_template.blank?
+      if (!software_template.blank? && software_template.is_template)
         community.template_id = software_template.id
       end
 
@@ -212,10 +214,10 @@ class SoftwareCommunitiesPlugin::SoftwareInfo < ActiveRecord::Base
 
       software_info.community = community
       software_info.license_info = license_info
+      software_info.verify_license_info(another_license_version, another_license_link)
+      software_info.save!
     end
 
-    software_info.verify_license_info(another_license_version, another_license_link)
-    software_info.save
     software_info
   end
 

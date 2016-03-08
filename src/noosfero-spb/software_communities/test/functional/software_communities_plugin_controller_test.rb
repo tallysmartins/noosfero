@@ -14,20 +14,20 @@ class SoftwareCommunitiesPluginControllerTest < ActionController::TestCase
     @environment.add_admin(@admin)
     @environment.save
 
-    LicenseInfo.create(:version=>"CC-GPL-V2", :link=>"http://creativecommons.org/licenses/GPL/2.0/legalcode.pt")
-    LicenseInfo.create(:version=>"Academic Free License 3.0 (AFL-3.0)", :link=>"http://www.openfoundry.org/en/licenses/753-academic-free-license-version-30-afl")
-    LicenseInfo.create(:version=>"Apache License 2.0 (Apache-2.0)", :link=>"http://www.apache.org/licenses/LICENSE-2.0")
-    LicenseInfo.create(:version=>'BSD 2-Clause "Simplified" or "FreeBSD" License (BSD-2-Clause)', :link=>"http://opensource.org/licenses/BSD-2-Clause")
+    SoftwareCommunitiesPlugin::LicenseInfo.create(:version=>"CC-GPL-V2", :link=>"http://creativecommons.org/licenses/GPL/2.0/legalcode.pt")
+    SoftwareCommunitiesPlugin::LicenseInfo.create(:version=>"Academic Free License 3.0 (AFL-3.0)", :link=>"http://www.openfoundry.org/en/licenses/753-academic-free-license-version-30-afl")
+    SoftwareCommunitiesPlugin::LicenseInfo.create(:version=>"Apache License 2.0 (Apache-2.0)", :link=>"http://www.apache.org/licenses/LICENSE-2.0")
+    SoftwareCommunitiesPlugin::LicenseInfo.create(:version=>'BSD 2-Clause "Simplified" or "FreeBSD" License (BSD-2-Clause)', :link=>"http://opensource.org/licenses/BSD-2-Clause")
 
-    ProgrammingLanguage.create(:name =>"Java")
-    ProgrammingLanguage.create(:name =>"Ruby")
-    ProgrammingLanguage.create(:name =>"C")
-    ProgrammingLanguage.create(:name =>"C++")
-    DatabaseDescription.create(:name => "PostgreSQL")
-    DatabaseDescription.create(:name => "MySQL")
-    DatabaseDescription.create(:name => "MongoDB")
-    DatabaseDescription.create(:name => "Oracle")
-    OperatingSystemName.create(:name=>"Debian")
+    SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name =>"Java")
+    SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name =>"Ruby")
+    SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name =>"C")
+    SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name =>"C++")
+    SoftwareCommunitiesPlugin::DatabaseDescription.create(:name => "PostgreSQL")
+    SoftwareCommunitiesPlugin::DatabaseDescription.create(:name => "MySQL")
+    SoftwareCommunitiesPlugin::DatabaseDescription.create(:name => "MongoDB")
+    SoftwareCommunitiesPlugin::DatabaseDescription.create(:name => "Oracle")
+    SoftwareCommunitiesPlugin::OperatingSystemName.create(:name=>"Debian")
 
     @response = ActionController::TestResponse.new
   end

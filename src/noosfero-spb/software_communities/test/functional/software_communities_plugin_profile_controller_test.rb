@@ -16,7 +16,7 @@ class SoftwareCommunitiesPluginProfileControllerTest < ActionController::TestCas
     @environment.enable_plugin('SoftwareCommunitiesPlugin')
     @environment.save!
 
-    LicenseInfo.create(
+   SoftwareCommunitiesPlugin::LicenseInfo.create(
       :version=>"CC-GPL-V2",
       :link=>"http://creativecommons.org/licenses/GPL/2.0/legalcode.pt"
     )
@@ -33,7 +33,7 @@ class SoftwareCommunitiesPluginProfileControllerTest < ActionController::TestCas
     @software = create_software(software_fields)
     @software.save!
 
-    @download_block = DownloadBlock.new
+    @download_block = SoftwareCommunitiesPlugin::DownloadBlock.new
     @download_block.downloads = download_data
     @download_block.save!
 
@@ -42,7 +42,7 @@ class SoftwareCommunitiesPluginProfileControllerTest < ActionController::TestCas
   end
 
   should 'redirect to download link with correct params' do
-    DownloadBlock.any_instance.stubs(:environment).returns(@environment)
+    SoftwareCommunitiesPlugin::DownloadBlock.any_instance.stubs(:environment).returns(@environment)
     get :download_file, :profile => @software.community.identifier,
         :block_id => @download_block.id, :download_id => @download_block.download_records.first.id
 
@@ -59,23 +59,23 @@ class SoftwareCommunitiesPluginProfileControllerTest < ActionController::TestCas
 
   should "display limited community events" do
     @e1 = Event.new :name=>"Event 1", :body=>"Event 1 body",
-                   :start_date=>DateTime.now,
-                   :end_date=>(DateTime.now + 1.month)
+                   :start_date => DateTime.now,
+                   :end_date => (DateTime.now + 1.month)
 
     @e2 = Event.new :name=>"Event 2", :body=>"Event 2 body",
-                  :start_date=>(DateTime.now + 10.days),
-                  :end_date=>(DateTime.now + 11.days)
+                  :start_date => (DateTime.now + 10.days),
+                  :end_date => (DateTime.now + 11.days)
 
     @e3 = Event.new :name=>"Event 3", :body=>"Event 3 body",
-                  :start_date=>(DateTime.now + 20.days),
-                  :end_date=>(DateTime.now + 30.days)
+                  :start_date => (DateTime.now + 20.days),
+                  :end_date => (DateTime.now + 30.days)
 
     @software.community.events << @e1
     @software.community.events << @e2
     @software.community.events << @e3
     @software.community.save!
 
-    events_block = SoftwareEventsBlock.new
+    events_block = SoftwareCommunitiesPlugin::SoftwareEventsBlock.new
     events_block.amount_of_events = 2
     events_block.display = "always"
     box = MainBlock.last.box
