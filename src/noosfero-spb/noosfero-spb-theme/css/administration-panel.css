@@ -781,3 +781,8 @@
 .action-profile_members-change_role .role-permissions li{
   list-style: square;
 }
+
+/* Licenses */
+.action-licenses-index #content .main-content td {
+  padding-top: 8px;
+}
