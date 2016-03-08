@@ -1,4 +1,4 @@
-class SoftwareEventsBlock < Block
+class SoftwareCommunitiesPlugin::SoftwareEventsBlock < Block
 
   settings_items :amount_of_events, :type => :integer, :default => 3
   attr_accessible :amount_of_events

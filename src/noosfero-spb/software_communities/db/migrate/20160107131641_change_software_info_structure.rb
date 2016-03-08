@@ -1,6 +1,6 @@
 class ChangeSoftwareInfoStructure < ActiveRecord::Migration
   def up
-    change_table :software_infos do |t|
+    change_table :software_communities_plugin_software_infos do |t|
       t.text :sisp_url
       t.text :agency_identification
       t.text :software_requirements
@@ -20,26 +20,26 @@ class ChangeSoftwareInfoStructure < ActiveRecord::Migration
       t.integer :sisp_id
     end
 
-    change_column :software_infos, :finality, :text
+    change_column :software_communities_plugin_software_infos, :finality, :text
   end
 
   def down
-    remove_column :software_infos, :agency_identification
-    remove_column :software_infos, :software_requirements
-    remove_column :software_infos, :hardware_requirements
-    remove_column :software_infos, :documentation
-    remove_column :software_infos, :system_applications
-    remove_column :software_infos, :active_versions
-    remove_column :software_infos, :estimated_cost
-    remove_column :software_infos, :responsible
-    remove_column :software_infos, :responsible_for_acquirement
-    remove_column :software_infos, :system_info
-    remove_column :software_infos, :development_info
-    remove_column :software_infos, :maintenance
-    remove_column :software_infos, :standards_adherence
-    remove_column :software_infos, :platform
-    remove_column :software_infos, :sisp_type
-    remove_column :software_infos, :sisp_id
-    remove_column :software_infos, :sisp_url
+    remove_column :software_communities_plugin_software_infos, :agency_identification
+    remove_column :software_communities_plugin_software_infos, :software_requirements
+    remove_column :software_communities_plugin_software_infos, :hardware_requirements
+    remove_column :software_communities_plugin_software_infos, :documentation
+    remove_column :software_communities_plugin_software_infos, :system_applications
+    remove_column :software_communities_plugin_software_infos, :active_versions
+    remove_column :software_communities_plugin_software_infos, :estimated_cost
+    remove_column :software_communities_plugin_software_infos, :responsible
+    remove_column :software_communities_plugin_software_infos, :responsible_for_acquirement
+    remove_column :software_communities_plugin_software_infos, :system_info
+    remove_column :software_communities_plugin_software_infos, :development_info
+    remove_column :software_communities_plugin_software_infos, :maintenance
+    remove_column :software_communities_plugin_software_infos, :standards_adherence
+    remove_column :software_communities_plugin_software_infos, :platform
+    remove_column :software_communities_plugin_software_infos, :sisp_type
+    remove_column :software_communities_plugin_software_infos, :sisp_id
+    remove_column :software_communities_plugin_software_infos, :sisp_url
   end
 end

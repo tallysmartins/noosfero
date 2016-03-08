@@ -4,6 +4,7 @@ class CreateSoftwareTest < ActiveSupport::TestCase
 
   def setup
     @requestor = create_user('testuser').person
+    @license_info = SoftwareCommunitiesPlugin::LicenseInfo.create(:version => 'New License', :link => '#')
   end
 
   should 'be a task' do
@@ -11,7 +12,7 @@ class CreateSoftwareTest < ActiveSupport::TestCase
   end
 
   should 'require a requestor' do
-    task = SoftwareCommunitiesPlugin::CreateSoftware.new(:name => 'Software Test', :target => Environment.default)
+    task = SoftwareCommunitiesPlugin::CreateSoftware.new(:name => 'Software Test', :target => Environment.default, :license_info => @license_info)
     task.valid?
 
     assert task.errors[:requestor_id.to_s].present?
@@ -24,7 +25,7 @@ class CreateSoftwareTest < ActiveSupport::TestCase
   end
 
   should 'actually create new software community when confirmed' do
-    task = SoftwareCommunitiesPlugin::CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any")
+    task = SoftwareCommunitiesPlugin::CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any", :license_info => @license_info)
 
     assert_difference 'SoftwareCommunitiesPlugin::SoftwareInfo.count' do
       assert_difference 'Community.count' do
@@ -36,7 +37,7 @@ class CreateSoftwareTest < ActiveSupport::TestCase
   end
 
   should 'create new software community with all informed data when confirmed' do
-    task = SoftwareCommunitiesPlugin::CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any", :repository_link => "#", )
+    task = SoftwareCommunitiesPlugin::CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any", :repository_link => "#", :license_info => @license_info)
 
     task.finish
     software = Community["software-test"].software_info
@@ -47,7 +48,7 @@ class CreateSoftwareTest < ActiveSupport::TestCase
   end
 
   should 'override message methods from Task' do
-    task = SoftwareCommunitiesPlugin::CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any")
+    task = SoftwareCommunitiesPlugin::CreateSoftware.create!(:name => 'Software Test', :target => Environment.default, :requestor => @requestor, :finality => "Any", :license_info => @license_info)
 
     task.finish
 

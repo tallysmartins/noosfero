@@ -6,7 +6,8 @@ class SoftwareRegistrationTest < ActiveSupport::TestCase
     @environment = Environment.default
     @environment.enable_plugin(SoftwareCommunitiesPlugin)
 
-    @license_info = LicenseInfo.create(:version => "New License", :link => "#")
+    @license_info = SoftwareCommunitiesPlugin::LicenseInfo.create(:version => "New License", :link => "#")
+  end
 
   def teardown
     Community.destroy_all

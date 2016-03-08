@@ -31,7 +31,7 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     @operating_system.operating_system_name = @operating_system_name
     @operating_system.save
 
-    @license_info = LicenseInfo.create(:version => 'New License', :link => '#')
+    @license_info = SoftwareCommunitiesPlugin::LicenseInfo.create(:version => 'New License', :link => '#')
 
     @software_info = SoftwareCommunitiesPlugin::SoftwareInfo.new(
                       :acronym => "SFTW",
@@ -53,16 +53,6 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     @software_info.features = "Do a lot of things"
     @software_info.objectives = "All tests should pass !"
     @software_info.community = @community
-  end
-
-  def teardown
-    SoftwareCommunitiesPlugin::ProgrammingLanguage.destroy_all
-    SoftwareCommunitiesPlugin::SoftwareLanguage.destroy_all
-    SoftwareCommunitiesPlugin::DatabaseDescription.destroy_all
-    SoftwareCommunitiesPlugin::SoftwareDatabase.destroy_all
-    SoftwareCommunitiesPlugin::OperatingSystem.destroy_all
-    SoftwareCommunitiesPlugin::OperatingSystemName.destroy_all
-    SoftwareCommunitiesPlugin::SoftwareInfo.destroy_all
   end
 
   should 'Save SoftwareInfo if all fields are filled' do

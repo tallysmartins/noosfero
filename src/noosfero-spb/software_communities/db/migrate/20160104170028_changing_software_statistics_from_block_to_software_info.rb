@@ -1,6 +1,6 @@
 class ChangingSoftwareStatisticsFromBlockToSoftwareInfo < ActiveRecord::Migration
   def up
-    select_all("SELECT * FROM software_infos").each do |software|
+    select_all("SELECT * FROM software_communities_plugin_software_infos").each do |software|
       benefited_people = 0
       saved_resources = 0
 

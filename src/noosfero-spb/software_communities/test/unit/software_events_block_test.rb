@@ -6,7 +6,7 @@ class SoftwareEventsBlockTest < ActiveSupport::TestCase
 
   def setup
     @community = create_community("A new community")
-    @software_events_block = SoftwareEventsBlock.new
+    @software_events_block = SoftwareCommunitiesPlugin::SoftwareEventsBlock.new
 
     box = Box.new
     box.position = 1

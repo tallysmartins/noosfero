@@ -63,10 +63,10 @@ class SoftwareCommunitiesPlugin < Noosfero::Plugin
       SoftwareCommunitiesPlugin::SearchCatalogBlock => { :type => [Environment] },
       SoftwareCommunitiesPlugin::SoftwareHighlightsBlock => { :type => [Environment] },
       SoftwareCommunitiesPlugin::SoftwareTabDataBlock => {:type => [Community], :position => 1},
-      SispTabDataBlock => {:type => [Community], :position => 1},
+      SoftwareCommunitiesPlugin::SispTabDataBlock => {:type => [Community], :position => 1},
       SoftwareCommunitiesPlugin::WikiBlock => {:type => [Community]},
-      SoftwareCommunitiesPlugin::StatisticBlock => { :type => [Community] }
-      SoftwareEventsBlock => { :type => [Community] }
+      SoftwareCommunitiesPlugin::StatisticBlock => { :type => [Community] },
+      SoftwareCommunitiesPlugin::SoftwareEventsBlock => { :type => [Community] }
     }
   end
 

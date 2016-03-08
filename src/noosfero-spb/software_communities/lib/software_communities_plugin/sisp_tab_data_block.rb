@@ -1,4 +1,4 @@
-class SispTabDataBlock < SoftwareTabDataBlock
+class SoftwareCommunitiesPlugin::SispTabDataBlock < SoftwareCommunitiesPlugin::SoftwareTabDataBlock
   def self.description
     _('Sisp Tab Data')
   end

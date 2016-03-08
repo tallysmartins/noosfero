@@ -8,9 +8,9 @@ class OperatingSystemHelperTest < ActiveSupport::TestCase
 
   def setup
     @operating_system_objects = [
-      {:operating_system_name_id => OperatingSystemName.find_by_name("Debina").id.to_s, :version => "2.0"},
-      {:operating_system_name_id => OperatingSystemName.find_by_name("Fedora").id.to_s, "version" => "2.1"},
-      {:operating_system_name_id => OperatingSystemName.find_by_name("CentOS").id.to_s, "version" => "2.2"}
+      {:operating_system_name_id => SoftwareCommunitiesPlugin::OperatingSystemName.find_by_name("Debina").id.to_s, :version => "2.0"},
+      {:operating_system_name_id => SoftwareCommunitiesPlugin::OperatingSystemName.find_by_name("Fedora").id.to_s, "version" => "2.1"},
+      {:operating_system_name_id => SoftwareCommunitiesPlugin::OperatingSystemName.find_by_name("CentOS").id.to_s, "version" => "2.2"}
     ]
     @operating_system_objects
   end
