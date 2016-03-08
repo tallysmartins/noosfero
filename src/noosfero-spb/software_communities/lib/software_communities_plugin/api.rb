@@ -15,7 +15,7 @@ class SoftwareCommunitiesPlugin::API < Grape::API
 
     get ':id' do
       authenticate!
-      software = SoftwareInfo.find_by_id(params[:id])
+      software = SoftwareCommunitiesPlugin::SoftwareInfo.find_by_id(params[:id])
       present software, :with => Entities::SoftwareInfo
     end
 

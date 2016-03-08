@@ -25,6 +25,7 @@ class SoftwareCommunitiesApiTest < ActiveSupport::TestCase
     get "/api/v1/software_communities/#{@software_info.id}?#{params.to_query}"
 
     json = JSON.parse(last_response.body)
+
     assert_equal @software_info.id, json["software_info"]["id"]
   end
 

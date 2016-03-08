@@ -19,7 +19,7 @@ class SoftwareCommunitiesPlugin::SoftwareInfo < ActiveRecord::Base
     search_fields = SoftwareCommunitiesPlugin::SoftwareInfo.pg_search_plugin_fields
 
     if query.empty?
-      SoftwareInfo.joins(:community).where("profiles.visible = ? AND environment_id = ? ", true, env.id)
+      SoftwareCommunitiesPlugin::SoftwareInfo.joins(:community).where("profiles.visible = ? AND environment_id = ? ", true, env.id)
     else
       searchable_software_objects = SoftwareCommunitiesPlugin::SoftwareInfo.transform_list_in_methods_list(SEARCHABLE_SOFTWARE_CLASSES)
       includes(searchable_software_objects).where("to_tsvector('simple', #{search_fields}) @@ to_tsquery('#{filtered_query}')").where("profiles.visible = ?", true)

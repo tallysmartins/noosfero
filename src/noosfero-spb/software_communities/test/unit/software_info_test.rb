@@ -37,11 +37,11 @@ class SoftwareInfoValidationTest < ActiveSupport::TestCase
     another_soft_profile.environment_id = other_env.id
     another_soft_profile.save
 
-    assert_equal 2, SoftwareInfo.count
-    assert_equal 1, SoftwareInfo.search_by_query("", Environment.default).count
-    assert_equal software_info, SoftwareInfo.search_by_query("", Environment.default).first
-    assert_equal 1, SoftwareInfo.search_by_query("", other_env).count
-    assert_equal true, SoftwareInfo.search_by_query("", other_env).all.include?(another_software_info)
+    assert_equal 2, SoftwareCommunitiesPlugin::SoftwareInfo.count
+    assert_equal 1, SoftwareCommunitiesPlugin::SoftwareInfo.search_by_query("", Environment.default).count
+    assert_equal software_info, SoftwareCommunitiesPlugin::SoftwareInfo.search_by_query("", Environment.default).first
+    assert_equal 1, SoftwareCommunitiesPlugin::SoftwareInfo.search_by_query("", other_env).count
+    assert_equal true, SoftwareCommunitiesPlugin::SoftwareInfo.search_by_query("", other_env).all.include?(another_software_info)
   end
 
   should "start another license with default values" do
