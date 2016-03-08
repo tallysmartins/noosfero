@@ -84,7 +84,9 @@ class SearchController
     unless params[:selected_categories_id].blank?
       category_ids = params[:selected_categories_id]
     end
-    category_ids.map(&:to_i)
+
+    category_ids = category_ids.map{|id| [id.to_i, Category.find(id.to_i).all_children.map(&:id)]}
+    category_ids.flatten.uniq
   end
 
   def get_filtered_software_list
