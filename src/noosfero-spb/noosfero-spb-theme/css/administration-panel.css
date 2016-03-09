@@ -533,6 +533,7 @@
 }
 
 .action-profile_editor-edit #content .main-content #profile-data .formlabel,
+.controller-maps.action-maps-edit_location #content .main-content form label,
 .action-profile_editor-edit #content .main-content #profile-data .formfieldline label{
   color: #231F20;
   font-size: 14px;
@@ -573,7 +574,8 @@
 }
 
 .action-profile_editor-edit_software_community #content .main-content #profile-data input[type="text"],
-.action-profile_editor-edit #content .main-content #profile-data input[type="text"]{
+.action-profile_editor-edit #content .main-content #profile-data input[type="text"],
+.controller-maps.action-maps-edit_location #content .main-content form input[type="text"]{
   background: none;
   display: block;
   height: 19px;
