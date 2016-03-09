@@ -193,7 +193,7 @@ msgstr "Transporte e Trânsito"
 
 #: plugins/software_communities/lib/ext/search_controller.rb:15
 msgid "Communities Search"
-msgstr ""
+msgstr "Buscar Comunidades"
 
 #: plugins/software_communities/lib/ext/search_controller.rb:146
 msgid "Result Search"
@@ -476,7 +476,7 @@ msgstr "Software Público"
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:16
 msgid ""
-"Software in accordance with the technical and legal requirements of IN "
+"Softwares in accordance with the technical and legal requirements of IN "
 "01/2011."
 msgstr "Software de acordo com os requisitos técnicos e jurídicos estabelecidos na IN "
 "01/2011."
@@ -490,7 +490,7 @@ msgid ""
 "Public softwares and softwares that meet the requirements of Art. 14 of IN "
 "01/2011, government software."
 msgstr "Softwares públicos e softwares que atendem aos requisitos do art. 14 da IN "
-"01/2011, softwares de governo"
+"01/2011, softwares de governo."
 
 #: plugins/software_communities/views/search/_software_search_form.html.erb:26
 msgid ""
@@ -642,9 +642,8 @@ msgid "Download the software"
 msgstr "Baixar o software"
 
 #: plugins/software_communities/views/blocks/download.html.erb:26
-#, fuzzy
 msgid "Platform:"
-msgstr "Plataforma: "
+msgstr "Plataforma:"
 
 #: plugins/software_communities/views/blocks/download.html.erb:31
 #: plugins/software_communities/views/box_organizer/_download_list_template.html.erb:16
@@ -652,7 +651,6 @@ msgid "Minimum Requirements"
 msgstr "Requisitos Mínimos"
 
 #: plugins/software_communities/views/blocks/download.html.erb:39
-#, fuzzy
 msgid "License:"
 msgstr "Licença"
 
@@ -774,12 +772,10 @@ msgid "Activate software and community"
 msgstr "Ativar software e comunidade"
 
 #: plugins/software_communities/views/profile_editor/_first_edit_software_community_extras.html.erb:3
-#, fuzzy
 msgid "Software Creation"
 msgstr "Informação de Software"
 
 #: plugins/software_communities/views/profile_editor/_first_edit_software_community_extras.html.erb:4
-#, fuzzy
 msgid "Community Settings"
 msgstr "Passo 2 - Configuração da Comunidade"
 
