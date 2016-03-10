@@ -3,7 +3,8 @@
 ## Requirements
 
 * [chake](https://rubygems.org/gems/chake)
-* rake
+* [rake](https://rubygems.org/gems/rake)
+* python-sphinx
 
 For development
 
@@ -15,16 +16,22 @@ For development
 ## Configuration parameters
 
 All configuration parameters are defined in `nodes.yaml`, with exception of IP
-addresses, which are defined in different files:
+addresses and ssh configuration, which are defined in different files.
+Each environment are defined on `config/<ENV>/*` and to deploy
+you're need to use the `SPB_ENV` variable. The environment
+`local` is defined by default. The files to configure a new env are:
 
-- for local development, the IP addresses of the Vagrant VMs are defined in
-  config/local/ips.yaml.
+- **config.yaml**: any configuration used for the specific environment.
+- **ips.yaml**: the IP of each node.
+- **ssh_config**: used to login into the machine with the
+command `rake login:$server`.
+- **iptables-filter-rules**: any iptables configuration needed
+to the environment.
 
-- for production, you need to create a new file called
-  `config/production/ips.yaml`
-
-You will probably not need to change nodes.yaml unless you are developing the
-deployment process.
+If you need to do any changes on the IPs addresses, make sure
+that the ips.yaml are configure for the right environment.
+You will probably not need to change nodes.yaml unless you are
+developing the deployment process.
 
 ## Deploy
 
@@ -38,9 +45,13 @@ $ rake preconfig
 $ rake bootstrap_common
 ```
 
-Right now there are 5 VM's, so this might take a while. The basic commands for
-deployment:
+```
+WARNING: Right now there are 7 VM's: six of them with 512MB of
+ RAM and one with 1GB of RAM. Make sure that your local machine
+ can handle this environment. Also, this might take a while.
+```
 
+The basic commands for deployment:
 ```bash
 $ rake                                  # deploys all servers
 $ rake nodes                            # lists all servers
@@ -60,7 +71,8 @@ $ rake preconfig SPB_ENV=production
 ```
 
 This will perform some initial configuration to the system that is required
-before doing the actual deployment.
+before doing the actual deployment. This command should only be
+runned **one** time.
 
 After that:
 
@@ -70,8 +82,8 @@ $ rake nodes SPB_ENV=production             # lists all servers
 $ rake converge:$server SPB_ENV=production  # deploys only $server
 ```
 
-You can also do `export SPB_ENV=production` in your shell and omit it in the
-`rake` calls.
+You can also do `export SPB_ENV=production` in your shell and
+omit it in the `rake` calls.
 
 See the output of `rake -T` for other tasks.
 
@@ -93,4 +105,3 @@ Google DNS servers will do that automatically, otherwise you might add the follo
 127.0.53.53 softwarepublico.dev
 127.0.53.53 listas.softwarepublico.dev
 ```
-
