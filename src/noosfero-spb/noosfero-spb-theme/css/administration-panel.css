@@ -9,12 +9,14 @@
 
 /* Environment Settings */
 
-/* Profile tab */
+/* Profile and Manage Fields tab */
 
+.action-features-manage_fields .main-content .ui-tabs,
 .action-admin_panel-site_info .main-content .ui-tabs{
   border: none;
 }
 
+.action-features-manage_fields .main-content .ui-tabs .ui-tabs-nav,
 .action-admin_panel-site_info .main-content .ui-tabs .ui-tabs-nav{
   margin: 0 0 0 1em;
   padding: 0;
@@ -25,28 +27,40 @@
   font-weight: bold;
 }
 
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-default,
 .action-admin_panel-site_info .main-content .ui-widget-content .ui-state-default,
+.action-features-manage_fields .main-content .ui-widget-header .ui-state-default,
 .action-admin_panel-site_info .main-content .ui-widget-header .ui-state-default{
   background: #d5d5d5 none;
   color: #555555;
   font-weight: normal;
 }
 
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-active,
 .action-admin_panel-site_info .main-content .ui-widget-content .ui-state-active,
+.action-features-manage_fields .main-content .ui-widget-header .ui-state-active,
 .action-admin_panel-site_info .main-content .ui-widget-header .ui-state-active{
-  background: #eeeff1;
+  background: #FFFFFF;
   color: #212121;
   font-weight: normal;
 }
 
+.action-features-manage_fields .main-content .ui-tabs .ui-tabs-panel,
 .action-admin_panel-site_info .main-content .ui-tabs .ui-tabs-panel{
   display: block;
   padding: 1em 1.4em;
-  background-color: #eeeff1;
+  background-color: #FFFFFF;
   color: #777;
   border-width: 1px;
   font-size: 13px;
   text-decoration: none;
+}
+
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-active #ui-id-1,
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-default #ui-id-1,
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-default #ui-id-2,
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-default #ui-id-3 {
+  padding: 6.6px 10px 6.6px 10px !important;
 }
 
 /* Organizations Settings */
