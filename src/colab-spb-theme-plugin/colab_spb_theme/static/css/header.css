@@ -1,7 +1,7 @@
-header #header {
-	font-size: 62.5%;
+body header #header {
+    font-size: 62.5%;
     font-family: "open_sansregular", Arial, Helvetica, sans-serif;
-	padding: 14px 0 0 0;
+    padding: 14px 0 0 0;
     background-color: #EAEDF0;
     color: #fff;
     min-width: 960px;
@@ -217,7 +217,7 @@ header #logo a, header #logo #portal-title {
 }
 
 header #portal-title {
-    font-size: 4.4em;
+    font-size: 36px;
     font-family: "open_sansextrabold", Arial, Helvetica, sans-serif;
     margin-top: 13px;
 }
@@ -228,12 +228,11 @@ header #portal-description {
 }
 
 header #portal-title-1 {
-	/*font-size: 1.2em;*/
-    font-size: 1.4em;
+    font-size: 12px;
 }
 
 header #portal-description {
-    font-size: 1.6em;
+    font-size: 14px;
     margin-top: 10px;
     letter-spacing: 0.2px;
 }
@@ -255,18 +254,28 @@ header #sobre ul {
 
 header #sobre a {
     color: #2C65CD;
-    font-size: 1.4em;
+    font-size: 12px;
+}
+
+header #user-menu a img {
+    margin-right: 4px;
+}
+
+header #user-menu .caret {
+    border-top: 4px solid #000;
 }
 
 header #sobre a .caret {
     border-top: 4px dashed #2C65CD;
 }
 
-
 header #sobre .softwarepublico-item .dropdown-menu {
     margin-top: 10px;
 }
 
+header #nolivesearchGadget_form {
+    font-size: 9px;
+}
 
 header #sobre .softwarepublico-item .dropdown-menu:before,
 header #second-nav .softwarepublico-item .dropdown-menu:before {
