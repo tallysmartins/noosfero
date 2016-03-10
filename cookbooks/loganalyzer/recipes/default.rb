@@ -7,13 +7,31 @@ package 'php-fpm'
 package 'php-mysql'
 package 'mariadb-server'
 package 'nginx'
+package 'rsyslog-mysql'
 
 service 'nginx'
 service 'php-fpm' do
   action [:enable, :start]
 end
+
 service 'mariadb' do
   action [:enable,:start]
+end
+
+cookbook_file '/tmp/mysql-createDB.sql' do
+  mode '644'
+end
+
+cookbook_file '/tmp/rsyslog-createUser.sql' do
+  mode '644'
+end
+
+execute 'createdb:rsyslog' do
+  command 'mysql -u root --password= < /tmp/mysql-createDB.sql'
+end
+
+execute 'createuser:rsyslog' do
+  command 'mysql -u root --password= Syslog < /tmp/rsyslog-createUser.sql'
 end
 
 template '/etc/nginx/conf.d/loganalyzer.conf' do
