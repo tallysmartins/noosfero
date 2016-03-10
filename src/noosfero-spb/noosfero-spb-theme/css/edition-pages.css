@@ -421,6 +421,46 @@ font-size: 10px;
   padding: 0px;
 }
 
+/* Edit Software tabs */
+
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-tabs {
+  border: none;
+}
+
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-tabs .ui-tabs-nav {
+  margin: 0 0 0 1em;
+  padding: 0;
+  background: none;
+  color: #172738;
+  border: 0px solid #aaaaaa;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-widget-content .ui-state-default,
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-widget-header .ui-state-default {
+  background: #d5d5d5 none;
+  color: #555555;
+  font-weight: normal;
+}
+
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-widget-content .ui-state-active,
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-widget-header .ui-state-active {
+  background: #FFFFFF;
+  color: #212121;
+  font-weight: normal;
+}
+
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-tabs .ui-tabs-panel {
+  display: block;
+  padding: 1em 1.4em;
+  background-color: #FFFFFF;
+  color: #777;
+  border-width: 1px;
+  font-size: 13px;
+  text-decoration: none;
+}
+
 /* new community form*/
 
 .action-memberships-new_community #content .main-block form input[type="text"] {
