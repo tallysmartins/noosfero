@@ -22,8 +22,8 @@ Feature: go to software search when click on category
       | Software Two   | true            | Health, Education | some finality |
       | Software Three | false           | Education         | some finality |
     And the following blocks
-      | owner               | type                      |
-      | software-three      | CategoriesAndTagsBlock    |
+      | owner               | type                                              |
+      | software-three      | SoftwareCommunitiesPlugin::CategoriesAndTagsBlock |
 
   Scenario: Search softwares by education category
     Given I go to /software-three

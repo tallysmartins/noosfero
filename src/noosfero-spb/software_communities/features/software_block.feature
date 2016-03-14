@@ -14,19 +14,19 @@ Feature: edit adherent fields
       | Public Software  | true            | some finality |
       | Generic Software | false           | some finality |
     And the following blocks
-      | owner            | type              |
-      | environment      | SoftwaresBlock    |
+      | owner            | type                                      |
+      | environment      | SoftwareCommunitiesPlugin::SoftwaresBlock |
 
   Scenario: Change software block to generic software block
     Given I go to /admin/environment_design
-    And I follow "Edit" within ".block.softwares-block"
+    And I follow "Edit" within ".block.software-communities-plugin_softwares-block"
     When I select "Generic" from "block_software_type"
     And I press "Save"
     Then I should see "Generic Software"
 
   Scenario: Change software block to generic software block
     Given I go to /admin/environment_design
-    And I follow "Edit" within ".block.softwares-block"
+    And I follow "Edit" within ".block.software-communities-plugin_softwares-block"
     When I select "Public" from "block_software_type"
     And I press "Save"
     Then I should see "Public Software"

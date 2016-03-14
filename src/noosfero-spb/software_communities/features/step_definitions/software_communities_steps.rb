@@ -1,38 +1,38 @@
 Given /^SoftwareInfo has initial default values on database$/ do
-  LicenseInfo.create(:version=>"None", :link=>"")
-  LicenseInfo.create(:version=>"GPL-2", :link =>"www.gpl2.com")
-  LicenseInfo.create(:version=>"GPL-3", :link =>"www.gpl3.com")
+  SoftwareCommunitiesPlugin::LicenseInfo.create(:version=>"None", :link=>"")
+  SoftwareCommunitiesPlugin::LicenseInfo.create(:version=>"GPL-2", :link =>"www.gpl2.com")
+  SoftwareCommunitiesPlugin::LicenseInfo.create(:version=>"GPL-3", :link =>"www.gpl3.com")
 
-  ProgrammingLanguage.create(:name=>"C")
-  ProgrammingLanguage.create(:name=>"C++")
-  ProgrammingLanguage.create(:name=>"Ruby")
-  ProgrammingLanguage.create(:name=>"Python")
+  SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name=>"C")
+  SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name=>"C++")
+  SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name=>"Ruby")
+  SoftwareCommunitiesPlugin::ProgrammingLanguage.create(:name=>"Python")
 
-  DatabaseDescription.create(:name => "Oracle")
-  DatabaseDescription.create(:name => "MySQL")
-  DatabaseDescription.create(:name => "Apache")
-  DatabaseDescription.create(:name => "PostgreSQL")
+  SoftwareCommunitiesPlugin::DatabaseDescription.create(:name => "Oracle")
+  SoftwareCommunitiesPlugin::DatabaseDescription.create(:name => "MySQL")
+  SoftwareCommunitiesPlugin::DatabaseDescription.create(:name => "Apache")
+  SoftwareCommunitiesPlugin::DatabaseDescription.create(:name => "PostgreSQL")
 
-  OperatingSystemName.create(:name=>"Debian")
-  OperatingSystemName.create(:name=>"Fedora")
-  OperatingSystemName.create(:name=>"CentOS")
+  SoftwareCommunitiesPlugin::OperatingSystemName.create(:name=>"Debian")
+  SoftwareCommunitiesPlugin::OperatingSystemName.create(:name=>"Fedora")
+  SoftwareCommunitiesPlugin::OperatingSystemName.create(:name=>"CentOS")
 end
 
 Given /^Institutions has initial default values on database$/ do
-  GovernmentalPower.create(:name => "Executivo")
-  GovernmentalPower.create(:name => "Legislativo")
-  GovernmentalPower.create(:name => "Judiciario")
+  SoftwareCommunitiesPlugin::GovernmentalPower.create(:name => "Executivo")
+  SoftwareCommunitiesPlugin::GovernmentalPower.create(:name => "Legislativo")
+  SoftwareCommunitiesPlugin::GovernmentalPower.create(:name => "Judiciario")
 
-  GovernmentalSphere.create(:name => "Federal")
+  SoftwareCommunitiesPlugin::GovernmentalSphere.create(:name => "Federal")
 
-  JuridicalNature.create(:name => "Autarquia")
-  JuridicalNature.create(:name => "Administracao Direta")
-  JuridicalNature.create(:name => "Empresa Publica")
-  JuridicalNature.create(:name => "Fundacao")
-  JuridicalNature.create(:name => "Orgao Autonomo")
-  JuridicalNature.create(:name => "Sociedade")
-  JuridicalNature.create(:name => "Sociedade Civil")
-  JuridicalNature.create(:name => "Sociedade de Economia Mista")
+  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Autarquia")
+  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Administracao Direta")
+  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Empresa Publica")
+  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Fundacao")
+  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Orgao Autonomo")
+  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Sociedade")
+  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Sociedade Civil")
+  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Sociedade de Economia Mista")
 
   national_region = NationalRegion.new
   national_region.name = "Distrito Federal"
@@ -99,12 +99,12 @@ Given /^the following public institutions?$/ do |table|
     community.city = item[:city]
     community.save!
 
-    governmental_power = GovernmentalPower.where(:name => item[:governmental_power]).first
-    governmental_sphere = GovernmentalSphere.where(:name => item[:governmental_sphere]).first
+    governmental_power = SoftwareCommunitiesPlugin::GovernmentalPower.where(:name => item[:governmental_power]).first
+    governmental_sphere = SoftwareCommunitiesPlugin::GovernmentalSphere.where(:name => item[:governmental_sphere]).first
 
-    juridical_nature = JuridicalNature.create(:name => item[:juridical_nature])
+    juridical_nature = SoftwareCommunitiesPlugin::JuridicalNature.create(:name => item[:juridical_nature])
 
-    institution = PublicInstitution.new(:name => item[:name], :type => "PublicInstitution", :acronym => item[:acronym], :cnpj => item[:cnpj], :juridical_nature => juridical_nature, :governmental_power => governmental_power, :governmental_sphere => governmental_sphere)
+    institution = SoftwareCommunitiesPlugin::PublicInstitution.new(:name => item[:name], :type => "PublicInstitution", :acronym => item[:acronym], :cnpj => item[:cnpj], :juridical_nature => juridical_nature, :governmental_power => governmental_power, :governmental_sphere => governmental_sphere)
     institution.community = community
     institution.corporate_name = item[:corporate_name]
     institution.save!
@@ -113,8 +113,8 @@ end
 
 Given /^the following software language$/ do |table|
   table.hashes.each do |item|
-    programming_language = ProgrammingLanguage.where(:name=>item[:programing_language]).first
-    software_language = SoftwareLanguage::new
+    programming_language = SoftwareCommunitiesPlugin::ProgrammingLanguage.where(:name=>item[:programing_language]).first
+    software_language = SoftwareCommunitiesPlugin::SoftwareLanguage::new
 
     software_language.programming_language = programming_language
     software_language.version = item[:version]
@@ -126,8 +126,8 @@ end
 
 Given /^the following software databases$/ do |table|
   table.hashes.each do |item|
-    database_description = DatabaseDescription.where(:name=>item[:database_name]).first
-    software_database = SoftwareDatabase::new
+    database_description = SoftwareCommunitiesPlugin::DatabaseDescription.where(:name=>item[:database_name]).first
+    software_database = SoftwareCommunitiesPlugin::SoftwareDatabase::new
 
     software_database.database_description = database_description
     software_database.version = item[:version]
@@ -140,8 +140,8 @@ end
 
 Given /^the following operating systems$/ do |table|
   table.hashes.each do |item|
-    operating_system_name = OperatingSystemName.where(:name=>item[:operating_system_name]).first
-    operating_system = OperatingSystem::new
+    operating_system_name = SoftwareCommunitiesPlugin::OperatingSystemName.where(:name=>item[:operating_system_name]).first
+    operating_system = SoftwareCommunitiesPlugin::OperatingSystem::new
 
     operating_system.operating_system_name = operating_system_name
     operating_system.version = item[:version]
@@ -152,7 +152,7 @@ end
 
 Given /^the following softwares$/ do |table|
   table.hashes.each do |item|
-    software_info = SoftwareInfo.new
+    software_info = SoftwareCommunitiesPlugin::SoftwareInfo.new
     community = Community.create(:name=>item[:name])
     software_info.community = community
 
@@ -164,23 +164,23 @@ Given /^the following softwares$/ do |table|
     software_info.objectives = item[:objectives] if item[:objectives]
     software_info.features = item[:features] if item[:features]
     software_info.public_software = item[:public_software] == "true" if item[:public_software]
-    software_info.license_info = LicenseInfo.create :version=>"GPL - 1.0"
+    software_info.license_info = SoftwareCommunitiesPlugin::LicenseInfo.create :version=>"GPL - 1.0"
 
     if item[:software_language]
-      programming_language = ProgrammingLanguage.where(:name=>item[:software_language]).first
-      software_language = SoftwareLanguage.where(:programming_language_id=>programming_language).first
+      programming_language = SoftwareCommunitiesPlugin::ProgrammingLanguage.where(:name=>item[:software_language]).first
+      software_language = SoftwareCommunitiesPlugin::SoftwareLanguage.where(:programming_language_id=>programming_language).first
       software_info.software_languages << software_language
     end
 
     if item[:software_database]
-      database_description = DatabaseDescription.where(:name=>item[:software_database]).first
-      software_database = SoftwareDatabase.where(:database_description_id=>database_description).first
+      database_description = SoftwareCommunitiesPlugin::DatabaseDescription.where(:name=>item[:software_database]).first
+      software_database = SoftwareCommunitiesPlugin::SoftwareDatabase.where(:database_description_id=>database_description).first
       software_info.software_databases << software_database
     end
 
     if item[:operating_system]
-      operating_system_name = OperatingSystemName.where(:name => item[:operating_system]).first
-      operating_system = OperatingSystem.where(:operating_system_name_id => operating_system_name).first
+      operating_system_name = SoftwareCommunitiesPlugin::OperatingSystemName.where(:name => item[:operating_system]).first
+      operating_system = SoftwareCommunitiesPlugin::OperatingSystem.where(:operating_system_name_id => operating_system_name).first
       software_info.operating_systems << operating_system
     end
 

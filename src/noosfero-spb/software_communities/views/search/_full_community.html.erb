@@ -3,9 +3,9 @@
   <div class="search-software-item-column-left">
     <div class="vcard">
 
-      <% unless community.organization_ratings.empty? %>
-        <%= render :partial => 'shared/organization_average_rating_block', :locals => {:community => community}%>
-      <% end %>
+      <%# unless community.organization_ratings.empty? %>
+        <%#= render :partial => 'shared/organization_average_rating_block', :locals => {:community => community}%>
+      <%# end %>
 
       <%=render :partial => 'shared/software_publish_date', :locals => {:community => community, :order => @order} %>
     </div>
