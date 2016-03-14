@@ -588,6 +588,7 @@
   font-size: 13px;
 }
 
+.action-admin_panel-site_info #content .main-content input[type="text"],
 .action-profile_editor-edit_software_community #content .main-content #profile-data input[type="text"],
 .action-profile_editor-edit #content .main-content #profile-data input[type="text"],
 .controller-maps.action-maps-edit_location #content .main-content form input[type="text"]{
@@ -801,7 +802,7 @@
   padding-top: 8px;
 }
 
-/* New Category form */
+/* New Category form and Environment Settings */
 
 .action-categories-edit #content .main-block form input[type="text"],
 .action-categories-new #content .main-block form input[type="text"] {
@@ -834,6 +835,8 @@
   font-size: 14px;
 }
 
+.action-admin_panel-site_info #content .main-content form label,
+.action-admin_panel-site_info #content .main-content form .formlabel,
 .action-categories-edit #content .main-content form .formlabel,
 .action-categories-new #content .main-content form .formlabel,
 .action-categories-edit #content .main-content form label.formlabel.mandatory,
@@ -845,6 +848,7 @@
   font-weight: 300;
 }
 
+.action-admin_panel-site_info .required-field label.formlabel:after,
 .action-categories-edit .required-field label.formlabel:after,
 .action-categories-new .required-field label.formlabel:after {
   color: red;
@@ -885,4 +889,12 @@
 .action-categories-new  #content .main-content .field_with_errors input[type="text"] {
   border: 1px solid #FF0366;
   box-shadow: none;
+}
+
+.action-admin_panel-site_info #content .main-content form select {
+  width: 419px;
+}
+
+.action-admin_panel-site_info #content .main-content #signup-welcome-text input[type="text"] {
+  max-width: 862px;
 }
