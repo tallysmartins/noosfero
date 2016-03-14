@@ -75,7 +75,7 @@ Feature: edit public software information
     And I follow "Create a new software"
     And I fill in "community_name_id" with "another software"
     And I fill in "community-identifier" with "another-software"
-    And I fill in "software_info_finality" with "another software finality"
+    And I fill in "software_communities_plugin_software_info_finality" with "another software finality"
     And I type in "gp" in autocomplete list "#license_info_version" and I choose "GPL-2"
     And I should see "Read license" within "#version_link"
     And I press "Create"
