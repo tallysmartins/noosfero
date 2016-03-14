@@ -18,18 +18,17 @@ class Category
     _('Transportation and Transit')
   ]
 
-  scope :software_categories, lambda {
-    software_category = Category.find_by_name("Software")
-    if software_category.nil?
-      []
-    else
-      software_category.children
-    end
+  SEARCHABLE_SOFTWARE_FIELDS = {
+    :name => 1
   }
 
   def software_infos
-    software_list = self.communities.collect{|community| community.software_info if community.software?}
-    software_list
+    softwares = self.all_children.collect{|c| c.software_communities} + software_communities
+    softwares.flatten.uniq
+  end
+
+  def software_communities
+    self.communities.collect{|community| community.software_info if community.software?}.compact
   end
 
   def name

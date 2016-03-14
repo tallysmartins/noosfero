@@ -94,6 +94,39 @@ class SearchControllerTest < ActionController::TestCase
     assert_not_includes assigns(:searches)[:software_infos][:results], @softwares.last.community
   end
 
+  should "return software_infos with category matching query" do
+    some_category = Category.new(:name => "Health", :environment => @environment)
+    @softwares[0].community.categories << some_category
+
+    get(
+      :software_infos,
+      :query => "Health",
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], @softwares[0].community
+    assert_not_includes assigns(:searches)[:software_infos][:results], @softwares[1].community
+  end
+
+  should "software_infos search by sub category" do
+    category = Category.create(:name => "Category", :environment => @environment)
+    sub_category = Category.create(:name => "Sub Category", :environment => @environment, :parent_id => category.id)
+
+    software = create_software_info "software 1"
+    software.community.add_category sub_category
+
+    software2 = create_software_info "software 2"
+    software2.community.add_category category
+
+    get(
+      :software_infos,
+      :query => "",
+      :selected_categories_id => [category.id]
+    )
+
+    assert_includes assigns(:searches)[:software_infos][:results], software.community
+    assert_includes assigns(:searches)[:software_infos][:results], software2.community
+  end
+
   should "software_infos search softwares with one or more selected categories" do
     software = create_software_info("Software Two", :acronym => "SFT", :finality => "Task")
     software.save!
