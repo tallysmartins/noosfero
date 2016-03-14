@@ -658,7 +658,7 @@
 
 /*** end fo software internal pages ***/
 
-/*Secundary page discussion*/
+/*Secondary page discussion*/
 
 #content .model-discussion-page{
   text-align: left;
@@ -675,7 +675,6 @@
   font-size: 14px;
 }
 
-
 .model-discussion-page .frequently-questions-top ul,
 .model-discussion-page .frequently-questions-middle ul,
 .model-discussion-page .frequently-questions-last ul{
@@ -687,7 +686,7 @@
 .model-discussion-page .frequently-questions-top li,
 .model-discussion-page .frequently-questions-middle li,
 .model-discussion-page .frequently-questions-last li {
-  display: inline-table; 
+  display: inline-table;
   padding:15px 10px 8px 10px;
   margin-right:2px;
   border:1px solid #ECEDF1;
@@ -761,7 +760,30 @@
   padding-top: 30px;
 }
 
+#content .main-content a.discussion-list{
+  background: #3A65BD;
+  padding: 7px 15px;
+  border: 1px solid #4562B0;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  font-family: Arial;
+  font-size: 12px;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+#content .main-content a.discussion-list:hover{
+  background: #2A4DAB;
+}
+
+#content .main-content .discussion-access{
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 40px;
+}
+
 /* software_communites new software page refactor */
+
 .new-software-form .optional-box{
   margin-bottom: 20px;
 }
