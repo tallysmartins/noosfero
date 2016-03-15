@@ -286,8 +286,17 @@
   padding: 10px;
 }
 
+.action-software_communities_plugin_myprofile-edit_software #content .main-block form textarea {
+  width: 441px;
+  background: none #FFFFFF;
+  border: 1px solid #CCCCCC;
+  color: #585858;
+  word-wrap: break-word;
+  resize: none;
+}
+
 .action-software_communities_plugin_myprofile-edit_software #content .main-block form input[type="text"] {
-  width: 463px;
+  width: 449px;
 }
 
 .action-software_communities_plugin_myprofile-edit_software #content .main-content #basic-info #profile_change_picture input,
@@ -341,7 +350,7 @@
 .action-software_communities_plugin_myprofile-new_software #content #finality textarea {
   resize: none;
   height: 100px;
-  width: 455px;
+  width: 441px;
 }
 
 .action-software_communities_plugin_myprofile-new_software #software-name-field span{
