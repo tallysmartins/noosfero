@@ -54,7 +54,7 @@ class SoftwareCommunitiesPlugin::StatisticBlock < Block
 
   def get_software_statistics
     statistics = {}
-    software = SoftwareInfo.find_by_community_id(self.owner.id)
+    software = SoftwareCommunitiesPlugin::SoftwareInfo.find_by_community_id(self.owner.id)
     if software.present?
       statistics[:saved_resources] = software.saved_resources
       statistics[:benefited_people] = software.benefited_people
