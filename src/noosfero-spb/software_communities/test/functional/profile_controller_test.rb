@@ -36,5 +36,50 @@ class ProfileControllerTest < ActionController::TestCase
     community.reload
     assert_equal 1, community.hits
   end
+
+  should 'display admins correctly when is on the second members page' do
+    community = fast_create('Community')
+
+    for n in 1..30
+      community.add_member(create_user("testuser#{"%02i" % n}").person)
+    end
+
+    for n in 31..35
+      community.add_admin(create_user("testuser#{"%02i" % n}").person)
+    end
+
+    get :members, :profile => community.identifier, :members_page => 2
+
+    for n in 1..20
+      assert_no_tag :tag => 'div', :attributes => { :class => 'profile-members' }, :descendant => { :tag => 'span', :attributes => { :class => 'fn' }, :content => "testuser#{"%02i" % n}" }
+    end
+
+    for n in 31..35
+      assert_tag :tag => 'div', :attributes => { :class => 'profile-admins' }, :descendant => { :tag => 'span', :attributes => { :class => 'fn' }, :content => "testuser#{"%02i" % n}" }
+    end
+  end
+
+
+  should 'display members correctly when is on the second admins page' do
+    community = fast_create('Community')
+
+    for n in 1..10
+      community.add_member(create_user("testuser#{"%02i" % n}").person)
+    end
+
+    for n in 11..15
+      community.add_admin(create_user("testuser#{"%02i" % n}").person)
+    end
+
+    get :members, :profile => community.identifier, :admins_page => 2
+
+    for n in 1..10
+      assert_tag :tag => 'div', :attributes => { :class => 'profile-members' }, :descendant => { :tag => 'span', :attributes => { :class => 'fn' }, :content => "testuser#{"%02i" % n}" }
+    end
+
+    for n in 11..15
+      assert_no_tag :tag => 'div', :attributes => { :class => 'profile-admins' }, :descendant => { :tag => 'span', :attributes => { :class => 'fn' }, :content => "testuser#{"%02i" % n}" }
+    end
+  end
 end
 
