@@ -46,3 +46,11 @@ Feature: Institution Field
     And I should not see "community_city"
     And I select "Brazil" from "community_country"
     Then I should not see "Gama"
+
+  @selenium
+  Scenario: Ordinary user can not create a new institution
+    Given the following user
+      | login         |
+      | ordinary_user |
+    And I am logged in as "ordinary_user"
+    Then I should not see "Create new institution"

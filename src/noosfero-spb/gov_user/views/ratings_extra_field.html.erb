@@ -5,7 +5,9 @@
 
   <div id="institution_empty_ajax_message" class="errorExplanation hide-field rating-create-institution-container">
     <span class="institution-not-found"><%= _("No organization or company found") %></span>
-    <%= InstitutionModalHelper.modal_button(_("Add"), "none") %>
+    <% if user && user.person.is_admin? %>
+      <%= InstitutionModalHelper.modal_button(_("Add"), "none") %>
+    <% end %>
   </div>
 
   <%= hidden_field_tag "organization_rating[institution_id]", "", id: "institution_selected" %>

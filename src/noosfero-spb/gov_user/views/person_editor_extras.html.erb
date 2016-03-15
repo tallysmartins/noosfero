@@ -12,7 +12,9 @@
 
   <%= content_tag(:div, _("No institution found"), :id=>"institution_empty_ajax_message", :class=>"errorExplanation hide-field") %>
 
-  <%= InstitutionModalHelper.modal_button %>
+  <% if context.profile.user && context.profile.user.person.is_admin? %>
+    <%= InstitutionModalHelper.modal_button %>
+  <% end %>
 
   <%= hidden_field_tag("user[institution_ids][]", "", :class => 'user_institutions') %>
   <%= hidden_field_tag("institution_selected", "") %>
