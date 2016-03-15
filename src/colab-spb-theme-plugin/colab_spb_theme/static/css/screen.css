@@ -690,3 +690,8 @@ a.btn {
     font-weight: bold;
     display: inline;
 }
+
+body > .alert,
+#main-content .row > .alert {
+    margin-top: 20px;
+}
