@@ -887,6 +887,8 @@
 
 .software-step-info ul li:last-child{
   border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .software-step-info ul li .current-step{

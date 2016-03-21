@@ -9,12 +9,14 @@
 
 /* Environment Settings */
 
-/* Profile tab */
+/* Profile and Manage Fields tab */
 
+.action-features-manage_fields .main-content .ui-tabs,
 .action-admin_panel-site_info .main-content .ui-tabs{
   border: none;
 }
 
+.action-features-manage_fields .main-content .ui-tabs .ui-tabs-nav,
 .action-admin_panel-site_info .main-content .ui-tabs .ui-tabs-nav{
   margin: 0 0 0 1em;
   padding: 0;
@@ -25,28 +27,54 @@
   font-weight: bold;
 }
 
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-default,
 .action-admin_panel-site_info .main-content .ui-widget-content .ui-state-default,
+.action-features-manage_fields .main-content .ui-widget-header .ui-state-default,
 .action-admin_panel-site_info .main-content .ui-widget-header .ui-state-default{
   background: #d5d5d5 none;
   color: #555555;
   font-weight: normal;
 }
 
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-active,
 .action-admin_panel-site_info .main-content .ui-widget-content .ui-state-active,
+.action-features-manage_fields .main-content .ui-widget-header .ui-state-active,
 .action-admin_panel-site_info .main-content .ui-widget-header .ui-state-active{
-  background: #eeeff1;
+  background: #FFFFFF;
   color: #212121;
   font-weight: normal;
 }
 
+.action-features-manage_fields .main-content .ui-tabs .ui-tabs-panel,
 .action-admin_panel-site_info .main-content .ui-tabs .ui-tabs-panel{
   display: block;
   padding: 1em 1.4em;
-  background-color: #eeeff1;
+  background-color: #FFFFFF;
   color: #777;
   border-width: 1px;
   font-size: 13px;
   text-decoration: none;
+}
+
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-active #ui-id-1,
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-default #ui-id-1,
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-default #ui-id-2,
+.action-features-manage_fields .main-content .ui-widget-content .ui-state-default #ui-id-3 {
+  padding: 6.6px 10px 6.6px 10px !important;
+  white-space: normal;
+  word-break: break-word;
+  max-width: 155px;
+  font-size: 12px;
+}
+
+/* Plugins */
+
+.action-plugins-index #content .block a{
+  color: #2c66ce;
+}
+
+.action-plugins-index table td{
+  padding: 10px;
 }
 
 /* Organizations Settings */
@@ -574,6 +602,7 @@
   font-size: 13px;
 }
 
+.action-admin_panel-site_info #content .main-content input[type="text"],
 .action-profile_editor-edit_software_community #content .main-content #profile-data input[type="text"],
 .action-profile_editor-edit #content .main-content #profile-data input[type="text"],
 .controller-maps.action-maps-edit_location #content .main-content form input[type="text"]{
@@ -780,4 +809,152 @@
 /*recover behavior of noosfero*/
 .action-profile_members-change_role .role-permissions li{
   list-style: square;
+}
+
+/* Licenses */
+.action-licenses-index #content .main-content td {
+  padding-top: 8px;
+}
+
+/* New Category form and Environment Settings */
+
+.action-categories-edit #content .main-block form input[type="text"],
+.action-categories-new #content .main-block form input[type="text"] {
+  background: none;
+  display: block;
+  height: 19px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 500px;
+  font-size: 15px;
+  font-family: arial, helvetica;
+  color: #585858;
+}
+
+.action-categories-edit #content .formfield input,
+.action-categories-new #content .formfield input {
+  background: none #FFFFFF;
+}
+
+.action-categories-edit #content .main-content #category_image_builder_uploaded_data,
+.action-categories-new #content .main-content #category_image_builder_uploaded_data {
+  border: none;
+}
+
+.action-categories-edit #content .main-content .formfield input,
+.action-categories-new #content .main-content .formfield input {
+  text-indent: 0px;
+  padding: 0px;
+  font-size: 14px;
+}
+
+.action-admin_panel-site_info #content .main-content form label,
+.action-admin_panel-site_info #content .main-content form .formlabel,
+.action-categories-edit #content .main-content form .formlabel,
+.action-categories-new #content .main-content form .formlabel,
+.action-categories-edit #content .main-content form label.formlabel.mandatory,
+.action-categories-new #content .main-content form label.formlabel.mandatory {
+  font-size: 14px;
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+  margin-bottom: 5px;
+  color: #231f20;
+  font-weight: 300;
+}
+
+.action-categories-edit #content .main-content form label:nth-child(9),
+.action-categories-new #content .main-content form label:nth-child(9) {
+  margin-top: 11px;
+}
+
+.action-admin_panel-site_info .required-field label.formlabel:after,
+.action-categories-edit .required-field label.formlabel:after,
+.action-categories-new .required-field label.formlabel:after {
+  color: red;
+}
+
+.action-categories-edit #content .main-content form .required-field .formlabel.mandatory:after,
+.action-categories-new #content .main-content form .required-field .formlabel.mandatory:after {
+  color: #FF0366;
+  font-weight: 500;
+}
+
+.action-categories-edit #content .main-content #category_name,
+.action-categories-new #content .main-content #category_name {
+  margin-bottom: 10px;
+}
+
+.action-categories-edit #content .main-content form p .required-field,
+.action-categories-new #content .main-content form p .required-field {
+  max-width: 500px;
+  padding: 15px 20px;
+  margin: 20px 0 30px 0;
+  border: 1px dotted #ccc;
+  border-left: 5px solid #FF0366;
+  border-radius: 3px;
+  display: block;
+  background: #fff;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+.action-categories-edit .explanation,
+.action-categories-new .explanation {
+  font-style: italic;
+  font-size: 10px;
+}
+
+.action-categories-edit  #content .main-content .field_with_errors input[type="text"],
+.action-categories-new  #content .main-content .field_with_errors input[type="text"] {
+  border: 1px solid #FF0366;
+  box-shadow: none;
+}
+
+.action-admin_panel-site_info #content .main-content form select {
+  width: 419px;
+}
+
+.action-admin_panel-site_info #content .main-content #environment_default_language {
+  margin-bottom: 13px;
+}
+
+.action-admin_panel-site_info #content .main-content table tr td {
+  padding-top: 7px;
+  padding-bottom: 0;
+}
+
+.action-admin_panel-site_info #content .main-content #signup-welcome-text input[type="text"] {
+  max-width: 862px;
+}
+
+.action-admin_panel-site_info #content .main-content .description {
+  max-width: 830px;
+  padding: 15px 20px;
+  margin: 20px 0 30px 0;
+  border: 1px dotted #ccc;
+  border-left: 5px solid #FF0366;
+  border-radius: 3px;
+  display: block;
+  background: #fff;
+  line-height: 20px;
+  font-size: 13px;
+  color: #172738;
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+}
+
+.action-admin_panel-site_info #content .main-content #thanks-for-signing {
+  color: #172738;
+}
+
+.action-admin_panel-site_info #content .main-content #thanks-for-signing h3 {
+  text-align: left;
+  margin-bottom: 37px;
+  font-weight: normal;
+  font-size: 19px;
+  margin-top: 10px;
+}
+
+.action-admin_panel-site_info #content .main-content #thanks-for-signing p:nth-child(5),
+.action-admin_panel-site_info #content .main-content #thanks-for-signing p:nth-child(10) {
+  margin-bottom: 31px;
 }

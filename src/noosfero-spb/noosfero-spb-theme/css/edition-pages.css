@@ -257,14 +257,16 @@
   display: inline-block;
 }
 
-/*New Software form*/
+/*New and Edit Software form*/
 
 .action-software_communities_plugin_myprofile-new_software #content.current-step h3 {
   color: #F50054;
 }
 
 .action-profile_editor-edit_software_community #content .main-block form input[type="text"],
+.action-software_communities_plugin_myprofile-edit_software #content .main-block form input[type="text"],
 .action-software_communities_plugin_myprofile-new_software #content .main-block form input[type="text"] {
+  background: none;
   display: block;
   height: 19px;
   padding: 6px;
@@ -276,6 +278,7 @@
   color: #585858;
 }
 
+.action-software_communities_plugin_myprofile-edit_software #content .main-block form textarea,
 .action-software_communities_plugin_myprofile-new_software #content .main-block form textarea{
   border-radius: 4px;
   font-size: 15px;
@@ -283,34 +286,71 @@
   padding: 10px;
 }
 
+.action-software_communities_plugin_myprofile-edit_software #content .main-block form textarea {
+  width: 441px;
+  background: none #FFFFFF;
+  border: 1px solid #CCCCCC;
+  color: #585858;
+  word-wrap: break-word;
+  resize: none;
+}
+
+.action-software_communities_plugin_myprofile-edit_software #content .main-block form input[type="text"] {
+  width: 449px;
+}
+
+.action-software_communities_plugin_myprofile-edit_software #content .main-content #basic-info #profile_change_picture input,
 .action-software_communities_plugin_myprofile-new_software #content .formfield input{
   background: none #FFFFFF;
 }
 
+.action-software_communities_plugin_myprofile-edit_software #content .main-content #basic-info #profile_change_picture input {
+  padding-bottom: 14px;
+}
+
+
+.action-software_communities_plugin_myprofile-edit_software #content .main-content #basic-info #community_image_builder_uploaded_data {
+  border: none;
+}
+
+.action-software_communities_plugin_myprofile-edit_software #content .main-content .formfield input {
+  text-indent: 0px;
+  padding: 0px;
+  font-size: 14px;
+}
+
+.action-software_communities_plugin_myprofile-edit_software #content .main-content form .formlabel,
+.action-software_communities_plugin_myprofile-edit_software #content .main-content #profile_change_picture_title label,
+.action-software_communities_plugin_myprofile-new_software #content .main-content #profile_change_picture_title label,
 .action-software_communities_plugin_myprofile-new_software #content .main-content form label.formlabel.mandatory{
   font-size: 14px;
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
   margin-bottom: 5px;
   color: #231f20;
   font-weight: 300;
 }
 
+.action-software_communities_plugin_myprofile-edit_software #content .main-content form .required-field .formlabel.mandatory:after,
 .action-software_communities_plugin_myprofile-new_software #content .main-content form .required-field .formlabel.mandatory:after{
   color: #FF0366;
   font-weight: 500;
 }
 
+.action-software_communities_plugin_myprofile-edit_software #content .formfield textarea,
 .action-software_communities_plugin_myprofile-new_software #content .formfield textarea{
   background: none #FFFFFF;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #CCCCCC;
   color: #585858;
   font-size: 16px;
   width: 100%;
   word-wrap: break-word;
 }
 
+.action-software_communities_plugin_myprofile-edit_software #content #finality textarea,
 .action-software_communities_plugin_myprofile-new_software #content #finality textarea {
   resize: none;
   height: 100px;
+  width: 441px;
 }
 
 .action-software_communities_plugin_myprofile-new_software #software-name-field span{
@@ -321,8 +361,9 @@
   width: auto;
 }
 
+.action-software_communities_plugin_myprofile-edit_software #software-name-field span #community-identifier,
 .action-software_communities_plugin_myprofile-new_software #software-name-field span #community-identifier{
-  width: 221px;
+  width: 500px;
   border: 1px solid #ccc;
 }
 
@@ -333,12 +374,14 @@
   padding: 5px 0px 5px 0px;
 }
 
+.action-software_communities_plugin_myprofile-edit_software #content .main-block form #profile_change_picture,
 .action-software_communities_plugin_myprofile-new_software #content .main-block form #profile_change_picture {
   border: 1px dotted #ddd;
   margin-top: 10px;
 }
 
 .action-profile_editor-edit_software_community #content .main-content form p .required-field,
+.action-software_communities_plugin_myprofile-edit_software #content .main-content form p .required-field,
 .action-software_communities_plugin_myprofile-new_software #content .main-content form p .required-field {
   max-width: 500px;
   padding: 15px 20px;
@@ -352,9 +395,79 @@
   font-size: 13px;
 }
 
+.action-software_communities_plugin_myprofile-edit_software .explanation,
 .action-software_communities_plugin_myprofile-new_software .explanation {
 font-style: italic;
 font-size: 10px;
+}
+
+.action-software_communities_plugin_myprofile-edit_software #content .main-content .highlight-error {
+  box-shadow: none;
+}
+
+.action-software_communities_plugin_myprofile-edit_software  #content .main-content .highlight-error input[type="text"] {
+  border: 1px solid #FF0366;
+  box-shadow: none;
+}
+
+.action-software_communities_plugin_myprofile-edit_software #content .main-content #basic-info div {
+  margin-bottom: 20px;
+}
+
+.action-software_communities_plugin_myprofile-edit_software #content .main-content #basic-info #profile_change_picture div {
+  margin: 0px;
+}
+
+.action-software_communities_plugin_myprofile-edit_software #content .main-content #basic-info #profile_change_picture {
+  border: none;
+}
+
+.action-software_communities_plugin_myprofile-edit_software #content .main-content #basic-info #community_image_builder_label{
+  display: none !important;
+}
+
+.action-software_communities_plugin_myprofile-edit_software .formfieldline{
+  padding: 0px;
+}
+
+/* Edit Software tabs */
+
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-tabs {
+  border: none;
+}
+
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-tabs .ui-tabs-nav {
+  margin: 0 0 0 1em;
+  padding: 0;
+  background: none;
+  color: #172738;
+  border: 0px solid #aaaaaa;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-widget-content .ui-state-default,
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-widget-header .ui-state-default {
+  background: #d5d5d5 none;
+  color: #555555;
+  font-weight: normal;
+}
+
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-widget-content .ui-state-active,
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-widget-header .ui-state-active {
+  background: #FFFFFF;
+  color: #212121;
+  font-weight: normal;
+}
+
+.action-software_communities_plugin_myprofile-edit_software .main-content .ui-tabs .ui-tabs-panel {
+  display: block;
+  padding: 1em 1.4em;
+  background-color: #FFFFFF;
+  color: #777;
+  border-width: 1px;
+  font-size: 13px;
+  text-decoration: none;
 }
 
 /* new community form*/
