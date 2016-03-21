@@ -67,6 +67,16 @@
   font-size: 12px;
 }
 
+/* Plugins */
+
+.action-plugins-index #content .block a{
+  color: #2c66ce;
+}
+
+.action-plugins-index table td{
+  padding: 10px;
+}
+
 /* Organizations Settings */
 
 .action-organizations-index .main-block form#manage-profiles,
