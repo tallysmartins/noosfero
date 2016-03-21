@@ -100,8 +100,8 @@ Feature: Search software
       | software-two  | OrganizationRatingsBlock  |
     And the environment domain is "localhost"
     And I am logged in as "joaosilva"
-    And I go to /profile/software-two/plugin/organization_ratings/new_rating
-    And I press "Enviar"
+	And I go to /profile/software-two/plugin/organization_ratings/new_rating?lang=pt
+    And I press "Salvar"
     And I go to /search/software_infos
     When I select "Rating" from "sort"
     And I sleep for 3 seconds

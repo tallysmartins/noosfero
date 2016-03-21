@@ -42,6 +42,8 @@ class SoftwareEventsBlockTest < ActiveSupport::TestCase
   end
 
   should "get events with start date equals or bigger than current day ordered by start date" do
+    @software_events_block.amount_of_events = 6
+    @software_events_block.save
     events = @software_events_block.get_events
 
     assert_equal false, events.include?(@e2)
@@ -57,6 +59,8 @@ class SoftwareEventsBlockTest < ActiveSupport::TestCase
   end
 
   should "include community events that have no end date" do
+    @software_events_block.amount_of_events = 6
+    @software_events_block.save
     events = @software_events_block.get_events
 
     assert_equal true, events.include?(@e5)

@@ -4,13 +4,11 @@ Feature: Use report
   to give my feedback about a software.
 
   Background:
-    Given "GovUserPlugin" plugin is enabled
     Given "SoftwareCommunitiesPlugin" plugin is enabled
     Given "OrganizationRatings" plugin is enabled
     And I am logged in as mpog_admin
     And I go to /admin/plugins
     And I check "SoftwareCommunitiesPlugin"
-    And I check "GovUserPlugin"
     And I press "Save changes"
     And the following softwares
       | name      | public_software | finality      |
@@ -43,11 +41,7 @@ Feature: Use report
 
    @selenium
    Scenario: Validate Use Report fields format
-    Given Institutions has initial default values on database
-    And the following public institutions
-      | name                       | acronym | country | state | city       | cnpj               | juridical_nature | governmental_power | governmental_sphere | corporate_name |
-      | Ministerio do Planejamento | MP      | BR      | Distrito Federal    | Brasilia   | 41.769.591/0001-43 | Autarquia        | Judiciario         | Federal             | Ministerio do Planejamento |
-    And I go to Noosfero's control panel
+    Given I go to Noosfero's control panel
     And I follow "Edit sideboxes"
     When I follow "Add a block"
     And I choose "Organization Ratings"
@@ -55,7 +49,6 @@ Feature: Use report
     And I am on Noosfero's homepage
     And I follow "Rate Community"
     When I click on anything with selector "comments-additional-information"
-    And I type in "Minis" in autocomplete list "#input_institution" and I choose "Ministerio do Planejamento"
     And I fill in "people_benefited_tmp" with "123123"
     And I fill in "saved_value_tmp" with "7654321"
     And I press "Save"

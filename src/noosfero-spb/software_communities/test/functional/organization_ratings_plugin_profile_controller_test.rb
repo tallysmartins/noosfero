@@ -41,7 +41,7 @@ class OrganizationRatingsPluginProfileControllerTest < ActionController::TestCas
 
   test "should create a task with a valid saved value and no comment" do
     assert_difference 'CreateOrganizationRatingComment.count' do
-      post :new_rating, profile: @software.community.identifier, :comments => {:body => ""},
+      post :new_rating, profile: @software.community.identifier, :comments => {:body => "po"},
                         :organization_rating_value => 3, :organization_rating => {:saved_value => 50000000}
     end
   end
@@ -58,9 +58,8 @@ class OrganizationRatingsPluginProfileControllerTest < ActionController::TestCas
     assert_equal 0, @software.benefited_people
     assert_equal 0.0, @software.saved_resources
 
-    post :new_rating, profile: @software.community.identifier, :comments => {:body => ""},
-                      :organization_rating_value => 3,
-                      :organization_rating => {:saved_value => 500, :people_benefited => 10}
+    post :new_rating, profile: @software.community.identifier, :comments => {:body => "po"},
+                      :organization_rating_value => 3, :organization_rating => {:saved_value => 500, :people_benefited => 10}
 
     CreateOrganizationRatingComment.last.finish
     @software.reload
@@ -73,7 +72,7 @@ class OrganizationRatingsPluginProfileControllerTest < ActionController::TestCas
     assert_equal 0, @software.benefited_people
     assert_equal 0.0, @software.saved_resources
 
-    post :new_rating, profile: @software.community.identifier, :comments => {:body => ""},
+    post :new_rating, profile: @software.community.identifier, :comments => {:body => "Body"},
                       :organization_rating_value => 3,
                       :organization_rating => {:saved_value => 500, :people_benefited => 10}
 
