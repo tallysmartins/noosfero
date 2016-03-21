@@ -269,14 +269,16 @@ class GovUserPluginControllerTest < ActionController::TestCase
     post :create_institution_admin
 
     assert_response 403
+    assert_template :access_denied
   end
 
   should "regular user can not access action create_institution_admin" do
-    disconnected_user = create_user("another_admin").person
-    login_as(disconnected_user.user_login)
+    regular_user = create_user("regular_user").person
+    login_as :regular_user
 
     post :create_institution_admin
 
     assert_response 403
+    assert_template :access_denied
   end
 end
