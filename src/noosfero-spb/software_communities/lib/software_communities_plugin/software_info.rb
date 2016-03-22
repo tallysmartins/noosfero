@@ -4,6 +4,7 @@ class SoftwareCommunitiesPlugin::SoftwareInfo < ActiveRecord::Base
   SEARCHABLE_SOFTWARE_FIELDS = {
     :acronym => 1,
     :finality => 2,
+    :category => 3
   }
 
   SEARCHABLE_SOFTWARE_CLASSES = [
@@ -11,7 +12,6 @@ class SoftwareCommunitiesPlugin::SoftwareInfo < ActiveRecord::Base
     SoftwareCommunitiesPlugin::SoftwareInfo,
     SoftwareCommunitiesPlugin::ProgrammingLanguage,
     SoftwareCommunitiesPlugin::DatabaseDescription,
-    Category
   ]
 
   scope :search_by_query, lambda { |query = "", env = Environment.default|

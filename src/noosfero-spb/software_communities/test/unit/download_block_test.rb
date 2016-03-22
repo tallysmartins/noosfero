@@ -29,7 +29,7 @@ class DownloadBlockTest < ActiveSupport::TestCase
     software_description2 = "Another Software"
     size2 = "15KB"
 
-    block = DownloadBlock.new
+    block = SoftwareCommunitiesPlugin::DownloadBlock.new
     block.update_attributes(:downloads => [{:name => name1, :link => link1, :software_description => software_description1, :size => size1},
                                              {:name => name2, :link => link2, :software_description => software_description2, :size => size2}])
 

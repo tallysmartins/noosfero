@@ -14,7 +14,7 @@ class SoftwareCommunitiesPlugin::DownloadBlock < Block
 
     params_download_ids = self.downloads.select{|download| !download[:id].blank?}.collect{|download| download[:id].to_i}
     removed_download_ids = self.download_record_ids - params_download_ids
-    Download.where(:id => removed_download_ids).destroy_all
+    SoftwareCommunitiesPlugin::Download.where(:id => removed_download_ids).destroy_all
 
     self.downloads.each do |download_hash|
       download_record = SoftwareCommunitiesPlugin::Download.find_by_id(download_hash[:id].to_i)

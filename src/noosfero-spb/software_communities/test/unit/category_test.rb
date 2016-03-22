@@ -34,9 +34,9 @@ class CategoyTest < ActiveSupport::TestCase
 
     software_infos = @category.software_communities
 
-    assert_include software_infos, @software1
-    assert_include software_infos, @software2
-    assert_not_include software_infos, community
+    assert software_infos.include? @software1
+    assert software_infos.include? @software2
+    assert !software_infos.include?(community), "it should not return a community in the result"
   end
 
   should "return software_infos of all categories children" do
@@ -46,9 +46,9 @@ class CategoyTest < ActiveSupport::TestCase
 
     software_infos = @category.software_infos
 
-    assert_include software_infos, @software1
-    assert_include software_infos, @software2
-    assert_include software_infos, software3
+    assert software_infos.include? @software1
+    assert software_infos.include? @software2
+    assert software_infos.include? software3
   end
 
 end

@@ -9,21 +9,21 @@ class LicenseHelperTest < ActiveSupport::TestCase
       {:version=>"GNU 3", :link=>"#gnu-3"},
       {:version=>"Another", :link=>"#another"}
     ]
-    test_data.each {|data| LicenseInfo.create! data}
+    test_data.each {|data| SoftwareCommunitiesPlugin::LicenseInfo.create! data}
   end
 
   should "find licenses by its version with another at the end" do
-    another = LicenseInfo.find_by_version "Another"
-    gnu_3 = LicenseInfo.find_by_version "GNU 3"
-    licenses = LicenseHelper.find_licenses "3"
+    another = SoftwareCommunitiesPlugin::LicenseInfo.find_by_version "Another"
+    gnu_3 = SoftwareCommunitiesPlugin::LicenseInfo.find_by_version "GNU 3"
+    licenses = SoftwareCommunitiesPlugin::LicenseHelper.find_licenses "3"
 
     assert_equal gnu_3, licenses.first
     assert_equal another, licenses.last
   end
 
   should "get all licenses with another at the end" do
-    another = LicenseInfo.find_by_version "Another"
-    licenses = LicenseInfo.all
+    another = SoftwareCommunitiesPlugin::LicenseInfo.find_by_version "Another"
+    licenses = SoftwareCommunitiesPlugin::LicenseInfo.all
 
     assert_equal 4, licenses.count
     assert_equal another, licenses.last

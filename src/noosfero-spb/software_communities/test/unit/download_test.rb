@@ -37,9 +37,9 @@ class DownloadTest < ActiveSupport::TestCase
     download = SoftwareCommunitiesPlugin::Download.new(@downloads_sample_data.last)
 
     download.total_downloads = "not-a-number"
-    assert_false download.valid?
+    assert_equal false,download.valid?
 
     download.total_downloads = 456
-    assert_true download.valid?
+    assert_equal true, download.valid?
   end
 end

@@ -34,11 +34,11 @@ class LicenseInfoTest < ActiveSupport::TestCase
       {:version=>"GNU 3", :link=>"#"},
       {:version=>"Another", :link=>"#"}
     ]
-    test_data.each {|data| LicenseInfo.create! data}
+    test_data.each {|data| SoftwareCommunitiesPlugin::LicenseInfo.create! data}
 
-    another = LicenseInfo.find_by_version "Another"
+    another = SoftwareCommunitiesPlugin::LicenseInfo.find_by_version "Another"
 
     assert_not_nil another
-    assert !LicenseInfo.without_another.include?(another), "Scope without_another shoud get all except for another"
+    assert !SoftwareCommunitiesPlugin::LicenseInfo.without_another.include?(another), "Scope without_another shoud get all except for another"
   end
 end
