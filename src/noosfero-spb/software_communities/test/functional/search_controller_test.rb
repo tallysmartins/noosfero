@@ -96,11 +96,12 @@ class SearchControllerTest < ActionController::TestCase
 
     get(
       :software_infos,
-      :query => "Health",
+      :sort => "relevance",
+      :query => "Health"
     )
 
-    assert_includes assigns(:searches)[:software_infos][:results], @softwares[0].community
-    assert_not_includes assigns(:searches)[:software_infos][:results], @softwares[1].community
+    assert_includes assigns(:searches)[:"software_communities_plugin/software_infos"][:results], @softwares[0].community
+    assert_not_includes assigns(:searches)[:"software_communities_plugin/software_infos"][:results], @softwares[1].community
   end
 
   should "software_infos search by sub category" do
@@ -119,8 +120,8 @@ class SearchControllerTest < ActionController::TestCase
       :selected_categories_id => [category.id]
     )
 
-    assert_includes assigns(:searches)[:software_infos][:results], software.community
-    assert_includes assigns(:searches)[:software_infos][:results], software2.community
+    assert_includes assigns(:searches)[:"software_communities_plugin/software_infos"][:results], software.community
+    assert_includes assigns(:searches)[:"software_communities_plugin/software_infos"][:results], software2.community
   end
 
   should "software_infos search softwares with one or more selected categories" do

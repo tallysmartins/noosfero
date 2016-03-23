@@ -1,6 +1,10 @@
 require_dependency 'category'
 
 class Category
+  SEARCHABLE_SOFTWARE_FIELDS = {
+    :name => 1
+  }
+
   def software_infos
     softwares = self.all_children.collect{|c| c.software_communities} + software_communities
     softwares.flatten.uniq
