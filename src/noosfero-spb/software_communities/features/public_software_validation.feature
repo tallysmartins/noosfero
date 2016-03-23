@@ -22,12 +22,12 @@ Feature: edit adherent fields
     Given I am logged in as "joaosilva"
     And I go to /myprofile/basic-software/plugin/software_communities/edit_software
     And I follow "Specifications"
-    Then the "#software_public_software" button should be disabled
+    Then the field "#software_public_software" should be disabled
 
   Scenario: Enable public software checkbox to admin users
     Given I go to /myprofile/basic-software/plugin/software_communities/edit_software
     And I follow "Specifications"
-    Then the "#software_public_software" button should be enabled
+    Then the field "#software_public_software" should be enabled
 
   @selenium
   Scenario: Show adherent fields when checkbox are checked
