@@ -1,6 +1,6 @@
 class SecondSoftwareReleaseDate < ActiveRecord::Migration
   def up
-    softwares = SoftwareInfo.all
+    softwares = SoftwareCommunitiesPlugin::SoftwareInfo.all
     softwares.each do |software|
       if software.community
         name = software.community.name.strip

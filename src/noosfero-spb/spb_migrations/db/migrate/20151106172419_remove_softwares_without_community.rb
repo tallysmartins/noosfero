@@ -1,6 +1,6 @@
 class RemoveSoftwaresWithoutCommunity < ActiveRecord::Migration
   def up
-    execute('DELETE FROM software_infos where community_id NOT IN (SELECT id FROM profiles)')
+    execute('DELETE FROM software_communities_plugin_software_infos where community_id NOT IN (SELECT id FROM profiles)')
   end
 
   def down

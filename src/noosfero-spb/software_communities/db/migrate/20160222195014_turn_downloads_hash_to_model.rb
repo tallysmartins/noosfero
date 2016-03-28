@@ -1,6 +1,6 @@
 class TurnDownloadsHashToModel < ActiveRecord::Migration
   def up
-    DownloadBlock.find_each do |download_block|
+    SoftwareCommunitiesPlugin::DownloadBlock.find_each do |download_block|
       download_block.downloads.each do |download_hash|
         download_hash[:size] = "-" if download_hash[:size].blank?
       end

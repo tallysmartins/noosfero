@@ -5,7 +5,7 @@ class ChangeSoftwareLayout < ActiveRecord::Migration
       change_layout(software_template)
     end
 
-    softwares = SoftwareInfo.all
+    softwares = SoftwareCommunitiesPlugin::SoftwareInfo.all
     softwares.each do |software|
       if software.community
         change_layout(software.community)
