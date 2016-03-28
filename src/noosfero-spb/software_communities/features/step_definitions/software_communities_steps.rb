@@ -19,20 +19,20 @@ Given /^SoftwareInfo has initial default values on database$/ do
 end
 
 Given /^Institutions has initial default values on database$/ do
-  SoftwareCommunitiesPlugin::GovernmentalPower.create(:name => "Executivo")
-  SoftwareCommunitiesPlugin::GovernmentalPower.create(:name => "Legislativo")
-  SoftwareCommunitiesPlugin::GovernmentalPower.create(:name => "Judiciario")
+  GovernmentalPower.create(:name => "Executivo")
+  GovernmentalPower.create(:name => "Legislativo")
+  GovernmentalPower.create(:name => "Judiciario")
 
-  SoftwareCommunitiesPlugin::GovernmentalSphere.create(:name => "Federal")
+  GovernmentalSphere.create(:name => "Federal")
 
-  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Autarquia")
-  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Administracao Direta")
-  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Empresa Publica")
-  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Fundacao")
-  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Orgao Autonomo")
-  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Sociedade")
-  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Sociedade Civil")
-  SoftwareCommunitiesPlugin::JuridicalNature.create(:name => "Sociedade de Economia Mista")
+  JuridicalNature.create(:name => "Autarquia")
+  JuridicalNature.create(:name => "Administracao Direta")
+  JuridicalNature.create(:name => "Empresa Publica")
+  JuridicalNature.create(:name => "Fundacao")
+  JuridicalNature.create(:name => "Orgao Autonomo")
+  JuridicalNature.create(:name => "Sociedade")
+  JuridicalNature.create(:name => "Sociedade Civil")
+  JuridicalNature.create(:name => "Sociedade de Economia Mista")
 
   national_region = NationalRegion.new
   national_region.name = "Distrito Federal"
@@ -99,12 +99,12 @@ Given /^the following public institutions?$/ do |table|
     community.city = item[:city]
     community.save!
 
-    governmental_power = SoftwareCommunitiesPlugin::GovernmentalPower.where(:name => item[:governmental_power]).first
-    governmental_sphere = SoftwareCommunitiesPlugin::GovernmentalSphere.where(:name => item[:governmental_sphere]).first
+    governmental_power = GovernmentalPower.where(:name => item[:governmental_power]).first
+    governmental_sphere = GovernmentalSphere.where(:name => item[:governmental_sphere]).first
 
-    juridical_nature = SoftwareCommunitiesPlugin::JuridicalNature.create(:name => item[:juridical_nature])
+    juridical_nature = JuridicalNature.create(:name => item[:juridical_nature])
 
-    institution = SoftwareCommunitiesPlugin::PublicInstitution.new(:name => item[:name], :type => "PublicInstitution", :acronym => item[:acronym], :cnpj => item[:cnpj], :juridical_nature => juridical_nature, :governmental_power => governmental_power, :governmental_sphere => governmental_sphere)
+    institution = PublicInstitution.new(:name => item[:name], :type => "PublicInstitution", :acronym => item[:acronym], :cnpj => item[:cnpj], :juridical_nature => juridical_nature, :governmental_power => governmental_power, :governmental_sphere => governmental_sphere)
     institution.community = community
     institution.corporate_name = item[:corporate_name]
     institution.save!
