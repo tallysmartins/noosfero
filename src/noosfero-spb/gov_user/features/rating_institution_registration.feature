@@ -26,8 +26,8 @@ Feature: Create institution on user report
     And I should not see "Organization name or Enterprise name"
     When I click on anything with selector "comments-additional-information"
     Then I should see "Number of Beneficiaries"
-    And I should see "Organization Name or Enterprise Name"
-    And I should see "Saved Resources"
+    And I should see "Organization name or Enterprise name"
+    And I should see "Saved resources"
 
   @selenium
   Scenario: Show new institution fields when clicked in add new institution
