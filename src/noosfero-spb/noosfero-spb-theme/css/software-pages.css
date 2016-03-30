@@ -73,13 +73,13 @@
 
 /* Software Download Block*/
 
-#content .download-block {
+#content .software-communities-plugin_download-block {
   margin: 0px 15px;
   border: 1px solid #D3D6DE;
   border-radius: 10px;
 }
 
-#content .download-block .block-title {
+#content .software-communities-plugin_download-block .block-title {
   padding: 11px 10px 7px 20px;
   background-color: #D3D6DE;
   border-top-left-radius: 8px;
@@ -90,23 +90,23 @@
   font-size: 18px;
 }
 
-#content .download-block .download-list li {
+#content .software-communities-plugin_download-block .download-list li {
   padding: 30px 10px 25px 20px;
   border-top: 1px solid #D3D6DE;
   clear: both;
 }
 
-#content .download-block .download-list li:nth-child(even) {
+#content .software-communities-plugin_download-block .download-list li:nth-child(even) {
   background: #ECEDF1;
 }
 
-#content .download-block .download-button {
+#content .software-communities-plugin_download-block .download-button {
   width: 80px;
   float: left;
   clear: both;
 }
 
-#content .download-block .download-button .download-image {
+#content .software-communities-plugin_download-block .download-button .download-image {
   padding: 50px 0px 8px 0px;
   border: 1px solid #2c66ce;
   border-radius: 8px;
@@ -115,7 +115,7 @@
   display: block;
 }
 
-#content .download-block .download-button .download-size {
+#content .software-communities-plugin_download-block .download-button .download-size {
   text-align: center;
   display: block;
   background: rgb(0, 40, 140) none repeat scroll 0% 0%;
@@ -126,40 +126,40 @@
   line-height: 20px;
 }
 
-#content .download-block .download-info {
+#content .software-communities-plugin_download-block .download-info {
   min-height: 80px;
   margin: 5px 0px 0px 100px;
   position: relative;
   font-size: 16px;
 }
 
-#content .download-block .download-info .download-name {
+#content .software-communities-plugin_download-block .download-info .download-name {
   display: block;
   font-weight: bold;
 }
 
-#content .download-block .download-info .download-platform {
+#content .software-communities-plugin_download-block .download-info .download-platform {
   display: block;
   font-size: 14px;
 }
 
-#content .download-block label {
+#content .software-communities-plugin_download-block label {
   padding-right: 2px;
 }
 
-#content .download-block .download-info .min-requirements {
+#content .software-communities-plugin_download-block .download-info .min-requirements {
   font-size: 12px;
 }
 
 /* THIS RULE WAS CHANGED TO REMOVE MINIMUM REQUIREMENTS - TEMPORARY */
-#content .download-block .download-info .min-requirements a {
+#content .software-communities-plugin_download-block .download-info .min-requirements a {
   line-height: 40px;
   color: #3E67B1;
   text-decoration: underline;
   display: none;
 }
 
-#content .download-block #licensed-software {
+#content .software-communities-plugin_download-block #licensed-software {
   padding:14px;
   border-top: 1px solid #D3D6DE;
   border-radius: 0px 0px 8px 8px;
@@ -168,7 +168,7 @@
   text-align: right;
 }
 
-#content .download-block #licensed-software a {
+#content .software-communities-plugin_download-block #licensed-software a {
   color: #3e67b1;
   text-decoration: underline;
 }
