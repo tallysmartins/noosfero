@@ -4,8 +4,10 @@ class FixInstitutionsWithWrongCountry < ActiveRecord::Migration
       settings = YAML.load(community['data'] || {}.to_yaml)
       if !settings[:country].nil? && settings[:country].downcase == "brasil"
         settings[:country] = 'BR'
-        assignments = ActiveRecord::Base.send(:sanitize_sql_for_assignment, {:data => settings.to_yaml})
-        update("UPDATE profiles SET %s WHERE id = %d" % [assignments, community['id']])
+        params ={}
+        params[:data]= settings.to_yaml
+        assignments = Community.send(:sanitize_sql_for_assignment, settings.to_yaml)
+        update("UPDATE profiles SET data = '%s' WHERE id = %d" % [assignments, community['id']])
       end
     end
   end

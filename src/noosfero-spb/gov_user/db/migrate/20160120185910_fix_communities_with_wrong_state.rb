@@ -6,8 +6,8 @@ class FixCommunitiesWithWrongState < ActiveRecord::Migration
 
       if new_state.present?
         settings[:state] = new_state
-        assignments = ActiveRecord::Base.send(:sanitize_sql_for_assignment, {:data => settings.to_yaml})
-        update("UPDATE profiles SET %s WHERE id = %d" % [assignments, community['id']])
+        assignments = Institution.send(:sanitize_sql_for_assignment, settings.to_yaml)
+        update("UPDATE profiles SET data = '%s' WHERE id = %d" % [assignments, community['id']])
       end
     end
   end

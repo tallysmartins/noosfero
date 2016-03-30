@@ -12,7 +12,7 @@ namespace :software do
         if c.software? || c.identifier == "software"
           c.boxes.each do |box|
             Block.where("(type = 'BreadcrumbsPlugin::ContentBreadcrumbsBlock' OR 
-                         type = 'SoftwareEventsBlock') AND
+                         type = 'SoftwareCommunitiesPlugin::SoftwareEventsBlock') AND
                          box_id = #{box.id}").destroy_all
           end
         end
@@ -69,8 +69,8 @@ namespace :software do
 
     template_software_events_1 = nil
 
-    unless box_has_block_of_type?(box_one, "SoftwareEventsBlock")
-      template_software_events_1 = SoftwareEventsBlock.new(
+    unless box_has_block_of_type?(box_one, "SoftwareCommunitiesPlugin::SoftwareEventsBlock")
+      template_software_events_1 = SoftwareCommunitiesPlugin::SoftwareEventsBlock.new(
                                     :mirror => true,
                                     :move_modes => "none",
                                     :edit_modes => "none")
@@ -79,7 +79,7 @@ namespace :software do
       box_one.blocks << template_software_events_1
       box_one.save!
 
-      pos = box_one.blocks.detect { |bl| bl.type == "SoftwareTabDataBlock"}.position
+      pos = box_one.blocks.detect { |bl| bl.type == "SoftwareCommunitiesPlugin::SoftwareTabDataBlock"}.position
       change_block_pos(box_one, template_software_events_1, pos)
       print "."
     end
@@ -88,10 +88,10 @@ namespace :software do
     template_software_events_2 = nil
     box_two = software_template.boxes.find_by_position 2
 
-    unless box_has_block_of_type?(box_two, "SoftwareEventsBlock")
+    unless box_has_block_of_type?(box_two, "SoftwareCommunitiesPlugin::SoftwareEventsBlock")
       pos = box_two.blocks.order(:position).last.position
 
-      template_software_events_2 = SoftwareEventsBlock.new(
+      template_software_events_2 = SoftwareCommunitiesPlugin::SoftwareEventsBlock.new(
                                     :mirror => true,
                                     :move_modes => "none",
                                     :edit_modes => "none",
@@ -136,8 +136,8 @@ namespace :software do
       box_one = community.boxes.find_by_position 1
 
       ############################################################################
-      unless box_has_block_of_type?(box_one, "SoftwareEventsBlock")
-        software_events_block_1 = SoftwareEventsBlock.new(
+      unless box_has_block_of_type?(box_one, "SoftwareCommunitiesPlugin::SoftwareEventsBlock")
+        software_events_block_1 = SoftwareCommunitiesPlugin::SoftwareEventsBlock.new(
                                     :move_modes => "none",
                                     :edit_modes => "none")
         software_events_block_1.display = "except_home_page"
@@ -146,8 +146,8 @@ namespace :software do
         box_one.blocks << software_events_block_1
         box_one.save!
 
-        pos = box_one.blocks.detect { |bl| bl.type == "SoftwareTabDataBlock"}.position
-        # Puts the software events block above Software Tab Data on area one
+        pos = box_one.blocks.detect { |bl| bl.type == "SoftwareCommunitiesPlugin::SoftwareTabDataBlock"}.position
+        # Puts the software events block above SoftwareCommunitiesPlugin:: Tab Data on area one
         change_block_pos(box_one, software_events_block_1, pos)
         print "."
       end
@@ -155,8 +155,8 @@ namespace :software do
       ############################################################################
       box_two = community.boxes.find_by_position 2
 
-      unless box_has_block_of_type?(box_two, "SoftwareEventsBlock")
-        software_events_block_2 = SoftwareEventsBlock.new(
+      unless box_has_block_of_type?(box_two, "SoftwareCommunitiesPlugin::SoftwareEventsBlock")
+        software_events_block_2 = SoftwareCommunitiesPlugin::SoftwareEventsBlock.new(
                                     :move_modes => "none",
                                     :edit_modes => "none",
                                     :amount_of_events => 5)
