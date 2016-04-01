@@ -213,7 +213,7 @@
 
 /*** Categories and Tags block ***/
 
-#content .box-1  .categories-and-tags-block{
+#content .box-1  .software-communities-plugin_categories-and-tags-block{
   border-top: 4px solid #2C4B6B;
   margin-top: 26px;
   padding-bottom: 15px;
@@ -221,7 +221,7 @@
   margin-bottom: 60px;
 }
 
-#content .box-1 .categories-and-tags-block .block-title{
+#content .box-1 .software-communities-plugin_categories-and-tags-block .block-title{
   float: left;
   margin: 13px 0px 10px 0;
   padding: 3px 0px;
@@ -232,13 +232,13 @@
   font-weight: 300;
 }
 
-#content .box-1 .categories-and-tags-block .category_cloud{
+#content .box-1 .software-communities-plugin_categories-and-tags-block .category_cloud{
   margin: 0px;
   position: relative;
   top: 9px;
 }
 
-#content .box-1 .categories-and-tags-block .category_cloud a{
+#content .box-1 .software-communities-plugin_categories-and-tags-block .category_cloud a{
   display: inline-block;
   padding: 1px 10px;
   margin: 5px;
@@ -250,13 +250,13 @@
   font-family: Arial, verdana;
 }
 
-#content .box-1 .categories-and-tags-block .category_cloud a:hover{
+#content .box-1 .software-communities-plugin_categories-and-tags-block .category_cloud a:hover{
   border-color: #3a70d1;
   background: #3a70d1;
   color: white;
 }
 
-#content .box-1 .categories-and-tags-block .category_cloud a:link{
+#content .box-1 .software-communities-plugin_categories-and-tags-block .category_cloud a:link{
   text-decoration: none;
 }
 
