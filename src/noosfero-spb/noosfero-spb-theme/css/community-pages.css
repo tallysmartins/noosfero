@@ -531,12 +531,12 @@
 
 /* Software Tab Data - Need to develop solution - Only display on profile page */
 
-#content .software-tab-data-block{
+#content .software-communities-plugin_software-tab-data-block{
   display: none;
 }
 
-.profile-type-is-community .action-profile_design-index #content .software-tab-data-block,
-.profile-type-is-community .action-profile-index #content .software-tab-data-block{
+.profile-type-is-community .action-profile_design-index #content .software-communities-plugin_software-tab-data-block,
+.profile-type-is-community .action-profile-index #content .software-communities-plugin_software-tab-data-block{
   display: block;
 }
 
