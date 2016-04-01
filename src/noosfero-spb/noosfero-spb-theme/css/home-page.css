@@ -145,14 +145,14 @@
 }
 
 /*** Softwares block **/
-.controller-environment_design #content .softwares-block,
-.action-home-index #content .softwares-block{
+.controller-environment_design #content .software-communities-plugin_softwares-block,
+.action-home-index #content .software-communities-plugin_softwares-block{
   margin: 0px;
   overflow: auto;
 }
 
-.controller-environment_design #content .softwares-block .block-title,
-.action-home-index #content .softwares-block .block-title{
+.controller-environment_design #content .software-communities-plugin_softwares-block .block-title,
+.action-home-index #content .software-communities-plugin_softwares-block .block-title{
   margin: 0px 0px 25px 0px;
   border-top: 4px solid #2c66ce;
   background: #eee;
@@ -160,8 +160,8 @@
   font-weight: 300;
 }
 
-.controller-environment_design #content .softwares-block .block-footer-content a,
-.action-home-index #content .softwares-block .block-footer-content a{
+.controller-environment_design #content .software-communities-plugin_softwares-block .block-footer-content a,
+.action-home-index #content .software-communities-plugin_softwares-block .block-footer-content a{
   display:none;
 }
 
