@@ -97,7 +97,7 @@ SPBNoosferoTheme.HighlightedSoftwaresBlock = (function($) {
   }
 
   function initialize() {
-    $('#boxes .box-1 div.softwares-block').doOnce(function() {
+    $('#boxes .box-1 div.software-communities-plugin_softwares-block').doOnce(function() {
       setFadeInOutFinality();
     });
   }
@@ -310,107 +310,3 @@ SPBNoosferoTheme.NoosferoFoldersContent = (function($) {
     SPBNoosferoTheme.NoosferoFoldersContent.init();
   });
 }) (jQuery);
-
-  /* Splits a file name from its extension. Example: example.pdf becomes example - PDF */
-  function split_file_extension(element) {
-    var tokens = element.innerHTML.split('.');
-    if(tokens.length == 2) {
-      var fileName = tokens[0];
-      var fileExtension = tokens[1].toUpperCase();
-      element.innerHTML = fileName + " - " + fileExtension;
-    }
-  }
-
-  function set_tooltip_content() {
-    $('.star-tooltip').html("?");
-  }
-
-  function set_arrow_direction() {
-    var additional_data_bar = $('.comments-display-fields');
-
-    additional_data_bar.on('click', function() {
-      var arrow = additional_data_bar.find('span[class*="comments-arrow"]');
-      var additional_fields = $('.comments-software-extra-fields');
-
-      if (additional_fields) {
-        animateExtraFields(additional_fields, arrow);
-      }
-    });
-  }
-
-
-  function animateExtraFields(additional_fields, arrow) {
-    var innerHeight = additional_fields[0].offsetHeight;
-
-    if(additional_fields.height() !== 0) {
-      arrow.attr('class', "comments-arrow-down");
-      additional_fields.animate({height: 0});
-    } else {
-      arrow.attr('class', "comments-arrow-up");
-      additional_fields.animate({height: additional_fields.get(0).scrollHeight}, 1000 );
-    }
-
-    // Fix for the arrow change on modal display to block, killing the entire page
-    $("#institution_modal").css({'display':'none'});
-  }
-
-  function add_tooltips(){
-    $('#content span[title]').attr("data-toggle","tooltip");
-
-    $('[data-toggle="tooltip"]').tooltip();
-  }
-
-  function add_popovers() {
-    var span = $('span[data-toggle="popover"]');
-    var place = span.attr("data-placement");
-    var elementClass = span.attr("data-class");
-    if(span){
-      var popover =  span.popover({
-        html:true,
-        placement: place,
-        content: function() {
-          return $(this).next().html();
-        }
-      })
-      .data('bs.popover');
-    }
-    if(popover) {
-      popover.tip()
-      .addClass(elementClass);
-      $('a.toggle-popover').on("click",function() {
-        span.trigger("click");
-      });
-    }
-  }
-
-  function move_breadcrumbs() {
-    $('div.breadcrumbs-plugin_content-breadcrumbs-block').insertBefore('#content-inner');
-    $('<span id="breadcrumbs-you-are-here">Você está aqui:</span>').insertBefore($('.breadcrumbs-plugin_content-breadcrumbs-block .block-inner-2').children().first());
-  }
-
-  // temporary solution for the suspension_point in some buttons
-  function remove_suspension_points_in_buttons() {
-    $(".template-kind a span:contains('...')").each(function(index, element) {
-      element.innerHTML = element.innerHTML.replace(/(\...)/, "");
-    });
-  }
-
-  // temporary solution for the text in send_email buttons
-  function replace_send_email_button_text() {
-    $('.action-profile-members .page-members-header .icon-menu-mail').html('Contatar administradores');
-  }
-
-  $(document).ready(function(){
-    add_tooltips();
-    add_popovers();
-    move_article_buttons();
-    move_breadcrumbs();
-    insert_notice_div();
-    set_uploaded_files_names();
-    set_tooltip_content();
-    set_arrow_direction();
-    setEvents();
-    remove_suspension_points_in_buttons();
-    replace_send_email_button_text();
-    });
-})(jQuery);
