@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20160324132518) do
     t.integer  "created_by_id"
     t.boolean  "show_to_followers",    default: true
     t.integer  "followers_count",      default: 0
+    t.boolean  "archived",             default: false
   end
 
   add_index "articles", ["comments_count"], name: "index_articles_on_comments_count", using: :btree
@@ -491,6 +492,30 @@ ActiveRecord::Schema.define(version: 20160324132518) do
   add_index "national_regions", ["name"], name: "name_index", using: :btree
   add_index "national_regions", ["national_region_code"], name: "code_index", using: :btree
 
+  create_table "organization_ratings", force: :cascade do |t|
+    t.integer  "organization_id"
+    t.integer  "person_id"
+    t.integer  "comment_id"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "people_benefited"
+    t.decimal  "saved_value"
+  end
+
+  create_table "organization_ratings_configs", force: :cascade do |t|
+    t.integer "environment_id"
+    t.integer "cooldown",       default: 24
+    t.integer "integer",        default: 10
+    t.integer "default_rating", default: 1
+    t.string  "order",          default: "recent"
+    t.string  "string",         default: "recent"
+    t.integer "per_page",       default: 10
+    t.boolean "vote_once",      default: false
+    t.boolean "boolean",        default: true
+    t.boolean "are_moderated",  default: true
+  end
+
   create_table "price_details", force: :cascade do |t|
     t.decimal  "price",              default: 0.0
     t.integer  "product_id"
@@ -610,6 +635,7 @@ ActiveRecord::Schema.define(version: 20160324132518) do
     t.boolean  "allow_members_to_invite",            default: true
     t.boolean  "invite_friends_only",                default: false
     t.boolean  "secret",                             default: false
+    t.integer  "comments_count"
   end
 
   add_index "profiles", ["activities_count"], name: "index_profiles_on_activities_count", using: :btree
@@ -719,6 +745,126 @@ ActiveRecord::Schema.define(version: 20160324132518) do
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
+
+  create_table "software_categories", force: :cascade do |t|
+    t.integer "software_info_id"
+    t.boolean "administration"
+    t.boolean "agriculture"
+    t.boolean "business_and_services"
+    t.boolean "communication"
+    t.boolean "culture"
+    t.boolean "national_defense"
+    t.boolean "economy_and_finances"
+    t.boolean "education"
+    t.boolean "energy"
+    t.boolean "sports"
+    t.boolean "habitation"
+    t.boolean "industry"
+    t.boolean "environment"
+    t.boolean "research_and_development"
+    t.boolean "social_security"
+    t.boolean "social_protection"
+    t.boolean "international_relations"
+    t.boolean "sanitation"
+    t.boolean "health"
+    t.boolean "security_public_order"
+    t.boolean "work"
+    t.boolean "transportation"
+    t.boolean "urbanism"
+  end
+
+  create_table "software_communities_downloads", force: :cascade do |t|
+    t.integer "download_block_id"
+    t.string  "name"
+    t.string  "link"
+    t.string  "software_description"
+    t.string  "minimum_requirements"
+    t.string  "size"
+    t.integer "total_downloads",      default: 0
+  end
+
+  create_table "software_communities_plugin_database_descriptions", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "software_communities_plugin_libraries", force: :cascade do |t|
+    t.string  "name"
+    t.string  "version"
+    t.string  "license"
+    t.integer "software_info_id"
+  end
+
+  create_table "software_communities_plugin_license_infos", force: :cascade do |t|
+    t.string "version"
+    t.string "link"
+  end
+
+  create_table "software_communities_plugin_operating_system_names", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "software_communities_plugin_operating_systems", force: :cascade do |t|
+    t.string  "version"
+    t.integer "software_info_id"
+    t.integer "operating_system_name_id"
+  end
+
+  create_table "software_communities_plugin_programming_languages", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "software_communities_plugin_software_databases", force: :cascade do |t|
+    t.string  "version"
+    t.integer "database_description_id"
+    t.integer "software_info_id"
+  end
+
+  create_table "software_communities_plugin_software_infos", force: :cascade do |t|
+    t.integer  "license_info_id"
+    t.integer  "community_id"
+    t.boolean  "e_mag",                       default: false
+    t.boolean  "icp_brasil",                  default: false
+    t.boolean  "intern",                      default: false
+    t.boolean  "e_ping",                      default: false
+    t.boolean  "e_arq",                       default: false
+    t.string   "operating_platform"
+    t.string   "demonstration_url"
+    t.string   "acronym"
+    t.text     "objectives"
+    t.text     "features"
+    t.text     "finality"
+    t.string   "repository_link"
+    t.boolean  "public_software",             default: false
+    t.boolean  "first_edit",                  default: true
+    t.text     "settings"
+    t.integer  "benefited_people",            default: 0
+    t.decimal  "saved_resources",             default: 0.0
+    t.text     "sisp_url"
+    t.text     "agency_identification"
+    t.text     "software_requirements"
+    t.text     "hardware_requirements"
+    t.text     "documentation"
+    t.text     "system_applications"
+    t.text     "active_versions"
+    t.text     "estimated_cost"
+    t.text     "responsible"
+    t.text     "responsible_for_acquirement"
+    t.text     "system_info"
+    t.text     "development_info"
+    t.text     "maintenance"
+    t.text     "standards_adherence"
+    t.text     "platform"
+    t.text     "sisp_type"
+    t.integer  "sisp_id"
+    t.datetime "created_at",                  default: '2016-03-31 19:38:52', null: false
+    t.datetime "updated_at",                  default: '2016-03-31 19:38:52', null: false
+  end
+
+  create_table "software_communities_plugin_software_languages", force: :cascade do |t|
+    t.integer "software_info_id"
+    t.integer "programming_language_id"
+    t.string  "version"
+  end
 
   create_table "suggestion_connections", force: :cascade do |t|
     t.integer "suggestion_id",   null: false
