@@ -1,0 +1,63 @@
+branches:
+  only:
+    - /^ci_.*$/
+    - master_noosfero
+
+#dist: trusty
+language: ruby
+rvm:
+  - 2.2
+  # ruby 2.3 works but isn't stable on travis
+
+addons:
+  apt:
+    packages:
+      - xvfb
+      - po4a
+      - iso-codes
+      - tango-icon-theme
+      - pidgin-data
+      # for gem extensions
+      - libmagickwand-dev
+      - libpq-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - libxslt1-dev
+
+# workaround for https://github.com/travis-ci/travis-ci/issues/4536
+before_install:
+  - export GEM_HOME=$PWD/noosfero/vendor/bundle/ruby/2.2.0
+  - cd noosfero
+  - gem install bundler
+  - export BUNDLE_GEMFILE=$PWD/Gemfile
+cache: bundler
+
+before_script:
+  - mkdir -p tmp/{pids,cache} log cache
+  - script/noosfero-plugins disableall
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database myapp_test;' -U postgres
+  - git checkout db/schema.rb
+  - bundle exec rake db:schema:load
+  - rake db:data:minimal
+  - bundle exec rake db:migrate &>/dev/null
+  - unlink plugins/software_communities || true
+  - unlink plugins/gov_user || true
+  - unlink plugins/spb_migrations || true
+  - unlink public/designs/themes/noosfero-spb-theme || true
+
+env:
+  - TASK=./../script/software_communities_ci.sh
+  - TASK="bundle exec rake test:units"
+  - TASK="bundle exec rake test:functionals"
+  - TASK="bundle exec rake test:integration"
+  - TASK="bundle exec rake cucumber LANG=en"
+  - TASK="bundle exec rake selenium"
+  - SLICE="1/4 TASK=bundle exec rake test:noosfero_plugins BUNDLE_OPTS=install"
+  - SLICE="2/4 TASK=bundle exec rake test:noosfero_plugins BUNDLE_OPTS=install"
+  - SLICE="3/4 TASK=bundle exec rake test:noosfero_plugins BUNDLE_OPTS=install"
+  - SLICE="4/4 TASK=bundle exec rake test:noosfero_plugins BUNDLE_OPTS=install"
+
+script:
+  - bash -c "$TASK"
+

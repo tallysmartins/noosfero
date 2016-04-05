@@ -43,5 +43,3 @@ fi
 printf "${GREEN}=================================\n"
 printf "Running rake db:test:prepare${NC}\n"
 bundle exec rake db:test:prepare
-
-exit 0

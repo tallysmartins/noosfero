@@ -14,12 +14,12 @@ functionals=$?
 
 printf "${GREEN}=================================\n"
 printf "GovUserPlugin:SELENIUM${NC}\n"
-xvfb-run -a cucumber plugins/gov_user/features/* -p software_communities_selenium --format progress
+ruby -S cucumber FEATURE=plugins/gov_user/features/* -p software_communities_selenium --format progress
 selenium=$?
 
 printf "${GREEN}=================================\n"
 printf "GovUserPlugin:CUCUMBER${NC}\n"
-xvfb-run -a cucumber plugins/gov_user/features/* -p software_communities --format progress
+ruby -S cucumber FEATURE=plugins/gov_user/features/* -p software_communities --format progress
 cucumber=$?
 
 if [ $units -ne 0 ] || [ $functionals -ne 0 ] || [ $selenium -ne 0 ] || [ $cucumber -ne 0 ]; then
