@@ -186,6 +186,10 @@ class Task < ActiveRecord::Base
     false
   end
 
+  def footer
+    false
+  end
+
   def icon
     {:type => :defined_image, :src => "/images/icons-app/user-minor.png", :name => requestor.name, :url => requestor.url}
   end
