@@ -106,24 +106,24 @@ class APIHelpersTest < ActiveSupport::TestCase
   end
 
   should 'find_article return article by id in list passed for user with permission' do
-    user = create_user('someuser')
+    login_api
     a = fast_create(Article, :profile_id => user.person.id)
     fast_create(Article, :profile_id => user.person.id)
     fast_create(Article, :profile_id => user.person.id)
 
-    user.generate_private_token!
-    User.expects(:find_by_private_token).returns(user)
+    self.params = {private_token: user.private_token}
+    User.expects(:find_by).with(private_token: user.private_token).returns(user)
     assert_equal a, find_article(user.person.articles, a.id)
   end
 
   should 'find_article return forbidden when a user try to access an article without permission' do
-    user = create_user('someuser')
+    login_api
     p = fast_create(Profile)
     a = fast_create(Article, :published => false, :profile_id => p.id)
     fast_create(Article, :profile_id => p.id)
 
-    user.generate_private_token!
-    User.expects(:find_by_private_token).returns(user)
+    self.params = {private_token: user.private_token}
+    User.expects(:find_by).with(private_token: user.private_token).returns(user)
     assert_equal 403, find_article(p.articles, a.id).last
   end
 

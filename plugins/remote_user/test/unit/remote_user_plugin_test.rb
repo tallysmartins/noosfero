@@ -1,5 +1,5 @@
 require 'test_helper'
-require_relative '../../../../test/api/test_helper'
+require_relative '../../../../test/unit/api/test_helper'
 
 class RemoteUserPluginTest < ActiveSupport::TestCase
   should 'call remote user hotspot to authenticate in API' do
