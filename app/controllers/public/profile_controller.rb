@@ -1,9 +1,9 @@
 class ProfileController < PublicController
 
   needs_profile
-  before_filter :check_access_to_profile, :except => [:join, :join_not_logged, :index, :add]
-  before_filter :store_location, :only => [:join, :join_not_logged, :report_abuse, :send_mail]
-  before_filter :login_required, :only => [:add, :join, :leave, :unblock, :leave_scrap, :remove_scrap, :remove_activity, :view_more_activities, :view_more_network_activities, :report_abuse, :register_report, :leave_comment_on_activity, :send_mail]
+  before_filter :check_access_to_profile, :except => [:join, :join_modal, :join_not_logged, :index, :add]
+  before_filter :store_location, :only => [:join, :join_modal, :join_not_logged, :report_abuse, :send_mail]
+  before_filter :login_required, :only => [:add, :join_modal, :join, :leave, :unblock, :leave_scrap, :remove_scrap, :remove_activity, :view_more_activities, :view_more_network_activities, :report_abuse, :register_report, :leave_comment_on_activity, :send_mail]
 
   helper TagsHelper
   helper ActionTrackerHelper
