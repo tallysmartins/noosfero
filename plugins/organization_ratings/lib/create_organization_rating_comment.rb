@@ -68,37 +68,35 @@ class CreateOrganizationRatingComment < Task
   end
 
   def target_notification_message
-    _("The user \"%{user}\" just made a report at %{target_class}
+    _("The user \"%{user}\" just made a report at
       \"%{target_name}\".
       You have to approve or reject it through the \"Pending Validations\"
       section in your control panel.\n") %
     { :user => self.requestor.name,
-      :target_class => _(self.target.class.name.downcase),
       :target_name => self.target.name }
   end
 
   def task_created_message
-    _("Your report at %{target_class} \"%{target}\" was
+    _("Your report at \"%{target}\" was
       just sent. The administrator will receive it and will approve or
       reject your request according to his methods and criteria.
       You will be notified as soon as environment administrator has a position
       about your request.") %
-    { :target_class => _(self.target.class.name.downcase), :target => self.target.name }
+    { :target => self.target.name }
   end
 
   def task_cancelled_message
-    _("Your report at %{target_class} \"%{target}\" was
+    _("Your report at \"%{target}\" was
       not approved by the administrator. The following explanation
       was given: \n\n%{explanation}") %
-    { :target_class => _(self.target.class.name.downcase),
-      :target => self.target.name,
+    { :target => self.target.name,
       :explanation => self.reject_explanation }
   end
 
   def task_finished_message
-    _("Your report at %{target_class} \"%{target}\" was approved.
+    _("Your report at \"%{target}\" was approved.
       You can access %{url} to see your comment.") %
-    { :target_class => _(self.target.class.name.downcase), :target => self.target.name, :url => ratings_url }
+    { :target => self.target.name, :url => ratings_url }
   end
 
   private
