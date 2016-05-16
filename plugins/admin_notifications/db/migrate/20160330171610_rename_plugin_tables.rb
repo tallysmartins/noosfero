@@ -1,8 +1,5 @@
 class RenamePluginTables < ActiveRecord::Migration
   def up
-    remove_index :environment_notifications_users, name: :index_Zaem6uuw
-    remove_index :environment_notifications_users, name: :index_ap3nohR9
-
     rename_column :environment_notifications_users, :environment_notification_id, :notification_id
 
     rename_table :environment_notifications, :admin_notifications_plugin_notifications
