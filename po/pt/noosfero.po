@@ -1915,7 +1915,7 @@ msgid "New member"
 msgstr "Novo membro"
 
 msgid "%{requestor} wants to be a member of '%{target}'."
-msgstr "%{requestor quer ser um membro de '%{target}'."
+msgstr "%{requestor} quer ser um membro de '%{target}'."
 
 msgid "%{requestor}%{requestor_email} wants to be a member of '%{organization}'."
 msgstr "%{requestor}%{requestor_email} quer ser um membro de '%{organization}'."
