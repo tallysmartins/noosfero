@@ -52,3 +52,7 @@ msgstr "Dados adicionais (órgãos e empresas)"
 #: plugins/organization_ratings/views/organization_ratings_plugin_profile/_new_rating_fields.html.erb:52
 msgid "Send"
 msgstr "Enviar"
+
+#: plugins/admin_notifications/views/shared/_form.html.erb:23
+msgid "Display only in the profile homepage"
+msgstr "Apresentar apenas na página inicial da comunidade"
