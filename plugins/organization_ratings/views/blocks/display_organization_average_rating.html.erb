@@ -1,4 +1,4 @@
-<% statistics = OrganizationRating.statistics_for_profile block.owner %>
+<% statistics ||= OrganizationRating.statistics_for_profile block.owner %>
 
 <div class="organization-average-rating-container">
   <% if statistics[:average] %>

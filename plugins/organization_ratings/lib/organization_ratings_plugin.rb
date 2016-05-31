@@ -38,13 +38,14 @@ class OrganizationRatingsPlugin < Noosfero::Plugin
   # Plugin Hotspot to display the average rating
   def display_organization_average_rating organization
     unless organization.nil?
-      average_rating = OrganizationRating.average_rating organization.id
+      average_rating = OrganizationRating.statistics_for_profile organization
 
       Proc::new {
         render :file => 'blocks/display_organization_average_rating',
                :locals => {
+                 :statistics => average_rating,
                  :profile_identifier => organization.identifier,
-                 :average_rating => average_rating
+                 :average_rating => average_rating[:average]
                }
       }
     end

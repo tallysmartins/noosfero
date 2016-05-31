@@ -11,14 +11,16 @@ class AverageRatingBlock < Block
 
   def content(args = {})
     profile_identifier = self.owner.identifier
-    average_rating = OrganizationRating.average_rating self.owner.id
+    statistics = OrganizationRating.statistics_for_profile self.owner
+    block = self
 
     proc do
       render(
         :file => 'blocks/display_organization_average_rating',
         :locals => {
           :profile_identifier => profile_identifier,
-          :average_rating => average_rating
+          :average_rating => statistics[:average],
+          :block => block
         }
       )
     end
