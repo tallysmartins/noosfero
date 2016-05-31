@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-16 16:56-0300\n"
-"PO-Revision-Date: 2016-05-16 16:56-0300\n"
+"POT-Creation-Date: 2016-05-31 18:32+0000\n"
+"PO-Revision-Date: 2016-05-31 18:32+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -32,10 +32,6 @@ msgstr ""
 
 #: ../controllers/organization_ratings_plugin_profile_controller.rb:48
 msgid "%s successfully rated!"
-msgstr ""
-
-#: ../controllers/organization_ratings_plugin_profile_controller.rb:50
-msgid "Sorry, there were problems rating this profile."
 msgstr ""
 
 #: ../lib/average_rating_block.rb:5
@@ -105,27 +101,35 @@ msgstr ""
 msgid "This block displays the organization ratings."
 msgstr ""
 
-#: ../lib/organization_ratings_config.rb:8
-msgid "More Recent"
+#: ../lib/organization_ratings_config.rb:9
+msgid "Best Ratings"
 msgstr ""
 
-#: ../lib/organization_ratings_config.rb:8
-msgid "Best Ratings"
+#: ../lib/organization_ratings_config.rb:9
+msgid "More Recent"
 msgstr ""
 
 #: ../lib/organization_ratings_plugin.rb:9
 msgid "A plugin that allows you to rate a organization and comment about it."
 msgstr ""
 
-#: ../views/blocks/display_organization_average_rating.html.erb:4
+#: ../lib/ratings_helper.rb:19
+msgid "Report waiting for approval"
+msgstr ""
+
+#: ../lib/ratings_helper.rb:21
+msgid "Report rejected"
+msgstr ""
+
+#: ../views/blocks/display_organization_average_rating.html.erb:6
 msgid "Rating: "
 msgstr ""
 
-#: ../views/blocks/display_organization_average_rating.html.erb:18
+#: ../views/blocks/display_organization_average_rating.html.erb:29
 msgid "Be the first to rate!"
 msgstr ""
 
-#: ../views/blocks/display_organization_average_rating.html.erb:23
+#: ../views/blocks/display_organization_average_rating.html.erb:34
 msgid "Rate this %s"
 msgstr ""
 
@@ -169,7 +173,11 @@ msgstr ""
 msgid "Ratings amount per page"
 msgstr ""
 
-#: ../views/organization_ratings_plugin_admin/index.html.erb:50
+#: ../views/organization_ratings_plugin_admin/index.html.erb:47
+msgid "Ratings amount on initial page"
+msgstr ""
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:56
 msgid "Back"
 msgstr ""
 
@@ -231,10 +239,6 @@ msgstr ""
 
 #: ../views/shared/_rating_button.html.erb:7
 msgid "Log in"
-msgstr ""
-
-#: ../views/shared/_user_rating_container.html.erb:29
-msgid "Report waiting for approval"
 msgstr ""
 
 #: ../views/tasks/_create_organization_rating_comment_accept_details.html.erb:5

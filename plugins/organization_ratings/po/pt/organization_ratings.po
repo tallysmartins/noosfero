@@ -17,30 +17,35 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.5-dev\n"
 
+#: ../controllers/organization_ratings_plugin_admin_controller.rb:12
 msgid "Configuration updated successfully."
 msgstr "Configurações atualizadas com sucesso."
 
+#: ../controllers/organization_ratings_plugin_admin_controller.rb:14
 msgid "Configuration could not be saved."
 msgstr "Configurações não puderam ser salvas."
 
+#: ../controllers/organization_ratings_plugin_profile_controller.rb:15
 msgid "You can not vote on this %s"
 msgstr "Você não pode votar nesta %s"
 
+#: ../controllers/organization_ratings_plugin_profile_controller.rb:48
 msgid "%s successfully rated!"
 msgstr "%s avaliado(a) com sucesso!"
 
-msgid "Sorry, there were problems rating this profile."
-msgstr "Desculpe, ocorreram problemas na avaliação deste perfil."
-
+#: ../lib/average_rating_block.rb:5
 msgid "Organization Average Rating"
 msgstr "Média de Avaliações da Organização"
 
+#: ../lib/average_rating_block.rb:9
 msgid "This block displays the organization average rating."
 msgstr "Este bloco mostra a média de avaliações da organização."
 
+#: ../lib/create_organization_rating_comment.rb:37
 msgid "New Report"
 msgstr "Novo Relato"
 
+#: ../lib/create_organization_rating_comment.rb:41
 msgid ""
 "<a href=%{requestor_url}>%{requestor}</a> wants to leave a report about this %"
 "{target_class}"
@@ -48,9 +53,11 @@ msgstr ""
 "<a href=%{requestor_url}>%{requestor}</a> deseja criar um relato neste(a) %{ta"
 "rget_class}"
 
+#: ../lib/create_organization_rating_comment.rb:66
 msgid "%{requestor} wants to leave a report about this \"%{target}\""
 msgstr "%{requestor} deseja criar um relato neste(a) \"%{target}\""
 
+#: ../lib/create_organization_rating_comment.rb:71
 msgid ""
 "The user \"%{user}\" just made a report at\n"
 "      \"%{target_name}\".\n"
@@ -62,6 +69,7 @@ msgstr ""
 "      Você precisa aprová-lo ou rejeitá-lo na seção \"Validações Pendentes\"\n"
 "      no seu painel de controle.\n"
 
+#: ../lib/create_organization_rating_comment.rb:80
 msgid ""
 "Your report at \"%{target}\" was\n"
 "      just sent. The administrator will receive it and will approve or\n"
@@ -76,6 +84,7 @@ msgstr ""
 "      Você será notificado assim que o administrador tenha uma posição\n"
 "      sobre seu pedido."
 
+#: ../lib/create_organization_rating_comment.rb:89
 msgid ""
 "Your report at \"%{target}\" was\n"
 "      not approved by the administrator. The following explanation\n"
@@ -89,6 +98,7 @@ msgstr ""
 "\n"
 "%{explanation}"
 
+#: ../lib/create_organization_rating_comment.rb:97
 msgid ""
 "Your report at \"%{target}\" was approved.\n"
 "      You can access %{url} to see your comment."
@@ -96,116 +106,165 @@ msgstr ""
 "Seu relato em \"%{target}\" foi aprovado.\n"
 "\tVocê pode acessar %{url} para ver seu comentário."
 
+#: ../lib/organization_rating.rb:10
 msgid "must be between 1 and 5"
 msgstr "deve ser entre 1 e 5"
 
+#: ../lib/organization_ratings_block.rb:5
 msgid "Organization Ratings"
 msgstr "Avaliações da Organização"
 
+#: ../lib/organization_ratings_block.rb:9
 msgid "This block displays the organization ratings."
 msgstr "Este bloco mostra as avaliações da organização."
 
-msgid "More Recent"
-msgstr "Mais Recentes"
-
+#: ../lib/organization_ratings_config.rb:9
 msgid "Best Ratings"
 msgstr "Melhores Avaliações"
 
+#: ../lib/organization_ratings_config.rb:9
+msgid "More Recent"
+msgstr "Mais Recentes"
+
+#: ../lib/organization_ratings_plugin.rb:9
 msgid "A plugin that allows you to rate a organization and comment about it."
 msgstr "Um plugin que permite que você avalie uma organização e comente sobre ela."
 
-msgid "Rating: "
-msgstr "Avaliação: "
-
-msgid "Be the first to rate!"
-msgstr "Seja o primeiro a avaliar!"
-
-msgid "Rate this %s"
-msgstr "Avalie esta %s"
-
-msgid "See more"
-msgstr "Veja mais"
-
-msgid "Organization Rating Settings"
-msgstr "Configuração para Avaliações em Organizações"
-
-msgid "Value"
-msgstr "Valor"
-
-msgid "Default amount of stars marked on evaluations"
-msgstr "Quantidade padrão de estrelas marcadas nas avaliações"
-
-msgid "Users can rate an organization only once"
-msgstr "Usuários podem avaliar uma organização apenas uma vez"
-
-msgid "The comments are moderated"
-msgstr "Os comentários são moderados"
-
-msgid "Time in hours between evaluations from the same user."
-msgstr "Tempo em horas entre avaliações do mesmo usuário."
-
-msgid "To disable cooldown use zero (0) value."
-msgstr "Para desabilitar o tempo de espera utilize o valor zero (0)."
-
-msgid "Order ratings by"
-msgstr "Ordenar avaliações por"
-
-msgid "Ratings amount per page"
-msgstr "Quantidade de avaliações por página"
-
-msgid "Back"
-msgstr "Voltar"
-
-msgid "Rated as"
-msgstr "Avaliado em"
-
-msgid "stars"
-msgstr "estrelas"
-
-msgid "Comment (Optional):"
-msgstr "Comentário (Opcional):"
-
-msgid "Save"
-msgstr "Salvar"
-
-msgid "Hi, %s! The administrators set that you can vote"
-msgstr "Olá, %s! Os administradores configuraram que você pode votar apenas"
-
-msgid "only once"
-msgstr "uma vez"
-
-msgid "for this %s."
-msgstr "para esta %s."
-
-msgid "Hi, %s! The administrators set the minimum time of"
-msgstr "Olá, %s! Os administradores configuraram o tempo mínimo de"
-
-msgid "%d hour(s)"
-msgstr "%d hora(s)"
-
-msgid "between each evaluation."
-msgstr "entre cada avaliação."
-
-msgid "User not logged"
-msgstr "Usuário não logado"
-
-msgid "Report your experiences."
-msgstr "Relate suas experiências."
-
-msgid "* You must be logged in to submit a report."
-msgstr "* Você precisa estar logado para enviar um relato."
-
-msgid "Rate %s "
-msgstr "Avaliar %s "
-
-msgid "Log in"
-msgstr "Entrar"
-
+#: ../lib/ratings_helper.rb:19
 msgid "Report waiting for approval"
 msgstr "Relato aguardando aprovação"
 
+#: ../lib/ratings_helper.rb:21
+msgid "Report rejected"
+msgstr "Avaliação rejeitada"
+
+#: ../views/blocks/display_organization_average_rating.html.erb:6
+msgid "Rating: "
+msgstr "Avaliação: "
+
+#: ../views/blocks/display_organization_average_rating.html.erb:29
+msgid "Be the first to rate!"
+msgstr "Seja o primeiro a avaliar!"
+
+#: ../views/blocks/display_organization_average_rating.html.erb:34
+msgid "Rate this %s"
+msgstr "Avalie esta %s"
+
+#: ../views/blocks/organization_ratings_block.html.erb:17
+msgid "See more"
+msgstr "Veja mais"
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:3
+msgid "Organization Rating Settings"
+msgstr "Configuração para Avaliações em Organizações"
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:10
+msgid "Value"
+msgstr "Valor"
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:13
+msgid "Default amount of stars marked on evaluations"
+msgstr "Quantidade padrão de estrelas marcadas nas avaliações"
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:17
+msgid "Users can rate an organization only once"
+msgstr "Usuários podem avaliar uma organização apenas uma vez"
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:21
+msgid "The comments are moderated"
+msgstr "Os comentários são moderados"
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:26
+msgid "Time in hours between evaluations from the same user."
+msgstr "Tempo em horas entre avaliações do mesmo usuário."
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:27
+msgid "To disable cooldown use zero (0) value."
+msgstr "Para desabilitar o tempo de espera utilize o valor zero (0)."
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:35
+msgid "Order ratings by"
+msgstr "Ordenar avaliações por"
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:41
+msgid "Ratings amount per page"
+msgstr "Quantidade de avaliações por página"
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:47
+msgid "Ratings amount on initial page"
+msgstr "Quantidade de avaliações na página inicial"
+
+#: ../views/organization_ratings_plugin_admin/index.html.erb:56
+msgid "Back"
+msgstr "Voltar"
+
+#: ../views/organization_ratings_plugin_profile/_new_rating_fields.html.erb:38
+msgid "Rated as"
+msgstr "Avaliado em"
+
+#: ../views/organization_ratings_plugin_profile/_new_rating_fields.html.erb:38
+msgid "stars"
+msgstr "estrelas"
+
+#: ../views/organization_ratings_plugin_profile/_new_rating_fields.html.erb:45
+msgid "Comment (Optional):"
+msgstr "Comentário (Opcional):"
+
+#: ../views/organization_ratings_plugin_profile/_new_rating_fields.html.erb:52
+msgid "Save"
+msgstr "Salvar"
+
+#: ../views/organization_ratings_plugin_profile/_new_rating_fields.html.erb:62
+msgid "Hi, %s! The administrators set that you can vote"
+msgstr "Olá, %s! Os administradores configuraram que você pode votar apenas"
+
+#: ../views/organization_ratings_plugin_profile/_new_rating_fields.html.erb:63
+msgid "only once"
+msgstr "uma vez"
+
+#: ../views/organization_ratings_plugin_profile/_new_rating_fields.html.erb:64
+msgid "for this %s."
+msgstr "para esta %s."
+
+#: ../views/organization_ratings_plugin_profile/_new_rating_fields.html.erb:69
+msgid "Hi, %s! The administrators set the minimum time of"
+msgstr "Olá, %s! Os administradores configuraram o tempo mínimo de"
+
+#: ../views/organization_ratings_plugin_profile/_new_rating_fields.html.erb:70
+msgid "%d hour(s)"
+msgstr "%d hora(s)"
+
+#: ../views/organization_ratings_plugin_profile/_new_rating_fields.html.erb:71
+msgid "between each evaluation."
+msgstr "entre cada avaliação."
+
+#: ../views/shared/_make_report_block.html.erb:12
+msgid "User not logged"
+msgstr "Usuário não logado"
+
+#: ../views/shared/_make_report_block.html.erb:18
+msgid "Report your experiences."
+msgstr "Relate suas experiências."
+
+#: ../views/shared/_make_report_block.html.erb:25
+msgid "* You must be logged in to submit a report."
+msgstr "* Você precisa estar logado para enviar um relato."
+
+#: ../views/shared/_rating_button.html.erb:3
+msgid "Rate %s "
+msgstr "Avaliar %s "
+
+#: ../views/shared/_rating_button.html.erb:7
+msgid "Log in"
+msgstr "Entrar"
+
+#: ../views/tasks/_create_organization_rating_comment_accept_details.html.erb:5
 msgid "Description:"
 msgstr "Descrição:"
 
+#: ../views/tasks/_create_organization_rating_comment_accept_details.html.erb:9
 msgid "* The rating score is not moderated."
 msgstr "* A pontuação de classificação não é moderada."
+
+#~ msgid "Sorry, there were problems rating this profile."
+#~ msgstr "Desculpe, ocorreram problemas na avaliação deste perfil."
