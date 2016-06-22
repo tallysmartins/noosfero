@@ -5,7 +5,7 @@
   <%= hidden_field_tag(:content_id, params[:content_id]) %>
 
   <% unless user.is_admin? %>
-    <p><%= recaptcha_tags :ajax => true, :display => {:theme => 'clean'} %> </p>
+    <p><%= recaptcha_tags :ajax => true, :display => {:theme => 'clean'}, :ssl => using_ssl? %> </p>
   <% end %>
 
   <%= submit_button(:send, _('Report profile'), :style => 'float: left; cursor: pointer;', :id => 'report-abuse-submit-button', :onclick => "jQuery('#form-submit-loading').show()") %>

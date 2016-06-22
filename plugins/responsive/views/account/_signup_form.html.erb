@@ -159,7 +159,7 @@
   <% end %>
 </div>
 
-<%= recaptcha_tags :ajax => true, :display => {:theme => 'clean'} if @block_bot %>
+<%= recaptcha_tags :ajax => true, :display => {:theme => 'clean'}, :ssl => using_ssl? if @block_bot %>
 
 <p style="text-align: center">
   <%= submit_button('save', _('Create my account')) %>

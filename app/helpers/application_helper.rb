@@ -1243,4 +1243,7 @@ module ApplicationHelper
     editor
   end
 
+  def using_ssl?
+    Rails.application.config.try(:force_ssl) || false
+  end
 end
