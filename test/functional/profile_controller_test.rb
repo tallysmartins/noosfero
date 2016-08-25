@@ -1944,7 +1944,7 @@ class ProfileControllerTest < ActionController::TestCase
     login_as(@profile.identifier)
     person = fast_create(Person)
     assert_no_difference 'ProfileFollower.count' do
-      post :follow, :profile => person.identifier, :circles => {}
+      xhr :post, :follow, :profile => person.identifier, :circles => {}
     end
   end
 
@@ -1962,7 +1962,7 @@ class ProfileControllerTest < ActionController::TestCase
     circle = Circle.create!(:person=> @profile, :name => "Zombies", :profile_type => 'Person')
 
     assert_difference 'ProfileFollower.count' do
-      post :follow, :profile => person.identifier, :circles => {"Zombies" => circle.id}
+      xhr :post, :follow, :profile => person.identifier, :circles => {"Zombies" => circle.id}
     end
   end
 
@@ -1974,7 +1974,7 @@ class ProfileControllerTest < ActionController::TestCase
     circle2 = Circle.create!(:person=> @profile, :name => "Brainsss", :profile_type => 'Person')
 
     assert_difference 'ProfileFollower.count', 2 do
-      post :follow, :profile => person.identifier, :circles => {"Zombies" => circle.id, "Brainsss"=> circle2.id}
+      xhr :post, :follow, :profile => person.identifier, :circles => {"Zombies" => circle.id, "Brainsss"=> circle2.id}
     end
   end
 
@@ -1986,7 +1986,7 @@ class ProfileControllerTest < ActionController::TestCase
     circle2 = Circle.create!(:person=> @profile, :name => "Brainsss", :profile_type => 'Person')
 
     assert_no_difference 'ProfileFollower.count' do
-      post :follow, :profile => person.identifier, :circles => {"Zombies" => "0", "Brainsss" => "0"}
+      xhr :post, :follow, :profile => person.identifier, :circles => {"Zombies" => "0", "Brainsss" => "0"}
     end
 
     assert_match /Select at least one circle to follow/, response.body
@@ -2000,9 +2000,9 @@ class ProfileControllerTest < ActionController::TestCase
     fast_create(ProfileFollower, :profile_id => person.id, :circle_id => circle.id)
 
     assert_no_difference 'ProfileFollower.count' do
-      post :follow, :profile => person.identifier, :follow => { :circles => {"Zombies" => circle.id} }
+      xhr :post, :follow, :profile => person.identifier, :follow => { :circles => {"Zombies" => circle.id} }
     end
-    assert_response 400
+    assert assigns(:alert_message)
   end
 
   should "not unfollow user if not logged" do

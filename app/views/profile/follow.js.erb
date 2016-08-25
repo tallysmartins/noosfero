@@ -1,0 +1,9 @@
+<% if @alert_message %>
+  display_notice("<%= @alert_message %>");
+<% else %>
+  $(".main-content").html("<%= j render file: 'profile/index' %>");
+  $("#circles-container").fadeOut();
+  $("#action-unfollow").fadeIn();
+  display_notice("<%= @new_follower_message %>");
+  render_all_jquery_ui_widgets();
+<% end %>

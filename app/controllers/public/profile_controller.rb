@@ -14,17 +14,7 @@ class ProfileController < PublicController
   protect 'send_mail_to_members', :profile, :only => [:send_mail]
 
   def index
-    @network_activities = !@profile.is_a?(Person) ? @profile.tracked_notifications.visible.paginate(:per_page => 15, :page => params[:page]) : []
-    if logged_in? && current_person.follows?(@profile)
-      @network_activities = @profile.tracked_notifications.visible.paginate(:per_page => 15, :page => params[:page]) if @network_activities.empty?
-      @activities = @profile.activities.paginate(:per_page => 15, :page => params[:page])
-    end
-
-    # TODO Find a way to filter these through sql
-    @network_activities = filter_private_scraps(@network_activities)
-    @activities = filter_private_scraps(@activities)
-
-    @tags = profile.article_tags
+    collect_profile_data
     allow_access_to_page
   end
 
@@ -167,16 +157,20 @@ class ProfileController < PublicController
   end
 
   def follow
-    if profile.followed_by?(current_person)
-      render :text => _("You are already following %s.") % profile.name, :status => 400
-    else
-      selected_circles = params[:circles].map{ |circle_name, circle_id| Circle.find_by(:id => circle_id) }.select{ |c| c.present? }
-      if selected_circles.present?
-        current_person.follow(profile, selected_circles)
-        render :text => _("You are now following %s") % profile.name, :status => 200
+    respond_to do |format|
+      if profile.followed_by?(current_person)
+        @alert_message = _("You are already following %s.") % profile.name
       else
-        render :text => _("Select at least one circle to follow %s.") % profile.name, :status => 400
+        selected_circles = params[:circles].map{ |circle_name, circle_id| Circle.find_by(:id => circle_id) }.select{ |c| c.present? }
+        if selected_circles.present?
+          current_person.follow(profile, selected_circles)
+          collect_profile_data
+          @new_follower_message = _("You are now following %s") % profile.name
+        else
+          @alert_message = _("Select at least one circle to follow %s.") % profile.name
+        end
       end
+      format.js
     end
   end
 
@@ -527,5 +521,19 @@ class ProfileController < PublicController
       !target.marked_people.include?(user)
     end
     activities
+  end
+
+  def collect_profile_data
+    @network_activities = !@profile.is_a?(Person) ? @profile.tracked_notifications.visible.paginate(:per_page => 15, :page => params[:page]) : []
+    if logged_in? && current_person.follows?(@profile)
+      @network_activities = @profile.tracked_notifications.visible.paginate(:per_page => 15, :page => params[:page]) if @network_activities.empty?
+      @activities = @profile.activities.paginate(:per_page => 15, :page => params[:page])
+    end
+
+    # TODO Find a way to filter these through sql
+    @network_activities = filter_private_scraps(@network_activities)
+    @activities = filter_private_scraps(@activities)
+
+    @tags = profile.article_tags
   end
 end
