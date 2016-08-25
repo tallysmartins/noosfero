@@ -173,7 +173,11 @@ class ProfileController < PublicController
       selected_circles = params[:circles].map{ |circle_name, circle_id| Circle.find_by(:id => circle_id) }.select{ |c| c.present? }
       if selected_circles.present?
         current_person.follow(profile, selected_circles)
-        render :text => _("You are now following %s") % profile.name, :status => 200
+        index
+        @new_follower_message = _("You are now following %s") % profile.name
+        respond_to do |format|
+          format.js
+        end
       else
         render :text => _("Select at least one circle to follow %s.") % profile.name, :status => 400
       end

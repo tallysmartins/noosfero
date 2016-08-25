@@ -1,6 +1,6 @@
 <div class="circles" id='circles-list'>
 
-  <%= form_for :circles, :url => {:controller => 'profile', :action => 'follow'}, :html => {:id => "follow-circles-form"}  do |f|%>
+  <%= form_for :circles, :url => {:controller => 'profile', :action => 'follow'}, :html => {:id => "follow-circles-form"}, remote: true do |f|%>
     <%= render partial: "blocks/profile_info_actions/select_circles", :locals => {:circles => circles, :followed_profile => profile, :follower => current_person } %>
 
     <div id="circle-actions">

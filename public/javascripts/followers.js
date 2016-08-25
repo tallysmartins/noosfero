@@ -38,28 +38,6 @@ $("#new-circle-cancel").live("click", function() {
   return false;
 });
 
-$('#follow-circles-form').live("submit", function() {
-  var valuesToSubmit = $(this).serialize();
-  $.ajax({
-    type: "POST",
-    url: $(this).attr('action'),
-    data: valuesToSubmit,
-    dataType: "JSON",
-    statusCode: {
-      200: function(response){
-        $("#circles-container").fadeOut();
-        $("#action-unfollow").fadeIn();
-        $.colorbox.close();
-        display_notice(response.responseText);
-      },
-      400: function(response) {
-        display_notice(response.responseText);
-      }
-    }
-  })
-    return false;
-});
-
 $("#new-circle-submit").live("click", function() {
   $.ajax({
     method: 'POST',
